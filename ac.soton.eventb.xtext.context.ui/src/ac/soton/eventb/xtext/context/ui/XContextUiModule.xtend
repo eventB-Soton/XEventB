@@ -17,6 +17,6 @@ class XContextUiModule extends AbstractXContextUiModule {
 	override configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(typeof(String)).annotatedWith(
-			Names.named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))).toInstance("-!%#./*&\\");
+			Names.named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))).toInstance("!#%&*-:|~/\\");
 	}
 }

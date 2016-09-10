@@ -5,7 +5,7 @@ package ac.soton.eventb.xtext.context.ui.contentassist
 
 import ac.soton.eventb.xtext.common.RodinSymbolsProposalProvider
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.Assignment
+import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 
@@ -15,28 +15,16 @@ import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
  */
 class XContextProposalProvider extends AbstractXContextProposalProvider {
 	
-	override completeXAxiom_Predicate(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXAxiom_Predicate(model, assignment, context, acceptor)
-		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
-	}
-	
-	override completeXContext_Comment(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXContext_Comment(model, assignment, context, acceptor)
+	override complete_ML_COMMENT(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
 	}
 
-	override completeXCarrierSet_Comment(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXCarrierSet_Comment(model, assignment, context, acceptor)
+	override complete_SL_COMMENT(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
 	}
 
-	override completeXConstant_Comment(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXConstant_Comment(model, assignment, context, acceptor)
-		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
-	}
-
-	override completeXAxiom_Comment(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.completeXAxiom_Comment(model, assignment, context, acceptor)
+	override complete_STRING(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		super.complete_STRING(model, ruleCall, context, acceptor)
 		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
 	}
 
