@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.eventb.xtext.machine
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.eventb.xtext.machine; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eventb.emf.core,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eventb.emf.persistence;bundle-version="3.5.0",
+ ac.soton.eventb.xtext.common;bundle-version="0.0.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.eventb.xtext.machine.scoping,
+ ac.soton.eventb.xtext.machine.services,
+ ac.soton.eventb.xtext.machine.formatting,
+ ac.soton.eventb.xtext.machine.generator,
+ ac.soton.eventb.xtext.machine.parser.antlr.internal,
+ ac.soton.eventb.xtext.machine.validation,
+ ac.soton.eventb.xtext.machine,
+ ac.soton.eventb.xtext.machine.serializer,
+ ac.soton.eventb.xtext.machine.parser.antlr
+Import-Package: org.apache.log4j
