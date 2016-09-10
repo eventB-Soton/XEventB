@@ -1,7 +1,7 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: ac.soton.eventb.xtext.context.ui.tests
-Bundle-Vendor: My Company
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
 Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: ac.soton.eventb.xtext.context.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
