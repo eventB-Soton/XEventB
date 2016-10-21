@@ -22,19 +22,19 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalXContextParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'end'", "'extends'", "'sets'", "'constants'", "'axioms'", "'@'", "'theorem'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_XLABEL", "RULE_STRING", "RULE_INT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'end'", "'extends'", "'sets'", "'constants'", "'axioms'", "'theorem'"
     };
     public static final int RULE_ID=6;
-    public static final int RULE_WS=9;
-    public static final int RULE_STRING=7;
-    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_WS=10;
+    public static final int RULE_STRING=8;
+    public static final int RULE_ANY_OTHER=11;
     public static final int RULE_SL_COMMENT=5;
+    public static final int RULE_XLABEL=7;
     public static final int T__15=15;
     public static final int T__16=16;
     public static final int T__17=17;
-    public static final int RULE_INT=8;
+    public static final int RULE_INT=9;
     public static final int T__18=18;
-    public static final int T__11=11;
     public static final int RULE_ML_COMMENT=4;
     public static final int T__12=12;
     public static final int T__13=13;
@@ -891,7 +891,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:308:2: 'context'
             {
              before(grammarAccess.getXContextAccess().getContextKeyword_2()); 
-            match(input,11,FOLLOW_2); 
+            match(input,12,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getContextKeyword_2()); 
 
             }
@@ -1055,7 +1055,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==13) ) {
+            if ( (LA6_0==14) ) {
                 alt6=1;
             }
             switch (alt6) {
@@ -1151,7 +1151,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             int alt7=2;
             int LA7_0 = input.LA(1);
 
-            if ( (LA7_0==14) ) {
+            if ( (LA7_0==15) ) {
                 alt7=1;
             }
             switch (alt7) {
@@ -1247,7 +1247,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==15) ) {
+            if ( (LA8_0==16) ) {
                 alt8=1;
             }
             switch (alt8) {
@@ -1343,7 +1343,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             int alt9=2;
             int LA9_0 = input.LA(1);
 
-            if ( (LA9_0==16) ) {
+            if ( (LA9_0==17) ) {
                 alt9=1;
             }
             switch (alt9) {
@@ -1430,7 +1430,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:469:2: 'end'
             {
              before(grammarAccess.getXContextAccess().getEndKeyword_8()); 
-            match(input,12,FOLLOW_2); 
+            match(input,13,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getEndKeyword_8()); 
 
             }
@@ -1505,7 +1505,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:497:2: 'extends'
             {
              before(grammarAccess.getXContextAccess().getExtendsKeyword_4_0()); 
-            match(input,13,FOLLOW_2); 
+            match(input,14,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getExtendsKeyword_4_0()); 
 
             }
@@ -1703,7 +1703,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:558:2: 'sets'
             {
              before(grammarAccess.getXContextAccess().getSetsKeyword_5_0()); 
-            match(input,14,FOLLOW_2); 
+            match(input,15,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getSetsKeyword_5_0()); 
 
             }
@@ -1901,7 +1901,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:619:2: 'constants'
             {
              before(grammarAccess.getXContextAccess().getConstantsKeyword_6_0()); 
-            match(input,15,FOLLOW_2); 
+            match(input,16,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getConstantsKeyword_6_0()); 
 
             }
@@ -2099,7 +2099,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:680:2: 'axioms'
             {
              before(grammarAccess.getXContextAccess().getAxiomsKeyword_7_0()); 
-            match(input,16,FOLLOW_2); 
+            match(input,17,FOLLOW_2); 
              after(grammarAccess.getXContextAccess().getAxiomsKeyword_7_0()); 
 
             }
@@ -2197,7 +2197,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
                 int alt13=2;
                 int LA13_0 = input.LA(1);
 
-                if ( ((LA13_0>=RULE_ML_COMMENT && LA13_0<=RULE_SL_COMMENT)||LA13_0==17) ) {
+                if ( ((LA13_0>=RULE_ML_COMMENT && LA13_0<=RULE_SL_COMMENT)||LA13_0==RULE_XLABEL) ) {
                     alt13=1;
                 }
 
@@ -2928,7 +2928,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:943:1: ( rule__XAxiom__Group__2__Impl rule__XAxiom__Group__3 )
             // InternalXContext.g:944:2: rule__XAxiom__Group__2__Impl rule__XAxiom__Group__3
             {
-            pushFollow(FOLLOW_4);
+            pushFollow(FOLLOW_11);
             rule__XAxiom__Group__2__Impl();
 
             state._fsp--;
@@ -2957,21 +2957,31 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XAxiom__Group__2__Impl"
-    // InternalXContext.g:951:1: rule__XAxiom__Group__2__Impl : ( '@' ) ;
+    // InternalXContext.g:951:1: rule__XAxiom__Group__2__Impl : ( ( rule__XAxiom__NameAssignment_2 ) ) ;
     public final void rule__XAxiom__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:955:1: ( ( '@' ) )
-            // InternalXContext.g:956:1: ( '@' )
+            // InternalXContext.g:955:1: ( ( ( rule__XAxiom__NameAssignment_2 ) ) )
+            // InternalXContext.g:956:1: ( ( rule__XAxiom__NameAssignment_2 ) )
             {
-            // InternalXContext.g:956:1: ( '@' )
-            // InternalXContext.g:957:2: '@'
+            // InternalXContext.g:956:1: ( ( rule__XAxiom__NameAssignment_2 ) )
+            // InternalXContext.g:957:2: ( rule__XAxiom__NameAssignment_2 )
             {
-             before(grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2()); 
-            match(input,17,FOLLOW_2); 
-             after(grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2()); 
+             before(grammarAccess.getXAxiomAccess().getNameAssignment_2()); 
+            // InternalXContext.g:958:2: ( rule__XAxiom__NameAssignment_2 )
+            // InternalXContext.g:958:3: rule__XAxiom__NameAssignment_2
+            {
+            pushFollow(FOLLOW_2);
+            rule__XAxiom__NameAssignment_2();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getXAxiomAccess().getNameAssignment_2()); 
 
             }
 
@@ -3003,7 +3013,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
             // InternalXContext.g:970:1: ( rule__XAxiom__Group__3__Impl rule__XAxiom__Group__4 )
             // InternalXContext.g:971:2: rule__XAxiom__Group__3__Impl rule__XAxiom__Group__4
             {
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             rule__XAxiom__Group__3__Impl();
 
             state._fsp--;
@@ -3032,31 +3042,31 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XAxiom__Group__3__Impl"
-    // InternalXContext.g:978:1: rule__XAxiom__Group__3__Impl : ( ( rule__XAxiom__NameAssignment_3 ) ) ;
+    // InternalXContext.g:978:1: rule__XAxiom__Group__3__Impl : ( ( rule__XAxiom__PredicateAssignment_3 ) ) ;
     public final void rule__XAxiom__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:982:1: ( ( ( rule__XAxiom__NameAssignment_3 ) ) )
-            // InternalXContext.g:983:1: ( ( rule__XAxiom__NameAssignment_3 ) )
+            // InternalXContext.g:982:1: ( ( ( rule__XAxiom__PredicateAssignment_3 ) ) )
+            // InternalXContext.g:983:1: ( ( rule__XAxiom__PredicateAssignment_3 ) )
             {
-            // InternalXContext.g:983:1: ( ( rule__XAxiom__NameAssignment_3 ) )
-            // InternalXContext.g:984:2: ( rule__XAxiom__NameAssignment_3 )
+            // InternalXContext.g:983:1: ( ( rule__XAxiom__PredicateAssignment_3 ) )
+            // InternalXContext.g:984:2: ( rule__XAxiom__PredicateAssignment_3 )
             {
-             before(grammarAccess.getXAxiomAccess().getNameAssignment_3()); 
-            // InternalXContext.g:985:2: ( rule__XAxiom__NameAssignment_3 )
-            // InternalXContext.g:985:3: rule__XAxiom__NameAssignment_3
+             before(grammarAccess.getXAxiomAccess().getPredicateAssignment_3()); 
+            // InternalXContext.g:985:2: ( rule__XAxiom__PredicateAssignment_3 )
+            // InternalXContext.g:985:3: rule__XAxiom__PredicateAssignment_3
             {
             pushFollow(FOLLOW_2);
-            rule__XAxiom__NameAssignment_3();
+            rule__XAxiom__PredicateAssignment_3();
 
             state._fsp--;
 
 
             }
 
-             after(grammarAccess.getXAxiomAccess().getNameAssignment_3()); 
+             after(grammarAccess.getXAxiomAccess().getPredicateAssignment_3()); 
 
             }
 
@@ -3079,22 +3089,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XAxiom__Group__4"
-    // InternalXContext.g:993:1: rule__XAxiom__Group__4 : rule__XAxiom__Group__4__Impl rule__XAxiom__Group__5 ;
+    // InternalXContext.g:993:1: rule__XAxiom__Group__4 : rule__XAxiom__Group__4__Impl ;
     public final void rule__XAxiom__Group__4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:997:1: ( rule__XAxiom__Group__4__Impl rule__XAxiom__Group__5 )
-            // InternalXContext.g:998:2: rule__XAxiom__Group__4__Impl rule__XAxiom__Group__5
+            // InternalXContext.g:997:1: ( rule__XAxiom__Group__4__Impl )
+            // InternalXContext.g:998:2: rule__XAxiom__Group__4__Impl
             {
-            pushFollow(FOLLOW_12);
-            rule__XAxiom__Group__4__Impl();
-
-            state._fsp--;
-
             pushFollow(FOLLOW_2);
-            rule__XAxiom__Group__5();
+            rule__XAxiom__Group__4__Impl();
 
             state._fsp--;
 
@@ -3117,31 +3122,42 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XAxiom__Group__4__Impl"
-    // InternalXContext.g:1005:1: rule__XAxiom__Group__4__Impl : ( ( rule__XAxiom__PredicateAssignment_4 ) ) ;
+    // InternalXContext.g:1004:1: rule__XAxiom__Group__4__Impl : ( ( rule__XAxiom__TheoremAssignment_4 )? ) ;
     public final void rule__XAxiom__Group__4__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1009:1: ( ( ( rule__XAxiom__PredicateAssignment_4 ) ) )
-            // InternalXContext.g:1010:1: ( ( rule__XAxiom__PredicateAssignment_4 ) )
+            // InternalXContext.g:1008:1: ( ( ( rule__XAxiom__TheoremAssignment_4 )? ) )
+            // InternalXContext.g:1009:1: ( ( rule__XAxiom__TheoremAssignment_4 )? )
             {
-            // InternalXContext.g:1010:1: ( ( rule__XAxiom__PredicateAssignment_4 ) )
-            // InternalXContext.g:1011:2: ( rule__XAxiom__PredicateAssignment_4 )
+            // InternalXContext.g:1009:1: ( ( rule__XAxiom__TheoremAssignment_4 )? )
+            // InternalXContext.g:1010:2: ( rule__XAxiom__TheoremAssignment_4 )?
             {
-             before(grammarAccess.getXAxiomAccess().getPredicateAssignment_4()); 
-            // InternalXContext.g:1012:2: ( rule__XAxiom__PredicateAssignment_4 )
-            // InternalXContext.g:1012:3: rule__XAxiom__PredicateAssignment_4
-            {
-            pushFollow(FOLLOW_2);
-            rule__XAxiom__PredicateAssignment_4();
+             before(grammarAccess.getXAxiomAccess().getTheoremAssignment_4()); 
+            // InternalXContext.g:1011:2: ( rule__XAxiom__TheoremAssignment_4 )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            state._fsp--;
+            if ( (LA17_0==18) ) {
+                alt17=1;
+            }
+            switch (alt17) {
+                case 1 :
+                    // InternalXContext.g:1011:3: rule__XAxiom__TheoremAssignment_4
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__XAxiom__TheoremAssignment_4();
 
+                    state._fsp--;
+
+
+                    }
+                    break;
 
             }
 
-             after(grammarAccess.getXAxiomAccess().getPredicateAssignment_4()); 
+             after(grammarAccess.getXAxiomAccess().getTheoremAssignment_4()); 
 
             }
 
@@ -3163,113 +3179,22 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__XAxiom__Group__4__Impl"
 
 
-    // $ANTLR start "rule__XAxiom__Group__5"
-    // InternalXContext.g:1020:1: rule__XAxiom__Group__5 : rule__XAxiom__Group__5__Impl ;
-    public final void rule__XAxiom__Group__5() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalXContext.g:1024:1: ( rule__XAxiom__Group__5__Impl )
-            // InternalXContext.g:1025:2: rule__XAxiom__Group__5__Impl
-            {
-            pushFollow(FOLLOW_2);
-            rule__XAxiom__Group__5__Impl();
-
-            state._fsp--;
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__XAxiom__Group__5"
-
-
-    // $ANTLR start "rule__XAxiom__Group__5__Impl"
-    // InternalXContext.g:1031:1: rule__XAxiom__Group__5__Impl : ( ( rule__XAxiom__TheoremAssignment_5 )? ) ;
-    public final void rule__XAxiom__Group__5__Impl() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalXContext.g:1035:1: ( ( ( rule__XAxiom__TheoremAssignment_5 )? ) )
-            // InternalXContext.g:1036:1: ( ( rule__XAxiom__TheoremAssignment_5 )? )
-            {
-            // InternalXContext.g:1036:1: ( ( rule__XAxiom__TheoremAssignment_5 )? )
-            // InternalXContext.g:1037:2: ( rule__XAxiom__TheoremAssignment_5 )?
-            {
-             before(grammarAccess.getXAxiomAccess().getTheoremAssignment_5()); 
-            // InternalXContext.g:1038:2: ( rule__XAxiom__TheoremAssignment_5 )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
-
-            if ( (LA17_0==18) ) {
-                alt17=1;
-            }
-            switch (alt17) {
-                case 1 :
-                    // InternalXContext.g:1038:3: rule__XAxiom__TheoremAssignment_5
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__XAxiom__TheoremAssignment_5();
-
-                    state._fsp--;
-
-
-                    }
-                    break;
-
-            }
-
-             after(grammarAccess.getXAxiomAccess().getTheoremAssignment_5()); 
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__XAxiom__Group__5__Impl"
-
-
     // $ANTLR start "rule__XContext__CommentAssignment_1"
-    // InternalXContext.g:1047:1: rule__XContext__CommentAssignment_1 : ( ( rule__XContext__CommentAlternatives_1_0 ) ) ;
+    // InternalXContext.g:1020:1: rule__XContext__CommentAssignment_1 : ( ( rule__XContext__CommentAlternatives_1_0 ) ) ;
     public final void rule__XContext__CommentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1051:1: ( ( ( rule__XContext__CommentAlternatives_1_0 ) ) )
-            // InternalXContext.g:1052:2: ( ( rule__XContext__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1024:1: ( ( ( rule__XContext__CommentAlternatives_1_0 ) ) )
+            // InternalXContext.g:1025:2: ( ( rule__XContext__CommentAlternatives_1_0 ) )
             {
-            // InternalXContext.g:1052:2: ( ( rule__XContext__CommentAlternatives_1_0 ) )
-            // InternalXContext.g:1053:3: ( rule__XContext__CommentAlternatives_1_0 )
+            // InternalXContext.g:1025:2: ( ( rule__XContext__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1026:3: ( rule__XContext__CommentAlternatives_1_0 )
             {
              before(grammarAccess.getXContextAccess().getCommentAlternatives_1_0()); 
-            // InternalXContext.g:1054:3: ( rule__XContext__CommentAlternatives_1_0 )
-            // InternalXContext.g:1054:4: rule__XContext__CommentAlternatives_1_0
+            // InternalXContext.g:1027:3: ( rule__XContext__CommentAlternatives_1_0 )
+            // InternalXContext.g:1027:4: rule__XContext__CommentAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__XContext__CommentAlternatives_1_0();
@@ -3302,17 +3227,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XContext__NameAssignment_3"
-    // InternalXContext.g:1062:1: rule__XContext__NameAssignment_3 : ( RULE_ID ) ;
+    // InternalXContext.g:1035:1: rule__XContext__NameAssignment_3 : ( RULE_ID ) ;
     public final void rule__XContext__NameAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1066:1: ( ( RULE_ID ) )
-            // InternalXContext.g:1067:2: ( RULE_ID )
+            // InternalXContext.g:1039:1: ( ( RULE_ID ) )
+            // InternalXContext.g:1040:2: ( RULE_ID )
             {
-            // InternalXContext.g:1067:2: ( RULE_ID )
-            // InternalXContext.g:1068:3: RULE_ID
+            // InternalXContext.g:1040:2: ( RULE_ID )
+            // InternalXContext.g:1041:3: RULE_ID
             {
              before(grammarAccess.getXContextAccess().getNameIDTerminalRuleCall_3_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3339,21 +3264,21 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XContext__ExtendsAssignment_4_1"
-    // InternalXContext.g:1077:1: rule__XContext__ExtendsAssignment_4_1 : ( ( RULE_ID ) ) ;
+    // InternalXContext.g:1050:1: rule__XContext__ExtendsAssignment_4_1 : ( ( RULE_ID ) ) ;
     public final void rule__XContext__ExtendsAssignment_4_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1081:1: ( ( ( RULE_ID ) ) )
-            // InternalXContext.g:1082:2: ( ( RULE_ID ) )
+            // InternalXContext.g:1054:1: ( ( ( RULE_ID ) ) )
+            // InternalXContext.g:1055:2: ( ( RULE_ID ) )
             {
-            // InternalXContext.g:1082:2: ( ( RULE_ID ) )
-            // InternalXContext.g:1083:3: ( RULE_ID )
+            // InternalXContext.g:1055:2: ( ( RULE_ID ) )
+            // InternalXContext.g:1056:3: ( RULE_ID )
             {
              before(grammarAccess.getXContextAccess().getExtendsContextCrossReference_4_1_0()); 
-            // InternalXContext.g:1084:3: ( RULE_ID )
-            // InternalXContext.g:1085:4: RULE_ID
+            // InternalXContext.g:1057:3: ( RULE_ID )
+            // InternalXContext.g:1058:4: RULE_ID
             {
              before(grammarAccess.getXContextAccess().getExtendsContextIDTerminalRuleCall_4_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3384,17 +3309,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XContext__SetsAssignment_5_1"
-    // InternalXContext.g:1096:1: rule__XContext__SetsAssignment_5_1 : ( ruleXCarrierSet ) ;
+    // InternalXContext.g:1069:1: rule__XContext__SetsAssignment_5_1 : ( ruleXCarrierSet ) ;
     public final void rule__XContext__SetsAssignment_5_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1100:1: ( ( ruleXCarrierSet ) )
-            // InternalXContext.g:1101:2: ( ruleXCarrierSet )
+            // InternalXContext.g:1073:1: ( ( ruleXCarrierSet ) )
+            // InternalXContext.g:1074:2: ( ruleXCarrierSet )
             {
-            // InternalXContext.g:1101:2: ( ruleXCarrierSet )
-            // InternalXContext.g:1102:3: ruleXCarrierSet
+            // InternalXContext.g:1074:2: ( ruleXCarrierSet )
+            // InternalXContext.g:1075:3: ruleXCarrierSet
             {
              before(grammarAccess.getXContextAccess().getSetsXCarrierSetParserRuleCall_5_1_0()); 
             pushFollow(FOLLOW_2);
@@ -3425,17 +3350,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XContext__ConstantsAssignment_6_1"
-    // InternalXContext.g:1111:1: rule__XContext__ConstantsAssignment_6_1 : ( ruleXConstant ) ;
+    // InternalXContext.g:1084:1: rule__XContext__ConstantsAssignment_6_1 : ( ruleXConstant ) ;
     public final void rule__XContext__ConstantsAssignment_6_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1115:1: ( ( ruleXConstant ) )
-            // InternalXContext.g:1116:2: ( ruleXConstant )
+            // InternalXContext.g:1088:1: ( ( ruleXConstant ) )
+            // InternalXContext.g:1089:2: ( ruleXConstant )
             {
-            // InternalXContext.g:1116:2: ( ruleXConstant )
-            // InternalXContext.g:1117:3: ruleXConstant
+            // InternalXContext.g:1089:2: ( ruleXConstant )
+            // InternalXContext.g:1090:3: ruleXConstant
             {
              before(grammarAccess.getXContextAccess().getConstantsXConstantParserRuleCall_6_1_0()); 
             pushFollow(FOLLOW_2);
@@ -3466,17 +3391,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XContext__AxiomsAssignment_7_1"
-    // InternalXContext.g:1126:1: rule__XContext__AxiomsAssignment_7_1 : ( ruleXAxiom ) ;
+    // InternalXContext.g:1099:1: rule__XContext__AxiomsAssignment_7_1 : ( ruleXAxiom ) ;
     public final void rule__XContext__AxiomsAssignment_7_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1130:1: ( ( ruleXAxiom ) )
-            // InternalXContext.g:1131:2: ( ruleXAxiom )
+            // InternalXContext.g:1103:1: ( ( ruleXAxiom ) )
+            // InternalXContext.g:1104:2: ( ruleXAxiom )
             {
-            // InternalXContext.g:1131:2: ( ruleXAxiom )
-            // InternalXContext.g:1132:3: ruleXAxiom
+            // InternalXContext.g:1104:2: ( ruleXAxiom )
+            // InternalXContext.g:1105:3: ruleXAxiom
             {
              before(grammarAccess.getXContextAccess().getAxiomsXAxiomParserRuleCall_7_1_0()); 
             pushFollow(FOLLOW_2);
@@ -3507,21 +3432,21 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XCarrierSet__CommentAssignment_1"
-    // InternalXContext.g:1141:1: rule__XCarrierSet__CommentAssignment_1 : ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) ) ;
+    // InternalXContext.g:1114:1: rule__XCarrierSet__CommentAssignment_1 : ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) ) ;
     public final void rule__XCarrierSet__CommentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1145:1: ( ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) ) )
-            // InternalXContext.g:1146:2: ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1118:1: ( ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) ) )
+            // InternalXContext.g:1119:2: ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) )
             {
-            // InternalXContext.g:1146:2: ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) )
-            // InternalXContext.g:1147:3: ( rule__XCarrierSet__CommentAlternatives_1_0 )
+            // InternalXContext.g:1119:2: ( ( rule__XCarrierSet__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1120:3: ( rule__XCarrierSet__CommentAlternatives_1_0 )
             {
              before(grammarAccess.getXCarrierSetAccess().getCommentAlternatives_1_0()); 
-            // InternalXContext.g:1148:3: ( rule__XCarrierSet__CommentAlternatives_1_0 )
-            // InternalXContext.g:1148:4: rule__XCarrierSet__CommentAlternatives_1_0
+            // InternalXContext.g:1121:3: ( rule__XCarrierSet__CommentAlternatives_1_0 )
+            // InternalXContext.g:1121:4: rule__XCarrierSet__CommentAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__XCarrierSet__CommentAlternatives_1_0();
@@ -3554,17 +3479,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XCarrierSet__NameAssignment_2"
-    // InternalXContext.g:1156:1: rule__XCarrierSet__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalXContext.g:1129:1: rule__XCarrierSet__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__XCarrierSet__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1160:1: ( ( RULE_ID ) )
-            // InternalXContext.g:1161:2: ( RULE_ID )
+            // InternalXContext.g:1133:1: ( ( RULE_ID ) )
+            // InternalXContext.g:1134:2: ( RULE_ID )
             {
-            // InternalXContext.g:1161:2: ( RULE_ID )
-            // InternalXContext.g:1162:3: RULE_ID
+            // InternalXContext.g:1134:2: ( RULE_ID )
+            // InternalXContext.g:1135:3: RULE_ID
             {
              before(grammarAccess.getXCarrierSetAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3591,21 +3516,21 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XConstant__CommentAssignment_1"
-    // InternalXContext.g:1171:1: rule__XConstant__CommentAssignment_1 : ( ( rule__XConstant__CommentAlternatives_1_0 ) ) ;
+    // InternalXContext.g:1144:1: rule__XConstant__CommentAssignment_1 : ( ( rule__XConstant__CommentAlternatives_1_0 ) ) ;
     public final void rule__XConstant__CommentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1175:1: ( ( ( rule__XConstant__CommentAlternatives_1_0 ) ) )
-            // InternalXContext.g:1176:2: ( ( rule__XConstant__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1148:1: ( ( ( rule__XConstant__CommentAlternatives_1_0 ) ) )
+            // InternalXContext.g:1149:2: ( ( rule__XConstant__CommentAlternatives_1_0 ) )
             {
-            // InternalXContext.g:1176:2: ( ( rule__XConstant__CommentAlternatives_1_0 ) )
-            // InternalXContext.g:1177:3: ( rule__XConstant__CommentAlternatives_1_0 )
+            // InternalXContext.g:1149:2: ( ( rule__XConstant__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1150:3: ( rule__XConstant__CommentAlternatives_1_0 )
             {
              before(grammarAccess.getXConstantAccess().getCommentAlternatives_1_0()); 
-            // InternalXContext.g:1178:3: ( rule__XConstant__CommentAlternatives_1_0 )
-            // InternalXContext.g:1178:4: rule__XConstant__CommentAlternatives_1_0
+            // InternalXContext.g:1151:3: ( rule__XConstant__CommentAlternatives_1_0 )
+            // InternalXContext.g:1151:4: rule__XConstant__CommentAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__XConstant__CommentAlternatives_1_0();
@@ -3638,17 +3563,17 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XConstant__NameAssignment_2"
-    // InternalXContext.g:1186:1: rule__XConstant__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalXContext.g:1159:1: rule__XConstant__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__XConstant__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1190:1: ( ( RULE_ID ) )
-            // InternalXContext.g:1191:2: ( RULE_ID )
+            // InternalXContext.g:1163:1: ( ( RULE_ID ) )
+            // InternalXContext.g:1164:2: ( RULE_ID )
             {
-            // InternalXContext.g:1191:2: ( RULE_ID )
-            // InternalXContext.g:1192:3: RULE_ID
+            // InternalXContext.g:1164:2: ( RULE_ID )
+            // InternalXContext.g:1165:3: RULE_ID
             {
              before(grammarAccess.getXConstantAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3675,21 +3600,21 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XAxiom__CommentAssignment_1"
-    // InternalXContext.g:1201:1: rule__XAxiom__CommentAssignment_1 : ( ( rule__XAxiom__CommentAlternatives_1_0 ) ) ;
+    // InternalXContext.g:1174:1: rule__XAxiom__CommentAssignment_1 : ( ( rule__XAxiom__CommentAlternatives_1_0 ) ) ;
     public final void rule__XAxiom__CommentAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1205:1: ( ( ( rule__XAxiom__CommentAlternatives_1_0 ) ) )
-            // InternalXContext.g:1206:2: ( ( rule__XAxiom__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1178:1: ( ( ( rule__XAxiom__CommentAlternatives_1_0 ) ) )
+            // InternalXContext.g:1179:2: ( ( rule__XAxiom__CommentAlternatives_1_0 ) )
             {
-            // InternalXContext.g:1206:2: ( ( rule__XAxiom__CommentAlternatives_1_0 ) )
-            // InternalXContext.g:1207:3: ( rule__XAxiom__CommentAlternatives_1_0 )
+            // InternalXContext.g:1179:2: ( ( rule__XAxiom__CommentAlternatives_1_0 ) )
+            // InternalXContext.g:1180:3: ( rule__XAxiom__CommentAlternatives_1_0 )
             {
              before(grammarAccess.getXAxiomAccess().getCommentAlternatives_1_0()); 
-            // InternalXContext.g:1208:3: ( rule__XAxiom__CommentAlternatives_1_0 )
-            // InternalXContext.g:1208:4: rule__XAxiom__CommentAlternatives_1_0
+            // InternalXContext.g:1181:3: ( rule__XAxiom__CommentAlternatives_1_0 )
+            // InternalXContext.g:1181:4: rule__XAxiom__CommentAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__XAxiom__CommentAlternatives_1_0();
@@ -3721,22 +3646,22 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__XAxiom__CommentAssignment_1"
 
 
-    // $ANTLR start "rule__XAxiom__NameAssignment_3"
-    // InternalXContext.g:1216:1: rule__XAxiom__NameAssignment_3 : ( RULE_ID ) ;
-    public final void rule__XAxiom__NameAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__XAxiom__NameAssignment_2"
+    // InternalXContext.g:1189:1: rule__XAxiom__NameAssignment_2 : ( RULE_XLABEL ) ;
+    public final void rule__XAxiom__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1220:1: ( ( RULE_ID ) )
-            // InternalXContext.g:1221:2: ( RULE_ID )
+            // InternalXContext.g:1193:1: ( ( RULE_XLABEL ) )
+            // InternalXContext.g:1194:2: ( RULE_XLABEL )
             {
-            // InternalXContext.g:1221:2: ( RULE_ID )
-            // InternalXContext.g:1222:3: RULE_ID
+            // InternalXContext.g:1194:2: ( RULE_XLABEL )
+            // InternalXContext.g:1195:3: RULE_XLABEL
             {
-             before(grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0()); 
+             before(grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0()); 
+            match(input,RULE_XLABEL,FOLLOW_2); 
+             after(grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0()); 
 
             }
 
@@ -3755,25 +3680,25 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__XAxiom__NameAssignment_3"
+    // $ANTLR end "rule__XAxiom__NameAssignment_2"
 
 
-    // $ANTLR start "rule__XAxiom__PredicateAssignment_4"
-    // InternalXContext.g:1231:1: rule__XAxiom__PredicateAssignment_4 : ( RULE_STRING ) ;
-    public final void rule__XAxiom__PredicateAssignment_4() throws RecognitionException {
+    // $ANTLR start "rule__XAxiom__PredicateAssignment_3"
+    // InternalXContext.g:1204:1: rule__XAxiom__PredicateAssignment_3 : ( RULE_STRING ) ;
+    public final void rule__XAxiom__PredicateAssignment_3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1235:1: ( ( RULE_STRING ) )
-            // InternalXContext.g:1236:2: ( RULE_STRING )
+            // InternalXContext.g:1208:1: ( ( RULE_STRING ) )
+            // InternalXContext.g:1209:2: ( RULE_STRING )
             {
-            // InternalXContext.g:1236:2: ( RULE_STRING )
-            // InternalXContext.g:1237:3: RULE_STRING
+            // InternalXContext.g:1209:2: ( RULE_STRING )
+            // InternalXContext.g:1210:3: RULE_STRING
             {
-             before(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0()); 
+             before(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0()); 
             match(input,RULE_STRING,FOLLOW_2); 
-             after(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0()); 
+             after(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0()); 
 
             }
 
@@ -3792,33 +3717,33 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__XAxiom__PredicateAssignment_4"
+    // $ANTLR end "rule__XAxiom__PredicateAssignment_3"
 
 
-    // $ANTLR start "rule__XAxiom__TheoremAssignment_5"
-    // InternalXContext.g:1246:1: rule__XAxiom__TheoremAssignment_5 : ( ( 'theorem' ) ) ;
-    public final void rule__XAxiom__TheoremAssignment_5() throws RecognitionException {
+    // $ANTLR start "rule__XAxiom__TheoremAssignment_4"
+    // InternalXContext.g:1219:1: rule__XAxiom__TheoremAssignment_4 : ( ( 'theorem' ) ) ;
+    public final void rule__XAxiom__TheoremAssignment_4() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXContext.g:1250:1: ( ( ( 'theorem' ) ) )
-            // InternalXContext.g:1251:2: ( ( 'theorem' ) )
+            // InternalXContext.g:1223:1: ( ( ( 'theorem' ) ) )
+            // InternalXContext.g:1224:2: ( ( 'theorem' ) )
             {
-            // InternalXContext.g:1251:2: ( ( 'theorem' ) )
-            // InternalXContext.g:1252:3: ( 'theorem' )
+            // InternalXContext.g:1224:2: ( ( 'theorem' ) )
+            // InternalXContext.g:1225:3: ( 'theorem' )
             {
-             before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); 
-            // InternalXContext.g:1253:3: ( 'theorem' )
-            // InternalXContext.g:1254:4: 'theorem'
+             before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); 
+            // InternalXContext.g:1226:3: ( 'theorem' )
+            // InternalXContext.g:1227:4: 'theorem'
             {
-             before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); 
+             before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); 
             match(input,18,FOLLOW_2); 
-             after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); 
+             after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); 
 
             }
 
-             after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); 
+             after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); 
 
             }
 
@@ -3837,7 +3762,7 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__XAxiom__TheoremAssignment_5"
+    // $ANTLR end "rule__XAxiom__TheoremAssignment_4"
 
     // Delegated rules
 
@@ -3846,15 +3771,15 @@ public class InternalXContextParser extends AbstractInternalContentAssistParser 
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000830L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001030L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000001F000L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000003E000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000000042L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000070L});
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000072L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020032L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x00000000000000B0L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00000000000000B2L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000040000L});
 
 }

@@ -78,4 +78,7 @@ public abstract class AbstractXContextProposalProvider extends TerminalsProposal
 	public void complete_XAxiom(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_XLABEL(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 }

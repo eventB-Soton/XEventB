@@ -3,6 +3,17 @@
  */
 package ac.soton.eventb.xtext.context.ui;
 
+import ac.soton.eventb.xtext.context.ide.contentassist.antlr.PartialXContextContentAssistParser;
+import ac.soton.eventb.xtext.context.ide.contentassist.antlr.XContextParser;
+import ac.soton.eventb.xtext.context.ide.contentassist.antlr.internal.InternalXContextLexer;
+import ac.soton.eventb.xtext.context.ui.contentassist.XContextProposalProvider;
+import ac.soton.eventb.xtext.context.ui.labeling.XContextDescriptionLabelProvider;
+import ac.soton.eventb.xtext.context.ui.labeling.XContextLabelProvider;
+import ac.soton.eventb.xtext.context.ui.outline.XContextOutlineTreeProvider;
+import ac.soton.eventb.xtext.context.ui.quickfix.XContextQuickfixProvider;
+import com.google.inject.Binder;
+import com.google.inject.Provider;
+import com.google.inject.name.Names;
 import org.eclipse.compare.IViewerCreator;
 import org.eclipse.core.resources.IWorkspaceRoot;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -44,7 +55,6 @@ import org.eclipse.xtext.ui.editor.contentassist.FQNPrefixMatcher;
 import org.eclipse.xtext.ui.editor.contentassist.IContentProposalProvider;
 import org.eclipse.xtext.ui.editor.contentassist.IProposalConflictHelper;
 import org.eclipse.xtext.ui.editor.contentassist.PrefixMatcher;
-import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.AntlrProposalConflictHelper;
 import org.eclipse.xtext.ui.editor.contentassist.antlr.DelegatingContentAssistContextFactory;
 import org.eclipse.xtext.ui.editor.outline.IOutlineTreeProvider;
@@ -65,19 +75,6 @@ import org.eclipse.xtext.ui.refactoring.ui.IRenameSupport;
 import org.eclipse.xtext.ui.refactoring.ui.RefactoringPreferences;
 import org.eclipse.xtext.ui.resource.ResourceServiceDescriptionLabelProvider;
 import org.eclipse.xtext.ui.shared.Access;
-
-import ac.soton.eventb.xtext.context.ide.contentassist.antlr.PartialXContextContentAssistParser;
-import ac.soton.eventb.xtext.context.ide.contentassist.antlr.XContextParser;
-import ac.soton.eventb.xtext.context.ide.contentassist.antlr.internal.InternalXContextLexer;
-import ac.soton.eventb.xtext.context.ui.contentassist.XContextProposalProvider;
-import ac.soton.eventb.xtext.context.ui.labeling.XContextDescriptionLabelProvider;
-import ac.soton.eventb.xtext.context.ui.labeling.XContextLabelProvider;
-import ac.soton.eventb.xtext.context.ui.outline.XContextOutlineTreeProvider;
-import ac.soton.eventb.xtext.context.ui.quickfix.XContextQuickfixProvider;
-
-import com.google.inject.Binder;
-import com.google.inject.Provider;
-import com.google.inject.name.Names;
 
 /**
  * Manual modifications go to {@link XContextUiModule}.

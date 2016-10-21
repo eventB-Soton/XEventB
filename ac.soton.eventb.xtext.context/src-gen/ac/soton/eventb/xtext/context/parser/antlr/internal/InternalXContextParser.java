@@ -21,19 +21,19 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalXContextParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_STRING", "RULE_INT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'extends'", "'sets'", "'constants'", "'axioms'", "'end'", "'@'", "'theorem'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_XLABEL", "RULE_STRING", "RULE_INT", "RULE_WS", "RULE_ANY_OTHER", "'context'", "'extends'", "'sets'", "'constants'", "'axioms'", "'end'", "'theorem'"
     };
     public static final int RULE_ID=6;
-    public static final int RULE_WS=9;
-    public static final int RULE_STRING=7;
-    public static final int RULE_ANY_OTHER=10;
+    public static final int RULE_WS=10;
+    public static final int RULE_STRING=8;
+    public static final int RULE_ANY_OTHER=11;
     public static final int RULE_SL_COMMENT=5;
+    public static final int RULE_XLABEL=7;
     public static final int T__15=15;
     public static final int T__16=16;
     public static final int T__17=17;
-    public static final int RULE_INT=8;
+    public static final int RULE_INT=9;
     public static final int T__18=18;
-    public static final int T__11=11;
     public static final int RULE_ML_COMMENT=4;
     public static final int T__12=12;
     public static final int T__13=13;
@@ -241,7 +241,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,11,FOLLOW_4); 
+            otherlv_2=(Token)match(input,12,FOLLOW_4); 
 
             			newLeafNode(otherlv_2, grammarAccess.getXContextAccess().getContextKeyword_2());
             		
@@ -275,14 +275,14 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             int alt4=2;
             int LA4_0 = input.LA(1);
 
-            if ( (LA4_0==12) ) {
+            if ( (LA4_0==13) ) {
                 alt4=1;
             }
             switch (alt4) {
                 case 1 :
                     // InternalXContext.g:144:4: otherlv_4= 'extends' ( (otherlv_5= RULE_ID ) )+
                     {
-                    otherlv_4=(Token)match(input,12,FOLLOW_4); 
+                    otherlv_4=(Token)match(input,13,FOLLOW_4); 
 
                     				newLeafNode(otherlv_4, grammarAccess.getXContextAccess().getExtendsKeyword_4_0());
                     			
@@ -340,14 +340,14 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             int alt6=2;
             int LA6_0 = input.LA(1);
 
-            if ( (LA6_0==13) ) {
+            if ( (LA6_0==14) ) {
                 alt6=1;
             }
             switch (alt6) {
                 case 1 :
                     // InternalXContext.g:163:4: otherlv_6= 'sets' ( (lv_sets_7_0= ruleXCarrierSet ) )+
                     {
-                    otherlv_6=(Token)match(input,13,FOLLOW_7); 
+                    otherlv_6=(Token)match(input,14,FOLLOW_7); 
 
                     				newLeafNode(otherlv_6, grammarAccess.getXContextAccess().getSetsKeyword_5_0());
                     			
@@ -415,14 +415,14 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             int alt8=2;
             int LA8_0 = input.LA(1);
 
-            if ( (LA8_0==14) ) {
+            if ( (LA8_0==15) ) {
                 alt8=1;
             }
             switch (alt8) {
                 case 1 :
                     // InternalXContext.g:188:4: otherlv_8= 'constants' ( (lv_constants_9_0= ruleXConstant ) )+
                     {
-                    otherlv_8=(Token)match(input,14,FOLLOW_7); 
+                    otherlv_8=(Token)match(input,15,FOLLOW_7); 
 
                     				newLeafNode(otherlv_8, grammarAccess.getXContextAccess().getConstantsKeyword_6_0());
                     			
@@ -490,14 +490,14 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             int alt10=2;
             int LA10_0 = input.LA(1);
 
-            if ( (LA10_0==15) ) {
+            if ( (LA10_0==16) ) {
                 alt10=1;
             }
             switch (alt10) {
                 case 1 :
                     // InternalXContext.g:213:4: otherlv_10= 'axioms' ( (lv_axioms_11_0= ruleXAxiom ) )+
                     {
-                    otherlv_10=(Token)match(input,15,FOLLOW_10); 
+                    otherlv_10=(Token)match(input,16,FOLLOW_10); 
 
                     				newLeafNode(otherlv_10, grammarAccess.getXContextAccess().getAxiomsKeyword_7_0());
                     			
@@ -508,7 +508,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
                         int alt9=2;
                         int LA9_0 = input.LA(1);
 
-                        if ( ((LA9_0>=RULE_ML_COMMENT && LA9_0<=RULE_SL_COMMENT)||LA9_0==17) ) {
+                        if ( ((LA9_0>=RULE_ML_COMMENT && LA9_0<=RULE_SL_COMMENT)||LA9_0==RULE_XLABEL) ) {
                             alt9=1;
                         }
 
@@ -561,7 +561,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_12=(Token)match(input,16,FOLLOW_2); 
+            otherlv_12=(Token)match(input,17,FOLLOW_2); 
 
             			newLeafNode(otherlv_12, grammarAccess.getXContextAccess().getEndKeyword_8());
             		
@@ -1018,26 +1018,25 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXAxiom"
-    // InternalXContext.g:410:1: ruleXAxiom returns [EObject current=null] : ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? otherlv_2= '@' ( (lv_name_3_0= RULE_ID ) ) ( (lv_predicate_4_0= RULE_STRING ) ) ( (lv_theorem_5_0= 'theorem' ) )? ) ;
+    // InternalXContext.g:410:1: ruleXAxiom returns [EObject current=null] : ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) ;
     public final EObject ruleXAxiom() throws RecognitionException {
         EObject current = null;
 
         Token lv_comment_1_1=null;
         Token lv_comment_1_2=null;
-        Token otherlv_2=null;
-        Token lv_name_3_0=null;
-        Token lv_predicate_4_0=null;
-        Token lv_theorem_5_0=null;
+        Token lv_name_2_0=null;
+        Token lv_predicate_3_0=null;
+        Token lv_theorem_4_0=null;
 
 
         	enterRule();
 
         try {
-            // InternalXContext.g:416:2: ( ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? otherlv_2= '@' ( (lv_name_3_0= RULE_ID ) ) ( (lv_predicate_4_0= RULE_STRING ) ) ( (lv_theorem_5_0= 'theorem' ) )? ) )
-            // InternalXContext.g:417:2: ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? otherlv_2= '@' ( (lv_name_3_0= RULE_ID ) ) ( (lv_predicate_4_0= RULE_STRING ) ) ( (lv_theorem_5_0= 'theorem' ) )? )
+            // InternalXContext.g:416:2: ( ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) )
+            // InternalXContext.g:417:2: ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
             {
-            // InternalXContext.g:417:2: ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? otherlv_2= '@' ( (lv_name_3_0= RULE_ID ) ) ( (lv_predicate_4_0= RULE_STRING ) ) ( (lv_theorem_5_0= 'theorem' ) )? )
-            // InternalXContext.g:418:3: () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? otherlv_2= '@' ( (lv_name_3_0= RULE_ID ) ) ( (lv_predicate_4_0= RULE_STRING ) ) ( (lv_theorem_5_0= 'theorem' ) )?
+            // InternalXContext.g:417:2: ( () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
+            // InternalXContext.g:418:3: () ( ( (lv_comment_1_1= RULE_ML_COMMENT | lv_comment_1_2= RULE_SL_COMMENT ) ) )? ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )?
             {
             // InternalXContext.g:418:3: ()
             // InternalXContext.g:419:4: 
@@ -1133,19 +1132,15 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,17,FOLLOW_4); 
-
-            			newLeafNode(otherlv_2, grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2());
-            		
-            // InternalXContext.g:464:3: ( (lv_name_3_0= RULE_ID ) )
-            // InternalXContext.g:465:4: (lv_name_3_0= RULE_ID )
+            // InternalXContext.g:460:3: ( (lv_name_2_0= RULE_XLABEL ) )
+            // InternalXContext.g:461:4: (lv_name_2_0= RULE_XLABEL )
             {
-            // InternalXContext.g:465:4: (lv_name_3_0= RULE_ID )
-            // InternalXContext.g:466:5: lv_name_3_0= RULE_ID
+            // InternalXContext.g:461:4: (lv_name_2_0= RULE_XLABEL )
+            // InternalXContext.g:462:5: lv_name_2_0= RULE_XLABEL
             {
-            lv_name_3_0=(Token)match(input,RULE_ID,FOLLOW_13); 
+            lv_name_2_0=(Token)match(input,RULE_XLABEL,FOLLOW_13); 
 
-            					newLeafNode(lv_name_3_0, grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0());
+            					newLeafNode(lv_name_2_0, grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0());
             				
 
             					if (current==null) {
@@ -1154,8 +1149,8 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"name",
-            						lv_name_3_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						lv_name_2_0,
+            						"ac.soton.eventb.xtext.context.XContext.XLABEL");
             				
 
             }
@@ -1163,15 +1158,15 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:482:3: ( (lv_predicate_4_0= RULE_STRING ) )
-            // InternalXContext.g:483:4: (lv_predicate_4_0= RULE_STRING )
+            // InternalXContext.g:478:3: ( (lv_predicate_3_0= RULE_STRING ) )
+            // InternalXContext.g:479:4: (lv_predicate_3_0= RULE_STRING )
             {
-            // InternalXContext.g:483:4: (lv_predicate_4_0= RULE_STRING )
-            // InternalXContext.g:484:5: lv_predicate_4_0= RULE_STRING
+            // InternalXContext.g:479:4: (lv_predicate_3_0= RULE_STRING )
+            // InternalXContext.g:480:5: lv_predicate_3_0= RULE_STRING
             {
-            lv_predicate_4_0=(Token)match(input,RULE_STRING,FOLLOW_14); 
+            lv_predicate_3_0=(Token)match(input,RULE_STRING,FOLLOW_14); 
 
-            					newLeafNode(lv_predicate_4_0, grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0());
+            					newLeafNode(lv_predicate_3_0, grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0());
             				
 
             					if (current==null) {
@@ -1180,7 +1175,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"predicate",
-            						lv_predicate_4_0,
+            						lv_predicate_3_0,
             						"org.eclipse.xtext.common.Terminals.STRING");
             				
 
@@ -1189,7 +1184,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:500:3: ( (lv_theorem_5_0= 'theorem' ) )?
+            // InternalXContext.g:496:3: ( (lv_theorem_4_0= 'theorem' ) )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -1198,14 +1193,14 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // InternalXContext.g:501:4: (lv_theorem_5_0= 'theorem' )
+                    // InternalXContext.g:497:4: (lv_theorem_4_0= 'theorem' )
                     {
-                    // InternalXContext.g:501:4: (lv_theorem_5_0= 'theorem' )
-                    // InternalXContext.g:502:5: lv_theorem_5_0= 'theorem'
+                    // InternalXContext.g:497:4: (lv_theorem_4_0= 'theorem' )
+                    // InternalXContext.g:498:5: lv_theorem_4_0= 'theorem'
                     {
-                    lv_theorem_5_0=(Token)match(input,18,FOLLOW_2); 
+                    lv_theorem_4_0=(Token)match(input,18,FOLLOW_2); 
 
-                    					newLeafNode(lv_theorem_5_0, grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0());
+                    					newLeafNode(lv_theorem_4_0, grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0());
                     				
 
                     					if (current==null) {
@@ -1250,17 +1245,17 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000000800L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000001F000L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000000001E040L});
+    public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x000000000003E000L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x000000000003C040L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000000070L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x000000000001C070L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000018070L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020030L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000030030L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000038070L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000030070L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00000000000000B0L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00000000000200B0L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000080L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000040002L});
 
 }

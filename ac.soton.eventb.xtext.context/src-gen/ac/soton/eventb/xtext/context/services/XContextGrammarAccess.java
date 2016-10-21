@@ -231,20 +231,19 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
 		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Keyword cCommercialAtKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Assignment cPredicateAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_4_0 = (RuleCall)cPredicateAssignment_4.eContents().get(0);
-		private final Assignment cTheoremAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final Keyword cTheoremTheoremKeyword_5_0 = (Keyword)cTheoremAssignment_5.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
 		//XAxiom econtext::Axiom:
 		//	{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)?
-		//	'@' name=ID predicate=STRING theorem?='theorem'?
+		//	name=XLABEL predicate=STRING theorem?='theorem'?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)? '@' name=ID predicate=STRING theorem?='theorem'?
+		//{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Axiom}
@@ -262,26 +261,23 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//SL_COMMENT
 		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
 		
-		//'@'
-		public Keyword getCommercialAtKeyword_2() { return cCommercialAtKeyword_2; }
+		//name=XLABEL
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 		
-		//name=ID
-		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
 		//predicate=STRING
-		public Assignment getPredicateAssignment_4() { return cPredicateAssignment_4; }
+		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
 		
 		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_4_0() { return cPredicateSTRINGTerminalRuleCall_4_0; }
+		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
 		
 		//theorem?='theorem'?
-		public Assignment getTheoremAssignment_5() { return cTheoremAssignment_5; }
+		public Assignment getTheoremAssignment_4() { return cTheoremAssignment_4; }
 		
 		//'theorem'
-		public Keyword getTheoremTheoremKeyword_5_0() { return cTheoremTheoremKeyword_5_0; }
+		public Keyword getTheoremTheoremKeyword_4_0() { return cTheoremTheoremKeyword_4_0; }
 	}
 	
 	
@@ -289,6 +285,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	private final XCarrierSetElements pXCarrierSet;
 	private final XConstantElements pXConstant;
 	private final XAxiomElements pXAxiom;
+	private final TerminalRule tXLABEL;
 	
 	private final Grammar grammar;
 	
@@ -303,6 +300,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.pXCarrierSet = new XCarrierSetElements();
 		this.pXConstant = new XConstantElements();
 		this.pXAxiom = new XAxiomElements();
+		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XLABEL");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -369,13 +367,19 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XAxiom econtext::Axiom:
 	//	{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)?
-	//	'@' name=ID predicate=STRING theorem?='theorem'?
+	//	name=XLABEL predicate=STRING theorem?='theorem'?
 	public XAxiomElements getXAxiomAccess() {
 		return pXAxiom;
 	}
 	
 	public ParserRule getXAxiomRule() {
 		return getXAxiomAccess().getRule();
+	}
+	
+	//terminal XLABEL:
+	//	'@' !':'+ ':';
+	public TerminalRule getXLABELRule() {
+		return tXLABEL;
 	}
 	
 	//terminal ID:

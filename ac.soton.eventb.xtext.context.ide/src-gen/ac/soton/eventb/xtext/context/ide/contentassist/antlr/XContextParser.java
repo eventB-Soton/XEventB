@@ -58,9 +58,9 @@ public class XContextParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXConstantAccess().getCommentAssignment_1(), "rule__XConstant__CommentAssignment_1");
 					put(grammarAccess.getXConstantAccess().getNameAssignment_2(), "rule__XConstant__NameAssignment_2");
 					put(grammarAccess.getXAxiomAccess().getCommentAssignment_1(), "rule__XAxiom__CommentAssignment_1");
-					put(grammarAccess.getXAxiomAccess().getNameAssignment_3(), "rule__XAxiom__NameAssignment_3");
-					put(grammarAccess.getXAxiomAccess().getPredicateAssignment_4(), "rule__XAxiom__PredicateAssignment_4");
-					put(grammarAccess.getXAxiomAccess().getTheoremAssignment_5(), "rule__XAxiom__TheoremAssignment_5");
+					put(grammarAccess.getXAxiomAccess().getNameAssignment_2(), "rule__XAxiom__NameAssignment_2");
+					put(grammarAccess.getXAxiomAccess().getPredicateAssignment_3(), "rule__XAxiom__PredicateAssignment_3");
+					put(grammarAccess.getXAxiomAccess().getTheoremAssignment_4(), "rule__XAxiom__TheoremAssignment_4");
 				}
 			};
 		}

@@ -55,7 +55,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAxiom returns Axiom
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING theorem?='theorem'?)
+	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?)
 	 */
 	protected void sequence_XAxiom(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

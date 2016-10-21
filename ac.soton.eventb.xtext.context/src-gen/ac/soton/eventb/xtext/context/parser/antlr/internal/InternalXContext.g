@@ -457,15 +457,11 @@ ruleXAxiom returns [EObject current=null]
 				)
 			)
 		)?
-		otherlv_2='@'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2());
-		}
 		(
 			(
-				lv_name_3_0=RULE_ID
+				lv_name_2_0=RULE_XLABEL
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0());
+					newLeafNode(lv_name_2_0, grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -474,16 +470,16 @@ ruleXAxiom returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_3_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						lv_name_2_0,
+						"ac.soton.eventb.xtext.context.XContext.XLABEL");
 				}
 			)
 		)
 		(
 			(
-				lv_predicate_4_0=RULE_STRING
+				lv_predicate_3_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_4_0, grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0());
+					newLeafNode(lv_predicate_3_0, grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -492,16 +488,16 @@ ruleXAxiom returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"predicate",
-						lv_predicate_4_0,
+						lv_predicate_3_0,
 						"org.eclipse.xtext.common.Terminals.STRING");
 				}
 			)
 		)
 		(
 			(
-				lv_theorem_5_0='theorem'
+				lv_theorem_4_0='theorem'
 				{
-					newLeafNode(lv_theorem_5_0, grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0());
+					newLeafNode(lv_theorem_4_0, grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0());
 				}
 				{
 					if ($current==null) {
@@ -513,6 +509,8 @@ ruleXAxiom returns [EObject current=null]
 		)?
 	)
 ;
+
+RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 

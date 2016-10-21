@@ -954,9 +954,9 @@ rule__XAxiom__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2()); }
-	'@'
-	{ after(grammarAccess.getXAxiomAccess().getCommercialAtKeyword_2()); }
+	{ before(grammarAccess.getXAxiomAccess().getNameAssignment_2()); }
+	(rule__XAxiom__NameAssignment_2)
+	{ after(grammarAccess.getXAxiomAccess().getNameAssignment_2()); }
 )
 ;
 finally {
@@ -981,9 +981,9 @@ rule__XAxiom__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXAxiomAccess().getNameAssignment_3()); }
-	(rule__XAxiom__NameAssignment_3)
-	{ after(grammarAccess.getXAxiomAccess().getNameAssignment_3()); }
+	{ before(grammarAccess.getXAxiomAccess().getPredicateAssignment_3()); }
+	(rule__XAxiom__PredicateAssignment_3)
+	{ after(grammarAccess.getXAxiomAccess().getPredicateAssignment_3()); }
 )
 ;
 finally {
@@ -996,7 +996,6 @@ rule__XAxiom__Group__4
 	}
 :
 	rule__XAxiom__Group__4__Impl
-	rule__XAxiom__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1008,35 +1007,9 @@ rule__XAxiom__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXAxiomAccess().getPredicateAssignment_4()); }
-	(rule__XAxiom__PredicateAssignment_4)
-	{ after(grammarAccess.getXAxiomAccess().getPredicateAssignment_4()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XAxiom__Group__5
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__XAxiom__Group__5__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__XAxiom__Group__5__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getXAxiomAccess().getTheoremAssignment_5()); }
-	(rule__XAxiom__TheoremAssignment_5)?
-	{ after(grammarAccess.getXAxiomAccess().getTheoremAssignment_5()); }
+	{ before(grammarAccess.getXAxiomAccess().getTheoremAssignment_4()); }
+	(rule__XAxiom__TheoremAssignment_4)?
+	{ after(grammarAccess.getXAxiomAccess().getTheoremAssignment_4()); }
 )
 ;
 finally {
@@ -1213,54 +1186,56 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XAxiom__NameAssignment_3
+rule__XAxiom__NameAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0()); }
-		RULE_ID
-		{ after(grammarAccess.getXAxiomAccess().getNameIDTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0()); }
+		RULE_XLABEL
+		{ after(grammarAccess.getXAxiomAccess().getNameXLABELTerminalRuleCall_2_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XAxiom__PredicateAssignment_4
+rule__XAxiom__PredicateAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0()); }
+		{ before(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
 		RULE_STRING
-		{ after(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_4_0()); }
+		{ after(grammarAccess.getXAxiomAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XAxiom__TheoremAssignment_5
+rule__XAxiom__TheoremAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); }
+		{ before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); }
 		(
-			{ before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); }
+			{ before(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); }
 			'theorem'
-			{ after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); }
+			{ after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); }
 		)
-		{ after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_5_0()); }
+		{ after(grammarAccess.getXAxiomAccess().getTheoremTheoremKeyword_4_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
+
+RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
