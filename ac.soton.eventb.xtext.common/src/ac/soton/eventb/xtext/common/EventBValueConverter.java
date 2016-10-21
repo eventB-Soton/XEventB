@@ -50,6 +50,26 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 		};
 	}
 	
+	@ValueConverter(rule = "XLABEL")
+    public IValueConverter<String> XLABEL() {
+		return new IValueConverter<String>() {
+
+			@Override
+			public String toValue(String string, INode node)
+					throws ValueConverterException {
+				assert string.startsWith("@");
+				assert string.endsWith(":");
+				return string.substring(1, string.length()-1);
+			}
+
+			@Override
+			public String toString(String value) throws ValueConverterException {
+				return "@" + value + ":";
+			}
+			
+		};
+	}
+
 	@ValueConverter(rule = "ML_COMMENT")
     public IValueConverter<String> ML_COMMENT() {
 		return new IValueConverter<String>() {
