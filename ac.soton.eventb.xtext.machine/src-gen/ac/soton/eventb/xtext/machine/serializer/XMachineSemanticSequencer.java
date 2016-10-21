@@ -73,7 +73,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAction returns Action
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID action=STRING)
+	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=XLABEL action=STRING)
 	 */
 	protected void sequence_XAction(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -88,13 +88,12 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (
 	 *         (comment=ML_COMMENT | comment=SL_COMMENT)? 
 	 *         name=ID 
-	 *         extended?='extended'? 
-	 *         convergence=XConvergence 
+	 *         (extended?='extended' | convergence=XConvergence)* 
 	 *         refines+=[Event|ID]* 
 	 *         (
 	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction+) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction+)
+	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
+	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
 	 *         )?
 	 *     )
 	 */
@@ -108,7 +107,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XGuard returns Guard
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING theorem?='theorem'?)
+	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?)
 	 */
 	protected void sequence_XGuard(ISerializationContext context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -120,7 +119,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XInvariant returns Invariant
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING theorem?='theorem'?)
+	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?)
 	 */
 	protected void sequence_XInvariant(ISerializationContext context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -140,7 +139,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         variables+=XVariable* 
 	 *         invariants+=XInvariant* 
 	 *         variant=XVariant? 
-	 *         events+=XEvent*
+	 *         (events+=XEvent events+=XEvent*)?
 	 *     )
 	 */
 	protected void sequence_XMachine(ISerializationContext context, Machine semanticObject) {
@@ -189,7 +188,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitness returns Witness
 	 *
 	 * Constraint:
-	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=ID predicate=STRING)
+	 *     ((comment=ML_COMMENT | comment=SL_COMMENT)? name=XLABEL predicate=STRING)
 	 */
 	protected void sequence_XWitness(ISerializationContext context, Witness semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

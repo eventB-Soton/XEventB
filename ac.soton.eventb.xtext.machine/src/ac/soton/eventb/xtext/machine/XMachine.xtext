@@ -3,6 +3,7 @@ grammar ac.soton.eventb.xtext.machine.XMachine with org.eclipse.xtext.common.Ter
 
 import "http://emf.eventb.org/models/core/machine/2014" as emachine
 import "http://emf.eventb.org/models/core/context/2014" as econtext
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 XMachine returns emachine::Machine:
 	{emachine::Machine}
@@ -13,7 +14,7 @@ XMachine returns emachine::Machine:
 	('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
 	('variant' variant=XVariant)?
-	('events' events+=XEvent+)?
+	('events' events+=XEvent (';' events+=XEvent)*)?
 	('end')
 ;
 
@@ -27,9 +28,12 @@ XVariable returns emachine::Variable:
 XInvariant returns emachine::Invariant:
 	{emachine::Invariant}
 	(comment=(ML_COMMENT|SL_COMMENT))?
-	'@'name=ID predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=STRING (theorem?='theorem')?
 ;
 
+terminal XLABEL returns ecore::EString:
+	'@' !(':')+ ':'
+;
 
 XVariant returns emachine::Variant:
 	{emachine::Variant}
@@ -41,8 +45,10 @@ XEvent returns emachine::Event:
 	{emachine::Event}
 	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=ID
-	(extended?='extended')?
-	convergence=XConvergence
+	(
+		(extended?='extended')? &
+		(convergence=XConvergence)?
+	)
 	('refines' refines+=[emachine::Event]+)?
 	(
 		('with' witnesses+=XWitness+)?
@@ -53,8 +59,8 @@ XEvent returns emachine::Event:
 		'when'
 			guards+=XGuard+
 		('with' witnesses+=XWitness+)?
-		'then'
-			actions+=XAction+
+		('then'
+			actions+=XAction+)?
 		'end'
 		|
 		'any'
@@ -62,8 +68,8 @@ XEvent returns emachine::Event:
 		'where'
 			guards+=XGuard+
 		('with' witnesses+=XWitness+)?
-		'then'
-			actions+=XAction+
+		('then'
+			actions+=XAction+)?
 		'end'
 	)?
 ;
@@ -80,17 +86,17 @@ XParameter returns emachine::Parameter:
 XGuard returns emachine::Guard:
 	{emachine::Guard}
 	(comment=(ML_COMMENT|SL_COMMENT))?
-	'@'name=ID predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=STRING (theorem?='theorem')?
 ;
 
 XWitness returns emachine::Witness:
 	{emachine::Witness}
 	(comment=(ML_COMMENT|SL_COMMENT))?
-	'@'name=ID predicate=STRING
+	name=XLABEL predicate=STRING
 ;
 
 XAction returns emachine::Action:
 	{emachine::Action}
 	(comment=(ML_COMMENT|SL_COMMENT))?
-	'@'name=ID action=STRING
+	name=XLABEL action=STRING
 ;
