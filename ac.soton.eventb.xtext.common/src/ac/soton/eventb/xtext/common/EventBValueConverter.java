@@ -27,7 +27,7 @@ import org.eclipse.xtext.nodemodel.INode;
  * @see
  * @since
  */
-public class CommentValueConverter extends Ecore2XtextTerminalConverters {
+public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	@ValueConverter(rule = "SL_COMMENT")
     public IValueConverter<String> SL_COMMENT() {
 		return new IValueConverter<String>() {

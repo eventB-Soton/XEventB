@@ -4,7 +4,7 @@
 package ac.soton.eventb.xtext.context
 
 import org.eclipse.xtext.conversion.IValueConverterService
-import ac.soton.eventb.xtext.common.CommentValueConverter
+import ac.soton.eventb.xtext.common.EventBValueConverter
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -12,7 +12,7 @@ import ac.soton.eventb.xtext.common.CommentValueConverter
 class XContextRuntimeModule extends AbstractXContextRuntimeModule {
 
 	override Class<? extends IValueConverterService> bindIValueConverterService() {
-		return typeof(CommentValueConverter);
+		return typeof(EventBValueConverter);
 	}
 
 }
