@@ -14,6 +14,7 @@ package ac.soton.eventb.xtext.context
 import ac.soton.eventb.xtext.common.EventBValueConverter
 import ac.soton.eventb.xtext.common.XContextTransientValueService
 import ac.soton.eventb.xtext.context.scoping.XContextScopeProvider
+import ac.soton.eventb.xtext.context.services.XContextGrammarAccess
 import com.google.inject.Binder
 import org.eclipse.xtext.conversion.IValueConverterService
 import org.eclipse.xtext.parsetree.reconstr.ITransientValueService
@@ -21,7 +22,15 @@ import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding
 
 /**
- * Use this class to register components to be used at runtime / without the Equinox extension registry.
+ * <p>
+ * Use this class to register components for XContext to be used at runtime /
+ * without the Equinox extension registry.
+ * </p>
+ *
+ * @author htson
+ * @version 0.2
+ * @see XContextGrammarAccess
+ * @since 0.0.1
  */
 class XContextRuntimeModule extends AbstractXContextRuntimeModule {
 
