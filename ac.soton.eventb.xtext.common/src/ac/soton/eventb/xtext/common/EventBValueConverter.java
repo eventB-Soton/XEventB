@@ -119,6 +119,8 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 
 			@Override
 			public String toString(String value) throws ValueConverterException {
+				if (value == null)
+					return "";
 				String[] splits = value.split("\n");
 				if (splits.length == 1)
 					return "/* " + value + " */";
