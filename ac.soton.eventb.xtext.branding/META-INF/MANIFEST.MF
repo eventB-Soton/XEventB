@@ -2,5 +2,5 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.eventb.xtext.branding
-Bundle-Version: 0.0.1.qualifier
+Bundle-Version: 0.0.1.release
 Bundle-Vendor: %Bundle-Vendor

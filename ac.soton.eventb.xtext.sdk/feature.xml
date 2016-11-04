@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.xtext.sdk"
       label="%featureName"
-      version="0.0.1.qualifier"
+      version="0.0.2.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.license"
       license-feature-version="1.0.0.qualifier">
@@ -133,6 +133,20 @@
 
    <plugin
          id="ac.soton.eventb.xtext.machine.ui.tests.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.xtext.ui.source"
          download-size="0"
          install-size="0"
          version="0.0.0"

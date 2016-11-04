@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.xtext.feature"
       label="%featureName"
-      version="0.0.2.qualifier"
+      version="0.0.2.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.xtext.branding"
       license-feature="org.rodinp.license"
