@@ -23,18 +23,25 @@ import ac.soton.eventb.xtext.internal.common.RodinPrefixMatcher;
 
 /**
  * <p>
- *
+ * Rodin symbol proposal provider, allowing to type Rodin symbols via content
+ * assist.
  * </p>
  *
  * @author htson
- * @version
+ * @version 0.1
  * @see
- * @since
+ * @since 0.0.1
  */
 public class RodinSymbolsProposalProvider {
 
-	public static void completeRodinSymbol(AbstractContentProposalProvider provider, ContentAssistContext context,
-			ICompletionProposalAcceptor acceptor) {
+	/**
+	 * @param provider
+	 * @param context
+	 * @param acceptor
+	 */
+	public static void completeRodinSymbol(
+			AbstractContentProposalProvider provider,
+			ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		int priority = provider.getPriorityHelper().getDefaultPriority();
 		ConfigurableCompletionProposal[] proposals = RodinSymbolsProposalProvider
 				.getProposals(context, priority);
@@ -58,22 +65,24 @@ public class RodinSymbolsProposalProvider {
 		String[] proposals = RodinPrefixMatcher.getProposals(last_prefix);
 
 		for (String proposal : proposals) {
-			result.add(doCreateProposal(
-					proposal, priority, replacementOffset, replacementLength));
+			result.add(doCreateProposal(proposal, priority, replacementOffset,
+					replacementLength));
 		}
 		return result
 				.toArray(new ConfigurableCompletionProposal[result.size()]);
 
 	}
 
-	private static ConfigurableCompletionProposal doCreateProposal(String proposal,
-			int priority, int replacementOffset, int replacementLength) {
-		ConfigurableCompletionProposal result = new ConfigurableCompletionProposal(proposal, replacementOffset, replacementLength, proposal.length());
+	private static ConfigurableCompletionProposal doCreateProposal(
+			String proposal, int priority, int replacementOffset,
+			int replacementLength) {
+		ConfigurableCompletionProposal result = new ConfigurableCompletionProposal(
+				proposal, replacementOffset, replacementLength,
+				proposal.length());
 		result.setPriority(priority);
 		result.setMatcher(new RodinPrefixMatcher());
 		result.setReplaceContextLength(replacementLength);
 		return result;
 	}
-
 
 }

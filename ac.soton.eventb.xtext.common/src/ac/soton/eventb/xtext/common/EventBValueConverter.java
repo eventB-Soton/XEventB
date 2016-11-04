@@ -19,22 +19,43 @@ import org.eclipse.xtext.nodemodel.INode;
 
 /**
  * <p>
- *
+ * An implementation for value converter, including converting comments and
+ * labels.
  * </p>
  *
  * @author htson
- * @version
- * @see
- * @since
+ * @version 0.2
+ * @since 0.0.1
  */
 public class EventBValueConverter extends Ecore2XtextTerminalConverters {
+
+	/**
+	 * Returns the value converter for single-line comments.
+	 * 
+	 * @return the value converter for single-line comments.
+	 */
 	@ValueConverter(rule = "SL_COMMENT")
     public IValueConverter<String> SL_COMMENT() {
 		return new IValueConverter<String>() {
 
+			/**
+			 * Convert XComment to string.
+			 * 
+			 * @param string
+			 *            the XComment string
+			 * @param node
+			 *            the node in the semantics tree.
+			 * @return the comment by stripping the leading "//" or "// ".
+			 * @see IValueConverter#toValue(String, INode)
+			 * @precondition the input string must be not <code>null</code> and
+			 *               have "//" as its prefix.
+			 */
 			@Override
 			public String toValue(String string, INode node)
 					throws ValueConverterException {
+				assert string != null;
+				assert string.startsWith("//");
+				
 				if (string.startsWith("// "))
 					return string.substring(3, string.lastIndexOf('\n'));
 				if (string.startsWith("//"))
@@ -42,40 +63,40 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				return string.trim();
 			}
 
+			/**
+			 * Convert string to XComment.
+			 * 
+			 * @param value
+			 *            the comment
+			 * @return the XComment by prefixing "// " to the input value.
+			 * @see IValueConverter#toString(Object)
+			 */
 			@Override
 			public String toString(String value) throws ValueConverterException {
 				return "// " + value;
 			}
-			
 		};
 	}
 	
-	@ValueConverter(rule = "XLABEL")
-    public IValueConverter<String> XLABEL() {
-		return new IValueConverter<String>() {
-
-			@Override
-			public String toValue(String string, INode node)
-					throws ValueConverterException {
-				assert string.startsWith("@");
-				assert string.endsWith(":");
-				return string.substring(1, string.length()-1);
-			}
-
-			@Override
-			public String toString(String value) throws ValueConverterException {
-				return "@" + value + ":";
-			}
-			
-		};
-	}
-
+	/**
+	 * Returns the value converter for multi-line comments.
+	 * 
+	 * @return the value converter for multi-line comments.
+	 */
 	@ValueConverter(rule = "ML_COMMENT")
-    public IValueConverter<String> ML_COMMENT() {
+	public IValueConverter<String> ML_COMMENT() {
 		return new IValueConverter<String>() {
-
-			/*
-			 * Final comment
+	
+			/**
+			 * Convert XComment to string.
+			 * 
+			 * @param string
+			 *            the XComment string
+			 * @param node
+			 *            the node in the semantics tree.
+			 * @return the comment by stripping the leading the multi-line syntax.
+			 * @see IValueConverter#toValue(String, INode)
+			 * @precondition the input string must be not <code>null</code>.
 			 */
 			@Override
 			public String toValue(String string, INode node)
@@ -116,7 +137,15 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				}
 				return sb.toString();
 			}
-
+	
+			/**
+			 * Convert string to XComment.
+			 * 
+			 * @param value
+			 *            the comment
+			 * @return the XComment by prefixing and suffixing the input value.
+			 * @see IValueConverter#toString(Object)
+			 */
 			@Override
 			public String toString(String value) throws ValueConverterException {
 				if (value == null)
@@ -125,11 +154,56 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				if (splits.length == 1)
 					return "/* " + value + " */";
 				StringBuilder sb = new StringBuilder();
-				sb.append("/* ");
-				
-				
-				return "/ " + value;
+				sb.append("/* " + value + " */");
+				return sb.toString();
 			}		
+		};
+	}
+
+	/**
+	 * Returns the value converter for XLabel.
+	 * 
+	 * @return the value converter for XLabel.
+	 */
+	@ValueConverter(rule = "XLABEL")
+    public IValueConverter<String> XLABEL() {
+		return new IValueConverter<String>() {
+
+			/**
+			 * Convert XLabel to string.
+			 * 
+			 * @param string
+			 *            the XLabel string
+			 * @param node
+			 *            the node in the semantics tree.
+			 * @return the comment by stripping the leading "@" and the ending
+			 *         ":".
+			 * @see IValueConverter#toValue(String, INode)
+			 * @precondition the input string must be not <code>null</code>. 
+			 *               have "@" as its prefix and ended with a ":".
+			 */
+			@Override
+			public String toValue(String string, INode node)
+					throws ValueConverterException {
+				assert string.startsWith("@");
+				assert string.endsWith(":");
+				return string.substring(1, string.length()-1);
+			}
+
+			/**
+			 * Convert string to XLabel.
+			 * 
+			 * @param value
+			 *            the label
+			 * @return the XComment by prefixing "@" and suffixing ":" to the
+			 *         input value.
+			 * @see IValueConverter#toString(Object)
+			 */
+			@Override
+			public String toString(String value) throws ValueConverterException {
+				return "@" + value + ":";
+			}
+			
 		};
 	}
 }
