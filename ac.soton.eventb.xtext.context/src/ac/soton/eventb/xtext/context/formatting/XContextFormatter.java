@@ -69,7 +69,7 @@ public class XContextFormatter extends AbstractDeclarativeFormatter {
 		// Start a new line after each set.
 		c.setLinewrap().after(f.getXCarrierSetRule());
 		// Start a new line after each multi-line comment for sets.
-		c.setLinewrap().after(f.getXCarrierSetAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXCarrierSetMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each set.
 		c.setIndentationIncrement().before(xContextElements.getSetsAssignment_5_1());
 		// Un-indent one level after each variable.
@@ -86,7 +86,7 @@ public class XContextFormatter extends AbstractDeclarativeFormatter {
 		// Start a new line after each constant.
 		c.setLinewrap().after(f.getXConstantRule());
 		// Start a new line after each multi-line comment for constants.
-		c.setLinewrap().after(f.getXConstantAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXConstantMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each constant.
 		c.setIndentationIncrement().before(xContextElements.getConstantsAssignment_6_1());
 		// Un-indent one level after each constant.
@@ -103,7 +103,7 @@ public class XContextFormatter extends AbstractDeclarativeFormatter {
 		// Start a new line after each axiom.
 		c.setLinewrap().after(f.getXAxiomRule());
 		// Start a new line after each multi-line comment for axioms.
-		c.setLinewrap().after(f.getXAxiomAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXAxiomMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each axiom.
 		c.setIndentationIncrement().before(xContextElements.getAxiomsAssignment_7_1());
 		// Un-indent one level after each axiom.

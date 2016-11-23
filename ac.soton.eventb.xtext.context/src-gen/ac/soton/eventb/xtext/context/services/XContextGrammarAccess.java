@@ -145,37 +145,75 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	public class XCarrierSetElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XCarrierSet");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cCarrierSetAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXCarrierSetNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXCarrierSetMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXCarrierSetSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//XCarrierSet econtext::CarrierSet:
-		//	{econtext::CarrierSet} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=ID
+		//	XCarrierSetNoComment | XCarrierSetMLComment | XCarrierSetSLComment
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::CarrierSet} comment=(ML_COMMENT | SL_COMMENT)? name=ID
+		//XCarrierSetNoComment | XCarrierSetMLComment | XCarrierSetSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XCarrierSetNoComment
+		public RuleCall getXCarrierSetNoCommentParserRuleCall_0() { return cXCarrierSetNoCommentParserRuleCall_0; }
+		
+		//XCarrierSetMLComment
+		public RuleCall getXCarrierSetMLCommentParserRuleCall_1() { return cXCarrierSetMLCommentParserRuleCall_1; }
+		
+		//XCarrierSetSLComment
+		public RuleCall getXCarrierSetSLCommentParserRuleCall_2() { return cXCarrierSetSLCommentParserRuleCall_2; }
+	}
+	public class XCarrierSetNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XCarrierSetNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCarrierSetAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//XCarrierSetNoComment econtext::CarrierSet:
+		//	{econtext::CarrierSet} name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::CarrierSet} name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::CarrierSet}
 		public Action getCarrierSetAction_0() { return cCarrierSetAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+	public class XCarrierSetMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XCarrierSetMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCarrierSetAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//XCarrierSetMLComment econtext::CarrierSet:
+		//	{econtext::CarrierSet} comment=ML_COMMENT
+		//	name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::CarrierSet} comment=ML_COMMENT name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::CarrierSet}
+		public Action getCarrierSetAction_0() { return cCarrierSetAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -183,39 +221,109 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
-	public class XConstantElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XConstant");
+	public class XCarrierSetSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XCarrierSetSLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cConstantAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Action cCarrierSetAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
 		
-		//XConstant econtext::Constant:
-		//	{econtext::Constant} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=ID
+		//XCarrierSetSLComment econtext::CarrierSet:
+		//	{econtext::CarrierSet} name=ID
+		//	comment=SL_COMMENT
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Constant} comment=(ML_COMMENT | SL_COMMENT)? name=ID
+		//{econtext::CarrierSet} name=ID comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::CarrierSet}
+		public Action getCarrierSetAction_0() { return cCarrierSetAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_2_0() { return cCommentSL_COMMENTTerminalRuleCall_2_0; }
+	}
+	public class XConstantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XConstant");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXConstantNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXConstantMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXConstantSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XConstant econtext::Constant:
+		//	XConstantNoComment | XConstantMLComment | XConstantSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XConstantNoComment | XConstantMLComment | XConstantSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XConstantNoComment
+		public RuleCall getXConstantNoCommentParserRuleCall_0() { return cXConstantNoCommentParserRuleCall_0; }
+		
+		//XConstantMLComment
+		public RuleCall getXConstantMLCommentParserRuleCall_1() { return cXConstantMLCommentParserRuleCall_1; }
+		
+		//XConstantSLComment
+		public RuleCall getXConstantSLCommentParserRuleCall_2() { return cXConstantSLCommentParserRuleCall_2; }
+	}
+	public class XConstantNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XConstantNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cConstantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//XConstantNoComment econtext::Constant:
+		//	{econtext::Constant} name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Constant} name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Constant}
 		public Action getConstantAction_0() { return cConstantAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+	public class XConstantMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XConstantMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cConstantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//XConstantMLComment econtext::Constant:
+		//	{econtext::Constant} comment=ML_COMMENT
+		//	name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Constant} comment=ML_COMMENT name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Constant}
+		public Action getConstantAction_0() { return cConstantAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -223,14 +331,106 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class XConstantSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XConstantSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cConstantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		
+		//XConstantSLComment econtext::Constant:
+		//	{econtext::Constant} name=ID
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Constant} name=ID comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Constant}
+		public Action getConstantAction_0() { return cConstantAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_2_0() { return cCommentSL_COMMENTTerminalRuleCall_2_0; }
+	}
 	public class XAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XAxiom");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXAxiomNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXAxiomMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXAxiomSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XAxiom econtext::Axiom:
+		//	XAxiomNoComment | XAxiomMLComment | XAxiomSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XAxiomNoComment | XAxiomMLComment | XAxiomSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XAxiomNoComment
+		public RuleCall getXAxiomNoCommentParserRuleCall_0() { return cXAxiomNoCommentParserRuleCall_0; }
+		
+		//XAxiomMLComment
+		public RuleCall getXAxiomMLCommentParserRuleCall_1() { return cXAxiomMLCommentParserRuleCall_1; }
+		
+		//XAxiomSLComment
+		public RuleCall getXAxiomSLCommentParserRuleCall_2() { return cXAxiomSLCommentParserRuleCall_2; }
+	}
+	public class XAxiomNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XAxiomNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		
+		//XAxiomNoComment econtext::Axiom:
+		//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Axiom}
+		public Action getAxiomAction_0() { return cAxiomAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+	}
+	public class XAxiomMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XAxiomMLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -238,28 +438,22 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
-		//XAxiom econtext::Axiom:
-		//	{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)?
+		//XAxiomMLComment econtext::Axiom:
+		//	{econtext::Axiom} comment=ML_COMMENT
 		//	name=XLABEL predicate=STRING theorem?='theorem'?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?
+		//{econtext::Axiom} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Axiom}
 		public Action getAxiomAction_0() { return cAxiomAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=XLABEL
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -279,12 +473,69 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//'theorem'
 		public Keyword getTheoremTheoremKeyword_4_0() { return cTheoremTheoremKeyword_4_0; }
 	}
+	public class XAxiomSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XAxiomSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
+		
+		//XAxiomSLComment econtext::Axiom:
+		//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Axiom}
+		public Action getAxiomAction_0() { return cAxiomAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_4() { return cCommentAssignment_4; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_4_0() { return cCommentSL_COMMENTTerminalRuleCall_4_0; }
+	}
 	
 	
 	private final XContextElements pXContext;
 	private final XCarrierSetElements pXCarrierSet;
+	private final XCarrierSetNoCommentElements pXCarrierSetNoComment;
+	private final XCarrierSetMLCommentElements pXCarrierSetMLComment;
+	private final XCarrierSetSLCommentElements pXCarrierSetSLComment;
 	private final XConstantElements pXConstant;
+	private final XConstantNoCommentElements pXConstantNoComment;
+	private final XConstantMLCommentElements pXConstantMLComment;
+	private final XConstantSLCommentElements pXConstantSLComment;
 	private final XAxiomElements pXAxiom;
+	private final XAxiomNoCommentElements pXAxiomNoComment;
+	private final XAxiomMLCommentElements pXAxiomMLComment;
+	private final XAxiomSLCommentElements pXAxiomSLComment;
 	private final TerminalRule tXLABEL;
 	
 	private final Grammar grammar;
@@ -298,8 +549,17 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pXContext = new XContextElements();
 		this.pXCarrierSet = new XCarrierSetElements();
+		this.pXCarrierSetNoComment = new XCarrierSetNoCommentElements();
+		this.pXCarrierSetMLComment = new XCarrierSetMLCommentElements();
+		this.pXCarrierSetSLComment = new XCarrierSetSLCommentElements();
 		this.pXConstant = new XConstantElements();
+		this.pXConstantNoComment = new XConstantNoCommentElements();
+		this.pXConstantMLComment = new XConstantMLCommentElements();
+		this.pXConstantSLComment = new XConstantSLCommentElements();
 		this.pXAxiom = new XAxiomElements();
+		this.pXAxiomNoComment = new XAxiomNoCommentElements();
+		this.pXAxiomMLComment = new XAxiomMLCommentElements();
+		this.pXAxiomSLComment = new XAxiomSLCommentElements();
 		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.context.XContext.XLABEL");
 	}
 	
@@ -344,8 +604,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XCarrierSet econtext::CarrierSet:
-	//	{econtext::CarrierSet} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=ID
+	//	XCarrierSetNoComment | XCarrierSetMLComment | XCarrierSetSLComment
 	public XCarrierSetElements getXCarrierSetAccess() {
 		return pXCarrierSet;
 	}
@@ -354,9 +613,40 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		return getXCarrierSetAccess().getRule();
 	}
 	
-	//XConstant econtext::Constant:
-	//	{econtext::Constant} comment=(ML_COMMENT | SL_COMMENT)?
+	//XCarrierSetNoComment econtext::CarrierSet:
+	//	{econtext::CarrierSet} name=ID
+	public XCarrierSetNoCommentElements getXCarrierSetNoCommentAccess() {
+		return pXCarrierSetNoComment;
+	}
+	
+	public ParserRule getXCarrierSetNoCommentRule() {
+		return getXCarrierSetNoCommentAccess().getRule();
+	}
+	
+	//XCarrierSetMLComment econtext::CarrierSet:
+	//	{econtext::CarrierSet} comment=ML_COMMENT
 	//	name=ID
+	public XCarrierSetMLCommentElements getXCarrierSetMLCommentAccess() {
+		return pXCarrierSetMLComment;
+	}
+	
+	public ParserRule getXCarrierSetMLCommentRule() {
+		return getXCarrierSetMLCommentAccess().getRule();
+	}
+	
+	//XCarrierSetSLComment econtext::CarrierSet:
+	//	{econtext::CarrierSet} name=ID
+	//	comment=SL_COMMENT
+	public XCarrierSetSLCommentElements getXCarrierSetSLCommentAccess() {
+		return pXCarrierSetSLComment;
+	}
+	
+	public ParserRule getXCarrierSetSLCommentRule() {
+		return getXCarrierSetSLCommentAccess().getRule();
+	}
+	
+	//XConstant econtext::Constant:
+	//	XConstantNoComment | XConstantMLComment | XConstantSLComment
 	public XConstantElements getXConstantAccess() {
 		return pXConstant;
 	}
@@ -365,15 +655,78 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		return getXConstantAccess().getRule();
 	}
 	
+	//XConstantNoComment econtext::Constant:
+	//	{econtext::Constant} name=ID
+	public XConstantNoCommentElements getXConstantNoCommentAccess() {
+		return pXConstantNoComment;
+	}
+	
+	public ParserRule getXConstantNoCommentRule() {
+		return getXConstantNoCommentAccess().getRule();
+	}
+	
+	//XConstantMLComment econtext::Constant:
+	//	{econtext::Constant} comment=ML_COMMENT
+	//	name=ID
+	public XConstantMLCommentElements getXConstantMLCommentAccess() {
+		return pXConstantMLComment;
+	}
+	
+	public ParserRule getXConstantMLCommentRule() {
+		return getXConstantMLCommentAccess().getRule();
+	}
+	
+	//XConstantSLComment econtext::Constant:
+	//	{econtext::Constant} name=ID
+	//	comment=SL_COMMENT
+	public XConstantSLCommentElements getXConstantSLCommentAccess() {
+		return pXConstantSLComment;
+	}
+	
+	public ParserRule getXConstantSLCommentRule() {
+		return getXConstantSLCommentAccess().getRule();
+	}
+	
 	//XAxiom econtext::Axiom:
-	//	{econtext::Axiom} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	//	XAxiomNoComment | XAxiomMLComment | XAxiomSLComment
 	public XAxiomElements getXAxiomAccess() {
 		return pXAxiom;
 	}
 	
 	public ParserRule getXAxiomRule() {
 		return getXAxiomAccess().getRule();
+	}
+	
+	//XAxiomNoComment econtext::Axiom:
+	//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+	public XAxiomNoCommentElements getXAxiomNoCommentAccess() {
+		return pXAxiomNoComment;
+	}
+	
+	public ParserRule getXAxiomNoCommentRule() {
+		return getXAxiomNoCommentAccess().getRule();
+	}
+	
+	//XAxiomMLComment econtext::Axiom:
+	//	{econtext::Axiom} comment=ML_COMMENT
+	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	public XAxiomMLCommentElements getXAxiomMLCommentAccess() {
+		return pXAxiomMLComment;
+	}
+	
+	public ParserRule getXAxiomMLCommentRule() {
+		return getXAxiomMLCommentAccess().getRule();
+	}
+	
+	//XAxiomSLComment econtext::Axiom:
+	//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	comment=SL_COMMENT
+	public XAxiomSLCommentElements getXAxiomSLCommentAccess() {
+		return pXAxiomSLComment;
+	}
+	
+	public ParserRule getXAxiomSLCommentRule() {
+		return getXAxiomSLCommentAccess().getRule();
 	}
 	
 	//terminal XLABEL:
