@@ -65,23 +65,21 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEventsKeyword_9_0 = (Keyword)cGroup_9.eContents().get(0);
 		private final Assignment cEventsAssignment_9_1 = (Assignment)cGroup_9.eContents().get(1);
 		private final RuleCall cEventsXEventParserRuleCall_9_1_0 = (RuleCall)cEventsAssignment_9_1.eContents().get(0);
-		private final Group cGroup_9_2 = (Group)cGroup_9.eContents().get(2);
-		private final Keyword cSemicolonKeyword_9_2_0 = (Keyword)cGroup_9_2.eContents().get(0);
-		private final Assignment cEventsAssignment_9_2_1 = (Assignment)cGroup_9_2.eContents().get(1);
-		private final RuleCall cEventsXEventParserRuleCall_9_2_1_0 = (RuleCall)cEventsAssignment_9_2_1.eContents().get(0);
+		private final Assignment cEventsAssignment_9_2 = (Assignment)cGroup_9.eContents().get(2);
+		private final RuleCall cEventsXEventParserRuleCall_9_2_0 = (RuleCall)cEventsAssignment_9_2.eContents().get(0);
 		private final Keyword cEndKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//XMachine emachine::Machine:
 		//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 		//	'machine' name=ID ('refines' refines+=[emachine::Machine])? ('sees' sees+=[econtext::Context]+)? ('variables'
 		//	variables+=XVariable+)? ('invariants' invariants+=XInvariant+)? ('variant' variant=XVariant)? ('events' events+=XEvent
-		//	(';' events+=XEvent)*)?
+		//	events+=XEvent*)?
 		//	'end'
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)? 'machine' name=ID ('refines' refines+=[emachine::Machine])?
 		//('sees' sees+=[econtext::Context]+)? ('variables' variables+=XVariable+)? ('invariants' invariants+=XInvariant+)?
-		//('variant' variant=XVariant)? ('events' events+=XEvent (';' events+=XEvent)*)? 'end'
+		//('variant' variant=XVariant)? ('events' events+=XEvent events+=XEvent*)? 'end'
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Machine}
@@ -174,7 +172,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XVariant
 		public RuleCall getVariantXVariantParserRuleCall_8_1_0() { return cVariantXVariantParserRuleCall_8_1_0; }
 		
-		//('events' events+=XEvent (';' events+=XEvent)*)?
+		//('events' events+=XEvent events+=XEvent*)?
 		public Group getGroup_9() { return cGroup_9; }
 		
 		//'events'
@@ -186,54 +184,86 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XEvent
 		public RuleCall getEventsXEventParserRuleCall_9_1_0() { return cEventsXEventParserRuleCall_9_1_0; }
 		
-		//(';' events+=XEvent)*
-		public Group getGroup_9_2() { return cGroup_9_2; }
-		
-		//';'
-		public Keyword getSemicolonKeyword_9_2_0() { return cSemicolonKeyword_9_2_0; }
-		
-		//events+=XEvent
-		public Assignment getEventsAssignment_9_2_1() { return cEventsAssignment_9_2_1; }
+		//events+=XEvent*
+		public Assignment getEventsAssignment_9_2() { return cEventsAssignment_9_2; }
 		
 		//XEvent
-		public RuleCall getEventsXEventParserRuleCall_9_2_1_0() { return cEventsXEventParserRuleCall_9_2_1_0; }
+		public RuleCall getEventsXEventParserRuleCall_9_2_0() { return cEventsXEventParserRuleCall_9_2_0; }
 		
 		//'end'
 		public Keyword getEndKeyword_10() { return cEndKeyword_10; }
 	}
 	public class XVariableElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariable");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXVariableNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXVariableMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXVariableSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//XVariable emachine::Variable:
-		//	{emachine::Variable} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=ID
+		//	XVariableNoComment | XVariableMLComment | XVariableSLComment
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Variable} comment=(ML_COMMENT | SL_COMMENT)? name=ID
+		//XVariableNoComment | XVariableMLComment | XVariableSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XVariableNoComment
+		public RuleCall getXVariableNoCommentParserRuleCall_0() { return cXVariableNoCommentParserRuleCall_0; }
+		
+		//XVariableMLComment
+		public RuleCall getXVariableMLCommentParserRuleCall_1() { return cXVariableMLCommentParserRuleCall_1; }
+		
+		//XVariableSLComment
+		public RuleCall getXVariableSLCommentParserRuleCall_2() { return cXVariableSLCommentParserRuleCall_2; }
+	}
+	public class XVariableNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariableNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//XVariableNoComment emachine::Variable:
+		//	{emachine::Variable} name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variable} name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Variable}
 		public Action getVariableAction_0() { return cVariableAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+	public class XVariableMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariableMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//XVariableMLComment emachine::Variable:
+		//	{emachine::Variable} comment=ML_COMMENT
+		//	name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variable} comment=ML_COMMENT name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Variable}
+		public Action getVariableAction_0() { return cVariableAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -241,14 +271,106 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class XVariableSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariableSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariableAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		
+		//XVariableSLComment emachine::Variable:
+		//	{emachine::Variable} name=ID
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variable} name=ID comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Variable}
+		public Action getVariableAction_0() { return cVariableAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_2_0() { return cCommentSL_COMMENTTerminalRuleCall_2_0; }
+	}
 	public class XInvariantElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XInvariant");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXInvariantNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXInvariantMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXInvariantSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XInvariant emachine::Invariant:
+		//	XInvariantNoComment | XInvariantMLComment | XInvariantSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XInvariantNoComment | XInvariantMLComment | XInvariantSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XInvariantNoComment
+		public RuleCall getXInvariantNoCommentParserRuleCall_0() { return cXInvariantNoCommentParserRuleCall_0; }
+		
+		//XInvariantMLComment
+		public RuleCall getXInvariantMLCommentParserRuleCall_1() { return cXInvariantMLCommentParserRuleCall_1; }
+		
+		//XInvariantSLComment
+		public RuleCall getXInvariantSLCommentParserRuleCall_2() { return cXInvariantSLCommentParserRuleCall_2; }
+	}
+	public class XInvariantNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XInvariantNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cInvariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		
+		//XInvariantNoComment emachine::Invariant:
+		//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Invariant}
+		public Action getInvariantAction_0() { return cInvariantAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+	}
+	public class XInvariantMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XInvariantMLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cInvariantAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -256,28 +378,22 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
-		//XInvariant emachine::Invariant:
-		//	{emachine::Invariant} comment=(ML_COMMENT | SL_COMMENT)?
+		//XInvariantMLComment emachine::Invariant:
+		//	{emachine::Invariant} comment=ML_COMMENT
 		//	name=XLABEL predicate=STRING theorem?='theorem'?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Invariant} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Invariant} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Invariant}
 		public Action getInvariantAction_0() { return cInvariantAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=XLABEL
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -297,39 +413,125 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//'theorem'
 		public Keyword getTheoremTheoremKeyword_4_0() { return cTheoremTheoremKeyword_4_0; }
 	}
-	public class XVariantElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariant");
+	public class XInvariantSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XInvariantSLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpressionSTRINGTerminalRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
+		private final Action cInvariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
 		
-		//XVariant emachine::Variant:
-		//	{emachine::Variant} comment=(ML_COMMENT | SL_COMMENT)?
-		//	expression=STRING
+		//XInvariantSLComment emachine::Invariant:
+		//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	comment=SL_COMMENT
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Variant} comment=(ML_COMMENT | SL_COMMENT)? expression=STRING
+		//{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Invariant}
+		public Action getInvariantAction_0() { return cInvariantAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_4() { return cCommentAssignment_4; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_4_0() { return cCommentSL_COMMENTTerminalRuleCall_4_0; }
+	}
+	public class XVariantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariant");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXVariantNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXVariantMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXVariantSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XVariant emachine::Variant:
+		//	XVariantNoComment | XVariantMLComment | XVariantSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XVariantNoComment | XVariantMLComment | XVariantSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XVariantNoComment
+		public RuleCall getXVariantNoCommentParserRuleCall_0() { return cXVariantNoCommentParserRuleCall_0; }
+		
+		//XVariantMLComment
+		public RuleCall getXVariantMLCommentParserRuleCall_1() { return cXVariantMLCommentParserRuleCall_1; }
+		
+		//XVariantSLComment
+		public RuleCall getXVariantSLCommentParserRuleCall_2() { return cXVariantSLCommentParserRuleCall_2; }
+	}
+	public class XVariantNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariantNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExpressionSTRINGTerminalRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		
+		//XVariantNoComment emachine::Variant:
+		//	{emachine::Variant} expression=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variant} expression=STRING
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Variant}
 		public Action getVariantAction_0() { return cVariantAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//expression=STRING
+		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
+		
+		//STRING
+		public RuleCall getExpressionSTRINGTerminalRuleCall_1_0() { return cExpressionSTRINGTerminalRuleCall_1_0; }
+	}
+	public class XVariantMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariantMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cExpressionSTRINGTerminalRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
+		
+		//XVariantMLComment emachine::Variant:
+		//	{emachine::Variant} comment=ML_COMMENT
+		//	expression=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variant} comment=ML_COMMENT expression=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Variant}
+		public Action getVariantAction_0() { return cVariantAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//expression=STRING
 		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
@@ -337,14 +539,297 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getExpressionSTRINGTerminalRuleCall_2_0() { return cExpressionSTRINGTerminalRuleCall_2_0; }
 	}
+	public class XVariantSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XVariantSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cExpressionSTRINGTerminalRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		
+		//XVariantSLComment emachine::Variant:
+		//	{emachine::Variant} expression=STRING
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Variant} expression=STRING comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Variant}
+		public Action getVariantAction_0() { return cVariantAction_0; }
+		
+		//expression=STRING
+		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
+		
+		//STRING
+		public RuleCall getExpressionSTRINGTerminalRuleCall_1_0() { return cExpressionSTRINGTerminalRuleCall_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_2_0() { return cCommentSL_COMMENTTerminalRuleCall_2_0; }
+	}
 	public class XEventElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XEvent");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXEventNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXEventMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXEventSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XEvent emachine::Event:
+		//	XEventNoComment | XEventMLComment | XEventSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XEventNoComment | XEventMLComment | XEventSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XEventNoComment
+		public RuleCall getXEventNoCommentParserRuleCall_0() { return cXEventNoCommentParserRuleCall_0; }
+		
+		//XEventMLComment
+		public RuleCall getXEventMLCommentParserRuleCall_1() { return cXEventMLCommentParserRuleCall_1; }
+		
+		//XEventSLComment
+		public RuleCall getXEventSLCommentParserRuleCall_2() { return cXEventSLCommentParserRuleCall_2; }
+	}
+	public class XEventNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XEventNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cEventAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cExtendedAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cExtendedExtendedKeyword_2_0_0 = (Keyword)cExtendedAssignment_2_0.eContents().get(0);
+		private final Assignment cConvergenceAssignment_2_1 = (Assignment)cUnorderedGroup_2.eContents().get(1);
+		private final RuleCall cConvergenceXConvergenceEnumRuleCall_2_1_0 = (RuleCall)cConvergenceAssignment_2_1.eContents().get(0);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Keyword cRefinesKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cRefinesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final CrossReference cRefinesEventCrossReference_3_1_0 = (CrossReference)cRefinesAssignment_3_1.eContents().get(0);
+		private final RuleCall cRefinesEventIDTerminalRuleCall_3_1_0_1 = (RuleCall)cRefinesEventCrossReference_3_1_0.eContents().get(1);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
+		private final Group cGroup_4_0_0 = (Group)cGroup_4_0.eContents().get(0);
+		private final Keyword cWithKeyword_4_0_0_0 = (Keyword)cGroup_4_0_0.eContents().get(0);
+		private final Assignment cWitnessesAssignment_4_0_0_1 = (Assignment)cGroup_4_0_0.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_4_0_0_1_0 = (RuleCall)cWitnessesAssignment_4_0_0_1.eContents().get(0);
+		private final Keyword cBeginKeyword_4_0_1 = (Keyword)cGroup_4_0.eContents().get(1);
+		private final Assignment cActionsAssignment_4_0_2 = (Assignment)cGroup_4_0.eContents().get(2);
+		private final RuleCall cActionsXActionParserRuleCall_4_0_2_0 = (RuleCall)cActionsAssignment_4_0_2.eContents().get(0);
+		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
+		private final Keyword cWhenKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Assignment cGuardsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final RuleCall cGuardsXGuardParserRuleCall_4_1_1_0 = (RuleCall)cGuardsAssignment_4_1_1.eContents().get(0);
+		private final Group cGroup_4_1_2 = (Group)cGroup_4_1.eContents().get(2);
+		private final Keyword cWithKeyword_4_1_2_0 = (Keyword)cGroup_4_1_2.eContents().get(0);
+		private final Assignment cWitnessesAssignment_4_1_2_1 = (Assignment)cGroup_4_1_2.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_4_1_2_1_0 = (RuleCall)cWitnessesAssignment_4_1_2_1.eContents().get(0);
+		private final Group cGroup_4_1_3 = (Group)cGroup_4_1.eContents().get(3);
+		private final Keyword cThenKeyword_4_1_3_0 = (Keyword)cGroup_4_1_3.eContents().get(0);
+		private final Assignment cActionsAssignment_4_1_3_1 = (Assignment)cGroup_4_1_3.eContents().get(1);
+		private final RuleCall cActionsXActionParserRuleCall_4_1_3_1_0 = (RuleCall)cActionsAssignment_4_1_3_1.eContents().get(0);
+		private final Group cGroup_4_2 = (Group)cAlternatives_4.eContents().get(2);
+		private final Keyword cAnyKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
+		private final Assignment cParametersAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
+		private final RuleCall cParametersXParameterParserRuleCall_4_2_1_0 = (RuleCall)cParametersAssignment_4_2_1.eContents().get(0);
+		private final Keyword cWhereKeyword_4_2_2 = (Keyword)cGroup_4_2.eContents().get(2);
+		private final Assignment cGuardsAssignment_4_2_3 = (Assignment)cGroup_4_2.eContents().get(3);
+		private final RuleCall cGuardsXGuardParserRuleCall_4_2_3_0 = (RuleCall)cGuardsAssignment_4_2_3.eContents().get(0);
+		private final Group cGroup_4_2_4 = (Group)cGroup_4_2.eContents().get(4);
+		private final Keyword cWithKeyword_4_2_4_0 = (Keyword)cGroup_4_2_4.eContents().get(0);
+		private final Assignment cWitnessesAssignment_4_2_4_1 = (Assignment)cGroup_4_2_4.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_4_2_4_1_0 = (RuleCall)cWitnessesAssignment_4_2_4_1.eContents().get(0);
+		private final Group cGroup_4_2_5 = (Group)cGroup_4_2.eContents().get(5);
+		private final Keyword cThenKeyword_4_2_5_0 = (Keyword)cGroup_4_2_5.eContents().get(0);
+		private final Assignment cActionsAssignment_4_2_5_1 = (Assignment)cGroup_4_2_5.eContents().get(1);
+		private final RuleCall cActionsXActionParserRuleCall_4_2_5_1_0 = (RuleCall)cActionsAssignment_4_2_5_1.eContents().get(0);
+		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		
+		//XEventNoComment emachine::Event:
+		//	{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)?
+		//	(('with' witnesses+=XWitness+)?
+		//	'begin'
+		//	actions+=XAction+
+		//	|
+		//	'when'
+		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+		//	actions+=XAction+)?
+		//	|
+		//	'any'
+		//	parameters+=XParameter+
+		//	'where'
+		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+		//	actions+=XAction+)?)?
+		//	'end'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)?
+		//(('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)?)? 'end'
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Event}
+		public Action getEventAction_0() { return cEventAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//(extended?='extended'? & convergence=XConvergence?)
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+		
+		//extended?='extended'?
+		public Assignment getExtendedAssignment_2_0() { return cExtendedAssignment_2_0; }
+		
+		//'extended'
+		public Keyword getExtendedExtendedKeyword_2_0_0() { return cExtendedExtendedKeyword_2_0_0; }
+		
+		//convergence=XConvergence?
+		public Assignment getConvergenceAssignment_2_1() { return cConvergenceAssignment_2_1; }
+		
+		//XConvergence
+		public RuleCall getConvergenceXConvergenceEnumRuleCall_2_1_0() { return cConvergenceXConvergenceEnumRuleCall_2_1_0; }
+		
+		//('refines' refines+=[emachine::Event]+)?
+		public Group getGroup_3() { return cGroup_3; }
+		
+		//'refines'
+		public Keyword getRefinesKeyword_3_0() { return cRefinesKeyword_3_0; }
+		
+		//refines+=[emachine::Event]+
+		public Assignment getRefinesAssignment_3_1() { return cRefinesAssignment_3_1; }
+		
+		//[emachine::Event]
+		public CrossReference getRefinesEventCrossReference_3_1_0() { return cRefinesEventCrossReference_3_1_0; }
+		
+		//ID
+		public RuleCall getRefinesEventIDTerminalRuleCall_3_1_0_1() { return cRefinesEventIDTerminalRuleCall_3_1_0_1; }
+		
+		//(('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)?)?
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+		
+		//('with' witnesses+=XWitness+)? 'begin' actions+=XAction+
+		public Group getGroup_4_0() { return cGroup_4_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_4_0_0() { return cGroup_4_0_0; }
+		
+		//'with'
+		public Keyword getWithKeyword_4_0_0_0() { return cWithKeyword_4_0_0_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_4_0_0_1() { return cWitnessesAssignment_4_0_0_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_4_0_0_1_0() { return cWitnessesXWitnessParserRuleCall_4_0_0_1_0; }
+		
+		//'begin'
+		public Keyword getBeginKeyword_4_0_1() { return cBeginKeyword_4_0_1; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_4_0_2() { return cActionsAssignment_4_0_2; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_4_0_2_0() { return cActionsXActionParserRuleCall_4_0_2_0; }
+		
+		//'when' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
+		public Group getGroup_4_1() { return cGroup_4_1; }
+		
+		//'when'
+		public Keyword getWhenKeyword_4_1_0() { return cWhenKeyword_4_1_0; }
+		
+		//guards+=XGuard+
+		public Assignment getGuardsAssignment_4_1_1() { return cGuardsAssignment_4_1_1; }
+		
+		//XGuard
+		public RuleCall getGuardsXGuardParserRuleCall_4_1_1_0() { return cGuardsXGuardParserRuleCall_4_1_1_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_4_1_2() { return cGroup_4_1_2; }
+		
+		//'with'
+		public Keyword getWithKeyword_4_1_2_0() { return cWithKeyword_4_1_2_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_4_1_2_1() { return cWitnessesAssignment_4_1_2_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_4_1_2_1_0() { return cWitnessesXWitnessParserRuleCall_4_1_2_1_0; }
+		
+		//('then' actions+=XAction+)?
+		public Group getGroup_4_1_3() { return cGroup_4_1_3; }
+		
+		//'then'
+		public Keyword getThenKeyword_4_1_3_0() { return cThenKeyword_4_1_3_0; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_4_1_3_1() { return cActionsAssignment_4_1_3_1; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_4_1_3_1_0() { return cActionsXActionParserRuleCall_4_1_3_1_0; }
+		
+		//'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
+		public Group getGroup_4_2() { return cGroup_4_2; }
+		
+		//'any'
+		public Keyword getAnyKeyword_4_2_0() { return cAnyKeyword_4_2_0; }
+		
+		//parameters+=XParameter+
+		public Assignment getParametersAssignment_4_2_1() { return cParametersAssignment_4_2_1; }
+		
+		//XParameter
+		public RuleCall getParametersXParameterParserRuleCall_4_2_1_0() { return cParametersXParameterParserRuleCall_4_2_1_0; }
+		
+		//'where'
+		public Keyword getWhereKeyword_4_2_2() { return cWhereKeyword_4_2_2; }
+		
+		//guards+=XGuard+
+		public Assignment getGuardsAssignment_4_2_3() { return cGuardsAssignment_4_2_3; }
+		
+		//XGuard
+		public RuleCall getGuardsXGuardParserRuleCall_4_2_3_0() { return cGuardsXGuardParserRuleCall_4_2_3_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_4_2_4() { return cGroup_4_2_4; }
+		
+		//'with'
+		public Keyword getWithKeyword_4_2_4_0() { return cWithKeyword_4_2_4_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_4_2_4_1() { return cWitnessesAssignment_4_2_4_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_4_2_4_1_0() { return cWitnessesXWitnessParserRuleCall_4_2_4_1_0; }
+		
+		//('then' actions+=XAction+)?
+		public Group getGroup_4_2_5() { return cGroup_4_2_5; }
+		
+		//'then'
+		public Keyword getThenKeyword_4_2_5_0() { return cThenKeyword_4_2_5_0; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_4_2_5_1() { return cActionsAssignment_4_2_5_1; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_4_2_5_1_0() { return cActionsXActionParserRuleCall_4_2_5_1_0; }
+		
+		//'end'
+		public Keyword getEndKeyword_5() { return cEndKeyword_5; }
+	}
+	public class XEventMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XEventMLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cEventAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
@@ -366,7 +851,6 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cBeginKeyword_5_0_1 = (Keyword)cGroup_5_0.eContents().get(1);
 		private final Assignment cActionsAssignment_5_0_2 = (Assignment)cGroup_5_0.eContents().get(2);
 		private final RuleCall cActionsXActionParserRuleCall_5_0_2_0 = (RuleCall)cActionsAssignment_5_0_2.eContents().get(0);
-		private final Keyword cEndKeyword_5_0_3 = (Keyword)cGroup_5_0.eContents().get(3);
 		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
 		private final Keyword cWhenKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
 		private final Assignment cGuardsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
@@ -379,7 +863,6 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cThenKeyword_5_1_3_0 = (Keyword)cGroup_5_1_3.eContents().get(0);
 		private final Assignment cActionsAssignment_5_1_3_1 = (Assignment)cGroup_5_1_3.eContents().get(1);
 		private final RuleCall cActionsXActionParserRuleCall_5_1_3_1_0 = (RuleCall)cActionsAssignment_5_1_3_1.eContents().get(0);
-		private final Keyword cEndKeyword_5_1_4 = (Keyword)cGroup_5_1.eContents().get(4);
 		private final Group cGroup_5_2 = (Group)cAlternatives_5.eContents().get(2);
 		private final Keyword cAnyKeyword_5_2_0 = (Keyword)cGroup_5_2.eContents().get(0);
 		private final Assignment cParametersAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
@@ -395,49 +878,41 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cThenKeyword_5_2_5_0 = (Keyword)cGroup_5_2_5.eContents().get(0);
 		private final Assignment cActionsAssignment_5_2_5_1 = (Assignment)cGroup_5_2_5.eContents().get(1);
 		private final RuleCall cActionsXActionParserRuleCall_5_2_5_1_0 = (RuleCall)cActionsAssignment_5_2_5_1.eContents().get(0);
-		private final Keyword cEndKeyword_5_2_6 = (Keyword)cGroup_5_2.eContents().get(6);
+		private final Keyword cEndKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//XEvent emachine::Event:
-		//	{emachine::Event} comment=(ML_COMMENT | SL_COMMENT)?
+		//XEventMLComment emachine::Event:
+		//	{emachine::Event} comment=ML_COMMENT
 		//	name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)? (('with'
 		//	witnesses+=XWitness+)?
 		//	'begin'
 		//	actions+=XAction+
-		//	'end'
 		//	|
 		//	'when'
 		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
 		//	actions+=XAction+)?
-		//	'end'
 		//	|
 		//	'any'
 		//	parameters+=XParameter+
 		//	'where'
 		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
-		//	actions+=XAction+)?
-		//	'end')?
+		//	actions+=XAction+)?)?
+		//	'end'
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Event} comment=(ML_COMMENT | SL_COMMENT)? name=ID (extended?='extended'? & convergence=XConvergence?)
-		//('refines' refines+=[emachine::Event]+)? (('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ 'end' | 'when'
-		//guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? 'end' | 'any' parameters+=XParameter+
-		//'where' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? 'end')?
+		//{emachine::Event} comment=ML_COMMENT name=ID (extended?='extended'? & convergence=XConvergence?) ('refines'
+		//refines+=[emachine::Event]+)? (('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+
+		//('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+
+		//('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?)? 'end'
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Event}
 		public Action getEventAction_0() { return cEventAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -475,12 +950,12 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getRefinesEventIDTerminalRuleCall_4_1_0_1() { return cRefinesEventIDTerminalRuleCall_4_1_0_1; }
 		
-		//(('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ 'end' | 'when' guards+=XGuard+ ('with' witnesses+=XWitness+)?
-		//('then' actions+=XAction+)? 'end' | 'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with'
-		//witnesses+=XWitness+)? ('then' actions+=XAction+)? 'end')?
+		//(('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)?)?
 		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
-		//('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ 'end'
+		//('with' witnesses+=XWitness+)? 'begin' actions+=XAction+
 		public Group getGroup_5_0() { return cGroup_5_0; }
 		
 		//('with' witnesses+=XWitness+)?
@@ -504,10 +979,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XAction
 		public RuleCall getActionsXActionParserRuleCall_5_0_2_0() { return cActionsXActionParserRuleCall_5_0_2_0; }
 		
-		//'end'
-		public Keyword getEndKeyword_5_0_3() { return cEndKeyword_5_0_3; }
-		
-		//'when' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? 'end'
+		//'when' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
 		public Group getGroup_5_1() { return cGroup_5_1; }
 		
 		//'when'
@@ -543,10 +1015,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XAction
 		public RuleCall getActionsXActionParserRuleCall_5_1_3_1_0() { return cActionsXActionParserRuleCall_5_1_3_1_0; }
 		
-		//'end'
-		public Keyword getEndKeyword_5_1_4() { return cEndKeyword_5_1_4; }
-		
-		//'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? 'end'
+		//'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
 		public Group getGroup_5_2() { return cGroup_5_2; }
 		
 		//'any'
@@ -592,41 +1061,317 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getActionsXActionParserRuleCall_5_2_5_1_0() { return cActionsXActionParserRuleCall_5_2_5_1_0; }
 		
 		//'end'
-		public Keyword getEndKeyword_5_2_6() { return cEndKeyword_5_2_6; }
+		public Keyword getEndKeyword_6() { return cEndKeyword_6; }
+	}
+	public class XEventSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XEventSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cEventAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final UnorderedGroup cUnorderedGroup_2 = (UnorderedGroup)cGroup.eContents().get(2);
+		private final Assignment cExtendedAssignment_2_0 = (Assignment)cUnorderedGroup_2.eContents().get(0);
+		private final Keyword cExtendedExtendedKeyword_2_0_0 = (Keyword)cExtendedAssignment_2_0.eContents().get(0);
+		private final Assignment cConvergenceAssignment_2_1 = (Assignment)cUnorderedGroup_2.eContents().get(1);
+		private final RuleCall cConvergenceXConvergenceEnumRuleCall_2_1_0 = (RuleCall)cConvergenceAssignment_2_1.eContents().get(0);
+		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
+		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
+		private final Keyword cRefinesKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cRefinesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final CrossReference cRefinesEventCrossReference_4_1_0 = (CrossReference)cRefinesAssignment_4_1.eContents().get(0);
+		private final RuleCall cRefinesEventIDTerminalRuleCall_4_1_0_1 = (RuleCall)cRefinesEventCrossReference_4_1_0.eContents().get(1);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Group cGroup_5_0 = (Group)cAlternatives_5.eContents().get(0);
+		private final Group cGroup_5_0_0 = (Group)cGroup_5_0.eContents().get(0);
+		private final Keyword cWithKeyword_5_0_0_0 = (Keyword)cGroup_5_0_0.eContents().get(0);
+		private final Assignment cWitnessesAssignment_5_0_0_1 = (Assignment)cGroup_5_0_0.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_5_0_0_1_0 = (RuleCall)cWitnessesAssignment_5_0_0_1.eContents().get(0);
+		private final Keyword cBeginKeyword_5_0_1 = (Keyword)cGroup_5_0.eContents().get(1);
+		private final Assignment cActionsAssignment_5_0_2 = (Assignment)cGroup_5_0.eContents().get(2);
+		private final RuleCall cActionsXActionParserRuleCall_5_0_2_0 = (RuleCall)cActionsAssignment_5_0_2.eContents().get(0);
+		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
+		private final Keyword cWhenKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
+		private final Assignment cGuardsAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
+		private final RuleCall cGuardsXGuardParserRuleCall_5_1_1_0 = (RuleCall)cGuardsAssignment_5_1_1.eContents().get(0);
+		private final Group cGroup_5_1_2 = (Group)cGroup_5_1.eContents().get(2);
+		private final Keyword cWithKeyword_5_1_2_0 = (Keyword)cGroup_5_1_2.eContents().get(0);
+		private final Assignment cWitnessesAssignment_5_1_2_1 = (Assignment)cGroup_5_1_2.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_5_1_2_1_0 = (RuleCall)cWitnessesAssignment_5_1_2_1.eContents().get(0);
+		private final Group cGroup_5_1_3 = (Group)cGroup_5_1.eContents().get(3);
+		private final Keyword cThenKeyword_5_1_3_0 = (Keyword)cGroup_5_1_3.eContents().get(0);
+		private final Assignment cActionsAssignment_5_1_3_1 = (Assignment)cGroup_5_1_3.eContents().get(1);
+		private final RuleCall cActionsXActionParserRuleCall_5_1_3_1_0 = (RuleCall)cActionsAssignment_5_1_3_1.eContents().get(0);
+		private final Group cGroup_5_2 = (Group)cAlternatives_5.eContents().get(2);
+		private final Keyword cAnyKeyword_5_2_0 = (Keyword)cGroup_5_2.eContents().get(0);
+		private final Assignment cParametersAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
+		private final RuleCall cParametersXParameterParserRuleCall_5_2_1_0 = (RuleCall)cParametersAssignment_5_2_1.eContents().get(0);
+		private final Keyword cWhereKeyword_5_2_2 = (Keyword)cGroup_5_2.eContents().get(2);
+		private final Assignment cGuardsAssignment_5_2_3 = (Assignment)cGroup_5_2.eContents().get(3);
+		private final RuleCall cGuardsXGuardParserRuleCall_5_2_3_0 = (RuleCall)cGuardsAssignment_5_2_3.eContents().get(0);
+		private final Group cGroup_5_2_4 = (Group)cGroup_5_2.eContents().get(4);
+		private final Keyword cWithKeyword_5_2_4_0 = (Keyword)cGroup_5_2_4.eContents().get(0);
+		private final Assignment cWitnessesAssignment_5_2_4_1 = (Assignment)cGroup_5_2_4.eContents().get(1);
+		private final RuleCall cWitnessesXWitnessParserRuleCall_5_2_4_1_0 = (RuleCall)cWitnessesAssignment_5_2_4_1.eContents().get(0);
+		private final Group cGroup_5_2_5 = (Group)cGroup_5_2.eContents().get(5);
+		private final Keyword cThenKeyword_5_2_5_0 = (Keyword)cGroup_5_2_5.eContents().get(0);
+		private final Assignment cActionsAssignment_5_2_5_1 = (Assignment)cGroup_5_2_5.eContents().get(1);
+		private final RuleCall cActionsXActionParserRuleCall_5_2_5_1_0 = (RuleCall)cActionsAssignment_5_2_5_1.eContents().get(0);
+		private final Keyword cEndKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		
+		//XEventSLComment emachine::Event:
+		//	{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) comment=SL_COMMENT ('refines'
+		//	refines+=[emachine::Event]+)? (('with' witnesses+=XWitness+)?
+		//	'begin'
+		//	actions+=XAction+
+		//	|
+		//	'when'
+		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+		//	actions+=XAction+)?
+		//	|
+		//	'any'
+		//	parameters+=XParameter+
+		//	'where'
+		//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+		//	actions+=XAction+)?)?
+		//	'end'
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) comment=SL_COMMENT ('refines'
+		//refines+=[emachine::Event]+)? (('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+
+		//('with' witnesses+=XWitness+)? ('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+
+		//('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?)? 'end'
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Event}
+		public Action getEventAction_0() { return cEventAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//(extended?='extended'? & convergence=XConvergence?)
+		public UnorderedGroup getUnorderedGroup_2() { return cUnorderedGroup_2; }
+		
+		//extended?='extended'?
+		public Assignment getExtendedAssignment_2_0() { return cExtendedAssignment_2_0; }
+		
+		//'extended'
+		public Keyword getExtendedExtendedKeyword_2_0_0() { return cExtendedExtendedKeyword_2_0_0; }
+		
+		//convergence=XConvergence?
+		public Assignment getConvergenceAssignment_2_1() { return cConvergenceAssignment_2_1; }
+		
+		//XConvergence
+		public RuleCall getConvergenceXConvergenceEnumRuleCall_2_1_0() { return cConvergenceXConvergenceEnumRuleCall_2_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_3_0() { return cCommentSL_COMMENTTerminalRuleCall_3_0; }
+		
+		//('refines' refines+=[emachine::Event]+)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//'refines'
+		public Keyword getRefinesKeyword_4_0() { return cRefinesKeyword_4_0; }
+		
+		//refines+=[emachine::Event]+
+		public Assignment getRefinesAssignment_4_1() { return cRefinesAssignment_4_1; }
+		
+		//[emachine::Event]
+		public CrossReference getRefinesEventCrossReference_4_1_0() { return cRefinesEventCrossReference_4_1_0; }
+		
+		//ID
+		public RuleCall getRefinesEventIDTerminalRuleCall_4_1_0_1() { return cRefinesEventIDTerminalRuleCall_4_1_0_1; }
+		
+		//(('with' witnesses+=XWitness+)? 'begin' actions+=XAction+ | 'when' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)? | 'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)?
+		//('then' actions+=XAction+)?)?
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		
+		//('with' witnesses+=XWitness+)? 'begin' actions+=XAction+
+		public Group getGroup_5_0() { return cGroup_5_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_5_0_0() { return cGroup_5_0_0; }
+		
+		//'with'
+		public Keyword getWithKeyword_5_0_0_0() { return cWithKeyword_5_0_0_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_5_0_0_1() { return cWitnessesAssignment_5_0_0_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_5_0_0_1_0() { return cWitnessesXWitnessParserRuleCall_5_0_0_1_0; }
+		
+		//'begin'
+		public Keyword getBeginKeyword_5_0_1() { return cBeginKeyword_5_0_1; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_5_0_2() { return cActionsAssignment_5_0_2; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_5_0_2_0() { return cActionsXActionParserRuleCall_5_0_2_0; }
+		
+		//'when' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
+		public Group getGroup_5_1() { return cGroup_5_1; }
+		
+		//'when'
+		public Keyword getWhenKeyword_5_1_0() { return cWhenKeyword_5_1_0; }
+		
+		//guards+=XGuard+
+		public Assignment getGuardsAssignment_5_1_1() { return cGuardsAssignment_5_1_1; }
+		
+		//XGuard
+		public RuleCall getGuardsXGuardParserRuleCall_5_1_1_0() { return cGuardsXGuardParserRuleCall_5_1_1_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_5_1_2() { return cGroup_5_1_2; }
+		
+		//'with'
+		public Keyword getWithKeyword_5_1_2_0() { return cWithKeyword_5_1_2_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_5_1_2_1() { return cWitnessesAssignment_5_1_2_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_5_1_2_1_0() { return cWitnessesXWitnessParserRuleCall_5_1_2_1_0; }
+		
+		//('then' actions+=XAction+)?
+		public Group getGroup_5_1_3() { return cGroup_5_1_3; }
+		
+		//'then'
+		public Keyword getThenKeyword_5_1_3_0() { return cThenKeyword_5_1_3_0; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_5_1_3_1() { return cActionsAssignment_5_1_3_1; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_5_1_3_1_0() { return cActionsXActionParserRuleCall_5_1_3_1_0; }
+		
+		//'any' parameters+=XParameter+ 'where' guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then' actions+=XAction+)?
+		public Group getGroup_5_2() { return cGroup_5_2; }
+		
+		//'any'
+		public Keyword getAnyKeyword_5_2_0() { return cAnyKeyword_5_2_0; }
+		
+		//parameters+=XParameter+
+		public Assignment getParametersAssignment_5_2_1() { return cParametersAssignment_5_2_1; }
+		
+		//XParameter
+		public RuleCall getParametersXParameterParserRuleCall_5_2_1_0() { return cParametersXParameterParserRuleCall_5_2_1_0; }
+		
+		//'where'
+		public Keyword getWhereKeyword_5_2_2() { return cWhereKeyword_5_2_2; }
+		
+		//guards+=XGuard+
+		public Assignment getGuardsAssignment_5_2_3() { return cGuardsAssignment_5_2_3; }
+		
+		//XGuard
+		public RuleCall getGuardsXGuardParserRuleCall_5_2_3_0() { return cGuardsXGuardParserRuleCall_5_2_3_0; }
+		
+		//('with' witnesses+=XWitness+)?
+		public Group getGroup_5_2_4() { return cGroup_5_2_4; }
+		
+		//'with'
+		public Keyword getWithKeyword_5_2_4_0() { return cWithKeyword_5_2_4_0; }
+		
+		//witnesses+=XWitness+
+		public Assignment getWitnessesAssignment_5_2_4_1() { return cWitnessesAssignment_5_2_4_1; }
+		
+		//XWitness
+		public RuleCall getWitnessesXWitnessParserRuleCall_5_2_4_1_0() { return cWitnessesXWitnessParserRuleCall_5_2_4_1_0; }
+		
+		//('then' actions+=XAction+)?
+		public Group getGroup_5_2_5() { return cGroup_5_2_5; }
+		
+		//'then'
+		public Keyword getThenKeyword_5_2_5_0() { return cThenKeyword_5_2_5_0; }
+		
+		//actions+=XAction+
+		public Assignment getActionsAssignment_5_2_5_1() { return cActionsAssignment_5_2_5_1; }
+		
+		//XAction
+		public RuleCall getActionsXActionParserRuleCall_5_2_5_1_0() { return cActionsXActionParserRuleCall_5_2_5_1_0; }
+		
+		//'end'
+		public Keyword getEndKeyword_6() { return cEndKeyword_6; }
 	}
 	public class XParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XParameter");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cParameterAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXParameterNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXParameterMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXParameterSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
 		//XParameter emachine::Parameter:
-		//	{emachine::Parameter} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=ID
+		//	XParameterNoComment | XParameterMLComment | XParameterSLComment
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Parameter} comment=(ML_COMMENT | SL_COMMENT)? name=ID
+		//XParameterNoComment | XParameterMLComment | XParameterSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XParameterNoComment
+		public RuleCall getXParameterNoCommentParserRuleCall_0() { return cXParameterNoCommentParserRuleCall_0; }
+		
+		//XParameterMLComment
+		public RuleCall getXParameterMLCommentParserRuleCall_1() { return cXParameterMLCommentParserRuleCall_1; }
+		
+		//XParameterSLComment
+		public RuleCall getXParameterSLCommentParserRuleCall_2() { return cXParameterSLCommentParserRuleCall_2; }
+	}
+	public class XParameterNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XParameterNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParameterAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		
+		//XParameterNoComment emachine::Parameter:
+		//	{emachine::Parameter} name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Parameter} name=ID
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Parameter}
 		public Action getParameterAction_0() { return cParameterAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+	}
+	public class XParameterMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XParameterMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParameterAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//XParameterMLComment emachine::Parameter:
+		//	{emachine::Parameter} comment=ML_COMMENT
+		//	name=ID
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Parameter} comment=ML_COMMENT name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Parameter}
+		public Action getParameterAction_0() { return cParameterAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=ID
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -634,14 +1379,106 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class XParameterSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XParameterSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cParameterAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
+		
+		//XParameterSLComment emachine::Parameter:
+		//	{emachine::Parameter} name=ID
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Parameter} name=ID comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Parameter}
+		public Action getParameterAction_0() { return cParameterAction_0; }
+		
+		//name=ID
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_2_0() { return cCommentSL_COMMENTTerminalRuleCall_2_0; }
+	}
 	public class XGuardElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XGuard");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXGuardNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXGuardMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXGuardSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XGuard emachine::Guard:
+		//	XGuardNoComment | XGuardMLComment | XGuardSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XGuardNoComment | XGuardMLComment | XGuardSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XGuardNoComment
+		public RuleCall getXGuardNoCommentParserRuleCall_0() { return cXGuardNoCommentParserRuleCall_0; }
+		
+		//XGuardMLComment
+		public RuleCall getXGuardMLCommentParserRuleCall_1() { return cXGuardMLCommentParserRuleCall_1; }
+		
+		//XGuardSLComment
+		public RuleCall getXGuardSLCommentParserRuleCall_2() { return cXGuardSLCommentParserRuleCall_2; }
+	}
+	public class XGuardNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XGuardNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cGuardAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		
+		//XGuardNoComment emachine::Guard:
+		//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Guard}
+		public Action getGuardAction_0() { return cGuardAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+	}
+	public class XGuardMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XGuardMLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cGuardAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
@@ -649,28 +1486,22 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
-		//XGuard emachine::Guard:
-		//	{emachine::Guard} comment=(ML_COMMENT | SL_COMMENT)?
+		//XGuardMLComment emachine::Guard:
+		//	{emachine::Guard} comment=ML_COMMENT
 		//	name=XLABEL predicate=STRING theorem?='theorem'?
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Guard} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Guard} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Guard}
 		public Action getGuardAction_0() { return cGuardAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=XLABEL
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -690,41 +1521,135 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//'theorem'
 		public Keyword getTheoremTheoremKeyword_4_0() { return cTheoremTheoremKeyword_4_0; }
 	}
-	public class XWitnessElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XWitness");
+	public class XGuardSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XGuardSLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cWitnessAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final Action cGuardAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
+		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
 		
-		//XWitness emachine::Witness:
-		//	{emachine::Witness} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=XLABEL predicate=STRING
+		//XGuardSLComment emachine::Guard:
+		//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	comment=SL_COMMENT
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Witness} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL predicate=STRING
+		//{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Guard}
+		public Action getGuardAction_0() { return cGuardAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//theorem?='theorem'?
+		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_3_0() { return cTheoremTheoremKeyword_3_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_4() { return cCommentAssignment_4; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_4_0() { return cCommentSL_COMMENTTerminalRuleCall_4_0; }
+	}
+	public class XWitnessElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XWitness");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXWitnessNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXWitnessMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXWitnessSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XWitness emachine::Witness:
+		//	XWitnessNoComment | XWitnessMLComment | XWitnessSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XWitnessNoComment | XWitnessMLComment | XWitnessSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XWitnessNoComment
+		public RuleCall getXWitnessNoCommentParserRuleCall_0() { return cXWitnessNoCommentParserRuleCall_0; }
+		
+		//XWitnessMLComment
+		public RuleCall getXWitnessMLCommentParserRuleCall_1() { return cXWitnessMLCommentParserRuleCall_1; }
+		
+		//XWitnessSLComment
+		public RuleCall getXWitnessSLCommentParserRuleCall_2() { return cXWitnessSLCommentParserRuleCall_2; }
+	}
+	public class XWitnessNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XWitnessNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cWitnessAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		
+		//XWitnessNoComment emachine::Witness:
+		//	{emachine::Witness} name=XLABEL predicate=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Witness} name=XLABEL predicate=STRING
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Witness}
 		public Action getWitnessAction_0() { return cWitnessAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+	}
+	public class XWitnessMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XWitnessMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cWitnessAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		
+		//XWitnessMLComment emachine::Witness:
+		//	{emachine::Witness} comment=ML_COMMENT
+		//	name=XLABEL predicate=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Witness} comment=ML_COMMENT name=XLABEL predicate=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Witness}
+		public Action getWitnessAction_0() { return cWitnessAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=XLABEL
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -738,41 +1663,127 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//STRING
 		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
 	}
-	public class XActionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XAction");
+	public class XWitnessSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XWitnessSLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cActionAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Alternatives cCommentAlternatives_1_0 = (Alternatives)cCommentAssignment_1.eContents().get(0);
-		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0_0 = (RuleCall)cCommentAlternatives_1_0.eContents().get(0);
-		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_1_0_1 = (RuleCall)cCommentAlternatives_1_0.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cActionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cActionSTRINGTerminalRuleCall_3_0 = (RuleCall)cActionAssignment_3.eContents().get(0);
+		private final Action cWitnessAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
 		
-		//XAction emachine::Action:
-		//	{emachine::Action} comment=(ML_COMMENT | SL_COMMENT)?
-		//	name=XLABEL action=STRING
+		//XWitnessSLComment emachine::Witness:
+		//	{emachine::Witness} name=XLABEL predicate=STRING
+		//	comment=SL_COMMENT
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Action} comment=(ML_COMMENT | SL_COMMENT)? name=XLABEL action=STRING
+		//{emachine::Witness} name=XLABEL predicate=STRING comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Witness}
+		public Action getWitnessAction_0() { return cWitnessAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//predicate=STRING
+		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
+		
+		//STRING
+		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_3_0() { return cCommentSL_COMMENTTerminalRuleCall_3_0; }
+	}
+	public class XActionElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XAction");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cXActionNoCommentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cXActionMLCommentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		private final RuleCall cXActionSLCommentParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
+		
+		//XAction emachine::Action:
+		//	XActionNoComment | XActionMLComment | XActionSLComment
+		@Override public ParserRule getRule() { return rule; }
+		
+		//XActionNoComment | XActionMLComment | XActionSLComment
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//XActionNoComment
+		public RuleCall getXActionNoCommentParserRuleCall_0() { return cXActionNoCommentParserRuleCall_0; }
+		
+		//XActionMLComment
+		public RuleCall getXActionMLCommentParserRuleCall_1() { return cXActionMLCommentParserRuleCall_1; }
+		
+		//XActionSLComment
+		public RuleCall getXActionSLCommentParserRuleCall_2() { return cXActionSLCommentParserRuleCall_2; }
+	}
+	public class XActionNoCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XActionNoComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cActionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cActionSTRINGTerminalRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
+		
+		//XActionNoComment emachine::Action:
+		//	{emachine::Action} name=XLABEL action=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Action} name=XLABEL action=STRING
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Action}
 		public Action getActionAction_0() { return cActionAction_0; }
 		
-		//comment=(ML_COMMENT | SL_COMMENT)?
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//action=STRING
+		public Assignment getActionAssignment_2() { return cActionAssignment_2; }
+		
+		//STRING
+		public RuleCall getActionSTRINGTerminalRuleCall_2_0() { return cActionSTRINGTerminalRuleCall_2_0; }
+	}
+	public class XActionMLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XActionMLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Assignment cActionAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cActionSTRINGTerminalRuleCall_3_0 = (RuleCall)cActionAssignment_3.eContents().get(0);
+		
+		//XActionMLComment emachine::Action:
+		//	{emachine::Action} comment=ML_COMMENT
+		//	name=XLABEL action=STRING
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Action} comment=ML_COMMENT name=XLABEL action=STRING
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Action}
+		public Action getActionAction_0() { return cActionAction_0; }
+		
+		//comment=ML_COMMENT
 		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
 		
-		//(ML_COMMENT | SL_COMMENT)
-		public Alternatives getCommentAlternatives_1_0() { return cCommentAlternatives_1_0; }
-		
 		//ML_COMMENT
-		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0_0() { return cCommentML_COMMENTTerminalRuleCall_1_0_0; }
-		
-		//SL_COMMENT
-		public RuleCall getCommentSL_COMMENTTerminalRuleCall_1_0_1() { return cCommentSL_COMMENTTerminalRuleCall_1_0_1; }
+		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
 		//name=XLABEL
 		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
@@ -785,6 +1796,46 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//STRING
 		public RuleCall getActionSTRINGTerminalRuleCall_3_0() { return cActionSTRINGTerminalRuleCall_3_0; }
+	}
+	public class XActionSLCommentElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XActionSLComment");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cActionAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
+		private final Assignment cActionAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cActionSTRINGTerminalRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
+		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
+		
+		//XActionSLComment emachine::Action:
+		//	{emachine::Action} name=XLABEL action=STRING
+		//	comment=SL_COMMENT
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{emachine::Action} name=XLABEL action=STRING comment=SL_COMMENT
+		public Group getGroup() { return cGroup; }
+		
+		//{emachine::Action}
+		public Action getActionAction_0() { return cActionAction_0; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
+		
+		//action=STRING
+		public Assignment getActionAssignment_2() { return cActionAssignment_2; }
+		
+		//STRING
+		public RuleCall getActionSTRINGTerminalRuleCall_2_0() { return cActionSTRINGTerminalRuleCall_2_0; }
+		
+		//comment=SL_COMMENT
+		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
+		
+		//SL_COMMENT
+		public RuleCall getCommentSL_COMMENTTerminalRuleCall_3_0() { return cCommentSL_COMMENTTerminalRuleCall_3_0; }
 	}
 	
 	public class XConvergenceElements extends AbstractEnumRuleElementFinder {
@@ -825,15 +1876,39 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final XMachineElements pXMachine;
 	private final XVariableElements pXVariable;
+	private final XVariableNoCommentElements pXVariableNoComment;
+	private final XVariableMLCommentElements pXVariableMLComment;
+	private final XVariableSLCommentElements pXVariableSLComment;
 	private final XInvariantElements pXInvariant;
+	private final XInvariantNoCommentElements pXInvariantNoComment;
+	private final XInvariantMLCommentElements pXInvariantMLComment;
+	private final XInvariantSLCommentElements pXInvariantSLComment;
 	private final TerminalRule tXLABEL;
 	private final XVariantElements pXVariant;
+	private final XVariantNoCommentElements pXVariantNoComment;
+	private final XVariantMLCommentElements pXVariantMLComment;
+	private final XVariantSLCommentElements pXVariantSLComment;
 	private final XEventElements pXEvent;
+	private final XEventNoCommentElements pXEventNoComment;
+	private final XEventMLCommentElements pXEventMLComment;
+	private final XEventSLCommentElements pXEventSLComment;
 	private final XConvergenceElements eXConvergence;
 	private final XParameterElements pXParameter;
+	private final XParameterNoCommentElements pXParameterNoComment;
+	private final XParameterMLCommentElements pXParameterMLComment;
+	private final XParameterSLCommentElements pXParameterSLComment;
 	private final XGuardElements pXGuard;
+	private final XGuardNoCommentElements pXGuardNoComment;
+	private final XGuardMLCommentElements pXGuardMLComment;
+	private final XGuardSLCommentElements pXGuardSLComment;
 	private final XWitnessElements pXWitness;
+	private final XWitnessNoCommentElements pXWitnessNoComment;
+	private final XWitnessMLCommentElements pXWitnessMLComment;
+	private final XWitnessSLCommentElements pXWitnessSLComment;
 	private final XActionElements pXAction;
+	private final XActionNoCommentElements pXActionNoComment;
+	private final XActionMLCommentElements pXActionMLComment;
+	private final XActionSLCommentElements pXActionSLComment;
 	
 	private final Grammar grammar;
 	
@@ -846,15 +1921,39 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pXMachine = new XMachineElements();
 		this.pXVariable = new XVariableElements();
+		this.pXVariableNoComment = new XVariableNoCommentElements();
+		this.pXVariableMLComment = new XVariableMLCommentElements();
+		this.pXVariableSLComment = new XVariableSLCommentElements();
 		this.pXInvariant = new XInvariantElements();
+		this.pXInvariantNoComment = new XInvariantNoCommentElements();
+		this.pXInvariantMLComment = new XInvariantMLCommentElements();
+		this.pXInvariantSLComment = new XInvariantSLCommentElements();
 		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.eventb.xtext.machine.XMachine.XLABEL");
 		this.pXVariant = new XVariantElements();
+		this.pXVariantNoComment = new XVariantNoCommentElements();
+		this.pXVariantMLComment = new XVariantMLCommentElements();
+		this.pXVariantSLComment = new XVariantSLCommentElements();
 		this.pXEvent = new XEventElements();
+		this.pXEventNoComment = new XEventNoCommentElements();
+		this.pXEventMLComment = new XEventMLCommentElements();
+		this.pXEventSLComment = new XEventSLCommentElements();
 		this.eXConvergence = new XConvergenceElements();
 		this.pXParameter = new XParameterElements();
+		this.pXParameterNoComment = new XParameterNoCommentElements();
+		this.pXParameterMLComment = new XParameterMLCommentElements();
+		this.pXParameterSLComment = new XParameterSLCommentElements();
 		this.pXGuard = new XGuardElements();
+		this.pXGuardNoComment = new XGuardNoCommentElements();
+		this.pXGuardMLComment = new XGuardMLCommentElements();
+		this.pXGuardSLComment = new XGuardSLCommentElements();
 		this.pXWitness = new XWitnessElements();
+		this.pXWitnessNoComment = new XWitnessNoCommentElements();
+		this.pXWitnessMLComment = new XWitnessMLCommentElements();
+		this.pXWitnessSLComment = new XWitnessSLCommentElements();
 		this.pXAction = new XActionElements();
+		this.pXActionNoComment = new XActionNoCommentElements();
+		this.pXActionMLComment = new XActionMLCommentElements();
+		this.pXActionSLComment = new XActionSLCommentElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -888,7 +1987,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 	//	'machine' name=ID ('refines' refines+=[emachine::Machine])? ('sees' sees+=[econtext::Context]+)? ('variables'
 	//	variables+=XVariable+)? ('invariants' invariants+=XInvariant+)? ('variant' variant=XVariant)? ('events' events+=XEvent
-	//	(';' events+=XEvent)*)?
+	//	events+=XEvent*)?
 	//	'end'
 	public XMachineElements getXMachineAccess() {
 		return pXMachine;
@@ -899,8 +1998,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XVariable emachine::Variable:
-	//	{emachine::Variable} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=ID
+	//	XVariableNoComment | XVariableMLComment | XVariableSLComment
 	public XVariableElements getXVariableAccess() {
 		return pXVariable;
 	}
@@ -909,15 +2007,78 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXVariableAccess().getRule();
 	}
 	
+	//XVariableNoComment emachine::Variable:
+	//	{emachine::Variable} name=ID
+	public XVariableNoCommentElements getXVariableNoCommentAccess() {
+		return pXVariableNoComment;
+	}
+	
+	public ParserRule getXVariableNoCommentRule() {
+		return getXVariableNoCommentAccess().getRule();
+	}
+	
+	//XVariableMLComment emachine::Variable:
+	//	{emachine::Variable} comment=ML_COMMENT
+	//	name=ID
+	public XVariableMLCommentElements getXVariableMLCommentAccess() {
+		return pXVariableMLComment;
+	}
+	
+	public ParserRule getXVariableMLCommentRule() {
+		return getXVariableMLCommentAccess().getRule();
+	}
+	
+	//XVariableSLComment emachine::Variable:
+	//	{emachine::Variable} name=ID
+	//	comment=SL_COMMENT
+	public XVariableSLCommentElements getXVariableSLCommentAccess() {
+		return pXVariableSLComment;
+	}
+	
+	public ParserRule getXVariableSLCommentRule() {
+		return getXVariableSLCommentAccess().getRule();
+	}
+	
 	//XInvariant emachine::Invariant:
-	//	{emachine::Invariant} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	//	XInvariantNoComment | XInvariantMLComment | XInvariantSLComment
 	public XInvariantElements getXInvariantAccess() {
 		return pXInvariant;
 	}
 	
 	public ParserRule getXInvariantRule() {
 		return getXInvariantAccess().getRule();
+	}
+	
+	//XInvariantNoComment emachine::Invariant:
+	//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+	public XInvariantNoCommentElements getXInvariantNoCommentAccess() {
+		return pXInvariantNoComment;
+	}
+	
+	public ParserRule getXInvariantNoCommentRule() {
+		return getXInvariantNoCommentAccess().getRule();
+	}
+	
+	//XInvariantMLComment emachine::Invariant:
+	//	{emachine::Invariant} comment=ML_COMMENT
+	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	public XInvariantMLCommentElements getXInvariantMLCommentAccess() {
+		return pXInvariantMLComment;
+	}
+	
+	public ParserRule getXInvariantMLCommentRule() {
+		return getXInvariantMLCommentAccess().getRule();
+	}
+	
+	//XInvariantSLComment emachine::Invariant:
+	//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	comment=SL_COMMENT
+	public XInvariantSLCommentElements getXInvariantSLCommentAccess() {
+		return pXInvariantSLComment;
+	}
+	
+	public ParserRule getXInvariantSLCommentRule() {
+		return getXInvariantSLCommentAccess().getRule();
 	}
 	
 	//terminal XLABEL:
@@ -927,8 +2088,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XVariant emachine::Variant:
-	//	{emachine::Variant} comment=(ML_COMMENT | SL_COMMENT)?
-	//	expression=STRING
+	//	XVariantNoComment | XVariantMLComment | XVariantSLComment
 	public XVariantElements getXVariantAccess() {
 		return pXVariant;
 	}
@@ -937,31 +2097,119 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXVariantAccess().getRule();
 	}
 	
+	//XVariantNoComment emachine::Variant:
+	//	{emachine::Variant} expression=STRING
+	public XVariantNoCommentElements getXVariantNoCommentAccess() {
+		return pXVariantNoComment;
+	}
+	
+	public ParserRule getXVariantNoCommentRule() {
+		return getXVariantNoCommentAccess().getRule();
+	}
+	
+	//XVariantMLComment emachine::Variant:
+	//	{emachine::Variant} comment=ML_COMMENT
+	//	expression=STRING
+	public XVariantMLCommentElements getXVariantMLCommentAccess() {
+		return pXVariantMLComment;
+	}
+	
+	public ParserRule getXVariantMLCommentRule() {
+		return getXVariantMLCommentAccess().getRule();
+	}
+	
+	//XVariantSLComment emachine::Variant:
+	//	{emachine::Variant} expression=STRING
+	//	comment=SL_COMMENT
+	public XVariantSLCommentElements getXVariantSLCommentAccess() {
+		return pXVariantSLComment;
+	}
+	
+	public ParserRule getXVariantSLCommentRule() {
+		return getXVariantSLCommentAccess().getRule();
+	}
+	
 	//XEvent emachine::Event:
-	//	{emachine::Event} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)? (('with'
-	//	witnesses+=XWitness+)?
-	//	'begin'
-	//	actions+=XAction+
-	//	'end'
-	//	|
-	//	'when'
-	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
-	//	actions+=XAction+)?
-	//	'end'
-	//	|
-	//	'any'
-	//	parameters+=XParameter+
-	//	'where'
-	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
-	//	actions+=XAction+)?
-	//	'end')?
+	//	XEventNoComment | XEventMLComment | XEventSLComment
 	public XEventElements getXEventAccess() {
 		return pXEvent;
 	}
 	
 	public ParserRule getXEventRule() {
 		return getXEventAccess().getRule();
+	}
+	
+	//XEventNoComment emachine::Event:
+	//	{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)?
+	//	(('with' witnesses+=XWitness+)?
+	//	'begin'
+	//	actions+=XAction+
+	//	|
+	//	'when'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?
+	//	|
+	//	'any'
+	//	parameters+=XParameter+
+	//	'where'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?)?
+	//	'end'
+	public XEventNoCommentElements getXEventNoCommentAccess() {
+		return pXEventNoComment;
+	}
+	
+	public ParserRule getXEventNoCommentRule() {
+		return getXEventNoCommentAccess().getRule();
+	}
+	
+	//XEventMLComment emachine::Event:
+	//	{emachine::Event} comment=ML_COMMENT
+	//	name=ID (extended?='extended'? & convergence=XConvergence?) ('refines' refines+=[emachine::Event]+)? (('with'
+	//	witnesses+=XWitness+)?
+	//	'begin'
+	//	actions+=XAction+
+	//	|
+	//	'when'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?
+	//	|
+	//	'any'
+	//	parameters+=XParameter+
+	//	'where'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?)?
+	//	'end'
+	public XEventMLCommentElements getXEventMLCommentAccess() {
+		return pXEventMLComment;
+	}
+	
+	public ParserRule getXEventMLCommentRule() {
+		return getXEventMLCommentAccess().getRule();
+	}
+	
+	//XEventSLComment emachine::Event:
+	//	{emachine::Event} name=ID (extended?='extended'? & convergence=XConvergence?) comment=SL_COMMENT ('refines'
+	//	refines+=[emachine::Event]+)? (('with' witnesses+=XWitness+)?
+	//	'begin'
+	//	actions+=XAction+
+	//	|
+	//	'when'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?
+	//	|
+	//	'any'
+	//	parameters+=XParameter+
+	//	'where'
+	//	guards+=XGuard+ ('with' witnesses+=XWitness+)? ('then'
+	//	actions+=XAction+)?)?
+	//	'end'
+	public XEventSLCommentElements getXEventSLCommentAccess() {
+		return pXEventSLComment;
+	}
+	
+	public ParserRule getXEventSLCommentRule() {
+		return getXEventSLCommentAccess().getRule();
 	}
 	
 	//enum XConvergence returns emachine::Convergence:
@@ -975,8 +2223,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XParameter emachine::Parameter:
-	//	{emachine::Parameter} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=ID
+	//	XParameterNoComment | XParameterMLComment | XParameterSLComment
 	public XParameterElements getXParameterAccess() {
 		return pXParameter;
 	}
@@ -985,9 +2232,40 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXParameterAccess().getRule();
 	}
 	
+	//XParameterNoComment emachine::Parameter:
+	//	{emachine::Parameter} name=ID
+	public XParameterNoCommentElements getXParameterNoCommentAccess() {
+		return pXParameterNoComment;
+	}
+	
+	public ParserRule getXParameterNoCommentRule() {
+		return getXParameterNoCommentAccess().getRule();
+	}
+	
+	//XParameterMLComment emachine::Parameter:
+	//	{emachine::Parameter} comment=ML_COMMENT
+	//	name=ID
+	public XParameterMLCommentElements getXParameterMLCommentAccess() {
+		return pXParameterMLComment;
+	}
+	
+	public ParserRule getXParameterMLCommentRule() {
+		return getXParameterMLCommentAccess().getRule();
+	}
+	
+	//XParameterSLComment emachine::Parameter:
+	//	{emachine::Parameter} name=ID
+	//	comment=SL_COMMENT
+	public XParameterSLCommentElements getXParameterSLCommentAccess() {
+		return pXParameterSLComment;
+	}
+	
+	public ParserRule getXParameterSLCommentRule() {
+		return getXParameterSLCommentAccess().getRule();
+	}
+	
 	//XGuard emachine::Guard:
-	//	{emachine::Guard} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	//	XGuardNoComment | XGuardMLComment | XGuardSLComment
 	public XGuardElements getXGuardAccess() {
 		return pXGuard;
 	}
@@ -996,9 +2274,40 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXGuardAccess().getRule();
 	}
 	
+	//XGuardNoComment emachine::Guard:
+	//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+	public XGuardNoCommentElements getXGuardNoCommentAccess() {
+		return pXGuardNoComment;
+	}
+	
+	public ParserRule getXGuardNoCommentRule() {
+		return getXGuardNoCommentAccess().getRule();
+	}
+	
+	//XGuardMLComment emachine::Guard:
+	//	{emachine::Guard} comment=ML_COMMENT
+	//	name=XLABEL predicate=STRING theorem?='theorem'?
+	public XGuardMLCommentElements getXGuardMLCommentAccess() {
+		return pXGuardMLComment;
+	}
+	
+	public ParserRule getXGuardMLCommentRule() {
+		return getXGuardMLCommentAccess().getRule();
+	}
+	
+	//XGuardSLComment emachine::Guard:
+	//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	comment=SL_COMMENT
+	public XGuardSLCommentElements getXGuardSLCommentAccess() {
+		return pXGuardSLComment;
+	}
+	
+	public ParserRule getXGuardSLCommentRule() {
+		return getXGuardSLCommentAccess().getRule();
+	}
+	
 	//XWitness emachine::Witness:
-	//	{emachine::Witness} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=XLABEL predicate=STRING
+	//	XWitnessNoComment | XWitnessMLComment | XWitnessSLComment
 	public XWitnessElements getXWitnessAccess() {
 		return pXWitness;
 	}
@@ -1007,15 +2316,78 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXWitnessAccess().getRule();
 	}
 	
+	//XWitnessNoComment emachine::Witness:
+	//	{emachine::Witness} name=XLABEL predicate=STRING
+	public XWitnessNoCommentElements getXWitnessNoCommentAccess() {
+		return pXWitnessNoComment;
+	}
+	
+	public ParserRule getXWitnessNoCommentRule() {
+		return getXWitnessNoCommentAccess().getRule();
+	}
+	
+	//XWitnessMLComment emachine::Witness:
+	//	{emachine::Witness} comment=ML_COMMENT
+	//	name=XLABEL predicate=STRING
+	public XWitnessMLCommentElements getXWitnessMLCommentAccess() {
+		return pXWitnessMLComment;
+	}
+	
+	public ParserRule getXWitnessMLCommentRule() {
+		return getXWitnessMLCommentAccess().getRule();
+	}
+	
+	//XWitnessSLComment emachine::Witness:
+	//	{emachine::Witness} name=XLABEL predicate=STRING
+	//	comment=SL_COMMENT
+	public XWitnessSLCommentElements getXWitnessSLCommentAccess() {
+		return pXWitnessSLComment;
+	}
+	
+	public ParserRule getXWitnessSLCommentRule() {
+		return getXWitnessSLCommentAccess().getRule();
+	}
+	
 	//XAction emachine::Action:
-	//	{emachine::Action} comment=(ML_COMMENT | SL_COMMENT)?
-	//	name=XLABEL action=STRING
+	//	XActionNoComment | XActionMLComment | XActionSLComment
 	public XActionElements getXActionAccess() {
 		return pXAction;
 	}
 	
 	public ParserRule getXActionRule() {
 		return getXActionAccess().getRule();
+	}
+	
+	//XActionNoComment emachine::Action:
+	//	{emachine::Action} name=XLABEL action=STRING
+	public XActionNoCommentElements getXActionNoCommentAccess() {
+		return pXActionNoComment;
+	}
+	
+	public ParserRule getXActionNoCommentRule() {
+		return getXActionNoCommentAccess().getRule();
+	}
+	
+	//XActionMLComment emachine::Action:
+	//	{emachine::Action} comment=ML_COMMENT
+	//	name=XLABEL action=STRING
+	public XActionMLCommentElements getXActionMLCommentAccess() {
+		return pXActionMLComment;
+	}
+	
+	public ParserRule getXActionMLCommentRule() {
+		return getXActionMLCommentAccess().getRule();
+	}
+	
+	//XActionSLComment emachine::Action:
+	//	{emachine::Action} name=XLABEL action=STRING
+	//	comment=SL_COMMENT
+	public XActionSLCommentElements getXActionSLCommentAccess() {
+		return pXActionSLComment;
+	}
+	
+	public ParserRule getXActionSLCommentRule() {
+		return getXActionSLCommentAccess().getRule();
 	}
 	
 	//terminal ID:

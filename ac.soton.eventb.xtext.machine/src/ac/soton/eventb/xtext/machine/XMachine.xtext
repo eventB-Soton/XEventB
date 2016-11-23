@@ -14,21 +14,51 @@ XMachine returns emachine::Machine:
 	('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
 	('variant' variant=XVariant)?
-	('events' events+=XEvent (';' events+=XEvent)*)?
+	('events' events+=XEvent (events+=XEvent)*)?
 	('end')
 ;
 
 
 XVariable returns emachine::Variable:
+	XVariableNoComment | XVariableMLComment | XVariableSLComment
+;
+
+XVariableNoComment returns emachine::Variable:
 	{emachine::Variable}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=ID
 ;
 
+XVariableMLComment returns emachine::Variable:
+	{emachine::Variable}
+	comment=ML_COMMENT
+	name=ID
+;
+
+XVariableSLComment returns emachine::Variable:
+	{emachine::Variable}
+	name=ID
+	comment=SL_COMMENT
+;
+
 XInvariant returns emachine::Invariant:
+	XInvariantNoComment | XInvariantMLComment | XInvariantSLComment
+;
+
+XInvariantNoComment returns emachine::Invariant:
 	{emachine::Invariant}
-	(comment=(ML_COMMENT|SL_COMMENT))?
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=STRING (theorem?='theorem')?	
+;
+
+XInvariantMLComment returns emachine::Invariant:
+	{emachine::Invariant}
+	comment=ML_COMMENT
+	name=XLABEL predicate=STRING (theorem?='theorem')?	
+;
+
+XInvariantSLComment returns emachine::Invariant:
+	{emachine::Invariant}
+	name=XLABEL predicate=STRING (theorem?='theorem')?	
+	comment=SL_COMMENT
 ;
 
 terminal XLABEL returns ecore::EString:
@@ -36,14 +66,32 @@ terminal XLABEL returns ecore::EString:
 ;
 
 XVariant returns emachine::Variant:
+	XVariantNoComment | XVariantMLComment | XVariantSLComment
+;
+
+XVariantNoComment returns emachine::Variant:
 	{emachine::Variant}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	expression=STRING
 ;
 
+XVariantMLComment returns emachine::Variant:
+	{emachine::Variant}
+	comment=ML_COMMENT
+	expression=STRING
+;
+
+XVariantSLComment returns emachine::Variant:
+	{emachine::Variant}
+	expression=STRING
+	comment=SL_COMMENT
+;
+
 XEvent returns emachine::Event:
+	XEventNoComment | XEventMLComment | XEventSLComment
+;
+
+XEventNoComment returns emachine::Event:
 	{emachine::Event}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=ID
 	(
 		(extended?='extended')? &
@@ -54,14 +102,12 @@ XEvent returns emachine::Event:
 		('with' witnesses+=XWitness+)?
 		'begin'
 			actions+=XAction+
-		'end'
 		|	
 		'when'
 			guards+=XGuard+
 		('with' witnesses+=XWitness+)?
 		('then'
 			actions+=XAction+)?
-		'end'
 		|
 		'any'
 			parameters+=XParameter+
@@ -70,33 +116,155 @@ XEvent returns emachine::Event:
 		('with' witnesses+=XWitness+)?
 		('then'
 			actions+=XAction+)?
-		'end'
-	)?
+	)?	
+	'end'
+;
+
+XEventMLComment returns emachine::Event:
+	{emachine::Event}
+	comment=ML_COMMENT
+	name=ID
+	(
+		(extended?='extended')? &
+		(convergence=XConvergence)?
+	)
+	('refines' refines+=[emachine::Event]+)?
+	(
+		('with' witnesses+=XWitness+)?
+		'begin'
+			actions+=XAction+
+		|	
+		'when'
+			guards+=XGuard+
+		('with' witnesses+=XWitness+)?
+		('then'
+			actions+=XAction+)?
+		|
+		'any'
+			parameters+=XParameter+
+		'where'
+			guards+=XGuard+
+		('with' witnesses+=XWitness+)?
+		('then'
+			actions+=XAction+)?
+	)?	
+	'end'
+;
+
+XEventSLComment returns emachine::Event:
+	{emachine::Event}
+	name=ID
+	(
+		(extended?='extended')? &
+		(convergence=XConvergence)?
+	)
+	comment=SL_COMMENT
+	('refines' refines+=[emachine::Event]+)?
+	(
+		('with' witnesses+=XWitness+)?
+		'begin'
+			actions+=XAction+
+		|	
+		'when'
+			guards+=XGuard+
+		('with' witnesses+=XWitness+)?
+		('then'
+			actions+=XAction+)?
+		|
+		'any'
+			parameters+=XParameter+
+		'where'
+			guards+=XGuard+
+		('with' witnesses+=XWitness+)?
+		('then'
+			actions+=XAction+)?
+	)?	
+	'end'
 ;
 
 enum XConvergence returns emachine::Convergence:
 				ordinary = 'ordinary' | convergent = 'convergent' | anticipated = 'anticipated';
 
 XParameter returns emachine::Parameter:
+	XParameterNoComment | XParameterMLComment | XParameterSLComment
+;
+
+XParameterNoComment returns emachine::Parameter:
 	{emachine::Parameter}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=ID
 ;
 
+XParameterMLComment returns emachine::Parameter:
+	{emachine::Parameter}
+	comment=ML_COMMENT
+	name=ID
+;
+
+XParameterSLComment returns emachine::Parameter:
+	{emachine::Parameter}
+	name=ID
+	comment=SL_COMMENT
+;
+
 XGuard returns emachine::Guard:
+	XGuardNoComment | XGuardMLComment | XGuardSLComment
+;
+
+XGuardNoComment returns emachine::Guard:
 	{emachine::Guard}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=XLABEL predicate=STRING (theorem?='theorem')?
 ;
 
+XGuardMLComment returns emachine::Guard:
+	{emachine::Guard}
+	comment=ML_COMMENT
+	name=XLABEL predicate=STRING (theorem?='theorem')?
+;
+
+XGuardSLComment returns emachine::Guard:
+	{emachine::Guard}
+	name=XLABEL predicate=STRING (theorem?='theorem')?
+	comment=SL_COMMENT
+;
+
 XWitness returns emachine::Witness:
+	XWitnessNoComment | XWitnessMLComment | XWitnessSLComment
+;
+
+XWitnessNoComment returns emachine::Witness:
 	{emachine::Witness}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=XLABEL predicate=STRING
 ;
 
+XWitnessMLComment returns emachine::Witness:
+	{emachine::Witness}
+	comment=ML_COMMENT
+	name=XLABEL predicate=STRING
+;
+
+XWitnessSLComment returns emachine::Witness:
+	{emachine::Witness}
+	name=XLABEL predicate=STRING
+	comment=SL_COMMENT
+;
+
 XAction returns emachine::Action:
+	XActionNoComment | XActionMLComment | XActionSLComment
+;
+
+XActionNoComment returns emachine::Action:
 	{emachine::Action}
-	(comment=(ML_COMMENT|SL_COMMENT))?
 	name=XLABEL action=STRING
+;
+
+XActionMLComment returns emachine::Action:
+	{emachine::Action}
+	comment=ML_COMMENT
+	name=XLABEL action=STRING
+;
+
+XActionSLComment returns emachine::Action:
+	{emachine::Action}
+	name=XLABEL action=STRING
+	comment=SL_COMMENT
 ;

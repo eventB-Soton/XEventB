@@ -16,7 +16,9 @@ import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 
 import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess;
-import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventElements;
+import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventMLCommentElements;
+import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventNoCommentElements;
+import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventSLCommentElements;
 import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XMachineElements;
 
 /**
@@ -82,7 +84,7 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 		// Put an empty line before each variable.
 		c.setLinewrap(2).before(f.getXVariableRule());
 		// Start a new line after each multi-line comment for variables.
-		c.setLinewrap().after(f.getXVariableAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXVariableMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each variable.
 		c.setIndentationIncrement().before(xMachineElements.getVariablesAssignment_6_1());
 		// Start a new line after each variable.
@@ -99,7 +101,7 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 		// Put an empty line before each invariant.
 		c.setLinewrap(2).before(f.getXInvariantRule());
 		// Start a new line after each multi-line comment for invariants.
-		c.setLinewrap().after(f.getXInvariantAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXInvariantMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each invariant.
 		c.setIndentationIncrement().before(xMachineElements.getInvariantsAssignment_7_1());
 		// Start a new line after each invariant.
@@ -109,7 +111,9 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 
 		// **events** clause
 		Keyword eventsKeyword = xMachineElements.getEventsKeyword_9_0();
-		XEventElements xEventElements = f.getXEventAccess();
+		XEventNoCommentElements xEventNoCommentElements = f.getXEventNoCommentAccess();
+		XEventMLCommentElements xEventMLCommentElements = f.getXEventMLCommentAccess();
+		XEventSLCommentElements xEventSLCommentElements = f.getXEventSLCommentAccess();
 		// Put a blank line before the **events** keyword.
 		c.setLinewrap(2).before(eventsKeyword);
 		// Start a new line after the **events** keyword.
@@ -117,119 +121,181 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 		// Put an empty line before each event.
 		c.setLinewrap(2).before(f.getXEventRule());
 		// Start a new line after each multi-line comment for events.
-		c.setLinewrap().after(xEventElements.getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(xEventMLCommentElements.getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each event.
 		c.setIndentationIncrement().before(xMachineElements.getEventsAssignment_9_1());
 		// Indent one level before each event.
-		c.setIndentationIncrement().before(xMachineElements.getEventsAssignment_9_2_1());
+		c.setIndentationIncrement().before(xMachineElements.getEventsAssignment_9_2());
 		// Start a new line after each event.
 		c.setLinewrap().after(f.getXEventRule());
 		// Un-indent one level after each event.
 		c.setIndentationDecrement().after(xMachineElements.getEventsAssignment_9_1());
 		// Un-indent one level after each event.
-		c.setIndentationDecrement().after(xMachineElements.getEventsAssignment_9_2_1());
+		c.setIndentationDecrement().after(xMachineElements.getEventsAssignment_9_2());
 
 		
 		// Start a new line before the **refines** keyword.
-		c.setLinewrap().before(xEventElements.getRefinesKeyword_4_0());
+		c.setLinewrap().before(xEventNoCommentElements.getRefinesKeyword_3_0());
+		c.setLinewrap().before(xEventMLCommentElements.getRefinesKeyword_4_0());
+		c.setLinewrap().before(xEventSLCommentElements.getRefinesKeyword_4_0());
 		// Set no new line for the refined event
-		c.setNoLinewrap().before(xEventElements.getRefinesAssignment_4_1());
+		c.setNoLinewrap().before(xEventNoCommentElements.getRefinesAssignment_3_1());
+		c.setNoLinewrap().before(xEventMLCommentElements.getRefinesAssignment_4_1());
+		c.setNoLinewrap().before(xEventSLCommentElements.getRefinesAssignment_4_1());
 		
 		// Start a new line before the **with** keyword.
-		c.setLinewrap().before(xEventElements.getWithKeyword_5_0_0_0());
+		c.setLinewrap().before(xEventNoCommentElements.getWithKeyword_4_0_0_0());
+		c.setLinewrap().before(xEventMLCommentElements.getWithKeyword_5_0_0_0());
+		c.setLinewrap().before(xEventSLCommentElements.getWithKeyword_5_0_0_0());
 		// Start a new line before each witness.
 		c.setLinewrap().before(f.getXWitnessRule());
 		// Start a new line after each multi-line comment for witnesses.
-		c.setLinewrap().after(f.getXWitnessAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXWitnessMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each witness.
-		c.setIndentationIncrement().before(xEventElements.getWitnessesAssignment_5_0_0_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getWitnessesAssignment_4_0_0_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getWitnessesAssignment_5_0_0_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getWitnessesAssignment_5_0_0_1());
 		// Start a new line after each witness.
 		c.setLinewrap().after(f.getXWitnessRule());
 		// Un-indent one level after each witness.
-		c.setIndentationDecrement().after(xEventElements.getWitnessesAssignment_5_0_0_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getWitnessesAssignment_4_0_0_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getWitnessesAssignment_5_0_0_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getWitnessesAssignment_5_0_0_1());
 		
 		// Start a new line before the **begin** keyword.
-		c.setLinewrap().before(xEventElements.getBeginKeyword_5_0_1());
+		c.setLinewrap().before(xEventNoCommentElements.getBeginKeyword_4_0_1());
+		c.setLinewrap().before(xEventMLCommentElements.getBeginKeyword_5_0_1());
+		c.setLinewrap().before(xEventSLCommentElements.getBeginKeyword_5_0_1());
 		// Start a new line before each action.
 		c.setLinewrap().before(f.getXActionRule());
 		// Start a new line after each action.
 		c.setLinewrap().after(f.getXActionRule());
 		// Start a new line after each multi-line comment for actions.
-		c.setLinewrap().after(f.getXActionAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXActionMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each action.
-		c.setIndentationIncrement().before(xEventElements.getActionsAssignment_5_0_2());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getActionsAssignment_4_0_2());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getActionsAssignment_5_0_2());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getActionsAssignment_5_0_2());
 		// Un-indent one level after each action.
-		c.setIndentationDecrement().after(xEventElements.getActionsAssignment_5_0_2());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getActionsAssignment_4_0_2());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getActionsAssignment_5_0_2());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getActionsAssignment_5_0_2());
 
 		// Start a new line before the **end** keyword.
-		c.setLinewrap().before(xEventElements.getEndKeyword_5_0_3());
+		c.setLinewrap().before(xEventNoCommentElements.getEndKeyword_5());
+		c.setLinewrap().before(xEventMLCommentElements.getEndKeyword_6());
+		c.setLinewrap().before(xEventSLCommentElements.getEndKeyword_6());
 
 		// Start a new line before the **when** keyword.
-		c.setLinewrap().before(xEventElements.getWhenKeyword_5_1_0());
+		c.setLinewrap().before(xEventNoCommentElements.getWhenKeyword_4_1_0());
+		c.setLinewrap().before(xEventMLCommentElements.getWhenKeyword_5_1_0());
+		c.setLinewrap().before(xEventSLCommentElements.getWhenKeyword_5_1_0());
 		// Start a new line before each guard.
 		c.setLinewrap().before(f.getXGuardRule());
 		// Start a new line after each guard.
 		c.setLinewrap().after(f.getXGuardRule());
 		// Start a new line after each multi-line comment for guards.
-		c.setLinewrap().after(f.getXGuardAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXGuardMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each guard.
-		c.setIndentationIncrement().before(xEventElements.getGuardsAssignment_5_1_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getGuardsAssignment_4_1_1());
 		// Un-indent one level after each guard.
-		c.setIndentationDecrement().after(xEventElements.getGuardsAssignment_5_1_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getGuardsAssignment_4_1_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getGuardsAssignment_5_1_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getGuardsAssignment_5_1_1());
 
 		// Start a new line before the **with** keyword.
-		c.setLinewrap().before(xEventElements.getWithKeyword_5_1_2_0());
+		c.setLinewrap().before(xEventNoCommentElements.getWithKeyword_4_1_2_0());
+		c.setLinewrap().before(xEventMLCommentElements.getWithKeyword_5_1_2_0());
+		c.setLinewrap().before(xEventSLCommentElements.getWithKeyword_5_1_2_0());
 		// Indent one level before each witness.
-		c.setIndentationIncrement().before(xEventElements.getWitnessesAssignment_5_1_2_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getWitnessesAssignment_4_1_2_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getWitnessesAssignment_5_1_2_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getWitnessesAssignment_5_1_2_1());
 		// Un-indent one level after each witness.
-		c.setIndentationDecrement().after(xEventElements.getWitnessesAssignment_5_1_2_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getWitnessesAssignment_4_1_2_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getWitnessesAssignment_5_1_2_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getWitnessesAssignment_5_1_2_1());
 
 		// Start a new line before the **then** keyword.
-		c.setLinewrap().before(xEventElements.getThenKeyword_5_1_3_0());
+		c.setLinewrap().before(xEventNoCommentElements.getThenKeyword_4_1_3_0());
+		c.setLinewrap().before(xEventMLCommentElements.getThenKeyword_5_1_3_0());
+		c.setLinewrap().before(xEventSLCommentElements.getThenKeyword_5_1_3_0());
 		// Indent one level before each action.
-		c.setIndentationIncrement().before(xEventElements.getActionsAssignment_5_1_3_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getActionsAssignment_4_1_3_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getActionsAssignment_5_1_3_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getActionsAssignment_5_1_3_1());
 		// Un-indent one level after each action.
-		c.setIndentationDecrement().after(xEventElements.getActionsAssignment_5_1_3_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getActionsAssignment_4_1_3_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getActionsAssignment_5_1_3_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getActionsAssignment_5_1_3_1());
 
 		// Start a new line before the **end** keyword.
-		c.setLinewrap().before(xEventElements.getEndKeyword_5_1_4());
+		c.setLinewrap().before(xEventNoCommentElements.getEndKeyword_5());
+		c.setLinewrap().before(xEventMLCommentElements.getEndKeyword_6());
+		c.setLinewrap().before(xEventSLCommentElements.getEndKeyword_6());
 
 		// Start a new line before the **any** keyword.
-		c.setLinewrap().before(xEventElements.getAnyKeyword_5_2_0());
+		c.setLinewrap().before(xEventNoCommentElements.getAnyKeyword_4_2_0());
+		c.setLinewrap().before(xEventMLCommentElements.getAnyKeyword_5_2_0());
+		c.setLinewrap().before(xEventSLCommentElements.getAnyKeyword_5_2_0());
 		// Start a new line before each parameter.
 		c.setLinewrap().before(f.getXParameterRule());
 		// Start a new line after each parameter.
 		c.setLinewrap().after(f.getXParameterRule());
 		// Start a new line after each multi-line comment for parameter.
-		c.setLinewrap().after(f.getXParameterAccess().getCommentML_COMMENTTerminalRuleCall_1_0_0());
+		c.setLinewrap().after(f.getXParameterMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0());
 		// Indent one level before each parameter.
-		c.setIndentationIncrement().before(xEventElements.getParametersAssignment_5_2_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getParametersAssignment_4_2_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getParametersAssignment_5_2_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getParametersAssignment_5_2_1());
 		// Un-indent one level after each action.
-		c.setIndentationDecrement().after(xEventElements.getParametersAssignment_5_2_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getParametersAssignment_4_2_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getParametersAssignment_5_2_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getParametersAssignment_5_2_1());
 
 		// Start a new line before the **where** keyword.
-		c.setLinewrap().before(xEventElements.getWhereKeyword_5_2_2());
+		c.setLinewrap().before(xEventNoCommentElements.getWhereKeyword_4_2_2());
+		c.setLinewrap().before(xEventMLCommentElements.getWhereKeyword_5_2_2());
+		c.setLinewrap().before(xEventSLCommentElements.getWhereKeyword_5_2_2());
 		// Indent one level before each guard.
-		c.setIndentationIncrement().before(xEventElements.getGuardsAssignment_5_2_3());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getGuardsAssignment_4_2_3());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getGuardsAssignment_5_2_3());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getGuardsAssignment_5_2_3());
 		// Un-indent one level after each guard.
-		c.setIndentationDecrement().after(xEventElements.getGuardsAssignment_5_2_3());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getGuardsAssignment_4_2_3());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getGuardsAssignment_5_2_3());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getGuardsAssignment_5_2_3());
 
 		// Start a new line before the **with** keyword.
-		c.setLinewrap().before(xEventElements.getWithKeyword_5_2_4_0());
+		c.setLinewrap().before(xEventNoCommentElements.getWithKeyword_4_2_4_0());
+		c.setLinewrap().before(xEventMLCommentElements.getWithKeyword_5_2_4_0());
+		c.setLinewrap().before(xEventSLCommentElements.getWithKeyword_5_2_4_0());
 		// Indent one level before each witness.
-		c.setIndentationIncrement().before(xEventElements.getWitnessesAssignment_5_2_4_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getWitnessesAssignment_4_2_4_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getWitnessesAssignment_5_2_4_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getWitnessesAssignment_5_2_4_1());
 		// Un-indent one level after each witness.
-		c.setIndentationDecrement().after(xEventElements.getWitnessesAssignment_5_2_4_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getWitnessesAssignment_4_2_4_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getWitnessesAssignment_5_2_4_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getWitnessesAssignment_5_2_4_1());
 
 		// Start a new line before the **then** keyword.
-		c.setLinewrap().before(xEventElements.getThenKeyword_5_2_5_0());
+		c.setLinewrap().before(xEventNoCommentElements.getThenKeyword_4_2_5_0());
+		c.setLinewrap().before(xEventMLCommentElements.getThenKeyword_5_2_5_0());
+		c.setLinewrap().before(xEventSLCommentElements.getThenKeyword_5_2_5_0());
 		// Indent one level before each action.
-		c.setIndentationIncrement().before(xEventElements.getActionsAssignment_5_2_5_1());
+		c.setIndentationIncrement().before(xEventNoCommentElements.getActionsAssignment_4_2_5_1());
+		c.setIndentationIncrement().before(xEventMLCommentElements.getActionsAssignment_5_2_5_1());
+		c.setIndentationIncrement().before(xEventSLCommentElements.getActionsAssignment_5_2_5_1());
 		// Un-indent one level after each action.
-		c.setIndentationDecrement().after(xEventElements.getActionsAssignment_5_2_5_1());
+		c.setIndentationDecrement().after(xEventNoCommentElements.getActionsAssignment_4_2_5_1());
+		c.setIndentationDecrement().after(xEventMLCommentElements.getActionsAssignment_5_2_5_1());
+		c.setIndentationDecrement().after(xEventSLCommentElements.getActionsAssignment_5_2_5_1());
 
 		// Start a new line before the **end** keyword.
-		c.setLinewrap().before(xEventElements.getEndKeyword_5_2_6());
+		c.setLinewrap().before(xEventNoCommentElements.getEndKeyword_5());
+		c.setLinewrap().before(xEventMLCommentElements.getEndKeyword_6());
+		c.setLinewrap().before(xEventSLCommentElements.getEndKeyword_6());
 
 		// No space nor line wrap before **;** keyword.
 		for (Keyword comma : f.findKeywords(";")) {
