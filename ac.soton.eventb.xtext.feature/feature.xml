@@ -2,11 +2,11 @@
 <feature
       id="ac.soton.eventb.xtext.feature"
       label="%featureName"
-      version="0.0.3.release"
+      version="0.0.4.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.xtext.branding"
       license-feature="org.rodinp.license"
-      license-feature-version="1.0.0.qualifier">
+      license-feature-version="1.0.0.release">
 
    <description>
       %featureDescription
@@ -19,6 +19,41 @@
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
    </url>
+
+   <requires>
+      <import plugin="org.eclipse.xtext.ui" version="2.10.0" match="compatible"/>
+      <import plugin="org.rodinp.keyboard.core" version="2.0.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="4.2.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.eclipse.xtext.xbase"/>
+      <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.eventb.emf.persistence" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="ch.ethz.eventb.utils" version="0.2.3" match="greaterOrEqual"/>
+      <import plugin="org.eventb.core" version="3.2.0" match="greaterOrEqual"/>
+      <import plugin="org.rodinp.core" version="1.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.runtime" version="3.10.0" match="greaterOrEqual"/>
+      <import plugin="org.rodinp.core.emf" version="1.1.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.xtext.ide"/>
+      <import plugin="org.eclipse.xtext.xbase.ide"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="ac.soton.eventb.xtext.common" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.common"/>
+   </requires>
 
    <plugin
          id="ac.soton.eventb.xtext.branding"

@@ -2,10 +2,10 @@
 <feature
       id="ac.soton.eventb.xtext.sdk"
       label="%featureName"
-      version="0.0.3.release"
+      version="0.0.4.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.license"
-      license-feature-version="1.0.0.qualifier">
+      license-feature-version="1.0.0.release">
 
    <description>
       %featureDescription
@@ -26,6 +26,20 @@
    <includes
          id="ac.soton.eventb.xtext.feature"
          version="0.0.0"/>
+
+   <requires>
+      <import plugin="ac.soton.eventb.xtext.context"/>
+      <import plugin="org.eventb.emf.core"/>
+      <import plugin="org.junit" version="4.7.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.junit4"/>
+      <import plugin="org.eclipse.xtext.xbase.junit"/>
+      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.hamcrest.core"/>
+      <import plugin="ac.soton.eventb.xtext.context.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="ac.soton.eventb.xtext.machine"/>
+      <import plugin="ac.soton.eventb.xtext.machine.ui"/>
+   </requires>
 
    <plugin
          id="ac.soton.eventb.xtext.branding.source"
