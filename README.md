@@ -4,6 +4,9 @@ This feature provides XText-based editors for Event-B machines and contexts.
 
 Release history:
 -------------
+**0.0.4**
+  - Event-B XText feature (0.0.4): Update the plug-in dependency for the feature
+  - Event-B XText SDK feature (0.0.4): Update the plug-in dependency for the feature
 **0.0.3**
   - Event-B XText Context (0.0.3) 
     + Issue #3: Single-line comment after the element, multi-line comment before
