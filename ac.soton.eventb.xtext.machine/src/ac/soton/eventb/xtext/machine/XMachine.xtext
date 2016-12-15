@@ -11,13 +11,24 @@ XMachine returns emachine::Machine:
 	'machine' name=ID
 	('refines' refines+=[emachine::Machine])?
 	('sees' sees+=[econtext::Context]+)?
+	('includes' XIncludedMachine)?
 	('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
 	('variant' variant=XVariant)?
 	('events' events+=XEvent (events+=XEvent)*)?
 	('end')
 ;
+XIncludedMachine:
+	XAbstractMachine | XMachineChain 
+;
 
+XAbstractMachine:
+	ID ('as' ID+)?
+;
+
+XMachineChain:
+	ID 'to' ID ('as' ID+)?
+;
 
 XVariable returns emachine::Variable:
 	XVariableNoComment | XVariableMLComment | XVariableSLComment
@@ -97,7 +108,9 @@ XEventNoComment returns emachine::Event:
 		(extended?='extended')? &
 		(convergence=XConvergence)?
 	)
+	('synchronises' XSynchronisedEvent+)?
 	('refines' refines+=[emachine::Event]+)?
+	
 	(
 		('with' witnesses+=XWitness+)?
 		'begin'
@@ -128,7 +141,9 @@ XEventMLComment returns emachine::Event:
 		(extended?='extended')? &
 		(convergence=XConvergence)?
 	)
+	('synchronises' XSynchronisedEvent+)?
 	('refines' refines+=[emachine::Event]+)?
+	
 	(
 		('with' witnesses+=XWitness+)?
 		'begin'
@@ -157,8 +172,10 @@ XEventSLComment returns emachine::Event:
 	(
 		(extended?='extended')? &
 		(convergence=XConvergence)?
+		
 	)
 	comment=SL_COMMENT
+	('synchronises' XSynchronisedEvent+)?
 	('refines' refines+=[emachine::Event]+)?
 	(
 		('with' witnesses+=XWitness+)?
@@ -180,6 +197,10 @@ XEventSLComment returns emachine::Event:
 			actions+=XAction+)?
 	)?	
 	'end'
+;
+
+XSynchronisedEvent:
+	ID('.'ID)?
 ;
 
 enum XConvergence returns emachine::Convergence:

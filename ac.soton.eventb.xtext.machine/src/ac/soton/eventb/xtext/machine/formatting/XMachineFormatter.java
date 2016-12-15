@@ -35,7 +35,7 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 	
 	@Override
 	protected void configureFormatting(FormattingConfig c) {
-		XMachineGrammarAccess f = (XMachineGrammarAccess) getGrammarAccess();
+		/*XMachineGrammarAccess f = (XMachineGrammarAccess) getGrammarAccess();
 		XMachineElements xMachineElements = f.getXMachineAccess();
 
         // set a maximum size of lines
@@ -305,6 +305,6 @@ public class XMachineFormatter extends AbstractDeclarativeFormatter {
 		
 		// **end** keyword for **machine**
 		// Put a blank line before the "end" keyword.
-		c.setLinewrap(2).before(xMachineElements.getEndKeyword_10());
+		c.setLinewrap(2).before(xMachineElements.getEndKeyword_10());*/
 	}
 }
