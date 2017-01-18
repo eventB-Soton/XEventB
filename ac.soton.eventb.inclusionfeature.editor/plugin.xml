@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated inclusionfeature -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="ac.soton.eventb.featureinclusion.presentation.FeatureinclusionModelWizardID"
+            name="%_UI_FeatureinclusionModelWizard_label"
+            class="ac.soton.eventb.featureinclusion.presentation.FeatureinclusionModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/FeatureinclusionModelFile.gif">
+         <description>%_UI_FeatureinclusionModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated inclusionfeature -->
+      <editor
+            id="ac.soton.eventb.featureinclusion.presentation.FeatureinclusionEditorID"
+            name="%_UI_FeatureinclusionEditor_label"
+            icon="icons/full/obj16/FeatureinclusionModelFile.gif"
+            extensions="featureinclusion"
+            class="ac.soton.eventb.featureinclusion.presentation.FeatureinclusionEditor"
+            contributorClass="ac.soton.eventb.featureinclusion.presentation.FeatureinclusionActionBarContributor">
+      </editor>
+   </extension>
+</plugin>
