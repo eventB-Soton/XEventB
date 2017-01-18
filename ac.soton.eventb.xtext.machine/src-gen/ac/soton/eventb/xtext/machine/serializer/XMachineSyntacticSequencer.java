@@ -11,9 +11,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
-import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
 import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 
@@ -21,50 +18,17 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XMachineGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_XEventMLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q;
-	protected AbstractElementAlias match_XEventNoComment___SynchronisesKeyword_3_0_XSynchronisedEventParserRuleCall_3_1_p__q;
-	protected AbstractElementAlias match_XEventSLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q;
-	protected AbstractElementAlias match_XMachine___IncludesKeyword_6_0_XIncludedMachineParserRuleCall_6_1__q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XMachineGrammarAccess) access;
-		match_XEventMLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXEventMLCommentAccess().getSynchronisesKeyword_4_0()), new TokenAlias(true, false, grammarAccess.getXEventMLCommentAccess().getXSynchronisedEventParserRuleCall_4_1()));
-		match_XEventNoComment___SynchronisesKeyword_3_0_XSynchronisedEventParserRuleCall_3_1_p__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXEventNoCommentAccess().getSynchronisesKeyword_3_0()), new TokenAlias(true, false, grammarAccess.getXEventNoCommentAccess().getXSynchronisedEventParserRuleCall_3_1()));
-		match_XEventSLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXEventSLCommentAccess().getSynchronisesKeyword_4_0()), new TokenAlias(true, false, grammarAccess.getXEventSLCommentAccess().getXSynchronisedEventParserRuleCall_4_1()));
-		match_XMachine___IncludesKeyword_6_0_XIncludedMachineParserRuleCall_6_1__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXMachineAccess().getIncludesKeyword_6_0()), new TokenAlias(false, false, grammarAccess.getXMachineAccess().getXIncludedMachineParserRuleCall_6_1()));
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getXIncludedMachineRule())
-			return getXIncludedMachineToken(semanticObject, ruleCall, node);
-		else if (ruleCall.getRule() == grammarAccess.getXSynchronisedEventRule())
-			return getXSynchronisedEventToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * XIncludedMachine:
-	 * 	XAbstractMachine | XMachineChain 
-	 * ;
-	 */
-	protected String getXIncludedMachineToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
-	
-	/**
-	 * XSynchronisedEvent:
-	 * 	ID('.'ID)?
-	 * ;
-	 */
-	protected String getXSynchronisedEventToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -72,113 +36,8 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_XEventMLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q.equals(syntax))
-				emit_XEventMLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XEventNoComment___SynchronisesKeyword_3_0_XSynchronisedEventParserRuleCall_3_1_p__q.equals(syntax))
-				emit_XEventNoComment___SynchronisesKeyword_3_0_XSynchronisedEventParserRuleCall_3_1_p__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XEventSLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q.equals(syntax))
-				emit_XEventSLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XMachine___IncludesKeyword_6_0_XIncludedMachineParserRuleCall_6_1__q.equals(syntax))
-				emit_XMachine___IncludesKeyword_6_0_XIncludedMachineParserRuleCall_6_1__q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else acceptNodes(getLastNavigableState(), syntaxNodes);
+			acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
-	/**
-	 * Ambiguous syntax:
-	 *     ('synchronises' XSynchronisedEvent+)?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     convergence=XConvergence (ambiguity) 'any' parameters+=XParameter
-	 *     convergence=XConvergence (ambiguity) 'begin' actions+=XAction
-	 *     convergence=XConvergence (ambiguity) 'end' (rule end)
-	 *     convergence=XConvergence (ambiguity) 'refines' refines+=[Event|ID]
-	 *     convergence=XConvergence (ambiguity) 'when' guards+=XGuard
-	 *     convergence=XConvergence (ambiguity) 'with' witnesses+=XWitness
-	 *     extended?='extended' (ambiguity) 'any' parameters+=XParameter
-	 *     extended?='extended' (ambiguity) 'begin' actions+=XAction
-	 *     extended?='extended' (ambiguity) 'end' (rule end)
-	 *     extended?='extended' (ambiguity) 'refines' refines+=[Event|ID]
-	 *     extended?='extended' (ambiguity) 'when' guards+=XGuard
-	 *     extended?='extended' (ambiguity) 'with' witnesses+=XWitness
-	 *     name=ID (ambiguity) 'any' parameters+=XParameter
-	 *     name=ID (ambiguity) 'begin' actions+=XAction
-	 *     name=ID (ambiguity) 'end' (rule end)
-	 *     name=ID (ambiguity) 'refines' refines+=[Event|ID]
-	 *     name=ID (ambiguity) 'when' guards+=XGuard
-	 *     name=ID (ambiguity) 'with' witnesses+=XWitness
-	 */
-	protected void emit_XEventMLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('synchronises' XSynchronisedEvent+)?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     convergence=XConvergence (ambiguity) 'any' parameters+=XParameter
-	 *     convergence=XConvergence (ambiguity) 'begin' actions+=XAction
-	 *     convergence=XConvergence (ambiguity) 'end' (rule end)
-	 *     convergence=XConvergence (ambiguity) 'refines' refines+=[Event|ID]
-	 *     convergence=XConvergence (ambiguity) 'when' guards+=XGuard
-	 *     convergence=XConvergence (ambiguity) 'with' witnesses+=XWitness
-	 *     extended?='extended' (ambiguity) 'any' parameters+=XParameter
-	 *     extended?='extended' (ambiguity) 'begin' actions+=XAction
-	 *     extended?='extended' (ambiguity) 'end' (rule end)
-	 *     extended?='extended' (ambiguity) 'refines' refines+=[Event|ID]
-	 *     extended?='extended' (ambiguity) 'when' guards+=XGuard
-	 *     extended?='extended' (ambiguity) 'with' witnesses+=XWitness
-	 *     name=ID (ambiguity) 'any' parameters+=XParameter
-	 *     name=ID (ambiguity) 'begin' actions+=XAction
-	 *     name=ID (ambiguity) 'end' (rule end)
-	 *     name=ID (ambiguity) 'refines' refines+=[Event|ID]
-	 *     name=ID (ambiguity) 'when' guards+=XGuard
-	 *     name=ID (ambiguity) 'with' witnesses+=XWitness
-	 */
-	protected void emit_XEventNoComment___SynchronisesKeyword_3_0_XSynchronisedEventParserRuleCall_3_1_p__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('synchronises' XSynchronisedEvent+)?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     comment=SL_COMMENT (ambiguity) 'any' parameters+=XParameter
-	 *     comment=SL_COMMENT (ambiguity) 'begin' actions+=XAction
-	 *     comment=SL_COMMENT (ambiguity) 'end' (rule end)
-	 *     comment=SL_COMMENT (ambiguity) 'refines' refines+=[Event|ID]
-	 *     comment=SL_COMMENT (ambiguity) 'when' guards+=XGuard
-	 *     comment=SL_COMMENT (ambiguity) 'with' witnesses+=XWitness
-	 */
-	protected void emit_XEventSLComment___SynchronisesKeyword_4_0_XSynchronisedEventParserRuleCall_4_1_p__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     ('includes' XIncludedMachine)?
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     name=ID (ambiguity) 'end' (rule end)
-	 *     name=ID (ambiguity) 'events' events+=XEvent
-	 *     name=ID (ambiguity) 'invariants' invariants+=XInvariant
-	 *     name=ID (ambiguity) 'variables' variables+=XVariable
-	 *     name=ID (ambiguity) 'variant' variant=XVariant
-	 *     refines+=[Machine|ID] (ambiguity) 'end' (rule end)
-	 *     refines+=[Machine|ID] (ambiguity) 'events' events+=XEvent
-	 *     refines+=[Machine|ID] (ambiguity) 'invariants' invariants+=XInvariant
-	 *     refines+=[Machine|ID] (ambiguity) 'variables' variables+=XVariable
-	 *     refines+=[Machine|ID] (ambiguity) 'variant' variant=XVariant
-	 *     sees+=[Context|ID] (ambiguity) 'end' (rule end)
-	 *     sees+=[Context|ID] (ambiguity) 'events' events+=XEvent
-	 *     sees+=[Context|ID] (ambiguity) 'invariants' invariants+=XInvariant
-	 *     sees+=[Context|ID] (ambiguity) 'variables' variables+=XVariable
-	 *     sees+=[Context|ID] (ambiguity) 'variant' variant=XVariant
-	 */
-	protected void emit_XMachine___IncludesKeyword_6_0_XIncludedMachineParserRuleCall_6_1__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
 }

@@ -16,9 +16,9 @@ import org.eclipse.xtext.formatting.impl.AbstractDeclarativeFormatter;
 import org.eclipse.xtext.formatting.impl.FormattingConfig;
 
 import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess;
-import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventMLCommentElements;
-import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventNoCommentElements;
-import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventSLCommentElements;
+//import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventMLCommentElements;
+//import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventNoCommentElements;
+//import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XEventSLCommentElements;
 import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess.XMachineElements;
 
 /**

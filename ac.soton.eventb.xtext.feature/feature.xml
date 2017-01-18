@@ -49,6 +49,7 @@
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.xtext.builder"/>
       <import plugin="ac.soton.eventb.xtext.common" version="0.0.1" match="greaterOrEqual"/>
+      <import plugin="ac.soton.eventb.inclusionfeature" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>

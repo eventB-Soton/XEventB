@@ -302,7 +302,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (
 	 *         (comment=ML_COMMENT | comment=SL_COMMENT)? 
 	 *         name=ID 
-	 *         extends+=[Context|ID]* 
+	 *         extends+=[Context|QualifiedName]* 
 	 *         sets+=XCarrierSet* 
 	 *         constants+=XConstant* 
 	 *         axioms+=XAxiom*

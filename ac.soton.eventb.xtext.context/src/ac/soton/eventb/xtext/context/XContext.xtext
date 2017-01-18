@@ -8,13 +8,17 @@ XContext returns econtext::Context:
 	{econtext::Context}
 	(comment=(ML_COMMENT | SL_COMMENT))?
 	'context' name=ID
-	('extends' extends+=[econtext::Context]+)?
+	('extends' extends+=[econtext::Context |QualifiedName]+)?
 	('sets' sets+=XCarrierSet+)?
 	('constants' constants+=XConstant+)?
 	('axioms' axioms+=XAxiom+)?
 	'end'
 ;
 
+QualifiedName:
+   ID ('.' ID)*
+ ; 
+ 
 XCarrierSet returns econtext::CarrierSet:
 	XCarrierSetNoComment | XCarrierSetMLComment | XCarrierSetSLComment
 ;

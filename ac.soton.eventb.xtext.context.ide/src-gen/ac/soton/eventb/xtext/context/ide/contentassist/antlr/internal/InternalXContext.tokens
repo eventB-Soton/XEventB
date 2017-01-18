@@ -1,10 +1,11 @@
+'.'=18
 'axioms'=17
 'constants'=16
 'context'=12
 'end'=13
 'extends'=14
 'sets'=15
-'theorem'=18
+'theorem'=19
 RULE_ANY_OTHER=11
 RULE_ID=6
 RULE_INT=9
@@ -20,3 +21,4 @@ T__15=15
 T__16=16
 T__17=17
 T__18=18
+T__19=19

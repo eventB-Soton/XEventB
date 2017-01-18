@@ -23,7 +23,10 @@ import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
 import org.eventb.emf.persistence.EMFRodinDB
-
+//dana update
+import ac.soton.eventb.featureinclusion.EventSynchronisation
+import ac.soton.eventb.featureinclusion.MachineInclusion
+import ac.soton.eventb.featureinclusion.FeatureinclusionPackage
 /**
  * <p>
  * XMachine scope provider, in particular the scope for machine refinement,
@@ -34,6 +37,7 @@ import org.eventb.emf.persistence.EMFRodinDB
  * @version 0.2
  * @see EMFRodinDB
  * @since 0.0.1
+ * @updated by Dana to include inclusion feature but not completed 
  */
 class XMachineScopeProvider extends AbstractXMachineScopeProvider {
 
@@ -92,7 +96,68 @@ class XMachineScopeProvider extends AbstractXMachineScopeProvider {
 			}
 			return Scopes.scopeFor(mchs);
 		}
+			
+			
+	     // Dana test
+	/* 	if (context instanceof MachineInclusion && reference == FeatureinclusionPackage.MACHINE_INCLUSION__SEES) {
+			var emfRodinDB = new EMFRodinDB;
+			var prjName = emfRodinDB.getProjectName(context as MachineInclusion);
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var ctxRoots = rdPrj.getRootElementsOfType(ContextRoot.ELEMENT_TYPE)
 
+			var ctxs = new ArrayList()
+			for (ctxRoot : ctxRoots) {
+				var ctx = emfRodinDB.loadEventBComponent(ctxRoot)
+				ctxs.add(ctx)
+			}
+			return Scopes.scopeFor(ctxs);
+		}
+		if (context instanceof MachineInclusion && reference == FeatureinclusionPackage.MACHINE_INCLUSION__REFINES) {
+			var emfRodinDB = new EMFRodinDB;
+			var prjName = emfRodinDB.getProjectName(context as MachineInclusion);
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
+
+			var mchs = new ArrayList()
+			for (mchRoot : mchRoots) {
+				var mch = emfRodinDB.loadEventBComponent(mchRoot)
+				mchs.add(mch)
+			}
+			return Scopes.scopeFor(mchs);
+		}
+        if (context instanceof MachineInclusion && reference == FeatureinclusionPackage.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
+			var emfRodinDB = new EMFRodinDB;
+			var prjName = emfRodinDB.getProjectName(context as MachineInclusion);
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
+
+			var mchs = new ArrayList()
+			for (mchRoot : mchRoots) {
+				var mch = emfRodinDB.loadEventBComponent(mchRoot)
+				mchs.add(mch)
+			}
+			return Scopes.scopeFor(mchs);
+		}
+		
+		   if (context instanceof MachineInclusion && reference == MachinePackage.Literals.MACHINE__SEES) {
+			var emfRodinDB = new EMFRodinDB;
+			var prjName = emfRodinDB.getProjectName(context as MachineInclusion);
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var ctxRoots = rdPrj.getRootElementsOfType(ContextRoot.ELEMENT_TYPE)
+
+			var ctxs = new ArrayList()
+			for (ctxRoot : ctxRoots) {
+				var ctx = emfRodinDB.loadEventBComponent(ctxRoot)
+				ctxs.add(ctx)
+			}
+			return Scopes.scopeFor(ctxs);
+		}*/
+        
 		return super.getScope(context, reference);
 	}
+	
 }

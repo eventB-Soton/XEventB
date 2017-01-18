@@ -3,6 +3,8 @@
  */
 package ac.soton.eventb.xtext.machine.serializer;
 
+import ac.soton.eventb.featureinclusion.FeatureinclusionPackage;
+import ac.soton.eventb.featureinclusion.MachineInclusion;
 import ac.soton.eventb.xtext.machine.services.XMachineGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -16,7 +18,6 @@ import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
@@ -37,7 +38,13 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		ParserRule rule = context.getParserRule();
 		Action action = context.getAssignedAction();
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
-		if (epackage == MachinePackage.eINSTANCE)
+		if (epackage == FeatureinclusionPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case FeatureinclusionPackage.MACHINE_INCLUSION:
+				sequence_XMachine(context, (MachineInclusion) semanticObject); 
+				return; 
+			}
+		else if (epackage == MachinePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case MachinePackage.ACTION:
 				if (rule == grammarAccess.getXActionMLCommentRule()) {
@@ -54,24 +61,6 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else if (rule == grammarAccess.getXActionSLCommentRule()) {
 					sequence_XActionSLComment(context, (org.eventb.emf.core.machine.Action) semanticObject); 
-					return; 
-				}
-				else break;
-			case MachinePackage.EVENT:
-				if (rule == grammarAccess.getXEventMLCommentRule()) {
-					sequence_XEventMLComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventRule()) {
-					sequence_XEventMLComment_XEventNoComment_XEventSLComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventNoCommentRule()) {
-					sequence_XEventNoComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventSLCommentRule()) {
-					sequence_XEventSLComment(context, (Event) semanticObject); 
 					return; 
 				}
 				else break;
@@ -112,7 +101,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				}
 				else break;
 			case MachinePackage.MACHINE:
-				sequence_XMachine(context, (Machine) semanticObject); 
+				sequence_XMachine2(context, (Machine) semanticObject); 
 				return; 
 			case MachinePackage.PARAMETER:
 				if (rule == grammarAccess.getXParameterMLCommentRule()) {
@@ -274,116 +263,6 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     XEventMLComment returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         comment=ML_COMMENT 
-	 *         name=ID 
-	 *         (extended?='extended' | convergence=XConvergence)* 
-	 *         refines+=[Event|ID]* 
-	 *         (
-	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *         )?
-	 *     )
-	 */
-	protected void sequence_XEventMLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEvent returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         (
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         ) | 
-	 *         (
-	 *             comment=ML_COMMENT 
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         ) | 
-	 *         (
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             comment=SL_COMMENT 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         )
-	 *     )
-	 */
-	protected void sequence_XEventMLComment_XEventNoComment_XEventSLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEventNoComment returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (extended?='extended' | convergence=XConvergence)* 
-	 *         refines+=[Event|ID]* 
-	 *         (
-	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *         )?
-	 *     )
-	 */
-	protected void sequence_XEventNoComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEventSLComment returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (extended?='extended' | convergence=XConvergence)* 
-	 *         comment=SL_COMMENT 
-	 *         refines+=[Event|ID]* 
-	 *         (
-	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *         )?
-	 *     )
-	 */
-	protected void sequence_XEventSLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     XGuardMLComment returns Guard
 	 *
 	 * Constraint:
@@ -488,7 +367,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     XMachine returns Machine
+	 *     XMachine2 returns Machine
 	 *
 	 * Constraint:
 	 *     (
@@ -498,11 +377,30 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         sees+=[Context|ID]* 
 	 *         variables+=XVariable* 
 	 *         invariants+=XInvariant* 
-	 *         variant=XVariant? 
-	 *         (events+=XEvent events+=XEvent*)?
+	 *         variant=XVariant?
 	 *     )
 	 */
-	protected void sequence_XMachine(ISerializationContext context, Machine semanticObject) {
+	protected void sequence_XMachine2(ISerializationContext context, Machine semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XMachine returns MachineInclusion
+	 *
+	 * Constraint:
+	 *     (
+	 *         (comment=ML_COMMENT | comment=SL_COMMENT)? 
+	 *         extensionId=ID 
+	 *         name=ID 
+	 *         refines+=[MachineInclusion|ID]? 
+	 *         abstractMachine=[MachineInclusion|ID]? 
+	 *         concreteMachine=[MachineInclusion|ID]? 
+	 *         (prefixes+=ID prefixes+=ID*)?
+	 *     )
+	 */
+	protected void sequence_XMachine(ISerializationContext context, MachineInclusion semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

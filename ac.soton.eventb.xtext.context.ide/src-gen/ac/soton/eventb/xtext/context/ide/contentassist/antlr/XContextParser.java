@@ -44,6 +44,8 @@ public class XContextParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXContextAccess().getGroup_5(), "rule__XContext__Group_5__0");
 					put(grammarAccess.getXContextAccess().getGroup_6(), "rule__XContext__Group_6__0");
 					put(grammarAccess.getXContextAccess().getGroup_7(), "rule__XContext__Group_7__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getXCarrierSetNoCommentAccess().getGroup(), "rule__XCarrierSetNoComment__Group__0");
 					put(grammarAccess.getXCarrierSetMLCommentAccess().getGroup(), "rule__XCarrierSetMLComment__Group__0");
 					put(grammarAccess.getXCarrierSetSLCommentAccess().getGroup(), "rule__XCarrierSetSLComment__Group__0");

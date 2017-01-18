@@ -21,6 +21,11 @@ Workflow {
 //		registerGeneratedEPackage = "org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage"
 //		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
 //		registerGenModelFile = "platform:/resource/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel"
+
+
+//Dana: Extended emf model
+		registerGeneratedEPackage = "ac.soton.eventb.featureinclusion.FeatureinclusionPackage"
+		registerGenModelFile = "platform:/resource/ac.soton.eventb.inclusionfeature/model/inclusionfeature.genmodel"
 	}
 	
 	component = XtextGenerator {

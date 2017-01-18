@@ -4,30 +4,25 @@ grammar ac.soton.eventb.xtext.machine.XMachine with org.eclipse.xtext.common.Ter
 import "http://emf.eventb.org/models/core/machine/2014" as emachine
 import "http://emf.eventb.org/models/core/context/2014" as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://soton.ac.uk/models/eventb/featureinclusion/2017" as efeatureinclusion //  as efeatureinclusion
+//import "/ac.soton.eventb.inclusionfeature/model/inclusionfeature.ecore" as efeatureinclusion
 
-XMachine returns emachine::Machine:
-	{emachine::Machine}
+
+XMachine returns efeatureinclusion::MachineInclusion:
+	{efeatureinclusion::MachineInclusion}
 	(comment=(ML_COMMENT|SL_COMMENT))?
+	//('id' extensionId = ID)// need to find a way to add it programmatically
 	'machine' name=ID
 	('refines' refines+=[emachine::Machine])?
 	('sees' sees+=[econtext::Context]+)?
-	('includes' XIncludedMachine)?
+	('includes' abstractMachine = [emachine::Machine])?
+    ('to' concreteMachine = [emachine::Machine])? //XIncludedMachine
+	('as' prefixes += ID (prefixes += ID)*)? //string or ID //WS + prefixes += ID
 	('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
 	('variant' variant=XVariant)?
 	('events' events+=XEvent (events+=XEvent)*)?
 	('end')
-;
-XIncludedMachine:
-	XAbstractMachine | XMachineChain 
-;
-
-XAbstractMachine:
-	ID ('as' ID+)?
-;
-
-XMachineChain:
-	ID 'to' ID ('as' ID+)?
 ;
 
 XVariable returns emachine::Variable:
@@ -96,19 +91,18 @@ XVariantSLComment returns emachine::Variant:
 	expression=STRING
 	comment=SL_COMMENT
 ;
-
-XEvent returns emachine::Event:
+ XEvent returns efeatureinclusion::EventSynchronisation:
 	XEventNoComment | XEventMLComment | XEventSLComment
 ;
 
-XEventNoComment returns emachine::Event:
-	{emachine::Event}
+XEventNoComment returns efeatureinclusion::EventSynchronisation:
+	{efeatureinclusion::EventSynchronisation}
 	name=ID
 	(
 		(extended?='extended')? &
 		(convergence=XConvergence)?
 	)
-	('synchronises' XSynchronisedEvent+)?
+	('synchronises' (prefix =ID'.')?synchronisedEvent = [emachine::Event])? //Not sure if we can synchronise more than one event
 	('refines' refines+=[emachine::Event]+)?
 	
 	(
@@ -133,15 +127,15 @@ XEventNoComment returns emachine::Event:
 	'end'
 ;
 
-XEventMLComment returns emachine::Event:
-	{emachine::Event}
+XEventMLComment returns efeatureinclusion::EventSynchronisation:
+	{efeatureinclusion::EventSynchronisation}
 	comment=ML_COMMENT
 	name=ID
 	(
 		(extended?='extended')? &
 		(convergence=XConvergence)?
 	)
-	('synchronises' XSynchronisedEvent+)?
+	('synchronises' (prefix=ID'.')?synchronisedEvent = [emachine::Event])? //Not sure if we can synchronise more than one event
 	('refines' refines+=[emachine::Event]+)?
 	
 	(
@@ -166,8 +160,8 @@ XEventMLComment returns emachine::Event:
 	'end'
 ;
 
-XEventSLComment returns emachine::Event:
-	{emachine::Event}
+XEventSLComment returns efeatureinclusion::EventSynchronisation:
+	{efeatureinclusion::EventSynchronisation}
 	name=ID
 	(
 		(extended?='extended')? &
@@ -175,7 +169,7 @@ XEventSLComment returns emachine::Event:
 		
 	)
 	comment=SL_COMMENT
-	('synchronises' XSynchronisedEvent+)?
+	('synchronises' (prefix=ID'.')?synchronisedEvent = [emachine::Event])? //Not sure if we can synchronise more than one event
 	('refines' refines+=[emachine::Event]+)?
 	(
 		('with' witnesses+=XWitness+)?
@@ -197,10 +191,6 @@ XEventSLComment returns emachine::Event:
 			actions+=XAction+)?
 	)?	
 	'end'
-;
-
-XSynchronisedEvent:
-	ID('.'ID)?
 ;
 
 enum XConvergence returns emachine::Convergence:
