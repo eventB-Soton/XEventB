@@ -1,0 +1,87 @@
+\documentclass[a4paper,10pt]{article}
+%\documentclass[preview=false]{standalone}
+% %%%% Define new conditional \ifplastex
+% %%%% This ensure that the file complied normally without plasTeX.
+\usepackage{plastex}
+
+\usepackage{hyperref}
+
+\ifplastex\else
+\usepackage{standalone} %%%% Only load standalone when not in plasTeX
+\standalonetrue
+\usepackage{longtable} %%%% Only load longtable and ltcaption when not in plasTeX
+\usepackage{ltcaption}
+\fi
+
+% Package for typesetting URLs
+\usepackage{url}
+
+% Package for including graphics.
+\usepackage{graphicx}
+
+% Package for typesetting Event-B models
+%\usepackage[colour]{eventB}
+%\usepackage{eventB-vhdl}
+
+% Package for typesetting dates and times
+\ifplastex
+\newcommand{\EventBXTextManualDate}{January 20th, 2017}
+\else
+\usepackage{datetime}
+\newdate{EventBXTextManualDate}{20}{1}{2017}
+\fi
+\newcommand{\EventBXTextFeatureVersion}{0.0.4}
+\newcommand{\EventBXTextManualVersion}{0.0.1}
+
+% Title
+\title{EventB XText Front-end User Manual} 
+
+% Author
+\author{%
+  Thai Son Hoang\\%
+  ECS, University of Southampton\\%
+  \texttt{\href{mailto:T.S.Hoang@ecs.soton.ac.uk}{T.S.Hoang at ecs dot soton dot ac dot uk}}%
+}%
+
+
+% Date
+\date{%
+  Version \EventBXTextManualVersion\\%
+  (for feature version \EventBXTextFeatureVersion)\\
+  \ifplastex
+  \EventBXTextManualDate
+  \else
+  \displaydate{EventBXTextManualDate}%
+  \fi
+}
+
+\begin{document}
+\ifplastex%
+\maketitle% Make title if in plasTeX mode.
+\else%
+ \ifstandalone%
+ \maketitle % Make title if in standalone mode.
+ \else%
+ \fi%
+\fi%
+
+The CODA EventBXText Generator feature provides facilities to generate EventBXText behavioural code and testbench from CODA models. 
+
+\input{getting_started}
+
+\input{concepts}
+
+\input{tasks}
+
+\input{reference}
+
+\input{samples}
+
+\input{legal}
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

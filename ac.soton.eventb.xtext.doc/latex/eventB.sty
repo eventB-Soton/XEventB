@@ -1,0 +1,997 @@
+%%
+%% This is file `eventB.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% eventB.dtx  (with options: `eventB')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Thai Son Hoang <htson at inf dot ethz dot ch>
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%% 
+%%%%% BEGIN Identification part %%%%%
+% ========================
+\NeedsTeXFormat{LaTeX2e}\relax
+\ProvidesPackage{eventB}
+    [2012/02/21 v1.1.1 Package for typesetting Event-B models]
+%%%%% END Identification part %%%%%
+
+%%%%% BEGIN Package loading %%%%%
+% ========================
+\RequirePackage{xspace}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+%%%%% END Package loading %%%%%
+
+%%%%% BEGIN Helper Macros %%%%%
+% ========================
+
+%   Event-B keywords base
+\newcommand{\B@keywordbase}[1]{\mathbf{#1}}
+
+%   Event-B identifiers base
+\newcommand{\B@identifierbase}[1]{\mathit{#1}}
+
+%   Event-B labels base
+\newcommand{\B@labelbase}[2][]{
+  \ifstrequal{#1}{}{
+    \mathsf{#2}
+  }{
+    \mathit{#2}
+  }
+}
+
+%   Event-B proof obligations base
+\newcommand{\B@pobase}[1]{\ensuremath{\mathsf{#1}}\xspace}
+
+%   Event-B declaration (e.g., variables, constants, etc.) base
+\newcommand{\B@declarationbase}[2]{
+  \begin{array}{l@{\B@tab}l}
+    \B@keyword{#1:} &  #2
+  \end{array}
+}
+
+%   Event-B sections (e.g., variables, constants, etc.) base
+\newcommand{\B@sectionbase}[3][]{
+  \ifstrequal{#1}{}{
+    \begin{array}{l}
+      \B@keyword{#2:} \\
+      \begin{array}{l@{\B@tab}l}
+        #3
+      \end{array}
+    \end{array}
+  }{
+    \begin{array}{l@{\B@tab}l}
+      #3
+    \end{array}
+  }
+}
+
+%   A wrapper for \ifstrequal to make sure that the first argument is properly expanded
+\newcommand{\B@ifstrequal}{\expandafter\ifstrequal\expandafter}
+
+%   Basic macro for pretty-print an Event-B event.
+%   Arguments:
+%   1. (Optional) convergence status.
+%   2. Name of the event.
+%   3. Name of the abstract event.
+%   4. (Comma-separated) list of parameters.
+%   5. (Newline(\\)-separated) list of guards.
+%   6. (Newline(\\)-separated) list of witness predicates.
+%   7. (Newline(\\)-separated) list of assignments.
+%
+%   Usage: \B@eventbase[conv]{conc}{abs}{x,y}{G1\\G2}{W1\\W2}{S1\\S2}
+%   will produce the following
+%
+%   conc
+%   refines abs
+%   status conv
+%   any x, y where
+%     G1
+%     G2
+%   with
+%     W1
+%     W2
+%   then
+%     S1
+%     S2
+%   end
+%
+%   Special cases:
+%   - Empty abstract event --> refines clause is omitted.
+%   - Empty convergence status --> status clause is omitted.
+%   - Empty witness --> with clause is omitted.
+%   - Empty parameters, empty guards --> begin ... end
+%   - Empty parameters --> when ... then ... end
+%   - Empty actions --> \SKIP
+\newcommand{\B@eventbase}[7][]{%
+  { % BEGIN group
+    \newcommand\evt@sts{#1}% Event status
+    \newcommand\evt@label{#2}% Event label
+    \newcommand\evt@absevts{#3}% Abstract event
+    \newcommand\evt@pars{#4}% Event parameters
+    \newcommand\evt@grds{#5}% Event guards
+    \newcommand\evt@wits{#6}% Event witnesses
+    \newcommand\evt@acts{#7}% Event actions
+    % Pretty-print convergence status
+    \B@ifstrequal{\evt@sts}{}{
+      \newcommand\pretty@sts{}
+    }{
+      \newcommand\pretty@sts{\B@tab\Bstatus \B@tab \evt@sts \\}
+    }
+    % Pretty-print abstract events
+    \B@ifstrequal{\evt@absevts}{}{
+      \newcommand\pretty@absevts{}
+    }{
+      \newcommand\pretty@absevts{\B@tab\Brefines \B@tab \evt@absevts{} \\}
+    }
+    % Pretty-print parameters
+    \B@ifstrequal{\evt@pars}{}{
+      \newcommand\pretty@pars{}
+    }{
+      \newcommand\pretty@pars{\\\Bany \B@tab \evt@pars \B@tab \Bwhere \\}
+    }
+    % Pretty-print guards
+    \B@ifstrequal{\evt@grds}{}{
+      \newcommand\pretty@grds{}
+    }{
+      \newcommand\pretty@grds@tmp{
+        \begin{array}{@{\B@tab}ll}
+          \evt@grds
+        \end{array}\\
+      }
+      \B@ifstrequal{\evt@pars}{}{
+        \newcommand\pretty@grds{
+          \\ \Bwhen \\
+          \pretty@grds@tmp
+        }
+      }{
+        \newcommand\pretty@grds{\pretty@grds@tmp}
+      }
+    }
+    % Pretty-print witnesses
+    \B@ifstrequal{\evt@wits}{}{
+      \newcommand\pretty@wits{}
+    }{
+      \newcommand\pretty@wits{
+        \Bwith\\
+        \begin{array}{@{\B@tab}ll}
+          \evt@wits
+        \end{array}\\
+      }
+    }
+    % Pretty-print actions
+    \B@ifstrequal{\evt@acts}{}{
+      \renewcommand\evt@acts{\SKIP}
+    }{}
+    \newcommand\pretty@acts@tmp{
+      \begin{array}{@{\B@tab}ll}
+        \evt@acts
+      \end{array}\\
+    }
+    \newcommand\pretty@acts@keyword{\Bthen \\}
+    \B@ifstrequal{\evt@pars}{}{
+      \B@ifstrequal{\evt@grds}{}{
+        \renewcommand\pretty@acts@keyword{\Bbegin \\}
+      }{}
+    }{}
+    \newcommand\pretty@acts{
+      \pretty@acts@keyword
+      \pretty@acts@tmp
+    }
+    % Putting the pieces together
+    \begin{array}{l}
+     \Bevt{\evt@label} :  \pretty@sts
+      \pretty@absevts
+      \pretty@pars
+      \pretty@grds
+      \pretty@wits
+      \pretty@acts
+      \Bend
+    \end{array}
+  } % END group
+}
+
+%   Basic macro for pretty-print an Event-B event.
+%   Arguments:
+%   1. (Optional) convergence status.
+%   2. Name of the event.
+%   3. Name of the abstract event.
+%   4. (Comma-separated) list of parameters.
+%   5. (\land-separated) list of guards.
+%   6. (\land-separated) list of witness predicates.
+%   7. (||-separated) list of assignments.
+%
+%   Usage: \B@inlineeventbase[conv]{conc}{abs}{x,y}{G1 \land G2}{W1 \land W2}{S1 || S2}
+%   will produce the following
+%
+%   conc (conv) refines abs = any x,y where G1 \land G2 with W1 \land W2 then S1 || S2 end
+%
+%   Special cases:
+%   - Empty abstract event --> refines clause is omitted.
+%   - Empty convergence status --> status clause is omitted.
+%   - Empty witness --> with clause is omitted.
+%   - Empty parameters, empty guards --> begin ... end
+%   - Empty parameters --> when ... then ... end
+%   - Empty actions --> \SKIP
+\newcommand{\B@inlineeventbase}[7][]{
+  { % BEGIN group
+    \newcommand\evt@sts{#1}% Event status
+    \newcommand\evt@label{#2}% Event label
+    \newcommand\evt@absevts{#3}% Abstract event
+    \newcommand\evt@pars{#4}% Event parameters
+    \newcommand\evt@grds{#5}% Event guards
+    \newcommand\evt@wits{#6}% Event witnesses
+    \newcommand\evt@acts{#7}% Event actions
+    % Pretty-print convergence status
+    \B@ifstrequal{\evt@sts}{}{
+      \newcommand\pretty@sts{}
+    }{
+      \newcommand\pretty@sts{(\evt@sts)}
+    }
+    % Pretty-print abstract events
+    \B@ifstrequal{\evt@absevts}{}{
+      \newcommand\pretty@absevts{}
+    }{
+      \newcommand\pretty@absevts{~\Brefines~\evt@absevts}
+    }
+    % Pretty-print parameters
+    \B@ifstrequal{\evt@pars}{}{
+      \newcommand\pretty@pars{}
+    }{
+      \newcommand\pretty@pars{\Bany~\evt@pars~\Bwhere~}
+    }
+    % Pretty-print guards
+    \B@ifstrequal{\evt@grds}{}{
+      \newcommand\pretty@grds{}
+    }{
+      \newcommand\pretty@grds@tmp{
+        \evt@grds~
+      }
+      \B@ifstrequal{\evt@pars}{}{
+        \newcommand\pretty@grds{\Bwhen~\pretty@grds@tmp}
+      }{
+        \newcommand\pretty@grds{\pretty@grds@tmp}
+      }
+    }
+    % Pretty-print witnesses
+    \B@ifstrequal{\evt@wits}{}{
+      \newcommand\pretty@wits{}
+    }{
+      \newcommand\pretty@wits{
+        \Bwith~
+        \evt@wits~
+      }
+    }
+    % Pretty-print actions
+    \B@ifstrequal{\evt@acts}{}{
+      \renewcommand\evt@acts{\SKIP}
+    }{}
+    \newcommand\pretty@acts@tmp{
+      \evt@acts
+    }
+    \newcommand\pretty@acts@keyword{\Bthen}
+    \B@ifstrequal{\evt@pars}{}{
+      \B@ifstrequal{\evt@grds}{}{
+        \renewcommand\pretty@acts@keyword{\Bbegin}
+      }{}
+    }{}
+    \newcommand\pretty@acts{
+      \pretty@acts@keyword~
+      \pretty@acts@tmp~
+    }
+    % Putting the pieces together
+    \begin{array}{l}
+      \Bevt{\evt@label}\pretty@sts\pretty@absevts~~\widehat{=}~~
+      \pretty@pars
+      \pretty@grds
+      \pretty@wits
+      \pretty@acts
+      \Bend
+    \end{array}
+  } % END group
+}
+
+% A temporary macros to save and restore length
+\newlength{\B@tmp@length}
+
+% Make a bounding box
+\newcommand{\B@makebox}[1]{
+  {
+    \setlength{\B@tmp@length}{\fboxsep}
+    \setlength{\fboxsep}{2ex}
+    \fbox{#1}
+    \setlength{\fboxsep}{\B@tmp@length}
+  }
+}
+
+%%%%% END Helper Macros %%%%%
+
+%%%%% BEGIN Declaration of options %%%%%
+% ========================
+
+%%% Options for no bounding box %%%
+% ------------------------
+
+% Pretty-print Event-B events
+\newcommand{\B@event}[7][]{
+  \B@makebox{
+    \ensuremath{
+      \B@eventbase[#1]{#2}{#3}{#4}{#5}{#6}{#7}
+    }
+  }
+}
+
+% Event-B declarations (e.g. variables, constants)
+\newcommand{\B@declaration}[2]{
+  \B@makebox{
+    \ensuremath{
+      \B@declarationbase{#1}{#2}
+    }
+  }
+}
+
+% Event-B sections (e.g. invariants, axioms)
+\newcommand{\B@section}[3][]{
+  \B@makebox{
+    \ensuremath{
+      \B@sectionbase[#1]{#2}{#3}
+    }
+  }
+}
+
+% Option 'nobox': Redefine above commands
+\DeclareOption{nobox}{
+  \renewcommand{\B@event}[7][]{
+    \B@eventbase[#1]{#2}{#3}{#4}{#5}{#6}{#7}
+  }
+  \renewcommand{\B@declaration}[2]{
+    \B@declarationbase{#1}{#2}
+  }
+  \renewcommand{\B@section}[3][]{
+    \B@sectionbase[#1]{#2}{#3}
+  }
+}
+
+%%% Options for font size and spacing %%%
+% ------------------------
+
+% The font size used in Bcode environment, defaulted to be |\normalsize|.
+\newcommand{\B@fontsize}{\normalsize}
+
+% Vertical spacing
+\newcommand{\B@vspace}[1][2ex]{
+  
+  \vspace{#1}
+
+}
+
+% Horizontal spacing
+\newcommand{\B@hspace}[1][2em]{\hspace{#1}}
+
+% A small tab
+\newcommand{\B@tab}{\quad} % A small separation space
+
+% Option 'small': Redefine above commands
+\DeclareOption{small}{
+  \renewcommand{\B@fontsize}{\small}
+  \renewcommand{\B@vspace}[1][1ex]{\\[#1]}
+  \renewcommand{\B@hspace}[1][1em]{\hspace{#1}}
+  \renewcommand{\B@tab}{\ }
+}
+
+% Option 'compact': Redefine above commands
+\DeclareOption{compact}{
+  \renewcommand{\B@fontsize}{\footnotesize}
+  \renewcommand{\B@vspace}[1][0ex]{\\[#1]}
+  \renewcommand{\B@hspace}[1][0.5em]{\hspace{#1}}
+  \renewcommand{\B@tab}{\ }
+  \ExecuteOptions{nobox}
+}
+
+% Option 'tiny': Redefine above commands
+\DeclareOption{tiny}{
+  \renewcommand{\B@fontsize}{\scriptsize}
+  \renewcommand{\B@vspace}[1][-0.5ex]{\\[#1]}
+  \renewcommand{\B@hspace}[1][0.5em]{\hspace{#1}}
+  \renewcommand{\B@tab}{\ }
+  \ExecuteOptions{nobox}
+}
+
+%%% Options for colouring %%%
+% ------------------------
+
+% Event-B keywords
+\newcommand{\B@keyword}[1]{\ensuremath{\B@keywordbase{#1}}\xspace}
+
+% Event-B identifiers
+\newcommand{\B@identifier}[1]{\ensuremath{\B@identifierbase{#1}}\xspace}
+
+% Event-B labels
+\newcommand{\B@label}[2][]{\ensuremath{\B@labelbase[#1]{#2}}\xspace}
+
+% Event-B proof obligations
+\newcommand{\B@po}[1]{\ensuremath{\B@pobase{#1}}\xspace}
+
+% Option 'colour': Redefine above commands
+\DeclareOption{colour}{
+
+  %   Macro for defining Event-B keywords colour
+  \newcommand{\setBKeywordColour}[1]{\colorlet{B@keywordcolor}{#1}}
+  \setBKeywordColour{blue}
+
+  %   Macro for defining Event-B identifiers colour
+  \newcommand{\setBIdentifierColour}[1]{\colorlet{B@identifiercolor}{#1}}
+  \setBIdentifierColour{blue!50!red}
+
+  %   Macro for defining Event-B labels colour
+  \newcommand{\setBLabelColour}[1]{\colorlet{B@labelcolor}{#1}}
+  \setBLabelColour{green!50!black}
+
+  %   Macro for defining Event-B proof obligations colour
+  \newcommand{\setBPOColour}[1]{\colorlet{B@pocolor}{#1}}
+  \setBPOColour{red}
+
+  %   Redefine commands
+  \renewcommand{\B@keyword}[1]{% Remove the leading space
+    \ensuremath{\textcolor{B@keywordcolor}{\B@keywordbase{#1}}}\xspace
+  }
+  \renewcommand{\B@identifier}[1]{% Remove the leading space
+    \ensuremath{\textcolor{B@identifiercolor}{\B@identifierbase{#1}}}\xspace
+  }
+  \renewcommand{\B@label}[2][]{% Remove the leading space
+    \ensuremath{\textcolor{B@labelcolor}{\B@labelbase[#1]{#2}}}\xspace
+  }
+  \renewcommand{\B@po}[1]{% Remove the leading space
+    \ensuremath{\textcolor{B@pocolor}{\B@pobase{#1}}}\xspace
+  }
+}
+\DeclareOption{color}{
+  \ExecuteOptions{colour}
+}
+
+%%%%% BEGIN Execution of options %%%%%
+% ========================
+
+\ProcessOptions
+%%%%% END Execution of options %%%%%
+
+
+
+%%%%% BEGIN Commands for Pretty-Print Event-B Models %%%%%
+% ========================
+
+\newcommand{\eventB}{Event-B\xspace}
+
+% Bcode environment %
+\newenvironment{Bcode}[1][\B@fontsize]{\begin{center}#1}{\end{center}}
+
+
+% Pretty print carrier sets
+% Arguments:
+% 1. (Comma-separated) list of carrier sets.
+%
+% Usage: \carriersets{S, T}
+\newcommand{\carriersets}[1]{
+  \B@declaration{sets}{#1}
+}
+
+
+% Pretty print constants
+% Arguments:
+% 1. (Comma-separated) list of constants.
+%
+% Usage: \constants{m, n}
+\newcommand{\constants}[1]{
+  \B@declaration{constants}{#1}
+}
+
+% Pretty print axioms
+% Arguments:
+% 1. (Newline(\\)-separated) list of axioms.
+%
+% Usage: \axioms{\Baxm{axm0\_1}: & x \in \nat \\
+%                \Baxm{axm0\_2}: & y \in \nat \\[2ex]}
+\newcommand{\axioms}[2][]{
+  \B@section[#1]{axioms}{#2}
+}
+
+% Pretty print variables
+% Arguments:
+% 1. (Comma-separated) list of variables.
+%
+% Usage: \variables{x, y}
+\newcommand{\variables}[1]{
+  \B@declaration{variables}{#1}
+}
+
+% Pretty print invariants
+% Arguments:
+% 1. (Newline(\\)-separated) list of invariants.
+%
+% Usage: \invariants{\Binv{inv0\_1:} & x \in \nat \\
+%                    \Binv{inv0\_2:} & y \in \nat \\[2ex]}
+\newcommand{\invariants}[2][]{
+  \B@section[#1]{invariants}{#2}
+}
+
+% Pretty print variant
+% Arguments:
+% 1. The variant
+%
+% Usage: \variant{V}
+\newcommand{\variant}[1]{
+  \B@declaration{variant}{#1}
+}
+
+% Event-B keywords for pretty-printing events %
+\newcommand{\Bany}{\B@keyword{any}}
+\newcommand{\Bbegin}{\B@keyword{begin}}
+\newcommand{\Bend}{\B@keyword{end}}
+\newcommand{\Brefines}{\B@keyword{refines}}
+\newcommand{\Bstatus}{\B@keyword{status}}
+\newcommand{\Bthen}{\B@keyword{then}}
+\newcommand{\Bwhen}{\B@keyword{when}}
+\newcommand{\Bwhere}{\B@keyword{where}}
+\newcommand{\Bwith}{\B@keyword{with}}
+
+% Pretty-print Event-B modelling elements %
+\newcommand{\Bctx}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\Bset}[1]{\B@identifier{#1}}
+\newcommand{\Bcst}[1]{\B@identifier{#1}}
+\newcommand{\Baxm}[1]{\B@label{#1}}
+\newcommand{\Bthm}[1]{\B@label[thm]{#1}}
+
+\newcommand{\Bmch}[1]{\ensuremath{\mathbf{#1}}\xspace}
+\newcommand{\Bvrb}[1]{\B@identifier{#1}}
+\newcommand{\Binv}[1]{\B@label{#1}}
+\newcommand{\Bevt}[1]{\B@label{#1}}
+\newcommand{\Bpar}[1]{\B@identifier{#1}}
+\newcommand{\Bact}[1]{\B@label{#1}}
+\newcommand{\Bgrd}[1]{\B@label{#1}}
+\newcommand{\Bbap}[1]{\hbox{\sl\bfseries #1}}
+
+%%%%% BEGIN Creating Event-B modelling elements macros %%%%%
+% ========================
+
+% Create a new B macro
+% Arguments:
+% 1. The macro string, (OPTIONAL) if empty then the expanded string will be used.
+% 2. The expanded string
+% 3. The mark-up macros, e.g. \Bvrb
+% Usage:
+% - \B@newmacro[aaa]{a\_a\_a}{\Bvrb} will create a new macro \aaa
+% which will be expanded to be \Bvrb{a\_a\_a}
+% - \B@newmacro{aaa}{\Bvrb} will create a new macro \aaa
+% which will be expanded to be \Bvrb{aaa}
+\newcommand{\B@newmacro}[3][]{
+  \ifstrequal{#1}{}{
+    \expandafter\def\csname #2\endcsname{#3{#2}}
+  }{
+    \expandafter\def\csname #1\endcsname{#3{#2}}
+  }
+}
+
+% Create a new context macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBctx[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bctx{a\_a\_a}.
+% - \newBctx{aaa} will create a new macro \aaa which will be
+% expanded to be \Bctx{aaa}.
+\newcommand{\newBctx}[2][]{\B@newmacro[#1]{#2}{\Bctx}}
+
+% Create a new carrier set macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBset[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bset{a\_a\_a}.
+% - \newBset{aaa} will create a new macro \aaa which will be
+% expanded to be \Bset{aaa}.
+\newcommand{\newBset}[2][]{\B@newmacro[#1]{#2}{\Bset}}
+
+% Create a new constant macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBcst[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bcst{a\_a\_a}.
+% - \newBcst{aaa} will create a new macro \aaa which will be
+% expanded to be \Bcst{aaa}.
+\newcommand{\newBcst}[2][]{\B@newmacro[#1]{#2}{\Bcst}}
+
+% Create a new axiom macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBaxm[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Baxm{a\_a\_a}.
+% - \newBaxm{aaa} will create a new macro \aaa which will be
+% expanded to be \Baxm{aaa}.
+\newcommand{\newBaxm}[2][]{\B@newmacro[#1]{#2}{\Baxm}}
+
+% Create a new theorem macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBthm[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bthm{a\_a\_a}.
+% - \newBthm{aaa} will create a new macro \aaa which will be
+% expanded to be \Bthm{aaa}.
+\newcommand{\newBthm}[2][]{\B@newmacro[#1]{#2}{\Bthm}}
+
+% Create a new machine macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBmch[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bmch{a\_a\_a}.
+% - \newBmch{aaa} will create a new macro \aaa which will be
+% expanded to be \Bmch{aaa}.
+\newcommand{\newBmch}[2][]{\B@newmacro[#1]{#2}{\Bmch}}
+
+% Create a new variable macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBvrb[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bvrb{a\_a\_a}.
+% - \newBvrb{aaa} will create a new macro \aaa which will be
+% expanded to be \Bvrb{aaa}.
+\newcommand{\newBvrb}[2][]{\B@newmacro[#1]{#2}{\Bvrb}}
+
+% Create a new invariant macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBinv[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Binv{a\_a\_a}.
+% - \newBinv{aaa} will create a new macro \aaa which will be
+% expanded to be \Binv{aaa}.
+\newcommand{\newBinv}[2][]{\B@newmacro[#1]{#2}{\Binv}}
+
+% Create a new event macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBevt[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bevt{a\_a\_a}.
+% - \newBevt{aaa} will create a new macro \aaa which will be
+% expanded to be \Bevt{aaa}.
+\newcommand{\newBevt}[2][]{\B@newmacro[#1]{#2}{\Bevt}}
+
+% Create a new parameter macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBpar[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bpar{a\_a\_a}.
+% - \newBpar{aaa} will create a new macro \aaa which will be
+% expanded to be \Bpar{aaa}.
+\newcommand{\newBpar}[2][]{\B@newmacro[#1]{#2}{\Bpar}}
+
+% Create a new guard macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBgrd[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bgrd{a\_a\_a}.
+% - \newBgrd{aaa} will create a new macro \aaa which will be
+% expanded to be \Bgrd{aaa}.
+\newcommand{\newBgrd}[2][]{\B@newmacro[#1]{#2}{\Bgrd}}
+
+% Create a new action macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBact[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bact{a\_a\_a}.
+% - \newBact{aaa} will create a new macro \aaa which will be
+% expanded to be \Bact{aaa}.
+\newcommand{\newBact}[2][]{\B@newmacro[#1]{#2}{\Bact}}
+
+% Create a new before-after predicate macro
+% Arguments:
+% 1. The macro string (OPTIONAL)
+% 2. The expanded string
+% Usage:
+% - \newBbap[aaa]{a\_a\_a} will create a new macro \aaa
+% which will be expanded to be \Bbap{a\_a\_a}.
+% - \newBbap{aaa} will create a new macro \aaa which will be
+% expanded to be \Bbap{aaa}.
+\newcommand{\newBbap}[2][]{\B@newmacro[#1]{#2}{\Bbap}}
+
+%%%%% Theorem Proof Obligation
+%%%%% Print the theorem proof obligation, given the theorem label.
+%%%%% Arguments:
+%%%%% 1. Theorem label
+%%%%%
+%%%%% Usage:
+%%%%% - \thmpo{thm} will produce "thm/THM"
+\newcommand{\thmpo}[1]{\Bthm{#1}/\B@po{THM}}
+
+%%%%% Axiom Well-definedness Proof Obligation
+%%%%% Print the axiom well-definedness proof obligation, given the
+%%%%% axiom label.
+%%%%% Arguments:
+%%%%% 1. Axiom label
+%%%%%
+%%%%% Usage:
+%%%%% - \axmwdpo{axm} will produce "axm/WD"
+\newcommand{\axmwdpo}[1]{\Baxm{#1}/\B@po{WD}}
+
+%%%%% Invariant Proof Obligation
+%%%%% Print the invariant proof obligation, given the event name and
+%%%%% invariant label
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%% 2. Invariant label
+%%%%%
+%%%%% Usage:
+%%%%% - \invpo{evt}{inv} will produce "evt/inv/INV"
+\newcommand{\invpo}[2]{\Bevt{#1}/\Binv{#2}/\B@po{INV}}
+
+%%%%% Theorem (in guard) Proof Obligation
+%%%%% Print the simulation proof obligation, given the event name and
+%%%%% the theorem (in guard) label.
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%% 2. Theorem (in guard) label
+%%%%%
+%%%%% Usage:
+%%%%% - \grdthmpo{evt}{thm} will produce "evt/thm/THM"
+\newcommand{\grdthmpo}[2]{\Bevt{#1}/\Bthm{#2}/\B@po{THM}}
+
+%%%%% Feasibility Proof Obligation
+%%%%% Print the feasibility proof obligation, given the event name and
+%%%%% the action label
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%% 2. Action label
+%%%%%
+%%%%% Usage:
+%%%%% - \fispo{evt}{act} will produce "evt/act/FIS"
+\newcommand{\fispo}[2]{\Bevt{#1}/\Bact{#2}/\B@po{FIS}}
+
+
+%%%%% Variant finiteness Proof Obligation
+%%%%% Print the Variant finiteness proof obligation
+%%%%% Arguments: No arguments
+%%%%%
+%%%%% Usage:
+%%%%% - \finpo will produce "FIN"
+\newcommand{\finpo}{\B@po{FIN}}
+
+%%%%% Variant Proof Obligation
+%%%%% Print the guard strengthen proof obligation, given the event name
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%%
+%%%%% Usage:
+%%%%% - \grdpo{evt} will produce "evt/VAR"
+\newcommand{\varpo}[1]{\Bevt{#1}/\B@po{VAR}}
+
+%%%%% Simulation Proof Obligation
+%%%%% Print the simulation proof obligation, given the event name and
+%%%%% the action label.
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%% 2. Action label
+%%%%%
+%%%%% Usage:
+%%%%% - \simpo{evt}{act} will produce "evt/act/SIM"
+\newcommand{\simpo}[2]{\Bevt{#1}/\Bact{#2}/\B@po{SIM}}
+
+%%%%% Guard Strengthen Proof Obligation
+%%%%% Print the guard strengthen proof obligation, given the event
+%%%%% name and the guard label
+%%%%% Arguments:
+%%%%% 1. (Abstract) Event name
+%%%%% 2. (Abstract) Guard label
+%%%%%
+%%%%% Usage:
+%%%%% - \grdpo{evt}{grd} will produce "evt/grd/GRD"
+\newcommand{\grdpo}[2]{\Bevt{#1}/\Bgrd{#2}/\B@po{GRD}}
+
+%%%%% Variant Natural Number Proof Obligation
+%%%%% Print the Variant Natural Number proof obligation, given the event name
+%%%%% Arguments:
+%%%%% 1. Event name
+%%%%%
+%%%%% Usage:
+%%%%% - \natpo{evt} will produce "evt/NAT"
+\newcommand{\natpo}[1]{\Bevt{#1}/\B@po{NAT}}
+
+
+\newcommand{\inlineevent}[7][]{
+  \B@inlineeventbase[#1]{#2}{#3}{#4}{#5}{#6}{#7}
+}
+
+
+
+%%%%% (BEGIN) Macros for Pretty-Print Event-B Components %%%
+\newcommand{\SKIP}{\textsc{skip}\xspace}
+
+%%%%% INITIALISATION label
+\newBevt{INITIALISATION}
+
+%%%%% Pretty print the initialisation: no ``refines'' clause. no parameters, no
+%%%%% guards
+%%%%% Arguments:
+%%%%% 1. (Newline(\\)-separated) list of assignments.
+%%%%%
+%%%%% Usage: \initialisation{S1(v,x,y)\\S2(w,x,y)}
+%%%%%       will produce the following
+%%%%%
+%%%%%       init
+%%%%%       begin
+%%%%%         S1(v, x, y)
+%%%%%         S2(w, x, y)
+%%%%%       end
+%%%%%
+\newcommand{\initialisation}[1]{
+  \event{\INITIALISATION}{}{}{}{}{#1}
+}
+
+
+\let\event\B@event
+\let\Bvspace\B@vspace
+\let\Bhspace\B@hspace
+\let\Bpo\B@po
+
+% Predefined axioms
+\newBaxm[axmZHI]{axm0\_1}
+\newBaxm[axmZHII]{axm0\_2}
+\newBaxm[axmZHIII]{axm0\_3}
+\newBaxm[axmZHIV]{axm0\_4}
+\newBaxm[axmZHV]{axm0\_5}
+\newBaxm[axmZHVI]{axm0\_6}
+\newBaxm[axmZHVII]{axm0\_7}
+\newBaxm[axmZHVIII]{axm0\_8}
+\newBaxm[axmZHIX]{axm0\_9}
+\newBaxm[axmZHX]{axm0\_10}
+
+\newBaxm[axmIHI]{axm1\_1}
+\newBaxm[axmIHII]{axm1\_2}
+\newBaxm[axmIHIII]{axm1\_3}
+\newBaxm[axmIHIV]{axm1\_4}
+\newBaxm[axmIHV]{axm1\_5}
+\newBaxm[axmIHVI]{axm1\_6}
+\newBaxm[axmIHVII]{axm1\_7}
+\newBaxm[axmIHVIII]{axm1\_8}
+\newBaxm[axmIHIX]{axm1\_9}
+\newBaxm[axmIHX]{axm1\_10}
+\newBaxm[axmIHXI]{axm1\_11}
+\newBaxm[axmIHXII]{axm1\_12}
+\newBaxm[axmIHXIII]{axm1\_13}
+\newBaxm[axmIHXIV]{axm1\_14}
+\newBaxm[axmIHXV]{axm1\_15}
+
+\newBaxm[axmIIHI]{axm2\_1}
+\newBaxm[axmIIHII]{axm2\_2}
+\newBaxm[axmIIHIII]{axm2\_3}
+\newBaxm[axmIIHIV]{axm2\_4}
+\newBaxm[axmIIHV]{axm2\_5}
+\newBaxm[axmIIHVI]{axm2\_6}
+\newBaxm[axmIIHVII]{axm2\_7}
+\newBaxm[axmIIHVIII]{axm2\_8}
+\newBaxm[axmIIHIX]{axm2\_9}
+\newBaxm[axmIIHX]{axm2\_10}
+
+\newBaxm[axmIIIHI]{axm3\_1}
+\newBaxm[axmIIIHII]{axm3\_2}
+\newBaxm[axmIIIHIII]{axm3\_3}
+\newBaxm[axmIIIHIV]{axm3\_4}
+\newBaxm[axmIIIHV]{axm3\_5}
+\newBaxm[axmIIIHVI]{axm3\_6}
+\newBaxm[axmIIIHVII]{axm3\_7}
+\newBaxm[axmIIIHVIII]{axm3\_8}
+\newBaxm[axmIIIHIX]{axm3\_9}
+\newBaxm[axmIIIHX]{axm3\_10}
+\newBaxm[axmIIIHXI]{axm3\_11}
+\newBaxm[axmIIIHXII]{axm3\_12}
+\newBaxm[axmIIIHXIII]{axm3\_13}
+\newBaxm[axmIIIHXIV]{axm3\_14}
+\newBaxm[axmIIIHXV]{axm3\_15}
+
+% Predefined theorems
+\newBthm[thmZHI]{thm0\_1}
+\newBthm[thmZHII]{thm0\_2}
+\newBthm[thmZHIII]{thm0\_3}
+\newBthm[thmZHIV]{thm0\_4}
+\newBthm[thmZHV]{thm0\_5}
+\newBthm[thmZHVI]{thm0\_6}
+\newBthm[thmZHVII]{thm0\_7}
+\newBthm[thmZHVIII]{thm0\_8}
+\newBthm[thmZHIX]{thm0\_9}
+\newBthm[thmZHX]{thm0\_10}
+
+\newBthm[thmIHI]{thm1\_1}
+\newBthm[thmIHII]{thm1\_2}
+\newBthm[thmIHIII]{thm1\_3}
+\newBthm[thmIHIV]{thm1\_4}
+\newBthm[thmIHV]{thm1\_5}
+\newBthm[thmIHVI]{thm1\_6}
+\newBthm[thmIHVII]{thm1\_7}
+\newBthm[thmIHVIII]{thm1\_8}
+\newBthm[thmIHIX]{thm1\_9}
+\newBthm[thmIHX]{thm1\_10}
+
+\newBthm[thmIIHI]{thm2\_1}
+\newBthm[thmIIHII]{thm2\_2}
+\newBthm[thmIIHIII]{thm2\_3}
+\newBthm[thmIIHIV]{thm2\_4}
+\newBthm[thmIIHV]{thm2\_5}
+\newBthm[thmIIHVI]{thm2\_6}
+\newBthm[thmIIHVII]{thm2\_7}
+\newBthm[thmIIHVIII]{thm2\_8}
+\newBthm[thmIIHIX]{thm2\_9}
+\newBthm[thmIIHX]{thm2\_10}
+
+\newBthm[thmIIIHI]{thm3\_1}
+\newBthm[thmIIIHII]{thm3\_2}
+\newBthm[thmIIIHIII]{thm3\_3}
+\newBthm[thmIIIHIV]{thm3\_4}
+\newBthm[thmIIIHV]{thm3\_5}
+\newBthm[thmIIIHVI]{thm3\_6}
+\newBthm[thmIIIHVII]{thm3\_7}
+\newBthm[thmIIIHVIII]{thm3\_8}
+\newBthm[thmIIIHIX]{thm3\_9}
+\newBthm[thmIIIHX]{thm3\_10}
+
+% Predefined invariants
+\newBinv[invZHI]{inv0\_1}
+\newBaxm[invZHII]{inv0\_2}
+\newBaxm[invZHIII]{inv0\_3}
+\newBaxm[invZHIV]{inv0\_4}
+\newBaxm[invZHV]{inv0\_5}
+\newBaxm[invZHVI]{inv0\_6}
+\newBaxm[invZHVII]{inv0\_7}
+\newBaxm[invZHVIII]{inv0\_8}
+\newBaxm[invZHIX]{inv0\_9}
+\newBaxm[invZHX]{inv0\_10}
+\newBaxm[invZHXI]{inv0\_11}
+\newBaxm[invZHXII]{inv0\_12}
+\newBaxm[invZHXIII]{inv0\_13}
+\newBaxm[invZHXIV]{inv0\_14}
+\newBaxm[invZHXV]{inv0\_15}
+
+\newBinv[invIHI]{inv1\_1}
+\newBinv[invIHII]{inv1\_2}
+\newBinv[invIHIII]{inv1\_3}
+\newBinv[invIHIV]{inv1\_4}
+\newBinv[invIHV]{inv1\_5}
+\newBinv[invIHVI]{inv1\_6}
+\newBinv[invIHVII]{inv1\_7}
+\newBinv[invIHVIII]{inv1\_8}
+\newBinv[invIHIX]{inv1\_9}
+\newBinv[invIHX]{inv1\_10}
+
+\endinput
+%%
+%% End of file `eventB.sty'.

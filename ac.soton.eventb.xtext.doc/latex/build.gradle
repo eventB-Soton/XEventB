@@ -1,0 +1,88 @@
+/**
+ * Copyright (C) 2016 Thai Son Hoang
+ * Gradle LaTeX build file.
+ *
+ * Contributors
+ *   Thai Son Hoang - Initial API and implementation.
+ */
+
+defaultTasks 'pdf'
+
+/**
+ * Extra Properties:
+ * - The base name for the main LaTeX file
+ * - The LaTeX Program
+ */
+ext {
+  BASENAME = 'user_manual'
+  LATEX = 'pdflatex'
+  PLASTEX = 'plastex'
+  SED = 'sed'
+  BIBTEX = 'bibtex'
+  COPY_TASK_PREFIX = 'copySty'
+  ROOT_FOLDER = '..'
+  HTML_FOLDER = ROOT_FOLDER + '/html'
+  LATEX_FOLDER = ROOT_FOLDER + '/latex'
+  DOCUMENTATION_FOLDER = ROOT_FOLDER + '/documentations'
+}
+
+/* The project */
+project.ext {
+  TEXFile = BASENAME + '.tex'
+  AUXFile = BASENAME + '.aux'
+  BIBFile = BASENAME + '.bib'
+  BBLFile = BASENAME + '.bbl'
+  PDFFile = BASENAME + '.pdf'
+  TOCFile = HTML_FOLDER + '/eclipse-toc.xml'
+  TOCBAKFile = HTML_FOLDER + '/eclipse-toc.xml.bak'
+}
+
+task aux(type : Exec) {
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith(COPY_TASK_PREFIX)
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.sty')
+  outputs.file AUXFile
+  commandLine LATEX, "$project.TEXFile"
+}
+
+task bibtex(type: Exec) {
+  dependsOn aux
+  inputs.files AUXFile
+  outputs.file BBLFile
+  commandLine BIBTEX, BASENAME
+}
+
+task pdf(type : Exec) {
+  dependsOn aux
+  inputs.files BBLFile, fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.sty')
+  outputs.file PDFFile
+  doFirst {
+    println "First run the $project.TEXFile"
+  }
+
+  commandLine LATEX, "$project.TEXFile"
+
+  doLast {
+    println "Compiled $project.TEXFile to $project.PDFFile"
+  }   
+}
+
+task clean(type : Delete) {
+  delete fileTree(LATEX_FOLDER) { include '**/*.aux', '**/*.log', '**/*.rel', '**/*.paux', '**/*.out', '**/*.synctex.gz', '**/*.toc' }
+}
+
+task html(type : Exec) {
+  inputs.file TEXFile
+  outputs.file TOCFile
+  commandLine PLASTEX, '-d', HTML_FOLDER, '--theme=python', "$project.TEXFile"
+}
+
+task sed(type : Exec) {
+  dependsOn html
+  commandLine SED, '-i.bak', '-f', 'sed_commands', "$project.TOCFile"
+}
+
+task build(dependsOn: ['pdf', 'sed']) {
+  
+}

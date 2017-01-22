@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<toc version="1.0"> 
+<tocitem>EventB XText Front-end User Manual
+    <tocitem target="sec:getting-started">Getting Started
+        
+    </tocitem><tocitem target="sec:concepts">Concepts
+        
+    </tocitem><tocitem target="sec:tasks">Tasks
+        
+    </tocitem><tocitem target="sec:reference">Reference
+        
+    </tocitem><tocitem target="sec:samples">Samples
+        
+    </tocitem><tocitem target="sec:legal">Legal
+        <tocitem target="sec:user-agreement">RODIN Software User Agreement
+            
+        </tocitem>
+    </tocitem>
+</tocitem>
+</toc>
