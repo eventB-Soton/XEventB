@@ -1,2 +1,6 @@
 .gradle
+*.aux
 *.bak
+*.log
+*.out
+*.paux
