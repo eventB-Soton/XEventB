@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a simple XContext coursesCtx.bucx">
+   <intro>
+      <description>
+         <b>Create a simple XContext</b> named coursesCtx.bucx
+      </description>
+   </intro>
+   <item
+         skip="false"
+         title="Step 1. Create a new XContext coursesCtx.bucx">
+      <description>
+         <b>Create a new XContext</b> named &quot;coursesCtx.bucx&quot; using the New File wizard. <b>Important</b>: A pop-up dialog will be displayed asking to convert the &quot;Club&quot; project to XText project, please answer <b>Yes</b>. 
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 2. Set the content of courseCtx.bucx">
+      <description>
+         <b>Set the content of &quot;coursesCtx.bucx&quot; as follows</b>.
+         <br/>
+         context coursesCtx
+         <br/>
+         sets CRS
+         <br/>
+         constants m
+         <br/>
+         axioms
+         <br/>
+         @axm0_1: &quot;finite(CRS)&quot;
+         <br/>
+         @axm0_2: &quot;m ∈ ℕ1&quot;
+         <br/>
+         @thm0_1: &quot;0 &lt; m&quot; theorem
+         <br/>
+         end
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 3. Auto-format the code">
+      <description>
+       <b>Automatically format the content of &quot;coursesCtx.bStep 4. Save the file using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 4. Save the file">
+      <description>
+      <b>Save the file &quot;coursesCtx.bucx&quot;</b>.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+</cheatsheet>

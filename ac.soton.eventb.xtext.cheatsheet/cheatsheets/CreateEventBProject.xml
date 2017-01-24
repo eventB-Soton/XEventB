@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create an Event-B Project">
+   <intro>
+      <description>
+         <b>Create a new Event-B Project</b> named &quot;Club&quot;
+      </description>
+   </intro>
+   <item
+         title="Step 1. Create a new Event-B Project">
+      <description>
+         <b>Create a new Event-B Project</b> named &quot;Club&quot; using the New Event-B Project wizard. The file is empty at the moment.
+      </description>
+      <command
+            required="true"
+            serialization="org.eclipse.ui.newWizard(newWizardId=org.eventb.ui.wizards.NewProject)"/>      
+   </item>
+</cheatsheet>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Customise the Event-B Explorer">
+   <intro>
+      <description>
+         <b>Customise the Event-B Explorer</b> to make sure that XEvent-B components are visible in the Event-B Explorer.
+      </description>
+   </intro>
+   <item
+         title="Disable the filter on &quot;All files and folders&quot;">
+      <description>
+         Select &quot;Customize View&quot; of Event-B Explorer View. Make sure that &quot;All files and folders&quot; from the dialog is <b>Unchecked</b>.
+      </description>
+   </item>
+</cheatsheet>
