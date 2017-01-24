@@ -5,7 +5,7 @@
          <b>Introduction</b> This tutorial provides a step-by-step walk-through working with XEvent-B constructs.
       </intro>
       <onCompletion>
-         <b>Conclusion</b>
+         <b>Conclusion</b> You should now be familiar with the syntax of XEvent-B constructs, i.e., XContexts and XMachines, and their compilation to Rodin constructs, i.e., Contexts and Machines. While the outer syntax is checked by XEvent-B, the inner syntax (e.g., within mathematical expressions and predicates) is checked at the Rodin Event-B level.
       </onCompletion>
       <task kind="cheatsheet" name="Task 1. Customise the Event-B Explorer" skip="false">
          <intro>
