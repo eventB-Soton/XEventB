@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.cheatsheets.cheatSheetContent">
+      <category
+            id="ac.soton.eventb.xtext.cheatsheet.category"
+            name="%cheatSheetCategory">
+      </category>
+      <cheatsheet
+            category="ac.soton.eventb.xtext.cheatsheet.category"
+            composite="true"
+            contentFile="cheatsheets/BasicTutorial.xml"
+            id="ac.soton.eventb.xtext.cheatsheet.basicTutorial"
+            name="%basicTutorialName">
+      </cheatsheet>
+   </extension>
+
+</plugin>
