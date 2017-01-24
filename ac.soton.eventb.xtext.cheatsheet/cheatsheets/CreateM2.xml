@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a simple XMachine">
+   <intro>
+      <description>
+         <b>Create a simple XMachine</b> named m2.bumx
+      </description>
+   </intro>
+   <item
+         skip="false"
+         title="Step 1. Create a new XMachine m2.bumx">
+      <description>
+         <b>Create a new XMachine</b> named &quot;m2.bumx&quot; using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
+      </description>
+      <command
+            required="true"
+            serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)"/>
+   </item>
+   <item
+         skip="false"
+         title="Step 2. Set the content of m2.bumx">
+      <description>
+         <b>Set the content of &quot;m2.bumx&quot; as follows</b>.
+         <br/>
+         machine m2
+         <br/>
+         refines m1
+         <br/>
+         sees instructorsCtx participantsCtx
+         <br/>
+         variables atnds
+         <br/>
+         invariants
+         <br/>
+         @inv2_1: &quot;atnds ∈ CRS ⇸ ℙ(PRTCPT)&quot;
+         <br/>
+         @inv2_2: &quot;crs = dom(atnds)&quot;
+         <br/>
+         @inv2_3: &quot;∀c·c ∈ crs ⇒ prtcpts[{c}] = atnds(c)&quot;
+         <br/>
+         @thm2_1: &quot;finite(atnds)&quot; theorem
+         <br/>
+         variant &quot;card(atnds)&quot;
+         <br/>
+         events
+         <br/>
+         INITIALISATION
+         <br/>
+		 begin
+		 <br/>
+		 @act2_1: &quot;atnds ≔ ∅&quot;
+		 <br/>
+		 end
+		 <br/>
+		 OpenCourse
+		 <br/>
+		 refines OpenCourses
+		 <br/>
+		 <br/>
+		 any c
+		 <br/>
+		 where
+		 <br/>
+		 @grd2_1: &quot;c ∉ dom(atnds)&quot; 
+		 <br/>
+		 @grd2_2: &quot;card(atnds) ≠ m&quot; 
+		 <br/>
+		 @thm2_2: &quot;card(crs) ≠ m&quot; theorem
+		 <br/>
+		 with
+		 <br/>
+		 @crs': &quot;crs' = crs ∪ {c}&quot;
+		 <br/>
+		 then
+		 <br/>
+		 @act2_1: &quot;atnds(c) ≔ ∅&quot;
+		 <br/>
+		 end
+		 <br/>
+		 CloseCourse convergent
+		 <br/>
+		 refines CloseCourses
+		 <br/>
+		 any c
+		 <br/>
+		 where
+		 <br/>
+		 @grd2_1: &quot;c ∈ dom(atnds)&quot;
+		 <br/>
+		 with
+		 <br/>
+		 @cs: &quot;cs = {c}&quot;
+		 <br/>
+		 then
+		 <br/>
+		 @act1_2: &quot;atnds ≔ {c} ⩤ atnds&quot;
+		 <br/>
+		 end
+		 <br/>
+		 Register convergent
+		 <br/>
+		 refines Register
+		 <br/>
+		 any p c
+		 <br/>
+		 where
+		 <br/>
+		 @grd2_1: &quot;p ∈ PRTCPT&quot;
+		 <br/>
+		 @grd2_2: &quot;p ≠ instrs(c)&quot;
+		 <br/>
+		 @grd2_3: &quot;c ∈ dom(atnds)&quot;
+		 <br/>
+		 @grd2_4: &quot;p ∉ atnds(c)&quot;
+		 <br/>
+		 @thm2_3: &quot;atnds(c) = prtcpts[{c}]&quot; theorem
+		 <br/>
+		 then
+		 <br/>
+		 @act2_1: &quot;atnds(c) ≔ atnds(c) ∪ {p}&quot;
+		 <br/>
+		 end
+		 <br/>
+         end
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 3. Auto-format the code">
+      <description>
+         <b>Automatically format the content of &quot;m2.bumx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 4. Save the file">
+      <description>
+         <b>Save the file &quot;m2.bumx&quot;</b>.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+</cheatsheet>

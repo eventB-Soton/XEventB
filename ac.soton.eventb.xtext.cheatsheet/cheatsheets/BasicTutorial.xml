@@ -85,5 +85,33 @@
             </param>
          </task>
       </taskGroup>
+      <taskGroup kind="sequence" name="Task 6. Create refined XMachines" skip="false">
+         <intro>
+            <b>Introduction</b> The purpose of this task is to create some more refined XMachines within the &quot;Club&quot; project.
+         </intro>
+         <onCompletion>
+            <b>Conclusion</b> By now, the XMachines and the corresponding Rodin Machines should be visible in the Event-B Explorer.
+         </onCompletion>
+         <task kind="cheatsheet" name="Task 6.1. Create a refined XMachine m1.bumx" skip="false">
+            <intro>
+               <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m1.bumx&quot; within the &quot;Club&quot; project.
+            </intro>
+            <onCompletion>
+               <b>Conclusion</b> By now, the XContext &quot;m1.bucx&quot; and the corresponding Rodin Machine &quot;m1&quot; should be visible in the Event-B Explorer.
+            </onCompletion>
+            <param name="path" value="CreateM1.xml">
+            </param>
+         </task>
+         <task kind="cheatsheet" name="Task 6.2. Create a refined XMachine m2.bumx" skip="false">
+            <intro>
+               <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m2.bumx&quot; within the &quot;Club&quot; project.
+            </intro>
+            <onCompletion>
+               <b>Conclusion</b> By now, the XContext &quot;m2.bucx&quot; and the corresponding Rodin Machine &quot;m2&quot; should be visible in the Event-B Explorer.
+            </onCompletion>
+            <param name="path" value="CreateM2.xml">
+            </param>
+         </task>
+      </taskGroup>
    </taskGroup>
 </compositeCheatsheet>
