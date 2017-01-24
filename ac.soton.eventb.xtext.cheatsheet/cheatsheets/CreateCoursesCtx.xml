@@ -10,7 +10,9 @@
          skip="false"
          title="Step 1. Create a new XContext coursesCtx.bucx">
       <description>
-         <b>Create a new XContext</b> named &quot;coursesCtx.bucx&quot; using the New File wizard. <b>Important</b>: A pop-up dialog will be displayed asking to convert the &quot;Club&quot; project to XText project, please answer <b>Yes</b>. 
+         <b>Create a new XContext</b> named &quot;coursesCtx.bucx&quot; using the New File wizard.
+         <b>Important</b>: A pop-up dialog will be displayed asking to convert the &quot;Club&quot; 
+         project to XText project, please answer <b>Yes</b>. 
       </description>
    </item>
    <item
@@ -40,7 +42,7 @@
          skip="false"
          title="Step 3. Auto-format the code">
       <description>
-       <b>Automatically format the content of &quot;coursesCtx.bStep 4. Save the file using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+       <b>Automatically format the content of &quot;coursesCtx.bucx&quot;</b> using short-cut (e.g., on Mac OS: Cmd+Shift+F).
       </description>
    </item>
    <item
