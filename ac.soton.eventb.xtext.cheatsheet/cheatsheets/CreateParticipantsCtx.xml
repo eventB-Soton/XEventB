@@ -3,12 +3,12 @@
       title="Create an extended XContext participantsCtx.bucx">
    <intro>
       <description>
- <b>Create a simple XContext</b> named &quot;participantsCtx.bucx&quot;
+ <b>Create an extended XContext</b> named &quot;participantsCtx.bucx&quot;
       </description>
    </intro>
    <item
          skip="false"
-         title="Step 1. Create a new XContext">
+         title="Step 1. Create a new XContext participantsCtx.bucx">
       <description>
  		<b>Create a new XContext</b> named &quot;participantsCtx.bucx&quot; using the New File wizard.
  	  </description>
@@ -18,40 +18,37 @@
    </item>
    <item
          skip="false"
-         title="Step 2. Open membersCtx.bucx">
+         title="Step 2. Set the content of participantsCtx.bucx">
       <description>
-         <b>Open the newly created &quot;membersCtx.bucx&quot;</b> by double clicking on the file in the Event-B Explorer. The file should be opened in a XContext editor and is empty at the moment.
-      </description>
-   </item>
-   <item
-         skip="false"
-         title="Step 3. Set the content of courseCtx.bucx">
-      <description>
-         <b>Set the content of &quot;membersCtx.bucx&quot; as follows</b>.
+         <b>Set the content of &quot;participantsCtx.bucx&quot; as follows</b>.
          <br/>
-         context memebersCtx
+         context participantsCtx
          <br/>
-         sets MEM
+         extends membersCtx
+         <br/>
+         constants PRTCPT
          <br/>
          axioms
          <br/>
-         @axm0_1: &quot;finite(MEM)&quot;
+         @axm1_2: &quot;PRTCPT ∈ ℙ(MEM)&quot;
+         <br/>
+         @thm1_1: &quot;finite(PRTCPT)&quot; theorem
          <br/>
          end
       </description>
    </item>
    <item
          skip="false"
-         title="Step 4. Auto-format the code">
+         title="Step 3. Auto-format the code">
       <description>
-         <b>Automatically format the content of &quot;membersCtx.bucx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+         <b>Automatically format the content of &quot;participantsCtx.bucx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
       </description>
    </item>
    <item
          skip="false"
-         title="Step 5. Save the file">
+         title="Step 4. Save the file">
       <description>
-         <b>Save the file &quot;membersCtx.bucx&quot;</b>.
+         <b>Save the file &quot;participantsCtx.bucx&quot;</b>.
       </description>
       <command
             required="false"

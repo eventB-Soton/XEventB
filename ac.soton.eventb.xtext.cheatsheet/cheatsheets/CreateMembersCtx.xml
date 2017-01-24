@@ -35,7 +35,7 @@
    </item>
    <item
          skip="false"
-         title="StStep 3. Auto-format the code">
+         title="Step 3. Auto-format the code">
       <description>
          <b>Automatically format the content of &quot;membersCtx.bucx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
       </description>

@@ -8,7 +8,7 @@
    </intro>
    <item
          skip="false"
-         title="Step 1. Create a new XMachine">
+         title="Step 1. Create a new XMachine m0.bumx">
       <description>
          <b>Create a new XMachine</b> named &quot;m0.bumx&quot; using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
       </description>
@@ -18,7 +18,7 @@
    </item>
    <item
          skip="false"
-         title="Step 3. Set the content of m0.bumx">
+         title="Step 2. Set the content of m0.bumx">
       <description>
          <b>Set the content of &quot;m0.bumx&quot; as follows</b>.
          <br/>
@@ -79,14 +79,14 @@
    </item>
    <item
          skip="false"
-         title="Step 4. Auto-format the code">
+         title="Step 3. Auto-format the code">
       <description>
          <b>Automatically format the content of &quot;m0.bumx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
       </description>
    </item>
    <item
          skip="false"
-         title="Step 5. Save the file">
+         title="Step 4. Save the file">
       <description>
          <b>Save the file &quot;m0.bumx&quot;</b>.
       </description>
@@ -96,7 +96,7 @@
    </item>
    <item
          skip="false"
-         title="Step 6. Add missing &quot;sees&quot; clause">
+         title="Step 5. Add missing &quot;sees&quot; clause">
       <description>
          In the compiled Rodin Machine m0, there are several errors, due to the fact that <b>m0</b> refers to the sets and constants of the context courseCtx.
          <b>Add the missing &quot;sees&quot; clause</b> after the &quot;machine&quot;
@@ -108,7 +108,7 @@
    </item>
       <item
          skip="false"
-         title="Step 7. Save the file again">
+         title="Step 6. Save the file again">
       <description>
          <b>Save the file &quot;m0.bumx&quot; again</b>.
       </description>

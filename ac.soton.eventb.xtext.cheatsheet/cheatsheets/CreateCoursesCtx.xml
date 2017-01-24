@@ -14,6 +14,9 @@
          <b>Important</b>: A pop-up dialog will be displayed asking to convert the &quot;Club&quot; 
          project to XText project, please answer <b>Yes</b>. 
       </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)"/>
    </item>
    <item
          skip="false"

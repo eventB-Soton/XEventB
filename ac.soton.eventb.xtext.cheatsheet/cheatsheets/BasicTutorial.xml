@@ -74,6 +74,16 @@
             <param name="path" value="CreateParticipantsCtx.xml">
             </param>
          </task>
+         <task kind="cheatsheet" name="Task 5.3. Create an extended XContext instructorsCtx.bucx" skip="false">
+            <intro>
+               <b>Introduction</b> The purpose of this sub-task is to create an extended XContext &quot;instructorsCtx.bucx&quot; within the &quot;Club&quot; project.
+            </intro>
+            <onCompletion>
+               <b>Conclusion</b> By now, the XContext &quot;instructorsCtx.bucx&quot; and the corresponding Rodin Context &quot;instructorsCtx&quot; should be visible in the Event-B Explorer.
+            </onCompletion>
+            <param name="path" value="CreateInstructorsCtx.xml">
+            </param>
+         </task>
       </taskGroup>
    </taskGroup>
 </compositeCheatsheet>

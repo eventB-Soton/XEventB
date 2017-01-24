@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create an extended XContext instructorsCtx.bucx">
+   <intro>
+      <description>
+ <b>Create an extended XContext</b> named &quot;instructorsCtx.bucx&quot;
+      </description>
+   </intro>
+   <item
+         skip="false"
+         title="Step 1. Create a new XContext instructorsCtx.bucx">
+      <description>
+ 		<b>Create a new XContext</b> named &quot;instructorsCtx.bucx&quot; using the New File wizard.
+ 	  </description>
+      <command
+            required="true"
+            serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)"/>
+   </item>
+   <item
+         skip="false"
+         title="Step 2. Set the content of instructorsCtx.bucx">
+      <description>
+         <b>Set the content of &quot;instructorsCtx.bucx&quot; as follows</b>.
+         <br/>
+         context instructorsCtx
+         <br/>
+         extends membersCtx coursesCtx
+         <br/>
+         constants INSTR instrs
+         <br/>
+         axioms
+         <br/>
+         @axm1_3: &quot;INSTR ∈ ℙ(MEM)&quot;
+         <br/>
+         @axm1_4: &quot;instrs ∈ CRS → INSTR&quot;
+         <br/>
+         end
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 3. Auto-format the code">
+      <description>
+         <b>Automatically format the content of &quot;intructorsCtx.bucx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 4. Save the file">
+      <description>
+         <b>Save the file &quot;instructorsCtx.bucx&quot;</b>.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+</cheatsheet>
