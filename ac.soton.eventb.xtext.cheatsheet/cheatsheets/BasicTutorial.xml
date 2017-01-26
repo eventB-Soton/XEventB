@@ -97,7 +97,7 @@
                <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m1.bumx&quot; within the &quot;Club&quot; project.
             </intro>
             <onCompletion>
-               <b>Conclusion</b> By now, the XContext &quot;m1.bucx&quot; and the corresponding Rodin Machine &quot;m1&quot; should be visible in the Event-B Explorer.
+               <b>Conclusion</b> By now, the XMachine &quot;m1.bucx&quot; and the corresponding Rodin Machine &quot;m1&quot; should be visible in the Event-B Explorer.
             </onCompletion>
             <param name="path" value="CreateM1.xml">
             </param>
@@ -107,7 +107,7 @@
                <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m2.bumx&quot; within the &quot;Club&quot; project.
             </intro>
             <onCompletion>
-               <b>Conclusion</b> By now, the XContext &quot;m2.bucx&quot; and the corresponding Rodin Machine &quot;m2&quot; should be visible in the Event-B Explorer.
+               <b>Conclusion</b> By now, the XMachine &quot;m2.bucx&quot; and the corresponding Rodin Machine &quot;m2&quot; should be visible in the Event-B Explorer.
             </onCompletion>
             <param name="path" value="CreateM2.xml">
             </param>

@@ -7,7 +7,7 @@
       </description>
    </intro>
    <item
-         title="Disable the filter on &quot;All files and folders&quot;">
+         title="Step 1. Disable the filter on &quot;All files and folders&quot;">
       <description>
          Select &quot;Customize View&quot; of Event-B Explorer View. Make sure that &quot;All files and folders&quot; from the dialog is <b>Unchecked</b>.
       </description>

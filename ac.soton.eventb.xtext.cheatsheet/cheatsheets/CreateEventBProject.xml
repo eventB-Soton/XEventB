@@ -9,7 +9,7 @@
    <item
          title="Step 1. Create a new Event-B Project">
       <description>
-         <b>Create a new Event-B Project</b> named &quot;Club&quot; using the New Event-B Project wizard. The file is empty at the moment.
+         <b>Create a new Event-B Project</b> named &quot;Club&quot; using the New Event-B Project wizard
       </description>
       <command
             required="true"
