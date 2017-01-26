@@ -17,11 +17,34 @@
     <ul>
       
       <li><object type="text/sitemap">
-          <param name="Name" value="Getting Started">
-          <param name="Local" value="sec-getting-started.html">
+          <param name="Name" value="Event-B XText Front-end Overview">
+          <param name="Local" value="sec-overview.html">
           <param name="ImageNumber" value="11">
       </object></li>
       
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Getting Started">
+          <param name="Local" value="sec-getting-started.html">
+          
+      </object></li>
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Installation">
+             <param name="Local" value="sec-installation.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Basic Tutorial">
+             <param name="Local" value="sec-basic-tutorial.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
       
       <li><object type="text/sitemap">
           <param name="Name" value="Concepts">

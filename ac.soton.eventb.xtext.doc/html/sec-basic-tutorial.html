@@ -1,0 +1,899 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="EventB XText Front-end User Manual" rel="start" />
+<link href="index.html" title="EventB XText Front-end User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-concepts.html" rel="next" />
+<link href="sec-installation.html" rel="prev" />
+<link href="sec-getting-started.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>2.2 Basic Tutorial</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.1 Installation" href="sec-installation.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">EventB XText Front-end User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-installation.html" class="sectref" rel="prev">Installation</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-getting-started.html" class="sectref" rel="parent">Getting Started</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-concepts.html" class="sectref" rel="next">Concepts</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:basic-tutorial">2.2 Basic Tutorial</h2>
+<p>This tutorial provides a step-by-step walk-through working with XEvent-B constructs. This tutorial also available as Cheatsheets with the Rodin Platform (<tt class="ttfamily">Help/Cheat Sheets/Event-B XText Cheatsheets/Event-B XText Basic Tutorial</tt>). </p><h3 id="a0000000008">Task 1. Customise the Event-B Explorer</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to customise the Event-B Explorer so that XEvent-B constructs are visible. </p><dl class="description">
+
+    <dt>Step 1. Disable the filter on “All files and folders”</dt>
+    <dd><p>Select “Customize View” of Event-B Explorer View. Make sure that “All files and folders” from the dialog is <b class="bfseries">Unchecked</b>. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> Since the filter on “All files and folders” is now disabled, there might be other files and folders than XEvent-B constructs will also be visible in the Event-B Explorer. </p><h3 id="a0000000009">Task 2. Create an Event-B Project</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create an Event-B project for the XEvent-B constructs. </p><dl class="description">
+
+    <dt>Step 1. Create a new Event-B Project</dt>
+    <dd><p>Create a new Event-B Project named “Club” using the <em>New Event-B Project</em> wizard (see Figure <a href="sec-basic-tutorial.html#fig:CreateProject">4</a>). </p><div id="fig:CreateProject" class="figure"><center>
+<img src="images/img-0004.jpg" alt="\includegraphics[width=512]{figures/CreateProject}" style="width:512" /> <div class="caption"><b>Figure 4</b>: <span>Create Event-B Project called “Club”</span></div>  </center></div></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> By now, the project “Club” should be visible in the Event-B Explorer. </p><h3 id="a0000000010">Task 3. Create a simple XContext coursesCtx.bucx</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create a simple XContext within the newly created project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XContext coursesCtx.bucx</dt>
+    <dd><p>Create a new XContext named “coursesCtx.bucx” using the <em>New File wizard</em> (see Figure <a href="sec-basic-tutorial.html#fig:CreateCoursesCtx">5</a>). <b class="bfseries">Important</b>: A pop-up dialog will be displayed asking to convert the “Club” project to XText project, please answer <b class="bfseries">Yes</b> (see Figure <a href="sec-basic-tutorial.html#fig:ConvertToXText">6</a>). </p><div id="fig:CreateCoursesCtx" class="figure"><center>
+<img src="images/img-0005.jpg" alt="\includegraphics[width=512]{figures/CreateCoursesCtx}" style="width:512" /> <div class="caption"><b>Figure 5</b>: <span>Create an XContext called “coursesCtx.bucx”</span></div>  </center></div><div id="fig:ConvertToXText" class="figure"><center>
+<img src="images/img-0006.jpg" alt="\includegraphics[width=512]{figures/ConvertToXText}" style="width:512" /> <div class="caption"><b>Figure 6</b>: <span>Convert “Club” to XText project</span></div>  </center></div></dd>
+
+    <dt>Step 2. Set the content of courseCtx.bucx</dt>
+    <dd><p>Set the content of “coursesCtx.bucx” as follows. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">context</tt> coursesCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sets</tt> CRS</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">constants</tt> m</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">axioms</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm0_1: "finite(CRS)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm0_2: "m ∈ ℕ1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm0_1: "0 &lt; m" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p>Automatically format the content of “coursesCtx.bucx” using short-cut (e.g., on Mac OS: <tt class="ttfamily">Cmd+Shift+F</tt>). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p><b class="bfseries">Save the file “coursesCtx.bucx”</b>. </p></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> By now, the XContext “coursesCtx.bucx” and the corresponding Rodin Context “coursesCtx” should be visible in the Event-B Explorer. </p><dl class="description">
+
+    <dt>Step 1. Create a new XMachine m0.bumx</dt>
+    <dd><p>Create a new XMachine named “m0.bumx” using the <em>New File wizard</em>. The newly created file should be opened automatically in an XMachine editor. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “m0.bumx” and the corresponding Rodin Machine “m0” (without any error) should be visible in the Event-B Explorer. </p><h3 id="a0000000011">Task 4. Create a simple XMachine m0.bumx</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create a simple XMachine within the newly created project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XMachine m0.bumx</dt>
+    <dd><p><b class="bfseries">Create a new XMachine</b> named “m0.bumx” using the New File wizard. The newly created file should be opened automatically in an XMachine editor. </p></dd>
+
+    <dt>Step 2. Set the content of m0.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of "m0.bumx" as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> m0 </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> crs </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_1: "crs ∈ ℙ(CRS)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm0_2: "finite(crs)" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_2: "card(crs) ≤ m" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@DLF: "(card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅)" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act0_1: "crs ≔ ∅"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>OpenCourses</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd0_1: "card(crs) ≠ m" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm0_3: "crs ≠ CRS" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act0_1: "crs :∣ crs ⊂ crs’ ∧ card(crs’) ≤ m"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>CloseCourses <tt class="ttfamily">anticipated</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">any</tt> cs <tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd0_1: "cs ⊆ crs"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd0_2: "cs ≠ ∅"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act0_1: "crs ≔ crs ∖ cs"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p><b class="bfseries">Automatically format the content of “m0.bumx”</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p><b class="bfseries">Save the file “m0.bumx”</b>. </p></dd>
+
+    <dt>Step 5. Add missing “sees” clause</dt>
+    <dd><p>In the compiled Rodin Machine m0, there are several errors, due to the fact that <b class="bfseries">m0</b> refers to the sets and constants of the context courseCtx. <b class="bfseries">Add the missing “sees” clause</b> after the “machine” clause </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">sees</tt> courseCtx </p></td>
+
+</tr>
+</table></tt> </center><p> (Note: One can use <em>Content Assist</em> after typing the “sees” keyword to select the context. </p></dd>
+
+    <dt>Step 6. Save the file again</dt>
+    <dd><p><b class="bfseries">Save the file "m0.bumx" again</b>. </p></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> By now, the XMachine “m0.bumx” and the corresponding Rodin Machine “m0” (without any error) should be visible in the Event-B Explorer. </p><h3 id="a0000000012">Task 5. Create extended XContexts</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create some more extended XContexts within the "Club" project. </p><h4 id="a0000000013">Task 5.1. Create a simple XContext membersCtx.bucx</h4>
+<p> <b class="bfseries">Introduction</b> The purpose of this sub-task is to create a simple XContext “membersCtx.bucx” within the “Club” project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XContext membersCtx.bucx</dt>
+    <dd><p><b class="bfseries">Create a new XContext</b> named “membersCtx.bucx” using the <em>New File</em> wizard. </p></dd>
+
+    <dt>Step 2. Set the content of courseCtx.bucx</dt>
+    <dd><p><b class="bfseries">Set the content of “membersCtx.bucx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">context</tt> memebersCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sets</tt> MEM</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">axioms</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm0_1: "finite(MEM)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p><b class="bfseries">Automatically format the content of “membersCtx.bucx”</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p>&lt;b&gt;Save the file <b class="bfseries">“membersCtx.bucx”</b>. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XContext “membersCtx.bucx” and the corresponding Rodin Context “membersCtx” should be visible in the Event-B Explorer. </p><h4 id="a0000000014">Task 5.2. Create an extended XContext participantsCtx.bucx</h4>
+<p> <b class="bfseries">Introduction</b> The purpose of this sub-task is to create an extended XContext “participantsCtx.bucx” within the “Club” project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XContext participantsCtx.bucx</dt>
+    <dd><p><b class="bfseries">Create a new XContext</b> named “participantsCtx.bucx” using the <em>New File wizard</em>. </p></dd>
+
+    <dt>Step 2. Set the content of participantsCtx.bucx</dt>
+    <dd><p><b class="bfseries">Set the content of “participantsCtx.bucx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">context</tt> participantsCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">extends</tt> membersCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">constants</tt> PRTCPT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">axioms</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm1_2: "PRTCPT ∈ ℙ(MEM)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm1_1: "finite(PRTCPT)" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p><b class="bfseries">Automatically format the content of “participantsCtx.bucx”</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p><b class="bfseries">Save the file “participantsCtx.bucx”</b>. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XContext “participantsCtx.bucx” and the corresponding Rodin Context “participantsCtx” should be visible in the Event-B Explorer. </p><h4 id="a0000000015">Task 5.3. Create an extended XContext instructorsCtx.bucx</h4>
+<p> <b class="bfseries">Introduction</b> The purpose of this sub-task is to create an extended XContext “instructorsCtx.bucx” within the “Club” project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XContext instructorsCtx.bucx</dt>
+    <dd><p><b class="bfseries">Create a new XContext</b> named “instructorsCtx.bucx” using the <em>New File wizard</em>. </p></dd>
+
+    <dt>Step 2. Set the content of instructorsCtx.bucx</dt>
+    <dd><p><b class="bfseries">Set the content of “instructorsCtx.bucx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">context</tt> instructorsCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">extends</tt> membersCtx coursesCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">constants</tt> INSTR instrs</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">axioms</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm1_3: "INSTR ∈ ℙ(MEM)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm1_4: "instrs ∈ CRS → INSTR"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p><b class="bfseries">Automatically format the content of “intructorsCtx.bucx”</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p><b class="bfseries">Save the file “instructorsCtx.bucx”</b>. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XContext “instructorsCtx.bucx” and the corresponding Rodin Context “instructorsCtx” should be visible in the Event-B Explorer. </p><h3 id="a0000000016">Task 6. Create refined XMachines</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create some more refined XMachines within the “Club” project. </p><h4 id="a0000000017">Task 6.1. Create a refined XMachine m1.bumx</h4>
+<p> <b class="bfseries">Introduction</b> The purpose of this sub-task is to create a refined XMachine “m1.bumx” within the “Club” project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XMachine m1.bumx</dt>
+    <dd><p><b class="bfseries">Create a new XMachine</b> named “m1.bumx” using the <em>New File wizard</em>. The newly created file should be opened automatically in an XMachine editor. </p></dd>
+
+    <dt>Step 2. Set the content of m1.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of “m1.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> m1</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> m0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sees</tt> instructorsCtx participantsCtx </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> crs prtcpts </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv1_1: "prtcpts ∈ crs ↔ PRTCPT"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv1_2: "∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[c]"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variant</tt> "(crs × PRTCPT) ∖ prtcpts"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1_2: "prtcpts ≔ ∅"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>OpenCourses <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> OpenCourses</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm1_2: "dom(prtcpts) ⊆ crs" theorem </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>CloseCourses <tt class="ttfamily">extended</tt> <tt class="ttfamily">anticipated</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> CloseCourses</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1_2: "prtcpts ≔ cs ⩤ prtcpts"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>Register <tt class="ttfamily">convergent</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">any</tt> p c <tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1_1: "p ∈ PRTCPT"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1_2: "c ∈ crs"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1_3: "p ≠ instrs(c)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1_4: "c ↦ p ∉ prtcpts"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1_1: "prtcpts ≔ prtcpts ∪ c ↦ p"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format the code</dt>
+    <dd><p><b class="bfseries">Automatically format the content of “m1.bumx”</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F). </p></dd>
+
+    <dt>Step 4. Save the file</dt>
+    <dd><p>Save the file “m1.bumx”. </p></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “m1.bucx” and the corresponding Rodin Machine “m1” should be visible in the Event-B Explorer. </p><h4 id="a0000000018">Task 6.2. Create a refined XMachine m2.bumx</h4>
+<p> <b class="bfseries">Introduction</b> The purpose of this sub-task is to create a refined XMachine “m2.bumx” within the “Club” project. </p><dl class="description">
+
+    <dt>Step 1. Create a new XMachine m2.bumx</dt>
+    <dd><p><b class="bfseries">Create a new XMachine</b> named “m2.bumx” using the <em>New File wizard</em>. The newly created file should be opened automatically in an XMachine editor. </p></dd>
+
+    <dt>Step 2. Set the content of m2.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of “m2.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> m2</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> m1</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sees</tt> instructorsCtx participantsCtx</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> atnds</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv2_1: "atnds ∈ CRS ⇸ ℙ(PRTCPT)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv2_2: "crs = dom(atnds)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv2_3: "∀c·c ∈ crs ⇒ prtcpts[c] = atnds(c)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm2_1: "finite(atnds)" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variant</tt> "card(atnds)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2_1: "atnds ≔ ∅"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>OpenCourse</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> OpenCourses</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">any</tt> c <tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_1: "c ∉ dom(atnds)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_2: "card(atnds) ≠ m" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm2_2: "card(crs) ≠ m" theorem</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">with</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@crs’: "crs’ = crs ∪ c"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2_1: "atnds(c) ≔ ∅"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>CloseCourse <tt class="ttfamily">convergent</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> CloseCourses</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">any</tt> c <tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_1: "c ∈ dom(atnds)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">with</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@cs: "cs = c"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1_2: "atnds ≔ c ⩤ atnds"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>Register <tt class="ttfamily">convergent</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt>Register</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">any</tt> p c <tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_1: "p ∈ PRTCPT"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_2: "p ≠ instrs(c)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_3: "c ∈ dom(atnds)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2_4: "p ∉ atnds(c)"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm2_3: "atnds(c) = prtcpts[c]" theorem</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2_1: "atnds(c) ≔ atnds(c) ∪ p"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> By now, the XMachine “m2.bucx” and the corresponding Rodin Machine “m2” should be visible in the Event-B Explorer. </p></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.1 Installation" href="sec-installation.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">EventB XText Front-end User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-installation.html" class="sectref" rel="prev">Installation</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-getting-started.html" class="sectref" rel="parent">Getting Started</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-concepts.html" class="sectref" rel="next">Concepts</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

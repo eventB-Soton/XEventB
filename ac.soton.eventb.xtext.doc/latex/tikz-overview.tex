@@ -1,0 +1,28 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{tikz}
+\usepackage[colour]{eventB}
+\usepackage{tikz-eventB}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+
+\begin{document}
+\begin{tikzpicture}
+  \tikzMch[Machine]{0}{0}{Machine}
+  \tikzMch[Context]{0}{-3}{Context}
+  \node[draw, dashed, rounded corners, fit=(Machine) (Context)] (Rodin) {};
+  \node [above=2mm of Rodin] {Rodin Constructs};
+
+  \tikzMch[XMachine]{-7}{0}{XMachine}
+  \tikzMch[XContext]{-7}{-3}{XContext}
+  \node[draw, dashed, rounded corners, fit=(XMachine) (XContext)] (XEventB) {};
+  \node [above=2mm of XEventB] {XEvent-B Constructs};
+
+  \path [->, thick] (XMachine) edge [bend left]  node[fill=white]{automatic} (Machine);
+  \path [->, thick] (XContext) edge [bend left] node[fill=white]{automatic} (Context);
+
+  \path [->, thick] (Machine) edge [bend left]  node[fill=white]{manual} (XMachine);
+  \path [->, thick] (Context) edge [bend left] node[fill=white]{manual} (XContext);
+\end{tikzpicture}
+\end{document}

@@ -1,0 +1,173 @@
+%%
+%% This is file `tikz-eventB.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% tikz-eventB.dtx  (with options: `tikz-eventB')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2016 by Thai Son Hoang <T.S.Hoang at ecs dot soton dot ac dot uk>
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%% 
+%%%%% BEGIN Identification part %%%%%
+% ========================
+\NeedsTeXFormat{LaTeX2e}\relax
+\ProvidesPackage{tikz-eventB}
+    [2014/06/12 v0.0.1 Package for typesetting diagrams of Event-B models]
+%%%%% END Identification part %%%%%
+
+%%%%% BEGIN Package loading %%%%%
+% ========================
+\RequirePackage{tikz}
+\RequirePackage{eventB}
+%%%%% END Package loading %%%%%
+
+
+%%%%% BEGIN Commands for Creating Diagrams Event-B Models %%%%%
+% ========================
+
+% Bdiagram environment the same as the tikzpicture
+% environment.
+% Arguments:
+% 1. (Optional) These option will be passed to the
+% tikzpicture environment
+\newenvironment{Bdiagram}[1][]
+{\begin{tikzpicture}[#1]}
+{\end{tikzpicture}}
+
+
+% Macro for drawing a node for a machine.
+%
+% Arguments:
+% 1. (Optional) The label of the node.
+% 2. The x-coordinate.
+% 3. The y-coordinate.
+% 4. The name of the machine.
+%
+% USAGE:
+% \tikzMch[mch]{0}{1}{M} will produce a node label ``mch'' at position
+% (0,1). The content of the node, i.e., M will be put inside a \Bmch{}
+% automatically.
+\newcommand{\tikzMch}[4][]{
+  \draw(#2,#3)
+  node[draw, inner sep = 2ex, minimum width = 4em](#1){\Bmch{#4}};
+}
+
+% Macro for drawing a node for a context.
+%
+% Arguments:
+% 1. (Optional) The label of the node.
+% 2. The x-coordinate.
+% 3. The y-coordinate.
+% 4. The name of the context.
+%
+% USAGE:
+% \tikzMch[ctx]{0}{1}{C} will produce a node label ``ctx'' at position
+% (0,1). The content of the node, i.e., C will be put inside a \Bctx{}
+% automatically.
+\newcommand{\tikzCtx}[4][]{
+  \draw(#2,#3)
+  node[draw, rounded corners, inner sep = 2ex, minimum width = 4em](#1){\Bctx{#4}};
+}
+
+%%%%% END Commands for Creating Diagrams Event-B Models %%%%%
+% ========================
+
+% Macro for drawing a SEES relationship between a machine and a context.
+%
+% Arguments:
+% 1. (Optional) The style for drawing, passed as it is
+%     to the underlying \draw command
+% 2. The coordinate of a machine.
+% 3. The coordinate of a context.
+%
+% USAGE:
+% \tikzSees{mch}{ctx} will produce an arrow with the label ``\Bsees''
+% from the node labelled ``mch'' to the node labelled ``ctx''.
+% The labels must be created as (optional arguments) before using
+% the \tikzMch and \tikzCtx commands.
+\newcommand{\tikzSees}[3][]{
+  \draw[->, #1] (#2) --node[fill=white]{\Bsees} (#3);
+}
+
+% Macro for drawing a REFINES relationship between a (concrete) machine and an (abstract) machine.
+%
+% Arguments:
+% 1. (Optional) The style for drawing, passed as it is
+%     to the underlying \draw command
+% 2. The coordinate of the concrete machine.
+% 3. The coordinate of the abstract machine.
+%
+% USAGE:
+% \tikzRefines{cnc}{abs} will produce an arrow with the label ``\Brefines''
+% from the node labelled ``cnc'' to the node labelled ``abs''.
+% The labels must be created as (optional arguments) before using
+% rhe \tikzMch command.
+\newcommand{\tikzRefines}[3][]{
+  \draw[->, #1] (#2) --node[fill=white]{\Brefines} (#3);
+}
+
+% Macro for drawing a transtive REFINES relationship between a (concrete) machine and an (abstract) machine.
+%
+% Arguments:
+% 1. (Optional) The style for drawing, passed as it is
+%     to the underlying \draw command
+% 2. The coordinate of the concrete machine.
+% 3. The coordinate of the abstract machine.
+%
+% USAGE:
+% \tikzRefinesTranstive{cnc}{abs} will produce an dashed arrow with the label ``\Bextends''
+% from the node labelled ``cnc'' to the node labelled ``abs''.
+% The labels must be created as (optional arguments) before using
+% the \tikzMch command.
+\newcommand{\tikzRefinesTransitive}[3][]{
+  \draw[->, dashed,#1] (#2) --node[fill=white]{\Brefines} (#3);
+}
+
+% Macro for drawing a EXTENDS relationship between a (concrete) context and an (abstract) context.
+%
+% Arguments:
+% 1. (Optional) The style for drawing, passed as it is
+%     to the underlying \draw command
+% 2. The coordinate of the concrete context.
+% 3. The coordinate of the abstract context.
+%
+% USAGE:
+% \tikzExtends{cnc}{abs} will produce an arrow with the label ``\Brefines''
+% from the node labelled ``cnc'' to the node labelled ``abs''.
+% The labels must be created as (optional arguments) before using
+% the \tikzCtx command.
+\newcommand{\tikzExtends}[3][]{
+  \draw[->,#1] (#2) --node[fill=white]{\Bextends} (#3);
+}
+
+% Macro for drawing a transtive EXTENDS relationship between a (concrete) conctext and an (abstract) context.
+%
+% Arguments:
+% 1. (Optional) The style for drawing, passed as it is
+%     to the underlying \draw command
+% 2. The coordinate of the concrete context.
+% 3. The coordinate of the abstract context.
+%
+% USAGE:
+% \tikzExtendsTrantive{cnc}{abs} will produce an dashed arrow with the label ``\Bextends''
+% from the node labelled ``cnc'' to the node labelled ``abs''.
+% The labels must be created as (optional arguments) before using
+% \tikzCtx command.
+\newcommand{\tikzExtendsTransitive}[3][]{
+  \draw[->, dashed,#1] (#2) --node[fill=white]{\Bextends} (#3);
+}
+\endinput
+%%
+%% End of file `tikz-eventB.sty'.

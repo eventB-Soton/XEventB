@@ -19,8 +19,10 @@
 % Package for including graphics.
 \usepackage{graphicx}
 
+\usepackage{bsymb}
+
 % Package for typesetting Event-B models
-%\usepackage[colour]{eventB}
+\usepackage[colour]{eventB}
 %\usepackage{eventB-vhdl}
 
 % Package for typesetting dates and times
@@ -30,7 +32,7 @@
 \usepackage{datetime}
 \newdate{EventBXTextManualDate}{20}{1}{2017}
 \fi
-\newcommand{\EventBXTextFeatureVersion}{0.0.4}
+\newcommand{\EventBXTextFeatureVersion}{0.0.5}
 \newcommand{\EventBXTextManualVersion}{0.0.1}
 
 % Title
@@ -65,7 +67,7 @@
  \fi%
 \fi%
 
-The CODA EventBXText Generator feature provides facilities to generate EventBXText behavioural code and testbench from CODA models. 
+\input{overview}
 
 \input{getting_started}
 

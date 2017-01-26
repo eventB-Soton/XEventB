@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <toc topic="html/index.html" label="EventB XText Front-end User Manual">
-    <topic label="Getting Started" href="html/sec-getting-started.html" /><topic label="Concepts" href="html/sec-concepts.html" /><topic label="Tasks" href="html/sec-tasks.html" /><topic label="Reference" href="html/sec-reference.html" /><topic label="Samples" href="html/sec-samples.html" /><topic label="Legal" href="html/sec-legal.html">
+    <topic label="Event-B XText Front-end Overview" href="html/sec-overview.html" /><topic label="Getting Started" href="html/sec-getting-started.html">
+       <topic label="Installation" href="html/sec-installation.html" /><topic label="Basic Tutorial" href="html/sec-basic-tutorial.html" />
+    </topic><topic label="Concepts" href="html/sec-concepts.html" /><topic label="Tasks" href="html/sec-tasks.html" /><topic label="Reference" href="html/sec-reference.html" /><topic label="Samples" href="html/sec-samples.html" /><topic label="Legal" href="html/sec-legal.html">
        <topic label="RODIN Software User Agreement" href="html/sec-user-agreement.html" />
     </topic>
 </toc>

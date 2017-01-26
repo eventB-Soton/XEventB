@@ -1,7 +1,10 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <map version="2.0">
 <mapID target="toplevelfolder">
+<mapID target="sec:overview" url="sec-overview.html" />
 <mapID target="sec:getting-started" url="sec-getting-started.html" />
+<mapID target="sec:installation" url="sec-installation.html" />
+<mapID target="sec:basic-tutorial" url="sec-basic-tutorial.html" />
 <mapID target="sec:concepts" url="sec-concepts.html" />
 <mapID target="sec:tasks" url="sec-tasks.html" />
 <mapID target="sec:reference" url="sec-reference.html" />
