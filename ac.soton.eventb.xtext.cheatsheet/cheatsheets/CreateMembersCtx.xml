@@ -18,7 +18,7 @@
    </item>
    <item
          skip="false"
-         title="Step 2. Set the content of courseCtx.bucx">
+         title="Step 2. Set the content of membersCtx.bucx">
       <description>
          <b>Set the content of &quot;membersCtx.bucx&quot; as follows</b>.
          <br/>
