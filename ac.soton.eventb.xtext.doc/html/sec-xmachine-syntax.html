@@ -1,0 +1,668 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="EventB XText Front-end User Manual" rel="start" />
+<link href="index.html" title="EventB XText Front-end User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-preferences.html" rel="next" />
+<link href="sec-xcontext-syntax.html" rel="prev" />
+<link href="sec-reference.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>5.3 XMachine syntax</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="5.2 XContext Syntax" href="sec-xcontext-syntax.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="5 Reference" href="sec-reference.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Preferences" href="sec-preferences.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">EventB XText Front-end User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-xcontext-syntax.html" class="sectref" rel="prev">XContext Syntax</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-reference.html" class="sectref" rel="parent">Reference</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-preferences.html" class="sectref" rel="next">Preferences</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:xmachine-syntax">5.3 XMachine syntax</h2>
+<center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<tr>
+
+    
+    <td style="text-align:left"><p> XMACHINE ::= [ ML_COMMENT | SL_COMMENT ]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <tt class="ttfamily">machine</tt> ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">sees</tt> ID { ID }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">variables</tt> XVARIABLE {XVARIABLE}]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">invariants</tt> XINVARIANT { XINVARIANT }]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">variant</tt> XVARIANT]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">events</tt> XEVENT { XEVENT }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XVARIABLE ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XVARIABLE_NO_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XVARIABLE_ML_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XVARIABLE_SL_COMMENT </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XVARIABLE_NO_COMMENT ::= ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XVARIABLE_ML_COMMENT ::= ML_COMMENT ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XVARIABLE_SL_COMMENT ::= ID SL_COMMENT </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XINVARIANT ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XINVARIANT_NO_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XINVARIANT_ML_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XINVARIANT_SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XINVARIANT_NO_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XINVARIANT_ML_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ML_COMMENT XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XINVARIANT_SL_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>] SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XEVENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XEVENT_NO_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XEVENT_ML_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XEVENT_SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XEVENT_NO_COMMENT ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ([<tt class="ttfamily">extended</tt>] &amp; [<tt class="ttfamily">ordinary</tt>| <tt class="ttfamily">convergent</tt>| <tt class="ttfamily">anticipated</tt>])</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">begin</tt> XACTION { XACTION } </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">when</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">any</tt> XPARAMETER { XPARAMETER }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">where</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XEVENT_ML_COMMENT ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ML_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ([<tt class="ttfamily">extended</tt>] &amp; [<tt class="ttfamily">ordinary</tt>| <tt class="ttfamily">convergent</tt>| <tt class="ttfamily">anticipated</tt>])</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">begin</tt> XACTION { XACTION } </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">when</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">any</tt> XPARAMETER { XPARAMETER }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">where</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XEVENT_SL_COMMENT ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ([<tt class="ttfamily">extended</tt>] &amp; [<tt class="ttfamily">ordinary</tt>| <tt class="ttfamily">convergent</tt>| <tt class="ttfamily">anticipated</tt>])</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">begin</tt> XACTION { XACTION } </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">when</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">any</tt> XPARAMETER { XPARAMETER }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      <tt class="ttfamily">where</tt> XGUARD { XGUARD }</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">with</tt> XWITNESS { XWITNESS }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>      [<tt class="ttfamily">then</tt> XACTION { XACTION }] </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XWITNESS ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XWITNESS_NO_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XWITNESS_ML_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XWITNESS_SL_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XWITNESS_NO_COMMENT ::= XLABEL "XPREDICATE" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XWITNESS_ML_COMMENT ::= ML_COMMENT XLABEL "XPREDICATE" </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XWITNESS_SL_COMMENT ::= XLABEL "XPREDICATE" SL_COMMENT </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XPARAMETER ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XPARAMETER_NO_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XPARAMETER_ML_COMMENT | </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XPARAMETER_SL_COMMENT </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XPARAMETER_NO_COMMENT ::= ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XPARAMETER_ML_COMMENT ::= ML_COMMENT ID </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XPARAMETER_SL_COMMENT ::= ID SL_COMMENT </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XGUARD ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XGUARD_NO_COMMENT |</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XGUARD_ML_COMMENT |</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XGUARD_SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XGUARD_NO_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XGUARD_ML_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    ML_COMMENT XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XGUARD_SL_COMMENT ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>] SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XACTION ::=</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XACTION_NO_COMMENT |</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XACTION_ML_COMMENT |</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    XACTION_SL_COMMENT</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XACTION_NO_COMMENT ::= XLABEL "XASSIGNMENT" [<tt class="ttfamily">theorem</tt>]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XACTION_ML_COMMENT ::= ML_COMMENT XLABEL "XASSIGNMENT"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XACTION_SL_COMMENT ::= XLABEL "XASSIGNMENT" SL_COMMENT </p></td>
+
+</tr>
+</table></tt> </center></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="5.2 XContext Syntax" href="sec-xcontext-syntax.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="5 Reference" href="sec-reference.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Preferences" href="sec-preferences.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">EventB XText Front-end User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-xcontext-syntax.html" class="sectref" rel="prev">XContext Syntax</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-reference.html" class="sectref" rel="parent">Reference</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-preferences.html" class="sectref" rel="next">Preferences</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

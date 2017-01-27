@@ -224,23 +224,51 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
        \fi
     \end{Bcode}
   \end{center}
+  \textbf{Important}: In order to typeset Event-B mathematical symbol, e.g., \ifplastex ℕ1 \else $\natn$ \fi, one can use content assist. For example, typing \texttt{NAT} and invoking content assist (e.g., on Mac OS \texttt{Ctrl+Space}), a dropdown list will appear with options for typesetting \ifplastex ℕ \else $\natn$ \fi and \ifplastex ℕ1 \else $\natn$ \fi (See Figure~\ref{fig:NAT1ContentAssist}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/NAT1ContentAssist}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/NAT1ContentAssist}
+    \fi
+    \caption{Type-setting \ifplastex ℕ1 \else $\natn$ \fi using Content Assist}
+    \label{fig:NAT1ContentAssist}
+  \end{figure}
 
 \item[Step 3. Auto-format the code] Automatically format the content of ``coursesCtx.bucx'' using short-cut (e.g., on Mac OS: \texttt{Cmd+Shift+F}).
 
 \item[Step 4. Save the file] \textbf{Save the file ``coursesCtx.bucx''}.
 \end{description}
-\textbf{Conclusion} By now, the XContext ``coursesCtx.bucx'' and the corresponding Rodin Context ``coursesCtx'' should be visible in the Event-B Explorer.
-\begin{description}
-\item[Step 1. Create a new XMachine m0.bumx] Create a new XMachine named ``m0.bumx'' using the \emph{New File wizard}. The newly created file should be opened automatically in an XMachine editor.
-\end{description}
+\textbf{Conclusion} By now, the XContext ``coursesCtx.bucx'' and the corresponding Rodin Context ``coursesCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:CoursesCtx}). 
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CoursesCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CoursesCtx}
+    \fi
+    \caption{The final XContext coursesCtx.bucx}
+    \label{fig:CoursesCtx}
+  \end{figure}
 
-\textbf{Conclusion} By now, the XMachine ``m0.bumx'' and the corresponding Rodin Machine ``m0'' (without any error) should be visible in the Event-B Explorer.
+
 
 \subsubsection{Task 4. Create a simple XMachine m0.bumx}
 \textbf{Introduction} The purpose of this task is to create a simple XMachine within the newly created project.
 
 \begin{description}
-\item[Step 1. Create a new XMachine m0.bumx] \textbf{Create a new XMachine} named ``m0.bumx'' using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
+\item[Step 1. Create a new XMachine m0.bumx] \textbf{Create a new XMachine} named ``m0.bumx'' using the New File wizard (see Figure~\ref{fig:CreateM0}. The newly created file should be opened automatically in an XMachine editor.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateM0}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateM0}
+    \fi
+    \caption{Type-setting \ifplastex ℕ1 \else $\natn$ \fi using Content Assist}
+    \label{fig:CreateM0}
+  \end{figure}
 
 \item[Step 2. Set the content of m0.bumx] \textbf{Set the content of "m0.bumx" as follows}.
   \begin{center}
@@ -295,7 +323,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Btab \Bend\\
       \Btab CloseCourses \Banticipated\\
       \Btab \Bany{} cs \Bwhere\\
-      \Btab \Btab @grd0\_1: "\(cs \leq crs\)"\\
+      \Btab \Btab @grd0\_1: "\(cs \subseteq crs\)"\\
       \Btab \Btab @grd0\_2: "\(cs \neq \emptyset\)"\\
       \Btab \Bthen\\
       \Btab \Btab @act0\_1: "\(crs \bcmeq crs \setminus cs\)"\\
@@ -315,11 +343,31 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsees{} courseCtx
     \end{Bcode}
   \end{center}
-  (Note: One can use \emph{Content Assist} after typing the ``sees'' keyword to select the context.
-  
+  (Note: One can use \emph{Content Assist} after typing the ``sees'' keyword to select the context, see Figure~\ref{fig:SeesCoursesCtx}).
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/SeesCoursesCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/SeesCoursesCtx}
+    \fi
+    \caption{Content Assist for adding Sees clause}
+    \label{fig:SeesCoursesCtx}
+  \end{figure}
+
 \item[Step 6. Save the file again] \textbf{Save the file "m0.bumx" again}.
 \end{description}
-\textbf{Conclusion} By now, the XMachine ``m0.bumx'' and the corresponding Rodin Machine ``m0'' (without any error) should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XMachine ``m0.bumx'' and the corresponding Rodin Machine ``m0'' (without any error) should be visible in the Event-B Explorer (see Figure~\ref{fig:M0}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/M0}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/M0}
+    \fi
+    \caption{XMachine m0.bucx}
+    \label{fig:M0}
+  \end{figure}
 
 \subsubsection{Task 5. Create extended XContexts}
 \textbf{Introduction} The purpose of this task is to create some more extended XContexts within the "Club" project.
@@ -327,9 +375,19 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \paragraph{Task 5.1. Create a simple XContext membersCtx.bucx}
 \textbf{Introduction} The purpose of this sub-task is to create a simple XContext ``membersCtx.bucx'' within the ``Club'' project.
 \begin{description}
-\item[Step 1. Create a new XContext membersCtx.bucx] \textbf{Create a new XContext} named ``membersCtx.bucx'' using the \emph{New File} wizard.
+\item[Step 1. Create a new XContext membersCtx.bucx] \textbf{Create a new XContext} named ``membersCtx.bucx'' using the \emph{New File} wizard (see Figure~\ref{fig:CreateMembersCtx}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateMembersCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateMembersCtx}
+    \fi
+    \caption{Create membersCtx.bucx}
+    \label{fig:CreateMembersCtx}
+  \end{figure}
 
-\item[Step 2. Set the content of courseCtx.bucx] \textbf{Set the content of ``membersCtx.bucx'' as follows}.
+\item[Step 2. Set the content of membersCtx.bucx] \textbf{Set the content of ``membersCtx.bucx'' as follows}.
   \begin{center}
     \begin{Bcode}
       \ifplastex
@@ -353,13 +411,32 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \item[Step 4. Save the file] <b>Save the file \textbf{``membersCtx.bucx''}.
 \end{description}
 
-\textbf{Conclusion} By now, the XContext ``membersCtx.bucx'' and the corresponding Rodin Context ``membersCtx'' should be visible in the Event-B Explorer.
-
+\textbf{Conclusion} By now, the XContext ``membersCtx.bucx'' and the corresponding Rodin Context ``membersCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:membersCtx}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/MembersCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/MembersCtx}
+    \fi
+    \caption{XContext membersCtx.bucx}
+    \label{fig:membersCtx}
+  \end{figure}
 \paragraph{Task 5.2. Create an extended XContext participantsCtx.bucx}
 \textbf{Introduction} The purpose of this sub-task is to create an extended XContext ``participantsCtx.bucx'' within the ``Club'' project.
 
 \begin{description}
-\item[Step 1. Create a new XContext participantsCtx.bucx] \textbf{Create a new XContext} named ``participantsCtx.bucx'' using the \emph{New File wizard}.
+\item[Step 1. Create a new XContext participantsCtx.bucx] \textbf{Create a new XContext} named ``participantsCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateParticipantsCtx}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateParticipantsCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateParticipantsCtx}
+    \fi
+    \caption{Create participantsCtx.bucx}
+    \label{fig:CreateParticipantsCtx}
+  \end{figure}
 
 \item[Step 2. Set the content of participantsCtx.bucx] \textbf{Set the content of ``participantsCtx.bucx'' as follows}.
   \begin{center}
@@ -389,12 +466,32 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \item[Step 4. Save the file] \textbf{Save the file ``participantsCtx.bucx''}.
 \end{description}
 
-\textbf{Conclusion} By now, the XContext ``participantsCtx.bucx'' and the corresponding Rodin Context ``participantsCtx'' should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XContext ``participantsCtx.bucx'' and the corresponding Rodin Context ``participantsCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:ParticipantsCtx}).
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/ParticipantsCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/ParticipantsCtx}
+    \fi
+    \caption{XContext participantsCtx.bucx}
+    \label{fig:ParticipantsCtx}
+  \end{figure}
 
 \paragraph{Task 5.3. Create an extended XContext instructorsCtx.bucx}
 \textbf{Introduction} The purpose of this sub-task is to create an extended XContext ``instructorsCtx.bucx'' within the ``Club'' project.
 \begin{description}
-\item[Step 1. Create a new XContext instructorsCtx.bucx] \textbf{Create a new XContext} named ``instructorsCtx.bucx'' using the \emph{New File wizard}.
+\item[Step 1. Create a new XContext instructorsCtx.bucx] \textbf{Create a new XContext} named ``instructorsCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateInstructorsCtx}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateInstructorsCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateInstructorsCtx}
+    \fi
+    \caption{Create instructorsCtx.bucx}
+    \label{fig:CreateInstructorsCtx}
+  \end{figure}
 
 \item[Step 2. Set the content of instructorsCtx.bucx] \textbf{Set the content of ``instructorsCtx.bucx'' as follows}.
   \begin{center}
@@ -424,7 +521,17 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \item[Step 4. Save the file] \textbf{Save the file ``instructorsCtx.bucx''}.
 \end{description}
 
-\textbf{Conclusion} By now, the XContext ``instructorsCtx.bucx'' and the corresponding Rodin Context ``instructorsCtx'' should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XContext ``instructorsCtx.bucx'' and the corresponding Rodin Context ``instructorsCtx'' should be visible in the Event-B Explorer (see Figure.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/InstructorsCtx}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/InstructorsCtx}
+    \fi
+    \caption{XContext instructorsCtx.bucx}
+    \label{fig:instructorsCtx}
+  \end{figure}
 
 \subsubsection{Task 6. Create refined XMachines}
 \textbf{Introduction} The purpose of this task is to create some more refined XMachines within the ``Club'' project.
@@ -432,7 +539,17 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \paragraph{Task 6.1. Create a refined XMachine m1.bumx}
 \textbf{Introduction} The purpose of this sub-task is to create a refined XMachine ``m1.bumx'' within the ``Club'' project.
 \begin{description}
-\item[Step 1. Create a new XMachine m1.bumx] \textbf{Create a new XMachine} named ``m1.bumx'' using the \emph{New File wizard}. The newly created file should be opened automatically in an XMachine editor.
+\item[Step 1. Create a new XMachine m1.bumx] \textbf{Create a new XMachine} named ``m1.bumx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateM1}. The newly created file should be opened automatically in an XMachine editor.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateM1}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateM1}
+    \fi
+    \caption{Create m1.bumx}
+    \label{fig:CreateM1}
+  \end{figure}
 
 \item[Step 2. Set the content of m1.bumx] \textbf{Set the content of ``m1.bumx'' as follows}.
   \begin{center}
@@ -444,7 +561,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bvariables{} crs prtcpts \\
       \Binvariants\\
       @inv1_1: "prtcpts ∈ crs ↔ PRTCPT"\\
-      @inv1_2: "∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[{c}]"\\
+      @inv1_2: "∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[\{c\}]"\\
       \Bvariant{} "(crs × PRTCPT) ∖ prtcpts"\\
       \Bevents\\
       INITIALISATION \Bextended\\
@@ -468,7 +585,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       @grd1_3: "p ≠ instrs(c)"\\
       @grd1_4: "c ↦ p ∉ prtcpts"\\
       \Bthen\\
-      @act1_1: "prtcpts ≔ prtcpts ∪ {c ↦ p}"\\
+      @act1_1: "prtcpts ≔ prtcpts ∪ \{c ↦ p\}"\\
       \Bend\\
       \Bend
       \else
@@ -514,13 +631,33 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \item[Step 4. Save the file] Save the file ``m1.bumx''.
 \end{description}
 
-\textbf{Conclusion} By now, the XMachine ``m1.bucx'' and the corresponding Rodin Machine ``m1'' should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XMachine ``m1.bucx'' and the corresponding Rodin Machine ``m1'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M1}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/M1}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/M1}
+    \fi
+    \caption{XMachine m1.bumx}
+    \label{fig:M1}
+  \end{figure}
 
 \paragraph{Task 6.2. Create a refined XMachine m2.bumx}
 \textbf{Introduction} The purpose of this sub-task is to create a refined XMachine ``m2.bumx'' within the ``Club'' project.
 
 \begin{description}
-\item[Step 1. Create a new XMachine m2.bumx] \textbf{Create a new XMachine} named ``m2.bumx'' using the \emph{New File wizard}. The newly created file should be opened automatically in an XMachine editor.
+\item[Step 1. Create a new XMachine m2.bumx] \textbf{Create a new XMachine} named ``m2.bumx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateM2}. The newly created file should be opened automatically in an XMachine editor.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/CreateM2}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/CreateM2}
+    \fi
+    \caption{Create m2.bumx}
+    \label{fig:CreateM2}
+  \end{figure}
 
 \item[Step 2. Set the content of m2.bumx] \textbf{Set the content of ``m2.bumx'' as follows}.
   \begin{center}
@@ -533,7 +670,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Binvariants\\
       @inv2_1: "atnds ∈ CRS ⇸ ℙ(PRTCPT)"\\
       @inv2_2: "crs = dom(atnds)"\\
-      @inv2_3: "∀c·c ∈ crs ⇒ prtcpts[{c}] = atnds(c)"\\
+      @inv2_3: "∀c·c ∈ crs ⇒ prtcpts[\{c\}] = atnds(c)"\\
       @thm2_1: "finite(atnds)" \Btheorem\\
       \Bvariant{} "card(atnds)"\\
       \Bevents\\
@@ -548,7 +685,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       @grd2_2: "card(atnds) ≠ m" \\
       @thm2_2: "card(crs) ≠ m" theorem\\
       \Bwith\\
-      @crs': "crs' = crs ∪ {c}"\\
+      @crs': "crs' = crs ∪ \{c\}"\\
       \Bthen\\
       @act2_1: "atnds(c) ≔ ∅"\\
       \Bend\\
@@ -557,20 +694,20 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bany{} c \Bwhere\\
       @grd2_1: "c ∈ dom(atnds)"\\
       \Bwith\\
-      @cs: "cs = {c}"\\
+      @cs: "cs = \{c\}"\\
       \Bthen\\
-      @act1_2: "atnds ≔ {c} ⩤ atnds"\\
+      @act1_2: "atnds ≔\{c\} ⩤ atnds"\\
       \Bend\\
       Register \Bconvergent\\
-      \Brefines Register\\
+      \Brefines{} Register\\
       \Bany{} p c \Bwhere\\
       @grd2_1: "p ∈ PRTCPT"\\
       @grd2_2: "p ≠ instrs(c)"\\
       @grd2_3: "c ∈ dom(atnds)"\\
       @grd2_4: "p ∉ atnds(c)"\\
-      @thm2_3: "atnds(c) = prtcpts[{c}]" theorem\\
+      @thm2_3: "atnds(c) = prtcpts[\{c\}]" theorem\\
       \Bthen\\
-      @act2_1: "atnds(c) ≔ atnds(c) ∪ {p}"\\
+      @act2_1: "atnds(c) ≔ atnds(c) ∪ \{p\}"\\
       \Bend\\
       \Bend
       \else
@@ -610,7 +747,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Btab \Btab @act1_2: "\(atnds \bcmeq \{c\} \domsub atnds\)"\\
       \Btab \Bend\\
       \Btab  Register \Bconvergent\\
-      \Btab \Brefines Register\\
+      \Btab \Brefines{} Register\\
       \Btab \Bany{} p c \Bwhere\\
       \Btab \Btab @grd2_1: "\(p \in PRTCPT\)"\\
       \Btab \Btab @grd2_2: "\(p \neq instrs(c)\)"\\
@@ -624,8 +761,22 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \fi
     \end{Bcode}
   \end{center}
+
+\item[Step 3. Auto-format the code] \textbf{Automatically format the content of ``m2.bumx''} by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+
+\item[Step 4. Save the file] \textbf{Save the file ``m2.bumx''}.
 \end{description}
-\textbf{Conclusion} By now, the XMachine ``m2.bucx'' and the corresponding Rodin Machine ``m2'' should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XMachine ``m2.bucx'' and the corresponding Rodin Machine ``m2'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M2}.
+  \begin{figure}[!htbp]
+    \centering
+    \ifplastex
+    \includegraphics[width=512]{figures/M2}
+    \else
+    \includegraphics[width=0.9\textwidth]{figures/M2}
+    \fi
+    \caption{XMachine m2.bumx}
+    \label{fig:M2}
+  \end{figure}
 
 %%% Local Variables:
 %%% mode: latex

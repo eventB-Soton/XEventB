@@ -1,5 +1,5 @@
 (dp0
-V\u005censuremath{\u005cmathbf{any}}
+V$\u005cmathord {\u005cmathbb N_1}$
 p1
 ccopy_reg
 _reconstructor
@@ -22,7 +22,7 @@ p9
 c__builtin__
 str
 p10
-S'&images/img-0007.png-depth;'
+S'&images/img-0008.png-depth;'
 p11
 tp12
 Rp13
@@ -39,7 +39,7 @@ p18
 g2
 (g9
 g10
-S'&images/img-0007.png-height;'
+S'&images/img-0008.png-height;'
 p19
 tp20
 Rp21
@@ -51,7 +51,7 @@ p23
 g2
 (g9
 g10
-S'&images/img-0007.png-width;'
+S'&images/img-0008.png-width;'
 p24
 tp25
 Rp26
@@ -60,18 +60,18 @@ g15
 g16
 sbsS'filename'
 p28
-Vimages/img-0007.png
+Vimages/img-0008.png
 p29
 sS'_cropped'
 p30
 I00
 sS'checksum'
 p31
-S'*\x88\xee%\xf8\xac\xb2-p(GP\x8b\xe9_\xc2'
+S'\xe7\x10\x9f\xe0\x10\xd8\x92\x15\x08-\x1cN\x00\xadw\xd4'
 p32
 sS'path'
 p33
-V/Users/htson/Documents/rodin-code/EventBXText/ac.soton.eventb.xtext.doc/html/images/img-0007.png
+V/Users/htson/Documents/rodin-code/EventBXText/ac.soton.eventb.xtext.doc/html/images/img-0008.png
 p34
 sS'alt'
 p35

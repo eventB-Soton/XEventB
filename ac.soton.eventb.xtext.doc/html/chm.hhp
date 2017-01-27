@@ -15,17 +15,26 @@ Title=EventB XText Front-end User Manual
 Help="EventB XText Front-end User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
 
 [FILES]
-sec-reference.html
-sec-tasks.html
-sec-user-agreement.html
-sec-basic-tutorial.html
-sec-legal.html
+sec-creating-xevent-b.html
+sec-preferences.html
+sec-xmachine-syntax.html
+sec-xtext-projects.html
+sec-xcontext-syntax.html
+sec-xevent-b-builders.html
 index.html
+sec-basic-tutorial.html
+sec-xevent-b-editors.html
 sec-getting-started.html
-sec-overview.html
+sec-typesetting-event-b.html
 sec-installation.html
+sec-overview.html
+sec-content-assist.html
+sec-reference.html
 sec-concepts.html
-sec-samples.html
+sec-user-agreement.html
+sec-legal.html
+sec-tasks.html
+sec-common-syntax.html
 
 
 [MERGE FILES]

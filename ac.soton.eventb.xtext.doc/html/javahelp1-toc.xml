@@ -10,13 +10,31 @@
             
         </tocitem>
     </tocitem><tocitem target="sec:concepts">Concepts
-        
+        <tocitem target="sec:xtext-projects">XText Projects
+            
+        </tocitem><tocitem target="sec:xevent-b-builders">XEvent-B Builders
+            
+        </tocitem><tocitem target="sec:content-assist">Content Assist
+            
+        </tocitem>
     </tocitem><tocitem target="sec:tasks">Tasks
-        
+        <tocitem target="sec:creating-xevent-b">Creating XEvent-B Files
+            
+        </tocitem><tocitem target="sec:typesetting-event-b">Typesetting Event-B Mathematical Symbols
+            
+        </tocitem>
     </tocitem><tocitem target="sec:reference">Reference
-        
-    </tocitem><tocitem target="sec:samples">Samples
-        
+        <tocitem target="sec:common-syntax">Common Syntax
+            
+        </tocitem><tocitem target="sec:xcontext-syntax">XContext Syntax
+            
+        </tocitem><tocitem target="sec:xmachine-syntax">XMachine syntax
+            
+        </tocitem><tocitem target="sec:preferences">Preferences
+            
+        </tocitem><tocitem target="sec:xevent-b-editors">XEvent-B Editors
+            
+        </tocitem>
     </tocitem><tocitem target="sec:legal">Legal
         <tocitem target="sec:user-agreement">RODIN Software User Agreement
             

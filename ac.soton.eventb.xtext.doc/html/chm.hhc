@@ -49,30 +49,99 @@
       <li><object type="text/sitemap">
           <param name="Name" value="Concepts">
           <param name="Local" value="sec-concepts.html">
-          <param name="ImageNumber" value="11">
+          
       </object></li>
-      
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="XText Projects">
+             <param name="Local" value="sec-xtext-projects.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="XEvent-B Builders">
+             <param name="Local" value="sec-xevent-b-builders.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Content Assist">
+             <param name="Local" value="sec-content-assist.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
       
       <li><object type="text/sitemap">
           <param name="Name" value="Tasks">
           <param name="Local" value="sec-tasks.html">
-          <param name="ImageNumber" value="11">
+          
       </object></li>
-      
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Creating XEvent-B Files">
+             <param name="Local" value="sec-creating-xevent-b.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Typesetting Event-B Mathematical Symbols">
+             <param name="Local" value="sec-typesetting-event-b.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
       
       <li><object type="text/sitemap">
           <param name="Name" value="Reference">
           <param name="Local" value="sec-reference.html">
-          <param name="ImageNumber" value="11">
+          
       </object></li>
-      
-      
-      <li><object type="text/sitemap">
-          <param name="Name" value="Samples">
-          <param name="Local" value="sec-samples.html">
-          <param name="ImageNumber" value="11">
-      </object></li>
-      
+      <ul>
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Common Syntax">
+             <param name="Local" value="sec-common-syntax.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="XContext Syntax">
+             <param name="Local" value="sec-xcontext-syntax.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="XMachine syntax">
+             <param name="Local" value="sec-xmachine-syntax.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Preferences">
+             <param name="Local" value="sec-preferences.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="XEvent-B Editors">
+             <param name="Local" value="sec-xevent-b-editors.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+      </ul>
       
       <li><object type="text/sitemap">
           <param name="Name" value="Legal">

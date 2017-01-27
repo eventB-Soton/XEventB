@@ -5,7 +5,13 @@
 <tocitem text="EventB XText Front-end User Manual">
     <tocitem target="sec:overview" text="Event-B XText Front-end Overview" /><tocitem target="sec:getting-started" text="Getting Started">
         <tocitem target="sec:installation" text="Installation" /><tocitem target="sec:basic-tutorial" text="Basic Tutorial" />
-    </tocitem><tocitem target="sec:concepts" text="Concepts" /><tocitem target="sec:tasks" text="Tasks" /><tocitem target="sec:reference" text="Reference" /><tocitem target="sec:samples" text="Samples" /><tocitem target="sec:legal" text="Legal">
+    </tocitem><tocitem target="sec:concepts" text="Concepts">
+        <tocitem target="sec:xtext-projects" text="XText Projects" /><tocitem target="sec:xevent-b-builders" text="XEvent-B Builders" /><tocitem target="sec:content-assist" text="Content Assist" />
+    </tocitem><tocitem target="sec:tasks" text="Tasks">
+        <tocitem target="sec:creating-xevent-b" text="Creating XEvent-B Files" /><tocitem target="sec:typesetting-event-b" text="Typesetting Event-B Mathematical Symbols" />
+    </tocitem><tocitem target="sec:reference" text="Reference">
+        <tocitem target="sec:common-syntax" text="Common Syntax" /><tocitem target="sec:xcontext-syntax" text="XContext Syntax" /><tocitem target="sec:xmachine-syntax" text="XMachine syntax" /><tocitem target="sec:preferences" text="Preferences" /><tocitem target="sec:xevent-b-editors" text="XEvent-B Editors" />
+    </tocitem><tocitem target="sec:legal" text="Legal">
         <tocitem target="sec:user-agreement" text="RODIN Software User Agreement" />
     </tocitem>
 </tocitem>
