@@ -16,25 +16,25 @@ Help="EventB XText Front-end User Manual","chm.hhc","chm.hhk","index.html","inde
 
 [FILES]
 sec-creating-xevent-b.html
-sec-preferences.html
-sec-xmachine-syntax.html
-sec-xtext-projects.html
-sec-xcontext-syntax.html
-sec-xevent-b-builders.html
-index.html
-sec-basic-tutorial.html
-sec-xevent-b-editors.html
-sec-getting-started.html
-sec-typesetting-event-b.html
-sec-installation.html
-sec-overview.html
-sec-content-assist.html
-sec-reference.html
-sec-concepts.html
 sec-user-agreement.html
-sec-legal.html
-sec-tasks.html
+sec-preferences.html
+sec-xtext-projects.html
 sec-common-syntax.html
+sec-tasks.html
+index.html
+sec-xmachine-syntax.html
+sec-basic-tutorial.html
+sec-xcontext-syntax.html
+sec-getting-started.html
+sec-installation.html
+sec-xevent-b-builders.html
+sec-overview.html
+sec-xevent-b-editors.html
+sec-content-assist.html
+sec-typesetting-event-b.html
+sec-concepts.html
+sec-legal.html
+sec-reference.html
 
 
 [MERGE FILES]
