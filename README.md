@@ -4,6 +4,9 @@ This feature provides XText-based editors for Event-B machines and contexts.
 
 Release history:
 -------------
+**0.0.5**
+  - Event-B XText Documentations (0.0.1): Documentation plug-in (Initial version).
+  - Event-B XText Cheatsheets (0.0.1): Cheatsheets plug-in including Basic tutorial (Initial version).
 **0.0.4**
   - Event-B XText feature (0.0.4): Update the plug-in dependency for the feature
   - Event-B XText SDK feature (0.0.4): Update the plug-in dependency for the feature
