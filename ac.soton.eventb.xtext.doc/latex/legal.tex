@@ -1,0 +1,25 @@
+\ifplastex
+\section{Legal}
+\label{sec:legal}
+
+\subsection{RODIN Software User Agreement}
+\label{sec:user-agreement}
+
+\input{rodin-user_agreement}
+\else
+  \ifstandalone
+  \section{Legal}
+  \label{sec:legal}
+
+  \subsection{RODIN Software User Agreement}
+  \label{sec:user-agreement}
+
+  \input{rodin-user_agreement}
+  \else
+  \fi
+\fi
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "user_manual"
+%%% End:

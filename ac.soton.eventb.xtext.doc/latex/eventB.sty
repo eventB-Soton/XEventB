@@ -1,0 +1,187 @@
+%%
+%% This is file `eventB.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% eventB.dtx  (with options: `eventB')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2012 by Thai Son Hoang <htson at inf dot ethz dot ch>
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3 or later is part of all distributions of LaTeX
+%% version 2003/12/01 or later.
+%% 
+%%%%% BEGIN Identification part %%%%%
+% ========================
+%\NeedsTeXFormat{LaTeX2e}\relax
+\ProvidesPackage{eventB}
+    [2012/02/21 v1.1.1 Package for typesetting Event-B models]
+%%%%% END Identification part %%%%%
+
+%%%%% BEGIN Package loading %%%%%
+% ========================
+\ifplastex
+\RequirePackage{color}
+\else
+\RequirePackage{xspace}
+\RequirePackage{xcolor}
+\RequirePackage{etoolbox}
+\RequirePackage{alltt}
+\fi
+%%%%% END Package loading %%%%%
+
+%%%%% BEGIN Helper Macros %%%%%
+% ========================
+
+%   Event-B keywords base
+\ifplastex
+\newcommand{\B@keywordbase}[1]{\texttt{#1}}
+\else
+\newcommand{\B@keywordbase}[1]{\mathbf{#1}}
+\fi
+
+% %%%%% END Helper Macros %%%%%
+
+% %%%%% BEGIN Declaration of options %%%%%
+% % ========================
+
+
+% %%% Options for font size and spacing %%%
+% % ------------------------
+
+% % The font size used in Bcode environment, defaulted to be |\normalsize|.
+\newcommand{\B@fontsize}{\normalsize}
+
+
+% %%% Options for colouring %%%
+% % ------------------------
+
+% % Event-B keywords
+\ifplastex
+\newcommand{\B@keyword}[1]{\B@keywordbase{#1}}
+\else
+\newcommand{\B@keyword}[1]{\ensuremath{\B@keywordbase{#1}}\xspace}
+\fi
+
+% % Option 'colour': Redefine above commands
+\DeclareOption{colour}{
+
+%   Macro for defining Event-B keywords colour
+  \ifplastex
+  \newcommand{\setBKeywordColour}[1]{}
+  \else
+  \newcommand{\setBKeywordColour}[1]{\colorlet{B@keywordcolor}{#1}}
+  \setBKeywordColour{blue}
+  \fi
+
+  %   Redefine commands
+  \ifplastex
+  \renewcommand{\B@keyword}[1]{% Remove the leading space
+    \textcolor{blue}{\B@keywordbase{#1}}
+  }
+  \else
+  \renewcommand{\B@keyword}[1]{% Remove the leading space
+    \ensuremath{\textcolor{B@keywordcolor}{\B@keywordbase{#1}}}\xspace
+  }
+  \fi
+}
+\DeclareOption{color}{
+   \ExecuteOptions{colour}
+}
+
+%%%%% BEGIN Execution of options %%%%%
+% ========================
+
+\ProcessOptions
+%%%%% END Execution of options %%%%%
+
+
+
+% %%%%% BEGIN Commands for Pretty-Print Event-B Models %%%%%
+% % ========================
+
+\newcommand{\eventB}{Event-B\xspace}
+
+% % Bcode environment %
+\ifplastex
+\newenvironment{Bcode}[1][]
+{%
+  \ttfamily%
+  #1
+  \begin{tabular}{llllll}
+}
+{%
+  \end{tabular}
+  \par
+}
+\else
+\newenvironment{Bcode}[1][\B@fontsize]{\begin{alltt}#1}{\end{alltt}}
+\fi
+
+
+% % Event-B keywords for pretty-printing events %
+\newcommand{\Bcontext}{\B@keyword{context}}
+\newcommand{\Bextends}{\B@keyword{extends}}
+\newcommand{\Bsets}{\B@keyword{sets}}
+\newcommand{\Bconstants}{\B@keyword{constants}}
+\newcommand{\Baxioms}{\B@keyword{axioms}}
+\newcommand{\Btheorem}{\B@keyword{theorem}}
+\newcommand{\Bmachine}{\B@keyword{machine}}
+\newcommand{\Brefines}{\B@keyword{refines}}
+\newcommand{\Bsees}{\B@keyword{sees}}
+\newcommand{\Bvariables}{\B@keyword{variables}}
+\newcommand{\Binvariants}{\B@keyword{invariants}}
+\newcommand{\Bvariant}{\B@keyword{variant}}
+\newcommand{\Bevents}{\B@keyword{events}}
+
+\newcommand{\Bany}{\B@keyword{any}}
+\newcommand{\Bbegin}{\B@keyword{begin}}
+\newcommand{\Bend}{\B@keyword{end}}
+\newcommand{\Bstatus}{\B@keyword{status}}
+\newcommand{\Bthen}{\B@keyword{then}}
+\newcommand{\Bwhen}{\B@keyword{when}}
+\newcommand{\Bwhere}{\B@keyword{where}}
+\newcommand{\Bwith}{\B@keyword{with}}
+\newcommand{\Bextended}{\B@keyword{extended}}
+\newcommand{\Banticipated}{\B@keyword{anticipated}}
+\newcommand{\Bordinary}{\B@keyword{ordinary}}
+\newcommand{\Bconvergent}{\B@keyword{convergent}}
+
+% % Pretty-print Event-B modelling elements %
+% \newcommand{\Bctx}[1]{\ensuremath{\mathbf{#1}}\xspace}
+% \newcommand{\Bset}[1]{\B@identifier{#1}}
+% \newcommand{\Bcst}[1]{\B@identifier{#1}}
+% \newcommand{\Baxm}[1]{\B@label{#1}}
+% \newcommand{\Bthm}[1]{\B@label[thm]{#1}}
+
+% \newcommand{\Bmch}[1]{\ensuremath{\mathbf{#1}}\xspace}
+% \newcommand{\Bvrb}[1]{\B@identifier{#1}}
+% \newcommand{\Binv}[1]{\B@label{#1}}
+% \newcommand{\Bevt}[1]{\B@label{#1}}
+% \newcommand{\Bpar}[1]{\B@identifier{#1}}
+% \newcommand{\Bact}[1]{\B@label{#1}}
+% \newcommand{\Bgrd}[1]{\B@label{#1}}
+% \newcommand{\Bbap}[1]{\hbox{\sl\bfseries #1}}
+
+\newcommand{\B@tab}{
+  \ifplastex
+  \quad
+  \else
+  \ \ 
+  \fi
+}
+
+\let\Btab\B@tab
+
+\endinput
+%%
+%% End of file `eventB.sty'.

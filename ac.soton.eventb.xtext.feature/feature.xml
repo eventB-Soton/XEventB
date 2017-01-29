@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.eventb.xtext.feature"
       label="%featureName"
-      version="0.0.4.release"
+      version="0.0.5.release"
       provider-name="%featureVendor"
       plugin="ac.soton.eventb.xtext.branding"
       license-feature="org.rodinp.license"
@@ -49,11 +49,17 @@
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.xtext.builder"/>
       <import plugin="ac.soton.eventb.xtext.common" version="0.0.1" match="greaterOrEqual"/>
-      <import plugin="ac.soton.eventb.inclusionfeature" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.expressions" version="3.4.600" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.common"/>
+      <import plugin="org.eclipse.help"/>
+      <import plugin="org.eclipse.ui.cheatsheets" version="3.4.200" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.jface" version="3.10.2" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.workbench"/>
+      <import plugin="org.eventb.ui" version="3.2.0" match="compatible"/>
+      <import plugin="fr.systerel.explorer" version="2.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.10.2" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -113,6 +119,19 @@
 
    <plugin
          id="ac.soton.eventb.xtext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.eventb.xtext.doc"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="ac.soton.eventb.xtext.cheatsheet"
          download-size="0"
          install-size="0"
          version="0.0.0"

@@ -1,0 +1,40 @@
+[OPTIONS]
+Compatibility=1.1 or later
+Compiled file=user_manual.chm
+Contents file=chm.hhc
+Default Window=Help
+Default topic=index.html
+Display compile progress=Yes
+Error log file=help.log
+Full-text search=Yes
+Index file=chm.hhk
+Language=0x0 
+Title=EventB XText Front-end User Manual
+
+[WINDOWS]
+Help="EventB XText Front-end User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
+
+[FILES]
+sec-creating-xevent-b.html
+sec-user-agreement.html
+sec-preferences.html
+sec-xtext-projects.html
+sec-common-syntax.html
+sec-tasks.html
+index.html
+sec-xmachine-syntax.html
+sec-basic-tutorial.html
+sec-xcontext-syntax.html
+sec-getting-started.html
+sec-installation.html
+sec-xevent-b-builders.html
+sec-overview.html
+sec-xevent-b-editors.html
+sec-content-assist.html
+sec-typesetting-event-b.html
+sec-concepts.html
+sec-legal.html
+sec-reference.html
+
+
+[MERGE FILES]

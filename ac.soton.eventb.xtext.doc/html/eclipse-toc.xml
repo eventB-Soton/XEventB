@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<toc topic="html/index.html" label="EventB XText Front-end User Manual">
+    <topic label="Event-B XText Front-end Overview" href="html/sec-overview.html" /><topic label="Getting Started" href="html/sec-getting-started.html">
+       <topic label="Installation" href="html/sec-installation.html" /><topic label="Basic Tutorial" href="html/sec-basic-tutorial.html" />
+    </topic><topic label="Concepts" href="html/sec-concepts.html">
+       <topic label="XText Projects" href="html/sec-xtext-projects.html" /><topic label="XEvent-B Builders" href="html/sec-xevent-b-builders.html" /><topic label="Content Assist" href="html/sec-content-assist.html" />
+    </topic><topic label="Tasks" href="html/sec-tasks.html">
+       <topic label="Creating XEvent-B Files" href="html/sec-creating-xevent-b.html" /><topic label="Typesetting Event-B Mathematical Symbols" href="html/sec-typesetting-event-b.html" />
+    </topic><topic label="Reference" href="html/sec-reference.html">
+       <topic label="Common Syntax" href="html/sec-common-syntax.html" /><topic label="XContext Syntax" href="html/sec-xcontext-syntax.html" /><topic label="XMachine syntax" href="html/sec-xmachine-syntax.html" /><topic label="Preferences" href="html/sec-preferences.html" /><topic label="XEvent-B Editors" href="html/sec-xevent-b-editors.html" />
+    </topic><topic label="Legal" href="html/sec-legal.html">
+       <topic label="RODIN Software User Agreement" href="html/sec-user-agreement.html" />
+    </topic>
+</toc>

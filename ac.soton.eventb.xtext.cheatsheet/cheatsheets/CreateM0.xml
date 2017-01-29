@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cheatsheet
+      title="Create a simple XMachine">
+   <intro>
+      <description>
+         <b>Create a simple XMachine</b> named m0.bumx
+      </description>
+   </intro>
+   <item
+         skip="false"
+         title="Step 1. Create a new XMachine m0.bumx">
+      <description>
+         <b>Create a new XMachine</b> named &quot;m0.bumx&quot; using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
+      </description>
+      <command
+            required="true"
+            serialization="org.eclipse.ui.newWizard(newWizardId=org.eclipse.ui.wizards.new.file)"/>
+   </item>
+   <item
+         skip="false"
+         title="Step 2. Set the content of m0.bumx">
+      <description>
+         <b>Set the content of &quot;m0.bumx&quot; as follows</b>.
+         <br/>
+         machine m0
+         <br/>
+         variables crs
+         <br/>
+         invariants
+         <br/>
+         @inv0_1: &quot;crs ∈ ℙ(CRS)&quot;
+         <br/>
+         @thm0_2: &quot;finite(crs)&quot; theorem
+         <br/>
+         @inv0_2: &quot;card(crs) ≤ m&quot;
+         <br/>
+         @DLF: &quot;(card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅)&quot;
+         <br/>
+         events
+         <br/>
+         INITIALISATION
+         <br/>
+		 begin
+		 <br/>
+		 @act0_1: &quot;crs ≔ ∅&quot;
+		 <br/>
+		 end
+		 <br/>
+		 OpenCourses
+		 <br/>
+		 when
+		 <br/>
+		 @grd0_1: &quot;card(crs) ≠ m&quot; 
+		 <br/>
+		 @thm0_3: &quot;crs ≠ CRS&quot; theorem 
+		 <br/>
+		 then
+		 <br/>
+		 @act0_1: &quot;crs :∣ crs ⊂ crs&apos; ∧ card(crs&apos;) ≤ m&quot;
+		 <br/>
+		 end
+		 <br/>
+		 CloseCourses anticipated
+		 <br/>
+		 any cs where
+		 <br/>
+		 @grd0_1: &quot;cs ⊆ crs&quot;
+		 <br/>
+		 @grd0_2: &quot;cs ≠ ∅&quot;
+		 <br/>
+		 then
+		 <br/>
+		 @act0_1: &quot;crs ≔ crs ∖ cs&quot;
+		 <br/>
+		 end
+		 <br/>
+         end
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 3. Auto-format the code">
+      <description>
+         <b>Automatically format the content of &quot;m0.bumx&quot;</b> by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
+      </description>
+   </item>
+   <item
+         skip="false"
+         title="Step 4. Save the file">
+      <description>
+         <b>Save the file &quot;m0.bumx&quot;</b>.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+   <item
+         skip="false"
+         title="Step 5. Add missing &quot;sees&quot; clause">
+      <description>
+         In the compiled Rodin Machine m0, there are several errors, due to the fact that <b>m0</b> refers to the sets and constants of the context courseCtx.
+         <b>Add the missing &quot;sees&quot; clause</b> after the &quot;machine&quot;
+         <br/>
+         sees courseCtx
+         <br/> 
+         (Note: One can use Content Assist after typing &quot;sees&quot; keyword to select the context.
+      </description>
+   </item>
+      <item
+         skip="false"
+         title="Step 6. Save the file again">
+      <description>
+         <b>Save the file &quot;m0.bumx&quot; again</b>.
+      </description>
+      <command
+            required="false"
+            serialization="org.eclipse.ui.file.save"/>
+   </item>
+</cheatsheet>
