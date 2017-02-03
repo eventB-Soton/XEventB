@@ -15,8 +15,7 @@ import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.machine.MachinePackage;
-import org.eventb.emf.core.machine.provider.MachineItemProvider;
+import org.eventb.emf.core.provider.AbstractExtensionItemProvider;
 
 /**
  * This is the item provider adapter for a {@link ac.soton.eventb.featureinclusion.MachineInclusion} object.
@@ -24,7 +23,7 @@ import org.eventb.emf.core.machine.provider.MachineItemProvider;
  * <!-- end-user-doc -->
  * @generated
  */
-public class MachineInclusionItemProvider extends MachineItemProvider {
+public class MachineInclusionItemProvider extends AbstractExtensionItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -46,34 +45,11 @@ public class MachineInclusionItemProvider extends MachineItemProvider {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addExtensionIdPropertyDescriptor(object);
 			addAbstractMachinePropertyDescriptor(object);
 			addConcreteMachinePropertyDescriptor(object);
 			addPrefixesPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Extension Id feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addExtensionIdPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add
-			(createItemPropertyDescriptor
-				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-				 getResourceLocator(),
-				 getString("_UI_AbstractExtension_extensionId_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_AbstractExtension_extensionId_feature", "_UI_AbstractExtension_type"),
-				 CorePackage.Literals.ABSTRACT_EXTENSION__EXTENSION_ID,
-				 true,
-				 false,
-				 false,
-				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
-				 null,
-				 null));
 	}
 
 	/**
@@ -161,7 +137,7 @@ public class MachineInclusionItemProvider extends MachineItemProvider {
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MachineInclusion)object).getName();
+		String label = ((MachineInclusion)object).getReference();
 		return label == null || label.length() == 0 ?
 			getString("_UI_MachineInclusion_type") :
 			getString("_UI_MachineInclusion_type") + " " + label;
@@ -180,7 +156,6 @@ public class MachineInclusionItemProvider extends MachineItemProvider {
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(MachineInclusion.class)) {
-			case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID:
 			case FeatureinclusionPackage.MACHINE_INCLUSION__PREFIXES:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
@@ -208,34 +183,6 @@ public class MachineInclusionItemProvider extends MachineItemProvider {
 			(createChildParameter
 				(CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS,
 				 FeatureinclusionFactory.eINSTANCE.createEventSynchronisation()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(MachinePackage.Literals.MACHINE__EVENTS,
-				 FeatureinclusionFactory.eINSTANCE.createEventSynchronisation()));
-	}
-
-	/**
-	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
-		Object childFeature = feature;
-		Object childObject = child;
-
-		boolean qualify =
-			childFeature == CorePackage.Literals.EVENT_BELEMENT__EXTENSIONS ||
-			childFeature == MachinePackage.Literals.MACHINE__EVENTS;
-
-		if (qualify) {
-			return getString
-				("_UI_CreateChild_text2",
-				 new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
-		}
-		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

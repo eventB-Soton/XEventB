@@ -3,23 +3,12 @@
 package ac.soton.eventb.featureinclusion.util;
 
 import ac.soton.eventb.featureinclusion.*;
-
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.util.Switch;
-
 import org.eventb.emf.core.AbstractExtension;
-import org.eventb.emf.core.EventBCommented;
-import org.eventb.emf.core.EventBCommentedElement;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamed;
-import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBObject;
-
-import org.eventb.emf.core.machine.Event;
-import org.eventb.emf.core.machine.Machine;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,14 +70,8 @@ public class FeatureinclusionSwitch<T> extends Switch<T> {
 			case FeatureinclusionPackage.MACHINE_INCLUSION: {
 				MachineInclusion machineInclusion = (MachineInclusion)theEObject;
 				T result = caseMachineInclusion(machineInclusion);
-				if (result == null) result = caseMachine(machineInclusion);
 				if (result == null) result = caseAbstractExtension(machineInclusion);
-				if (result == null) result = caseEventBNamedCommentedComponentElement(machineInclusion);
-				if (result == null) result = caseEventBNamedCommentedElement(machineInclusion);
-				if (result == null) result = caseEventBCommentedElement(machineInclusion);
-				if (result == null) result = caseEventBNamed(machineInclusion);
 				if (result == null) result = caseEventBElement(machineInclusion);
-				if (result == null) result = caseEventBCommented(machineInclusion);
 				if (result == null) result = caseEventBObject(machineInclusion);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -96,13 +79,8 @@ public class FeatureinclusionSwitch<T> extends Switch<T> {
 			case FeatureinclusionPackage.EVENT_SYNCHRONISATION: {
 				EventSynchronisation eventSynchronisation = (EventSynchronisation)theEObject;
 				T result = caseEventSynchronisation(eventSynchronisation);
-				if (result == null) result = caseEvent(eventSynchronisation);
 				if (result == null) result = caseAbstractExtension(eventSynchronisation);
-				if (result == null) result = caseEventBNamedCommentedElement(eventSynchronisation);
-				if (result == null) result = caseEventBCommentedElement(eventSynchronisation);
-				if (result == null) result = caseEventBNamed(eventSynchronisation);
 				if (result == null) result = caseEventBElement(eventSynchronisation);
-				if (result == null) result = caseEventBCommented(eventSynchronisation);
 				if (result == null) result = caseEventBObject(eventSynchronisation);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -183,111 +161,6 @@ public class FeatureinclusionSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseAbstractExtension(AbstractExtension object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BCommented</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BCommented</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBCommented(EventBCommented object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BCommented Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BCommented Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBCommentedElement(EventBCommentedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BNamed</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BNamed</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBNamed(EventBNamed object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BNamed Commented Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BNamed Commented Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBNamedCommentedElement(EventBNamedCommentedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event BNamed Commented Component Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event BNamed Commented Component Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEventBNamedCommentedComponentElement(EventBNamedCommentedComponentElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Machine</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Machine</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseMachine(Machine object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Event</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvent(Event object) {
 		return null;
 	}
 

@@ -3,25 +3,13 @@
 package ac.soton.eventb.featureinclusion.util;
 
 import ac.soton.eventb.featureinclusion.*;
-
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
-
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
-
 import org.eclipse.emf.ecore.EObject;
-
 import org.eventb.emf.core.AbstractExtension;
-import org.eventb.emf.core.EventBCommented;
-import org.eventb.emf.core.EventBCommentedElement;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamed;
-import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.EventBNamedCommentedElement;
 import org.eventb.emf.core.EventBObject;
-
-import org.eventb.emf.core.machine.Event;
-import org.eventb.emf.core.machine.Machine;
 
 /**
  * <!-- begin-user-doc -->
@@ -96,36 +84,8 @@ public class FeatureinclusionAdapterFactory extends AdapterFactoryImpl {
 				return createEventBElementAdapter();
 			}
 			@Override
-			public Adapter caseEventBCommented(EventBCommented object) {
-				return createEventBCommentedAdapter();
-			}
-			@Override
-			public Adapter caseEventBCommentedElement(EventBCommentedElement object) {
-				return createEventBCommentedElementAdapter();
-			}
-			@Override
-			public Adapter caseEventBNamed(EventBNamed object) {
-				return createEventBNamedAdapter();
-			}
-			@Override
-			public Adapter caseEventBNamedCommentedElement(EventBNamedCommentedElement object) {
-				return createEventBNamedCommentedElementAdapter();
-			}
-			@Override
-			public Adapter caseEventBNamedCommentedComponentElement(EventBNamedCommentedComponentElement object) {
-				return createEventBNamedCommentedComponentElementAdapter();
-			}
-			@Override
-			public Adapter caseMachine(Machine object) {
-				return createMachineAdapter();
-			}
-			@Override
 			public Adapter caseAbstractExtension(AbstractExtension object) {
 				return createAbstractExtensionAdapter();
-			}
-			@Override
-			public Adapter caseEvent(Event object) {
-				return createEventAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -214,104 +174,6 @@ public class FeatureinclusionAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractExtensionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBCommented <em>Event BCommented</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBCommented
-	 * @generated
-	 */
-	public Adapter createEventBCommentedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBCommentedElement <em>Event BCommented Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBCommentedElement
-	 * @generated
-	 */
-	public Adapter createEventBCommentedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBNamed <em>Event BNamed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBNamed
-	 * @generated
-	 */
-	public Adapter createEventBNamedAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBNamedCommentedElement <em>Event BNamed Commented Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBNamedCommentedElement
-	 * @generated
-	 */
-	public Adapter createEventBNamedCommentedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.EventBNamedCommentedComponentElement <em>Event BNamed Commented Component Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.EventBNamedCommentedComponentElement
-	 * @generated
-	 */
-	public Adapter createEventBNamedCommentedComponentElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.machine.Machine <em>Machine</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.machine.Machine
-	 * @generated
-	 */
-	public Adapter createMachineAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.eventb.emf.core.machine.Event <em>Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.eventb.emf.core.machine.Event
-	 * @generated
-	 */
-	public Adapter createEventAdapter() {
 		return null;
 	}
 

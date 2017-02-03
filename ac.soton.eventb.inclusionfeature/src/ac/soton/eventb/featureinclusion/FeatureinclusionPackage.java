@@ -6,7 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-import org.eventb.emf.core.machine.MachinePackage;
+import org.eventb.emf.core.CorePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -81,7 +81,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__ANNOTATIONS = MachinePackage.MACHINE__ANNOTATIONS;
+	int MACHINE_INCLUSION__ANNOTATIONS = CorePackage.ABSTRACT_EXTENSION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
@@ -90,7 +90,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__EXTENSIONS = MachinePackage.MACHINE__EXTENSIONS;
+	int MACHINE_INCLUSION__EXTENSIONS = CorePackage.ABSTRACT_EXTENSION__EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' map.
@@ -99,7 +99,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__ATTRIBUTES = MachinePackage.MACHINE__ATTRIBUTES;
+	int MACHINE_INCLUSION__ATTRIBUTES = CorePackage.ABSTRACT_EXTENSION__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -108,7 +108,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__REFERENCE = MachinePackage.MACHINE__REFERENCE;
+	int MACHINE_INCLUSION__REFERENCE = CorePackage.ABSTRACT_EXTENSION__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -117,7 +117,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__GENERATED = MachinePackage.MACHINE__GENERATED;
+	int MACHINE_INCLUSION__GENERATED = CorePackage.ABSTRACT_EXTENSION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
@@ -126,7 +126,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__LOCAL_GENERATED = MachinePackage.MACHINE__LOCAL_GENERATED;
+	int MACHINE_INCLUSION__LOCAL_GENERATED = CorePackage.ABSTRACT_EXTENSION__LOCAL_GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
@@ -135,97 +135,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__INTERNAL_ID = MachinePackage.MACHINE__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__COMMENT = MachinePackage.MACHINE__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__NAME = MachinePackage.MACHINE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Refines</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__REFINES = MachinePackage.MACHINE__REFINES;
-
-	/**
-	 * The feature id for the '<em><b>Refines Names</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__REFINES_NAMES = MachinePackage.MACHINE__REFINES_NAMES;
-
-	/**
-	 * The feature id for the '<em><b>Sees</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__SEES = MachinePackage.MACHINE__SEES;
-
-	/**
-	 * The feature id for the '<em><b>Sees Names</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__SEES_NAMES = MachinePackage.MACHINE__SEES_NAMES;
-
-	/**
-	 * The feature id for the '<em><b>Variables</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__VARIABLES = MachinePackage.MACHINE__VARIABLES;
-
-	/**
-	 * The feature id for the '<em><b>Invariants</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__INVARIANTS = MachinePackage.MACHINE__INVARIANTS;
-
-	/**
-	 * The feature id for the '<em><b>Variant</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__VARIANT = MachinePackage.MACHINE__VARIANT;
-
-	/**
-	 * The feature id for the '<em><b>Events</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MACHINE_INCLUSION__EVENTS = MachinePackage.MACHINE__EVENTS;
+	int MACHINE_INCLUSION__INTERNAL_ID = CorePackage.ABSTRACT_EXTENSION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
@@ -234,7 +144,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__EXTENSION_ID = MachinePackage.MACHINE_FEATURE_COUNT + 0;
+	int MACHINE_INCLUSION__EXTENSION_ID = CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID;
 
 	/**
 	 * The feature id for the '<em><b>Abstract Machine</b></em>' reference.
@@ -243,7 +153,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__ABSTRACT_MACHINE = MachinePackage.MACHINE_FEATURE_COUNT + 1;
+	int MACHINE_INCLUSION__ABSTRACT_MACHINE = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Concrete Machine</b></em>' reference.
@@ -252,7 +162,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__CONCRETE_MACHINE = MachinePackage.MACHINE_FEATURE_COUNT + 2;
+	int MACHINE_INCLUSION__CONCRETE_MACHINE = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Prefixes</b></em>' attribute list.
@@ -261,7 +171,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION__PREFIXES = MachinePackage.MACHINE_FEATURE_COUNT + 3;
+	int MACHINE_INCLUSION__PREFIXES = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of structural features of the '<em>Machine Inclusion</em>' class.
@@ -270,7 +180,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MACHINE_INCLUSION_FEATURE_COUNT = MachinePackage.MACHINE_FEATURE_COUNT + 4;
+	int MACHINE_INCLUSION_FEATURE_COUNT = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link ac.soton.eventb.featureinclusion.impl.EventSynchronisationImpl <em>Event Synchronisation</em>}' class.
@@ -289,7 +199,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__ANNOTATIONS = MachinePackage.EVENT__ANNOTATIONS;
+	int EVENT_SYNCHRONISATION__ANNOTATIONS = CorePackage.ABSTRACT_EXTENSION__ANNOTATIONS;
 
 	/**
 	 * The feature id for the '<em><b>Extensions</b></em>' containment reference list.
@@ -298,7 +208,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__EXTENSIONS = MachinePackage.EVENT__EXTENSIONS;
+	int EVENT_SYNCHRONISATION__EXTENSIONS = CorePackage.ABSTRACT_EXTENSION__EXTENSIONS;
 
 	/**
 	 * The feature id for the '<em><b>Attributes</b></em>' map.
@@ -307,7 +217,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__ATTRIBUTES = MachinePackage.EVENT__ATTRIBUTES;
+	int EVENT_SYNCHRONISATION__ATTRIBUTES = CorePackage.ABSTRACT_EXTENSION__ATTRIBUTES;
 
 	/**
 	 * The feature id for the '<em><b>Reference</b></em>' attribute.
@@ -316,7 +226,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__REFERENCE = MachinePackage.EVENT__REFERENCE;
+	int EVENT_SYNCHRONISATION__REFERENCE = CorePackage.ABSTRACT_EXTENSION__REFERENCE;
 
 	/**
 	 * The feature id for the '<em><b>Generated</b></em>' attribute.
@@ -325,7 +235,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__GENERATED = MachinePackage.EVENT__GENERATED;
+	int EVENT_SYNCHRONISATION__GENERATED = CorePackage.ABSTRACT_EXTENSION__GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Local Generated</b></em>' attribute.
@@ -334,7 +244,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__LOCAL_GENERATED = MachinePackage.EVENT__LOCAL_GENERATED;
+	int EVENT_SYNCHRONISATION__LOCAL_GENERATED = CorePackage.ABSTRACT_EXTENSION__LOCAL_GENERATED;
 
 	/**
 	 * The feature id for the '<em><b>Internal Id</b></em>' attribute.
@@ -343,97 +253,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__INTERNAL_ID = MachinePackage.EVENT__INTERNAL_ID;
-
-	/**
-	 * The feature id for the '<em><b>Comment</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__COMMENT = MachinePackage.EVENT__COMMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__NAME = MachinePackage.EVENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Convergence</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__CONVERGENCE = MachinePackage.EVENT__CONVERGENCE;
-
-	/**
-	 * The feature id for the '<em><b>Extended</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__EXTENDED = MachinePackage.EVENT__EXTENDED;
-
-	/**
-	 * The feature id for the '<em><b>Refines</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__REFINES = MachinePackage.EVENT__REFINES;
-
-	/**
-	 * The feature id for the '<em><b>Refines Names</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__REFINES_NAMES = MachinePackage.EVENT__REFINES_NAMES;
-
-	/**
-	 * The feature id for the '<em><b>Parameters</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__PARAMETERS = MachinePackage.EVENT__PARAMETERS;
-
-	/**
-	 * The feature id for the '<em><b>Guards</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__GUARDS = MachinePackage.EVENT__GUARDS;
-
-	/**
-	 * The feature id for the '<em><b>Witnesses</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__WITNESSES = MachinePackage.EVENT__WITNESSES;
-
-	/**
-	 * The feature id for the '<em><b>Actions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVENT_SYNCHRONISATION__ACTIONS = MachinePackage.EVENT__ACTIONS;
+	int EVENT_SYNCHRONISATION__INTERNAL_ID = CorePackage.ABSTRACT_EXTENSION__INTERNAL_ID;
 
 	/**
 	 * The feature id for the '<em><b>Extension Id</b></em>' attribute.
@@ -442,7 +262,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__EXTENSION_ID = MachinePackage.EVENT_FEATURE_COUNT + 0;
+	int EVENT_SYNCHRONISATION__EXTENSION_ID = CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID;
 
 	/**
 	 * The feature id for the '<em><b>Synchronised Event</b></em>' reference.
@@ -451,7 +271,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__SYNCHRONISED_EVENT = MachinePackage.EVENT_FEATURE_COUNT + 1;
+	int EVENT_SYNCHRONISATION__SYNCHRONISED_EVENT = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Prefix</b></em>' attribute.
@@ -460,7 +280,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION__PREFIX = MachinePackage.EVENT_FEATURE_COUNT + 2;
+	int EVENT_SYNCHRONISATION__PREFIX = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Event Synchronisation</em>' class.
@@ -469,7 +289,7 @@ public interface FeatureinclusionPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int EVENT_SYNCHRONISATION_FEATURE_COUNT = MachinePackage.EVENT_FEATURE_COUNT + 3;
+	int EVENT_SYNCHRONISATION_FEATURE_COUNT = CorePackage.ABSTRACT_EXTENSION_FEATURE_COUNT + 2;
 
 	/**
 	 * Returns the meta object for class '{@link ac.soton.eventb.featureinclusion.MachineInclusion <em>Machine Inclusion</em>}'.

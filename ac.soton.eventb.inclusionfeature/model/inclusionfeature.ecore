@@ -2,14 +2,14 @@
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="featureinclusion" nsURI="http://soton.ac.uk/models/eventb/featureinclusion/2017"
     nsPrefix="featureinclusion">
-  <eClassifiers xsi:type="ecore:EClass" name="MachineInclusion" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine ../../org.eventb.emf.core/model/eventbcore.ecore#//AbstractExtension">
+  <eClassifiers xsi:type="ecore:EClass" name="MachineInclusion" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//AbstractExtension">
     <eAnnotations source="org.eventb.emf.core.extendedMetaClasses" references="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="abstractMachine" eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="concreteMachine" eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Machine"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefixes" upperBound="-1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EventSynchronisation" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Event ../../org.eventb.emf.core/model/eventbcore.ecore#//AbstractExtension">
+  <eClassifiers xsi:type="ecore:EClass" name="EventSynchronisation" eSuperTypes="../../org.eventb.emf.core/model/eventbcore.ecore#//AbstractExtension">
     <eAnnotations source="org.eventb.emf.core.extendedMetaClasses" references="../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Event"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="synchronisedEvent" eType="ecore:EClass ../../org.eventb.emf.core/model/eventbcore.ecore#//machine/Event"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="prefix" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"

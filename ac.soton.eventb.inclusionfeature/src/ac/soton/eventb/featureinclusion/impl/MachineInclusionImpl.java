@@ -11,10 +11,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-import org.eventb.emf.core.AbstractExtension;
-import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.impl.AbstractExtensionImpl;
 import org.eventb.emf.core.machine.Machine;
-import org.eventb.emf.core.machine.impl.MachineImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -23,7 +21,6 @@ import org.eventb.emf.core.machine.impl.MachineImpl;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link ac.soton.eventb.featureinclusion.impl.MachineInclusionImpl#getExtensionId <em>Extension Id</em>}</li>
  *   <li>{@link ac.soton.eventb.featureinclusion.impl.MachineInclusionImpl#getAbstractMachine <em>Abstract Machine</em>}</li>
  *   <li>{@link ac.soton.eventb.featureinclusion.impl.MachineInclusionImpl#getConcreteMachine <em>Concrete Machine</em>}</li>
  *   <li>{@link ac.soton.eventb.featureinclusion.impl.MachineInclusionImpl#getPrefixes <em>Prefixes</em>}</li>
@@ -32,27 +29,7 @@ import org.eventb.emf.core.machine.impl.MachineImpl;
  *
  * @generated
  */
-public class MachineInclusionImpl extends MachineImpl implements MachineInclusion {
-	/**
-	 * The default value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensionId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String EXTENSION_ID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getExtensionId() <em>Extension Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExtensionId()
-	 * @generated
-	 * @ordered
-	 */
-	protected String extensionId = EXTENSION_ID_EDEFAULT;
-
+public class MachineInclusionImpl extends AbstractExtensionImpl implements MachineInclusion {
 	/**
 	 * The cached value of the '{@link #getAbstractMachine() <em>Abstract Machine</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -100,27 +77,6 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	@Override
 	protected EClass eStaticClass() {
 		return FeatureinclusionPackage.Literals.MACHINE_INCLUSION;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getExtensionId() {
-		return extensionId;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setExtensionId(String newExtensionId) {
-		String oldExtensionId = extensionId;
-		extensionId = newExtensionId;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID, oldExtensionId, extensionId));
 	}
 
 	/**
@@ -219,8 +175,6 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID:
-				return getExtensionId();
 			case FeatureinclusionPackage.MACHINE_INCLUSION__ABSTRACT_MACHINE:
 				if (resolve) return getAbstractMachine();
 				return basicGetAbstractMachine();
@@ -242,9 +196,6 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID:
-				setExtensionId((String)newValue);
-				return;
 			case FeatureinclusionPackage.MACHINE_INCLUSION__ABSTRACT_MACHINE:
 				setAbstractMachine((Machine)newValue);
 				return;
@@ -267,9 +218,6 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID:
-				setExtensionId(EXTENSION_ID_EDEFAULT);
-				return;
 			case FeatureinclusionPackage.MACHINE_INCLUSION__ABSTRACT_MACHINE:
 				setAbstractMachine((Machine)null);
 				return;
@@ -291,8 +239,6 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID:
-				return EXTENSION_ID_EDEFAULT == null ? extensionId != null : !EXTENSION_ID_EDEFAULT.equals(extensionId);
 			case FeatureinclusionPackage.MACHINE_INCLUSION__ABSTRACT_MACHINE:
 				return abstractMachine != null;
 			case FeatureinclusionPackage.MACHINE_INCLUSION__CONCRETE_MACHINE:
@@ -309,45 +255,11 @@ public class MachineInclusionImpl extends MachineImpl implements MachineInclusio
 	 * @generated
 	 */
 	@Override
-	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractExtension.class) {
-			switch (derivedFeatureID) {
-				case FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID: return CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID;
-				default: return -1;
-			}
-		}
-		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractExtension.class) {
-			switch (baseFeatureID) {
-				case CorePackage.ABSTRACT_EXTENSION__EXTENSION_ID: return FeatureinclusionPackage.MACHINE_INCLUSION__EXTENSION_ID;
-				default: return -1;
-			}
-		}
-		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public String toString() {
 		if (eIsProxy()) return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (extensionId: ");
-		result.append(extensionId);
-		result.append(", prefixes: ");
+		result.append(" (prefixes: ");
 		result.append(prefixes);
 		result.append(')');
 		return result.toString();

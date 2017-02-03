@@ -26,7 +26,7 @@ import org.eventb.emf.core.machine.Machine;
  * @model
  * @generated
  */
-public interface MachineInclusion extends Machine, AbstractExtension {
+public interface MachineInclusion extends AbstractExtension {
 	/**
 	 * Returns the value of the '<em><b>Abstract Machine</b></em>' reference.
 	 * <!-- begin-user-doc -->

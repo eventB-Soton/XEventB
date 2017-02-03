@@ -22,7 +22,7 @@ import org.eventb.emf.core.machine.Event;
  * @model
  * @generated
  */
-public interface EventSynchronisation extends Event, AbstractExtension {
+public interface EventSynchronisation extends AbstractExtension {
 	/**
 	 * Returns the value of the '<em><b>Synchronised Event</b></em>' reference.
 	 * <!-- begin-user-doc -->

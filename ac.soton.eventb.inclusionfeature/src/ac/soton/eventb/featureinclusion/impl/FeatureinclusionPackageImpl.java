@@ -225,17 +225,15 @@ public class FeatureinclusionPackageImpl extends EPackageImpl implements Feature
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		MachinePackage theMachinePackage = (MachinePackage)EPackage.Registry.INSTANCE.getEPackage(MachinePackage.eNS_URI);
 		CorePackage theCorePackage = (CorePackage)EPackage.Registry.INSTANCE.getEPackage(CorePackage.eNS_URI);
+		MachinePackage theMachinePackage = (MachinePackage)EPackage.Registry.INSTANCE.getEPackage(MachinePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		machineInclusionEClass.getESuperTypes().add(theMachinePackage.getMachine());
 		machineInclusionEClass.getESuperTypes().add(theCorePackage.getAbstractExtension());
-		eventSynchronisationEClass.getESuperTypes().add(theMachinePackage.getEvent());
 		eventSynchronisationEClass.getESuperTypes().add(theCorePackage.getAbstractExtension());
 
 		// Initialize classes and features; add operations and parameters
