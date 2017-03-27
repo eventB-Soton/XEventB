@@ -26,7 +26,7 @@ import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Variant;
 import org.eventb.emf.core.machine.Witness;
-
+import ac.soton.eventb.emf.inclusion.InclusionPackage;
 /**
  * <p>
  * An implementation of transient value service in order to filter out
@@ -57,6 +57,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 
 		// For machine, serialise only "name", "comment", "machine refinement",
 		// "context seeing", "variables", "invariants", "variant" and "events"
+		// Dana: updated to include Machine Inclusion
 		if (owner instanceof Machine) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
@@ -73,6 +74,12 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANT))
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__EVENTS))
+				return false;
+			if (feature.equals(InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE))
+				return false;
+			if (feature.equals(InclusionPackage.Literals.MACHINE_INCLUSION__CONCRETE_MACHINE))
+				return false;
+			if (feature.equals(InclusionPackage.Literals.MACHINE_INCLUSION__PREFIXES))
 				return false;
 			return true;
 		}
@@ -114,6 +121,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 		// For event, serialise only "name", "comment", "event refinement",
 		// "extended", "convergence", "parameters", "guards", "witnesses" and
 		// "actions"
+		//Dana: Updated to include Event Synchronisation
 		if (owner instanceof Event) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
@@ -132,6 +140,10 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(MachinePackage.Literals.EVENT__WITNESSES))
 				return false;
 			if (feature.equals(MachinePackage.Literals.EVENT__ACTIONS))
+				return false;
+			if (feature.equals(InclusionPackage.Literals.EVENT_SYNCHRONISATION__SYNCHRONISED_EVENT))
+				return false;
+			if (feature.equals(InclusionPackage.Literals.EVENT_SYNCHRONISATION__PREFIX))
 				return false;
 			return true;
 		}
