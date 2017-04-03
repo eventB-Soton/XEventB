@@ -3,12 +3,10 @@
  */
 package ac.soton.xeventb.xcontext.ide;
 
-import com.google.inject.Binder;
-import com.google.inject.name.Names;
-
 import ac.soton.xeventb.xcontext.ide.contentassist.antlr.XContextParser;
 import ac.soton.xeventb.xcontext.ide.contentassist.antlr.internal.InternalXContextLexer;
-
+import com.google.inject.Binder;
+import com.google.inject.name.Names;
 import org.eclipse.xtext.ide.DefaultIdeModule;
 import org.eclipse.xtext.ide.LexerIdeBindings;
 import org.eclipse.xtext.ide.editor.contentassist.FQNPrefixMatcher;

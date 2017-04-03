@@ -3,15 +3,16 @@ package ac.soton.xeventb.xcontext.parser.antlr.internal;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parser.*;
 import org.eclipse.xtext.parser.impl.*;
-
-import ac.soton.xeventb.xcontext.services.XContextGrammarAccess;
-
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.parser.antlr.AbstractInternalAntlrParser;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import org.eclipse.xtext.parser.antlr.XtextTokenStream.HiddenTokens;
 import org.eclipse.xtext.parser.antlr.AntlrDatatypeRuleToken;
+import ac.soton.xeventb.xcontext.services.XContextGrammarAccess;
+
+
+
 import org.antlr.runtime.*;
 import java.util.Stack;
 import java.util.List;
