@@ -3,7 +3,7 @@
  */
 package ac.soton.eventb.xtext.context.ui.contentassist
 
-import ac.soton.eventb.xtext.common.RodinSymbolsProposalProvider
+import ac.soton.xeventb.common.RodinSymbolsProposalProvider
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.RuleCall
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext

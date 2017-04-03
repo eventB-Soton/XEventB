@@ -10,8 +10,8 @@
  *******************************************************************************/
 package ac.soton.xeventb;
 
-import ac.soton.eventb.xtext.common.EventBValueConverter;
-import ac.soton.eventb.xtext.common.XMachineTransientValueService;
+import ac.soton.xeventb.common.EventBValueConverter;
+import ac.soton.xeventb.common.XMachineTransientValueService;
 import ac.soton.xeventb.scoping.XMachineScopeProvider;
 import com.google.inject.Binder;
 import org.eclipse.xtext.conversion.IValueConverterService;

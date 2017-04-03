@@ -10,7 +10,7 @@
  */
 package ac.soton.xeventb.ui.contentassist;
 
-import ac.soton.eventb.xtext.common.RodinSymbolsProposalProvider;
+import ac.soton.xeventb.common.RodinSymbolsProposalProvider;
 import ac.soton.xeventb.ui.contentassist.AbstractXMachineProposalProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;

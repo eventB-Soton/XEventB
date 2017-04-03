@@ -11,8 +11,8 @@
 
 package ac.soton.eventb.xtext.context
 
-import ac.soton.eventb.xtext.common.EventBValueConverter
-import ac.soton.eventb.xtext.common.XContextTransientValueService
+import ac.soton.xeventb.common.EventBValueConverter
+import ac.soton.xeventb.common.XContextTransientValueService
 import ac.soton.eventb.xtext.context.scoping.XContextScopeProvider
 import ac.soton.eventb.xtext.context.services.XContextGrammarAccess
 import com.google.inject.Binder
