@@ -1,0 +1,32 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+
+\usepackage{tikz}
+\usepackage{plastex}
+\usepackage[colour]{eventB}
+\usepackage{tikz-eventB}
+\usetikzlibrary{fit}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows}
+
+\begin{document}
+\begin{tikzpicture}
+  \footnotesize
+  \tikzMch[Rodin]{0}{0}{
+    \Bmch{Machine}/
+    \\
+    \Bmch{Context}
+  }
+  \tikzMch[XEventB]{-8}{0}{%
+    \Bmch{XMachine}/
+    \\
+    \Bmch{XContext}
+  }
+
+  \node[draw, circle] (EMF) at (-4, 0) {Event-B EMF};
+  \path [->, thick] (XEventB) edge [bend left]  node[fill=white, align = center]{XText-based\\parser} (EMF);
+%  \path [->, thick] (XContext) edge [bend left] node[fill=white]{automatic} (Context);
+
+%  \path [->, thick] (Machine) edge [bend left]  node[fill=white]{manual} (XMachine);
+%  \path [->, thick] (Context) edge [bend left] node[fill=white]{manual} (XContext);
+\end{tikzpicture}
+\end{document}
