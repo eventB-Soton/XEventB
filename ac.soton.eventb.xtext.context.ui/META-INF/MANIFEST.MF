@@ -18,7 +18,7 @@ Require-Bundle: ac.soton.eventb.xtext.context,
  org.eclipse.xtext.builder,
  org.eclipse.xtend.lib;resolution:=optional,
  org.eclipse.xtext.xbase.lib,
- ac.soton.eventb.xtext.common;bundle-version="0.0.0"
+ ac.soton.xeventb.common;bundle-version="0.0.0"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.eventb.xtext.context.ui.quickfix,
