@@ -9,7 +9,7 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.eventb.xtext.common;
+package ac.soton.xeventb.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -19,7 +19,7 @@ import org.eclipse.xtext.ui.editor.contentassist.ConfigurableCompletionProposal;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 
-import ac.soton.eventb.xtext.internal.common.RodinPrefixMatcher;
+import ac.soton.xeventb.internal.common.RodinPrefixMatcher;
 
 /**
  * <p>

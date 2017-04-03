@@ -19,4 +19,4 @@
  * @see
  * @since
  */
-package ac.soton.eventb.xtext.internal.common;
+package ac.soton.xeventb.common;

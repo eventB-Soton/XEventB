@@ -9,7 +9,7 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.eventb.xtext.internal.common;
+package ac.soton.xeventb.internal.common;
 
 import java.util.ArrayList;
 import java.util.Collection;
