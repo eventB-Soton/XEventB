@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: %Bundle-Name
+Bundle-Vendor: %Bundle-Vendor
+Bundle-Version: 0.0.3.qualifier
+Bundle-SymbolicName: ac.soton.xeventb.xcontext.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.xeventb.xcontext,
+ org.eventb.emf.core,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.xeventb.xcontext.ide.contentassist.antlr.internal,
+ ac.soton.xeventb.xcontext.ide.contentassist.antlr
+
