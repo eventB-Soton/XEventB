@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.0.4.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -25,13 +25,13 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.ui;bundle-version="3.106.1",
  ac.soton.xeventb.common;bundle-version="0.0.2"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: ac.soton.xeventb,
- ac.soton.xeventb.services,
- ac.soton.xeventb.serializer,
- ac.soton.xeventb.parser.antlr,
- ac.soton.xeventb.parser.antlr.internal,
- ac.soton.xeventb.validation,
- ac.soton.xeventb.scoping,
- ac.soton.xeventb.generator,
- ac.soton.xeventb.formatting
+Export-Package: ac.soton.xeventb.xmachine,
+ ac.soton.xeventb.xmachine.formatting,
+ ac.soton.xeventb.xmachine.generator,
+ ac.soton.xeventb.xmachine.parser.antlr,
+ ac.soton.xeventb.xmachine.parser.antlr.internal,
+ ac.soton.xeventb.xmachine.scoping,
+ ac.soton.xeventb.xmachine.serializer,
+ ac.soton.xeventb.xmachine.services,
+ ac.soton.xeventb.xmachine.validation
 Import-Package: org.apache.log4j
