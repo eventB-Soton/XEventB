@@ -8,7 +8,7 @@
  * Contributors:
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
-module ac.soton.xeventb.xmachine.xmachine.GenerateXMachine
+module ac.soton.xeventb.xmachine.GenerateXMachine
 
 import org.eclipse.emf.mwe.utils.StandaloneSetup
 import org.eclipse.emf.mwe.utils.*
