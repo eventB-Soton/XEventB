@@ -29,33 +29,33 @@
 
 % Package for typesetting dates and times
 \ifplastex
-\newcommand{\EventBXTextManualDate}{January 20th, 2017}
+\newcommand{\XEventBManualDate}{May 17th, 2017}
 \else
 \usepackage{datetime}
-\newdate{EventBXTextManualDate}{20}{1}{2017}
+\newdate{XEventBManualDate}{17}{5}{2017}
 \fi
-\newcommand{\EventBXTextFeatureVersion}{0.0.5}
-\newcommand{\EventBXTextManualVersion}{0.0.1}
+\newcommand{\XEventBFeatureVersion}{0.0.6}
+\newcommand{\XEventBManualVersion}{0.0.2}
 
 % Title
-\title{EventB XText Front-end User Manual} 
+\title{XEvent-B User Manual} 
 
 % Author
 \author{%
-  Thai Son Hoang\\%
+  Thai Son Hoang and Dana Dghaym\\%
   ECS, University of Southampton\\%
-  \texttt{\href{mailto:T.S.Hoang@ecs.soton.ac.uk}{T.S.Hoang at ecs dot soton dot ac dot uk}}%
+  \texttt{\{T.S.Hoang, dd4g12\} at ecs dot soton dot ac dot uk}%
 }%
 
 
 % Date
 \date{%
-  Version \EventBXTextManualVersion\\%
-  (for feature version \EventBXTextFeatureVersion)\\
+  Version \XEventBManualVersion\\%
+  (for feature version \XEventBFeatureVersion)\\
   \ifplastex
-  \EventBXTextManualDate
+  \XEventBManualDate
   \else
-  \displaydate{EventBXTextManualDate}%
+  \displaydate{XEventBManualDate}%
   \fi
 }
 

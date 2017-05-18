@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <helpset version="1.0"> 
-<title>EventB XText Front-end User Manual</title>
+<title>XEvent-B User Manual</title>
 <maps>
 <homeID>main_contents</homeID>
 <mapref location="javahelp1.jhm" />

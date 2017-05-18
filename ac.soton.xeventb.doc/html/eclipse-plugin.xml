@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
-<plugin name="EventB XText Front-end User Manual" id="a0000000001" version="1.0.0">
+<plugin name="XEvent-B User Manual" id="a0000000001" version="1.0.0">
    <extension point="org.eclipse.help.toc">
       <toc primary="true" file="eclipse-contents.xml" />
    </extension>

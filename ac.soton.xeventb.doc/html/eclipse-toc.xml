@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
-<toc topic="html/index.html" label="EventB XText Front-end User Manual">
+<toc topic="html/index.html" label="XEvent-B User Manual">
     <topic label="Event-B XText Front-end Overview" href="html/sec-overview.html" /><topic label="Getting Started" href="html/sec-getting-started.html">
        <topic label="Installation" href="html/sec-installation.html" /><topic label="Basic Tutorial" href="html/sec-basic-tutorial.html" />
     </topic><topic label="Concepts" href="html/sec-concepts.html">
