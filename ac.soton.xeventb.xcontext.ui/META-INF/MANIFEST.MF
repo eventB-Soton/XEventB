@@ -24,4 +24,4 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xcontext.ui.quickfix,
  ac.soton.xeventb.xcontext.ui.contentassist,
  ac.soton.xeventb.xcontext.ui.internal
-Bundle-Activator: ac.soton.xeventb.xcontext.ui.internal.ContextActivator
+Bundle-Activator: ac.soton.xeventb.xcontext.ui.internal.XcontextActivator
