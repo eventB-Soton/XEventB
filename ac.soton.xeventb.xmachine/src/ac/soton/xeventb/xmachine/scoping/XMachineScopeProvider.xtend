@@ -32,10 +32,10 @@ import ac.soton.eventb.emf.inclusion.InclusionPackage
  * </p>
  *
  * @author htson
+ * @author Dana - updated to include event synchronisation
  * @version 0.2
  * @see EMFRodinDB
  * @since 0.0.1
- * @updated by Dana to include event synchronisation
  */
 class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
 

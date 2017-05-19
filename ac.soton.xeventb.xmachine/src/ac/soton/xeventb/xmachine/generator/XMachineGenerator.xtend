@@ -48,7 +48,9 @@ override void doGenerate(Resource resource, IFileSystemAccess fsa) {
 	    var uri = URI.createURI(uriString)
 	    emfRodinDB.saveResource(uri, mch)
 	}
-
+	
+    // Dana: If machine contains inclusion, call the inclusion translator to generate
+    // the event-b machine
     else{
     	
     	 	  // IWorkbenchWindow activeWorkbenchWindow = HandlerUtil.getActiveWorkbenchWindow(event);
