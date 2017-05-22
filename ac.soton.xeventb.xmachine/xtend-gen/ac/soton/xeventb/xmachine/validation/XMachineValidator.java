@@ -41,7 +41,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     String _name = mch.getName();
     boolean _notEquals = (!Objects.equal(mchName, _name));
     if (_notEquals) {
-      this.warning("Machine name should be the same as the file name", null);
+      this.error("Machine name should be the same as the file name", null);
     }
   }
   

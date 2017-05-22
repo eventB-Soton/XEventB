@@ -46,7 +46,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 		val fileName = res.URI.lastSegment.toString
 		val mchName= fileName.substring(0, fileName.indexOf('.'))
 		if (mchName != mch.name)
-			warning('Machine name should be the same as the file name', null) //MachinePackage.Literals.MACHINE.eContainingFeature
+			error('Machine name should be the same as the file name', null) //MachinePackage.Literals.MACHINE.eContainingFeature
 	}
 	
 	//check the prefix of the event must be one of the prefixes of the included machine

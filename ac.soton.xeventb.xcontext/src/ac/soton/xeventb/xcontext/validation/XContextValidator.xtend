@@ -46,6 +46,6 @@ class XContextValidator extends AbstractXContextValidator {
 		val fileName = res.URI.lastSegment.toString
 		val ctxName= fileName.substring(0, fileName.indexOf('.'))
 		if (ctxName != ctx.name)
-			warning('Context name should be the same as the file name', null) 
+			error('Context name should be the same as the file name', null) 
 	}
 }

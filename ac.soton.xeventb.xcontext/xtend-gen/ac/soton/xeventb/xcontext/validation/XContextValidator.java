@@ -36,7 +36,7 @@ public class XContextValidator extends AbstractXContextValidator {
     String _name = ctx.getName();
     boolean _notEquals = (!Objects.equal(ctxName, _name));
     if (_notEquals) {
-      this.warning("Context name should be the same as the file name", null);
+      this.error("Context name should be the same as the file name", null);
     }
   }
 }
