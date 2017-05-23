@@ -65,7 +65,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
           }
         }
       }
+      this.error("Event prefix must be one of the included machine prefixes", null);
     }
-    this.error("Event prefix must be one of the included machine prefixes", null);
   }
 }

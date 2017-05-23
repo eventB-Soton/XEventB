@@ -70,9 +70,9 @@ class XMachineValidator extends AbstractXMachineValidator {
 				}
 				
 			}
-
+          error('Event prefix must be one of the included machine prefixes',null)
 		}
-		 error('Event prefix must be one of the included machine prefixes',null)
+		
 		 
 		 
 	}
