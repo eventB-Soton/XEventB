@@ -10,12 +10,21 @@
  *******************************************************************************/
 package ac.soton.xeventb.xmachine.validation
 
-//import org.eclipse.xtext.validation.Check
-
+import org.eclipse.xtext.validation.Check
+import org.eventb.emf.core.machine.Machine
+import org.eventb.emf.core.machine.MachinePackage
+import ac.soton.eventb.emf.inclusion.EventSynchronisation;
+import ac.soton.eventb.emf.inclusion.MachineInclusion;
+import org.eventb.emf.core.machine.Event
 /**
- * This class contains custom validation rules. 
+ * <p>
+ * XMachine validator, provides custom validation rules for the xtext machine file.
+ * </p>
  *
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
+ * @author dana
+ * @version 
+ * @see
+ * @since 
  */
 class XMachineValidator extends AbstractXMachineValidator {
 
@@ -29,4 +38,42 @@ class XMachineValidator extends AbstractXMachineValidator {
 //					INVALID_NAME)
 //		}
 //	}
+
+    // Check the name of the .bumx file is the same as the machine name
+	@Check
+	def checkMachineName(Machine mch){
+		val res = mch.eResource
+		val fileName = res.URI.lastSegment.toString
+		val mchName= fileName.substring(0, fileName.indexOf('.'))
+		if (mchName != mch.name)
+			error('Machine name should be the same as the file name', null) //MachinePackage.Literals.MACHINE.eContainingFeature
+	}
+	
+	//check the prefix of the event must be one of the prefixes of the included machine
+	// that contains the synchronised event
+	@Check
+	def checkEventPrefix(EventSynchronisation evt){
+	
+		if(!evt.prefix.empty){
+			val prefix = evt.prefix
+			val mchContainer = evt.eContainer.eContainer as Machine
+			
+			for(ext: mchContainer.extensions){
+				if(ext instanceof MachineInclusion ){
+					if((ext as MachineInclusion).abstractMachine.events.contains(evt.synchronisedEvent)){//used abstract machine as scoping
+						if((ext as MachineInclusion).prefixes.contains(prefix)){
+							return
+						}
+							
+					}
+					
+				}
+				
+			}
+          error('Event prefix must be one of the included machine prefixes',null)
+		}
+		
+		 
+		 
+	}
 }

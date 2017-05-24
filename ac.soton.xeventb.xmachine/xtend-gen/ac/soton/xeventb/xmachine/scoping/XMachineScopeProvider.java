@@ -46,10 +46,10 @@ import org.rodinp.core.IRodinProject;
  * </p>
  * 
  * @author htson
+ * @author Dana - updated to include event synchronisation
  * @version 0.2
  * @see EMFRodinDB
  * @since 0.0.1
- * @updated by Dana to include event synchronisation
  */
 @SuppressWarnings("all")
 public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
