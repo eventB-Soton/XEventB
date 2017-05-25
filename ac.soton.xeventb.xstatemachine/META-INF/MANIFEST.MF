@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.xeventb.xstatemachine
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.xeventb.xstatemachine; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.eventb.statemachines,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib,
+ org.eventb.emf.core;bundle-version="4.2.1"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.xeventb.xstatemachine.scoping,
+ ac.soton.xeventb.xstatemachine.generator,
+ ac.soton.xeventb.xstatemachine.services,
+ ac.soton.xeventb.xstatemachine.validation,
+ ac.soton.xeventb.xstatemachine.parser.antlr,
+ ac.soton.xeventb.xstatemachine,
+ ac.soton.xeventb.xstatemachine.formatting2,
+ ac.soton.xeventb.xstatemachine.parser.antlr.internal,
+ ac.soton.xeventb.xstatemachine.serializer
+Import-Package: org.apache.log4j
