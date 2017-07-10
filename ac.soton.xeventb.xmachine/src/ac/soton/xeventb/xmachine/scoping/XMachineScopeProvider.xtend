@@ -104,12 +104,23 @@ class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDecla
 			var mchEvts = new ArrayList()
 			for(mchInclusion : mchExt){
 				var abstractMch= mchInclusion.abstractMachine
-				mchEvts.addAll(abstractMch.events)
+				var evtSync = context as EventSynchronisation
+				if (!evtSync.prefix.empty){
+				 	if(mchInclusion.prefixes.contains(evtSync.prefix))	
+				 		mchEvts.addAll(abstractMch.events)
+				}
+				else
+				 mchEvts.addAll(abstractMch.events)	
 			}
 			return Scopes.scopeFor(mchEvts);		
 		}
-        
-		return super.getScope(context, reference);
+		
+		
+       return super.getScope(context, reference);
 	}
+	
+	
+	
+	
 }	
 
