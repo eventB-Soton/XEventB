@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="ac.soton.xeventb.tests.feature"
+      label="%featureName"
+      version="0.0.1.release"
+      provider-name="%featureVendor"
+      plugin="ac.soton.xeventb.branding"
+      license-feature="org.rodinp.license"
+      license-feature-version="1.0.0.release">
+
+   <description>
+      %featureDescription
+   </description>
+
+   <copyright>
+      %featureCopyright
+   </copyright>
+
+   <requires>
+      <import plugin="ac.soton.xeventb.xcontext"/>
+      <import plugin="org.eventb.emf.core"/>
+      <import plugin="org.junit" version="4.7.0" match="greaterOrEqual"/>
+      <import plugin="org.hamcrest.core"/>
+      <import plugin="ac.soton.xeventb.xcontext.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="ac.soton.xeventb.xmachine"/>
+      <import plugin="org.junit" version="4.12.0" match="greaterOrEqual"/>
+      <import plugin="ac.soton.xeventb.xmachine.ui"/>
+      <import plugin="org.eclipse.xtext.junit4" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.junit" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.testing" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.testing" version="2.10.0"/>
+   </requires>
+
+   <plugin
+         id="ac.soton.xeventb.xcontext.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xeventb.xcontext.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xeventb.xmachine.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xeventb.xmachine.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
