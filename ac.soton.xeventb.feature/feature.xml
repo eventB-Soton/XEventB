@@ -2,7 +2,7 @@
 <feature
       id="ac.soton.xeventb.feature"
       label="%featureName"
-      version="0.0.6.qualifier"
+      version="0.0.6.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.license"
@@ -21,40 +21,41 @@
    </url>
 
    <requires>
-      <import plugin="org.eclipse.xtext"/>
-      <import plugin="org.eclipse.xtext.xbase"/>
+      <import plugin="org.eclipse.xtext" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase" version="2.10.0"/>
       <import plugin="org.eclipse.equinox.common" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eventb.emf.core" version="4.2.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.eventb.emf.inclusion" version="0.1.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.generator" version="2.11.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.util"/>
-      <import plugin="org.eclipse.xtext.xbase.lib"/>
+      <import plugin="org.eclipse.xtext.generator" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.util" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.10.0"/>
       <import plugin="org.antlr.runtime"/>
-      <import plugin="org.eclipse.xtext.common.types"/>
+      <import plugin="org.eclipse.xtext.common.types" version="2.10.0"/>
       <import plugin="org.rodinp.core" version="1.7.0" match="greaterOrEqual"/>
       <import plugin="org.rodinp.core.emf" version="1.1.0" match="greaterOrEqual"/>
       <import plugin="org.eventb.core" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="ch.ethz.eventb.utils" version="0.2.3" match="greaterOrEqual"/>
-      <import plugin="org.eventb.emf.persistence" version="3.5.1" match="greaterOrEqual"/>
+      <import plugin="org.eventb.emf.persistence" version="3.5.0" match="compatible"/>
       <import plugin="ac.soton.emf.translator" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="greaterOrEqual"/>
       <import plugin="ac.soton.xeventb.common" version="0.0.2" match="greaterOrEqual"/>
+      <import plugin="ac.soton.eventb.emf.inclusion.generator" version="0.1.0" match="greaterOrEqual"/>
       <import plugin="org.apache.log4j"/>
-      <import plugin="org.eclipse.xtext.ide"/>
-      <import plugin="org.eclipse.xtext.xbase.ide"/>
-      <import plugin="org.eclipse.xtext.ui" version="2.10.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.ui.shared"/>
-      <import plugin="org.eclipse.xtext.ui.codetemplates.ui"/>
+      <import plugin="org.eclipse.xtext.ide" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.ide" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.ui" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.ui.shared" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.10.0"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="org.eclipse.xtext.builder" version="2.10.0"/>
       <import plugin="org.eclipse.compare"/>
-      <import plugin="org.eclipse.xtext.common.types.ui"/>
+      <import plugin="org.eclipse.xtext.common.types.ui" version="2.10.0"/>
       <import plugin="org.junit" version="4.12.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.testing"/>
-      <import plugin="org.eclipse.xtext.xbase.testing"/>
-      <import plugin="org.eclipse.xtext.junit4"/>
-      <import plugin="org.eclipse.xtext.xbase.junit"/>
+      <import plugin="org.eclipse.xtext.testing" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.testing" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.junit4" version="2.10.0"/>
+      <import plugin="org.eclipse.xtext.xbase.junit" version="2.10.0"/>
       <import plugin="org.eclipse.help"/>
       <import plugin="org.eclipse.ui.cheatsheets" version="3.4.200" match="greaterOrEqual"/>
       <import plugin="org.eclipse.jface" version="3.10.2" match="greaterOrEqual"/>
@@ -64,7 +65,8 @@
       <import plugin="fr.systerel.explorer" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.ui.ide" version="3.10.2" match="greaterOrEqual"/>
       <import plugin="org.rodinp.keyboard.core" version="2.0.0" match="compatible"/>
-      <import plugin="org.eclipse.xtend.lib"/>
+      <import plugin="org.antlr.runtime" version="3.2.0" match="compatible"/>
+      <import plugin="org.eclipse.xtend.lib" version="2.10.0"/>
       <import plugin="org.eventb.emf.persistence" version="3.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="greaterOrEqual"/>
    </requires>
@@ -139,6 +141,13 @@
 
    <plugin
          id="ac.soton.xeventb.xcontext.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xeventb.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
