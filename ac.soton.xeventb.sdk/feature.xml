@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="ac.soton.eventb.xtext.sdk"
+      id="ac.soton.xeventb.sdk"
       label="%featureName"
-      version="0.0.6.qualifier"
+      version="0.0.6.release"
       provider-name="%featureVendor"
       license-feature="org.rodinp.license"
       license-feature-version="1.0.0.release">
@@ -15,10 +15,6 @@
       %copyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
-   </license>
-
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
    </url>
@@ -27,153 +23,16 @@
          id="ac.soton.xeventb.feature"
          version="0.0.0"/>
 
-   <requires>
-      <import plugin="org.eventb.emf.core"/>
-      <import plugin="org.junit" version="4.7.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.junit4"/>
-      <import plugin="org.eclipse.xtext.xbase.junit"/>
-      <import plugin="org.eclipse.xtext.xbase.lib"/>
-      <import plugin="org.hamcrest.core"/>
-      <import plugin="org.eclipse.core.runtime"/>
-      <import plugin="ac.soton.xeventb.xcontext"/>
-      <import plugin="org.eclipse.xtext.testing"/>
-      <import plugin="org.eclipse.xtext.xbase.testing"/>
-      <import plugin="ac.soton.xeventb.xcontext.ui"/>
-      <import plugin="ac.soton.xeventb.xmachine"/>
-      <import plugin="org.junit" version="4.12.0" match="greaterOrEqual"/>
-      <import plugin="ac.soton.xeventb.xmachine.ui"/>
-   </requires>
-
-   <plugin
-         id="ac.soton.xeventb.branding.source"
-         download-size="0"
-         install-size="0"
+   <includes
+         id="ac.soton.xeventb.source.feature"
          version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.xeventb.cheatsheet.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.xeventb.tests.feature"
+         version="0.0.0"/>
 
-   <plugin
-         id="ac.soton.xeventb.common.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.ide.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.ui.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xcontext.ui.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.doc.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.ide.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.ui.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.ui.tests.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.ui.source"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
+   <includes
+         id="ac.soton.xeventb.tests.source.feature"
+         version="0.0.0"/>
 
 </feature>
