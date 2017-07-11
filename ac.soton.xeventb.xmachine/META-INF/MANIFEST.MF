@@ -2,19 +2,19 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 0.0.4.qualifier
+Bundle-Version: 0.0.4.release
 Bundle-SymbolicName: ac.soton.xeventb.xmachine; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eclipse.xtext,
- org.eclipse.xtext.xbase,
+Require-Bundle: org.eclipse.xtext;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.xbase;bundle-version="[2.10.0,2.12.0)",
  org.eclipse.equinox.common;bundle-version="3.5.0",
  org.eventb.emf.core;bundle-version="4.2.1",
  ac.soton.eventb.emf.inclusion;bundle-version="0.1.0",
- org.eclipse.xtext.generator;bundle-version="2.11.0",
- org.eclipse.xtext.util,
- org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.generator;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.util;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.10.0,2.12.0)",
  org.antlr.runtime,
- org.eclipse.xtext.common.types,
+ org.eclipse.xtext.common.types;bundle-version="[2.10.0,2.12.0)",
  org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.rodinp.core;bundle-version="1.7.0",
  org.rodinp.core.emf;bundle-version="1.1.0",
@@ -23,7 +23,8 @@ Require-Bundle: org.eclipse.xtext,
  org.eventb.emf.persistence;bundle-version="[3.5.0,4.0.0)",
  ac.soton.emf.translator;bundle-version="2.1.0",
  org.eclipse.ui;bundle-version="3.106.1",
- ac.soton.xeventb.common;bundle-version="0.0.2"
+ ac.soton.xeventb.common;bundle-version="0.0.2",
+ ac.soton.eventb.emf.inclusion.generator;bundle-version="0.1.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xmachine,
  ac.soton.xeventb.xmachine.formatting,
