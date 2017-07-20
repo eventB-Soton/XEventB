@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <toc topic="html/index.html" label="XEvent-B User Manual">
     <topic label="Event-B XText Front-end Overview" href="html/sec-overview.html" /><topic label="Getting Started" href="html/sec-getting-started.html">
-       <topic label="Installation" href="html/sec-installation.html" /><topic label="Basic Tutorial" href="html/sec-basic-tutorial.html" />
+       <topic label="Installation" href="html/sec-installation.html" /><topic label="Basic Tutorial" href="html/sec-basic-tutorial.html" /><topic label="Advanced Tutorial" href="html/sec-advanced-tutorial.html" />
     </topic><topic label="Concepts" href="html/sec-concepts.html">
        <topic label="XText Projects" href="html/sec-xtext-projects.html" /><topic label="XEvent-B Builders" href="html/sec-xevent-b-builders.html" /><topic label="Content Assist" href="html/sec-content-assist.html" />
     </topic><topic label="Tasks" href="html/sec-tasks.html">

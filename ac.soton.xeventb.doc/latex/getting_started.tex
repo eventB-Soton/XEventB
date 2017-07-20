@@ -21,7 +21,7 @@
 \end{figure}
 
 
-\item The Event-B XText front-end feature is available from the main Rodin update site (under ``Editors'' category). There are two versions of the feature, \emph{Event-B XText} providing facilities for working with Event-B XText Front-end, and the \emph{Event-B XText (SDK)} is the feature including source code for software developers (see Figure~\ref{fig:EventBXText-installation}).
+\item The Event-B XText front-end feature is available from the main Rodin update site (under ``Modelling Extensions'' category). There are two versions of the feature, \emph{eXtended Event-B (XEvent-B)} providing facilities for working with Event-B XText Front-end, and the \emph{eXtended Event-B (XEvent-B) (SDK)} is the feature including source code for software developers (see Figure~\ref{fig:EventBXText-installation}).
 \begin{figure}[!htbp]
   \centering
   \ifplastex
@@ -37,6 +37,24 @@
 
 \subsubsection{Release Notes}
 \label{sec:release-notes}
+\paragraph{0.0.6}
+\begin{itemize}
+\item Renamed plug-ins and features to XEvent-B (instead of Event-B XText).
+\item XEvent-B Branding (0.0.2): Renamed from Event-B XText Branding.
+\item XEvent-B Documentations (0.0.2): Renamed from Event-B XText Documentations.
+\item XEvent-B Cheatsheets (0.0.2): Renamed from Event-B XText Cheatsheets.
+\item XEvent-B Common (0.0.3): Renamed from Event-B XText Common.
+\item XEvent-B UI (0.0.2): Renamed from Event-B XText UI.
+\item XEvent-B XContext (0.0.4): Renamed from Event-B XText Context.
+\item XEvent-B XContext IDE (0.0.3): Renamed from Event-B XText Context IDE.
+\item XEvent-B XContext UI (0.0.3): Renamed from Event-B Context UI.
+\item XEvent-B XMachine (0.0.4): Renamed from Event-B XText Machine.
+	\begin{itemize}
+		\item Support Machine Inclusion and Event Synchronisation.
+	\end{itemize}	
+\item XEvent-B XMachine IDE (0.0.3): Renamed from Event-B XText Machine IDE.
+\item XEvent-B XMachine UI (0.0.3): Renamed from Event-B XText Machine UI.
+\end{itemize}
 
 \paragraph{0.0.5}
 \begin{itemize}
@@ -120,11 +138,13 @@
 \label{sec:important}
 
 \begin{itemize}
-\item Currently, Event-B XText front-end ONLY supports ``standard'' Event-B machines and contexts.
-
+\item Currently, Event-B XText front-end \textbf{not only} supports ``standard'' Event-B machines and contexts, but also supports ``\emph{Machine Inclusion}'' and ``\emph{Event Synchronisation}''.
 \item Since the XContexts and XMachines are compiled to the Rodin files, the corresponding Rodin contexts and machines will be \textbf{OVER-WRITTEN}. Any changes in the Rodin files will not be lost.
 
 \item \textbf{DO NOT USE} the Event-B XText Front-end if you use modelling plug-ins such as \emph{iUML-B} state-machines and class-diagrams, as the additional modelling elements will be over-written.
+
+\item Windows users \textbf{must} change the workspace text file encoding to \textbf{UTF-8}. This can be updated under the Rodin Preferences: General/Workspace then in the ``\emph{Text file encoding}'' section, select Other: UTF-8.
+
 \end{itemize}
 
 \subsubsection{Known Issues}
@@ -132,13 +152,20 @@
 
 \begin{itemize}
 \item Converting to XText: Currently, the ``extended'' attribute of events are not serialised.
+
+\item Machine Inclusion: 
+\begin{itemize}
+	\item Currently a machine can be only included if it is in the same project.
+	\item Including the \textbf{same} machine to both the abstract and its refining machine can result in the repetition of invariants.
+\end{itemize}
+
 \end{itemize}
 
 \subsubsection{Configuration}
 \label{sec:configuration}
 
 \paragraph{Event-B Explorer}
-By default, XContext files (extension .bucx) and XMachine files (extension .bumx) are not display in the \emph{Event-B Explorer}. To enable this, select \emph{Customize view} for \emph{Event-B Explorer} and uncheck the option \emph{All files and folders}.
+By default, XContext files (extension .bucx) and XMachine files (extension .bumx) are not displayed in the \emph{Event-B Explorer}. To enable this, select \emph{Customize view} for \emph{Event-B Explorer} and uncheck the option \emph{All files and folders}.
 
 \subsection{Basic Tutorial}
 \label{sec:basic-tutorial}
@@ -154,7 +181,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 
 \textbf{Conclusion} Since the filter on ``All files and folders'' is now disabled, there might be other files and folders than XEvent-B constructs will also be visible in the Event-B Explorer.
 
-\subsubsection{Task 2. Create an Event-B Project}
+\subsubsection{Task 2. Create an Event-B Project}\label{CreateProject}
 \textbf{Introduction} The purpose of this task is to create an Event-B project for the XEvent-B constructs. 
 \begin{description}
 \item[Step 1. Create a new Event-B Project] Create a new Event-B Project named ``Club'' using the \emph{New Event-B Project} wizard (see Figure~\ref{fig:CreateProject}).
@@ -173,7 +200,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \textbf{Conclusion} By now, the project ``Club'' should be visible in the Event-B Explorer.
 
 
-\subsubsection{Task 3. Create a simple XContext coursesCtx.bucx}
+\subsubsection{Task 3. Create a simple XContext coursesCtx.bucx}\label{Sec:SimpleContext}
 \textbf{Introduction} The purpose of this task is to create a simple XContext within the newly created project.
 \begin{description}
 \item[Step 1. Create a new XContext coursesCtx.bucx] Create a new XContext named ``coursesCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateCoursesCtx}).
@@ -254,7 +281,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 
 
 
-\subsubsection{Task 4. Create a simple XMachine m0.bumx}
+\subsubsection{Task 4. Create a simple XMachine m0.bumx}\label{CreateMachine}
 \textbf{Introduction} The purpose of this task is to create a simple XMachine within the newly created project.
 
 \begin{description}
@@ -777,6 +804,334 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
     \caption{XMachine m2.bumx}
     \label{fig:M2}
   \end{figure}
+
+\subsection{Advanced Tutorial}
+\label{sec:advanced-tutorial}
+
+This tutorial provides a step-by-step walk-through working with \emph{machine inclusion} using XEvent-B. Following the same steps as in Section~\ref{sec:basic-tutorial} to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via \emph{event synchronisation}.
+
+We illustrate the application of machine inclusion using XEvent-B by modelling a small example of ``controlling cars on a bridge'', which is based on Chapter 2 of ``\emph{Modeling in Event-B: System and Software Engineering}'' book.
+
+\subsubsection{Task 1. Create the reusable model}
+\textbf{Introduction} The purpose of this task is to create the model that will be reused by other models using machine inclusion.
+\begin{description}
+\item[Step 1. Create a new Project with XMachine Sensor\_m0\_SNSR.bumx] 
+
+Following the same steps as 
+\ifplastex
+in tasks 2 and 4 in Section~\ref{sec:basic-tutorial} for creating project and machines.
+\else
+in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and machines.
+\fi
+
+\item[Step 2. Set the content of Sensor\_m0\_SNSR.bumx] \textbf{Set the content of ``Sensor\_m0\_SNSR.bumx'' as follows}.
+\begin{center}
+	\begin{Bcode}
+		\ifplastex
+		\Bmachine{} Sensor_m0_SNSR\\
+		\Bvariables{} SNSR\\
+		\Binvariants\\
+		@thm0_1: "SNSR ∈ BOOL" \Btheorem\\
+		\Bevents\\
+		INITIALISATION\\
+		\Bbegin\\
+		@act1: "SNSR ≔ FALSE"\\
+		\Bend\\
+		SNSR_on\\
+		\Bwhen\\
+		@grd1: "SNSR = FALSE"\\
+		\Bthen\\
+		@act1: "SNSR ≔ TRUE"\\
+		\Bend\\
+	    SNSR_off\\
+	    \Bwhen\\
+	    @grd1: "SNSR = TRUE"\\
+	    \Bthen\\
+	    @act1: "SNSR ≔ FALSE"\\
+	    \Bend\\
+		\Bend
+		\else
+		\Bmachine{} Sensor_m0_SNSR\\
+		\Bvariables{} SNSR\\
+		\Binvariants\\
+		\Btab @thm0_1: "\(SNSR \in BOOL\)" \Btheorem\\
+		\Bevents\\
+		\Btab INITIALISATION\\
+		\Btab \Bbegin\\
+		\Btab \Btab @act1: "\(SNSR \bcmeq FALSE\)"\\
+		\Btab \Bend\\
+		\Btab SNSR_on\\
+		\Btab \Bwhen\\
+		\Btab \Btab @grd1: "\(SNSR = FALSE\)"\\
+		\Btab \Bthen\\
+		\Btab \Btab @act1: "\(SNSR \bcmeq TRUE\)"\\
+		\Btab \Bend\\
+		\Btab SNSR_off\\
+		\Btab \Bwhen\\
+		\Btab \Btab @grd1: "\(SNSR = TRUE\)"\\
+		\Btab \Bthen\\
+		\Btab \Btab @act1: "\(SNSR \bcmeq FALSE\)"\\
+		\Btab \Bend\\
+		\Bend
+		\fi
+	\end{Bcode}
+\end{center}
+
+\item[Step 3. Auto-format and Save the file ``Sensor\_m0\_SNSR.bumx''] 
+\end{description}
+
+\textbf{Conclusion} By now, the XMachine ``Sensor\_m0\_SNSR.bumx'' and the corresponding Rodin Machine ``Sensor\_m0\_SNSR'' should be visible in the Event-B Explorer.
+
+\subsubsection{Task 2. Model the abstract level of cars on a bridge}
+\textbf{Introduction} The purpose of this task is to create the abstract model of the ``cars on a bridge'' example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. 
+\begin{description}
+	\item[Step 1. Create the Context Car\_c0\_limit.bucx] 
+	Following the same steps as 
+	\ifplastex
+	in task 3 of Section~\ref{sec:basic-tutorial} for creating a simple context.  
+	\else
+	in Section~\ref{Sec:SimpleContext} for creating a simple context.
+	\fi
+	Currently we do \textbf{not} support cross referencing across different projects, so you \textbf{must} add the context and machine to the same project created in task 1 for ``Sensor\_m0\_SNSR.bumx''. \textbf{Set the content of ``Car\_c0\_limit.bucx'' as follows and save the file}.
+	  
+	  \begin{center}
+		\begin{Bcode}
+			\ifplastex
+			\Bcontext{} Car_c0_limit\\
+			\Bconstants{} D\\
+			\Baxioms\\
+			@axm1: "D ∈ ℕ1"\\
+			\Bend
+			\else
+			\Bcontext{} Car_c0_limit\\
+			\Bconstants{} D\\
+			\Baxioms\\
+			\Btab @axm1: "\(D \in \nat1\)"\\
+			\Bend
+			\fi
+		\end{Bcode}
+	\end{center}
+	\item[Step 2. Create the Machine Car\_m0\_cars.bumx]\textbf{Set the content of ``Car\_m0\_cars.bumx'' as follows and save the file}.
+
+	\begin{center}
+		\begin{Bcode}
+			\ifplastex
+			\Bmachine{} Car_m0_cars\\
+			\Bsees{} Car_c0_limit\\
+			\Bvariables{} A B C\\
+			\Binvariants\\
+			@inv0_1: "A ∈ ℕ"\\
+			@inv0_2: "B ∈ ℕ"\\
+			@inv0_3: "C ∈ ℕ"\\
+			@inv0_4: "A = 0 ∨ C = 0"\\
+			@inv0_5: "A + B + C ≤ D"\\
+			@thm0_1: "B ≤ D" \Btheorem\\
+			\Bevents\\
+			INITIALISATION\\
+			\Bbegin\\
+			@act1: "A ≔ 0"\\
+			@act2: "B ≔ 0"\\
+			@act3: "C ≔ 0"\\
+			\Bend\\
+			ML_out\\
+			\Bwhen\\
+			@grd1: "C = 0"\\
+			@grd2: "A + B ≠ D"\\
+			\Bthen\\
+			@act1: "A ≔ A + 1"\\
+			\Bend\\
+			ML_in\\
+			\Bwhen\\
+			@grd1: "C ≠ 0"\\
+			\Bthen\\
+			@act1: "C ≔ C − 1"\\
+			\Bend\\
+			IL_in\\
+			\Bwhen\\
+			@grd1: "A ≠ 0"\\
+			\Bthen\\
+			@act1: "A ≔ A − 1"\\
+			@act2: "B ≔ B + 1"\\
+			\Bend\\
+			IL_out\\
+			\Bwhen\\
+			@grd1: "B ≠ 0"\\
+			@grd2: "A = 0"\\
+			\Bthen\\
+			@act1: "B ≔ B − 1"\\
+			@act2: "C ≔ C + 1"\\
+			\Bend\\
+			\Bend
+			\else
+			\Bmachine{} Car_m0_cars\\
+			\Bsees{} Car_c0_limit\\
+			\Bvariables{} A B C\\
+			\Binvariants\\
+			\Btab @inv0_1: "\(A \in \nat\)"\\
+			\Btab @inv0_2: "\(B \in \nat"\)\\
+			\Btab @inv0_3: "\(C \in \nat\)"\\
+			\Btab @inv0_4: "\(A = 0 \vee C = 0\)"\\
+			\Btab @inv0_5: "\(A + B + C \leq D\)"\\
+			\Btab @thm0_1: "\(B \leq D\)" \Btheorem\\
+			\Bevents\\
+			\Btab INITIALISATION\\
+			\Btab \Bbegin\\
+			\Btab \Btab @act1: "\(A \bcmeq 0\)"\\
+			\Btab \Btab @act2: "\(B \bcmeq 0\)"\\
+			\Btab \Btab @act3: "\(C \bcmeq 0\)"\\
+			\Btab \Bend\\
+			\Btab ML_out\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd1: "\(C = 0\)"\\
+			\Btab \Btab @grd2: "\(A + B \neq D\)"\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: "\(A \bcmeq A + 1\)"\\
+			\Btab \Bend\\
+			\Btab ML_in\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd1: "\(C \neq 0\)"\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: "\(C \bcmeq C - 1\)"\\
+			\Btab \Bend\\
+			\Btab IL_in\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd1: "\(A \neq 0\)"\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: "\(A \bcmeq A - 1\)"\\
+			\Btab \Btab @act2: "\(B \bcmeq B + 1\)"\\
+			\Btab \Bend\\
+			\Btab IL_out\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd1: "\(B \neq 0\)"\\
+			\Btab \Btab @grd2: "\(A = 0\)"\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: "\(B \bcmeq B - 1\)"\\
+			\Btab \Btab @act2: "\(C \bcmeq C + 1\)"\\
+			\Btab \Bend\\
+			\Bend
+			\fi
+		\end{Bcode}
+	\end{center}
+	
+\end{description}
+\textbf{Conclusion} Saving the XContext and XMachine files will generate the corresponding Rodin files. Now in the same project you have the context ``Car\_c0\_limit'' and the machines: ``Sensor\_m0\_SNSR'' and ``Car\_m0\_cars''. Ideally the reusable models should be in a different project, but this is \textbf{not} supported \textbf{yet} in the current release, that is why we require all models to be in the same project.
+
+
+\subsubsection{Task 3. Model an XMachine using machine inclusion}
+\textbf{Introduction} In this task we define the XMachine ``Car\_m1\_SNSR.bumx'' which is a refinement of the machine ``Car\_m0\_cars'' and includes two instances of ``Sensor\_m0\_SNSR''. The keywords in red  are \textbf{not} part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. 
+
+\begin{description}
+	\item[Step 1. Create the file ``Car\_m1\_SNSR.bumx''] \textbf{Add the file to the same project and set its contents as follows.}
+	
+		\begin{center}
+		\begin{Bcode}
+			\ifplastex
+			\Bmachine{} Car_m1_SNSR\\
+			\textcolor{red}{\textbf{includes}} Sensor_m0_SNSR \textcolor{red}{\textbf{as}} ML_out IL_out\\
+			\Brefines{} Car_m0_cars\\
+			\Bsees{} Car_c0_limit\\
+			\Bvariables{} A B C\\
+			\Binvariants\\
+			@inv1_1: "IL_out_SNSR = TRUE ⇒ B ≠ 0"\\
+			\Bevents\\
+			INITIALISATION \Bextended\\
+			\textcolor{red}{\textbf{synchronises}} ML_out.INITIALISATION\\
+			\textcolor{red}{\textbf{synchronises}} IL_out.INITIALISATION\\
+			\Brefines{} INITIALISATION\\
+			\Bend\\
+			ML_out \Bextended\\
+			\textcolor{red}{\textbf{synchronises}} ML_out.SNSR_off\\
+			\Brefines{} ML_out\\
+			\Bend\\
+			ML_in \Bextended\\
+			\Brefines{} ML_in\\
+			\Bend\\
+			IL_in \Bextended\\
+			\Brefines{} IL_in\\
+			\Bwhen\\
+			@inv0_2−copy: "B ∈ ℕ" \Btheorem\\
+			\Bend\\
+			IL_out\\
+			\textcolor{red}{\textbf{synchronises}} IL_out.SNSR_off\\
+			\Brefines{} IL_out\\
+			\Bwhen\\
+			@grd2: "A = 0"\\
+			\Bthen\\
+			@act1: "B ≔ B − 1"\\
+			@act2: "C ≔ C + 1"\\
+			\Bend\\
+			ML_out_ARR\\
+			\textcolor{red}{\textbf{synchronises}} ML_out.SNSR_on\\
+			\Bend\\
+			IL_out_ARR\\
+			\textcolor{red}{\textbf{synchronises}} IL_out.SNSR_on\\
+			\Bwhen\\
+			@grd2: "B ≠ 0"\\
+			\Bend\\
+			\Bend
+			\else
+			\Bmachine{} Car_m1_SNSR\\
+			\textcolor{red}{includes} Sensor_m0_SNSR \textcolor{red}{as} ML_out IL_out\\
+			\Brefines{} Car_m0_cars\\
+			\Bsees{} Car_c0_limit\\
+			\Bvariables{} A B C\\
+			\Binvariants\\
+			\Btab @inv1_1: "\("IL_out_SNSR = TRUE \Rightarrow B \neq 0"\)"\\
+			\Bevents\\
+			\Btab INITIALISATION \Bextended\\
+            \Btab \textcolor{red}{synchronises} ML_out.INITIALISATION\\
+            \Btab \textcolor{red}{synchronises} IL_out.INITIALISATION\\
+            \Btab \Brefines{} INITIALISATION\\
+			\Btab \Bend\\
+			\Btab ML_out \Bextended\\
+			\Btab \textcolor{red}{synchronises} ML_out.SNSR_off\\
+			\Btab \Brefines{} ML_out\\
+			\Btab \Bend\\
+			\Btab ML_in \Bextended\\
+			\Btab \Brefines{} ML_in\\
+			\Btab \Bend\\
+			\Btab IL_in \Bextended\\
+			\Btab \Brefines{} IL_in\\
+			\Btab \Bwhen\\
+			\Btab \Btab @inv0_2−copy: "\(B \in \nat\)" \Btheorem\\
+			\Btab \Bend\\
+			\Btab IL_out\\
+			\Btab \textcolor{red}{synchronises} IL_out.SNSR_off\\
+			\Btab \Brefines{} IL_out\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd2: "\(A = 0\)"\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: "\(B \bcmeq B - 1\)"\\
+			\Btab \Btab @act2: "\(C \bcmeq C + 1\)"\\
+			\Btab \Bend\\
+			\Btab ML_out_ARR\\
+			\Btab \textcolor{red}{synchronises} ML_out.SNSR_on\\
+			\Btab \Bend\\
+			\Btab IL_out_ARR\\
+			\Btab \textcolor{red}{synchronises} IL_out.SNSR_on\\
+			\Btab \Bwhen\\
+			\Btab \Btab @grd2: "\(B \neq 0\)"\\
+			\Btab \Bend\\
+			\Bend
+			\fi
+		\end{Bcode}
+	\end{center}
+	\item[Step 2. Auto-format the file ``Car\_m1\_SNSR.bumx'' and Save it.]
+\end{description}
+\textbf{Conclusion} After saving the file a standard Event-B machine ``Car\_m1\_SNSR''will be generated. The generated machine (Figure~\ref{fig:FlattenedMachine}) is flattened to include the variables and invariants  of the included machine ``Sensor\_m0\_SNSR'' which are renamed according to the chosen prefixes (ML\_out, IL\_out). In addition to the guards and actions of the synchronised events. When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL\_out.SNSR\_on where ``IL\_out'' is one of the included machine prefixes and ``SNSR\_on'' is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event.
+
+\begin{figure}[!htbp]
+	\centering
+	\ifplastex
+	\includegraphics[width=512]{figures/Flattened_var_m1_snsr}
+	\else
+	\includegraphics[width=0.9\textwidth]{figures/Flattened_var_m1_snsr}
+	\fi
+	\caption{Flattened Machine ``Car\_m1\_SNSR''}
+	\label{fig:FlattenedMachine}
+\end{figure}
+
+% probably here add a figure of the flattened machine to show how variables, inv, gurads are copied and renamed
 
 %%% Local Variables:
 %%% mode: latex
