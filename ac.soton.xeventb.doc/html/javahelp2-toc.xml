@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <toc version="2.0">
 <tocitem text="XEvent-B User Manual">
-    <tocitem target="sec:overview" text="Event-B XText Front-end Overview" /><tocitem target="sec:getting-started" text="Getting Started">
+    <tocitem target="sec:overview" text="XEvent-B Front-end Overview" /><tocitem target="sec:getting-started" text="Getting Started">
         <tocitem target="sec:installation" text="Installation" /><tocitem target="sec:basic-tutorial" text="Basic Tutorial" /><tocitem target="sec:advanced-tutorial" text="Advanced Tutorial" />
     </tocitem><tocitem target="sec:concepts" text="Concepts">
         <tocitem target="sec:xtext-projects" text="XText Projects" /><tocitem target="sec:xevent-b-builders" text="XEvent-B Builders" /><tocitem target="sec:content-assist" text="Content Assist" />

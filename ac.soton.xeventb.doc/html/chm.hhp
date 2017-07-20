@@ -15,27 +15,27 @@ Title=XEvent-B User Manual
 Help="XEvent-B User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
 
 [FILES]
-sec-xevent-b-editors.html
-sec-basic-tutorial.html
-sec-legal.html
-sec-preferences.html
-sec-content-assist.html
-index.html
-sec-concepts.html
+sec-xtext-projects.html
 sec-user-agreement.html
+sec-legal.html
+sec-basic-tutorial.html
+sec-xmachine-syntax.html
 sec-typesetting-event-b.html
+sec-xevent-b-editors.html
+sec-overview.html
 sec-tasks.html
+sec-creating-xevent-b.html
+sec-concepts.html
+sec-content-assist.html
+sec-xevent-b-builders.html
 sec-xcontext-syntax.html
-sec-common-syntax.html
 sec-installation.html
+sec-common-syntax.html
 sec-reference.html
 sec-getting-started.html
-sec-xmachine-syntax.html
-sec-xtext-projects.html
+sec-preferences.html
 sec-advanced-tutorial.html
-sec-xevent-b-builders.html
-sec-creating-xevent-b.html
-sec-overview.html
+index.html
 
 
 [MERGE FILES]
