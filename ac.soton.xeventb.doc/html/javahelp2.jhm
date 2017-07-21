@@ -5,6 +5,7 @@
 <mapID target="sec:getting-started" url="sec-getting-started.html" />
 <mapID target="sec:installation" url="sec-installation.html" />
 <mapID target="sec:basic-tutorial" url="sec-basic-tutorial.html" />
+<mapID target="sec:advanced-tutorial" url="sec-advanced-tutorial.html" />
 <mapID target="sec:concepts" url="sec-concepts.html" />
 <mapID target="sec:xtext-projects" url="sec-xtext-projects.html" />
 <mapID target="sec:xevent-b-builders" url="sec-xevent-b-builders.html" />

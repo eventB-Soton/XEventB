@@ -1,0 +1,700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<link rel="stylesheet" href="style.css" type="text/css" />
+<link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
+<link href="index.html" title="XEvent-B User Manual" rel="start" />
+<link href="index.html" title="XEvent-B User Manual" rel="first" />
+<link href="index.html" rel="contents" title="Contents" />
+<link rel="index" title="Index" />
+<link href="sec-concepts.html" rel="next" />
+<link href="sec-basic-tutorial.html" rel="prev" />
+<link href="sec-getting-started.html" rel="parent" />
+<meta name="aesop" content="information" />
+<title>2.3 Advanced Tutorial</title>
+</head>
+<body>
+<div class="navigation">
+<div id="top-navigation-panel" xml:id="top-navigation-panel">
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.2 Basic Tutorial" href="sec-basic-tutorial.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">XEvent-B User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-basic-tutorial.html" class="sectref" rel="prev">Basic Tutorial</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-getting-started.html" class="sectref" rel="parent">Getting Started</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-concepts.html" class="sectref" rel="next">Concepts</a></span>
+</div>
+<hr /></div>
+</div>
+
+
+
+<div><h2 id="sec:advanced-tutorial">2.3 Advanced Tutorial</h2>
+<p>This tutorial provides a step-by-step walk-through working with <em>machine inclusion</em> using XEvent-B. Following the same steps as in Section <a href="sec-basic-tutorial.html">2.2</a> to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via <em>event synchronisation</em>. </p><p>We illustrate the application of machine inclusion using XEvent-B by modelling a small example of “controlling cars on a bridge”, which is based on Chapter 2 of “<em>Modeling in Event-B: System and Software Engineering</em>” book. </p><h3 id="a0000000017">Task 1. Create the reusable model</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create the model that will be reused by other models using machine inclusion. </p><dl class="description">
+
+    <dt>Step 1. Create a new Project with XMachine Sensor_m0_SNSR.bumx</dt>
+    <dd><p>Following the same steps as in tasks 2 and 4 in Section <a href="sec-basic-tutorial.html">2.2</a> for creating project and machines. </p></dd>
+
+    <dt>Step 2. Set the content of Sensor_m0_SNSR.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of “Sensor_m0_SNSR.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> Sensor_m0_SNSR</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> SNSR</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm0_1: "SNSR ∈ BOOL" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "SNSR ≔ FALSE"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SNSR_on</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "SNSR = FALSE"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "SNSR ≔ TRUE"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>SNSR_off</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "SNSR = TRUE"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "SNSR ≔ FALSE"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 3. Auto-format and Save the file “Sensor_m0_SNSR.bumx”</dt>
+    <dd></dd>
+
+</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “Sensor_m0_SNSR.bumx” and the corresponding Rodin Machine “Sensor_m0_SNSR” should be visible in the Event-B Explorer. </p><h3 id="a0000000018">Task 2. Model the abstract level of cars on a bridge</h3>
+<p> <b class="bfseries">Introduction</b> The purpose of this task is to create the abstract model of the “cars on a bridge” example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. </p><dl class="description">
+
+    <dt>Step 1. Create the Context Car_c0_limit.bucx</dt>
+    <dd><p>Following the same steps as in task 3 of Section <a href="sec-basic-tutorial.html">2.2</a> for creating a simple context. Currently we do <b class="bfseries">not</b> support cross referencing across different projects, so you <b class="bfseries">must</b> add the context and machine to the same project created in task 1 for “Sensor_m0_SNSR.bumx”. <b class="bfseries">Set the content of “Car_c0_limit.bucx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">context</tt> Car_c0_limit</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">constants</tt> D</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">axioms</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@axm1: "D ∈ ℕ1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 2. Create the Machine Car_m0_cars.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of “Car_m0_cars.bumx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> Car_m0_cars</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sees</tt> Car_c0_limit</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> A B C</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_1: "A ∈ ℕ"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_2: "B ∈ ℕ"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_3: "C ∈ ℕ"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_4: "A = 0 ∨ C = 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_5: "A + B + C ≤ D"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@thm0_1: "B ≤ D" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "A ≔ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: "B ≔ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act3: "C ≔ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ML_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "C = 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: "A + B ≠ D"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "A ≔ A + 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ML_in</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "C ≠ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "C ≔ C − 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IL_in</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "A ≠ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "A ≔ A − 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: "B ≔ B + 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IL_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: "B ≠ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: "A = 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "B ≔ B − 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: "C ≔ C + 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> Saving the XContext and XMachine files will generate the corresponding Rodin files. Now in the same project you have the context “Car_c0_limit” and the machines: “Sensor_m0_SNSR” and “Car_m0_cars”. Ideally the reusable models should be in a different project, but this is <b class="bfseries">not</b> supported <b class="bfseries">yet</b> in the current release, that is why we require all models to be in the same project. </p><h3 id="a0000000019">Task 3. Model an XMachine using machine inclusion</h3>
+<p> <b class="bfseries">Introduction</b> In this task we define the XMachine “Car_m1_SNSR.bumx” which is a refinement of the machine “Car_m0_cars” and includes two instances of “Sensor_m0_SNSR”. The keywords in red are <b class="bfseries">not</b> part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. </p><dl class="description">
+
+    <dt>Step 1. Create the file “Car_m1_SNSR.bumx”</dt>
+    <dd><p><b class="bfseries">Add the file to the same project and set its contents as follows.</b> </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+<tr>
+
+    
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> Car_m1_SNSR</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">includes</b></span> Sensor_m0_SNSR <span style="color:#FF0000"><b class="bfseries">as</b></span> ML_out IL_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> Car_m0_cars</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">sees</tt> Car_c0_limit</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">variables</tt> A B C</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">invariants</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv1_1: "IL_out_SNSR = TRUE ⇒ B ≠ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">events</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>INITIALISATION <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> ML_out.INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> IL_out.INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> INITIALISATION</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ML_out <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> ML_out.SNSR_off</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> ML_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ML_in <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> ML_in</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IL_in <tt class="ttfamily">extended</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> IL_in</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@inv0_2−copy: "B ∈ ℕ" <tt class="ttfamily">theorem</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IL_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> IL_out.SNSR_off</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> IL_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: "A = 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: "B ≔ B − 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: "C ≔ C + 1"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>ML_out_ARR</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> ML_out.SNSR_on</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>IL_out_ARR</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> IL_out.SNSR_on</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: "B ≠ 0"</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr>
+</table></tt> </center></dd>
+
+    <dt>Step 2. Auto-format the file “Car_m1_SNSR.bumx” and Save it.</dt>
+    <dd></dd>
+
+</dl><p> <b class="bfseries">Conclusion</b> After saving the file a standard Event-B machine “Car_m1_SNSR”will be generated. The generated machine (Figure <a href="sec-advanced-tutorial.html#fig:FlattenedMachine">22</a>) is flattened to include the variables and invariants of the included machine “Sensor_m0_SNSR” which are renamed according to the chosen prefixes (ML_out, IL_out). In addition to the guards and actions of the synchronised events. When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL_out.SNSR_on where “IL_out” is one of the included machine prefixes and “SNSR_on” is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event. </p><div id="fig:FlattenedMachine" class="figure"><center>
+<img src="images/img-0022.png" alt="\includegraphics[width=512]{figures/Flattened_var_m1_snsr}" style="width:512" /> <div class="caption"><b> 22</b>: <span>Flattened Machine “Car_m1_SNSR”</span></div>  </center></div></div>
+
+
+
+<div class="navigation">
+<div class="online-navigation">
+<hr />
+<table align="center" width="100%" cellpadding="0" cellspacing="2">
+<tr>
+<td class="online-navigation"><a title="2.2 Basic Tutorial" href="sec-basic-tutorial.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
+<td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
+<td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
+<td align="center" width="100%">XEvent-B User Manual</td>
+<td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
+<td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
+</tr></table>
+<div class="online-navigation">
+<span><b class="navlabel">Previous:</b>
+<a href="sec-basic-tutorial.html" class="sectref" rel="prev">Basic Tutorial</a></span>
+<span><b class="navlabel">Up:</b>
+<a href="sec-getting-started.html" class="sectref" rel="parent">Getting Started</a></span>
+<span><b class="navlabel">Next:</b>
+<a href="sec-concepts.html" class="sectref" rel="next">Concepts</a></span>
+</div>
+</div>
+<hr />
+<!--
+<span class="release-info">Release 2.4.3, documentation updated on 29 March 2006.</span>
+-->
+</div>
+<!--End of Navigation Panel-->
+<!--
+<address>
+See <i><a href="about.html">About this document...</a></i> for information on suggesting changes.
+</address>
+-->
+</body>
+</html>

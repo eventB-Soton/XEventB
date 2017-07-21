@@ -1,8 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/loose.dtd">
 <html>
 <head>
-<meta name="generator" content="plasTeX - http://plastex.sf.net/">
-<!-- Sitemap 1.0 -->
+<meta content="plasTeX - http://plastex.sf.net/" name="generator">
+
 </head>
 <body>
 <object type="text/site properties">
@@ -17,7 +17,7 @@
     <ul>
       
       <li><object type="text/sitemap">
-          <param name="Name" value="Event-B XText Front-end Overview">
+          <param name="Name" value="XEvent-B Front-end Overview">
           <param name="Local" value="sec-overview.html">
           <param name="ImageNumber" value="11">
       </object></li>
@@ -40,6 +40,13 @@
          <li><object type="text/sitemap">
              <param name="Name" value="Basic Tutorial">
              <param name="Local" value="sec-basic-tutorial.html">
+             <param name="ImageNumber" value="11">
+         </object></li>
+         
+         
+         <li><object type="text/sitemap">
+             <param name="Name" value="Advanced Tutorial">
+             <param name="Local" value="sec-advanced-tutorial.html">
              <param name="ImageNumber" value="11">
          </object></li>
          

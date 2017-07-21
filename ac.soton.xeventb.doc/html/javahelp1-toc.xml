@@ -1,12 +1,14 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <toc version="1.0"> 
 <tocitem>XEvent-B User Manual
-    <tocitem target="sec:overview">Event-B XText Front-end Overview
+    <tocitem target="sec:overview">XEvent-B Front-end Overview
         
     </tocitem><tocitem target="sec:getting-started">Getting Started
         <tocitem target="sec:installation">Installation
             
         </tocitem><tocitem target="sec:basic-tutorial">Basic Tutorial
+            
+        </tocitem><tocitem target="sec:advanced-tutorial">Advanced Tutorial
             
         </tocitem>
     </tocitem><tocitem target="sec:concepts">Concepts

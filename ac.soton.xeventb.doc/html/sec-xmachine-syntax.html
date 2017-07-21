@@ -40,7 +40,7 @@
 
 
 <div><h2 id="sec:xmachine-syntax">5.3 XMachine syntax</h2>
-<center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
+<center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
 <tr>
 
     
@@ -54,12 +54,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID</p></td>
+    <td style="text-align:left"><p>    [XINCLUDE { XINCLUDE }]</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>    [<tt class="ttfamily">sees</tt> ID { ID }</p></td>
+    <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID]</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<tt class="ttfamily">sees</tt> ID { ID }]</p></td>
 
 </tr><tr>
 
@@ -85,6 +90,21 @@
 
     
     <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XINCLUDE ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <span style="color:#0000FF">includes</span> ID</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    [<span style="color:#0000FF">as</span> ID {ID}]</p></td>
 
 </tr><tr>
 
@@ -209,6 +229,11 @@
 </tr><tr>
 
     
+    <td style="text-align:left"><p>    [XSYNC { XSYNC }]</p></td>
+
+</tr><tr>
+
+    
     <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
 
 </tr><tr>
@@ -304,6 +329,11 @@
 </tr><tr>
 
     
+    <td style="text-align:left"><p>    [XSYNC { XSYNC }]</p></td>
+
+</tr><tr>
+
+    
     <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
 
 </tr><tr>
@@ -394,6 +424,11 @@
 </tr><tr>
 
     
+    <td style="text-align:left"><p>    [XSYNC { XSYNC }]</p></td>
+
+</tr><tr>
+
+    
     <td style="text-align:left"><p>    [<tt class="ttfamily">refines</tt> ID { ID }]</p></td>
 
 </tr><tr>
@@ -470,6 +505,16 @@
 
     
     <td style="text-align:left"><p>    <tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>XSYNC ::= </p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>    <span style="color:#0000FF">synchronises</span> [ID.]ID</p></td>
 
 </tr><tr>
 
