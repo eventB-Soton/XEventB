@@ -18,6 +18,8 @@ import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding;
+import ac.soton.xeventb.common.EventBContainerManager;
+import ac.soton.xeventb.common.EventBQualifiedNameProvider;
 
 /**
  * <p>
@@ -26,6 +28,7 @@ import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding;
  * </p>
  *
  * @author htson
+ * @author Dana: binding qualified name provider and container manager
  * @version 0.2
  * @see XContextGrammarAccess
  * @since 0.0.1
@@ -70,4 +73,31 @@ public class XMachineRuntimeModule extends ac.soton.xeventb.xmachine.AbstractXMa
 			binder.bind(IScopeProvider.class).annotatedWith(SerializerScopeProviderBinding.class).to(
 				XMachineScopeProvider.class);
 		}
+		
+		
+		/**
+		 * Bind the qualified Name provider service for machine qualified name.
+		 * The qualified name of a machine is projName.machineName
+		 * 
+		 * @see EventBQualifiedNameProvider
+		 */
+		public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+			return EventBQualifiedNameProvider.class;
+		}
+
+		/**
+		 * Bind the container Manager to include other projects in the workspace.
+		 * 
+		 * 
+		 * @see EventBContainerManager
+		 */
+		public Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
+			return EventBContainerManager.class;
+		}
+//
+//		// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
+//		public Class<? extends org.eclipse.xtext.resource.containers.IAllContainersState.Provider> bindIAllContainersState$Provider() {
+//			return org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersStateProvider.class;
+//		}
+		//----------------------
 }

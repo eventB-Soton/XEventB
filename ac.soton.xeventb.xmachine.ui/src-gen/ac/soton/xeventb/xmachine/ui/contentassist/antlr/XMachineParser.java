@@ -60,6 +60,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMIncludesAccess().getGroup(), "rule__MIncludes__Group__0");
 					put(grammarAccess.getMIncludesAccess().getGroup_3(), "rule__MIncludes__Group_3__0");
 					put(grammarAccess.getMIncludesAccess().getGroup_4(), "rule__MIncludes__Group_4__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup(), "rule__QualifiedName__Group__0");
+					put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 					put(grammarAccess.getXVariableNoCommentAccess().getGroup(), "rule__XVariableNoComment__Group__0");
 					put(grammarAccess.getXVariableMLCommentAccess().getGroup(), "rule__XVariableMLComment__Group__0");
 					put(grammarAccess.getXVariableSLCommentAccess().getGroup(), "rule__XVariableSLComment__Group__0");
