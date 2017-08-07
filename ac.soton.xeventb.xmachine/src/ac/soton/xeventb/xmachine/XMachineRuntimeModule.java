@@ -28,8 +28,8 @@ import ac.soton.xeventb.common.EventBQualifiedNameProvider;
  * </p>
  *
  * @author htson
- * @author Dana: binding qualified name provider and container manager
- * @version 0.2
+ * @author Dana: binding qualified name provider and container manager (0.3)
+ * @version 0.3
  * @see XContextGrammarAccess
  * @since 0.0.1
  */

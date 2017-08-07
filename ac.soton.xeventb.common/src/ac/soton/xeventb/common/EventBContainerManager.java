@@ -12,8 +12,8 @@ import org.eclipse.xtext.resource.containers.StateBasedContainerManager;
  * </p>
  *
  * @author Dana
- * @version 
- * @since 
+ * @version 0.1
+ * @since 0.0.7
  */
 public class EventBContainerManager  extends StateBasedContainerManager{
 	@Override

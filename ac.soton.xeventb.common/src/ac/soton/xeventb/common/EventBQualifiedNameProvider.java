@@ -12,8 +12,8 @@ import org.eclipse.emf.common.util.URI;
  * </p>
  *
  * @author Dana
- * @version 
- * @since 
+ * @version 0.1
+ * @since 0.0.7
  */
 
 public class EventBQualifiedNameProvider extends DefaultDeclarativeQualifiedNameProvider {
