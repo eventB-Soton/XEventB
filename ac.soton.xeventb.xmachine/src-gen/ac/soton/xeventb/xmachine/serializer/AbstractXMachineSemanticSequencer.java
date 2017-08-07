@@ -220,7 +220,7 @@ public abstract class AbstractXMachineSemanticSequencer extends AbstractDelegati
 	 *     MIncludes returns MachineInclusion
 	 *
 	 * Constraint:
-	 *     (extensionId='includes' abstractMachine=[Machine|ID] concreteMachine=[Machine|ID]? (prefixes+=ID prefixes+=ID*)?)
+	 *     (extensionId='includes' abstractMachine=[Machine|QualifiedName] concreteMachine=[Machine|ID]? (prefixes+=ID prefixes+=ID*)?)
 	 */
 	protected void sequence_MIncludes(ISerializationContext context, MachineInclusion semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

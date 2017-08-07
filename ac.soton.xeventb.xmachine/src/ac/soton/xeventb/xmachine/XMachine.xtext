@@ -34,11 +34,13 @@ Machine returns emachine::Machine:
 MIncludes returns einclusion::MachineInclusion:
 	{einclusion::MachineInclusion}
 	(extensionId = 'includes')
-	(abstractMachine = [emachine::Machine])
+	(abstractMachine = [emachine::Machine|QualifiedName])//(abstractMachine = [emachine::Machine])
 	('to' concreteMachine = [emachine::Machine])? 
     ('as' prefixes += ID (prefixes += ID)*)? 
 ;
-
+QualifiedName:
+	ID('.'ID)?
+;
 XVariable returns emachine::Variable:
 	XVariableNoComment | XVariableMLComment | XVariableSLComment
 ;
