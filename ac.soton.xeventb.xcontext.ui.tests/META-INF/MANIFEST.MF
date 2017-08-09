@@ -8,12 +8,12 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xcontext.ui,
  org.eventb.emf.core,
  org.junit;bundle-version="4.7.0",
- org.eclipse.xtext.junit4;bundle-version="[2.10.0,2.12.0)",
- org.eclipse.xtext.xbase.junit;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.junit4;bundle-version="[2.12.0,3.0.0)",
+ org.eclipse.xtext.xbase.junit;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.core.runtime,
  org.eclipse.ui.workbench;resolution:=optional,
- org.eclipse.xtext.testing;bundle-version="[2.10.0,2.12.0)",
- org.eclipse.xtext.xbase.testing;bundle-version="[2.10.0,2.12.0)"
+ org.eclipse.xtext.testing;bundle-version="[2.12.0,3.0.0)",
+ org.eclipse.xtext.xbase.testing;bundle-version="[2.12.0,3.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xcontext.ui.tests;x-internal=true
 Import-Package: org.hamcrest.core,

@@ -6,13 +6,13 @@ Bundle-Version: 0.0.4.release
 Bundle-SymbolicName: ac.soton.xeventb.xcontext;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eventb.emf.core,
- org.eclipse.xtext;bundle-version="[2.10.0,2.12.0)",
- org.eclipse.xtext.xbase;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
+ org.eclipse.xtext.xbase;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="3.5.0",
- org.eclipse.xtext.xbase.lib;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.xbase.lib;bundle-version="[2.12.0,3.0.0)",
  org.antlr.runtime;bundle-version="[3.2.0,4.0.0)",
- org.eclipse.xtext.util;bundle-version="[2.10.0,2.12.0)",
- org.eclipse.xtend.lib;bundle-version="[2.10.0,2.12.0)",
+ org.eclipse.xtext.util;bundle-version="[2.12.0,3.0.0)",
+ org.eclipse.xtend.lib;bundle-version="[2.12.0,3.0.0)",
  org.eventb.emf.persistence;bundle-version="3.5.0",
  ac.soton.xeventb.common;bundle-version="0.0.0",
  ch.ethz.eventb.utils;bundle-version="0.2.3",
