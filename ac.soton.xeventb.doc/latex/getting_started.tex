@@ -37,6 +37,25 @@
 
 \subsubsection{Release Notes}
 \label{sec:release-notes}
+\paragraph{0.0.7}
+\begin{itemize}
+	\item Fixed Issues:
+	\begin{itemize}
+		\item Issue \#8: Comments are not parsed.
+		\item Issue \#10: Variants not translated: Fix is part of inclusion plug-in release 0.2.0.
+	\end{itemize}
+	\item Enhancement: (Issue \#11)
+	\begin{itemize}
+		\item Machines from different projects can now be included.
+		\item Machines are now included using qualified name defined as: projectName.machineName
+	\end{itemize}
+	\item Order of elements generation is updated:
+	\begin{itemize}
+		\item flattened machines now have the included machine elements generated before the source machine.
+		\item Order of generating elements of multiple inclusions and/or instances is from last to first.
+		\item This update is part of inclusion plug-in release 0.2.0.
+	\end{itemize}
+\end{itemize}
 \paragraph{0.0.6}
 \begin{itemize}
 \item Renamed plug-ins and features to XEvent-B (instead of Event-B XText).
@@ -155,7 +174,6 @@
 
 \item Machine Inclusion: 
 \begin{itemize}
-	\item Currently a machine can be only included if it is in the same project.
 	\item Including the \textbf{same} machine to both the abstract and its refining machine can result in the repetition of invariants.
 \end{itemize}
 
@@ -815,7 +833,7 @@ We illustrate the application of machine inclusion using XEvent-B by modelling a
 \subsubsection{Task 1. Create the reusable model}
 \textbf{Introduction} The purpose of this task is to create the model that will be reused by other models using machine inclusion.
 \begin{description}
-\item[Step 1. Create a new Project with XMachine Sensor\_m0\_SNSR.bumx] 
+\item[Step 1. Create a new Project (Sensor) with XMachine m0\_SNSR.bumx] 
 
 Following the same steps as 
 \ifplastex
@@ -824,11 +842,11 @@ in tasks 2 and 4 in Section~\ref{sec:basic-tutorial} for creating project and ma
 in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and machines.
 \fi
 
-\item[Step 2. Set the content of Sensor\_m0\_SNSR.bumx] \textbf{Set the content of ``Sensor\_m0\_SNSR.bumx'' as follows}.
+\item[Step 2. Set the content of m0\_SNSR.bumx] \textbf{Set the content of ``m0\_SNSR.bumx'' as follows}.
 \begin{center}
 	\begin{Bcode}
 		\ifplastex
-		\Bmachine{} Sensor_m0_SNSR\\
+		\Bmachine{} m0_SNSR\\
 		\Bvariables{} SNSR\\
 		\Binvariants\\
 		@thm0_1: "SNSR ∈ BOOL" \Btheorem\\
@@ -851,7 +869,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 	    \Bend\\
 		\Bend
 		\else
-		\Bmachine{} Sensor_m0_SNSR\\
+		\Bmachine{} m0_SNSR\\
 		\Bvariables{} SNSR\\
 		\Binvariants\\
 		\Btab @thm0_1: "\(SNSR \in BOOL\)" \Btheorem\\
@@ -877,33 +895,33 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 	\end{Bcode}
 \end{center}
 
-\item[Step 3. Auto-format and Save the file ``Sensor\_m0\_SNSR.bumx''] 
+\item[Step 3. Auto-format and Save the file ``m0\_SNSR.bumx''] 
 \end{description}
 
-\textbf{Conclusion} By now, the XMachine ``Sensor\_m0\_SNSR.bumx'' and the corresponding Rodin Machine ``Sensor\_m0\_SNSR'' should be visible in the Event-B Explorer.
+\textbf{Conclusion} By now, the XMachine ``m0\_SNSR.bumx'' and the corresponding Rodin Machine ``m0\_SNSR'' should be visible in the Event-B Explorer.
 
 \subsubsection{Task 2. Model the abstract level of cars on a bridge}
 \textbf{Introduction} The purpose of this task is to create the abstract model of the ``cars on a bridge'' example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. 
 \begin{description}
-	\item[Step 1. Create the Context Car\_c0\_limit.bucx] 
+	\item[Step 1. Create the Context c0\_limit.bucx in a new project Car] 
 	Following the same steps as 
 	\ifplastex
 	in task 3 of Section~\ref{sec:basic-tutorial} for creating a simple context.  
 	\else
 	in Section~\ref{Sec:SimpleContext} for creating a simple context.
 	\fi
-	Currently we do \textbf{not} support cross referencing across different projects, so you \textbf{must} add the context and machine to the same project created in task 1 for ``Sensor\_m0\_SNSR.bumx''. \textbf{Set the content of ``Car\_c0\_limit.bucx'' as follows and save the file}.
+	\textbf{Set the content of ``c0\_limit.bucx'' as follows and save the file}.
 	  
 	  \begin{center}
 		\begin{Bcode}
 			\ifplastex
-			\Bcontext{} Car_c0_limit\\
+			\Bcontext{} c0_limit\\
 			\Bconstants{} D\\
 			\Baxioms\\
 			@axm1: "D ∈ ℕ1"\\
 			\Bend
 			\else
-			\Bcontext{} Car_c0_limit\\
+			\Bcontext{} c0_limit\\
 			\Bconstants{} D\\
 			\Baxioms\\
 			\Btab @axm1: "\(D \in \nat1\)"\\
@@ -911,13 +929,13 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\fi
 		\end{Bcode}
 	\end{center}
-	\item[Step 2. Create the Machine Car\_m0\_cars.bumx]\textbf{Set the content of ``Car\_m0\_cars.bumx'' as follows and save the file}.
+	\item[Step 2. Create the Machine m0\_cars.bumx]\textbf{Set the content of ``m0\_cars.bumx'' as follows and save the file}.
 
 	\begin{center}
 		\begin{Bcode}
 			\ifplastex
-			\Bmachine{} Car_m0_cars\\
-			\Bsees{} Car_c0_limit\\
+			\Bmachine{} m0_cars\\
+			\Bsees{} c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
 			@inv0_1: "A ∈ ℕ"\\
@@ -963,8 +981,8 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bend\\
 			\Bend
 			\else
-			\Bmachine{} Car_m0_cars\\
-			\Bsees{} Car_c0_limit\\
+			\Bmachine{} m0_cars\\
+			\Bsees{} c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
 			\Btab @inv0_1: "\(A \in \nat\)"\\
@@ -1014,29 +1032,28 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 	\end{center}
 	
 \end{description}
-\textbf{Conclusion} Saving the XContext and XMachine files will generate the corresponding Rodin files. Now in the same project you have the context ``Car\_c0\_limit'' and the machines: ``Sensor\_m0\_SNSR'' and ``Car\_m0\_cars''. Ideally the reusable models should be in a different project, but this is \textbf{not} supported \textbf{yet} in the current release, that is why we require all models to be in the same project.
-
+\textbf{Conclusion} Saving the XContext and XMachine files will generate the corresponding Rodin files. In the ``Car'' you have the context ``c0\_limit'' and the machine ``m0\_cars''. Ideally the reusable models should be in a different project, that is why we added the reusable model in a different project ``Sensor''.
 
 \subsubsection{Task 3. Model an XMachine using machine inclusion}
-\textbf{Introduction} In this task we define the XMachine ``Car\_m1\_SNSR.bumx'' which is a refinement of the machine ``Car\_m0\_cars'' and includes two instances of ``Sensor\_m0\_SNSR''. The keywords in red  are \textbf{not} part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. 
+\textbf{Introduction} In this task we define the XMachine ``m1\_SNSR.bumx'' which is a refinement of the machine ``m0\_cars'' and includes two instances of ``m0\_SNSR''. The keywords in red  are \textbf{not} part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. 
 
 \begin{description}
-	\item[Step 1. Create the file ``Car\_m1\_SNSR.bumx''] \textbf{Add the file to the same project and set its contents as follows.}
+	\item[Step 1. Create the file ``m1\_SNSR.bumx''] \textbf{Set its contents as follows.}
 	
 		\begin{center}
 		\begin{Bcode}
 			\ifplastex
 			\Bmachine{} Car_m1_SNSR\\
-			\textcolor{red}{\textbf{includes}} Sensor_m0_SNSR \textcolor{red}{\textbf{as}} ML_out IL_out\\
-			\Brefines{} Car_m0_cars\\
-			\Bsees{} Car_c0_limit\\
+			\textcolor{red}{\textbf{includes}} Sensor.m0_SNSR \textcolor{red}{\textbf{as}} IL_out ML_out\\
+			\Brefines{} m0_cars\\
+			\Bsees{} c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
 			@inv1_1: "IL_out_SNSR = TRUE ⇒ B ≠ 0"\\
 			\Bevents\\
 			INITIALISATION \Bextended\\
-			\textcolor{red}{\textbf{synchronises}} ML_out.INITIALISATION\\
 			\textcolor{red}{\textbf{synchronises}} IL_out.INITIALISATION\\
+			\textcolor{red}{\textbf{synchronises}} ML_out.INITIALISATION\\
 			\Brefines{} INITIALISATION\\
 			\Bend\\
 			ML_out \Bextended\\
@@ -1070,17 +1087,17 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bend\\
 			\Bend
 			\else
-			\Bmachine{} Car_m1_SNSR\\
-			\textcolor{red}{includes} Sensor_m0_SNSR \textcolor{red}{as} ML_out IL_out\\
-			\Brefines{} Car_m0_cars\\
-			\Bsees{} Car_c0_limit\\
+			\Bmachine{} m1_SNSR\\
+			\textcolor{red}{includes} Sensor.m0_SNSR \textcolor{red}{as} IL_out ML_out\\
+			\Brefines{} m0_cars\\
+			\Bsees{} c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
 			\Btab @inv1_1: "\("IL_out_SNSR = TRUE \Rightarrow B \neq 0"\)"\\
 			\Bevents\\
 			\Btab INITIALISATION \Bextended\\
+			\Btab \textcolor{red}{synchronises} IL_out.INITIALISATION\\
             \Btab \textcolor{red}{synchronises} ML_out.INITIALISATION\\
-            \Btab \textcolor{red}{synchronises} IL_out.INITIALISATION\\
             \Btab \Brefines{} INITIALISATION\\
 			\Btab \Bend\\
 			\Btab ML_out \Bextended\\
@@ -1116,9 +1133,11 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\fi
 		\end{Bcode}
 	\end{center}
-	\item[Step 2. Auto-format the file ``Car\_m1\_SNSR.bumx'' and Save it.]
+	\item[Step 2. Auto-format the file ``m1\_SNSR.bumx'' and Save it.]
 \end{description}
-\textbf{Conclusion} After saving the file a standard Event-B machine ``Car\_m1\_SNSR''will be generated. The generated machine (Figure~\ref{fig:FlattenedMachine}) is flattened to include the variables and invariants  of the included machine ``Sensor\_m0\_SNSR'' which are renamed according to the chosen prefixes (ML\_out, IL\_out). In addition to the guards and actions of the synchronised events. When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL\_out.SNSR\_on where ``IL\_out'' is one of the included machine prefixes and ``SNSR\_on'' is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event.
+\textbf{Conclusion} After saving the file a standard Event-B machine ``m1\_SNSR''will be generated. The generated machine (Figure~\ref{fig:FlattenedMachine}) is flattened to include the variables and invariants  of the included machine ``m0\_SNSR'' which are renamed according to the chosen prefixes. In addition to the guards and actions of the synchronised events. The project name must be specified when including a machine (e.g., Sensor.m0\_SNSR), and the project (Sensor) of the included machines must be opened in the same workspace. You can also use content assist to see all available machines in the workspace.
+
+When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL\_out.SNSR\_on where ``IL\_out'' is one of the included machine prefixes and ``SNSR\_on'' is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event. Notice the order of the generated elements in the flattened machine is the included elements from last to first then the source machine elements.
 
 \begin{figure}[!htbp]
 	\centering
@@ -1127,7 +1146,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 	\else
 	\includegraphics[width=0.9\textwidth]{figures/Flattened_var_m1_snsr}
 	\fi
-	\caption{Flattened Machine ``Car\_m1\_SNSR''}
+	\caption{Flattened Machine ``m1\_SNSR''}
 	\label{fig:FlattenedMachine}
 \end{figure}
 
