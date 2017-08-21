@@ -39,23 +39,41 @@
 \label{sec:release-notes}
 \paragraph{0.0.7}
 \begin{itemize}
-	\item Fixed Issues:
-	\begin{itemize}
-		\item Issue \#8: Comments are not parsed.
-		\item Issue \#10: Variants not translated: Fix is part of inclusion plug-in release 0.2.0.
-	\end{itemize}
-	\item Enhancement: (Issue \#11)
-	\begin{itemize}
-		\item Machines from different projects can now be included.
-		\item Machines are now included using qualified name defined as: projectName.machineName
-	\end{itemize}
-	\item Order of elements generation is updated:
-	\begin{itemize}
-		\item flattened machines now have the included machine elements generated before the source machine.
-		\item Order of generating elements of multiple inclusions and/or instances is from last to first.
-		\item This update is part of inclusion plug-in release 0.2.0.
-	\end{itemize}
+\item XEvent-B Common (0.0.4): Enhancement (Issue \#11).
+  \begin{itemize}
+  \item Machines from different projects can now be included.
+
+  \item  Machines are now included using qualified name defined as:
+    \emph{projectName.machineName}
+  \end{itemize}
+
+\item  XEvent-B Documentations (0.0.7): Update documentation for 0.0.7 release.
+\item  XEvent-B XContext (0.0.5): Changed dependency on XText to [2.12.0, 3.0.0).
+\item  XEvent-B XContext IDE (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
+\item  XEvent-B XContext UI (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
+\item  XEvent-B XMachine (0.0.5):
+  \begin{itemize}
+  \item Changed dependency on XText to [2.12.0, 3.0.0).
+  
+  \item  Fixed Issue \#8: Comments are not parsed.
+  
+  \item  Fixed Issue \#10: Variants not translated: Fix is part of inclusion plug-in release 0.2.0.  
+  
+  \item  Flattened machines now have the included machine elements generated before the source machine.
+  
+  \item  Order of generating elements of multiple inclusions and/or instances is from last to first.
+  
+  \item  This update is part of inclusion plug-in release 0.2.0.
+  \end{itemize}
+
+\item  XEvent-B XMachine IDE (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
+\item  XEvent-B XMachine UI (0.0.4): 
+  \begin{itemize}
+  \item Changed dependency on XText to [2.12.0, 3.0.0).
+  \item Regenerated from XEvent-B XMachine 0.0.5
+  \end{itemize}
 \end{itemize}
+
 \paragraph{0.0.6}
 \begin{itemize}
 \item Renamed plug-ins and features to XEvent-B (instead of Event-B XText).

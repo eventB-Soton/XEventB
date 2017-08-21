@@ -47,7 +47,7 @@
     <dd><p>Following the same steps as in tasks 2 and 4 in Section <a href="sec-basic-tutorial.html">2.2</a> for creating project and machines. </p></dd>
 
     <dt>Step 2. Set the content of m0_SNSR.bumx</dt>
-    <dd><p><b class="bfseries">Set the content of “m0_SNSR.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p><b class="bfseries">Set the content of “m0_SNSR.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -168,7 +168,7 @@
 <p> <b class="bfseries">Introduction</b> The purpose of this task is to create the abstract model of the “cars on a bridge” example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. </p><dl class="description">
 
     <dt>Step 1. Create the Context Car_c0_limit.bucx in a new project Car</dt>
-    <dd><p>Following the same steps as in task 3 of Section <a href="sec-basic-tutorial.html">2.2</a> for creating a simple context. <b class="bfseries">Set the content of “Car_c0_limit.bucx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p>Following the same steps as in task 3 of Section <a href="sec-basic-tutorial.html">2.2</a> for creating a simple context. <b class="bfseries">Set the content of “Car_c0_limit.bucx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -198,7 +198,7 @@
 </table></tt> </center></dd>
 
     <dt>Step 2. Create the Machine Car_m0_cars.bumx</dt>
-    <dd><p><b class="bfseries">Set the content of “Car_m0_cars.bumx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p><b class="bfseries">Set the content of “Car_m0_cars.bumx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -436,7 +436,7 @@
 <p> <b class="bfseries">Introduction</b> In this task we define the XMachine “Car_m1_SNSR.bumx” which is a refinement of the machine “Car_m0_cars” and includes two instances of “m0_SNSR”. The keywords in red are <b class="bfseries">not</b> part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. </p><dl class="description">
 
     <dt>Step 1. Create the file “Car_m1_SNSR.bumx”</dt>
-    <dd><p><b class="bfseries">Set its contents as follows.</b> </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p><b class="bfseries">Set its contents as follows.</b> </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -659,7 +659,7 @@
     <dd></dd>
 
 </dl><p> <b class="bfseries">Conclusion</b> After saving the file a standard Event-B machine “Car_m1_SNSR”will be generated. The generated machine (Figure <a href="sec-advanced-tutorial.html#fig:FlattenedMachine">22</a>) is flattened to include the variables and invariants of the included machine “m0_SNSR” which are renamed according to the chosen prefixes. In addition to the guards and actions of the synchronised events. The project name must be specified when including a machine (e.g., Sensor.m0_SNSR), and the project (Sensor) of the included machines must be opened in the same workspace. You can also use content assist to see all available machines in the workspace. </p><p>When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL_out.SNSR_on where “IL_out” is one of the included machine prefixes and “SNSR_on” is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event. Notice the order of the generated elements in the flattened machine is the included elements from last to first then the source machine elements. </p><div id="fig:FlattenedMachine" class="figure"><center>
-<img src="images/img-0022.png" alt="\includegraphics[width=512]{figures/Flattened_var_m1_snsr}" style="width:512" /> <div class="caption"><b> 22</b>: <span>Flattened Machine “Car_m1_SNSR”</span></div>  </center></div></div>
+<img src="images/img-0022.png" alt="\includegraphics[width=512]{figures/Flattened_var_m1_snsr}" style="width:512" /> <div class="caption"><b>Figure 22</b>: <span>Flattened Machine “Car_m1_SNSR”</span></div>  </center></div></div>
 
 
 
