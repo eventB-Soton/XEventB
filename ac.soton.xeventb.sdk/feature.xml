@@ -2,8 +2,9 @@
 <feature
       id="ac.soton.xeventb.sdk"
       label="%featureName"
-      version="0.0.6.release"
+      version="0.0.7.release"
       provider-name="%featureVendor"
+      plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.license"
       license-feature-version="1.0.0.release">
 

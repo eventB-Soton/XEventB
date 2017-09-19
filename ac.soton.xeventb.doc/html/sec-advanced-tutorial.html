@@ -40,18 +40,18 @@
 
 
 <div><h2 id="sec:advanced-tutorial">2.3 Advanced Tutorial</h2>
-<p>This tutorial provides a step-by-step walk-through working with <em>machine inclusion</em> using XEvent-B. Following the same steps as in Section <a href="sec-basic-tutorial.html">2.2</a> to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via <em>event synchronisation</em>. </p><p>We illustrate the application of machine inclusion using XEvent-B by modelling a small example of “controlling cars on a bridge”, which is based on Chapter 2 of “<em>Modeling in Event-B: System and Software Engineering</em>” book. </p><h3 id="a0000000017">Task 1. Create the reusable model</h3>
+<p>This tutorial provides a step-by-step walk-through working with <em>machine inclusion</em> using XEvent-B. Following the same steps as in Section <a href="sec-basic-tutorial.html">2.2</a> to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via <em>event synchronisation</em>. </p><p>We illustrate the application of machine inclusion using XEvent-B by modelling a small example of “controlling cars on a bridge”, which is based on Chapter 2 of “<em>Modeling in Event-B: System and Software Engineering</em>” book. </p><h3 id="a0000000018">Task 1. Create the reusable model</h3>
 <p> <b class="bfseries">Introduction</b> The purpose of this task is to create the model that will be reused by other models using machine inclusion. </p><dl class="description">
 
-    <dt>Step 1. Create a new Project with XMachine Sensor_m0_SNSR.bumx</dt>
+    <dt>Step 1. Create a new Project (Sensor) with XMachine m0_SNSR.bumx</dt>
     <dd><p>Following the same steps as in tasks 2 and 4 in Section <a href="sec-basic-tutorial.html">2.2</a> for creating project and machines. </p></dd>
 
-    <dt>Step 2. Set the content of Sensor_m0_SNSR.bumx</dt>
-    <dd><p><b class="bfseries">Set the content of “Sensor_m0_SNSR.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dt>Step 2. Set the content of m0_SNSR.bumx</dt>
+    <dd><p><b class="bfseries">Set the content of “m0_SNSR.bumx” as follows</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
-    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> Sensor_m0_SNSR</p></td>
+    <td style="text-align:left"><p> <tt class="ttfamily">machine</tt> m0_SNSR</p></td>
 
 </tr><tr>
 
@@ -161,14 +161,14 @@
 </tr>
 </table></tt> </center></dd>
 
-    <dt>Step 3. Auto-format and Save the file “Sensor_m0_SNSR.bumx”</dt>
+    <dt>Step 3. Auto-format and Save the file “m0_SNSR.bumx”</dt>
     <dd></dd>
 
-</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “Sensor_m0_SNSR.bumx” and the corresponding Rodin Machine “Sensor_m0_SNSR” should be visible in the Event-B Explorer. </p><h3 id="a0000000018">Task 2. Model the abstract level of cars on a bridge</h3>
+</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “m0_SNSR.bumx” and the corresponding Rodin Machine “m0_SNSR” should be visible in the Event-B Explorer. </p><h3 id="a0000000019">Task 2. Model the abstract level of cars on a bridge</h3>
 <p> <b class="bfseries">Introduction</b> The purpose of this task is to create the abstract model of the “cars on a bridge” example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. </p><dl class="description">
 
-    <dt>Step 1. Create the Context Car_c0_limit.bucx</dt>
-    <dd><p>Following the same steps as in task 3 of Section <a href="sec-basic-tutorial.html">2.2</a> for creating a simple context. Currently we do <b class="bfseries">not</b> support cross referencing across different projects, so you <b class="bfseries">must</b> add the context and machine to the same project created in task 1 for “Sensor_m0_SNSR.bumx”. <b class="bfseries">Set the content of “Car_c0_limit.bucx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dt>Step 1. Create the Context Car_c0_limit.bucx in a new project Car</dt>
+    <dd><p>Following the same steps as in task 3 of Section <a href="sec-basic-tutorial.html">2.2</a> for creating a simple context. <b class="bfseries">Set the content of “Car_c0_limit.bucx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -198,7 +198,7 @@
 </table></tt> </center></dd>
 
     <dt>Step 2. Create the Machine Car_m0_cars.bumx</dt>
-    <dd><p><b class="bfseries">Set the content of “Car_m0_cars.bumx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p><b class="bfseries">Set the content of “Car_m0_cars.bumx” as follows and save the file</b>. </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -432,11 +432,11 @@
 </tr>
 </table></tt> </center></dd>
 
-</dl><p> <b class="bfseries">Conclusion</b> Saving the XContext and XMachine files will generate the corresponding Rodin files. Now in the same project you have the context “Car_c0_limit” and the machines: “Sensor_m0_SNSR” and “Car_m0_cars”. Ideally the reusable models should be in a different project, but this is <b class="bfseries">not</b> supported <b class="bfseries">yet</b> in the current release, that is why we require all models to be in the same project. </p><h3 id="a0000000019">Task 3. Model an XMachine using machine inclusion</h3>
-<p> <b class="bfseries">Introduction</b> In this task we define the XMachine “Car_m1_SNSR.bumx” which is a refinement of the machine “Car_m0_cars” and includes two instances of “Sensor_m0_SNSR”. The keywords in red are <b class="bfseries">not</b> part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. </p><dl class="description">
+</dl><p> <b class="bfseries">Conclusion</b> Saving the XContext and XMachine files will generate the corresponding Rodin files. In the “Car” you have the context “Car_c0_limit” and the machine “Car_m0_cars”. Ideally the reusable models should be in a different project, that is why we added the reusable model in a different project “Sensor”. </p><h3 id="a0000000020">Task 3. Model an XMachine using machine inclusion</h3>
+<p> <b class="bfseries">Introduction</b> In this task we define the XMachine “Car_m1_SNSR.bumx” which is a refinement of the machine “Car_m0_cars” and includes two instances of “m0_SNSR”. The keywords in red are <b class="bfseries">not</b> part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. </p><dl class="description">
 
     <dt>Step 1. Create the file “Car_m1_SNSR.bumx”</dt>
-    <dd><p><b class="bfseries">Add the file to the same project and set its contents as follows.</b> </p><center> <tt class="ttfamily"><table cellspacing="0" class="tabular">
+    <dd><p><b class="bfseries">Set its contents as follows.</b> </p><center> <tt class="ttfamily"><table class="tabular" cellspacing="0">
 <tr>
 
     
@@ -445,7 +445,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">includes</b></span> Sensor_m0_SNSR <span style="color:#FF0000"><b class="bfseries">as</b></span> ML_out IL_out</p></td>
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">includes</b></span> Sensor.m0_SNSR <span style="color:#FF0000"><b class="bfseries">as</b></span> IL_out ML_out</p></td>
 
 </tr><tr>
 
@@ -485,12 +485,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> ML_out.INITIALISATION</p></td>
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> IL_out.INITIALISATION</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> IL_out.INITIALISATION</p></td>
+    <td style="text-align:left"><p><span style="color:#FF0000"><b class="bfseries">synchronises</b></span> ML_out.INITIALISATION</p></td>
 
 </tr><tr>
 
@@ -658,8 +658,8 @@
     <dt>Step 2. Auto-format the file “Car_m1_SNSR.bumx” and Save it.</dt>
     <dd></dd>
 
-</dl><p> <b class="bfseries">Conclusion</b> After saving the file a standard Event-B machine “Car_m1_SNSR”will be generated. The generated machine (Figure <a href="sec-advanced-tutorial.html#fig:FlattenedMachine">22</a>) is flattened to include the variables and invariants of the included machine “Sensor_m0_SNSR” which are renamed according to the chosen prefixes (ML_out, IL_out). In addition to the guards and actions of the synchronised events. When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL_out.SNSR_on where “IL_out” is one of the included machine prefixes and “SNSR_on” is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event. </p><div id="fig:FlattenedMachine" class="figure"><center>
-<img src="images/img-0022.png" alt="\includegraphics[width=512]{figures/Flattened_var_m1_snsr}" style="width:512" /> <div class="caption"><b> 22</b>: <span>Flattened Machine “Car_m1_SNSR”</span></div>  </center></div></div>
+</dl><p> <b class="bfseries">Conclusion</b> After saving the file a standard Event-B machine “Car_m1_SNSR”will be generated. The generated machine (Figure <a href="sec-advanced-tutorial.html#fig:FlattenedMachine">22</a>) is flattened to include the variables and invariants of the included machine “m0_SNSR” which are renamed according to the chosen prefixes. In addition to the guards and actions of the synchronised events. The project name must be specified when including a machine (e.g., Sensor.m0_SNSR), and the project (Sensor) of the included machines must be opened in the same workspace. You can also use content assist to see all available machines in the workspace. </p><p>When synchronising an event you can add the prefix of the required machine followed by the synchronised event name (e.g., IL_out.SNSR_on where “IL_out” is one of the included machine prefixes and “SNSR_on” is the synchronised event). It is also possible to include more than one machine and synchronise with more than one event. Notice the order of the generated elements in the flattened machine is the included elements from last to first then the source machine elements. </p><div id="fig:FlattenedMachine" class="figure"><center>
+<img src="images/img-0022.png" alt="\includegraphics[width=512]{figures/Flattened_var_m1_snsr}" style="width:512" /> <div class="caption"><b>Figure 22</b>: <span>Flattened Machine “Car_m1_SNSR”</span></div>  </center></div></div>
 
 
 

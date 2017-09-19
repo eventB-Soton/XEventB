@@ -25,6 +25,12 @@ import org.eventb.emf.persistence.EMFRodinDB
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.MachineInclusion
 import ac.soton.eventb.emf.inclusion.InclusionPackage
+import com.google.inject.Inject
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
+import org.eclipse.xtext.resource.IContainer
+import org.eclipse.emf.ecore.EClass
+import org.eclipse.xtext.resource.IResourceDescription
+
 /**
  * <p>
  * XMachine scope provider, in particular the scope for machine refinement,
@@ -38,7 +44,9 @@ import ac.soton.eventb.emf.inclusion.InclusionPackage
  * @since 0.0.1
  */
 class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
+@Inject ResourceDescriptionsProvider rdp
 
+	@Inject IContainer$Manager cm
 /**
 	 * Getting the scope for the a reference feature of an input object.
 	 * 
@@ -116,11 +124,25 @@ class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDecla
 		}
 		
 		
+				//----------------------------
+//		if (context instanceof MachineInclusion && reference == InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
+//		    val  rds = rdp.getResourceDescriptions(context.eResource());
+//			val  rd = rds.getResourceDescription(context.eResource().getURI());
+//		    var container = cm.getContainer(rd, rds);
+//			var x = container.getExportedObjectsByType(InclusionPackage.Literals.MACHINE_INCLUSION).filter(MachineInclusion);
+//			
+//			//for(mch: it.flatten.iterator<MachineInclusion>){
+//				
+//			//}
+//		 return Scopes.scopeFor(x);
+//		}
+		//--------------------------	
+		
+		
        return super.getScope(context, reference);
 	}
 	
-	
-	
+
 	
 }	
 

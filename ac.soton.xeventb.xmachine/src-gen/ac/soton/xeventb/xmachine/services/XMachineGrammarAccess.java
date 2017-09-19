@@ -204,7 +204,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cExtensionIdIncludesKeyword_1_0 = (Keyword)cExtensionIdAssignment_1.eContents().get(0);
 		private final Assignment cAbstractMachineAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cAbstractMachineMachineCrossReference_2_0 = (CrossReference)cAbstractMachineAssignment_2.eContents().get(0);
-		private final RuleCall cAbstractMachineMachineIDTerminalRuleCall_2_0_1 = (RuleCall)cAbstractMachineMachineCrossReference_2_0.eContents().get(1);
+		private final RuleCall cAbstractMachineMachineQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cAbstractMachineMachineCrossReference_2_0.eContents().get(1);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
 		private final Keyword cToKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
 		private final Assignment cConcreteMachineAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
@@ -218,11 +218,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cPrefixesIDTerminalRuleCall_4_2_0 = (RuleCall)cPrefixesAssignment_4_2.eContents().get(0);
 		
 		//MIncludes einclusion::MachineInclusion:
-		//	{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine] ('to'
+		//	{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine|QualifiedName] ('to'
 		//	concreteMachine=[emachine::Machine])? ('as' prefixes+=ID prefixes+=ID*)?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine] ('to'
+		//{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine|QualifiedName] ('to'
 		//concreteMachine=[emachine::Machine])? ('as' prefixes+=ID prefixes+=ID*)?
 		public Group getGroup() { return cGroup; }
 
@@ -235,14 +235,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//'includes'
 		public Keyword getExtensionIdIncludesKeyword_1_0() { return cExtensionIdIncludesKeyword_1_0; }
 
-		//abstractMachine=[emachine::Machine]
+		//abstractMachine=[emachine::Machine|QualifiedName]
 		public Assignment getAbstractMachineAssignment_2() { return cAbstractMachineAssignment_2; }
 
-		//[emachine::Machine]
+		//[emachine::Machine|QualifiedName]
 		public CrossReference getAbstractMachineMachineCrossReference_2_0() { return cAbstractMachineMachineCrossReference_2_0; }
 
-		//ID
-		public RuleCall getAbstractMachineMachineIDTerminalRuleCall_2_0_1() { return cAbstractMachineMachineIDTerminalRuleCall_2_0_1; }
+		//QualifiedName
+		public RuleCall getAbstractMachineMachineQualifiedNameParserRuleCall_2_0_1() { return cAbstractMachineMachineQualifiedNameParserRuleCall_2_0_1; }
 
 		//('to' concreteMachine=[emachine::Machine])?
 		public Group getGroup_3() { return cGroup_3; }
@@ -276,6 +276,34 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ID
 		public RuleCall getPrefixesIDTerminalRuleCall_4_2_0() { return cPrefixesIDTerminalRuleCall_4_2_0; }
+	}
+
+	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.QualifiedName");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
+		
+		//QualifiedName:
+		//	ID ('.' ID)?;
+		@Override public ParserRule getRule() { return rule; }
+
+		//ID ('.' ID)?
+		public Group getGroup() { return cGroup; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+
+		//('.' ID)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//'.'
+		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
+
+		//ID
+		public RuleCall getIDTerminalRuleCall_1_1() { return cIDTerminalRuleCall_1_1; }
 	}
 
 	public class XVariableElements extends AbstractParserRuleElementFinder {
@@ -2073,6 +2101,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	private final MachineElements pMachine;
 	private final MIncludesElements pMIncludes;
+	private final QualifiedNameElements pQualifiedName;
 	private final XVariableElements pXVariable;
 	private final XVariableNoCommentElements pXVariableNoComment;
 	private final XVariableMLCommentElements pXVariableMLComment;
@@ -2120,6 +2149,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.gaTerminals = gaTerminals;
 		this.pMachine = new MachineElements();
 		this.pMIncludes = new MIncludesElements();
+		this.pQualifiedName = new QualifiedNameElements();
 		this.pXVariable = new XVariableElements();
 		this.pXVariableNoComment = new XVariableNoCommentElements();
 		this.pXVariableMLComment = new XVariableMLCommentElements();
@@ -2201,7 +2231,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MIncludes einclusion::MachineInclusion:
-	//	{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine] ('to'
+	//	{einclusion::MachineInclusion} extensionId='includes' abstractMachine=[emachine::Machine|QualifiedName] ('to'
 	//	concreteMachine=[emachine::Machine])? ('as' prefixes+=ID prefixes+=ID*)?;
 	public MIncludesElements getMIncludesAccess() {
 		return pMIncludes;
@@ -2209,6 +2239,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getMIncludesRule() {
 		return getMIncludesAccess().getRule();
+	}
+
+	//QualifiedName:
+	//	ID ('.' ID)?;
+	public QualifiedNameElements getQualifiedNameAccess() {
+		return pQualifiedName;
+	}
+	
+	public ParserRule getQualifiedNameRule() {
+		return getQualifiedNameAccess().getRule();
 	}
 
 	//XVariable emachine::Variable:
