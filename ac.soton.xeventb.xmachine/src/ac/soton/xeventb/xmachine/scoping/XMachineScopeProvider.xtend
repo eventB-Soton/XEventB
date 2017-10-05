@@ -10,26 +10,27 @@
  *******************************************************************************/
 package ac.soton.xeventb.xmachine.scoping
 
+import ac.soton.eventb.emf.inclusion.EventSynchronisation
+import ac.soton.eventb.emf.inclusion.InclusionPackage
+import ac.soton.eventb.emf.inclusion.MachineInclusion
 import ch.ethz.eventb.utils.EventBUtils
+import com.google.inject.Inject
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.EcoreUtil2
+import org.eclipse.xtext.resource.IContainer
+import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.scoping.Scopes
+import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eventb.core.basis.ContextRoot
 import org.eventb.core.basis.MachineRoot
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
 import org.eventb.emf.persistence.EMFRodinDB
-import ac.soton.eventb.emf.inclusion.EventSynchronisation
-import ac.soton.eventb.emf.inclusion.MachineInclusion
-import ac.soton.eventb.emf.inclusion.InclusionPackage
-import com.google.inject.Inject
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
-import org.eclipse.xtext.resource.IContainer
-import org.eclipse.emf.ecore.EClass
-import org.eclipse.xtext.resource.IResourceDescription
+import ac.soton.xeventb.common.EventBQualifiedNameProvider
+import ac.soton.xeventb.common.EventBContainerManager
 
 /**
  * <p>
@@ -43,11 +44,12 @@ import org.eclipse.xtext.resource.IResourceDescription
  * @see EMFRodinDB
  * @since 0.0.1
  */
-class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider {
-@Inject ResourceDescriptionsProvider rdp
+class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
+	@Inject ResourceDescriptionsProvider rdp
 
-	@Inject IContainer$Manager cm
-/**
+//	@Inject IContainer.Manager cm
+
+	/**
 	 * Getting the scope for the a reference feature of an input object.
 	 * 
 	 * @param context
@@ -103,6 +105,23 @@ class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDecla
 			return Scopes.scopeFor(mchs);
 		}
 		     
+		// The scope for a machine inclusion is the set of all machines in the
+		// current project containing the parent machine. 
+		if (context instanceof Machine && reference == InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
+			var emfRodinDB = new EMFRodinDB;
+			var prjName = emfRodinDB.getProjectName(context as Machine);
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
+
+			var mchs = new ArrayList()
+			for (mchRoot : mchRoots) {
+				var mch = emfRodinDB.loadEventBComponent(mchRoot)
+				mchs.add(mch)
+			}
+			return Scopes.scopeFor(mchs);
+		}
+
 		    //Dana
 			// The scope for a synchronised event is the set of all events 
 			// in the included abstract machines.
@@ -123,26 +142,45 @@ class XMachineScopeProvider extends org.eclipse.xtext.scoping.impl.AbstractDecla
 			return Scopes.scopeFor(mchEvts);		
 		}
 		
-		
-				//----------------------------
-//		if (context instanceof MachineInclusion && reference == InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
-//		    val  rds = rdp.getResourceDescriptions(context.eResource());
-//			val  rd = rds.getResourceDescription(context.eResource().getURI());
-//		    var container = cm.getContainer(rd, rds);
-//			var x = container.getExportedObjectsByType(InclusionPackage.Literals.MACHINE_INCLUSION).filter(MachineInclusion);
-//			
-//			//for(mch: it.flatten.iterator<MachineInclusion>){
-//				
-//			//}
-//		 return Scopes.scopeFor(x);
-//		}
-		//--------------------------	
+		// Scope for machine inclusion clause
+		if (context instanceof MachineInclusion &&
+			reference == InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
+			return scopeForMachineInclusion(context, reference)
+		}
 		
 		
        return super.getScope(context, reference);
 	}
 	
+	/**
+	 * The scope for machine inclusion is the set of all (Rodin) machines 
+	 * within the current project (reference using simple names) and the set
+	 * of all (XMachine) machines in the workspace (reference using qualified
+	 * name).
+	 * 
+	 * @author htson 
+	 * @see EventBQualifiedNameProvider
+	 * @see EventBContainerManager
+	 * @since 0.0.8
+	 */
+	def private scopeForMachineInclusion(EObject context, EReference reference) {
+			val superScope = super.getScope(context, reference)
+			
+			var emfRodinDB = new EMFRodinDB
+			var prjName = emfRodinDB.getProjectName(context.eContainer as Machine)
+			var eBPrj = EventBUtils.getEventBProject(prjName)
+			var rdPrj = eBPrj.getRodinProject()
+			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
 
+			var mchs = new ArrayList()
+			for (mchRoot : mchRoots) {
+				var mch = emfRodinDB.loadEventBComponent(mchRoot)
+				mchs.add(mch)
+			}
+			return Scopes.scopeFor(mchs, superScope);		
+	}
+	
+	
 	
 }	
 
