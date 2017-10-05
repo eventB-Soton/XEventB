@@ -105,23 +105,6 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 			return Scopes.scopeFor(mchs);
 		}
 		     
-		// The scope for a machine inclusion is the set of all machines in the
-		// current project containing the parent machine. 
-		if (context instanceof Machine && reference == InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE) {
-			var emfRodinDB = new EMFRodinDB;
-			var prjName = emfRodinDB.getProjectName(context as Machine);
-			var eBPrj = EventBUtils.getEventBProject(prjName)
-			var rdPrj = eBPrj.getRodinProject()
-			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
-
-			var mchs = new ArrayList()
-			for (mchRoot : mchRoots) {
-				var mch = emfRodinDB.loadEventBComponent(mchRoot)
-				mchs.add(mch)
-			}
-			return Scopes.scopeFor(mchs);
-		}
-
 		    //Dana
 			// The scope for a synchronised event is the set of all events 
 			// in the included abstract machines.
