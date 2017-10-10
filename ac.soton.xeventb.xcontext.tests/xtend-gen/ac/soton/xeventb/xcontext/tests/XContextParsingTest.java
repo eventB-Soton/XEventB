@@ -57,7 +57,11 @@ public class XContextParsingTest {
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       this._assertExtensions.assertEmpty(errors);
       Assert.assertTrue((result instanceof Context));
-      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContext(result, "c0", null);
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -70,7 +74,10 @@ public class XContextParsingTest {
       _builder.append("/* ");
       _builder.newLine();
       _builder.append(" ");
-      _builder.append("* Multi-line comments");
+      _builder.append("* Multi-line");
+      _builder.newLine();
+      _builder.append(" ");
+      _builder.append("* comments");
       _builder.newLine();
       _builder.append(" ");
       _builder.append("*/");
@@ -85,7 +92,41 @@ public class XContextParsingTest {
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       this._assertExtensions.assertEmpty(errors);
       Assert.assertTrue((result instanceof Context));
-      this._assertContextExtensions.assertContext(result, "c0", "Multi-line comments");
+      StringConcatenation _builder_1 = new StringConcatenation();
+      _builder_1.append("Multi-line");
+      _builder_1.newLine();
+      _builder_1.append("comments");
+      this._assertContextExtensions.assertContext(result, "c0", _builder_1.toString());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testContextClauseSuccessful_SL_COMMENT() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("// Single-line comment");
+      _builder.newLine();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      this._assertContextExtensions.assertContext(result, "c0", "Single-line comment");
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result);
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
@@ -114,7 +155,7 @@ public class XContextParsingTest {
   }
   
   @Test
-  public void testSetsClauseSuccessful_1Set() {
+  public void testSetsClauseSuccessful_Sets1() {
     try {
       StringConcatenation _builder = new StringConcatenation();
       _builder.append("context c0");
@@ -130,6 +171,149 @@ public class XContextParsingTest {
       this._assertExtensions.assertEmpty(errors);
       Assert.assertTrue((result instanceof Context));
       Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result, "S:");
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSetsClauseSuccessful_Sets2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("sets S T");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result, "S:", "T:");
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSetsClauseSuccessful_Constants1() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("constants a");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result, "a:");
+      this._assertContextExtensions.assertContextAxioms(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSetsClauseSuccessful_Constants2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("constants a b");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result, "a:", "b:");
+      this._assertContextExtensions.assertContextAxioms(result);
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSetsClauseSuccessful_Axioms1() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("axioms ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("@axm1: \"a ∈ S\"");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result, "axm1:a ∈ S:false:");
+    } catch (Throwable _e) {
+      throw Exceptions.sneakyThrow(_e);
+    }
+  }
+  
+  @Test
+  public void testSetsClauseSuccessful_Axioms2() {
+    try {
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("context c0");
+      _builder.newLine();
+      _builder.append("axioms ");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("@axm1: \"a ∈ S\"");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("@axm2: \"b ∈ T\"");
+      _builder.newLine();
+      _builder.append("end");
+      _builder.newLine();
+      final String testInput = _builder.toString();
+      final Context result = this.parseHelper.parse(testInput);
+      Assert.assertNotNull(result);
+      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
+      this._assertExtensions.assertEmpty(errors);
+      Assert.assertTrue((result instanceof Context));
+      Assert.assertEquals("c0", result.getName());
+      this._assertContextExtensions.assertContextExtendsNames(result);
+      this._assertContextExtensions.assertContextSets(result);
+      this._assertContextExtensions.assertContextConstants(result);
+      this._assertContextExtensions.assertContextAxioms(result, "axm1:a ∈ S:false:", "axm2:b ∈ T:false:");
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
