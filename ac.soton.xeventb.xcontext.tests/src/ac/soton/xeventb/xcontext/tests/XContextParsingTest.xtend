@@ -3,27 +3,236 @@
  */
 package ac.soton.xeventb.xcontext.tests
 
+import ac.soton.xeventb.tests.common.AssertContextExtensions
+import ac.soton.xeventb.tests.common.AssertExtensions
 import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eventb.emf.core.context.Context
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(XtextRunner)
 @InjectWith(XContextInjectorProvider)
 class XContextParsingTest {
-	@Inject
-	ParseHelper<Context> parseHelper
+	@Inject	extension ParseHelper<Context> parseHelper
+
+	extension AssertExtensions = new AssertExtensions()
+	extension AssertContextExtensions = new AssertContextExtensions()
+	
+	/**
+	 * Manually register any EPackage required for running the tests.
+	 */
+	@Before
+	def void registerEPackages() {
+		registerContextEPackage
+	}
 	
 	@Test
-	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
+	def void testContextClauseSuccessful() {
+		val testInput = 
+		'''
+			context c0
+			end
+		'''
+		val result = testInput.parse
 		Assert.assertNotNull(result)
-		Assert.assertTrue(result.eResource.errors.isEmpty)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		result.assertContext("c0", null)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testContextClauseSuccessful_ML_COMMENT() {
+		val testInput = 
+		'''
+			/* 
+			 * Multi-line
+			 * comments
+			 */
+			context c0
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		result.assertContext("c0", 
+		'''
+		Multi-line
+		comments''')
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testContextClauseSuccessful_SL_COMMENT() {
+		val testInput = 
+		'''
+			// Single-line comment
+			context c0
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		result.assertContext("c0", 'Single-line comment')
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testContextClauseFailed_ErrornousName() {
+		val testInput = 
+		'''
+			context 0c
+			end
+		'''
+		val result = testInput.parse()
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertNotEmpty
+		errors.assertLength(1)
+		errors.get(0).assertErrorDetails(
+			"extraneous input '0' expecting RULE_ID", null, 9, 1)
+		Assert.assertTrue(result instanceof Context)
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Sets1() {
+		val testInput = 
+		'''
+			context c0
+			sets S
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets("S:")
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Sets2() {
+		val testInput = 
+		'''
+			context c0
+			sets S T
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets("S:", "T:")
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Constants1() {
+		val testInput = 
+		'''
+			context c0
+			constants a
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants("a:")
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Constants2() {
+		val testInput = 
+		'''
+			context c0
+			constants a b
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants("a:", "b:")
+		result.assertContextAxioms()
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Axioms1() {
+		val testInput = 
+		'''
+			context c0
+			axioms 
+				@axm1: "a ∈ S"
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:")
+	}
+
+	@Test
+	def void testSetsClauseSuccessful_Axioms2() {
+		val testInput = 
+		'''
+			context c0
+			axioms 
+				@axm1: "a ∈ S"
+				@axm2: "b ∈ T"
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:", "axm2:b ∈ T:false:")
 	}
 }
