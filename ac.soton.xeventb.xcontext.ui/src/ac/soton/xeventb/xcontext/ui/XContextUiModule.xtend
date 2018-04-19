@@ -3,17 +3,22 @@
  */
 package ac.soton.xeventb.xcontext.ui
 
-import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+//import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
 import com.google.inject.name.Names
 import com.google.inject.Binder
 import org.eclipse.xtext.ui.editor.contentassist.XtextContentAssistProcessor
+import org.eclipse.ui.plugin.AbstractUIPlugin
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
-@FinalFieldsConstructor
+//@FinalFieldsConstructor
 class XContextUiModule extends AbstractXContextUiModule {
 
+	new(AbstractUIPlugin plugin) {
+		super(plugin)
+	}
+	
 	override configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(typeof(String)).annotatedWith(
