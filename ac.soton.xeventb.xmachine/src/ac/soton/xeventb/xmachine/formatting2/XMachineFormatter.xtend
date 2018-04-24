@@ -42,7 +42,7 @@ class XMachineFormatter extends AbstractFormatter2 {
 	     // format HiddenRegions around keywords, attributes, cross references, etc. 
 	     
 		// add new lines before and after some machine keywords
-		machine.regionFor.keyword("machine").prepend[newLine];
+		//machine.regionFor.keyword("machine").prepend[newLine];  //not needed with ML
 		machine.regionFor.keyword("includes").prepend[newLine];
 		machine.regionFor.keyword("refines").prepend[newLine];
 		machine.regionFor.keyword("sees").prepend[newLine]
@@ -51,18 +51,33 @@ class XMachineFormatter extends AbstractFormatter2 {
 		machine.regionFor.keyword("variant").prepend[newLine]
 		machine.regionFor.keyword("events").prepend[newLine].append[newLine];
 
+		// add new line after multi line comment
+		machine.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		
 		for (AbstractExtension abstractExtension : machine.getExtensions()) {
 			abstractExtension.format.prepend[newLine];
+			
+			// add new line after multi line comment
+			abstractExtension.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 		for (Variable variable : machine.getVariables()) {
 			variable.format.prepend[newLine];
+			
+			// add new line after multi line comment
+			variable.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 		for (Invariant invariant : machine.getInvariants()) {
-			invariant.format.prepend[newLine];		
+			invariant.format.prepend[newLine];	
+			
+			// add new line after multi line comment
+			invariant.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]	
 		}
 				
-		machine.getVariant.format.prepend[newLine];
+		machine.getVariant.format.prepend[newLine];// add new line after multi line comment
+		
+		// add new line after multi line comment
+		machine.getVariant.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
+		
 		
 		for (Event event : machine.getEvents()) {
 			event.format.append[newLines=2];
@@ -142,21 +157,36 @@ class XMachineFormatter extends AbstractFormatter2 {
 			abstractExtension.format.prepend[newLine];
 			if(abstractExtension == event.extensions.last)  // This is to avoid conflict exceptions
 				abstractExtension.format.append[newLine]
+				
+			// add new line after multi line comment
+			abstractExtension.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 		
 		for (Parameter parameter : event.getParameters()) {
 			parameter.format.prepend[newLine]
+			
+			// add new line after multi line comment
+			parameter.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 				
 		for (Guard guard : event.getGuards()) {
 			guard.format.prepend[newLine]
+			
+			// add new line after multi line comment
+			guard.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 		
 		for (Witness witness : event.getWitnesses()) {
 			witness.format.prepend[newLine];
+			
+			// add new line after multi line comment
+			witness.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 		for (Action action : event.getActions()) {
 			action.format.prepend[newLine];
+			
+			// add new line after multi line comment
+			action.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
 
 
@@ -190,7 +220,6 @@ class XMachineFormatter extends AbstractFormatter2 {
 			val firstAct= event.actions.head
 			val lastAct= event.actions.last.append[newLine]
 			set(firstAct.regionForEObject.previousHiddenRegion, lastAct.regionForEObject.nextHiddenRegion) [indent]
-			
 		}
 		
 		//----------------
@@ -199,7 +228,10 @@ class XMachineFormatter extends AbstractFormatter2 {
 //			//event.allRegionsFor.features(MachinePackage.Literals.EVENT__REFINES_NAMES).forEach[prepend[indent] append[newLine]]
 //			set(event.regionFor.features(MachinePackage.Literals.EVENT__REFINES).findFirst[].previousHiddenRegion,event.regionFor.features(MachinePackage.Literals.EVENT__REFINES).findLast[].nextHiddenRegion)[indent]
 //		}
-		//-----------------
+
+		// add new line after multi line comment
+		event.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
+
 	}
 	
 }
