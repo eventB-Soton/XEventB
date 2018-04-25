@@ -84,12 +84,12 @@ class XMachineFormatter extends AbstractFormatter2 {
 			
 		}
 		
-		// indent the abstract extensions
-		if (!machine.extensions.empty){
-			val firstExt = machine.extensions.head
-			val lastExt = machine.extensions.last//.append[newLine]
-			set(firstExt.regionForEObject.previousHiddenRegion, lastExt.regionForEObject.nextHiddenRegion) [indent]	
-		}
+//		// indent the abstract extensions
+//		if (!machine.extensions.empty){
+//			val firstExt = machine.extensions.head
+//			val lastExt = machine.extensions.last//.append[newLine]
+//			set(firstExt.regionForEObject.previousHiddenRegion, lastExt.regionForEObject.nextHiddenRegion) [indent]	
+//		}
 		
 //		// indent the refines names
 //		if (!machine.refines.empty){
