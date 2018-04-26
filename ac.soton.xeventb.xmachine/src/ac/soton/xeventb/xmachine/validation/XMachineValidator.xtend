@@ -76,4 +76,20 @@ class XMachineValidator extends AbstractXMachineValidator {
 		 
 		 
 	}
+	
+    // Add Prefixing warning if more than one machine is inlcuded
+	// the  reason is to avoid event synchronisation problems if machines have the same event name e.g. INITIALISATION
+	@Check
+	def checkMachinePrefix(Machine mch){
+	    val mchExtensions = mch.extensions.filter(MachineInclusion)
+	    
+		if(mchExtensions.size > 1) {
+			for(inc: mchExtensions){
+				if (inc.prefixes.empty)
+					warning('Prefixing is not defined for ' + inc.abstractMachine.name + '. Possible synchronisation ambiguity. ', null)
+			}
+		}
+		
+		
+	}
 }
