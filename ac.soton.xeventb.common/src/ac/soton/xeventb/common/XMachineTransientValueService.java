@@ -130,7 +130,8 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(MachinePackage.Literals.EVENT__REFINES))
 				return false;
 			if (feature.equals(MachinePackage.Literals.EVENT__EXTENDED))
-				return true;
+				//return true;
+				return false; // Dana: updated to False fix extended conversion problem
 			if (feature.equals(MachinePackage.Literals.EVENT__CONVERGENCE))
 				return false;
 			if (feature.equals(MachinePackage.Literals.EVENT__PARAMETERS))

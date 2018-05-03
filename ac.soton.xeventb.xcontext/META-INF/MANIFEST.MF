@@ -2,10 +2,10 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 0.0.5.release
+Bundle-Version: 0.0.6.rqualifier
 Bundle-SymbolicName: ac.soton.xeventb.xcontext;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eventb.emf.core,
+Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="3.5.0",
@@ -13,7 +13,7 @@ Require-Bundle: org.eventb.emf.core,
  org.antlr.runtime;bundle-version="[3.2.0,4.0.0)",
  org.eclipse.xtext.util;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtend.lib;bundle-version="[2.12.0,3.0.0)",
- org.eventb.emf.persistence;bundle-version="3.5.0",
+ org.eventb.emf.persistence;bundle-version="[3.5.0,4.0.0)",
  ac.soton.xeventb.common;bundle-version="0.0.0",
  ch.ethz.eventb.utils;bundle-version="0.2.3",
  org.eventb.core;bundle-version="3.2.0",
@@ -32,3 +32,4 @@ Export-Package: ac.soton.xeventb.xcontext,
  ac.soton.xeventb.xcontext.services,
  ac.soton.xeventb.xcontext.validation
 Import-Package: org.apache.log4j
+Automatic-Module-Name: ac.soton.xeventb.xcontext

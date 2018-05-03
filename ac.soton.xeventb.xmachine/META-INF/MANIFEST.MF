@@ -8,7 +8,7 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="3.5.0",
- org.eventb.emf.core;bundle-version="4.2.1",
+ org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  ac.soton.eventb.emf.inclusion;bundle-version="0.1.0",
  org.eclipse.xtext.generator;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.util;bundle-version="[2.12.0,3.0.0)",
@@ -21,10 +21,13 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
  org.eventb.core;bundle-version="3.2.0",
  ch.ethz.eventb.utils;bundle-version="0.2.3",
  org.eventb.emf.persistence;bundle-version="[3.5.0,4.0.0)",
- ac.soton.emf.translator;bundle-version="2.1.0",
+ ac.soton.emf.translator;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.ui;bundle-version="3.106.1",
  ac.soton.xeventb.common;bundle-version="0.0.2",
- ac.soton.eventb.emf.inclusion.generator;bundle-version="0.1.0"
+ ac.soton.eventb.emf.inclusion.generator;bundle-version="0.1.0",
+ org.eclipse.emf.transaction;bundle-version="1.9.0",
+ org.eclipse.xtend.lib;bundle-version="2.13.0",
+ org.eclipse.emf.workspace;bundle-version="1.5.1"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xmachine,
  ac.soton.xeventb.xmachine.formatting,
@@ -34,5 +37,6 @@ Export-Package: ac.soton.xeventb.xmachine,
  ac.soton.xeventb.xmachine.scoping,
  ac.soton.xeventb.xmachine.serializer,
  ac.soton.xeventb.xmachine.services,
- ac.soton.xeventb.xmachine.validation
+ ac.soton.xeventb.xmachine.validation,
+ ac.soton.xeventb.xmachine.formatting2
 Import-Package: org.apache.log4j
