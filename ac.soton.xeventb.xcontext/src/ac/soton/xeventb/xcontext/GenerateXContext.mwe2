@@ -61,6 +61,10 @@ Workflow {
 			validator = {
 				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
+			  //dd4g12: Added to generate formatter2
+            formatter = {
+				generateStub = true
+			}
 		}
 	}
 }

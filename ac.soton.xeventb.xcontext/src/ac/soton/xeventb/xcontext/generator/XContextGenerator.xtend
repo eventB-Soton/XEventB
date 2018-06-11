@@ -3,6 +3,7 @@
  */
 package ac.soton.xeventb.xcontext.generator
 
+//import java.util.Collections
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
@@ -10,6 +11,7 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.persistence.EMFRodinDB
+//import org.rodinp.keyboard.core.RodinKeyboardCore
 
 /**
  * Generates code from your model files on save.
@@ -17,6 +19,10 @@ import org.eventb.emf.persistence.EMFRodinDB
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
 class XContextGenerator extends AbstractGenerator {
+
+//private IDocumentEditor documentEditor;
+
+
 
 	/* @htson Automatically compile to Rodin files */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -28,4 +34,20 @@ class XContextGenerator extends AbstractGenerator {
 		var uri = URI.createURI(uriString)
 		emfRodinDB.saveResource(uri, ctx)
 	}
+	
+//	override beforeGenerate(Resource input, IFileSystemAccess2 fsa, IGeneratorContext context) {
+//		super.beforeGenerate(input, fsa, context)
+//		var ctx = input.contents.get(0) as Context
+//		val axms = ctx.axioms
+//		for (axm : axms) {
+//			axm.predicate = RodinKeyboardCore.translate(axm.predicate)
+//		}
+//		input.save(Collections.EMPTY_MAP)
+//		
+////       if(input.modified){
+////       		input.save(Collections.EMPTY_MAP)
+////       }
+//       	
+//	}
+	
 }
