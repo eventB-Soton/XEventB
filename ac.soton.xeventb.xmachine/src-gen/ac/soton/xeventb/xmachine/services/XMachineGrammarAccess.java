@@ -71,7 +71,10 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEventsXEventParserRuleCall_10_2_0 = (RuleCall)cEventsAssignment_10_2.eContents().get(0);
 		private final Keyword cEndKeyword_11 = (Keyword)cGroup.eContents().get(11);
 		
-		//Machine emachine::Machine:
+		///*
+		// * For XEvent-B 0.0.8 comments are allowed everywhere
+		// * ML_COMMENT and SL_COMMEN are defined as hidden
+		// */ Machine emachine::Machine:
 		//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 		//	//('id' extensionId = ID)// need to find a way to add it programmatically
 		//	'machine' name=ID
@@ -1457,56 +1460,57 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.EventSync");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cEventSynchronisationAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cExtensionIdAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final Keyword cExtensionIdSynchronisesKeyword_1_0 = (Keyword)cExtensionIdAssignment_1.eContents().get(0);
-		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Group cGroup_2_0 = (Group)cGroup_2.eContents().get(0);
-		private final Assignment cPrefixAssignment_2_0_0 = (Assignment)cGroup_2_0.eContents().get(0);
-		private final RuleCall cPrefixIDTerminalRuleCall_2_0_0_0 = (RuleCall)cPrefixAssignment_2_0_0.eContents().get(0);
-		private final Keyword cFullStopKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
-		private final Assignment cSynchronisedEventAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final CrossReference cSynchronisedEventEventCrossReference_2_1_0 = (CrossReference)cSynchronisedEventAssignment_2_1.eContents().get(0);
-		private final RuleCall cSynchronisedEventEventIDTerminalRuleCall_2_1_0_1 = (RuleCall)cSynchronisedEventEventCrossReference_2_1_0.eContents().get(1);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final Keyword cSynchronisesKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Group cGroup_1_1 = (Group)cGroup_1.eContents().get(1);
+		private final Assignment cPrefixAssignment_1_1_0 = (Assignment)cGroup_1_1.eContents().get(0);
+		private final RuleCall cPrefixIDTerminalRuleCall_1_1_0_0 = (RuleCall)cPrefixAssignment_1_1_0.eContents().get(0);
+		private final Keyword cFullStopKeyword_1_1_1 = (Keyword)cGroup_1_1.eContents().get(1);
+		private final Assignment cSynchronisedEventAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
+		private final CrossReference cSynchronisedEventEventCrossReference_1_2_0 = (CrossReference)cSynchronisedEventAssignment_1_2.eContents().get(0);
+		private final RuleCall cSynchronisedEventEventIDTerminalRuleCall_1_2_0_1 = (RuleCall)cSynchronisedEventEventCrossReference_1_2_0.eContents().get(1);
 		
+		////EventSync returns einclusion::EventSynchronisation:
+		////	{einclusion::EventSynchronisation}
+		////	(extensionId = 'synchronises')
+		////	((prefix=ID'.')?synchronisedEvent = [emachine::Event])
+		////;
 		//EventSync einclusion::EventSynchronisation:
-		//	{einclusion::EventSynchronisation} extensionId='synchronises' ((prefix=ID '.')? synchronisedEvent=[emachine::Event]);
+		//	{einclusion::EventSynchronisation} ('synchronises' (prefix=ID '.')? synchronisedEvent=[emachine::Event]);
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{einclusion::EventSynchronisation} extensionId='synchronises' ((prefix=ID '.')? synchronisedEvent=[emachine::Event])
+		//{einclusion::EventSynchronisation} ('synchronises' (prefix=ID '.')? synchronisedEvent=[emachine::Event])
 		public Group getGroup() { return cGroup; }
 		
 		//{einclusion::EventSynchronisation}
 		public Action getEventSynchronisationAction_0() { return cEventSynchronisationAction_0; }
 		
-		//extensionId='synchronises'
-		public Assignment getExtensionIdAssignment_1() { return cExtensionIdAssignment_1; }
+		//'synchronises' (prefix=ID '.')? synchronisedEvent=[emachine::Event]
+		public Group getGroup_1() { return cGroup_1; }
 		
 		//'synchronises'
-		public Keyword getExtensionIdSynchronisesKeyword_1_0() { return cExtensionIdSynchronisesKeyword_1_0; }
-		
-		//(prefix=ID '.')? synchronisedEvent=[emachine::Event]
-		public Group getGroup_2() { return cGroup_2; }
+		public Keyword getSynchronisesKeyword_1_0() { return cSynchronisesKeyword_1_0; }
 		
 		//(prefix=ID '.')?
-		public Group getGroup_2_0() { return cGroup_2_0; }
+		public Group getGroup_1_1() { return cGroup_1_1; }
 		
 		//prefix=ID
-		public Assignment getPrefixAssignment_2_0_0() { return cPrefixAssignment_2_0_0; }
+		public Assignment getPrefixAssignment_1_1_0() { return cPrefixAssignment_1_1_0; }
 		
 		//ID
-		public RuleCall getPrefixIDTerminalRuleCall_2_0_0_0() { return cPrefixIDTerminalRuleCall_2_0_0_0; }
+		public RuleCall getPrefixIDTerminalRuleCall_1_1_0_0() { return cPrefixIDTerminalRuleCall_1_1_0_0; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_2_0_1() { return cFullStopKeyword_2_0_1; }
+		public Keyword getFullStopKeyword_1_1_1() { return cFullStopKeyword_1_1_1; }
 		
 		//synchronisedEvent=[emachine::Event]
-		public Assignment getSynchronisedEventAssignment_2_1() { return cSynchronisedEventAssignment_2_1; }
+		public Assignment getSynchronisedEventAssignment_1_2() { return cSynchronisedEventAssignment_1_2; }
 		
 		//[emachine::Event]
-		public CrossReference getSynchronisedEventEventCrossReference_2_1_0() { return cSynchronisedEventEventCrossReference_2_1_0; }
+		public CrossReference getSynchronisedEventEventCrossReference_1_2_0() { return cSynchronisedEventEventCrossReference_1_2_0; }
 		
 		//ID
-		public RuleCall getSynchronisedEventEventIDTerminalRuleCall_2_1_0_1() { return cSynchronisedEventEventIDTerminalRuleCall_2_1_0_1; }
+		public RuleCall getSynchronisedEventEventIDTerminalRuleCall_1_2_0_1() { return cSynchronisedEventEventIDTerminalRuleCall_1_2_0_1; }
 	}
 	public class XParameterElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XParameter");
@@ -2196,7 +2200,10 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
-	//Machine emachine::Machine:
+	///*
+	// * For XEvent-B 0.0.8 comments are allowed everywhere
+	// * ML_COMMENT and SL_COMMEN are defined as hidden
+	// */ Machine emachine::Machine:
 	//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 	//	//('id' extensionId = ID)// need to find a way to add it programmatically
 	//	'machine' name=ID
@@ -2455,8 +2462,13 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXEventSLCommentAccess().getRule();
 	}
 	
+	////EventSync returns einclusion::EventSynchronisation:
+	////	{einclusion::EventSynchronisation}
+	////	(extensionId = 'synchronises')
+	////	((prefix=ID'.')?synchronisedEvent = [emachine::Event])
+	////;
 	//EventSync einclusion::EventSynchronisation:
-	//	{einclusion::EventSynchronisation} extensionId='synchronises' ((prefix=ID '.')? synchronisedEvent=[emachine::Event]);
+	//	{einclusion::EventSynchronisation} ('synchronises' (prefix=ID '.')? synchronisedEvent=[emachine::Event]);
 	public EventSyncElements getEventSyncAccess() {
 		return pEventSync;
 	}

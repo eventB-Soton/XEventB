@@ -97,8 +97,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXEventSLCommentAccess().getGroup_6_2_4(), "rule__XEventSLComment__Group_6_2_4__0");
 					put(grammarAccess.getXEventSLCommentAccess().getGroup_6_2_5(), "rule__XEventSLComment__Group_6_2_5__0");
 					put(grammarAccess.getEventSyncAccess().getGroup(), "rule__EventSync__Group__0");
-					put(grammarAccess.getEventSyncAccess().getGroup_2(), "rule__EventSync__Group_2__0");
-					put(grammarAccess.getEventSyncAccess().getGroup_2_0(), "rule__EventSync__Group_2_0__0");
+					put(grammarAccess.getEventSyncAccess().getGroup_1(), "rule__EventSync__Group_1__0");
+					put(grammarAccess.getEventSyncAccess().getGroup_1_1(), "rule__EventSync__Group_1_1__0");
 					put(grammarAccess.getXParameterNoCommentAccess().getGroup(), "rule__XParameterNoComment__Group__0");
 					put(grammarAccess.getXParameterMLCommentAccess().getGroup(), "rule__XParameterMLComment__Group__0");
 					put(grammarAccess.getXParameterSLCommentAccess().getGroup(), "rule__XParameterSLComment__Group__0");
@@ -190,9 +190,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 					put(grammarAccess.getXEventSLCommentAccess().getGuardsAssignment_6_2_3(), "rule__XEventSLComment__GuardsAssignment_6_2_3");
 					put(grammarAccess.getXEventSLCommentAccess().getWitnessesAssignment_6_2_4_1(), "rule__XEventSLComment__WitnessesAssignment_6_2_4_1");
 					put(grammarAccess.getXEventSLCommentAccess().getActionsAssignment_6_2_5_1(), "rule__XEventSLComment__ActionsAssignment_6_2_5_1");
-					put(grammarAccess.getEventSyncAccess().getExtensionIdAssignment_1(), "rule__EventSync__ExtensionIdAssignment_1");
-					put(grammarAccess.getEventSyncAccess().getPrefixAssignment_2_0_0(), "rule__EventSync__PrefixAssignment_2_0_0");
-					put(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_2_1(), "rule__EventSync__SynchronisedEventAssignment_2_1");
+					put(grammarAccess.getEventSyncAccess().getPrefixAssignment_1_1_0(), "rule__EventSync__PrefixAssignment_1_1_0");
+					put(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_1_2(), "rule__EventSync__SynchronisedEventAssignment_1_2");
 					put(grammarAccess.getXParameterNoCommentAccess().getNameAssignment_1(), "rule__XParameterNoComment__NameAssignment_1");
 					put(grammarAccess.getXParameterMLCommentAccess().getCommentAssignment_1(), "rule__XParameterMLComment__CommentAssignment_1");
 					put(grammarAccess.getXParameterMLCommentAccess().getNameAssignment_2(), "rule__XParameterMLComment__NameAssignment_2");
@@ -236,7 +235,7 @@ public class XMachineParser extends AbstractContentAssistParser {
 			
 	@Override
 	protected String[] getInitialHiddenTokens() {
-		return new String[] { "RULE_WS" };
+		return new String[] { "RULE_WS", "RULE_ML_COMMENT", "RULE_SL_COMMENT" };
 	}
 
 	public XMachineGrammarAccess getGrammarAccess() {

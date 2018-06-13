@@ -208,7 +208,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     EventSync returns EventSynchronisation
 	 *
 	 * Constraint:
-	 *     (extensionId='synchronises' prefix=ID? synchronisedEvent=[Event|ID])
+	 *     (prefix=ID? synchronisedEvent=[Event|ID])
 	 */
 	protected void sequence_EventSync(ISerializationContext context, EventSynchronisation semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

@@ -62,7 +62,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__REFINES))
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__SEES))
@@ -89,7 +89,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 
@@ -102,7 +102,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 					.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
 				return false;
 			return true;
@@ -114,7 +114,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 					.equals(CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 
@@ -126,7 +126,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature.equals(MachinePackage.Literals.EVENT__REFINES))
 				return false;
 			if (feature.equals(MachinePackage.Literals.EVENT__EXTENDED))
@@ -154,7 +154,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 
@@ -164,7 +164,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature
 					.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false;
@@ -181,7 +181,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 					.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 		
@@ -192,7 +192,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BACTION__ACTION))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 		

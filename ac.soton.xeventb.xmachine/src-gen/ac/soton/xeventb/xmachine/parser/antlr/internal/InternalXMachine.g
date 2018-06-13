@@ -2447,26 +2447,16 @@ ruleEventSync returns [EObject current=null]
 			}
 		)
 		(
-			(
-				lv_extensionId_1_0='synchronises'
-				{
-					newLeafNode(lv_extensionId_1_0, grammarAccess.getEventSyncAccess().getExtensionIdSynchronisesKeyword_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getEventSyncRule());
-					}
-					setWithLastConsumed($current, "extensionId", lv_extensionId_1_0, "synchronises");
-				}
-			)
-		)
-		(
+			otherlv_1='synchronises'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getEventSyncAccess().getSynchronisesKeyword_1_0());
+			}
 			(
 				(
 					(
 						lv_prefix_2_0=RULE_ID
 						{
-							newLeafNode(lv_prefix_2_0, grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_2_0_0_0());
+							newLeafNode(lv_prefix_2_0, grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_1_1_0_0());
 						}
 						{
 							if ($current==null) {
@@ -2482,7 +2472,7 @@ ruleEventSync returns [EObject current=null]
 				)
 				otherlv_3='.'
 				{
-					newLeafNode(otherlv_3, grammarAccess.getEventSyncAccess().getFullStopKeyword_2_0_1());
+					newLeafNode(otherlv_3, grammarAccess.getEventSyncAccess().getFullStopKeyword_1_1_1());
 				}
 			)?
 			(
@@ -2494,7 +2484,7 @@ ruleEventSync returns [EObject current=null]
 					}
 					otherlv_4=RULE_ID
 					{
-						newLeafNode(otherlv_4, grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_2_1_0());
+						newLeafNode(otherlv_4, grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_1_2_0());
 					}
 				)
 			)
