@@ -55,7 +55,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS))
 				return false;
 			if (feature.equals(ContextPackage.Literals.CONTEXT__SETS))
@@ -72,7 +72,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 		
@@ -82,7 +82,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
 				return false;
 			else if (feature
 					.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			return true;
 		}
 		
@@ -95,7 +95,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
 					.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return false;
+				return true;//return false;
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
 				return false;
 			return true;

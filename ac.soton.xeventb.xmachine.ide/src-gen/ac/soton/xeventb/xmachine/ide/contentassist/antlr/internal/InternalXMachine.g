@@ -6110,7 +6110,6 @@ rule__EventSync__Group__1
 	}
 :
 	rule__EventSync__Group__1__Impl
-	rule__EventSync__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -6122,35 +6121,9 @@ rule__EventSync__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEventSyncAccess().getExtensionIdAssignment_1()); }
-	(rule__EventSync__ExtensionIdAssignment_1)
-	{ after(grammarAccess.getEventSyncAccess().getExtensionIdAssignment_1()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EventSync__Group__2
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__EventSync__Group__2__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EventSync__Group__2__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getEventSyncAccess().getGroup_2()); }
-	(rule__EventSync__Group_2__0)
-	{ after(grammarAccess.getEventSyncAccess().getGroup_2()); }
+	{ before(grammarAccess.getEventSyncAccess().getGroup_1()); }
+	(rule__EventSync__Group_1__0)
+	{ after(grammarAccess.getEventSyncAccess().getGroup_1()); }
 )
 ;
 finally {
@@ -6158,53 +6131,80 @@ finally {
 }
 
 
-rule__EventSync__Group_2__0
+rule__EventSync__Group_1__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__EventSync__Group_2__0__Impl
-	rule__EventSync__Group_2__1
+	rule__EventSync__Group_1__0__Impl
+	rule__EventSync__Group_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2__0__Impl
+rule__EventSync__Group_1__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getEventSyncAccess().getGroup_2_0()); }
-	(rule__EventSync__Group_2_0__0)?
-	{ after(grammarAccess.getEventSyncAccess().getGroup_2_0()); }
+	{ before(grammarAccess.getEventSyncAccess().getSynchronisesKeyword_1_0()); }
+	'synchronises'
+	{ after(grammarAccess.getEventSyncAccess().getSynchronisesKeyword_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2__1
+rule__EventSync__Group_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__EventSync__Group_2__1__Impl
+	rule__EventSync__Group_1__1__Impl
+	rule__EventSync__Group_1__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2__1__Impl
+rule__EventSync__Group_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_2_1()); }
-	(rule__EventSync__SynchronisedEventAssignment_2_1)
-	{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_2_1()); }
+	{ before(grammarAccess.getEventSyncAccess().getGroup_1_1()); }
+	(rule__EventSync__Group_1_1__0)?
+	{ after(grammarAccess.getEventSyncAccess().getGroup_1_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__EventSync__Group_1__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__EventSync__Group_1__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__EventSync__Group_1__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_1_2()); }
+	(rule__EventSync__SynchronisedEventAssignment_1_2)
+	{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_1_2()); }
 )
 ;
 finally {
@@ -6212,53 +6212,53 @@ finally {
 }
 
 
-rule__EventSync__Group_2_0__0
+rule__EventSync__Group_1_1__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__EventSync__Group_2_0__0__Impl
-	rule__EventSync__Group_2_0__1
+	rule__EventSync__Group_1_1__0__Impl
+	rule__EventSync__Group_1_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2_0__0__Impl
+rule__EventSync__Group_1_1__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getEventSyncAccess().getPrefixAssignment_2_0_0()); }
-	(rule__EventSync__PrefixAssignment_2_0_0)
-	{ after(grammarAccess.getEventSyncAccess().getPrefixAssignment_2_0_0()); }
+	{ before(grammarAccess.getEventSyncAccess().getPrefixAssignment_1_1_0()); }
+	(rule__EventSync__PrefixAssignment_1_1_0)
+	{ after(grammarAccess.getEventSyncAccess().getPrefixAssignment_1_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2_0__1
+rule__EventSync__Group_1_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__EventSync__Group_2_0__1__Impl
+	rule__EventSync__Group_1_1__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__Group_2_0__1__Impl
+rule__EventSync__Group_1_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getEventSyncAccess().getFullStopKeyword_2_0_1()); }
+	{ before(grammarAccess.getEventSyncAccess().getFullStopKeyword_1_1_1()); }
 	'.'
-	{ after(grammarAccess.getEventSyncAccess().getFullStopKeyword_2_0_1()); }
+	{ after(grammarAccess.getEventSyncAccess().getFullStopKeyword_1_1_1()); }
 )
 ;
 finally {
@@ -8940,53 +8940,34 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__ExtensionIdAssignment_1
+rule__EventSync__PrefixAssignment_1_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getEventSyncAccess().getExtensionIdSynchronisesKeyword_1_0()); }
-		(
-			{ before(grammarAccess.getEventSyncAccess().getExtensionIdSynchronisesKeyword_1_0()); }
-			'synchronises'
-			{ after(grammarAccess.getEventSyncAccess().getExtensionIdSynchronisesKeyword_1_0()); }
-		)
-		{ after(grammarAccess.getEventSyncAccess().getExtensionIdSynchronisesKeyword_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__EventSync__PrefixAssignment_2_0_0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_2_0_0_0()); }
+		{ before(grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_1_1_0_0()); }
 		RULE_ID
-		{ after(grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_2_0_0_0()); }
+		{ after(grammarAccess.getEventSyncAccess().getPrefixIDTerminalRuleCall_1_1_0_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__EventSync__SynchronisedEventAssignment_2_1
+rule__EventSync__SynchronisedEventAssignment_1_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_2_1_0()); }
+		{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_1_2_0()); }
 		(
-			{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventEventIDTerminalRuleCall_2_1_0_1()); }
+			{ before(grammarAccess.getEventSyncAccess().getSynchronisedEventEventIDTerminalRuleCall_1_2_0_1()); }
 			RULE_ID
-			{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventEventIDTerminalRuleCall_2_1_0_1()); }
+			{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventEventIDTerminalRuleCall_1_2_0_1()); }
 		)
-		{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_2_1_0()); }
+		{ after(grammarAccess.getEventSyncAccess().getSynchronisedEventEventCrossReference_1_2_0()); }
 	)
 ;
 finally {
