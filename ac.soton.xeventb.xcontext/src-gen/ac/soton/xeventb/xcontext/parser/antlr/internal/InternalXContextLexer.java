@@ -274,8 +274,8 @@ public class InternalXContextLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXContext.g:1024:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalXContext.g:1024:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalXContext.g:1024:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' )* )
+            // InternalXContext.g:1024:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' )*
             {
             // InternalXContext.g:1024:11: ( '^' )?
             int alt2=2;
@@ -295,7 +295,7 @@ public class InternalXContextLexer extends Lexer {
 
             }
 
-            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            if ( (input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='\uFFDC') ) {
                 input.consume();
 
             }
@@ -304,13 +304,13 @@ public class InternalXContextLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalXContext.g:1024:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalXContext.g:1024:54: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
                 int LA3_0 = input.LA(1);
 
-                if ( ((LA3_0>='0' && LA3_0<='9')||(LA3_0>='A' && LA3_0<='Z')||LA3_0=='_'||(LA3_0>='a' && LA3_0<='z')) ) {
+                if ( ((LA3_0>='0' && LA3_0<='9')||(LA3_0>='A' && LA3_0<='Z')||LA3_0=='_'||(LA3_0>='a' && LA3_0<='\uFFDC')) ) {
                     alt3=1;
                 }
 
@@ -319,7 +319,7 @@ public class InternalXContextLexer extends Lexer {
             	case 1 :
             	    // InternalXContext.g:
             	    {
-            	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
+            	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='\uFFDC') ) {
             	        input.consume();
 
             	    }
@@ -898,13 +898,13 @@ public class InternalXContextLexer extends Lexer {
     static final String DFA13_minS =
         "\1\0\1\157\1\156\1\145\1\170\1\uffff\1\150\1\0\1\101\2\uffff\2\0\1\52\2\uffff\1\156\1\uffff\1\164\1\144\1\164\1\151\1\uffff\1\145\6\uffff\1\163\1\145\1\60\1\163\2\157\1\145\1\164\1\156\1\uffff\1\60\1\155\1\162\1\170\1\141\1\144\1\uffff\1\163\1\145\1\164\1\156\1\163\1\60\1\155\1\60\1\164\1\60\1\uffff\1\60\1\uffff\1\163\2\uffff\1\60\1\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\157\1\170\1\145\1\170\1\uffff\1\150\1\uffff\1\172\2\uffff\2\uffff\1\57\2\uffff\1\156\1\uffff\1\164\1\144\1\164\1\151\1\uffff\1\145\6\uffff\1\164\1\145\1\172\1\163\2\157\1\145\1\164\1\156\1\uffff\1\172\1\155\1\162\1\170\1\141\1\144\1\uffff\1\163\1\145\1\164\1\156\1\163\1\172\1\155\1\172\1\164\1\172\1\uffff\1\172\1\uffff\1\163\2\uffff\1\172\1\uffff";
+        "\1\uffff\1\157\1\170\1\145\1\170\1\uffff\1\150\1\uffff\1\uffdc\2\uffff\2\uffff\1\57\2\uffff\1\156\1\uffff\1\164\1\144\1\164\1\151\1\uffff\1\145\6\uffff\1\164\1\145\1\uffdc\1\163\2\157\1\145\1\164\1\156\1\uffff\1\uffdc\1\155\1\162\1\170\1\141\1\144\1\uffff\1\163\1\145\1\164\1\156\1\163\1\uffdc\1\155\1\uffdc\1\164\1\uffdc\1\uffff\1\uffdc\1\uffff\1\163\2\uffff\1\uffdc\1\uffff";
     static final String DFA13_acceptS =
         "\5\uffff\1\7\3\uffff\1\12\1\13\3\uffff\1\17\1\20\1\uffff\1\12\4\uffff\1\7\1\uffff\1\11\1\13\1\14\1\15\1\16\1\17\11\uffff\1\6\6\uffff\1\3\12\uffff\1\5\1\uffff\1\1\1\uffff\1\2\1\10\1\uffff\1\4";
     static final String DFA13_specialS =
         "\1\2\6\uffff\1\0\3\uffff\1\3\1\1\64\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\13\4\17\1\14\6\17\1\5\1\15\12\12\6\17\1\7\32\11\3\17\1\10\1\11\1\17\1\4\1\11\1\1\1\11\1\2\15\11\1\3\1\6\6\11\uff85\17",
+            "\11\17\2\16\2\17\1\16\22\17\1\16\1\17\1\13\4\17\1\14\6\17\1\5\1\15\12\12\6\17\1\7\32\11\3\17\1\10\1\11\1\17\1\4\1\11\1\1\1\11\1\2\15\11\1\3\1\6\uff68\11\43\17",
             "\1\20",
             "\1\23\11\uffff\1\22",
             "\1\24",
@@ -912,7 +912,7 @@ public class InternalXContextLexer extends Lexer {
             "",
             "\1\27",
             "\72\30\1\uffff\uffc5\30",
-            "\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "",
             "",
             "\0\32",
@@ -936,7 +936,7 @@ public class InternalXContextLexer extends Lexer {
             "",
             "\1\45\1\44",
             "\1\46",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "\1\50",
             "\1\51",
             "\1\52",
@@ -944,7 +944,7 @@ public class InternalXContextLexer extends Lexer {
             "\1\54",
             "\1\55",
             "",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "\1\57",
             "\1\60",
             "\1\61",
@@ -956,18 +956,18 @@ public class InternalXContextLexer extends Lexer {
             "\1\66",
             "\1\67",
             "\1\70",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "\1\72",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "\1\74",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             "",
             "\1\77",
             "",
             "",
-            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\32\21",
+            "\12\21\7\uffff\32\21\4\uffff\1\21\1\uffff\uff7c\21",
             ""
     };
 
@@ -1047,7 +1047,7 @@ public class InternalXContextLexer extends Lexer {
 
                         else if ( (LA13_0=='^') ) {s = 8;}
 
-                        else if ( ((LA13_0>='A' && LA13_0<='Z')||LA13_0=='_'||LA13_0=='b'||LA13_0=='d'||(LA13_0>='f' && LA13_0<='r')||(LA13_0>='u' && LA13_0<='z')) ) {s = 9;}
+                        else if ( ((LA13_0>='A' && LA13_0<='Z')||LA13_0=='_'||LA13_0=='b'||LA13_0=='d'||(LA13_0>='f' && LA13_0<='r')||(LA13_0>='u' && LA13_0<='\uFFDC')) ) {s = 9;}
 
                         else if ( ((LA13_0>='0' && LA13_0<='9')) ) {s = 10;}
 
@@ -1059,7 +1059,7 @@ public class InternalXContextLexer extends Lexer {
 
                         else if ( ((LA13_0>='\t' && LA13_0<='\n')||LA13_0=='\r'||LA13_0==' ') ) {s = 14;}
 
-                        else if ( ((LA13_0>='\u0000' && LA13_0<='\b')||(LA13_0>='\u000B' && LA13_0<='\f')||(LA13_0>='\u000E' && LA13_0<='\u001F')||LA13_0=='!'||(LA13_0>='#' && LA13_0<='&')||(LA13_0>='(' && LA13_0<='-')||(LA13_0>=':' && LA13_0<='?')||(LA13_0>='[' && LA13_0<=']')||LA13_0=='`'||(LA13_0>='{' && LA13_0<='\uFFFF')) ) {s = 15;}
+                        else if ( ((LA13_0>='\u0000' && LA13_0<='\b')||(LA13_0>='\u000B' && LA13_0<='\f')||(LA13_0>='\u000E' && LA13_0<='\u001F')||LA13_0=='!'||(LA13_0>='#' && LA13_0<='&')||(LA13_0>='(' && LA13_0<='-')||(LA13_0>=':' && LA13_0<='?')||(LA13_0>='[' && LA13_0<=']')||LA13_0=='`'||(LA13_0>='\uFFDD' && LA13_0<='\uFFFF')) ) {s = 15;}
 
                         if ( s>=0 ) return s;
                         break;

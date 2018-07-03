@@ -263,7 +263,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_3_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -957,7 +957,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -1096,7 +1096,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_2_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -1209,7 +1209,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -1508,7 +1508,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -1647,7 +1647,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_2_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }
@@ -1760,7 +1760,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xcontext.XContext.ID");
             				
 
             }

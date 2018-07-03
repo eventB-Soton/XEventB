@@ -2123,6 +2123,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	private final XActionNoCommentElements pXActionNoComment;
 	private final XActionMLCommentElements pXActionMLComment;
 	private final XActionSLCommentElements pXActionSLComment;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 	
@@ -2171,6 +2172,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.pXActionNoComment = new XActionNoCommentElements();
 		this.pXActionMLComment = new XActionMLCommentElements();
 		this.pXActionSLComment = new XActionSLCommentElements();
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2655,10 +2657,10 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		return getXActionSLCommentAccess().getRule();
 	}
 	
-	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+	//@ Override terminal ID:
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9')*;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+		return tID;
 	}
 	
 	//terminal INT returns ecore::EInt:
