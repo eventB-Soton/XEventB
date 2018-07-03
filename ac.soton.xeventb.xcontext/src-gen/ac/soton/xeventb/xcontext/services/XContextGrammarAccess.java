@@ -566,6 +566,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	private final XAxiomMLCommentElements pXAxiomMLComment;
 	private final XAxiomSLCommentElements pXAxiomSLComment;
 	private final TerminalRule tXLABEL;
+	private final TerminalRule tID;
 	
 	private final Grammar grammar;
 	
@@ -591,6 +592,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.pXAxiomMLComment = new XAxiomMLCommentElements();
 		this.pXAxiomSLComment = new XAxiomSLCommentElements();
 		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XLABEL");
+		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.ID");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -775,10 +777,10 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		return tXLABEL;
 	}
 	
-	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
+	//@ Override terminal ID:
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9')*;
 	public TerminalRule getIDRule() {
-		return gaTerminals.getIDRule();
+		return tID;
 	}
 	
 	//terminal INT returns ecore::EInt:
