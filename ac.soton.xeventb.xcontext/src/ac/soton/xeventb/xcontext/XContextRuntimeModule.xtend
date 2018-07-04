@@ -21,6 +21,11 @@ import org.eclipse.xtext.parsetree.reconstr.ITransientValueService
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding
 
+import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider
+import org.eclipse.xtext.ui.editor.XtextEditor;
+
+
+
 /**
  * <p>
  * Use this class to register components for XContext to be used at runtime /
@@ -73,5 +78,8 @@ class XContextRuntimeModule extends AbstractXContextRuntimeModule {
 		binder.bind(typeof(IScopeProvider)).annotatedWith(typeof(SerializerScopeProviderBinding)).to(
 			typeof(XContextScopeProvider))
 	}
+	
+
+
 
 }
