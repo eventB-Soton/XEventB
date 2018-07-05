@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.xeventb.ui;singleton:=true
-Bundle-Version: 0.0.2.release
+Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
  org.rodinp.core;bundle-version="1.7.0",
@@ -13,7 +13,12 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.106.1",
  org.eventb.emf.persistence;bundle-version="3.5.0",
  org.eventb.emf.core;bundle-version="4.2.1",
  org.eclipse.emf.ecore;bundle-version="2.10.2",
- org.eclipse.core.expressions;bundle-version="3.4.600"
+ org.eclipse.core.expressions;bundle-version="3.4.600",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
 Bundle-Vendor: %Bundle-Vendor
 Import-Package: org.eclipse.emf.common.util,
  org.eclipse.emf.ecore.util
+Bundle-ActivationPolicy: lazy
+Bundle-Activator: ac.soton.xeventb.ui.XEventBUIPlugin
+Export-Package: ac.soton.xeventb.ui
+Automatic-Module-Name: ac.soton.xeventb.ui
