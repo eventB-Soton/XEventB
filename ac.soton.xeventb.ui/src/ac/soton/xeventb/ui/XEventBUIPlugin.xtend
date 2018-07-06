@@ -21,10 +21,9 @@ import org.osgi.framework.BundleContext
  * @author htson
  * @version 1.0
  * @since 1.0 
- * @noextend This interface is not intended to be extended by clients.
- * @noimplement This interface is not intended to be implemented by clients.
+ * @noextend This class is not intended to be extended by clients.
  */
-class XEventBUIPlugin extends AbstractUIPlugin {
+final class XEventBUIPlugin extends AbstractUIPlugin {
 	// The plug-in ID
 	public static final String PLUGIN_ID = "ac.soton.xeventb.ui" // $NON-NLS-1$
 	// The shared instance

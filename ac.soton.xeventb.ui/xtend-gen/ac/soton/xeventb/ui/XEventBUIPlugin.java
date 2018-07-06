@@ -22,11 +22,10 @@ import org.osgi.framework.BundleContext;
  * @author htson
  * @version 1.0
  * @since 1.0
- * @noextend This interface is not intended to be extended by clients.
- * @noimplement This interface is not intended to be implemented by clients.
+ * @noextend This class is not intended to be extended by clients.
  */
 @SuppressWarnings("all")
-public class XEventBUIPlugin extends AbstractUIPlugin {
+public final class XEventBUIPlugin extends AbstractUIPlugin {
   public final static String PLUGIN_ID = "ac.soton.xeventb.ui";
   
   private static XEventBUIPlugin plugin;

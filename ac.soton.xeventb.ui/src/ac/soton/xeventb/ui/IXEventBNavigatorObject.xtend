@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.Resource
  * @author htson
  * @version 1.0
  * @since 1.0
+ * @see AbstractXEventBNavigatorObject
  */
 interface IXEventBNavigatorObject {
 
