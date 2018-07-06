@@ -13,7 +13,6 @@ package ac.soton.xeventb.internal.xmachine.ui.navigator;
 import ac.soton.xeventb.ui.AbstractXEventBNavigatorObject;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 
 /**
  * Specific sub-class for XMachine navigator object.
@@ -26,14 +25,12 @@ import org.eclipse.core.resources.IProject;
 public final class XMachineNavigatorObject extends AbstractXEventBNavigatorObject implements IXEventBNavigatorObject {
   /**
    * Construct an instance of XMachine navigator object from the
-   * containing project and the corresponding EMF resource.
+   * corresponding resource.
    * 
-   * @param project
-   *          The input project
    * @param resource
    *          The input resource
    */
-  public XMachineNavigatorObject(final IProject project, final IFile resource) {
-    super(project, resource);
+  public XMachineNavigatorObject(final IFile resource) {
+    super(resource);
   }
 }

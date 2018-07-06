@@ -14,7 +14,6 @@ import ac.soton.xeventb.internal.xmachine.ui.navigator.XMachineNavigatorObject;
 import ac.soton.xeventb.ui.AbstractXEventBContentProvider;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 
 /**
@@ -38,17 +37,15 @@ public final class XMachineContentProvider extends AbstractXEventBContentProvide
   
   /**
    * Returns the specific XMachine navigator object constructed from
-   * the containing project and the corresponding EMF resource.
+   * the corresponding resource.
    * 
-   * @param project
-   *          The input project containing the XMachine.
    * @param resource
    *          The input resource corresponding to the XMachine.
    * @return the specific XMachine navigator object corresponding to
-   *          the input project and resource.
+   *          the input resource.
    */
   @Override
-  public IXEventBNavigatorObject getNavigatorObject(final IProject project, final IFile resource) {
-    return new XMachineNavigatorObject(project, resource);
+  public IXEventBNavigatorObject getNavigatorObject(final IFile resource) {
+    return new XMachineNavigatorObject(resource);
   }
 }
