@@ -24,10 +24,8 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding;
 import ac.soton.xeventb.common.EventBContainerManager;
 import ac.soton.xeventb.common.EventBQualifiedNameProvider;
-import ac.soton.xeventb.xmachine.scoping.XMachineScopeProvider
-import ac.soton.xeventb.common.EventBXtextEditor
-import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider
-import org.eclipse.xtext.ui.editor.XtextEditor;
+
+
 /**
  * <p>
  * Use this class to register components for XMachine to be used at runtime /
@@ -101,15 +99,6 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 		override Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
 			return typeof(EventBContainerManager);
 		}
-//
-//		// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
-//		public Class<? extends org.eclipse.xtext.resource.containers.IAllContainersState.Provider> bindIAllContainersState$Provider() {
-//			return org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersStateProvider.class;
-//		}
-		//----------------------
-		
-			//test
-//	def Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
-//    	return typeof(EventBXtextEditor);
-//     }
+
+	
 }
