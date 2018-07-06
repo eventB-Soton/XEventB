@@ -290,7 +290,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_3_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -965,7 +965,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     							current,
                     							"prefixes",
                     							lv_prefixes_6_0,
-                    							"org.eclipse.xtext.common.Terminals.ID");
+                    							"ac.soton.xeventb.xmachine.XMachine.ID");
                     					
 
                     }
@@ -1003,7 +1003,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    							current,
                     	    							"prefixes",
                     	    							lv_prefixes_7_0,
-                    	    							"org.eclipse.xtext.common.Terminals.ID");
+                    	    							"ac.soton.xeventb.xmachine.XMachine.ID");
                     	    					
 
                     	    }
@@ -1401,7 +1401,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -1540,7 +1540,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_2_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -1653,7 +1653,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -3283,7 +3283,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -4413,7 +4413,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_2_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -5517,7 +5517,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -6636,7 +6636,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     								current,
                     								"prefix",
                     								lv_prefix_2_0,
-                    								"org.eclipse.xtext.common.Terminals.ID");
+                    								"ac.soton.xeventb.xmachine.XMachine.ID");
                     						
 
                     }
@@ -6943,7 +6943,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -7082,7 +7082,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_2_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
@@ -7195,7 +7195,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             						current,
             						"name",
             						lv_name_1_0,
-            						"org.eclipse.xtext.common.Terminals.ID");
+            						"ac.soton.xeventb.xmachine.XMachine.ID");
             				
 
             }
