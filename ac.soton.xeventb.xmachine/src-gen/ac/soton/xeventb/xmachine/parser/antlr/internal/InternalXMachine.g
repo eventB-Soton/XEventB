@@ -137,7 +137,7 @@ ruleMachine returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_3_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -407,7 +407,7 @@ ruleMIncludes returns [EObject current=null]
 							$current,
 							"prefixes",
 							lv_prefixes_6_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"ac.soton.xeventb.xmachine.XMachine.ID");
 					}
 				)
 			)
@@ -425,7 +425,7 @@ ruleMIncludes returns [EObject current=null]
 							$current,
 							"prefixes",
 							lv_prefixes_7_0,
-							"org.eclipse.xtext.common.Terminals.ID");
+							"ac.soton.xeventb.xmachine.XMachine.ID");
 					}
 				)
 			)*
@@ -555,7 +555,7 @@ ruleXVariableNoComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -617,7 +617,7 @@ ruleXVariableMLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -661,7 +661,7 @@ ruleXVariableSLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -1290,7 +1290,7 @@ ruleXEventNoComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -1686,7 +1686,7 @@ ruleXEventMLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -2064,7 +2064,7 @@ ruleXEventSLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -2466,7 +2466,7 @@ ruleEventSync returns [EObject current=null]
 								$current,
 								"prefix",
 								lv_prefix_2_0,
-								"org.eclipse.xtext.common.Terminals.ID");
+								"ac.soton.xeventb.xmachine.XMachine.ID");
 						}
 					)
 				)
@@ -2574,7 +2574,7 @@ ruleXParameterNoComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -2636,7 +2636,7 @@ ruleXParameterMLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -2680,7 +2680,7 @@ ruleXParameterSLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
@@ -3585,7 +3585,7 @@ ruleXConvergence returns [Enumerator current=null]
 
 RULE_XLABEL : '@' ~(':')+ ':';
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 

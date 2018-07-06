@@ -85,3 +85,6 @@ XAxiomSLComment returns econtext::Axiom:
 terminal XLABEL returns ecore::EString:
 	'@' !(':')+ ':'
 ;
+
+@Override 
+terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;

@@ -423,4 +423,7 @@ public abstract class AbstractXMachineProposalProvider extends TerminalsProposal
 	public void complete_XActionSLComment(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
 	}
+	public void complete_ID(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		// subclasses may override
+	}
 }

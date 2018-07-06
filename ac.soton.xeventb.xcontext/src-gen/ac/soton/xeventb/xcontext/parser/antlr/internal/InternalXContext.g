@@ -136,7 +136,7 @@ ruleXContext returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_3_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -366,7 +366,7 @@ ruleXCarrierSetNoComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -428,7 +428,7 @@ ruleXCarrierSetMLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -472,7 +472,7 @@ ruleXCarrierSetSLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -579,7 +579,7 @@ ruleXConstantNoComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -641,7 +641,7 @@ ruleXConstantMLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_2_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -685,7 +685,7 @@ ruleXConstantSLComment returns [EObject current=null]
 						$current,
 						"name",
 						lv_name_1_0,
-						"org.eclipse.xtext.common.Terminals.ID");
+						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
@@ -1021,7 +1021,7 @@ ruleXAxiomSLComment returns [EObject current=null]
 
 RULE_XLABEL : '@' ~(':')+ ':';
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 

@@ -24,7 +24,7 @@ import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding;
 import ac.soton.xeventb.common.EventBContainerManager;
 import ac.soton.xeventb.common.EventBQualifiedNameProvider;
-import ac.soton.xeventb.xmachine.scoping.XMachineScopeProvider
+
 
 /**
  * <p>
@@ -99,10 +99,6 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 		override Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
 			return typeof(EventBContainerManager);
 		}
-//
-//		// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
-//		public Class<? extends org.eclipse.xtext.resource.containers.IAllContainersState.Provider> bindIAllContainersState$Provider() {
-//			return org.eclipse.xtext.resource.containers.ResourceSetBasedAllContainersStateProvider.class;
-//		}
-		//----------------------
+
+	
 }

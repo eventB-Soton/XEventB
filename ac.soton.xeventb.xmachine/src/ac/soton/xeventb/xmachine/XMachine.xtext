@@ -320,5 +320,6 @@ XActionSLComment returns emachine::Action:
 	name=XLABEL action=STRING
 	comment=SL_COMMENT
 ;
-
+@Override 
+terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;
 
