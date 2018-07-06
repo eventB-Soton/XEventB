@@ -11,7 +11,6 @@
 package ac.soton.xeventb.ui
 
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.IProject
 
 /**
  * Common interface for of an XEvent-B navigator object.
@@ -22,13 +21,6 @@ import org.eclipse.core.resources.IProject
  * @see AbstractXEventBNavigatorObject
  */
 interface IXEventBNavigatorObject {
-
-	/**
-	 * Returns the project of the XEvent-B navigator object.
-	 * 
-	 * @return the project of the XEvent-B navigator object.
-	 */
-	def abstract IProject getProject()
 
 	/**
 	 * Returns the resource of the XEvent-B navigator object.

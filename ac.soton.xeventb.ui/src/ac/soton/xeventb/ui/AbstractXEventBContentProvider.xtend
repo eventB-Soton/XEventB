@@ -50,7 +50,7 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 	 * @since 1.0
 	 */
 	def abstract IXEventBNavigatorObject getNavigatorObject(
-		IProject project, IFile resource
+		IFile resource
 	)
 	
 	/**
@@ -74,7 +74,7 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 				val fileExtension = resource.fileExtension
 				if (fileExtension == getFileExtension()) {
 					val IXEventBNavigatorObject navObj = 
-						getNavigatorObject(parentElement, resource as IFile) 
+						getNavigatorObject(resource as IFile) 
 					children.add(navObj)
 				}
 			}
@@ -104,7 +104,7 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 	 */	
 	override getParent(Object element) {
 		if (element instanceof IXEventBNavigatorObject) {
-			return element.project
+			return element.resource.project
 		}
 		return null;
 	}

@@ -53,7 +53,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
    *          project and resource
    * @since 1.0
    */
-  public abstract IXEventBNavigatorObject getNavigatorObject(final IProject project, final IFile resource);
+  public abstract IXEventBNavigatorObject getNavigatorObject(final IFile resource);
   
   /**
    * Returns the array of navigator objects corresponding to the
@@ -78,7 +78,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
             String _fileExtension = this.getFileExtension();
             boolean _equals = Objects.equal(fileExtension, _fileExtension);
             if (_equals) {
-              final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IProject)parentElement), ((IFile) resource));
+              final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IFile) resource));
               children.add(navObj);
             }
           }
@@ -114,7 +114,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
   @Override
   public Object getParent(final Object element) {
     if ((element instanceof IXEventBNavigatorObject)) {
-      return ((IXEventBNavigatorObject)element).getProject();
+      return ((IXEventBNavigatorObject)element).getResource().getProject();
     }
     return null;
   }
