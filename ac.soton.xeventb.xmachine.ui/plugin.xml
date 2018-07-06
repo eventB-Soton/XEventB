@@ -461,6 +461,15 @@
            </or>
         </possibleChildren>
      </navigatorContent>
+     <actionProvider
+           class="ac.soton.xeventb.internal.xmachine.ui.navigator.XMachineActionProvider"
+           id="ac.soton.xeventb.xmachine.ui.navigator.actionProvider">
+        <enablement>
+           <instanceof
+                 value="ac.soton.xeventb.internal.xmachine.ui.navigator.XMachineNavigatorObject">
+           </instanceof>
+        </enablement>
+     </actionProvider>
   </extension>
   <extension
         point="org.eclipse.ui.navigator.viewer">
@@ -475,6 +484,14 @@
            </contentExtension>
         </includes>
      </viewerContentBinding>
+     <viewerActionBinding
+           viewerId="fr.systerel.explorer.navigator.view">
+        <includes>
+           <actionExtension
+                 pattern="ac.soton.xeventb.xmachine.ui.navigator.actionProvider">
+           </actionExtension>
+        </includes>
+     </viewerActionBinding>
   </extension>
 
 </plugin>
