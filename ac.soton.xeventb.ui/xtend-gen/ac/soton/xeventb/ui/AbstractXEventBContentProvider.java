@@ -10,14 +10,13 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.internal.ui.XEventBNavigatorManager;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
@@ -54,11 +53,12 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
    *          project and resource
    * @since 1.0
    */
-  public abstract IXEventBNavigatorObject getNavigatorObject(final IProject project, final Resource resource);
+  public abstract IXEventBNavigatorObject getNavigatorObject(final IProject project, final IFile resource);
   
   /**
-   * Returns the array of navigator objects corresponding to the EMF
-   * resource with the given extensions
+   * Returns the array of navigator objects corresponding to the
+   * resource with the extension given by
+   * {@link AbstractXEventBContentProvider#getFileExtension()}.
    * 
    * @param parentElement
    *          The input parent element.
@@ -78,9 +78,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
             String _fileExtension = this.getFileExtension();
             boolean _equals = Objects.equal(fileExtension, _fileExtension);
             if (_equals) {
-              final XEventBNavigatorManager navResourceSet = XEventBNavigatorManager.getDefault();
-              final Resource emfResource = navResourceSet.getResource(resource);
-              final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IProject)parentElement), emfResource);
+              final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IProject)parentElement), ((IFile) resource));
               children.add(navObj);
             }
           }

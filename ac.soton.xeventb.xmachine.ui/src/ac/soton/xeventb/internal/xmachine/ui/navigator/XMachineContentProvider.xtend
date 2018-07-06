@@ -10,10 +10,10 @@
  **********************************************************************/
 package ac.soton.xeventb.internal.xmachine.ui.navigator
 
-import org.eclipse.core.resources.IProject
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.jface.viewers.ITreeContentProvider
 import ac.soton.xeventb.ui.AbstractXEventBContentProvider
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.IProject
+import org.eclipse.jface.viewers.ITreeContentProvider
 
 /**
  * Specific sub-class for XMachine content provider. 
@@ -42,11 +42,11 @@ final class XMachineContentProvider
 	 * @param project
 	 *          The input project containing the XMachine.
 	 * @param resource
-	 *          The input EMF resource corresponding to the XMachine.
+	 *          The input resource corresponding to the XMachine.
 	 * @return the specific XMachine navigator object corresponding to
 	 *          the input project and resource.
 	 */
-	override getNavigatorObject(IProject project, Resource resource) {
+	override getNavigatorObject(IProject project, IFile resource) {
 		return new XMachineNavigatorObject(project, resource)
 	}
 	

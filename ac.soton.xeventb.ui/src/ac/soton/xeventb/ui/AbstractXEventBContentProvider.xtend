@@ -10,12 +10,11 @@
  **********************************************************************/
 package ac.soton.xeventb.ui
 
-import ac.soton.xeventb.internal.ui.XEventBNavigatorManager
 import java.util.ArrayList
 import java.util.List
+import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IResource
-import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.jface.viewers.ITreeContentProvider
 
 /**
@@ -51,12 +50,13 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 	 * @since 1.0
 	 */
 	def abstract IXEventBNavigatorObject getNavigatorObject(
-		IProject project, Resource resource
+		IProject project, IFile resource
 	)
 	
 	/**
-	 * Returns the array of navigator objects corresponding to the EMF
-	 * resource with the given extensions  
+	 * Returns the array of navigator objects corresponding to the
+	 * resource with the extension given by
+	 * {@link AbstractXEventBContentProvider#getFileExtension()}.
 	 * 
 	 * @param parentElement
 	 *          The input parent element.
@@ -73,12 +73,8 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 			for (IResource resource : resources) {
 				val fileExtension = resource.fileExtension
 				if (fileExtension == getFileExtension()) {
-					val navResourceSet =
-						XEventBNavigatorManager.^default
-					val emfResource =
-						(navResourceSet).getResource(resource)
 					val IXEventBNavigatorObject navObj = 
-						getNavigatorObject(parentElement, emfResource) 
+						getNavigatorObject(parentElement, resource as IFile) 
 					children.add(navObj)
 				}
 			}

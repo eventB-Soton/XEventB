@@ -13,9 +13,6 @@ package ac.soton.xeventb.ui;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import ch.ethz.eventb.utils.EventBUtils;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IWorkspaceRoot;
-import org.eclipse.core.resources.ResourcesPlugin;
-import org.eclipse.core.runtime.Path;
 import org.eclipse.jface.viewers.ITreeContentProvider;
 import org.eventb.core.IEventBProject;
 import org.eventb.core.IMachineRoot;
@@ -57,10 +54,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
   @Override
   public Object[] getChildren(final Object parentElement) {
     if ((parentElement instanceof IXEventBNavigatorObject)) {
-      final String filePath = ((IXEventBNavigatorObject)parentElement).getResource().getURI().toPlatformString(true);
-      IWorkspaceRoot _root = ResourcesPlugin.getWorkspace().getRoot();
-      Path _path = new Path(filePath);
-      final IFile iFile = _root.getFile(_path);
+      final IFile iFile = ((IXEventBNavigatorObject)parentElement).getResource();
       final IEventBProject project = EventBUtils.getEventBProject(iFile.getProject().getName());
       final String fileName = iFile.getName();
       final int index = fileName.lastIndexOf(".");

@@ -93,7 +93,7 @@ public abstract class AbstractXEventBNavigatorLabelProvider implements ILabelPro
   @Override
   public String getText(final Object element) {
     if ((element instanceof IXEventBNavigatorObject)) {
-      return ((IXEventBNavigatorObject)element).getResource().getURI().lastSegment();
+      return ((IXEventBNavigatorObject)element).getResource().getName();
     }
     return null;
   }

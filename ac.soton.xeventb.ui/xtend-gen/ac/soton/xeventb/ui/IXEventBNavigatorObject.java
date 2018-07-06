@@ -10,8 +10,8 @@
  */
 package ac.soton.xeventb.ui;
 
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * Common interface for of an XEvent-B navigator object.
@@ -35,5 +35,5 @@ public interface IXEventBNavigatorObject {
    * 
    * @return the resource of the XEvent-B navigator object.
    */
-  public abstract Resource getResource();
+  public abstract IFile getResource();
 }

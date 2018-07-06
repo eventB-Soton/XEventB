@@ -10,8 +10,8 @@
  **********************************************************************/
 package ac.soton.xeventb.ui
 
+import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.IProject
-import org.eclipse.emf.ecore.resource.Resource
 
 /**
  * Abstract implementation for of an XEvent-B navigator object.
@@ -26,8 +26,8 @@ abstract class AbstractXEventBNavigatorObject
 	// The project
 	IProject project
 
-	// The (EMF) resource
-	Resource resource
+	// The resource
+	IFile resource
 	
 	/**
 	 * Create an XEvent-B naviagtor object for the input project and
@@ -36,9 +36,9 @@ abstract class AbstractXEventBNavigatorObject
 	 * @param project
 	 *          The input project
 	 * @param resource
-	 *          The input (EMF) resource
+	 *          The input resource
 	 */
-	new (IProject project, Resource resource) {
+	new (IProject project, IFile resource) {
 		this.project = project
 		this.resource = resource
 	}

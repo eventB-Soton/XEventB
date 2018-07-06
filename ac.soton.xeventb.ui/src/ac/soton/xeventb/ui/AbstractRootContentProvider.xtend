@@ -12,8 +12,6 @@ package ac.soton.xeventb.ui
 
 import ch.ethz.eventb.utils.EventBUtils
 import org.eclipse.core.resources.IFile
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.core.runtime.Path
 import org.eclipse.jface.viewers.ITreeContentProvider
 import org.eventb.core.IEventBProject
 import org.eventb.core.IMachineRoot
@@ -54,9 +52,7 @@ abstract class AbstractRootContentProvider implements ITreeContentProvider {
 	 */
 	override getChildren(Object parentElement) {
 		if (parentElement instanceof IXEventBNavigatorObject) {
-			val String filePath = parentElement.resource.URI.toPlatformString(true)
-	    	val IFile iFile = ResourcesPlugin.getWorkspace().getRoot()
-				.getFile(new Path(filePath));
+			val IFile iFile = parentElement.resource
 			val project = EventBUtils.getEventBProject(iFile.project.name)
 			val fileName = iFile.name
 			val index = fileName.lastIndexOf('.');

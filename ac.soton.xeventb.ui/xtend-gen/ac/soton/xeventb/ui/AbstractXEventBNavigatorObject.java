@@ -11,8 +11,8 @@
 package ac.soton.xeventb.ui;
 
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
+import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
-import org.eclipse.emf.ecore.resource.Resource;
 
 /**
  * Abstract implementation for of an XEvent-B navigator object.
@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 public abstract class AbstractXEventBNavigatorObject implements IXEventBNavigatorObject {
   private IProject project;
   
-  private Resource resource;
+  private IFile resource;
   
   /**
    * Create an XEvent-B naviagtor object for the input project and
@@ -34,9 +34,9 @@ public abstract class AbstractXEventBNavigatorObject implements IXEventBNavigato
    * @param project
    *          The input project
    * @param resource
-   *          The input (EMF) resource
+   *          The input resource
    */
-  public AbstractXEventBNavigatorObject(final IProject project, final Resource resource) {
+  public AbstractXEventBNavigatorObject(final IProject project, final IFile resource) {
     this.project = project;
     this.resource = resource;
   }
@@ -57,7 +57,7 @@ public abstract class AbstractXEventBNavigatorObject implements IXEventBNavigato
    * @return the resource of the XEvent-B navigator object.
    */
   @Override
-  public Resource getResource() {
+  public IFile getResource() {
     return this.resource;
   }
 }

@@ -90,7 +90,7 @@ abstract class AbstractXEventBNavigatorLabelProvider
 	 */
 	override String getText(Object element) {
 		if (element instanceof IXEventBNavigatorObject) {
-			return element.resource.URI.lastSegment 
+			return element.resource.name 
 		}
 		return null
 	}
