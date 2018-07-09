@@ -83,7 +83,7 @@ XInvariant returns emachine::Invariant:
 
 XInvariantNoComment returns emachine::Invariant:
 	{emachine::Invariant}
-	name=XLABEL predicate=STRING (theorem?='theorem')?	
+	name=XLABEL predicate=XPredicate(theorem?='theorem')?	
 ;
 
 XInvariantMLComment returns emachine::Invariant:
@@ -319,6 +319,9 @@ XActionSLComment returns emachine::Action:
 	{emachine::Action}
 	name=XLABEL action=STRING
 	comment=SL_COMMENT
+;
+XPredicate returns ecore::EString:
+	STRING
 ;
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;
