@@ -104,6 +104,7 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
             }
           } catch (final Throwable _t) {
             if (_t instanceof PartInitException) {
+              final PartInitException e = (PartInitException)_t;
               final String errorMsg = "Error opening Editor";
               MessageDialog.openError(null, null, errorMsg);
             } else {

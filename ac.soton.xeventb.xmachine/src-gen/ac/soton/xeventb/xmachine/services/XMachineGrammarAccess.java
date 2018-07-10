@@ -464,15 +464,15 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		
 		//XInvariantNoComment emachine::Invariant:
-		//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Invariant}
@@ -484,11 +484,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -505,16 +505,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
 		//XInvariantMLComment emachine::Invariant:
 		//	{emachine::Invariant} comment=ML_COMMENT
-		//	name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Invariant} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Invariant} comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Invariant}
@@ -532,11 +532,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_3_0() { return cPredicateXPredicateParserRuleCall_3_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_4() { return cTheoremAssignment_4; }
@@ -551,18 +551,18 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
 		
 		//XInvariantSLComment emachine::Invariant:
-		//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		//{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Invariant}
@@ -574,11 +574,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -620,23 +620,23 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExpressionSTRINGTerminalRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		private final RuleCall cExpressionXPredicateParserRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
 		
 		//XVariantNoComment emachine::Variant:
-		//	{emachine::Variant} expression=STRING;
+		//	{emachine::Variant} expression=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Variant} expression=STRING
+		//{emachine::Variant} expression=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Variant}
 		public Action getVariantAction_0() { return cVariantAction_0; }
 		
-		//expression=STRING
+		//expression=XPredicate
 		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
 		
-		//STRING
-		public RuleCall getExpressionSTRINGTerminalRuleCall_1_0() { return cExpressionSTRINGTerminalRuleCall_1_0; }
+		//XPredicate
+		public RuleCall getExpressionXPredicateParserRuleCall_1_0() { return cExpressionXPredicateParserRuleCall_1_0; }
 	}
 	public class XVariantMLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XVariantMLComment");
@@ -645,14 +645,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCommentML_COMMENTTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
 		private final Assignment cExpressionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cExpressionSTRINGTerminalRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
+		private final RuleCall cExpressionXPredicateParserRuleCall_2_0 = (RuleCall)cExpressionAssignment_2.eContents().get(0);
 		
 		//XVariantMLComment emachine::Variant:
 		//	{emachine::Variant} comment=ML_COMMENT
-		//	expression=STRING;
+		//	expression=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Variant} comment=ML_COMMENT expression=STRING
+		//{emachine::Variant} comment=ML_COMMENT expression=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Variant}
@@ -664,37 +664,37 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//ML_COMMENT
 		public RuleCall getCommentML_COMMENTTerminalRuleCall_1_0() { return cCommentML_COMMENTTerminalRuleCall_1_0; }
 		
-		//expression=STRING
+		//expression=XPredicate
 		public Assignment getExpressionAssignment_2() { return cExpressionAssignment_2; }
 		
-		//STRING
-		public RuleCall getExpressionSTRINGTerminalRuleCall_2_0() { return cExpressionSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getExpressionXPredicateParserRuleCall_2_0() { return cExpressionXPredicateParserRuleCall_2_0; }
 	}
 	public class XVariantSLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XVariantSLComment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cVariantAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cExpressionAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cExpressionSTRINGTerminalRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
+		private final RuleCall cExpressionXPredicateParserRuleCall_1_0 = (RuleCall)cExpressionAssignment_1.eContents().get(0);
 		private final Assignment cCommentAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_2_0 = (RuleCall)cCommentAssignment_2.eContents().get(0);
 		
 		//XVariantSLComment emachine::Variant:
-		//	{emachine::Variant} expression=STRING
+		//	{emachine::Variant} expression=XPredicate
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Variant} expression=STRING comment=SL_COMMENT
+		//{emachine::Variant} expression=XPredicate comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Variant}
 		public Action getVariantAction_0() { return cVariantAction_0; }
 		
-		//expression=STRING
+		//expression=XPredicate
 		public Assignment getExpressionAssignment_1() { return cExpressionAssignment_1; }
 		
-		//STRING
-		public RuleCall getExpressionSTRINGTerminalRuleCall_1_0() { return cExpressionSTRINGTerminalRuleCall_1_0; }
+		//XPredicate
+		public RuleCall getExpressionXPredicateParserRuleCall_1_0() { return cExpressionXPredicateParserRuleCall_1_0; }
 		
 		//comment=SL_COMMENT
 		public Assignment getCommentAssignment_2() { return cCommentAssignment_2; }
@@ -1652,15 +1652,15 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		
 		//XGuardNoComment emachine::Guard:
-		//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Guard}
@@ -1672,11 +1672,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -1693,16 +1693,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
 		//XGuardMLComment emachine::Guard:
 		//	{emachine::Guard} comment=ML_COMMENT
-		//	name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Guard} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
+		//{emachine::Guard} comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Guard}
@@ -1720,11 +1720,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_3_0() { return cPredicateXPredicateParserRuleCall_3_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_4() { return cTheoremAssignment_4; }
@@ -1739,18 +1739,18 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
 		
 		//XGuardSLComment emachine::Guard:
-		//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		//{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Guard}
@@ -1762,11 +1762,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -1810,13 +1810,13 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		
 		//XWitnessNoComment emachine::Witness:
-		//	{emachine::Witness} name=XLABEL predicate=STRING;
+		//	{emachine::Witness} name=XLABEL predicate=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Witness} name=XLABEL predicate=STRING
+		//{emachine::Witness} name=XLABEL predicate=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Witness}
@@ -1828,11 +1828,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 	}
 	public class XWitnessMLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XWitnessMLComment");
@@ -1843,14 +1843,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
 		
 		//XWitnessMLComment emachine::Witness:
 		//	{emachine::Witness} comment=ML_COMMENT
-		//	name=XLABEL predicate=STRING;
+		//	name=XLABEL predicate=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Witness} comment=ML_COMMENT name=XLABEL predicate=STRING
+		//{emachine::Witness} comment=ML_COMMENT name=XLABEL predicate=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Witness}
@@ -1868,11 +1868,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_3_0() { return cPredicateXPredicateParserRuleCall_3_0; }
 	}
 	public class XWitnessSLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XWitnessSLComment");
@@ -1881,16 +1881,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
 		
 		//XWitnessSLComment emachine::Witness:
-		//	{emachine::Witness} name=XLABEL predicate=STRING
+		//	{emachine::Witness} name=XLABEL predicate=XPredicate
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Witness} name=XLABEL predicate=STRING comment=SL_COMMENT
+		//{emachine::Witness} name=XLABEL predicate=XPredicate comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Witness}
@@ -1902,11 +1902,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//comment=SL_COMMENT
 		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
@@ -1944,13 +1944,13 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cActionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cActionSTRINGTerminalRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
+		private final RuleCall cActionXPredicateParserRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
 		
 		//XActionNoComment emachine::Action:
-		//	{emachine::Action} name=XLABEL action=STRING;
+		//	{emachine::Action} name=XLABEL action=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Action} name=XLABEL action=STRING
+		//{emachine::Action} name=XLABEL action=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Action}
@@ -1962,11 +1962,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//action=STRING
+		//action=XPredicate
 		public Assignment getActionAssignment_2() { return cActionAssignment_2; }
 		
-		//STRING
-		public RuleCall getActionSTRINGTerminalRuleCall_2_0() { return cActionSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getActionXPredicateParserRuleCall_2_0() { return cActionXPredicateParserRuleCall_2_0; }
 	}
 	public class XActionMLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XActionMLComment");
@@ -1977,14 +1977,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cActionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cActionSTRINGTerminalRuleCall_3_0 = (RuleCall)cActionAssignment_3.eContents().get(0);
+		private final RuleCall cActionXPredicateParserRuleCall_3_0 = (RuleCall)cActionAssignment_3.eContents().get(0);
 		
 		//XActionMLComment emachine::Action:
 		//	{emachine::Action} comment=ML_COMMENT
-		//	name=XLABEL action=STRING;
+		//	name=XLABEL action=XPredicate;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Action} comment=ML_COMMENT name=XLABEL action=STRING
+		//{emachine::Action} comment=ML_COMMENT name=XLABEL action=XPredicate
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Action}
@@ -2002,11 +2002,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
-		//action=STRING
+		//action=XPredicate
 		public Assignment getActionAssignment_3() { return cActionAssignment_3; }
 		
-		//STRING
-		public RuleCall getActionSTRINGTerminalRuleCall_3_0() { return cActionSTRINGTerminalRuleCall_3_0; }
+		//XPredicate
+		public RuleCall getActionXPredicateParserRuleCall_3_0() { return cActionXPredicateParserRuleCall_3_0; }
 	}
 	public class XActionSLCommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XActionSLComment");
@@ -2015,16 +2015,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cActionAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cActionSTRINGTerminalRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
+		private final RuleCall cActionXPredicateParserRuleCall_2_0 = (RuleCall)cActionAssignment_2.eContents().get(0);
 		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
 		
 		//XActionSLComment emachine::Action:
-		//	{emachine::Action} name=XLABEL action=STRING
+		//	{emachine::Action} name=XLABEL action=XPredicate
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Action} name=XLABEL action=STRING comment=SL_COMMENT
+		//{emachine::Action} name=XLABEL action=XPredicate comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Action}
@@ -2036,17 +2036,28 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//action=STRING
+		//action=XPredicate
 		public Assignment getActionAssignment_2() { return cActionAssignment_2; }
 		
-		//STRING
-		public RuleCall getActionSTRINGTerminalRuleCall_2_0() { return cActionSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getActionXPredicateParserRuleCall_2_0() { return cActionXPredicateParserRuleCall_2_0; }
 		
 		//comment=SL_COMMENT
 		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
 		
 		//SL_COMMENT
 		public RuleCall getCommentSL_COMMENTTerminalRuleCall_3_0() { return cCommentSL_COMMENTTerminalRuleCall_3_0; }
+	}
+	public class XPredicateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XPredicate");
+		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//XPredicate:
+		//	STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
 	}
 	
 	public class XConvergenceElements extends AbstractEnumRuleElementFinder {
@@ -2123,6 +2134,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	private final XActionNoCommentElements pXActionNoComment;
 	private final XActionMLCommentElements pXActionMLComment;
 	private final XActionSLCommentElements pXActionSLComment;
+	private final XPredicateElements pXPredicate;
 	private final TerminalRule tID;
 	
 	private final Grammar grammar;
@@ -2172,6 +2184,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.pXActionNoComment = new XActionNoCommentElements();
 		this.pXActionMLComment = new XActionMLCommentElements();
 		this.pXActionSLComment = new XActionSLCommentElements();
+		this.pXPredicate = new XPredicateElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
 	}
 	
@@ -2302,7 +2315,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XInvariantNoComment emachine::Invariant:
-	//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XInvariantNoCommentElements getXInvariantNoCommentAccess() {
 		return pXInvariantNoComment;
 	}
@@ -2313,7 +2326,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XInvariantMLComment emachine::Invariant:
 	//	{emachine::Invariant} comment=ML_COMMENT
-	//	name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XInvariantMLCommentElements getXInvariantMLCommentAccess() {
 		return pXInvariantMLComment;
 	}
@@ -2323,7 +2336,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XInvariantSLComment emachine::Invariant:
-	//	{emachine::Invariant} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	{emachine::Invariant} name=XLABEL predicate=XPredicate theorem?='theorem'?
 	//	comment=SL_COMMENT;
 	public XInvariantSLCommentElements getXInvariantSLCommentAccess() {
 		return pXInvariantSLComment;
@@ -2350,7 +2363,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XVariantNoComment emachine::Variant:
-	//	{emachine::Variant} expression=STRING;
+	//	{emachine::Variant} expression=XPredicate;
 	public XVariantNoCommentElements getXVariantNoCommentAccess() {
 		return pXVariantNoComment;
 	}
@@ -2361,7 +2374,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XVariantMLComment emachine::Variant:
 	//	{emachine::Variant} comment=ML_COMMENT
-	//	expression=STRING;
+	//	expression=XPredicate;
 	public XVariantMLCommentElements getXVariantMLCommentAccess() {
 		return pXVariantMLComment;
 	}
@@ -2371,7 +2384,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XVariantSLComment emachine::Variant:
-	//	{emachine::Variant} expression=STRING
+	//	{emachine::Variant} expression=XPredicate
 	//	comment=SL_COMMENT;
 	public XVariantSLCommentElements getXVariantSLCommentAccess() {
 		return pXVariantSLComment;
@@ -2542,7 +2555,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XGuardNoComment emachine::Guard:
-	//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XGuardNoCommentElements getXGuardNoCommentAccess() {
 		return pXGuardNoComment;
 	}
@@ -2553,7 +2566,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XGuardMLComment emachine::Guard:
 	//	{emachine::Guard} comment=ML_COMMENT
-	//	name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XGuardMLCommentElements getXGuardMLCommentAccess() {
 		return pXGuardMLComment;
 	}
@@ -2563,7 +2576,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XGuardSLComment emachine::Guard:
-	//	{emachine::Guard} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	{emachine::Guard} name=XLABEL predicate=XPredicate theorem?='theorem'?
 	//	comment=SL_COMMENT;
 	public XGuardSLCommentElements getXGuardSLCommentAccess() {
 		return pXGuardSLComment;
@@ -2584,7 +2597,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XWitnessNoComment emachine::Witness:
-	//	{emachine::Witness} name=XLABEL predicate=STRING;
+	//	{emachine::Witness} name=XLABEL predicate=XPredicate;
 	public XWitnessNoCommentElements getXWitnessNoCommentAccess() {
 		return pXWitnessNoComment;
 	}
@@ -2595,7 +2608,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XWitnessMLComment emachine::Witness:
 	//	{emachine::Witness} comment=ML_COMMENT
-	//	name=XLABEL predicate=STRING;
+	//	name=XLABEL predicate=XPredicate;
 	public XWitnessMLCommentElements getXWitnessMLCommentAccess() {
 		return pXWitnessMLComment;
 	}
@@ -2605,7 +2618,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XWitnessSLComment emachine::Witness:
-	//	{emachine::Witness} name=XLABEL predicate=STRING
+	//	{emachine::Witness} name=XLABEL predicate=XPredicate
 	//	comment=SL_COMMENT;
 	public XWitnessSLCommentElements getXWitnessSLCommentAccess() {
 		return pXWitnessSLComment;
@@ -2626,7 +2639,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XActionNoComment emachine::Action:
-	//	{emachine::Action} name=XLABEL action=STRING;
+	//	{emachine::Action} name=XLABEL action=XPredicate;
 	public XActionNoCommentElements getXActionNoCommentAccess() {
 		return pXActionNoComment;
 	}
@@ -2637,7 +2650,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XActionMLComment emachine::Action:
 	//	{emachine::Action} comment=ML_COMMENT
-	//	name=XLABEL action=STRING;
+	//	name=XLABEL action=XPredicate;
 	public XActionMLCommentElements getXActionMLCommentAccess() {
 		return pXActionMLComment;
 	}
@@ -2647,7 +2660,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XActionSLComment emachine::Action:
-	//	{emachine::Action} name=XLABEL action=STRING
+	//	{emachine::Action} name=XLABEL action=XPredicate
 	//	comment=SL_COMMENT;
 	public XActionSLCommentElements getXActionSLCommentAccess() {
 		return pXActionSLComment;
@@ -2655,6 +2668,16 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public ParserRule getXActionSLCommentRule() {
 		return getXActionSLCommentAccess().getRule();
+	}
+	
+	//XPredicate:
+	//	STRING;
+	public XPredicateElements getXPredicateAccess() {
+		return pXPredicate;
+	}
+	
+	public ParserRule getXPredicateRule() {
+		return getXPredicateAccess().getRule();
 	}
 	
 	//@ Override terminal ID:

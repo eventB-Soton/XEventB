@@ -254,7 +254,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XActionMLComment returns Action
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL action=STRING)
+	 *     (comment=ML_COMMENT name=XLABEL action=XPredicate)
 	 */
 	protected void sequence_XActionMLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		if (errorAcceptor != null) {
@@ -268,7 +268,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXActionMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
 		feeder.accept(grammarAccess.getXActionMLCommentAccess().getNameXLABELTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionMLCommentAccess().getActionSTRINGTerminalRuleCall_3_0(), semanticObject.getAction());
+		feeder.accept(grammarAccess.getXActionMLCommentAccess().getActionXPredicateParserRuleCall_3_0(), semanticObject.getAction());
 		feeder.finish();
 	}
 	
@@ -278,7 +278,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAction returns Action
 	 *
 	 * Constraint:
-	 *     ((name=XLABEL action=STRING) | (comment=ML_COMMENT name=XLABEL action=STRING) | (name=XLABEL action=STRING comment=SL_COMMENT))
+	 *     ((name=XLABEL action=XPredicate) | (comment=ML_COMMENT name=XLABEL action=XPredicate) | (name=XLABEL action=XPredicate comment=SL_COMMENT))
 	 */
 	protected void sequence_XActionMLComment_XActionNoComment_XActionSLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -290,7 +290,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XActionNoComment returns Action
 	 *
 	 * Constraint:
-	 *     (name=XLABEL action=STRING)
+	 *     (name=XLABEL action=XPredicate)
 	 */
 	protected void sequence_XActionNoComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		if (errorAcceptor != null) {
@@ -301,7 +301,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXActionNoCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionNoCommentAccess().getActionSTRINGTerminalRuleCall_2_0(), semanticObject.getAction());
+		feeder.accept(grammarAccess.getXActionNoCommentAccess().getActionXPredicateParserRuleCall_2_0(), semanticObject.getAction());
 		feeder.finish();
 	}
 	
@@ -311,7 +311,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XActionSLComment returns Action
 	 *
 	 * Constraint:
-	 *     (name=XLABEL action=STRING comment=SL_COMMENT)
+	 *     (name=XLABEL action=XPredicate comment=SL_COMMENT)
 	 */
 	protected void sequence_XActionSLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		if (errorAcceptor != null) {
@@ -324,7 +324,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXActionSLCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionSLCommentAccess().getActionSTRINGTerminalRuleCall_2_0(), semanticObject.getAction());
+		feeder.accept(grammarAccess.getXActionSLCommentAccess().getActionXPredicateParserRuleCall_2_0(), semanticObject.getAction());
 		feeder.accept(grammarAccess.getXActionSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_3_0(), semanticObject.getComment());
 		feeder.finish();
 	}
@@ -451,7 +451,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XGuardMLComment returns Guard
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XGuardMLComment(ISerializationContext context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -464,9 +464,9 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 *     )
 	 */
 	protected void sequence_XGuardMLComment_XGuardNoComment_XGuardSLComment(ISerializationContext context, Guard semanticObject) {
@@ -479,7 +479,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XGuardNoComment returns Guard
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XGuardNoComment(ISerializationContext context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -491,7 +491,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XGuardSLComment returns Guard
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 */
 	protected void sequence_XGuardSLComment(ISerializationContext context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -503,7 +503,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XInvariantMLComment returns Invariant
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XInvariantMLComment(ISerializationContext context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -516,9 +516,9 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 *     )
 	 */
 	protected void sequence_XInvariantMLComment_XInvariantNoComment_XInvariantSLComment(ISerializationContext context, Invariant semanticObject) {
@@ -531,7 +531,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XInvariantNoComment returns Invariant
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XInvariantNoComment(ISerializationContext context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -543,7 +543,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XInvariantSLComment returns Invariant
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 */
 	protected void sequence_XInvariantSLComment(ISerializationContext context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -699,7 +699,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariantMLComment returns Variant
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT expression=STRING)
+	 *     (comment=ML_COMMENT expression=XPredicate)
 	 */
 	protected void sequence_XVariantMLComment(ISerializationContext context, Variant semanticObject) {
 		if (errorAcceptor != null) {
@@ -710,7 +710,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXVariantMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXVariantMLCommentAccess().getExpressionSTRINGTerminalRuleCall_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getXVariantMLCommentAccess().getExpressionXPredicateParserRuleCall_2_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -720,7 +720,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariant returns Variant
 	 *
 	 * Constraint:
-	 *     (expression=STRING | (comment=ML_COMMENT expression=STRING) | (expression=STRING comment=SL_COMMENT))
+	 *     (expression=XPredicate | (comment=ML_COMMENT expression=XPredicate) | (expression=XPredicate comment=SL_COMMENT))
 	 */
 	protected void sequence_XVariantMLComment_XVariantNoComment_XVariantSLComment(ISerializationContext context, Variant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -732,7 +732,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariantNoComment returns Variant
 	 *
 	 * Constraint:
-	 *     expression=STRING
+	 *     expression=XPredicate
 	 */
 	protected void sequence_XVariantNoComment(ISerializationContext context, Variant semanticObject) {
 		if (errorAcceptor != null) {
@@ -740,7 +740,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariantNoCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getXVariantNoCommentAccess().getExpressionXPredicateParserRuleCall_1_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -750,7 +750,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariantSLComment returns Variant
 	 *
 	 * Constraint:
-	 *     (expression=STRING comment=SL_COMMENT)
+	 *     (expression=XPredicate comment=SL_COMMENT)
 	 */
 	protected void sequence_XVariantSLComment(ISerializationContext context, Variant semanticObject) {
 		if (errorAcceptor != null) {
@@ -760,7 +760,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariantSLCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getXVariantSLCommentAccess().getExpressionXPredicateParserRuleCall_1_0(), semanticObject.getExpression());
 		feeder.accept(grammarAccess.getXVariantSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_2_0(), semanticObject.getComment());
 		feeder.finish();
 	}
@@ -771,7 +771,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitnessMLComment returns Witness
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=STRING)
+	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate)
 	 */
 	protected void sequence_XWitnessMLComment(ISerializationContext context, Witness semanticObject) {
 		if (errorAcceptor != null) {
@@ -785,7 +785,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
 		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getNameXLABELTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0(), semanticObject.getPredicate());
+		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0(), semanticObject.getPredicate());
 		feeder.finish();
 	}
 	
@@ -795,7 +795,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitness returns Witness
 	 *
 	 * Constraint:
-	 *     ((name=XLABEL predicate=STRING) | (comment=ML_COMMENT name=XLABEL predicate=STRING) | (name=XLABEL predicate=STRING comment=SL_COMMENT))
+	 *     ((name=XLABEL predicate=XPredicate) | (comment=ML_COMMENT name=XLABEL predicate=XPredicate) | (name=XLABEL predicate=XPredicate comment=SL_COMMENT))
 	 */
 	protected void sequence_XWitnessMLComment_XWitnessNoComment_XWitnessSLComment(ISerializationContext context, Witness semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -807,7 +807,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitnessNoComment returns Witness
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING)
+	 *     (name=XLABEL predicate=XPredicate)
 	 */
 	protected void sequence_XWitnessNoComment(ISerializationContext context, Witness semanticObject) {
 		if (errorAcceptor != null) {
@@ -818,7 +818,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXWitnessNoCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0(), semanticObject.getPredicate());
+		feeder.accept(grammarAccess.getXWitnessNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0(), semanticObject.getPredicate());
 		feeder.finish();
 	}
 	
@@ -828,7 +828,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitnessSLComment returns Witness
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING comment=SL_COMMENT)
+	 *     (name=XLABEL predicate=XPredicate comment=SL_COMMENT)
 	 */
 	protected void sequence_XWitnessSLComment(ISerializationContext context, Witness semanticObject) {
 		if (errorAcceptor != null) {
@@ -841,7 +841,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
 		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0(), semanticObject.getPredicate());
+		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0(), semanticObject.getPredicate());
 		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_3_0(), semanticObject.getComment());
 		feeder.finish();
 	}

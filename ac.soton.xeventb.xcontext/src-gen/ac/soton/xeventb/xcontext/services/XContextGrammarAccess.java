@@ -421,15 +421,15 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		
 		//XAxiomNoComment econtext::Axiom:
-		//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+		//{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Axiom}
@@ -441,11 +441,11 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -462,16 +462,16 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cNameXLABELTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
 		private final Assignment cPredicateAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_3_0 = (RuleCall)cPredicateAssignment_3.eContents().get(0);
 		private final Assignment cTheoremAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final Keyword cTheoremTheoremKeyword_4_0 = (Keyword)cTheoremAssignment_4.eContents().get(0);
 		
 		//XAxiomMLComment econtext::Axiom:
 		//	{econtext::Axiom} comment=ML_COMMENT
-		//	name=XLABEL predicate=STRING theorem?='theorem'?;
+		//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Axiom} comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?
+		//{econtext::Axiom} comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Axiom}
@@ -489,11 +489,11 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_2_0() { return cNameXLABELTerminalRuleCall_2_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_3() { return cPredicateAssignment_3; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_3_0() { return cPredicateSTRINGTerminalRuleCall_3_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_3_0() { return cPredicateXPredicateParserRuleCall_3_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_4() { return cTheoremAssignment_4; }
@@ -508,18 +508,18 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameXLABELTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cPredicateAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cPredicateSTRINGTerminalRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
+		private final RuleCall cPredicateXPredicateParserRuleCall_2_0 = (RuleCall)cPredicateAssignment_2.eContents().get(0);
 		private final Assignment cTheoremAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final Keyword cTheoremTheoremKeyword_3_0 = (Keyword)cTheoremAssignment_3.eContents().get(0);
 		private final Assignment cCommentAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cCommentSL_COMMENTTerminalRuleCall_4_0 = (RuleCall)cCommentAssignment_4.eContents().get(0);
 		
 		//XAxiomSLComment econtext::Axiom:
-		//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+		//	{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'?
 		//	comment=SL_COMMENT;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT
+		//{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Axiom}
@@ -531,11 +531,11 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//XLABEL
 		public RuleCall getNameXLABELTerminalRuleCall_1_0() { return cNameXLABELTerminalRuleCall_1_0; }
 		
-		//predicate=STRING
+		//predicate=XPredicate
 		public Assignment getPredicateAssignment_2() { return cPredicateAssignment_2; }
 		
-		//STRING
-		public RuleCall getPredicateSTRINGTerminalRuleCall_2_0() { return cPredicateSTRINGTerminalRuleCall_2_0; }
+		//XPredicate
+		public RuleCall getPredicateXPredicateParserRuleCall_2_0() { return cPredicateXPredicateParserRuleCall_2_0; }
 		
 		//theorem?='theorem'?
 		public Assignment getTheoremAssignment_3() { return cTheoremAssignment_3; }
@@ -548,6 +548,17 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//SL_COMMENT
 		public RuleCall getCommentSL_COMMENTTerminalRuleCall_4_0() { return cCommentSL_COMMENTTerminalRuleCall_4_0; }
+	}
+	public class XPredicateElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XPredicate");
+		private final RuleCall cSTRINGTerminalRuleCall = (RuleCall)rule.eContents().get(1);
+		
+		//XPredicate:
+		//	STRING;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//STRING
+		public RuleCall getSTRINGTerminalRuleCall() { return cSTRINGTerminalRuleCall; }
 	}
 	
 	
@@ -566,6 +577,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	private final XAxiomMLCommentElements pXAxiomMLComment;
 	private final XAxiomSLCommentElements pXAxiomSLComment;
 	private final TerminalRule tXLABEL;
+	private final XPredicateElements pXPredicate;
 	private final TerminalRule tID;
 	
 	private final Grammar grammar;
@@ -592,6 +604,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.pXAxiomMLComment = new XAxiomMLCommentElements();
 		this.pXAxiomSLComment = new XAxiomSLCommentElements();
 		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XLABEL");
+		this.pXPredicate = new XPredicateElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.ID");
 	}
 	
@@ -740,7 +753,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XAxiomNoComment econtext::Axiom:
-	//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XAxiomNoCommentElements getXAxiomNoCommentAccess() {
 		return pXAxiomNoComment;
 	}
@@ -751,7 +764,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//XAxiomMLComment econtext::Axiom:
 	//	{econtext::Axiom} comment=ML_COMMENT
-	//	name=XLABEL predicate=STRING theorem?='theorem'?;
+	//	name=XLABEL predicate=XPredicate theorem?='theorem'?;
 	public XAxiomMLCommentElements getXAxiomMLCommentAccess() {
 		return pXAxiomMLComment;
 	}
@@ -761,7 +774,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XAxiomSLComment econtext::Axiom:
-	//	{econtext::Axiom} name=XLABEL predicate=STRING theorem?='theorem'?
+	//	{econtext::Axiom} name=XLABEL predicate=XPredicate theorem?='theorem'?
 	//	comment=SL_COMMENT;
 	public XAxiomSLCommentElements getXAxiomSLCommentAccess() {
 		return pXAxiomSLComment;
@@ -775,6 +788,16 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	//	'@' !':'+ ':';
 	public TerminalRule getXLABELRule() {
 		return tXLABEL;
+	}
+	
+	//XPredicate:
+	//	STRING;
+	public XPredicateElements getXPredicateAccess() {
+		return pXPredicate;
+	}
+	
+	public ParserRule getXPredicateRule() {
+		return getXPredicateAccess().getRule();
 	}
 	
 	//@ Override terminal ID:

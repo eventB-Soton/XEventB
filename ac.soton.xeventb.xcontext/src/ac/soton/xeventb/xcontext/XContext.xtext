@@ -67,24 +67,26 @@ XAxiom returns econtext::Axiom:
 
 XAxiomNoComment returns econtext::Axiom:
 	{econtext::Axiom}	
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=XPredicate (theorem?='theorem')?
 ;
 
 XAxiomMLComment returns econtext::Axiom:
 	{econtext::Axiom}	
 	comment=ML_COMMENT
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=XPredicate (theorem?='theorem')?
 ;
 
 XAxiomSLComment returns econtext::Axiom:
 	{econtext::Axiom}	
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate=XPredicate (theorem?='theorem')?
 	comment=SL_COMMENT
 ;
 
 terminal XLABEL returns ecore::EString:
 	'@' !(':')+ ':'
 ;
-
+XPredicate returns ecore::EString:
+	STRING
+;
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;

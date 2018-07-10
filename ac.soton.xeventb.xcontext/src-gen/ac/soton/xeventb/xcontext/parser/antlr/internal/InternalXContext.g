@@ -798,19 +798,20 @@ ruleXAxiomNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXAxiomNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXAxiomNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXAxiomNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXAxiomNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -892,19 +893,20 @@ ruleXAxiomMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_3_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_3_0, grammarAccess.getXAxiomMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXAxiomMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0());
 				}
+				lv_predicate_3_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXAxiomMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXAxiomMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_3_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -968,19 +970,20 @@ ruleXAxiomSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXAxiomSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXAxiomSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXAxiomSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXAxiomSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1017,6 +1020,30 @@ ruleXAxiomSLComment returns [EObject current=null]
 			)
 		)
 	)
+;
+
+// Entry rule entryRuleXPredicate
+entryRuleXPredicate returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getXPredicateRule()); }
+	iv_ruleXPredicate=ruleXPredicate
+	{ $current=$iv_ruleXPredicate.current.getText(); }
+	EOF;
+
+// Rule XPredicate
+ruleXPredicate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	this_STRING_0=RULE_STRING
+	{
+		$current.merge(this_STRING_0);
+	}
+	{
+		newLeafNode(this_STRING_0, grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall());
+	}
 ;
 
 RULE_XLABEL : '@' ~(':')+ ':';

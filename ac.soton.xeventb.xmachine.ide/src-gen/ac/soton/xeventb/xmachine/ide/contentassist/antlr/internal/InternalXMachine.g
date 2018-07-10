@@ -949,6 +949,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleXPredicate
+entryRuleXPredicate
+:
+{ before(grammarAccess.getXPredicateRule()); }
+	 ruleXPredicate
+{ after(grammarAccess.getXPredicateRule()); } 
+	 EOF 
+;
+
+// Rule XPredicate
+ruleXPredicate 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall()); }
+		RULE_STRING
+		{ after(grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Rule XConvergence
 ruleXConvergence
 	@init {
@@ -8025,9 +8050,9 @@ rule__XInvariantNoComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXInvariantNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXInvariantNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXInvariantNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXInvariantNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -8089,9 +8114,9 @@ rule__XInvariantMLComment__PredicateAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getXInvariantMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXInvariantMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXInvariantMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXInvariantMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -8138,9 +8163,9 @@ rule__XInvariantSLComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXInvariantSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXInvariantSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXInvariantSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXInvariantSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -8187,9 +8212,9 @@ rule__XVariantNoComment__ExpressionAssignment_1
 	}
 :
 	(
-		{ before(grammarAccess.getXVariantNoCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXVariantNoCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getXVariantNoCommentAccess().getExpressionXPredicateParserRuleCall_1_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXVariantNoCommentAccess().getExpressionXPredicateParserRuleCall_1_0()); }
 	)
 ;
 finally {
@@ -8217,9 +8242,9 @@ rule__XVariantMLComment__ExpressionAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXVariantMLCommentAccess().getExpressionSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXVariantMLCommentAccess().getExpressionSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXVariantMLCommentAccess().getExpressionXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXVariantMLCommentAccess().getExpressionXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -8232,9 +8257,9 @@ rule__XVariantSLComment__ExpressionAssignment_1
 	}
 :
 	(
-		{ before(grammarAccess.getXVariantSLCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXVariantSLCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0()); }
+		{ before(grammarAccess.getXVariantSLCommentAccess().getExpressionXPredicateParserRuleCall_1_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXVariantSLCommentAccess().getExpressionXPredicateParserRuleCall_1_0()); }
 	)
 ;
 finally {
@@ -9070,9 +9095,9 @@ rule__XGuardNoComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXGuardNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXGuardNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXGuardNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXGuardNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9134,9 +9159,9 @@ rule__XGuardMLComment__PredicateAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getXGuardMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXGuardMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXGuardMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXGuardMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -9183,9 +9208,9 @@ rule__XGuardSLComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXGuardSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXGuardSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXGuardSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXGuardSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9247,9 +9272,9 @@ rule__XWitnessNoComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXWitnessNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXWitnessNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXWitnessNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXWitnessNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9292,9 +9317,9 @@ rule__XWitnessMLComment__PredicateAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getXWitnessMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXWitnessMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXWitnessMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXWitnessMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -9322,9 +9347,9 @@ rule__XWitnessSLComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXWitnessSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXWitnessSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXWitnessSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXWitnessSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9367,9 +9392,9 @@ rule__XActionNoComment__ActionAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXActionNoCommentAccess().getActionSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXActionNoCommentAccess().getActionSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXActionNoCommentAccess().getActionXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXActionNoCommentAccess().getActionXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -9412,9 +9437,9 @@ rule__XActionMLComment__ActionAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getXActionMLCommentAccess().getActionSTRINGTerminalRuleCall_3_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXActionMLCommentAccess().getActionSTRINGTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXActionMLCommentAccess().getActionXPredicateParserRuleCall_3_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXActionMLCommentAccess().getActionXPredicateParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -9442,9 +9467,9 @@ rule__XActionSLComment__ActionAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXActionSLCommentAccess().getActionSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXActionSLCommentAccess().getActionSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXActionSLCommentAccess().getActionXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXActionSLCommentAccess().getActionXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {

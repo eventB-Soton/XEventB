@@ -103,7 +103,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAxiomMLComment returns Axiom
 	 *
 	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XAxiomMLComment(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -116,9 +116,9 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (comment=ML_COMMENT name=XLABEL predicate=STRING theorem?='theorem'?) | 
-	 *         (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
+	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 *     )
 	 */
 	protected void sequence_XAxiomMLComment_XAxiomNoComment_XAxiomSLComment(ISerializationContext context, Axiom semanticObject) {
@@ -131,7 +131,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAxiomNoComment returns Axiom
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'?)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
 	protected void sequence_XAxiomNoComment(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -143,7 +143,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XAxiomSLComment returns Axiom
 	 *
 	 * Constraint:
-	 *     (name=XLABEL predicate=STRING theorem?='theorem'? comment=SL_COMMENT)
+	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
 	 */
 	protected void sequence_XAxiomSLComment(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

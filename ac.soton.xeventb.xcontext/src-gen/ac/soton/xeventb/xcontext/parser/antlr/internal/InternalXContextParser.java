@@ -1327,11 +1327,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             if ( (LA13_0==RULE_ID) ) {
                 int LA13_1 = input.LA(2);
 
-                if ( (LA13_1==EOF||LA13_1==RULE_ML_COMMENT||LA13_1==RULE_ID||(LA13_1>=16 && LA13_1<=17)) ) {
-                    alt13=1;
-                }
-                else if ( (LA13_1==RULE_SL_COMMENT) ) {
+                if ( (LA13_1==RULE_SL_COMMENT) ) {
                     alt13=3;
+                }
+                else if ( (LA13_1==EOF||LA13_1==RULE_ML_COMMENT||LA13_1==RULE_ID||(LA13_1>=16 && LA13_1<=17)) ) {
+                    alt13=1;
                 }
                 else {
                     NoViableAltException nvae =
@@ -1884,11 +1884,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
                         {
                         int LA14_4 = input.LA(4);
 
-                        if ( (LA14_4==EOF||LA14_4==RULE_ML_COMMENT||LA14_4==RULE_XLABEL||LA14_4==17) ) {
-                            alt14=1;
-                        }
-                        else if ( (LA14_4==RULE_SL_COMMENT) ) {
+                        if ( (LA14_4==RULE_SL_COMMENT) ) {
                             alt14=3;
+                        }
+                        else if ( (LA14_4==EOF||LA14_4==RULE_ML_COMMENT||LA14_4==RULE_XLABEL||LA14_4==17) ) {
+                            alt14=1;
                         }
                         else {
                             NoViableAltException nvae =
@@ -2049,23 +2049,24 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXAxiomNoComment"
-    // InternalXContext.g:766:1: ruleXAxiomNoComment returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ) ;
+    // InternalXContext.g:766:1: ruleXAxiomNoComment returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ) ;
     public final EObject ruleXAxiomNoComment() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_1_0=null;
-        Token lv_predicate_2_0=null;
         Token lv_theorem_3_0=null;
+        AntlrDatatypeRuleToken lv_predicate_2_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalXContext.g:772:2: ( ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ) )
-            // InternalXContext.g:773:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? )
+            // InternalXContext.g:772:2: ( ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ) )
+            // InternalXContext.g:773:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? )
             {
-            // InternalXContext.g:773:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? )
-            // InternalXContext.g:774:3: () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )?
+            // InternalXContext.g:773:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? )
+            // InternalXContext.g:774:3: () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )?
             {
             // InternalXContext.g:774:3: ()
             // InternalXContext.g:775:4: 
@@ -2104,25 +2105,30 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:799:3: ( (lv_predicate_2_0= RULE_STRING ) )
-            // InternalXContext.g:800:4: (lv_predicate_2_0= RULE_STRING )
+            // InternalXContext.g:799:3: ( (lv_predicate_2_0= ruleXPredicate ) )
+            // InternalXContext.g:800:4: (lv_predicate_2_0= ruleXPredicate )
             {
-            // InternalXContext.g:800:4: (lv_predicate_2_0= RULE_STRING )
-            // InternalXContext.g:801:5: lv_predicate_2_0= RULE_STRING
+            // InternalXContext.g:800:4: (lv_predicate_2_0= ruleXPredicate )
+            // InternalXContext.g:801:5: lv_predicate_2_0= ruleXPredicate
             {
-            lv_predicate_2_0=(Token)match(input,RULE_STRING,FOLLOW_15); 
 
-            					newLeafNode(lv_predicate_2_0, grammarAccess.getXAxiomNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getXAxiomNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
             				
+            pushFollow(FOLLOW_15);
+            lv_predicate_2_0=ruleXPredicate();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getXAxiomNoCommentRule());
+            						current = createModelElementForParent(grammarAccess.getXAxiomNoCommentRule());
             					}
-            					setWithLastConsumed(
+            					set(
             						current,
             						"predicate",
             						lv_predicate_2_0,
-            						"org.eclipse.xtext.common.Terminals.STRING");
+            						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -2130,7 +2136,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:817:3: ( (lv_theorem_3_0= 'theorem' ) )?
+            // InternalXContext.g:818:3: ( (lv_theorem_3_0= 'theorem' ) )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -2139,10 +2145,10 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             }
             switch (alt15) {
                 case 1 :
-                    // InternalXContext.g:818:4: (lv_theorem_3_0= 'theorem' )
+                    // InternalXContext.g:819:4: (lv_theorem_3_0= 'theorem' )
                     {
-                    // InternalXContext.g:818:4: (lv_theorem_3_0= 'theorem' )
-                    // InternalXContext.g:819:5: lv_theorem_3_0= 'theorem'
+                    // InternalXContext.g:819:4: (lv_theorem_3_0= 'theorem' )
+                    // InternalXContext.g:820:5: lv_theorem_3_0= 'theorem'
                     {
                     lv_theorem_3_0=(Token)match(input,19,FOLLOW_2); 
 
@@ -2186,7 +2192,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXAxiomMLComment"
-    // InternalXContext.g:835:1: entryRuleXAxiomMLComment returns [EObject current=null] : iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF ;
+    // InternalXContext.g:836:1: entryRuleXAxiomMLComment returns [EObject current=null] : iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF ;
     public final EObject entryRuleXAxiomMLComment() throws RecognitionException {
         EObject current = null;
 
@@ -2194,8 +2200,8 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXContext.g:835:56: (iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF )
-            // InternalXContext.g:836:2: iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF
+            // InternalXContext.g:836:56: (iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF )
+            // InternalXContext.g:837:2: iv_ruleXAxiomMLComment= ruleXAxiomMLComment EOF
             {
              newCompositeNode(grammarAccess.getXAxiomMLCommentRule()); 
             pushFollow(FOLLOW_1);
@@ -2222,27 +2228,28 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXAxiomMLComment"
-    // InternalXContext.g:842:1: ruleXAxiomMLComment returns [EObject current=null] : ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) ;
+    // InternalXContext.g:843:1: ruleXAxiomMLComment returns [EObject current=null] : ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= ruleXPredicate ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) ;
     public final EObject ruleXAxiomMLComment() throws RecognitionException {
         EObject current = null;
 
         Token lv_comment_1_0=null;
         Token lv_name_2_0=null;
-        Token lv_predicate_3_0=null;
         Token lv_theorem_4_0=null;
+        AntlrDatatypeRuleToken lv_predicate_3_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalXContext.g:848:2: ( ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) )
-            // InternalXContext.g:849:2: ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
+            // InternalXContext.g:849:2: ( ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= ruleXPredicate ) ) ( (lv_theorem_4_0= 'theorem' ) )? ) )
+            // InternalXContext.g:850:2: ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= ruleXPredicate ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
             {
-            // InternalXContext.g:849:2: ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
-            // InternalXContext.g:850:3: () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= RULE_STRING ) ) ( (lv_theorem_4_0= 'theorem' ) )?
+            // InternalXContext.g:850:2: ( () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= ruleXPredicate ) ) ( (lv_theorem_4_0= 'theorem' ) )? )
+            // InternalXContext.g:851:3: () ( (lv_comment_1_0= RULE_ML_COMMENT ) ) ( (lv_name_2_0= RULE_XLABEL ) ) ( (lv_predicate_3_0= ruleXPredicate ) ) ( (lv_theorem_4_0= 'theorem' ) )?
             {
-            // InternalXContext.g:850:3: ()
-            // InternalXContext.g:851:4: 
+            // InternalXContext.g:851:3: ()
+            // InternalXContext.g:852:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2252,11 +2259,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:857:3: ( (lv_comment_1_0= RULE_ML_COMMENT ) )
-            // InternalXContext.g:858:4: (lv_comment_1_0= RULE_ML_COMMENT )
+            // InternalXContext.g:858:3: ( (lv_comment_1_0= RULE_ML_COMMENT ) )
+            // InternalXContext.g:859:4: (lv_comment_1_0= RULE_ML_COMMENT )
             {
-            // InternalXContext.g:858:4: (lv_comment_1_0= RULE_ML_COMMENT )
-            // InternalXContext.g:859:5: lv_comment_1_0= RULE_ML_COMMENT
+            // InternalXContext.g:859:4: (lv_comment_1_0= RULE_ML_COMMENT )
+            // InternalXContext.g:860:5: lv_comment_1_0= RULE_ML_COMMENT
             {
             lv_comment_1_0=(Token)match(input,RULE_ML_COMMENT,FOLLOW_16); 
 
@@ -2278,11 +2285,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:875:3: ( (lv_name_2_0= RULE_XLABEL ) )
-            // InternalXContext.g:876:4: (lv_name_2_0= RULE_XLABEL )
+            // InternalXContext.g:876:3: ( (lv_name_2_0= RULE_XLABEL ) )
+            // InternalXContext.g:877:4: (lv_name_2_0= RULE_XLABEL )
             {
-            // InternalXContext.g:876:4: (lv_name_2_0= RULE_XLABEL )
-            // InternalXContext.g:877:5: lv_name_2_0= RULE_XLABEL
+            // InternalXContext.g:877:4: (lv_name_2_0= RULE_XLABEL )
+            // InternalXContext.g:878:5: lv_name_2_0= RULE_XLABEL
             {
             lv_name_2_0=(Token)match(input,RULE_XLABEL,FOLLOW_14); 
 
@@ -2304,25 +2311,30 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:893:3: ( (lv_predicate_3_0= RULE_STRING ) )
-            // InternalXContext.g:894:4: (lv_predicate_3_0= RULE_STRING )
+            // InternalXContext.g:894:3: ( (lv_predicate_3_0= ruleXPredicate ) )
+            // InternalXContext.g:895:4: (lv_predicate_3_0= ruleXPredicate )
             {
-            // InternalXContext.g:894:4: (lv_predicate_3_0= RULE_STRING )
-            // InternalXContext.g:895:5: lv_predicate_3_0= RULE_STRING
+            // InternalXContext.g:895:4: (lv_predicate_3_0= ruleXPredicate )
+            // InternalXContext.g:896:5: lv_predicate_3_0= ruleXPredicate
             {
-            lv_predicate_3_0=(Token)match(input,RULE_STRING,FOLLOW_15); 
 
-            					newLeafNode(lv_predicate_3_0, grammarAccess.getXAxiomMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0());
+            					newCompositeNode(grammarAccess.getXAxiomMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0());
             				
+            pushFollow(FOLLOW_15);
+            lv_predicate_3_0=ruleXPredicate();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getXAxiomMLCommentRule());
+            						current = createModelElementForParent(grammarAccess.getXAxiomMLCommentRule());
             					}
-            					setWithLastConsumed(
+            					set(
             						current,
             						"predicate",
             						lv_predicate_3_0,
-            						"org.eclipse.xtext.common.Terminals.STRING");
+            						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -2330,7 +2342,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:911:3: ( (lv_theorem_4_0= 'theorem' ) )?
+            // InternalXContext.g:913:3: ( (lv_theorem_4_0= 'theorem' ) )?
             int alt16=2;
             int LA16_0 = input.LA(1);
 
@@ -2339,10 +2351,10 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             }
             switch (alt16) {
                 case 1 :
-                    // InternalXContext.g:912:4: (lv_theorem_4_0= 'theorem' )
+                    // InternalXContext.g:914:4: (lv_theorem_4_0= 'theorem' )
                     {
-                    // InternalXContext.g:912:4: (lv_theorem_4_0= 'theorem' )
-                    // InternalXContext.g:913:5: lv_theorem_4_0= 'theorem'
+                    // InternalXContext.g:914:4: (lv_theorem_4_0= 'theorem' )
+                    // InternalXContext.g:915:5: lv_theorem_4_0= 'theorem'
                     {
                     lv_theorem_4_0=(Token)match(input,19,FOLLOW_2); 
 
@@ -2386,7 +2398,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleXAxiomSLComment"
-    // InternalXContext.g:929:1: entryRuleXAxiomSLComment returns [EObject current=null] : iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF ;
+    // InternalXContext.g:931:1: entryRuleXAxiomSLComment returns [EObject current=null] : iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF ;
     public final EObject entryRuleXAxiomSLComment() throws RecognitionException {
         EObject current = null;
 
@@ -2394,8 +2406,8 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXContext.g:929:56: (iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF )
-            // InternalXContext.g:930:2: iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF
+            // InternalXContext.g:931:56: (iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF )
+            // InternalXContext.g:932:2: iv_ruleXAxiomSLComment= ruleXAxiomSLComment EOF
             {
              newCompositeNode(grammarAccess.getXAxiomSLCommentRule()); 
             pushFollow(FOLLOW_1);
@@ -2422,27 +2434,28 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXAxiomSLComment"
-    // InternalXContext.g:936:1: ruleXAxiomSLComment returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) ) ;
+    // InternalXContext.g:938:1: ruleXAxiomSLComment returns [EObject current=null] : ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) ) ;
     public final EObject ruleXAxiomSLComment() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_1_0=null;
-        Token lv_predicate_2_0=null;
         Token lv_theorem_3_0=null;
         Token lv_comment_4_0=null;
+        AntlrDatatypeRuleToken lv_predicate_2_0 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalXContext.g:942:2: ( ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) ) )
-            // InternalXContext.g:943:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) )
+            // InternalXContext.g:944:2: ( ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) ) )
+            // InternalXContext.g:945:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) )
             {
-            // InternalXContext.g:943:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) )
-            // InternalXContext.g:944:3: () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= RULE_STRING ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) )
+            // InternalXContext.g:945:2: ( () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) ) )
+            // InternalXContext.g:946:3: () ( (lv_name_1_0= RULE_XLABEL ) ) ( (lv_predicate_2_0= ruleXPredicate ) ) ( (lv_theorem_3_0= 'theorem' ) )? ( (lv_comment_4_0= RULE_SL_COMMENT ) )
             {
-            // InternalXContext.g:944:3: ()
-            // InternalXContext.g:945:4: 
+            // InternalXContext.g:946:3: ()
+            // InternalXContext.g:947:4: 
             {
 
             				current = forceCreateModelElement(
@@ -2452,11 +2465,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:951:3: ( (lv_name_1_0= RULE_XLABEL ) )
-            // InternalXContext.g:952:4: (lv_name_1_0= RULE_XLABEL )
+            // InternalXContext.g:953:3: ( (lv_name_1_0= RULE_XLABEL ) )
+            // InternalXContext.g:954:4: (lv_name_1_0= RULE_XLABEL )
             {
-            // InternalXContext.g:952:4: (lv_name_1_0= RULE_XLABEL )
-            // InternalXContext.g:953:5: lv_name_1_0= RULE_XLABEL
+            // InternalXContext.g:954:4: (lv_name_1_0= RULE_XLABEL )
+            // InternalXContext.g:955:5: lv_name_1_0= RULE_XLABEL
             {
             lv_name_1_0=(Token)match(input,RULE_XLABEL,FOLLOW_14); 
 
@@ -2478,25 +2491,30 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:969:3: ( (lv_predicate_2_0= RULE_STRING ) )
-            // InternalXContext.g:970:4: (lv_predicate_2_0= RULE_STRING )
+            // InternalXContext.g:971:3: ( (lv_predicate_2_0= ruleXPredicate ) )
+            // InternalXContext.g:972:4: (lv_predicate_2_0= ruleXPredicate )
             {
-            // InternalXContext.g:970:4: (lv_predicate_2_0= RULE_STRING )
-            // InternalXContext.g:971:5: lv_predicate_2_0= RULE_STRING
+            // InternalXContext.g:972:4: (lv_predicate_2_0= ruleXPredicate )
+            // InternalXContext.g:973:5: lv_predicate_2_0= ruleXPredicate
             {
-            lv_predicate_2_0=(Token)match(input,RULE_STRING,FOLLOW_17); 
 
-            					newLeafNode(lv_predicate_2_0, grammarAccess.getXAxiomSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getXAxiomSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
             				
+            pushFollow(FOLLOW_17);
+            lv_predicate_2_0=ruleXPredicate();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getXAxiomSLCommentRule());
+            						current = createModelElementForParent(grammarAccess.getXAxiomSLCommentRule());
             					}
-            					setWithLastConsumed(
+            					set(
             						current,
             						"predicate",
             						lv_predicate_2_0,
-            						"org.eclipse.xtext.common.Terminals.STRING");
+            						"ac.soton.xeventb.xcontext.XContext.XPredicate");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -2504,7 +2522,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:987:3: ( (lv_theorem_3_0= 'theorem' ) )?
+            // InternalXContext.g:990:3: ( (lv_theorem_3_0= 'theorem' ) )?
             int alt17=2;
             int LA17_0 = input.LA(1);
 
@@ -2513,10 +2531,10 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
             }
             switch (alt17) {
                 case 1 :
-                    // InternalXContext.g:988:4: (lv_theorem_3_0= 'theorem' )
+                    // InternalXContext.g:991:4: (lv_theorem_3_0= 'theorem' )
                     {
-                    // InternalXContext.g:988:4: (lv_theorem_3_0= 'theorem' )
-                    // InternalXContext.g:989:5: lv_theorem_3_0= 'theorem'
+                    // InternalXContext.g:991:4: (lv_theorem_3_0= 'theorem' )
+                    // InternalXContext.g:992:5: lv_theorem_3_0= 'theorem'
                     {
                     lv_theorem_3_0=(Token)match(input,19,FOLLOW_13); 
 
@@ -2537,11 +2555,11 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:1001:3: ( (lv_comment_4_0= RULE_SL_COMMENT ) )
-            // InternalXContext.g:1002:4: (lv_comment_4_0= RULE_SL_COMMENT )
+            // InternalXContext.g:1004:3: ( (lv_comment_4_0= RULE_SL_COMMENT ) )
+            // InternalXContext.g:1005:4: (lv_comment_4_0= RULE_SL_COMMENT )
             {
-            // InternalXContext.g:1002:4: (lv_comment_4_0= RULE_SL_COMMENT )
-            // InternalXContext.g:1003:5: lv_comment_4_0= RULE_SL_COMMENT
+            // InternalXContext.g:1005:4: (lv_comment_4_0= RULE_SL_COMMENT )
+            // InternalXContext.g:1006:5: lv_comment_4_0= RULE_SL_COMMENT
             {
             lv_comment_4_0=(Token)match(input,RULE_SL_COMMENT,FOLLOW_2); 
 
@@ -2583,6 +2601,82 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
         return current;
     }
     // $ANTLR end "ruleXAxiomSLComment"
+
+
+    // $ANTLR start "entryRuleXPredicate"
+    // InternalXContext.g:1026:1: entryRuleXPredicate returns [String current=null] : iv_ruleXPredicate= ruleXPredicate EOF ;
+    public final String entryRuleXPredicate() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleXPredicate = null;
+
+
+        try {
+            // InternalXContext.g:1026:50: (iv_ruleXPredicate= ruleXPredicate EOF )
+            // InternalXContext.g:1027:2: iv_ruleXPredicate= ruleXPredicate EOF
+            {
+             newCompositeNode(grammarAccess.getXPredicateRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleXPredicate=ruleXPredicate();
+
+            state._fsp--;
+
+             current =iv_ruleXPredicate.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleXPredicate"
+
+
+    // $ANTLR start "ruleXPredicate"
+    // InternalXContext.g:1033:1: ruleXPredicate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
+    public final AntlrDatatypeRuleToken ruleXPredicate() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_STRING_0=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalXContext.g:1039:2: (this_STRING_0= RULE_STRING )
+            // InternalXContext.g:1040:2: this_STRING_0= RULE_STRING
+            {
+            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
+
+            		current.merge(this_STRING_0);
+            	
+
+            		newLeafNode(this_STRING_0, grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall());
+            	
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleXPredicate"
 
     // Delegated rules
 

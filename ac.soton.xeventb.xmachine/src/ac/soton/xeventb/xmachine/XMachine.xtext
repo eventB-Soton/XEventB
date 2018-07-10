@@ -89,12 +89,12 @@ XInvariantNoComment returns emachine::Invariant:
 XInvariantMLComment returns emachine::Invariant:
 	{emachine::Invariant}
 	comment=ML_COMMENT
-	name=XLABEL predicate=STRING (theorem?='theorem')?	
+	name=XLABEL predicate= XPredicate (theorem?='theorem')?	
 ;
 
 XInvariantSLComment returns emachine::Invariant:
 	{emachine::Invariant}
-	name=XLABEL predicate=STRING (theorem?='theorem')?	
+	name=XLABEL predicate = XPredicate (theorem?='theorem')?	
 	comment=SL_COMMENT
 ;
 
@@ -108,18 +108,18 @@ XVariant returns emachine::Variant:
 
 XVariantNoComment returns emachine::Variant:
 	{emachine::Variant}
-	expression=STRING
+	expression= XPredicate
 ;
 
 XVariantMLComment returns emachine::Variant:
 	{emachine::Variant}
 	comment=ML_COMMENT
-	expression=STRING
+	expression= XPredicate
 ;
 
 XVariantSLComment returns emachine::Variant:
 	{emachine::Variant}
-	expression=STRING
+	expression= XPredicate
 	comment=SL_COMMENT
 ;
   XEvent returns emachine::Event:
@@ -264,18 +264,18 @@ XGuard returns emachine::Guard:
 
 XGuardNoComment returns emachine::Guard:
 	{emachine::Guard}
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate= XPredicate (theorem?='theorem')?
 ;
 
 XGuardMLComment returns emachine::Guard:
 	{emachine::Guard}
 	comment=ML_COMMENT
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate= XPredicate (theorem?='theorem')?
 ;
 
 XGuardSLComment returns emachine::Guard:
 	{emachine::Guard}
-	name=XLABEL predicate=STRING (theorem?='theorem')?
+	name=XLABEL predicate= XPredicate (theorem?='theorem')?
 	comment=SL_COMMENT
 ;
 
@@ -285,18 +285,18 @@ XWitness returns emachine::Witness:
 
 XWitnessNoComment returns emachine::Witness:
 	{emachine::Witness}
-	name=XLABEL predicate=STRING
+	name=XLABEL predicate= XPredicate
 ;
 
 XWitnessMLComment returns emachine::Witness:
 	{emachine::Witness}
 	comment=ML_COMMENT
-	name=XLABEL predicate=STRING
+	name=XLABEL predicate= XPredicate
 ;
 
 XWitnessSLComment returns emachine::Witness:
 	{emachine::Witness}
-	name=XLABEL predicate=STRING
+	name=XLABEL predicate= XPredicate
 	comment=SL_COMMENT
 ;
 
@@ -306,18 +306,18 @@ XAction returns emachine::Action:
 
 XActionNoComment returns emachine::Action:
 	{emachine::Action}
-	name=XLABEL action=STRING
+	name=XLABEL action= XPredicate
 ;
 
 XActionMLComment returns emachine::Action:
 	{emachine::Action}
 	comment=ML_COMMENT
-	name=XLABEL action=STRING
+	name=XLABEL action= XPredicate
 ;
 
 XActionSLComment returns emachine::Action:
 	{emachine::Action}
-	name=XLABEL action=STRING
+	name=XLABEL action= XPredicate
 	comment=SL_COMMENT
 ;
 XPredicate returns ecore::EString:

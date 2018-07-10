@@ -774,19 +774,20 @@ ruleXInvariantNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXInvariantNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXInvariantNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXInvariantNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXInvariantNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -868,19 +869,20 @@ ruleXInvariantMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_3_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_3_0, grammarAccess.getXInvariantMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXInvariantMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0());
 				}
+				lv_predicate_3_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXInvariantMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXInvariantMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_3_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -944,19 +946,20 @@ ruleXInvariantSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXInvariantSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXInvariantSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXInvariantSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXInvariantSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1065,19 +1068,20 @@ ruleXVariantNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_expression_1_0=RULE_STRING
 				{
-					newLeafNode(lv_expression_1_0, grammarAccess.getXVariantNoCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getXVariantNoCommentAccess().getExpressionXPredicateParserRuleCall_1_0());
 				}
+				lv_expression_1_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXVariantNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXVariantNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"expression",
 						lv_expression_1_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1127,19 +1131,20 @@ ruleXVariantMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_expression_2_0=RULE_STRING
 				{
-					newLeafNode(lv_expression_2_0, grammarAccess.getXVariantMLCommentAccess().getExpressionSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXVariantMLCommentAccess().getExpressionXPredicateParserRuleCall_2_0());
 				}
+				lv_expression_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXVariantMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXVariantMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"expression",
 						lv_expression_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -1171,19 +1176,20 @@ ruleXVariantSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_expression_1_0=RULE_STRING
 				{
-					newLeafNode(lv_expression_1_0, grammarAccess.getXVariantSLCommentAccess().getExpressionSTRINGTerminalRuleCall_1_0());
+					newCompositeNode(grammarAccess.getXVariantSLCommentAccess().getExpressionXPredicateParserRuleCall_1_0());
 				}
+				lv_expression_1_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXVariantSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXVariantSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"expression",
 						lv_expression_1_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -2793,19 +2799,20 @@ ruleXGuardNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXGuardNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXGuardNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXGuardNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXGuardNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -2887,19 +2894,20 @@ ruleXGuardMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_3_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_3_0, grammarAccess.getXGuardMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXGuardMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0());
 				}
+				lv_predicate_3_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXGuardMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXGuardMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_3_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -2963,19 +2971,20 @@ ruleXGuardSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXGuardSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXGuardSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXGuardSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXGuardSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3102,19 +3111,20 @@ ruleXWitnessNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXWitnessNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXWitnessNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXWitnessNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXWitnessNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3182,19 +3192,20 @@ ruleXWitnessMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_3_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_3_0, grammarAccess.getXWitnessMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXWitnessMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0());
 				}
+				lv_predicate_3_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXWitnessMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXWitnessMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_3_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3244,19 +3255,20 @@ ruleXWitnessSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_predicate_2_0=RULE_STRING
 				{
-					newLeafNode(lv_predicate_2_0, grammarAccess.getXWitnessSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXWitnessSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0());
 				}
+				lv_predicate_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXWitnessSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXWitnessSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"predicate",
 						lv_predicate_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3369,19 +3381,20 @@ ruleXActionNoComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_action_2_0=RULE_STRING
 				{
-					newLeafNode(lv_action_2_0, grammarAccess.getXActionNoCommentAccess().getActionSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXActionNoCommentAccess().getActionXPredicateParserRuleCall_2_0());
 				}
+				lv_action_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXActionNoCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXActionNoCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"action",
 						lv_action_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3449,19 +3462,20 @@ ruleXActionMLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_action_3_0=RULE_STRING
 				{
-					newLeafNode(lv_action_3_0, grammarAccess.getXActionMLCommentAccess().getActionSTRINGTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXActionMLCommentAccess().getActionXPredicateParserRuleCall_3_0());
 				}
+				lv_action_3_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXActionMLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXActionMLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"action",
 						lv_action_3_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3511,19 +3525,20 @@ ruleXActionSLComment returns [EObject current=null]
 		)
 		(
 			(
-				lv_action_2_0=RULE_STRING
 				{
-					newLeafNode(lv_action_2_0, grammarAccess.getXActionSLCommentAccess().getActionSTRINGTerminalRuleCall_2_0());
+					newCompositeNode(grammarAccess.getXActionSLCommentAccess().getActionXPredicateParserRuleCall_2_0());
 				}
+				lv_action_2_0=ruleXPredicate
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getXActionSLCommentRule());
+						$current = createModelElementForParent(grammarAccess.getXActionSLCommentRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"action",
 						lv_action_2_0,
-						"org.eclipse.xtext.common.Terminals.STRING");
+						"ac.soton.xeventb.xmachine.XMachine.XPredicate");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3546,6 +3561,30 @@ ruleXActionSLComment returns [EObject current=null]
 			)
 		)
 	)
+;
+
+// Entry rule entryRuleXPredicate
+entryRuleXPredicate returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getXPredicateRule()); }
+	iv_ruleXPredicate=ruleXPredicate
+	{ $current=$iv_ruleXPredicate.current.getText(); }
+	EOF;
+
+// Rule XPredicate
+ruleXPredicate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	this_STRING_0=RULE_STRING
+	{
+		$current.merge(this_STRING_0);
+	}
+	{
+		newLeafNode(this_STRING_0, grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall());
+	}
 ;
 
 // Rule XConvergence

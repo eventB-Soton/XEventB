@@ -399,6 +399,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleXPredicate
+entryRuleXPredicate
+:
+{ before(grammarAccess.getXPredicateRule()); }
+	 ruleXPredicate
+{ after(grammarAccess.getXPredicateRule()); } 
+	 EOF 
+;
+
+// Rule XPredicate
+ruleXPredicate 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall()); }
+		RULE_STRING
+		{ after(grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__XContext__CommentAlternatives_1_0
 	@init {
 		int stackSize = keepStackSize();
@@ -2171,9 +2196,9 @@ rule__XAxiomNoComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXAxiomNoCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXAxiomNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXAxiomNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -2235,9 +2260,9 @@ rule__XAxiomMLComment__PredicateAssignment_3
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXAxiomMLCommentAccess().getPredicateSTRINGTerminalRuleCall_3_0()); }
+		{ before(grammarAccess.getXAxiomMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXAxiomMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0()); }
 	)
 ;
 finally {
@@ -2284,9 +2309,9 @@ rule__XAxiomSLComment__PredicateAssignment_2
 	}
 :
 	(
-		{ before(grammarAccess.getXAxiomSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
-		RULE_STRING
-		{ after(grammarAccess.getXAxiomSLCommentAccess().getPredicateSTRINGTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXAxiomSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
+		ruleXPredicate
+		{ after(grammarAccess.getXAxiomSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0()); }
 	)
 ;
 finally {
