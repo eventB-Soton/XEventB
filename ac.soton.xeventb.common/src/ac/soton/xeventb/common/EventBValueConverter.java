@@ -208,39 +208,22 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 		};
 	}
 	
-	//----test
+	/**
+	 * Returns the value converter for XPredicate.
+	 * 
+	 * @return the value converter for XPredicate.
+	 */
 	@ValueConverter(rule = "XPredicate")
     public IValueConverter<String> XPredicate() {
 		return new IValueConverter<String>() {
 
-//			/**
-//			 * Convert XLabel to string.
-//			 * 
-//			 * @param string
-//			 *            the XLabel string
-//			 * @param node
-//			 *            the node in the semantics tree.
-//			 * @return the comment by stripping the leading "@" and the ending
-//			 *         ":".
-//			 * @see IValueConverter#toValue(String, INode)
-//			 * @precondition the input string must be not <code>null</code>. 
-//			 *               have "@" as its prefix and ended with a ":".
-//			 */
-//			@Override
-//			public String toValue(String string, INode node)
-//					throws ValueConverterException {
-//				assert string.startsWith("@");
-//				assert string.endsWith(":");
-//				return string.substring(1, string.length()-1);
-//			}
 
 			/**
 			 * Convert string to XLabel.
 			 * 
 			 * @param value
-			 *            the label
-			 * @return the XComment by prefixing "@" and suffixing ":" to the
-			 *         input value.
+			 *            the predicate
+			 * @return the predicate value by removing the double qoutes
 			 * @see IValueConverter#toString(Object)
 			 */
 	
