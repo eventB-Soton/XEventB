@@ -52,152 +52,32 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		else if (epackage == MachinePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case MachinePackage.ACTION:
-				if (rule == grammarAccess.getXActionMLCommentRule()) {
-					sequence_XActionMLComment(context, (org.eventb.emf.core.machine.Action) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXActionRule()) {
-					sequence_XActionMLComment_XActionNoComment_XActionSLComment(context, (org.eventb.emf.core.machine.Action) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXActionNoCommentRule()) {
-					sequence_XActionNoComment(context, (org.eventb.emf.core.machine.Action) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXActionSLCommentRule()) {
-					sequence_XActionSLComment(context, (org.eventb.emf.core.machine.Action) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XAction(context, (org.eventb.emf.core.machine.Action) semanticObject); 
+				return; 
 			case MachinePackage.EVENT:
-				if (rule == grammarAccess.getXEventMLCommentRule()) {
-					sequence_XEventMLComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventRule()) {
-					sequence_XEventMLComment_XEventNoComment_XEventSLComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventNoCommentRule()) {
-					sequence_XEventNoComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXEventSLCommentRule()) {
-					sequence_XEventSLComment(context, (Event) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XEvent(context, (Event) semanticObject); 
+				return; 
 			case MachinePackage.GUARD:
-				if (rule == grammarAccess.getXGuardMLCommentRule()) {
-					sequence_XGuardMLComment(context, (Guard) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXGuardRule()) {
-					sequence_XGuardMLComment_XGuardNoComment_XGuardSLComment(context, (Guard) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXGuardNoCommentRule()) {
-					sequence_XGuardNoComment(context, (Guard) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXGuardSLCommentRule()) {
-					sequence_XGuardSLComment(context, (Guard) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XGuard(context, (Guard) semanticObject); 
+				return; 
 			case MachinePackage.INVARIANT:
-				if (rule == grammarAccess.getXInvariantMLCommentRule()) {
-					sequence_XInvariantMLComment(context, (Invariant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXInvariantRule()) {
-					sequence_XInvariantMLComment_XInvariantNoComment_XInvariantSLComment(context, (Invariant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXInvariantNoCommentRule()) {
-					sequence_XInvariantNoComment(context, (Invariant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXInvariantSLCommentRule()) {
-					sequence_XInvariantSLComment(context, (Invariant) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XInvariant(context, (Invariant) semanticObject); 
+				return; 
 			case MachinePackage.MACHINE:
 				sequence_Machine(context, (Machine) semanticObject); 
 				return; 
 			case MachinePackage.PARAMETER:
-				if (rule == grammarAccess.getXParameterMLCommentRule()) {
-					sequence_XParameterMLComment(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXParameterRule()) {
-					sequence_XParameterMLComment_XParameterNoComment_XParameterSLComment(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXParameterNoCommentRule()) {
-					sequence_XParameterNoComment(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXParameterSLCommentRule()) {
-					sequence_XParameterSLComment(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XParameter(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
+				return; 
 			case MachinePackage.VARIABLE:
-				if (rule == grammarAccess.getXVariableMLCommentRule()) {
-					sequence_XVariableMLComment(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariableRule()) {
-					sequence_XVariableMLComment_XVariableNoComment_XVariableSLComment(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariableNoCommentRule()) {
-					sequence_XVariableNoComment(context, (Variable) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariableSLCommentRule()) {
-					sequence_XVariableSLComment(context, (Variable) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XVariable(context, (Variable) semanticObject); 
+				return; 
 			case MachinePackage.VARIANT:
-				if (rule == grammarAccess.getXVariantMLCommentRule()) {
-					sequence_XVariantMLComment(context, (Variant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariantRule()) {
-					sequence_XVariantMLComment_XVariantNoComment_XVariantSLComment(context, (Variant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariantNoCommentRule()) {
-					sequence_XVariantNoComment(context, (Variant) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXVariantSLCommentRule()) {
-					sequence_XVariantSLComment(context, (Variant) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XVariant(context, (Variant) semanticObject); 
+				return; 
 			case MachinePackage.WITNESS:
-				if (rule == grammarAccess.getXWitnessMLCommentRule()) {
-					sequence_XWitnessMLComment(context, (Witness) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXWitnessRule()) {
-					sequence_XWitnessMLComment_XWitnessNoComment_XWitnessSLComment(context, (Witness) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXWitnessNoCommentRule()) {
-					sequence_XWitnessNoComment(context, (Witness) semanticObject); 
-					return; 
-				}
-				else if (rule == grammarAccess.getXWitnessSLCommentRule()) {
-					sequence_XWitnessSLComment(context, (Witness) semanticObject); 
-					return; 
-				}
-				else break;
+				sequence_XWitness(context, (Witness) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
@@ -251,48 +131,12 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     XActionMLComment returns Action
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL action=XPredicate)
-	 */
-	protected void sequence_XActionMLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BACTION__ACTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BACTION__ACTION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXActionMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXActionMLCommentAccess().getNameXLABELTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionMLCommentAccess().getActionXPredicateParserRuleCall_3_0(), semanticObject.getAction());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     XAction returns Action
-	 *
-	 * Constraint:
-	 *     ((name=XLABEL action=XPredicate) | (comment=ML_COMMENT name=XLABEL action=XPredicate) | (name=XLABEL action=XPredicate comment=SL_COMMENT))
-	 */
-	protected void sequence_XActionMLComment_XActionNoComment_XActionSLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XActionNoComment returns Action
 	 *
 	 * Constraint:
 	 *     (name=XLABEL action=XPredicate)
 	 */
-	protected void sequence_XActionNoComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
+	protected void sequence_XAction(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
@@ -300,56 +144,9 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BACTION__ACTION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXActionNoCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionNoCommentAccess().getActionXPredicateParserRuleCall_2_0(), semanticObject.getAction());
+		feeder.accept(grammarAccess.getXActionAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getXActionAccess().getActionXPredicateParserRuleCall_2_0(), semanticObject.getAction());
 		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XActionSLComment returns Action
-	 *
-	 * Constraint:
-	 *     (name=XLABEL action=XPredicate comment=SL_COMMENT)
-	 */
-	protected void sequence_XActionSLComment(ISerializationContext context, org.eventb.emf.core.machine.Action semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BACTION__ACTION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BACTION__ACTION));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXActionSLCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXActionSLCommentAccess().getActionXPredicateParserRuleCall_2_0(), semanticObject.getAction());
-		feeder.accept(grammarAccess.getXActionSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_3_0(), semanticObject.getComment());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEventMLComment returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         comment=ML_COMMENT 
-	 *         name=ID 
-	 *         (extended?='extended' | convergence=XConvergence)* 
-	 *         extensions+=EventSync* 
-	 *         refines+=[Event|ID]* 
-	 *         (
-	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *         )?
-	 *     )
-	 */
-	protected void sequence_XEventMLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -359,54 +156,6 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
-	 *         (
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             extensions+=EventSync* 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         ) | 
-	 *         (
-	 *             comment=ML_COMMENT 
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             extensions+=EventSync* 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         ) | 
-	 *         (
-	 *             name=ID 
-	 *             (extended?='extended' | convergence=XConvergence)* 
-	 *             comment=SL_COMMENT 
-	 *             extensions+=EventSync* 
-	 *             refines+=[Event|ID]* 
-	 *             (
-	 *                 (witnesses+=XWitness* actions+=XAction+) | 
-	 *                 (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *                 (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *             )?
-	 *         )
-	 *     )
-	 */
-	protected void sequence_XEventMLComment_XEventNoComment_XEventSLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEventNoComment returns Event
-	 *
-	 * Constraint:
-	 *     (
 	 *         name=ID 
 	 *         (extended?='extended' | convergence=XConvergence)* 
 	 *         extensions+=EventSync* 
@@ -418,42 +167,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         )?
 	 *     )
 	 */
-	protected void sequence_XEventNoComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XEventSLComment returns Event
-	 *
-	 * Constraint:
-	 *     (
-	 *         name=ID 
-	 *         (extended?='extended' | convergence=XConvergence)* 
-	 *         comment=SL_COMMENT 
-	 *         extensions+=EventSync* 
-	 *         refines+=[Event|ID]* 
-	 *         (
-	 *             (witnesses+=XWitness* actions+=XAction+) | 
-	 *             (guards+=XGuard+ witnesses+=XWitness* actions+=XAction*) | 
-	 *             (parameters+=XParameter+ guards+=XGuard+ witnesses+=XWitness* actions+=XAction*)
-	 *         )?
-	 *     )
-	 */
-	protected void sequence_XEventSLComment(ISerializationContext context, Event semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XGuardMLComment returns Guard
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?)
-	 */
-	protected void sequence_XGuardMLComment(ISerializationContext context, Guard semanticObject) {
+	protected void sequence_XEvent(ISerializationContext context, Event semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -463,49 +177,9 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XGuard returns Guard
 	 *
 	 * Constraint:
-	 *     (
-	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
-	 *         (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
-	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
-	 *     )
-	 */
-	protected void sequence_XGuardMLComment_XGuardNoComment_XGuardSLComment(ISerializationContext context, Guard semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XGuardNoComment returns Guard
-	 *
-	 * Constraint:
 	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
-	protected void sequence_XGuardNoComment(ISerializationContext context, Guard semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XGuardSLComment returns Guard
-	 *
-	 * Constraint:
-	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
-	 */
-	protected void sequence_XGuardSLComment(ISerializationContext context, Guard semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XInvariantMLComment returns Invariant
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?)
-	 */
-	protected void sequence_XInvariantMLComment(ISerializationContext context, Invariant semanticObject) {
+	protected void sequence_XGuard(ISerializationContext context, Guard semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -515,59 +189,10 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XInvariant returns Invariant
 	 *
 	 * Constraint:
-	 *     (
-	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
-	 *         (comment=ML_COMMENT name=XLABEL predicate=XPredicate theorem?='theorem'?) | 
-	 *         (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
-	 *     )
-	 */
-	protected void sequence_XInvariantMLComment_XInvariantNoComment_XInvariantSLComment(ISerializationContext context, Invariant semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XInvariantNoComment returns Invariant
-	 *
-	 * Constraint:
 	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'?)
 	 */
-	protected void sequence_XInvariantNoComment(ISerializationContext context, Invariant semanticObject) {
+	protected void sequence_XInvariant(ISerializationContext context, Invariant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XInvariantSLComment returns Invariant
-	 *
-	 * Constraint:
-	 *     (name=XLABEL predicate=XPredicate theorem?='theorem'? comment=SL_COMMENT)
-	 */
-	protected void sequence_XInvariantSLComment(ISerializationContext context, Invariant semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XParameterMLComment returns Parameter
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=ID)
-	 */
-	protected void sequence_XParameterMLComment(ISerializationContext context, org.eventb.emf.core.machine.Parameter semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXParameterMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXParameterMLCommentAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.finish();
 	}
 	
 	
@@ -576,69 +201,15 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XParameter returns Parameter
 	 *
 	 * Constraint:
-	 *     (name=ID | (comment=ML_COMMENT name=ID) | (name=ID comment=SL_COMMENT))
-	 */
-	protected void sequence_XParameterMLComment_XParameterNoComment_XParameterSLComment(ISerializationContext context, org.eventb.emf.core.machine.Parameter semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XParameterNoComment returns Parameter
-	 *
-	 * Constraint:
 	 *     name=ID
 	 */
-	protected void sequence_XParameterNoComment(ISerializationContext context, org.eventb.emf.core.machine.Parameter semanticObject) {
+	protected void sequence_XParameter(ISerializationContext context, org.eventb.emf.core.machine.Parameter semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXParameterNoCommentAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XParameterSLComment returns Parameter
-	 *
-	 * Constraint:
-	 *     (name=ID comment=SL_COMMENT)
-	 */
-	protected void sequence_XParameterSLComment(ISerializationContext context, org.eventb.emf.core.machine.Parameter semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXParameterSLCommentAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXParameterSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_2_0(), semanticObject.getComment());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariableMLComment returns Variable
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=ID)
-	 */
-	protected void sequence_XVariableMLComment(ISerializationContext context, Variable semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariableMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXVariableMLCommentAccess().getNameIDTerminalRuleCall_2_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getXParameterAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -648,69 +219,15 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariable returns Variable
 	 *
 	 * Constraint:
-	 *     (name=ID | (comment=ML_COMMENT name=ID) | (name=ID comment=SL_COMMENT))
-	 */
-	protected void sequence_XVariableMLComment_XVariableNoComment_XVariableSLComment(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariableNoComment returns Variable
-	 *
-	 * Constraint:
 	 *     name=ID
 	 */
-	protected void sequence_XVariableNoComment(ISerializationContext context, Variable semanticObject) {
+	protected void sequence_XVariable(ISerializationContext context, Variable semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariableNoCommentAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariableSLComment returns Variable
-	 *
-	 * Constraint:
-	 *     (name=ID comment=SL_COMMENT)
-	 */
-	protected void sequence_XVariableSLComment(ISerializationContext context, Variable semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariableSLCommentAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXVariableSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_2_0(), semanticObject.getComment());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariantMLComment returns Variant
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT expression=XPredicate)
-	 */
-	protected void sequence_XVariantMLComment(ISerializationContext context, Variant semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariantMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXVariantMLCommentAccess().getExpressionXPredicateParserRuleCall_2_0(), semanticObject.getExpression());
+		feeder.accept(grammarAccess.getXVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
 		feeder.finish();
 	}
 	
@@ -720,72 +237,15 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariant returns Variant
 	 *
 	 * Constraint:
-	 *     (expression=XPredicate | (comment=ML_COMMENT expression=XPredicate) | (expression=XPredicate comment=SL_COMMENT))
-	 */
-	protected void sequence_XVariantMLComment_XVariantNoComment_XVariantSLComment(ISerializationContext context, Variant semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariantNoComment returns Variant
-	 *
-	 * Constraint:
 	 *     expression=XPredicate
 	 */
-	protected void sequence_XVariantNoComment(ISerializationContext context, Variant semanticObject) {
+	protected void sequence_XVariant(ISerializationContext context, Variant semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariantNoCommentAccess().getExpressionXPredicateParserRuleCall_1_0(), semanticObject.getExpression());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XVariantSLComment returns Variant
-	 *
-	 * Constraint:
-	 *     (expression=XPredicate comment=SL_COMMENT)
-	 */
-	protected void sequence_XVariantSLComment(ISerializationContext context, Variant semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariantSLCommentAccess().getExpressionXPredicateParserRuleCall_1_0(), semanticObject.getExpression());
-		feeder.accept(grammarAccess.getXVariantSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_2_0(), semanticObject.getComment());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XWitnessMLComment returns Witness
-	 *
-	 * Constraint:
-	 *     (comment=ML_COMMENT name=XLABEL predicate=XPredicate)
-	 */
-	protected void sequence_XWitnessMLComment(ISerializationContext context, Witness semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BPREDICATE__PREDICATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BPREDICATE__PREDICATE));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getCommentML_COMMENTTerminalRuleCall_1_0(), semanticObject.getComment());
-		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getNameXLABELTerminalRuleCall_2_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessMLCommentAccess().getPredicateXPredicateParserRuleCall_3_0(), semanticObject.getPredicate());
+		feeder.accept(grammarAccess.getXVariantAccess().getExpressionXPredicateParserRuleCall_1_0(), semanticObject.getExpression());
 		feeder.finish();
 	}
 	
@@ -795,21 +255,9 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XWitness returns Witness
 	 *
 	 * Constraint:
-	 *     ((name=XLABEL predicate=XPredicate) | (comment=ML_COMMENT name=XLABEL predicate=XPredicate) | (name=XLABEL predicate=XPredicate comment=SL_COMMENT))
-	 */
-	protected void sequence_XWitnessMLComment_XWitnessNoComment_XWitnessSLComment(ISerializationContext context, Witness semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XWitnessNoComment returns Witness
-	 *
-	 * Constraint:
 	 *     (name=XLABEL predicate=XPredicate)
 	 */
-	protected void sequence_XWitnessNoComment(ISerializationContext context, Witness semanticObject) {
+	protected void sequence_XWitness(ISerializationContext context, Witness semanticObject) {
 		if (errorAcceptor != null) {
 			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
@@ -817,32 +265,8 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BPREDICATE__PREDICATE));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXWitnessNoCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessNoCommentAccess().getPredicateXPredicateParserRuleCall_2_0(), semanticObject.getPredicate());
-		feeder.finish();
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XWitnessSLComment returns Witness
-	 *
-	 * Constraint:
-	 *     (name=XLABEL predicate=XPredicate comment=SL_COMMENT)
-	 */
-	protected void sequence_XWitnessSLComment(ISerializationContext context, Witness semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BPREDICATE__PREDICATE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BPREDICATE__PREDICATE));
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BCOMMENTED__COMMENT));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getPredicateXPredicateParserRuleCall_2_0(), semanticObject.getPredicate());
-		feeder.accept(grammarAccess.getXWitnessSLCommentAccess().getCommentSL_COMMENTTerminalRuleCall_3_0(), semanticObject.getComment());
+		feeder.accept(grammarAccess.getXWitnessAccess().getNameXLABELTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getXWitnessAccess().getPredicateXPredicateParserRuleCall_2_0(), semanticObject.getPredicate());
 		feeder.finish();
 	}
 	

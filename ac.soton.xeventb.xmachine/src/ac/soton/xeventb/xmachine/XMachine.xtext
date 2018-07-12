@@ -27,7 +27,6 @@ import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"
 Machine returns emachine::Machine:
 	{emachine::Machine}
    (comment=(ML_COMMENT|SL_COMMENT))?
-	//('id' extensionId = ID)// need to find a way to add it programmatically
 	'machine' name=ID
 	( extensions+= MIncludes*)
     ('refines' refines+=[emachine::Machine])?
@@ -39,63 +38,25 @@ Machine returns emachine::Machine:
 	('end')
 ;
 
-//MIncludes returns einclusion::MachineInclusion:
-//	{einclusion::MachineInclusion}
-//	(extensionId = 'includes')
-//	(abstractMachine = [emachine::Machine|QualifiedName])//(abstractMachine = [emachine::Machine])
-//	('to' concreteMachine = [emachine::Machine])? 
-//    ('as' prefixes += ID (prefixes += ID)*)? 
-//;
 MIncludes returns einclusion::MachineInclusion:
 	{einclusion::MachineInclusion}
-//	(extensionId = 'includes')
-	('includes'abstractMachine = [emachine::Machine|QualifiedName])//(abstractMachine = [emachine::Machine])
+	('includes'abstractMachine = [emachine::Machine|QualifiedName])
 	('to' concreteMachine = [emachine::Machine])? 
     ('as' prefixes += ID (prefixes += ID)*)? 
 ;
+
 QualifiedName:
 	ID('.'ID)?
 ;
+
 XVariable returns emachine::Variable:
-	XVariableNoComment  | XVariableMLComment | XVariableSLComment
-;
-
-XVariableNoComment returns emachine::Variable:
 	{emachine::Variable}
 	name=ID
-;
-
-XVariableMLComment returns emachine::Variable:
-	{emachine::Variable}
-	comment=ML_COMMENT
-	name=ID
-;
-
-XVariableSLComment returns emachine::Variable:
-	{emachine::Variable}
-	name=ID
-	comment=SL_COMMENT
 ;
 
 XInvariant returns emachine::Invariant:
-	XInvariantNoComment | XInvariantMLComment | XInvariantSLComment
-;
-
-XInvariantNoComment returns emachine::Invariant:
 	{emachine::Invariant}
 	name=XLABEL predicate=XPredicate(theorem?='theorem')?	
-;
-
-XInvariantMLComment returns emachine::Invariant:
-	{emachine::Invariant}
-	comment=ML_COMMENT
-	name=XLABEL predicate= XPredicate (theorem?='theorem')?	
-;
-
-XInvariantSLComment returns emachine::Invariant:
-	{emachine::Invariant}
-	name=XLABEL predicate = XPredicate (theorem?='theorem')?	
-	comment=SL_COMMENT
 ;
 
 terminal XLABEL returns ecore::EString:
@@ -103,30 +64,11 @@ terminal XLABEL returns ecore::EString:
 ;
 
 XVariant returns emachine::Variant:
-	XVariantNoComment | XVariantMLComment | XVariantSLComment
-;
-
-XVariantNoComment returns emachine::Variant:
 	{emachine::Variant}
 	expression= XPredicate
 ;
 
-XVariantMLComment returns emachine::Variant:
-	{emachine::Variant}
-	comment=ML_COMMENT
-	expression= XPredicate
-;
-
-XVariantSLComment returns emachine::Variant:
-	{emachine::Variant}
-	expression= XPredicate
-	comment=SL_COMMENT
-;
-  XEvent returns emachine::Event:
-	XEventNoComment | XEventMLComment | XEventSLComment
-;
-
-XEventNoComment returns emachine::Event:
+XEvent returns emachine::Event:
 	{emachine::Event}
 	name=ID
 	(
@@ -158,168 +100,35 @@ XEventNoComment returns emachine::Event:
 	'end'
 ;
 
-XEventMLComment returns emachine::Event:
-	{emachine::Event}
-	comment=ML_COMMENT
-	name=ID
-	(
-		(extended?='extended')? &
-		(convergence=XConvergence)?
-	)
-	( extensions+= EventSync*)
-	('refines' refines+=[emachine::Event]+)?
-	
-	(
-		('with' witnesses+=XWitness+)?
-		'begin'
-			actions+=XAction+
-		|	
-		'when'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-		|
-		'any'
-			parameters+=XParameter+
-		'where'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-	)?	
-	'end'
-;
-
-XEventSLComment returns emachine::Event:
-	{emachine::Event}
-	name=ID
-	(
-		(extended?='extended')? &
-		(convergence=XConvergence)?
-		
-	)
-	comment=SL_COMMENT
-	( extensions+= EventSync*)
-	('refines' refines+=[emachine::Event]+)?
-	(
-		('with' witnesses+=XWitness+)?
-		'begin'
-			actions+=XAction+
-		|	
-		'when'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-		|
-		'any'
-			parameters+=XParameter+
-		'where'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-	)?	
-	'end'
-;
-
-//EventSync returns einclusion::EventSynchronisation:
-//	{einclusion::EventSynchronisation}
-//	(extensionId = 'synchronises')
-//	((prefix=ID'.')?synchronisedEvent = [emachine::Event])
-//;
 EventSync returns einclusion::EventSynchronisation:
 	{einclusion::EventSynchronisation}
 	('synchronises' (prefix=ID'.')?synchronisedEvent = [emachine::Event])
 ;
 
 enum XConvergence returns emachine::Convergence:
-				ordinary = 'ordinary' | convergent = 'convergent' | anticipated = 'anticipated';
+				ordinary = 'ordinary' | convergent = 'convergent' | anticipated = 'anticipated'
+;
 
 XParameter returns emachine::Parameter:
-	XParameterNoComment | XParameterMLComment | XParameterSLComment
-;
-
-XParameterNoComment returns emachine::Parameter:
 	{emachine::Parameter}
 	name=ID
-;
-
-XParameterMLComment returns emachine::Parameter:
-	{emachine::Parameter}
-	comment=ML_COMMENT
-	name=ID
-;
-
-XParameterSLComment returns emachine::Parameter:
-	{emachine::Parameter}
-	name=ID
-	comment=SL_COMMENT
 ;
 
 XGuard returns emachine::Guard:
-	XGuardNoComment | XGuardMLComment | XGuardSLComment
-;
-
-XGuardNoComment returns emachine::Guard:
 	{emachine::Guard}
 	name=XLABEL predicate= XPredicate (theorem?='theorem')?
-;
-
-XGuardMLComment returns emachine::Guard:
-	{emachine::Guard}
-	comment=ML_COMMENT
-	name=XLABEL predicate= XPredicate (theorem?='theorem')?
-;
-
-XGuardSLComment returns emachine::Guard:
-	{emachine::Guard}
-	name=XLABEL predicate= XPredicate (theorem?='theorem')?
-	comment=SL_COMMENT
 ;
 
 XWitness returns emachine::Witness:
-	XWitnessNoComment | XWitnessMLComment | XWitnessSLComment
-;
-
-XWitnessNoComment returns emachine::Witness:
 	{emachine::Witness}
 	name=XLABEL predicate= XPredicate
-;
-
-XWitnessMLComment returns emachine::Witness:
-	{emachine::Witness}
-	comment=ML_COMMENT
-	name=XLABEL predicate= XPredicate
-;
-
-XWitnessSLComment returns emachine::Witness:
-	{emachine::Witness}
-	name=XLABEL predicate= XPredicate
-	comment=SL_COMMENT
 ;
 
 XAction returns emachine::Action:
-	XActionNoComment | XActionMLComment | XActionSLComment
-;
-
-XActionNoComment returns emachine::Action:
 	{emachine::Action}
 	name=XLABEL action= XPredicate
 ;
 
-XActionMLComment returns emachine::Action:
-	{emachine::Action}
-	comment=ML_COMMENT
-	name=XLABEL action= XPredicate
-;
-
-XActionSLComment returns emachine::Action:
-	{emachine::Action}
-	name=XLABEL action= XPredicate
-	comment=SL_COMMENT
-;
 XPredicate returns ecore::EString:
 	STRING
 ;
