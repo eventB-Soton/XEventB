@@ -213,10 +213,5 @@ public abstract class AbstractXContextRuntimeModule extends DefaultRuntimeModule
 	public Class<? extends IValueConverterService> bindIValueConverterService() {
 		return Ecore2XtextTerminalConverters.class;
 	}
-	
-	// contributed by org.eclipse.xtext.generator.formatting.FormatterFragment
-	public Class<? extends IFormatter> bindIFormatter() {
-		return ac.soton.xeventb.xcontext.formatting.XContextFormatter.class;
-	}
-	
+		
 }
