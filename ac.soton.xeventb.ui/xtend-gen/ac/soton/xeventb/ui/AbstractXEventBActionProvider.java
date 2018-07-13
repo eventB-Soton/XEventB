@@ -35,7 +35,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 /**
  * Abstract implementation for action provider for XEvent-B element.
  * 
- * @author htson
+ * @author htson, dd4g12
  * @version 1.0
  * @since 1.0
  */
@@ -55,6 +55,7 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
     super.fillActionBars(actionBars);
     final ICommonActionExtensionSite site = this.getActionSite();
     actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, this.getOpenAction(site));
+    actionBars.setGlobalActionHandler(ICommonMenuConstants.GROUP_EDIT, this.getDeleteAction(site));
   }
   
   /**
@@ -77,6 +78,7 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
     Separator _separator = new Separator(ICommonMenuConstants.GROUP_NEW);
     menu.add(_separator);
     menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, this.getOpenAction(site));
+    menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, this.getDeleteAction(site));
   }
   
   /**
@@ -111,6 +113,32 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
               throw Exceptions.sneakyThrow(_t);
             }
           }
+        }
+      }
+    };
+    return doubleClickAction;
+  }
+  
+  /**
+   * Provides a delete action for IXEventBNavigatorObject
+   * 
+   * @param site
+   *          The information for the action provider
+   * @return A delete action
+   */
+  public Action getDeleteAction(final ICommonActionExtensionSite site) {
+    final Action doubleClickAction = new Action("Delete") {
+      @Override
+      public void run() {
+        try {
+          final ISelection selection = site.getStructuredViewer().getSelection();
+          final Object obj = ((IStructuredSelection) selection).getFirstElement();
+          if ((obj instanceof IXEventBNavigatorObject)) {
+            final IFile resource = ((IXEventBNavigatorObject)obj).getResource();
+            resource.delete(true, null);
+          }
+        } catch (Throwable _e) {
+          throw Exceptions.sneakyThrow(_e);
         }
       }
     };
