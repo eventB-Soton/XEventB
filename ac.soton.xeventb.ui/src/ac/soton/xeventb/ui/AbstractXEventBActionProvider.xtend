@@ -24,14 +24,13 @@ import org.eclipse.ui.ide.IDE
 import org.eclipse.ui.navigator.CommonActionProvider
 import org.eclipse.ui.navigator.ICommonActionExtensionSite
 import org.eclipse.ui.part.FileEditorInput
-
 import static org.eclipse.ui.navigator.ICommonActionConstants.OPEN
+import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_EDIT
 import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_NEW
 import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_OPEN
 
 
-
-import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_EDIT
+import org.eclipse.core.resources.ResourcesPlugin
 
 /**
  * Abstract implementation for action provider for XEvent-B element.
@@ -41,7 +40,7 @@ import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_EDIT
  * @since 1.0 
  */
 class AbstractXEventBActionProvider extends CommonActionProvider {
-	
+
 	/**
 	 * Adds the following to the input action bars.
 	 * <ul>
@@ -57,11 +56,8 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 		// forward doubleClick to doubleClickAction
 		actionBars.setGlobalActionHandler(OPEN, getOpenAction(site));
 		// TODO Add other actions
-	
-      
-      actionBars.setGlobalActionHandler(GROUP_EDIT, getDeleteAction(site) );
+         actionBars.setGlobalActionHandler(GROUP_EDIT, getDeleteAction(site) );
 
-     
  
 	}
 	
@@ -82,14 +78,10 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 		super.fillContextMenu(menu);
 		val ICommonActionExtensionSite site = getActionSite();
 		menu.add(new Separator(GROUP_NEW));
-//		menu.appendToGroup(GROUP_NEW, getNewAction());
+
 		menu.appendToGroup(GROUP_OPEN, getOpenAction(site));
-//		menu.appendToGroup(GROUP_OPEN_WITH, buildOpenWithMenu());
-//		menu.add(new Separator(GROUP_MODELLING));
-//		menu.appendToGroup(GROUP_MODELLING, getDeleteAction(site));
+        menu.appendToGroup(GROUP_EDIT,getDeleteAction(site))
 
-
-       menu.appendToGroup(GROUP_EDIT,getDeleteAction(site))
 	}
 
 	/**
@@ -107,6 +99,7 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 				val Object obj = (selection as IStructuredSelection)
 						.getFirstElement();
 				if (obj instanceof IXEventBNavigatorObject) {
+			
 					val resource = obj.resource
 					val IEditorDescriptor desc = IDE.getDefaultEditor(resource);
 					try {
@@ -133,6 +126,7 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 	
 	/**
 	 * Provides a delete action for IXEventBNavigatorObject
+	 * Deletes the xtext as well as the corresponding Event-B files
 	 *  
 	 * @param site
 	 *          The information for the action provider 
@@ -147,12 +141,24 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 						.getFirstElement();
 				if (obj instanceof IXEventBNavigatorObject) {
 					val resource = obj.resource		
-					resource.delete(true,null)  //doesn't delete the outside Event-B files  
-					// TODO delete event-b files as well           
+					resource.delete(true,null)  
+					 
+				    // find name and path change .bumx to bum 		  
+				    var name = resource.name
+				    name = name.substring(0,name.length-1)
+				    var path = resource.location
+				   
+				    path = path.removeLastSegments(1)
+				    path = path.addTrailingSeparator.append(name)
+				 
+		           val workspace= ResourcesPlugin.getWorkspace(); 
+		           val ifile= workspace.getRoot().getFileForLocation(path);
+		           ifile.delete(true,null)
+	    
 				}
 			}
 		};
 		return doubleClickAction;
 	}
-		
+	  
 }
