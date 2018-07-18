@@ -141,7 +141,7 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 						.getFirstElement();
 				if (obj instanceof IXEventBNavigatorObject) {
 					val resource = obj.resource		
-					resource.delete(true,null)  
+					//resource.delete(true,null)  
 					 
 				    // find name and path change .bumx to bum 		  
 				    var name = resource.name
@@ -152,8 +152,23 @@ class AbstractXEventBActionProvider extends CommonActionProvider {
 				    path = path.addTrailingSeparator.append(name)
 				 
 		           val workspace= ResourcesPlugin.getWorkspace(); 
+		           
 		           val ifile= workspace.getRoot().getFileForLocation(path);
-		           ifile.delete(true,null)
+		          // ifile.delete(true,null)
+	   
+                  val shell = site.viewSite.getShell();
+                  val msg = "Are you sure you want to delete \"" + resource.name + "\" and its corresponding Event-B files?";
+                  val String[] options = #["Yes to All", "Yes", "No"]
+                  val dialog = new MessageDialog(shell, "Confirm Delete", null, msg , MessageDialog.CONFIRM, options, 0)
+                  val result = dialog.open;
+                  if(result == 0){
+                  	resource.delete(true,null)  //xtext
+                  	ifile.delete(true,null)     //Event-B
+                  }
+                  	
+                  else if (result == 1)
+                  	resource.delete(true,null)   //only xtext
+                 
 	    
 				}
 			}
