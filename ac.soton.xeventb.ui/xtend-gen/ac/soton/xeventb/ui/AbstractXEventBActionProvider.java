@@ -13,12 +13,16 @@ package ac.soton.xeventb.ui;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import ac.soton.xeventb.ui.XEventBUIPlugin;
 import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.ResourcesPlugin;
+import org.eclipse.core.runtime.IPath;
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.Separator;
 import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.jface.viewers.ISelection;
 import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.swt.widgets.Shell;
 import org.eclipse.ui.IActionBars;
 import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
@@ -106,7 +110,6 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
             }
           } catch (final Throwable _t) {
             if (_t instanceof PartInitException) {
-              final PartInitException e = (PartInitException)_t;
               final String errorMsg = "Error opening Editor";
               MessageDialog.openError(null, null, errorMsg);
             } else {
@@ -121,6 +124,7 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
   
   /**
    * Provides a delete action for IXEventBNavigatorObject
+   * Deletes the xtext as well as the corresponding Event-B files
    * 
    * @param site
    *          The information for the action provider
@@ -135,7 +139,30 @@ public class AbstractXEventBActionProvider extends CommonActionProvider {
           final Object obj = ((IStructuredSelection) selection).getFirstElement();
           if ((obj instanceof IXEventBNavigatorObject)) {
             final IFile resource = ((IXEventBNavigatorObject)obj).getResource();
-            resource.delete(true, null);
+            String name = resource.getName();
+            int _length = name.length();
+            int _minus = (_length - 1);
+            name = name.substring(0, _minus);
+            IPath path = resource.getLocation();
+            path = path.removeLastSegments(1);
+            path = path.addTrailingSeparator().append(name);
+            final IWorkspace workspace = ResourcesPlugin.getWorkspace();
+            final IFile ifile = workspace.getRoot().getFileForLocation(path);
+            final Shell shell = site.getViewSite().getShell();
+            String _name = resource.getName();
+            String _plus = ("Are you sure you want to delete \"" + _name);
+            final String msg = (_plus + "\" and its corresponding Event-B files?");
+            final String[] options = { "Yes to All", "Yes", "No" };
+            final MessageDialog dialog = new MessageDialog(shell, "Confirm Delete", null, msg, MessageDialog.CONFIRM, options, 0);
+            final int result = dialog.open();
+            if ((result == 0)) {
+              resource.delete(true, null);
+              ifile.delete(true, null);
+            } else {
+              if ((result == 1)) {
+                resource.delete(true, null);
+              }
+            }
           }
         } catch (Throwable _e) {
           throw Exceptions.sneakyThrow(_e);

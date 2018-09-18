@@ -23,9 +23,7 @@ class XContextProposalProvider extends AbstractXContextProposalProvider {
 		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
 	}
 
-	override complete_STRING(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
-		super.complete_STRING(model, ruleCall, context, acceptor)
+	override complete_XPredicate(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
 	}
-
 }
