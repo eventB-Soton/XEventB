@@ -446,6 +446,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNotASubsetOfKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
 		private final Keyword cSubsetOfOrEqualToKeyword_28 = (Keyword)cAlternatives.eContents().get(28);
 		private final Keyword cNeitherASubsetOfNorEqualToKeyword_29 = (Keyword)cAlternatives.eContents().get(29);
+		private final Keyword cPartitionKeyword_30 = (Keyword)cAlternatives.eContents().get(30);
 		
 		//EVENTB_PREDICATE_SYMBOLS:
 		//	'(' | // Predicate calculus symbols
@@ -472,13 +473,15 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//	'⊂' |
 		//	'⊄' |
 		//	'⊆' |
-		//	'⊈';
+		//	'⊈' |
+		//	'partition' // This is missing from the Rodin D7 deliverable
+		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'(' | // Predicate calculus symbols
 		//')' | '⇔' | '⇒' | '∧' | '&' | '∨' | '¬' | '⊤' | '⊥' | '∀' | '!' | '∃' | '#' | ',' | '·' | '.' | '=' | // Build predicates from expressions
 		//'≠' | '≤' | '<' | '≥' | '>' | '∈' | ':' | // Include this for Rodin keyboard
-		//'∉' | '⊂' | '⊄' | '⊆' | '⊈'
+		//'∉' | '⊂' | '⊄' | '⊆' | '⊈' | 'partition'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'('
@@ -573,6 +576,9 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'⊈'
 		public Keyword getNeitherASubsetOfNorEqualToKeyword_29() { return cNeitherASubsetOfNorEqualToKeyword_29; }
+		
+		//'partition'
+		public Keyword getPartitionKeyword_30() { return cPartitionKeyword_30; }
 	}
 	public class EVENTB_EXPRESSION_SYMBOLSElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.EVENTB_EXPRESSION_SYMBOLS");
@@ -1015,7 +1021,9 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	//	'⊂' |
 	//	'⊄' |
 	//	'⊆' |
-	//	'⊈';
+	//	'⊈' |
+	//	'partition' // This is missing from the Rodin D7 deliverable
+	//;
 	public EVENTB_PREDICATE_SYMBOLSElements getEVENTB_PREDICATE_SYMBOLSAccess() {
 		return pEVENTB_PREDICATE_SYMBOLS;
 	}

@@ -47,4 +47,8 @@ class XMachineProposalProvider extends AbstractXMachineProposalProvider {
 
 	}
 
+	override complete_XPredicate(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+		RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor)
+	}
+
 }

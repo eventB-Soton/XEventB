@@ -867,6 +867,12 @@ ruleEVENTB_PREDICATE_SYMBOLS returns [AntlrDatatypeRuleToken current=new AntlrDa
 			$current.merge(kw);
 			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNeitherASubsetOfNorEqualToKeyword_29());
 		}
+		    |
+		kw='partition'
+		{
+			$current.merge(kw);
+			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getPartitionKeyword_30());
+		}
 	)
 ;
 

@@ -112,7 +112,8 @@ EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
 	'⊂' |
 	'⊄' |
 	'⊆' |
-	'⊈'
+	'⊈' |
+	'partition' // This is missing from the Rodin D7 deliverable
 ;
 
 EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:

@@ -130,8 +130,115 @@ XAction returns emachine::Action:
 ;
 
 XPredicate returns ecore::EString:
-	STRING
+	(
+		EVENTB_IDENTIFIER_KEYWORD |
+		EVENTB_PREDICATE_SYMBOLS |
+		EVENTB_EXPRESSION_SYMBOLS |
+		ID |
+		INT
+	)+ 
 ;
+
+EVENTB_IDENTIFIER_KEYWORD returns ecore::EString:
+	'BOOL' |
+	'FALSE' |
+	'TRUE' |
+	'bool' |
+	'card' |
+	'dom' |
+	'finite' |
+	'id' |
+	'inter' |
+	'max' |
+	'min' |
+	'mod' |
+	'pred' |
+	'prj1' |
+	'prj2' |
+	'ran' |
+	'succ' |
+	'union' |
+	'ℕ1' |
+	'ℕ' |
+	'ℙ1' |
+	'ℙ' |
+	'ℤ'
+;
+
+EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
+	'(' | // Predicate calculus symbols
+	')' |
+	'⇔' | 
+	'⇒' |
+	'∧' | '&' |
+	'∨' |
+	'¬' |
+	'⊤' |
+	'⊥' |
+	'∀' | '!' |
+	'∃' | '#' |
+	',' |
+	'·' | '.' |
+	'=' | // Build predicates from expressions
+	'≠' |
+	'≤' |
+	'<' |
+	'≥' |
+	'>' |
+	'∈' | ':' | // Include this for Rodin keyboard
+	'∉' | 
+	'⊂' |
+	'⊄' |
+	'⊆' |
+	'⊈' |
+	'partition' // This is missing from the Rodin D7 deliverable
+;
+
+EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
+	'↔' | // Symbols for building set of relations
+	'' |
+	'' |
+	'' |
+	'⇸' |
+	'→' |
+	'⤔' |
+	'↣' |
+	'⤀' |
+	'↠' |
+	'⤖' |
+	'{' | // Symbols for manipulating sets
+	'}' |
+	'↦' |
+	'∅' |
+	'∩' |
+	'∪' |
+	'∖' |
+	'×' |
+	'[' | // Symbols for manipulating functions and relations
+	']' |
+	'' |
+	'∘' |
+	';' |
+	'⊗' |
+	'∥' |
+	'∼' |
+	'◁' |
+	'⩤' |
+	'▷' |
+	'⩥' |
+	'λ' | '%' // Symbols for quantified expressions
+	'⋂' |
+	'⋃' |
+	'∣' |
+	'‥' | // Symbols for arithmetic expressions
+	'+' |
+	'−' | '-' |
+	'∗' | '*' |
+	'÷' | '/' | 
+	'^' |
+	'\\' // Allowed for LaTeX combos
+;
+
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;
 

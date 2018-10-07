@@ -22,41 +22,140 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalXMachineParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_XLABEL", "RULE_STRING", "RULE_INT", "RULE_WS", "RULE_ANY_OTHER", "'machine'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'end'", "'includes'", "'to'", "'as'", "'.'", "'theorem'", "'extended'", "'with'", "'begin'", "'when'", "'then'", "'any'", "'where'", "'synchronises'", "'ordinary'", "'convergent'", "'anticipated'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_ID", "RULE_XLABEL", "RULE_INT", "RULE_STRING", "RULE_WS", "RULE_ANY_OTHER", "'machine'", "'refines'", "'sees'", "'variables'", "'invariants'", "'variant'", "'events'", "'end'", "'includes'", "'to'", "'as'", "'.'", "'theorem'", "'extended'", "'with'", "'begin'", "'when'", "'then'", "'any'", "'where'", "'synchronises'", "'BOOL'", "'FALSE'", "'TRUE'", "'bool'", "'card'", "'dom'", "'finite'", "'id'", "'inter'", "'max'", "'min'", "'mod'", "'pred'", "'prj1'", "'prj2'", "'ran'", "'succ'", "'union'", "'\\u21151'", "'\\u2115'", "'\\u21191'", "'\\u2119'", "'\\u2124'", "'('", "')'", "'\\u21D4'", "'\\u21D2'", "'\\u2227'", "'&'", "'\\u2228'", "'\\u00AC'", "'\\u22A4'", "'\\u22A5'", "'\\u2200'", "'!'", "'\\u2203'", "'#'", "','", "'\\u00B7'", "'='", "'\\u2260'", "'\\u2264'", "'<'", "'\\u2265'", "'>'", "'\\u2208'", "':'", "'\\u2209'", "'\\u2282'", "'\\u2284'", "'\\u2286'", "'\\u2288'", "'partition'", "'\\u2194'", "'\\uE100'", "'\\uE101'", "'\\uE102'", "'\\u21F8'", "'\\u2192'", "'\\u2914'", "'\\u21A3'", "'\\u2900'", "'\\u21A0'", "'\\u2916'", "'{'", "'}'", "'\\u21A6'", "'\\u2205'", "'\\u2229'", "'\\u222A'", "'\\u2216'", "'\\u00D7'", "'['", "']'", "'\\uE103'", "'\\u2218'", "';'", "'\\u2297'", "'\\u2225'", "'\\u223C'", "'\\u25C1'", "'\\u2A64'", "'\\u25B7'", "'\\u2A65'", "'\\u03BB'", "'%'", "'\\u22C2'", "'\\u22C3'", "'\\u2223'", "'\\u2025'", "'+'", "'\\u2212'", "'-'", "'\\u2217'", "'*'", "'\\u00F7'", "'/'", "'^'", "'\\\\'", "'ordinary'", "'convergent'", "'anticipated'"
     };
-    public static final int RULE_STRING=8;
-    public static final int RULE_SL_COMMENT=5;
+    public static final int T__50=50;
+    public static final int T__59=59;
+    public static final int T__55=55;
+    public static final int T__56=56;
+    public static final int T__57=57;
+    public static final int T__58=58;
+    public static final int T__51=51;
+    public static final int T__52=52;
+    public static final int T__53=53;
+    public static final int T__54=54;
+    public static final int T__133=133;
+    public static final int T__132=132;
+    public static final int T__60=60;
+    public static final int T__61=61;
+    public static final int T__134=134;
+    public static final int RULE_ID=6;
+    public static final int T__131=131;
+    public static final int T__130=130;
+    public static final int RULE_INT=8;
+    public static final int T__66=66;
+    public static final int RULE_ML_COMMENT=4;
+    public static final int T__67=67;
+    public static final int T__129=129;
+    public static final int T__68=68;
+    public static final int T__69=69;
+    public static final int T__62=62;
+    public static final int T__126=126;
+    public static final int T__63=63;
+    public static final int T__125=125;
+    public static final int T__64=64;
+    public static final int T__128=128;
+    public static final int T__65=65;
+    public static final int T__127=127;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
+    public static final int T__33=33;
+    public static final int T__34=34;
+    public static final int T__35=35;
+    public static final int T__36=36;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
+    public static final int T__91=91;
+    public static final int T__100=100;
+    public static final int T__92=92;
+    public static final int T__93=93;
+    public static final int T__102=102;
+    public static final int T__94=94;
+    public static final int T__101=101;
+    public static final int T__90=90;
     public static final int T__19=19;
     public static final int RULE_XLABEL=7;
     public static final int T__15=15;
     public static final int T__16=16;
     public static final int T__17=17;
     public static final int T__18=18;
-    public static final int T__33=33;
+    public static final int T__99=99;
     public static final int T__12=12;
-    public static final int T__34=34;
     public static final int T__13=13;
-    public static final int T__35=35;
     public static final int T__14=14;
-    public static final int EOF=-1;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
-    public static final int RULE_ID=6;
-    public static final int RULE_WS=10;
-    public static final int RULE_ANY_OTHER=11;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
     public static final int T__26=26;
     public static final int T__27=27;
     public static final int T__28=28;
-    public static final int RULE_INT=9;
     public static final int T__29=29;
     public static final int T__22=22;
-    public static final int RULE_ML_COMMENT=4;
     public static final int T__23=23;
     public static final int T__24=24;
     public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
+    public static final int T__122=122;
+    public static final int T__70=70;
+    public static final int T__121=121;
+    public static final int T__71=71;
+    public static final int T__124=124;
+    public static final int T__72=72;
+    public static final int T__123=123;
+    public static final int T__120=120;
+    public static final int RULE_STRING=9;
+    public static final int RULE_SL_COMMENT=5;
+    public static final int T__77=77;
+    public static final int T__119=119;
+    public static final int T__78=78;
+    public static final int T__118=118;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int T__115=115;
+    public static final int EOF=-1;
+    public static final int T__74=74;
+    public static final int T__114=114;
+    public static final int T__75=75;
+    public static final int T__117=117;
+    public static final int T__76=76;
+    public static final int T__116=116;
+    public static final int T__80=80;
+    public static final int T__111=111;
+    public static final int T__81=81;
+    public static final int T__110=110;
+    public static final int T__82=82;
+    public static final int T__113=113;
+    public static final int T__83=83;
+    public static final int T__112=112;
+    public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int T__88=88;
+    public static final int T__108=108;
+    public static final int T__89=89;
+    public static final int T__107=107;
+    public static final int T__109=109;
+    public static final int T__84=84;
+    public static final int T__104=104;
+    public static final int T__85=85;
+    public static final int T__103=103;
+    public static final int T__86=86;
+    public static final int T__106=106;
+    public static final int T__87=87;
+    public static final int T__105=105;
 
     // delegates
     // delegators
@@ -1713,7 +1812,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                 if ( LA19_0 == 25 && getUnorderedGroupHelper().canSelect(grammarAccess.getXEventAccess().getUnorderedGroup_2(), 0) ) {
                     alt19=1;
                 }
-                else if ( LA19_0 >= 33 && LA19_0 <= 35 && getUnorderedGroupHelper().canSelect(grammarAccess.getXEventAccess().getUnorderedGroup_2(), 1) ) {
+                else if ( LA19_0 >= 132 && LA19_0 <= 134 && getUnorderedGroupHelper().canSelect(grammarAccess.getXEventAccess().getUnorderedGroup_2(), 1) ) {
                     alt19=2;
                 }
 
@@ -3459,26 +3558,253 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleXPredicate"
-    // InternalXMachine.g:1344:1: ruleXPredicate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : this_STRING_0= RULE_STRING ;
+    // InternalXMachine.g:1344:1: ruleXPredicate returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_ID_3= RULE_ID | this_INT_4= RULE_INT )+ ;
     public final AntlrDatatypeRuleToken ruleXPredicate() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
-        Token this_STRING_0=null;
+        Token this_ID_3=null;
+        Token this_INT_4=null;
+        AntlrDatatypeRuleToken this_EVENTB_IDENTIFIER_KEYWORD_0 = null;
+
+        AntlrDatatypeRuleToken this_EVENTB_PREDICATE_SYMBOLS_1 = null;
+
+        AntlrDatatypeRuleToken this_EVENTB_EXPRESSION_SYMBOLS_2 = null;
+
 
 
         	enterRule();
 
         try {
-            // InternalXMachine.g:1350:2: (this_STRING_0= RULE_STRING )
-            // InternalXMachine.g:1351:2: this_STRING_0= RULE_STRING
+            // InternalXMachine.g:1350:2: ( (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_ID_3= RULE_ID | this_INT_4= RULE_INT )+ )
+            // InternalXMachine.g:1351:2: (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_ID_3= RULE_ID | this_INT_4= RULE_INT )+
             {
-            this_STRING_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
+            // InternalXMachine.g:1351:2: (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_ID_3= RULE_ID | this_INT_4= RULE_INT )+
+            int cnt40=0;
+            loop40:
+            do {
+                int alt40=6;
+                switch ( input.LA(1) ) {
+                case 33:
+                case 34:
+                case 35:
+                case 36:
+                case 37:
+                case 38:
+                case 39:
+                case 40:
+                case 41:
+                case 42:
+                case 43:
+                case 44:
+                case 45:
+                case 46:
+                case 47:
+                case 48:
+                case 49:
+                case 50:
+                case 51:
+                case 52:
+                case 53:
+                case 54:
+                case 55:
+                    {
+                    alt40=1;
+                    }
+                    break;
+                case 23:
+                case 56:
+                case 57:
+                case 58:
+                case 59:
+                case 60:
+                case 61:
+                case 62:
+                case 63:
+                case 64:
+                case 65:
+                case 66:
+                case 67:
+                case 68:
+                case 69:
+                case 70:
+                case 71:
+                case 72:
+                case 73:
+                case 74:
+                case 75:
+                case 76:
+                case 77:
+                case 78:
+                case 79:
+                case 80:
+                case 81:
+                case 82:
+                case 83:
+                case 84:
+                case 85:
+                    {
+                    alt40=2;
+                    }
+                    break;
+                case 86:
+                case 87:
+                case 88:
+                case 89:
+                case 90:
+                case 91:
+                case 92:
+                case 93:
+                case 94:
+                case 95:
+                case 96:
+                case 97:
+                case 98:
+                case 99:
+                case 100:
+                case 101:
+                case 102:
+                case 103:
+                case 104:
+                case 105:
+                case 106:
+                case 107:
+                case 108:
+                case 109:
+                case 110:
+                case 111:
+                case 112:
+                case 113:
+                case 114:
+                case 115:
+                case 116:
+                case 117:
+                case 118:
+                case 120:
+                case 121:
+                case 122:
+                case 123:
+                case 124:
+                case 125:
+                case 126:
+                case 127:
+                case 128:
+                case 129:
+                case 130:
+                case 131:
+                    {
+                    alt40=3;
+                    }
+                    break;
+                case RULE_ID:
+                    {
+                    alt40=4;
+                    }
+                    break;
+                case RULE_INT:
+                    {
+                    alt40=5;
+                    }
+                    break;
 
-            		current.merge(this_STRING_0);
-            	
+                }
 
-            		newLeafNode(this_STRING_0, grammarAccess.getXPredicateAccess().getSTRINGTerminalRuleCall());
-            	
+                switch (alt40) {
+            	case 1 :
+            	    // InternalXMachine.g:1352:3: this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD
+            	    {
+
+            	    			newCompositeNode(grammarAccess.getXPredicateAccess().getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_0());
+            	    		
+            	    pushFollow(FOLLOW_28);
+            	    this_EVENTB_IDENTIFIER_KEYWORD_0=ruleEVENTB_IDENTIFIER_KEYWORD();
+
+            	    state._fsp--;
+
+
+            	    			current.merge(this_EVENTB_IDENTIFIER_KEYWORD_0);
+            	    		
+
+            	    			afterParserOrEnumRuleCall();
+            	    		
+
+            	    }
+            	    break;
+            	case 2 :
+            	    // InternalXMachine.g:1363:3: this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS
+            	    {
+
+            	    			newCompositeNode(grammarAccess.getXPredicateAccess().getEVENTB_PREDICATE_SYMBOLSParserRuleCall_1());
+            	    		
+            	    pushFollow(FOLLOW_28);
+            	    this_EVENTB_PREDICATE_SYMBOLS_1=ruleEVENTB_PREDICATE_SYMBOLS();
+
+            	    state._fsp--;
+
+
+            	    			current.merge(this_EVENTB_PREDICATE_SYMBOLS_1);
+            	    		
+
+            	    			afterParserOrEnumRuleCall();
+            	    		
+
+            	    }
+            	    break;
+            	case 3 :
+            	    // InternalXMachine.g:1374:3: this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS
+            	    {
+
+            	    			newCompositeNode(grammarAccess.getXPredicateAccess().getEVENTB_EXPRESSION_SYMBOLSParserRuleCall_2());
+            	    		
+            	    pushFollow(FOLLOW_28);
+            	    this_EVENTB_EXPRESSION_SYMBOLS_2=ruleEVENTB_EXPRESSION_SYMBOLS();
+
+            	    state._fsp--;
+
+
+            	    			current.merge(this_EVENTB_EXPRESSION_SYMBOLS_2);
+            	    		
+
+            	    			afterParserOrEnumRuleCall();
+            	    		
+
+            	    }
+            	    break;
+            	case 4 :
+            	    // InternalXMachine.g:1385:3: this_ID_3= RULE_ID
+            	    {
+            	    this_ID_3=(Token)match(input,RULE_ID,FOLLOW_28); 
+
+            	    			current.merge(this_ID_3);
+            	    		
+
+            	    			newLeafNode(this_ID_3, grammarAccess.getXPredicateAccess().getIDTerminalRuleCall_3());
+            	    		
+
+            	    }
+            	    break;
+            	case 5 :
+            	    // InternalXMachine.g:1393:3: this_INT_4= RULE_INT
+            	    {
+            	    this_INT_4=(Token)match(input,RULE_INT,FOLLOW_28); 
+
+            	    			current.merge(this_INT_4);
+            	    		
+
+            	    			newLeafNode(this_INT_4, grammarAccess.getXPredicateAccess().getINTTerminalRuleCall_4());
+            	    		
+
+            	    }
+            	    break;
+
+            	default :
+            	    if ( cnt40 >= 1 ) break loop40;
+                        EarlyExitException eee =
+                            new EarlyExitException(40, input);
+                        throw eee;
+                }
+                cnt40++;
+            } while (true);
+
 
             }
 
@@ -3498,8 +3824,1852 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleXPredicate"
 
 
+    // $ANTLR start "entryRuleEVENTB_IDENTIFIER_KEYWORD"
+    // InternalXMachine.g:1404:1: entryRuleEVENTB_IDENTIFIER_KEYWORD returns [String current=null] : iv_ruleEVENTB_IDENTIFIER_KEYWORD= ruleEVENTB_IDENTIFIER_KEYWORD EOF ;
+    public final String entryRuleEVENTB_IDENTIFIER_KEYWORD() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleEVENTB_IDENTIFIER_KEYWORD = null;
+
+
+        try {
+            // InternalXMachine.g:1404:65: (iv_ruleEVENTB_IDENTIFIER_KEYWORD= ruleEVENTB_IDENTIFIER_KEYWORD EOF )
+            // InternalXMachine.g:1405:2: iv_ruleEVENTB_IDENTIFIER_KEYWORD= ruleEVENTB_IDENTIFIER_KEYWORD EOF
+            {
+             newCompositeNode(grammarAccess.getEVENTB_IDENTIFIER_KEYWORDRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleEVENTB_IDENTIFIER_KEYWORD=ruleEVENTB_IDENTIFIER_KEYWORD();
+
+            state._fsp--;
+
+             current =iv_ruleEVENTB_IDENTIFIER_KEYWORD.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEVENTB_IDENTIFIER_KEYWORD"
+
+
+    // $ANTLR start "ruleEVENTB_IDENTIFIER_KEYWORD"
+    // InternalXMachine.g:1411:1: ruleEVENTB_IDENTIFIER_KEYWORD returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' ) ;
+    public final AntlrDatatypeRuleToken ruleEVENTB_IDENTIFIER_KEYWORD() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalXMachine.g:1417:2: ( (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' ) )
+            // InternalXMachine.g:1418:2: (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' )
+            {
+            // InternalXMachine.g:1418:2: (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' )
+            int alt41=23;
+            switch ( input.LA(1) ) {
+            case 33:
+                {
+                alt41=1;
+                }
+                break;
+            case 34:
+                {
+                alt41=2;
+                }
+                break;
+            case 35:
+                {
+                alt41=3;
+                }
+                break;
+            case 36:
+                {
+                alt41=4;
+                }
+                break;
+            case 37:
+                {
+                alt41=5;
+                }
+                break;
+            case 38:
+                {
+                alt41=6;
+                }
+                break;
+            case 39:
+                {
+                alt41=7;
+                }
+                break;
+            case 40:
+                {
+                alt41=8;
+                }
+                break;
+            case 41:
+                {
+                alt41=9;
+                }
+                break;
+            case 42:
+                {
+                alt41=10;
+                }
+                break;
+            case 43:
+                {
+                alt41=11;
+                }
+                break;
+            case 44:
+                {
+                alt41=12;
+                }
+                break;
+            case 45:
+                {
+                alt41=13;
+                }
+                break;
+            case 46:
+                {
+                alt41=14;
+                }
+                break;
+            case 47:
+                {
+                alt41=15;
+                }
+                break;
+            case 48:
+                {
+                alt41=16;
+                }
+                break;
+            case 49:
+                {
+                alt41=17;
+                }
+                break;
+            case 50:
+                {
+                alt41=18;
+                }
+                break;
+            case 51:
+                {
+                alt41=19;
+                }
+                break;
+            case 52:
+                {
+                alt41=20;
+                }
+                break;
+            case 53:
+                {
+                alt41=21;
+                }
+                break;
+            case 54:
+                {
+                alt41=22;
+                }
+                break;
+            case 55:
+                {
+                alt41=23;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 41, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt41) {
+                case 1 :
+                    // InternalXMachine.g:1419:3: kw= 'BOOL'
+                    {
+                    kw=(Token)match(input,33,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getBOOLKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalXMachine.g:1425:3: kw= 'FALSE'
+                    {
+                    kw=(Token)match(input,34,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getFALSEKeyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalXMachine.g:1431:3: kw= 'TRUE'
+                    {
+                    kw=(Token)match(input,35,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getTRUEKeyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalXMachine.g:1437:3: kw= 'bool'
+                    {
+                    kw=(Token)match(input,36,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getBoolKeyword_3());
+                    		
+
+                    }
+                    break;
+                case 5 :
+                    // InternalXMachine.g:1443:3: kw= 'card'
+                    {
+                    kw=(Token)match(input,37,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getCardKeyword_4());
+                    		
+
+                    }
+                    break;
+                case 6 :
+                    // InternalXMachine.g:1449:3: kw= 'dom'
+                    {
+                    kw=(Token)match(input,38,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDomKeyword_5());
+                    		
+
+                    }
+                    break;
+                case 7 :
+                    // InternalXMachine.g:1455:3: kw= 'finite'
+                    {
+                    kw=(Token)match(input,39,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getFiniteKeyword_6());
+                    		
+
+                    }
+                    break;
+                case 8 :
+                    // InternalXMachine.g:1461:3: kw= 'id'
+                    {
+                    kw=(Token)match(input,40,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getIdKeyword_7());
+                    		
+
+                    }
+                    break;
+                case 9 :
+                    // InternalXMachine.g:1467:3: kw= 'inter'
+                    {
+                    kw=(Token)match(input,41,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getInterKeyword_8());
+                    		
+
+                    }
+                    break;
+                case 10 :
+                    // InternalXMachine.g:1473:3: kw= 'max'
+                    {
+                    kw=(Token)match(input,42,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getMaxKeyword_9());
+                    		
+
+                    }
+                    break;
+                case 11 :
+                    // InternalXMachine.g:1479:3: kw= 'min'
+                    {
+                    kw=(Token)match(input,43,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getMinKeyword_10());
+                    		
+
+                    }
+                    break;
+                case 12 :
+                    // InternalXMachine.g:1485:3: kw= 'mod'
+                    {
+                    kw=(Token)match(input,44,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getModKeyword_11());
+                    		
+
+                    }
+                    break;
+                case 13 :
+                    // InternalXMachine.g:1491:3: kw= 'pred'
+                    {
+                    kw=(Token)match(input,45,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getPredKeyword_12());
+                    		
+
+                    }
+                    break;
+                case 14 :
+                    // InternalXMachine.g:1497:3: kw= 'prj1'
+                    {
+                    kw=(Token)match(input,46,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getPrj1Keyword_13());
+                    		
+
+                    }
+                    break;
+                case 15 :
+                    // InternalXMachine.g:1503:3: kw= 'prj2'
+                    {
+                    kw=(Token)match(input,47,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getPrj2Keyword_14());
+                    		
+
+                    }
+                    break;
+                case 16 :
+                    // InternalXMachine.g:1509:3: kw= 'ran'
+                    {
+                    kw=(Token)match(input,48,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getRanKeyword_15());
+                    		
+
+                    }
+                    break;
+                case 17 :
+                    // InternalXMachine.g:1515:3: kw= 'succ'
+                    {
+                    kw=(Token)match(input,49,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getSuccKeyword_16());
+                    		
+
+                    }
+                    break;
+                case 18 :
+                    // InternalXMachine.g:1521:3: kw= 'union'
+                    {
+                    kw=(Token)match(input,50,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getUnionKeyword_17());
+                    		
+
+                    }
+                    break;
+                case 19 :
+                    // InternalXMachine.g:1527:3: kw= '\\u21151'
+                    {
+                    kw=(Token)match(input,51,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDoubleStruckCapitalNDigitOneKeyword_18());
+                    		
+
+                    }
+                    break;
+                case 20 :
+                    // InternalXMachine.g:1533:3: kw= '\\u2115'
+                    {
+                    kw=(Token)match(input,52,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDoubleStruckCapitalNKeyword_19());
+                    		
+
+                    }
+                    break;
+                case 21 :
+                    // InternalXMachine.g:1539:3: kw= '\\u21191'
+                    {
+                    kw=(Token)match(input,53,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDoubleStruckCapitalPDigitOneKeyword_20());
+                    		
+
+                    }
+                    break;
+                case 22 :
+                    // InternalXMachine.g:1545:3: kw= '\\u2119'
+                    {
+                    kw=(Token)match(input,54,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDoubleStruckCapitalPKeyword_21());
+                    		
+
+                    }
+                    break;
+                case 23 :
+                    // InternalXMachine.g:1551:3: kw= '\\u2124'
+                    {
+                    kw=(Token)match(input,55,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getDoubleStruckCapitalZKeyword_22());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEVENTB_IDENTIFIER_KEYWORD"
+
+
+    // $ANTLR start "entryRuleEVENTB_PREDICATE_SYMBOLS"
+    // InternalXMachine.g:1560:1: entryRuleEVENTB_PREDICATE_SYMBOLS returns [String current=null] : iv_ruleEVENTB_PREDICATE_SYMBOLS= ruleEVENTB_PREDICATE_SYMBOLS EOF ;
+    public final String entryRuleEVENTB_PREDICATE_SYMBOLS() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleEVENTB_PREDICATE_SYMBOLS = null;
+
+
+        try {
+            // InternalXMachine.g:1560:64: (iv_ruleEVENTB_PREDICATE_SYMBOLS= ruleEVENTB_PREDICATE_SYMBOLS EOF )
+            // InternalXMachine.g:1561:2: iv_ruleEVENTB_PREDICATE_SYMBOLS= ruleEVENTB_PREDICATE_SYMBOLS EOF
+            {
+             newCompositeNode(grammarAccess.getEVENTB_PREDICATE_SYMBOLSRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleEVENTB_PREDICATE_SYMBOLS=ruleEVENTB_PREDICATE_SYMBOLS();
+
+            state._fsp--;
+
+             current =iv_ruleEVENTB_PREDICATE_SYMBOLS.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEVENTB_PREDICATE_SYMBOLS"
+
+
+    // $ANTLR start "ruleEVENTB_PREDICATE_SYMBOLS"
+    // InternalXMachine.g:1567:1: ruleEVENTB_PREDICATE_SYMBOLS returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' ) ;
+    public final AntlrDatatypeRuleToken ruleEVENTB_PREDICATE_SYMBOLS() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalXMachine.g:1573:2: ( (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' ) )
+            // InternalXMachine.g:1574:2: (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' )
+            {
+            // InternalXMachine.g:1574:2: (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' )
+            int alt42=31;
+            switch ( input.LA(1) ) {
+            case 56:
+                {
+                alt42=1;
+                }
+                break;
+            case 57:
+                {
+                alt42=2;
+                }
+                break;
+            case 58:
+                {
+                alt42=3;
+                }
+                break;
+            case 59:
+                {
+                alt42=4;
+                }
+                break;
+            case 60:
+                {
+                alt42=5;
+                }
+                break;
+            case 61:
+                {
+                alt42=6;
+                }
+                break;
+            case 62:
+                {
+                alt42=7;
+                }
+                break;
+            case 63:
+                {
+                alt42=8;
+                }
+                break;
+            case 64:
+                {
+                alt42=9;
+                }
+                break;
+            case 65:
+                {
+                alt42=10;
+                }
+                break;
+            case 66:
+                {
+                alt42=11;
+                }
+                break;
+            case 67:
+                {
+                alt42=12;
+                }
+                break;
+            case 68:
+                {
+                alt42=13;
+                }
+                break;
+            case 69:
+                {
+                alt42=14;
+                }
+                break;
+            case 70:
+                {
+                alt42=15;
+                }
+                break;
+            case 71:
+                {
+                alt42=16;
+                }
+                break;
+            case 23:
+                {
+                alt42=17;
+                }
+                break;
+            case 72:
+                {
+                alt42=18;
+                }
+                break;
+            case 73:
+                {
+                alt42=19;
+                }
+                break;
+            case 74:
+                {
+                alt42=20;
+                }
+                break;
+            case 75:
+                {
+                alt42=21;
+                }
+                break;
+            case 76:
+                {
+                alt42=22;
+                }
+                break;
+            case 77:
+                {
+                alt42=23;
+                }
+                break;
+            case 78:
+                {
+                alt42=24;
+                }
+                break;
+            case 79:
+                {
+                alt42=25;
+                }
+                break;
+            case 80:
+                {
+                alt42=26;
+                }
+                break;
+            case 81:
+                {
+                alt42=27;
+                }
+                break;
+            case 82:
+                {
+                alt42=28;
+                }
+                break;
+            case 83:
+                {
+                alt42=29;
+                }
+                break;
+            case 84:
+                {
+                alt42=30;
+                }
+                break;
+            case 85:
+                {
+                alt42=31;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 42, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt42) {
+                case 1 :
+                    // InternalXMachine.g:1575:3: kw= '('
+                    {
+                    kw=(Token)match(input,56,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLeftParenthesisKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalXMachine.g:1581:3: kw= ')'
+                    {
+                    kw=(Token)match(input,57,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getRightParenthesisKeyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalXMachine.g:1587:3: kw= '\\u21D4'
+                    {
+                    kw=(Token)match(input,58,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLeftRightDoubleArrowKeyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalXMachine.g:1593:3: kw= '\\u21D2'
+                    {
+                    kw=(Token)match(input,59,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getRightwardsDoubleArrowKeyword_3());
+                    		
+
+                    }
+                    break;
+                case 5 :
+                    // InternalXMachine.g:1599:3: kw= '\\u2227'
+                    {
+                    kw=(Token)match(input,60,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLogicalAndKeyword_4());
+                    		
+
+                    }
+                    break;
+                case 6 :
+                    // InternalXMachine.g:1605:3: kw= '&'
+                    {
+                    kw=(Token)match(input,61,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getAmpersandKeyword_5());
+                    		
+
+                    }
+                    break;
+                case 7 :
+                    // InternalXMachine.g:1611:3: kw= '\\u2228'
+                    {
+                    kw=(Token)match(input,62,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLogicalOrKeyword_6());
+                    		
+
+                    }
+                    break;
+                case 8 :
+                    // InternalXMachine.g:1617:3: kw= '\\u00AC'
+                    {
+                    kw=(Token)match(input,63,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNotSignKeyword_7());
+                    		
+
+                    }
+                    break;
+                case 9 :
+                    // InternalXMachine.g:1623:3: kw= '\\u22A4'
+                    {
+                    kw=(Token)match(input,64,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getDownTackKeyword_8());
+                    		
+
+                    }
+                    break;
+                case 10 :
+                    // InternalXMachine.g:1629:3: kw= '\\u22A5'
+                    {
+                    kw=(Token)match(input,65,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getUpTackKeyword_9());
+                    		
+
+                    }
+                    break;
+                case 11 :
+                    // InternalXMachine.g:1635:3: kw= '\\u2200'
+                    {
+                    kw=(Token)match(input,66,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getForAllKeyword_10());
+                    		
+
+                    }
+                    break;
+                case 12 :
+                    // InternalXMachine.g:1641:3: kw= '!'
+                    {
+                    kw=(Token)match(input,67,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getExclamationMarkKeyword_11());
+                    		
+
+                    }
+                    break;
+                case 13 :
+                    // InternalXMachine.g:1647:3: kw= '\\u2203'
+                    {
+                    kw=(Token)match(input,68,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getThereExistsKeyword_12());
+                    		
+
+                    }
+                    break;
+                case 14 :
+                    // InternalXMachine.g:1653:3: kw= '#'
+                    {
+                    kw=(Token)match(input,69,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNumberSignKeyword_13());
+                    		
+
+                    }
+                    break;
+                case 15 :
+                    // InternalXMachine.g:1659:3: kw= ','
+                    {
+                    kw=(Token)match(input,70,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getCommaKeyword_14());
+                    		
+
+                    }
+                    break;
+                case 16 :
+                    // InternalXMachine.g:1665:3: kw= '\\u00B7'
+                    {
+                    kw=(Token)match(input,71,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getMiddleDotKeyword_15());
+                    		
+
+                    }
+                    break;
+                case 17 :
+                    // InternalXMachine.g:1671:3: kw= '.'
+                    {
+                    kw=(Token)match(input,23,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getFullStopKeyword_16());
+                    		
+
+                    }
+                    break;
+                case 18 :
+                    // InternalXMachine.g:1677:3: kw= '='
+                    {
+                    kw=(Token)match(input,72,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getEqualsSignKeyword_17());
+                    		
+
+                    }
+                    break;
+                case 19 :
+                    // InternalXMachine.g:1683:3: kw= '\\u2260'
+                    {
+                    kw=(Token)match(input,73,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNotEqualToKeyword_18());
+                    		
+
+                    }
+                    break;
+                case 20 :
+                    // InternalXMachine.g:1689:3: kw= '\\u2264'
+                    {
+                    kw=(Token)match(input,74,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLessThanOrEqualToKeyword_19());
+                    		
+
+                    }
+                    break;
+                case 21 :
+                    // InternalXMachine.g:1695:3: kw= '<'
+                    {
+                    kw=(Token)match(input,75,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getLessThanSignKeyword_20());
+                    		
+
+                    }
+                    break;
+                case 22 :
+                    // InternalXMachine.g:1701:3: kw= '\\u2265'
+                    {
+                    kw=(Token)match(input,76,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getGreaterThanOrEqualToKeyword_21());
+                    		
+
+                    }
+                    break;
+                case 23 :
+                    // InternalXMachine.g:1707:3: kw= '>'
+                    {
+                    kw=(Token)match(input,77,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getGreaterThanSignKeyword_22());
+                    		
+
+                    }
+                    break;
+                case 24 :
+                    // InternalXMachine.g:1713:3: kw= '\\u2208'
+                    {
+                    kw=(Token)match(input,78,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getElementOfKeyword_23());
+                    		
+
+                    }
+                    break;
+                case 25 :
+                    // InternalXMachine.g:1719:3: kw= ':'
+                    {
+                    kw=(Token)match(input,79,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getColonKeyword_24());
+                    		
+
+                    }
+                    break;
+                case 26 :
+                    // InternalXMachine.g:1725:3: kw= '\\u2209'
+                    {
+                    kw=(Token)match(input,80,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNotAnElementOfKeyword_25());
+                    		
+
+                    }
+                    break;
+                case 27 :
+                    // InternalXMachine.g:1731:3: kw= '\\u2282'
+                    {
+                    kw=(Token)match(input,81,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getSubsetOfKeyword_26());
+                    		
+
+                    }
+                    break;
+                case 28 :
+                    // InternalXMachine.g:1737:3: kw= '\\u2284'
+                    {
+                    kw=(Token)match(input,82,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNotASubsetOfKeyword_27());
+                    		
+
+                    }
+                    break;
+                case 29 :
+                    // InternalXMachine.g:1743:3: kw= '\\u2286'
+                    {
+                    kw=(Token)match(input,83,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getSubsetOfOrEqualToKeyword_28());
+                    		
+
+                    }
+                    break;
+                case 30 :
+                    // InternalXMachine.g:1749:3: kw= '\\u2288'
+                    {
+                    kw=(Token)match(input,84,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNeitherASubsetOfNorEqualToKeyword_29());
+                    		
+
+                    }
+                    break;
+                case 31 :
+                    // InternalXMachine.g:1755:3: kw= 'partition'
+                    {
+                    kw=(Token)match(input,85,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getPartitionKeyword_30());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEVENTB_PREDICATE_SYMBOLS"
+
+
+    // $ANTLR start "entryRuleEVENTB_EXPRESSION_SYMBOLS"
+    // InternalXMachine.g:1764:1: entryRuleEVENTB_EXPRESSION_SYMBOLS returns [String current=null] : iv_ruleEVENTB_EXPRESSION_SYMBOLS= ruleEVENTB_EXPRESSION_SYMBOLS EOF ;
+    public final String entryRuleEVENTB_EXPRESSION_SYMBOLS() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleEVENTB_EXPRESSION_SYMBOLS = null;
+
+
+        try {
+            // InternalXMachine.g:1764:65: (iv_ruleEVENTB_EXPRESSION_SYMBOLS= ruleEVENTB_EXPRESSION_SYMBOLS EOF )
+            // InternalXMachine.g:1765:2: iv_ruleEVENTB_EXPRESSION_SYMBOLS= ruleEVENTB_EXPRESSION_SYMBOLS EOF
+            {
+             newCompositeNode(grammarAccess.getEVENTB_EXPRESSION_SYMBOLSRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleEVENTB_EXPRESSION_SYMBOLS=ruleEVENTB_EXPRESSION_SYMBOLS();
+
+            state._fsp--;
+
+             current =iv_ruleEVENTB_EXPRESSION_SYMBOLS.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleEVENTB_EXPRESSION_SYMBOLS"
+
+
+    // $ANTLR start "ruleEVENTB_EXPRESSION_SYMBOLS"
+    // InternalXMachine.g:1771:1: ruleEVENTB_EXPRESSION_SYMBOLS returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' ) ;
+    public final AntlrDatatypeRuleToken ruleEVENTB_EXPRESSION_SYMBOLS() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalXMachine.g:1777:2: ( (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' ) )
+            // InternalXMachine.g:1778:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' )
+            {
+            // InternalXMachine.g:1778:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' )
+            int alt43=45;
+            switch ( input.LA(1) ) {
+            case 86:
+                {
+                alt43=1;
+                }
+                break;
+            case 87:
+                {
+                alt43=2;
+                }
+                break;
+            case 88:
+                {
+                alt43=3;
+                }
+                break;
+            case 89:
+                {
+                alt43=4;
+                }
+                break;
+            case 90:
+                {
+                alt43=5;
+                }
+                break;
+            case 91:
+                {
+                alt43=6;
+                }
+                break;
+            case 92:
+                {
+                alt43=7;
+                }
+                break;
+            case 93:
+                {
+                alt43=8;
+                }
+                break;
+            case 94:
+                {
+                alt43=9;
+                }
+                break;
+            case 95:
+                {
+                alt43=10;
+                }
+                break;
+            case 96:
+                {
+                alt43=11;
+                }
+                break;
+            case 97:
+                {
+                alt43=12;
+                }
+                break;
+            case 98:
+                {
+                alt43=13;
+                }
+                break;
+            case 99:
+                {
+                alt43=14;
+                }
+                break;
+            case 100:
+                {
+                alt43=15;
+                }
+                break;
+            case 101:
+                {
+                alt43=16;
+                }
+                break;
+            case 102:
+                {
+                alt43=17;
+                }
+                break;
+            case 103:
+                {
+                alt43=18;
+                }
+                break;
+            case 104:
+                {
+                alt43=19;
+                }
+                break;
+            case 105:
+                {
+                alt43=20;
+                }
+                break;
+            case 106:
+                {
+                alt43=21;
+                }
+                break;
+            case 107:
+                {
+                alt43=22;
+                }
+                break;
+            case 108:
+                {
+                alt43=23;
+                }
+                break;
+            case 109:
+                {
+                alt43=24;
+                }
+                break;
+            case 110:
+                {
+                alt43=25;
+                }
+                break;
+            case 111:
+                {
+                alt43=26;
+                }
+                break;
+            case 112:
+                {
+                alt43=27;
+                }
+                break;
+            case 113:
+                {
+                alt43=28;
+                }
+                break;
+            case 114:
+                {
+                alt43=29;
+                }
+                break;
+            case 115:
+                {
+                alt43=30;
+                }
+                break;
+            case 116:
+                {
+                alt43=31;
+                }
+                break;
+            case 117:
+                {
+                alt43=32;
+                }
+                break;
+            case 118:
+                {
+                alt43=33;
+                }
+                break;
+            case 120:
+                {
+                alt43=34;
+                }
+                break;
+            case 121:
+                {
+                alt43=35;
+                }
+                break;
+            case 122:
+                {
+                alt43=36;
+                }
+                break;
+            case 123:
+                {
+                alt43=37;
+                }
+                break;
+            case 124:
+                {
+                alt43=38;
+                }
+                break;
+            case 125:
+                {
+                alt43=39;
+                }
+                break;
+            case 126:
+                {
+                alt43=40;
+                }
+                break;
+            case 127:
+                {
+                alt43=41;
+                }
+                break;
+            case 128:
+                {
+                alt43=42;
+                }
+                break;
+            case 129:
+                {
+                alt43=43;
+                }
+                break;
+            case 130:
+                {
+                alt43=44;
+                }
+                break;
+            case 131:
+                {
+                alt43=45;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 43, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt43) {
+                case 1 :
+                    // InternalXMachine.g:1779:3: kw= '\\u2194'
+                    {
+                    kw=(Token)match(input,86,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getLeftRightArrowKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalXMachine.g:1785:3: kw= '\\uE100'
+                    {
+                    kw=(Token)match(input,87,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPrivateUseAreaE100Keyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalXMachine.g:1791:3: kw= '\\uE101'
+                    {
+                    kw=(Token)match(input,88,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPrivateUseAreaE101Keyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalXMachine.g:1797:3: kw= '\\uE102'
+                    {
+                    kw=(Token)match(input,89,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPrivateUseAreaE102Keyword_3());
+                    		
+
+                    }
+                    break;
+                case 5 :
+                    // InternalXMachine.g:1803:3: kw= '\\u21F8'
+                    {
+                    kw=(Token)match(input,90,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsArrowWithVerticalStrokeKeyword_4());
+                    		
+
+                    }
+                    break;
+                case 6 :
+                    // InternalXMachine.g:1809:3: kw= '\\u2192'
+                    {
+                    kw=(Token)match(input,91,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsArrowKeyword_5());
+                    		
+
+                    }
+                    break;
+                case 7 :
+                    // InternalXMachine.g:1815:3: kw= '\\u2914'
+                    {
+                    kw=(Token)match(input,92,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsArrowWithTailWithVerticalStrokeKeyword_6());
+                    		
+
+                    }
+                    break;
+                case 8 :
+                    // InternalXMachine.g:1821:3: kw= '\\u21A3'
+                    {
+                    kw=(Token)match(input,93,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsArrowWithTailKeyword_7());
+                    		
+
+                    }
+                    break;
+                case 9 :
+                    // InternalXMachine.g:1827:3: kw= '\\u2900'
+                    {
+                    kw=(Token)match(input,94,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8());
+                    		
+
+                    }
+                    break;
+                case 10 :
+                    // InternalXMachine.g:1833:3: kw= '\\u21A0'
+                    {
+                    kw=(Token)match(input,95,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsTwoHeadedArrowKeyword_9());
+                    		
+
+                    }
+                    break;
+                case 11 :
+                    // InternalXMachine.g:1839:3: kw= '\\u2916'
+                    {
+                    kw=(Token)match(input,96,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsTwoHeadedArrowWithTailKeyword_10());
+                    		
+
+                    }
+                    break;
+                case 12 :
+                    // InternalXMachine.g:1845:3: kw= '{'
+                    {
+                    kw=(Token)match(input,97,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getLeftCurlyBracketKeyword_11());
+                    		
+
+                    }
+                    break;
+                case 13 :
+                    // InternalXMachine.g:1851:3: kw= '}'
+                    {
+                    kw=(Token)match(input,98,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightCurlyBracketKeyword_12());
+                    		
+
+                    }
+                    break;
+                case 14 :
+                    // InternalXMachine.g:1857:3: kw= '\\u21A6'
+                    {
+                    kw=(Token)match(input,99,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightwardsArrowFromBarKeyword_13());
+                    		
+
+                    }
+                    break;
+                case 15 :
+                    // InternalXMachine.g:1863:3: kw= '\\u2205'
+                    {
+                    kw=(Token)match(input,100,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getEmptySetKeyword_14());
+                    		
+
+                    }
+                    break;
+                case 16 :
+                    // InternalXMachine.g:1869:3: kw= '\\u2229'
+                    {
+                    kw=(Token)match(input,101,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getIntersectionKeyword_15());
+                    		
+
+                    }
+                    break;
+                case 17 :
+                    // InternalXMachine.g:1875:3: kw= '\\u222A'
+                    {
+                    kw=(Token)match(input,102,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getUnionKeyword_16());
+                    		
+
+                    }
+                    break;
+                case 18 :
+                    // InternalXMachine.g:1881:3: kw= '\\u2216'
+                    {
+                    kw=(Token)match(input,103,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getSetMinusKeyword_17());
+                    		
+
+                    }
+                    break;
+                case 19 :
+                    // InternalXMachine.g:1887:3: kw= '\\u00D7'
+                    {
+                    kw=(Token)match(input,104,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getMultiplicationSignKeyword_18());
+                    		
+
+                    }
+                    break;
+                case 20 :
+                    // InternalXMachine.g:1893:3: kw= '['
+                    {
+                    kw=(Token)match(input,105,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getLeftSquareBracketKeyword_19());
+                    		
+
+                    }
+                    break;
+                case 21 :
+                    // InternalXMachine.g:1899:3: kw= ']'
+                    {
+                    kw=(Token)match(input,106,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRightSquareBracketKeyword_20());
+                    		
+
+                    }
+                    break;
+                case 22 :
+                    // InternalXMachine.g:1905:3: kw= '\\uE103'
+                    {
+                    kw=(Token)match(input,107,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPrivateUseAreaE103Keyword_21());
+                    		
+
+                    }
+                    break;
+                case 23 :
+                    // InternalXMachine.g:1911:3: kw= '\\u2218'
+                    {
+                    kw=(Token)match(input,108,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getRingOperatorKeyword_22());
+                    		
+
+                    }
+                    break;
+                case 24 :
+                    // InternalXMachine.g:1917:3: kw= ';'
+                    {
+                    kw=(Token)match(input,109,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getSemicolonKeyword_23());
+                    		
+
+                    }
+                    break;
+                case 25 :
+                    // InternalXMachine.g:1923:3: kw= '\\u2297'
+                    {
+                    kw=(Token)match(input,110,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getCircledTimesKeyword_24());
+                    		
+
+                    }
+                    break;
+                case 26 :
+                    // InternalXMachine.g:1929:3: kw= '\\u2225'
+                    {
+                    kw=(Token)match(input,111,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getParallelToKeyword_25());
+                    		
+
+                    }
+                    break;
+                case 27 :
+                    // InternalXMachine.g:1935:3: kw= '\\u223C'
+                    {
+                    kw=(Token)match(input,112,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getTildeOperatorKeyword_26());
+                    		
+
+                    }
+                    break;
+                case 28 :
+                    // InternalXMachine.g:1941:3: kw= '\\u25C1'
+                    {
+                    kw=(Token)match(input,113,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getWhiteLeftPointingTriangleKeyword_27());
+                    		
+
+                    }
+                    break;
+                case 29 :
+                    // InternalXMachine.g:1947:3: kw= '\\u2A64'
+                    {
+                    kw=(Token)match(input,114,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getZNotationDomainAntirestrictionKeyword_28());
+                    		
+
+                    }
+                    break;
+                case 30 :
+                    // InternalXMachine.g:1953:3: kw= '\\u25B7'
+                    {
+                    kw=(Token)match(input,115,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getWhiteRightPointingTriangleKeyword_29());
+                    		
+
+                    }
+                    break;
+                case 31 :
+                    // InternalXMachine.g:1959:3: kw= '\\u2A65'
+                    {
+                    kw=(Token)match(input,116,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getZNotationRangeAntirestrictionKeyword_30());
+                    		
+
+                    }
+                    break;
+                case 32 :
+                    // InternalXMachine.g:1965:3: kw= '\\u03BB'
+                    {
+                    kw=(Token)match(input,117,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getGreekSmallLetterLamdaKeyword_31());
+                    		
+
+                    }
+                    break;
+                case 33 :
+                    // InternalXMachine.g:1971:3: (kw= '%' kw= '\\u22C2' )
+                    {
+                    // InternalXMachine.g:1971:3: (kw= '%' kw= '\\u22C2' )
+                    // InternalXMachine.g:1972:4: kw= '%' kw= '\\u22C2'
+                    {
+                    kw=(Token)match(input,118,FOLLOW_29); 
+
+                    				current.merge(kw);
+                    				newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPercentSignKeyword_32_0());
+                    			
+                    kw=(Token)match(input,119,FOLLOW_2); 
+
+                    				current.merge(kw);
+                    				newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getNAryIntersectionKeyword_32_1());
+                    			
+
+                    }
+
+
+                    }
+                    break;
+                case 34 :
+                    // InternalXMachine.g:1984:3: kw= '\\u22C3'
+                    {
+                    kw=(Token)match(input,120,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getNAryUnionKeyword_33());
+                    		
+
+                    }
+                    break;
+                case 35 :
+                    // InternalXMachine.g:1990:3: kw= '\\u2223'
+                    {
+                    kw=(Token)match(input,121,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getDividesKeyword_34());
+                    		
+
+                    }
+                    break;
+                case 36 :
+                    // InternalXMachine.g:1996:3: kw= '\\u2025'
+                    {
+                    kw=(Token)match(input,122,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getTwoDotLeaderKeyword_35());
+                    		
+
+                    }
+                    break;
+                case 37 :
+                    // InternalXMachine.g:2002:3: kw= '+'
+                    {
+                    kw=(Token)match(input,123,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getPlusSignKeyword_36());
+                    		
+
+                    }
+                    break;
+                case 38 :
+                    // InternalXMachine.g:2008:3: kw= '\\u2212'
+                    {
+                    kw=(Token)match(input,124,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getMinusSignKeyword_37());
+                    		
+
+                    }
+                    break;
+                case 39 :
+                    // InternalXMachine.g:2014:3: kw= '-'
+                    {
+                    kw=(Token)match(input,125,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getHyphenMinusKeyword_38());
+                    		
+
+                    }
+                    break;
+                case 40 :
+                    // InternalXMachine.g:2020:3: kw= '\\u2217'
+                    {
+                    kw=(Token)match(input,126,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getAsteriskOperatorKeyword_39());
+                    		
+
+                    }
+                    break;
+                case 41 :
+                    // InternalXMachine.g:2026:3: kw= '*'
+                    {
+                    kw=(Token)match(input,127,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getAsteriskKeyword_40());
+                    		
+
+                    }
+                    break;
+                case 42 :
+                    // InternalXMachine.g:2032:3: kw= '\\u00F7'
+                    {
+                    kw=(Token)match(input,128,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getDivisionSignKeyword_41());
+                    		
+
+                    }
+                    break;
+                case 43 :
+                    // InternalXMachine.g:2038:3: kw= '/'
+                    {
+                    kw=(Token)match(input,129,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getSolidusKeyword_42());
+                    		
+
+                    }
+                    break;
+                case 44 :
+                    // InternalXMachine.g:2044:3: kw= '^'
+                    {
+                    kw=(Token)match(input,130,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getCircumflexAccentKeyword_43());
+                    		
+
+                    }
+                    break;
+                case 45 :
+                    // InternalXMachine.g:2050:3: kw= '\\\\'
+                    {
+                    kw=(Token)match(input,131,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getBackslashKeyword_44());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleEVENTB_EXPRESSION_SYMBOLS"
+
+
     // $ANTLR start "ruleXConvergence"
-    // InternalXMachine.g:1361:1: ruleXConvergence returns [Enumerator current=null] : ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) ) ;
+    // InternalXMachine.g:2059:1: ruleXConvergence returns [Enumerator current=null] : ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) ) ;
     public final Enumerator ruleXConvergence() throws RecognitionException {
         Enumerator current = null;
 
@@ -3511,42 +5681,42 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXMachine.g:1367:2: ( ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) ) )
-            // InternalXMachine.g:1368:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
+            // InternalXMachine.g:2065:2: ( ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) ) )
+            // InternalXMachine.g:2066:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
             {
-            // InternalXMachine.g:1368:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
-            int alt40=3;
+            // InternalXMachine.g:2066:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
+            int alt44=3;
             switch ( input.LA(1) ) {
-            case 33:
+            case 132:
                 {
-                alt40=1;
+                alt44=1;
                 }
                 break;
-            case 34:
+            case 133:
                 {
-                alt40=2;
+                alt44=2;
                 }
                 break;
-            case 35:
+            case 134:
                 {
-                alt40=3;
+                alt44=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 40, 0, input);
+                    new NoViableAltException("", 44, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt40) {
+            switch (alt44) {
                 case 1 :
-                    // InternalXMachine.g:1369:3: (enumLiteral_0= 'ordinary' )
+                    // InternalXMachine.g:2067:3: (enumLiteral_0= 'ordinary' )
                     {
-                    // InternalXMachine.g:1369:3: (enumLiteral_0= 'ordinary' )
-                    // InternalXMachine.g:1370:4: enumLiteral_0= 'ordinary'
+                    // InternalXMachine.g:2067:3: (enumLiteral_0= 'ordinary' )
+                    // InternalXMachine.g:2068:4: enumLiteral_0= 'ordinary'
                     {
-                    enumLiteral_0=(Token)match(input,33,FOLLOW_2); 
+                    enumLiteral_0=(Token)match(input,132,FOLLOW_2); 
 
                     				current = grammarAccess.getXConvergenceAccess().getOrdinaryEnumLiteralDeclaration_0().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_0, grammarAccess.getXConvergenceAccess().getOrdinaryEnumLiteralDeclaration_0());
@@ -3558,12 +5728,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalXMachine.g:1377:3: (enumLiteral_1= 'convergent' )
+                    // InternalXMachine.g:2075:3: (enumLiteral_1= 'convergent' )
                     {
-                    // InternalXMachine.g:1377:3: (enumLiteral_1= 'convergent' )
-                    // InternalXMachine.g:1378:4: enumLiteral_1= 'convergent'
+                    // InternalXMachine.g:2075:3: (enumLiteral_1= 'convergent' )
+                    // InternalXMachine.g:2076:4: enumLiteral_1= 'convergent'
                     {
-                    enumLiteral_1=(Token)match(input,34,FOLLOW_2); 
+                    enumLiteral_1=(Token)match(input,133,FOLLOW_2); 
 
                     				current = grammarAccess.getXConvergenceAccess().getConvergentEnumLiteralDeclaration_1().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_1, grammarAccess.getXConvergenceAccess().getConvergentEnumLiteralDeclaration_1());
@@ -3575,12 +5745,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalXMachine.g:1385:3: (enumLiteral_2= 'anticipated' )
+                    // InternalXMachine.g:2083:3: (enumLiteral_2= 'anticipated' )
                     {
-                    // InternalXMachine.g:1385:3: (enumLiteral_2= 'anticipated' )
-                    // InternalXMachine.g:1386:4: enumLiteral_2= 'anticipated'
+                    // InternalXMachine.g:2083:3: (enumLiteral_2= 'anticipated' )
+                    // InternalXMachine.g:2084:4: enumLiteral_2= 'anticipated'
                     {
-                    enumLiteral_2=(Token)match(input,35,FOLLOW_2); 
+                    enumLiteral_2=(Token)match(input,134,FOLLOW_2); 
 
                     				current = grammarAccess.getXConvergenceAccess().getAnticipatedEnumLiteralDeclaration_2().getEnumLiteral().getInstance();
                     				newLeafNode(enumLiteral_2, grammarAccess.getXConvergenceAccess().getAnticipatedEnumLiteralDeclaration_2());
@@ -3627,7 +5797,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x00000000000F0040L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000000080L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x00000000000E0080L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0xFFFFFFFE00800140L,0xFF7FFFFFFFFFFFFFL,0x000000000000000FL});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00000000000C0000L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000080040L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000600002L});
@@ -3635,7 +5805,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000042L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000800002L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000001000002L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000F5E082000L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x000000015E082000L,0x0000000000000000L,0x0000000000000070L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x000000015C082000L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x000000005C080040L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000008000080L});
@@ -3644,5 +5814,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000020080080L});
     public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000080000040L});
     public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000800000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0xFFFFFFFE00800142L,0xFF7FFFFFFFFFFFFFL,0x000000000000000FL});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000000000000000L,0x0080000000000000L});
 
 }

@@ -672,6 +672,12 @@ rule__EVENTB_PREDICATE_SYMBOLS__Alternatives
 		'\u2288'
 		{ after(grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getNeitherASubsetOfNorEqualToKeyword_29()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getPartitionKeyword_30()); }
+		'partition'
+		{ after(grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getPartitionKeyword_30()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
