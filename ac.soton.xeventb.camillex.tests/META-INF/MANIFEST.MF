@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: ac.soton.xeventb.camillex.tests
+Bundle-ManifestVersion: 2
+Bundle-Name: ac.soton.xeventb.camillex.tests
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: ac.soton.xeventb.camillex.tests; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: ac.soton.xeventb.camillex,
+ org.eventb.emf.core,
+ org.junit.jupiter.api;bundle-version="[5.0.0,6.0.0)",
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: ac.soton.xeventb.camillex.tests;x-internal=true
+
