@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2016,2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,14 +9,13 @@
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
 
-package ac.soton.xeventb.common;
+package ac.soton.xeventb.camillex;
 
 import org.eclipse.xtext.common.services.Ecore2XtextTerminalConverters;
 import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -25,7 +24,7 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  * </p>
  *
  * @author htson
- * @version 0.2
+ * @version 0.9
  * @since 0.0.1
  */
 public class EventBValueConverter extends Ecore2XtextTerminalConverters {
