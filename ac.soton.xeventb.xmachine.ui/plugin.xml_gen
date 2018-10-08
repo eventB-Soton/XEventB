@@ -249,15 +249,6 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
-	<extension point="org.eclipse.ui.preferencePages">
-		<page
-			category="ac.soton.xeventb.xmachine.XMachine"
-			class="ac.soton.xeventb.xmachine.ui.XMachineExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="ac.soton.xeventb.xmachine.XMachine.validator.preferencePage"
-			name="Errors/Warnings">
-			<keywordReference id="ac.soton.xeventb.xmachine.ui.keyword_XMachine"/>
-		</page>
-	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="ac.soton.xeventb.xmachine.ui.XMachineExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
@@ -406,18 +397,12 @@
 			class="ac.soton.xeventb.xmachine.ui.XMachineExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="bumx">
 		</viewer>
-		<contentTypeBinding
-			contentTypeId="ac.soton.xeventb.xmachine.XMachine.contenttype"
-			contentViewerId="ac.soton.xeventb.xmachine.XMachine.compare.contentViewers" />
 	</extension>
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="ac.soton.xeventb.xmachine.XMachine.compare.contentMergeViewers"
 			class="ac.soton.xeventb.xmachine.ui.XMachineExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
 			extensions="bumx" label="XMachine Compare">
 		</viewer>
-		<contentTypeBinding
-			contentTypeId="ac.soton.xeventb.xmachine.XMachine.contenttype"
-			contentMergeViewerId="ac.soton.xeventb.xmachine.XMachine.compare.contentMergeViewers" />
 	</extension>
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="ac.soton.xeventb.xmachine.XMachine.editors.documentProviders"
