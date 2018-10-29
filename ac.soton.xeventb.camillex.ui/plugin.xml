@@ -80,7 +80,7 @@
 		<page
 			class="ac.soton.xeventb.camillex.ui.EventBComponentExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
 			id="ac.soton.xeventb.camillex.EventBComponent"
-			name="CamilleX">
+			name="EventBComponent">
 			<keywordReference id="ac.soton.xeventb.camillex.ui.keyword_EventBComponent"/>
 		</page>
 		<page
