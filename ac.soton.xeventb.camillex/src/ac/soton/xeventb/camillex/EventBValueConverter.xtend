@@ -25,12 +25,127 @@ import org.eclipse.xtext.nodemodel.INode
  * @since 0.0.1
  */
 class EventBValueConverter extends Ecore2XtextTerminalConverters {
+	/** 
+	 * Returns the value converter for single-line comments.
+	 * @return the value converter for single-line comments.
+	 */
+	@ValueConverter(rule="SL_COMMENT") def IValueConverter<String> SL_COMMENT() {
+		return new IValueConverter<String>() {
+			/** 
+			 * Convert XComment to string.
+			 * @param stringthe XComment string
+			 * @param nodethe node in the semantics tree.
+			 * @return the comment by stripping the leading "//" or "// ".
+			 * @see IValueConverter#toValue(String, INode)
+			 * @precondition the input string must be not <code>null</code> and
+			 * have "//" as its prefix.
+			 */
+			override String toValue(String string, INode node) throws ValueConverterException {
+				if (!(string !== null)) {
+					throw new AssertionError()
+				}
+				if (!(string.startsWith("//"))) {
+					throw new AssertionError()
+				}
+				if(string.startsWith("// ")) return string.substring(3,
+					string.lastIndexOf(Character.valueOf('\n').charValue))
+				if(string.startsWith("//")) return string.substring(2,
+					string.lastIndexOf(Character.valueOf('\n').charValue))
+				return string.trim()
+			}
+			/** 
+			 * Convert string to XComment.
+			 * @param valuethe comment
+			 * @return the XComment by prefixing "// " to the input value.
+			 * @see IValueConverter#toString(Object)
+			 */
+
+			override String toString(String value) throws ValueConverterException {
+				return '''// «value»'''
+			}
+		}
+	}
+
+	/** 
+	 * Returns the value converter for multi-line comments.
+	 * @return the value converter for multi-line comments.
+	 */
+	@ValueConverter(rule="ML_COMMENT") def IValueConverter<String> ML_COMMENT() {
+		return new IValueConverter<String>() {
+			/** 
+			 * Convert XComment to string.
+			 * @param stringthe XComment string
+			 * @param nodethe node in the semantics tree.
+			 * @return the comment by stripping the leading the multi-line syntax.
+			 * @see IValueConverter#toValue(String, INode)
+			 * @precondition the input string must be not <code>null</code>.
+			 */
+			override String toValue(String string_finalParam_, INode node) throws ValueConverterException {
+				var string = string_finalParam_
+				var String[] splits = string.split("\n")
+				if (splits.length === 1) {
+					if (string.startsWith("/* ")) {
+						string = string.substring(3)
+					} else if (string.startsWith("/*")) {
+						string = string.substring(2)
+					}
+					if (string.endsWith(" */")) {
+						string = string.substring(0, string.length() - 3)
+					} else if (string.endsWith("*/")) {
+						string = string.substring(0, string.length() - 2)
+					}
+					return string
+				}
+				var StringBuffer sb = new StringBuffer()
+				var boolean first = true
+				for (var int i = 1; i < splits.length - 1; {
+					i = i + 1
+				}) {
+					var String str = {
+						val _rdIndx_splits = i
+						splits.get(_rdIndx_splits)
+					}
+					var int index = str.indexOf("*")
+					if (index !== -1) {
+						str = str.substring(index + 1)
+						if (str.startsWith(" ")) {
+							str = str.substring(1)
+						}
+					} else {
+						str = str.trim()
+					}
+					if (first) {
+						first = false
+					} else {
+						sb.append("\n")
+					}
+					sb.append(str)
+				}
+				return sb.toString()
+			}
+			/** 
+			 * Convert string to XComment.
+			 * @param valuethe comment
+			 * @return the XComment by prefixing and suffixing the input value.
+			 * @see IValueConverter#toString(Object)
+			 */
+
+			override String toString(String value) throws ValueConverterException {
+				if(value === null) return ""
+				var String[] splits = value.split("\n")
+				if(splits.length === 1) return '''/* «value» */'''
+				var StringBuilder sb = new StringBuilder()
+				sb.append('''/* «value» */''')
+				return sb.toString()
+			}
+		}
+	}
 
 	/** 
 	 * Returns the value converter for XLabel.
 	 * @return the value converter for XLabel.
 	 */
-	@ValueConverter(rule="LABEL") def IValueConverter<String> LABEL() {
+	@ValueConverter(rule="XLABEL") def IValueConverter<String> XLABEL() {
 		return new IValueConverter<String>() {
 			/** 
 			 * Convert XLabel to string.
@@ -64,4 +179,38 @@ class EventBValueConverter extends Ecore2XtextTerminalConverters {
 			}
 		}
 	}
+	/** 
+	 * Returns the value converter for XPredicate.
+	 * @return the value converter for XPredicate.
+	 */
+// @ValueConverter(rule = "XPredicate")
+// public IValueConverter<String> XPredicate() {
+// return new IValueConverter<String>() {
+//
+//
+// /**
+// * Convert string to XLabel.
+// * 
+// * @param value
+// *            the predicate
+// * @return the predicate value by removing the double qoutes
+// * @see IValueConverter#toString(Object)
+// */
+//
+//
+// @Override
+// public String toValue(String string, INode node) throws ValueConverterException {
+// // TODO Auto-generated method stub
+// return RodinKeyboardCore.translate(string.substring(1, string.length()-1));
+//
+// }
+// //not sure about this 
+// @Override
+// public String toString(String value) throws ValueConverterException {
+// return "\"" + value + "\"";
+//
+// }
+//
+// };
+// }
 }
