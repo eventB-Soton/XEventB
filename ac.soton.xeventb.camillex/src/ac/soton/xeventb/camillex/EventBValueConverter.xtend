@@ -17,16 +17,14 @@ import org.eclipse.xtext.nodemodel.INode
 
 /** 
  * <p>
- * An implementation of value converter for Event-B attributes and element 
- * <ul>
- * <li>Label
- * </ul>
+ * An implementation for value converter, including converting comments and
+ * labels.
  * </p>
  * @author htson
  * @version 0.9
  * @since 0.0.1
  */
-class EventBComponentValueConverter extends Ecore2XtextTerminalConverters {
+class EventBValueConverter extends Ecore2XtextTerminalConverters {
 
 	/** 
 	 * Returns the value converter for XLabel.

@@ -3,43 +3,19 @@
  */
 package ac.soton.xeventb.camillex
 
-import ac.soton.xeventb.camillex.scoping.EventBComponentScopeProvider
 import org.eclipse.xtext.conversion.IValueConverterService
-import org.eclipse.xtext.parsetree.reconstr.ITransientValueService
-import org.eclipse.xtext.scoping.IScopeProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class EventBComponentRuntimeModule extends AbstractEventBComponentRuntimeModule {
-
 	/**
-	 * Bind the value converter service for Event-B attributes and elements, e.g., 
+	 * Bind the value converter service for Event-B values, e.g., converting comments,
 	 * labels, etc.
 	 * 
-	 * @see EventBComponentValueConverter
+	 * @see EventBValueConverter
 	 */
 	override Class<? extends IValueConverterService> bindIValueConverterService() {
-		return typeof(EventBComponentValueConverter);
+		return typeof(EventBValueConverter);
 	}
-
-	/**
-	 * Bind the transient value service for XContext, use for serialisation of
-	 * EMF Event-B to XText.
-	 * 
-	 * @see XContextTransientValueService
-	 */
-	override Class<? extends ITransientValueService> bindITransientValueService() {
-		return typeof(EventBComponentTransientValueService)
-	}
-
-	/**
-	 * Bind the scope provider, use for references for context extensions, etc.
-	 * 
-	 * @see XContextScopeProvider
-	 */
-	override Class<? extends IScopeProvider> bindIScopeProvider() {
-		return typeof(EventBComponentScopeProvider)
-	}	
-
 }
