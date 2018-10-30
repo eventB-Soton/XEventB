@@ -37,7 +37,7 @@ import org.eclipse.core.resources.ResourcesPlugin
  * 
  * @author htson, dd4g12
  * @version 1.0
- * @since 1.0 
+ * @since 0.1 
  */
 class AbstractXEventBActionProvider extends CommonActionProvider {
 

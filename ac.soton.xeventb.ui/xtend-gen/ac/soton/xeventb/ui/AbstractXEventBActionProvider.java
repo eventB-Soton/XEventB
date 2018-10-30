@@ -41,7 +41,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * 
  * @author htson, dd4g12
  * @version 1.0
- * @since 1.0
+ * @since 0.1
  */
 @SuppressWarnings("all")
 public class AbstractXEventBActionProvider extends CommonActionProvider {

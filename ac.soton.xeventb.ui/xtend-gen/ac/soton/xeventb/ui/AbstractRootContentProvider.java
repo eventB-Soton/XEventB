@@ -25,7 +25,7 @@ import org.rodinp.core.IInternalElement;
  * 
  * @author htson
  * @version 1.0
- * @since 1.0
+ * @since 0.1
  */
 @SuppressWarnings("all")
 public abstract class AbstractRootContentProvider implements ITreeContentProvider {
