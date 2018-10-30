@@ -13,9 +13,7 @@ package ac.soton.xeventb.xmachine.validation
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.MachineInclusion
 import org.eclipse.xtext.validation.Check
-import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
-import org.eventb.emf.core.machine.MachinePackage
 
 /**
  * <p>
@@ -50,8 +48,12 @@ class XMachineValidator extends AbstractXMachineValidator {
 			error('Machine name should be the same as the file name', null) //MachinePackage.Literals.MACHINE.eContainingFeature
 	}
 	
-	//check the prefix of the event must be one of the prefixes of the included machine
-	// that contains the synchronised event
+	/**
+	 * check the prefix of the event must be one of the prefixes of the included machine
+	 * that contains the synchronised event
+	 * 
+	 * @since 1.0
+	 */
 	@Check
 	def checkEventPrefix(EventSynchronisation evt){
 	
@@ -79,8 +81,12 @@ class XMachineValidator extends AbstractXMachineValidator {
 		 
 	}
 	
-    // Add Prefixing warning if more than one machine is inlcuded
-	// the  reason is to avoid event synchronisation problems if machines have the same event name e.g. INITIALISATION
+    /**
+     * Add Prefixing warning if more than one machine is inlcuded
+	 * the  reason is to avoid event synchronisation problems if machines have the same event name e.g. INITIALISATION
+	 * 
+	 * @since 1.0
+	 */
 	@Check
 	def checkMachinePrefix(Machine mch){
 	    val mchExtensions = mch.extensions.filter(MachineInclusion)
@@ -94,8 +100,13 @@ class XMachineValidator extends AbstractXMachineValidator {
 		
 		
 	}
-	//check the prefix of the event must be one of the prefixes of the included machine
-	// that contains the synchronised event
+	
+	/**
+	 * Check the prefix of the event must be one of the prefixes of the included machine
+	 * that contains the synchronised event
+	 * 
+	 * @since 1.0
+	 */
 	@Check
 	def checkEventPrefixEmpty(EventSynchronisation evt){
 	

@@ -31,6 +31,7 @@ import org.eventb.emf.core.machine.Witness
  * </p>
  *
  * @author dd4g12
+ * @since 1.0
  */
  
 class XMachineFormatter extends AbstractFormatter2 {
