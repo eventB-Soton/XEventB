@@ -12,4 +12,5 @@ Require-Bundle: ac.soton.xeventb.xmachine,
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xmachine.ide.contentassist.antlr,
  ac.soton.xeventb.xmachine.ide.contentassist.antlr.internal
+Automatic-Module-Name: ac.soton.xeventb.xmachine.ide
 

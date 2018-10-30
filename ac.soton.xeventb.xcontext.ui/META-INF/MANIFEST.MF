@@ -29,3 +29,4 @@ Export-Package: ac.soton.xeventb.xcontext.ui.quickfix,
  ac.soton.xeventb.xcontext.ui.contentassist,
  ac.soton.xeventb.xcontext.ui.internal
 Bundle-Activator: ac.soton.xeventb.xcontext.ui.internal.XcontextActivator
+Automatic-Module-Name: ac.soton.xeventb.xcontext.ui
