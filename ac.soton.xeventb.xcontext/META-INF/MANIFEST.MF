@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 0.0.6.qualifier
+Bundle-Version: 1.0.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xcontext;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
