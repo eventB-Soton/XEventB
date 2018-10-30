@@ -71,7 +71,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__INVARIANTS))
 				return false;
-			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANT))
+			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANTS))
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__EVENTS))
 				return false;
