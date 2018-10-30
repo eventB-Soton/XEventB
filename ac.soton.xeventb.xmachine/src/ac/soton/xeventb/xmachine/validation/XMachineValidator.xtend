@@ -10,12 +10,13 @@
  *******************************************************************************/
 package ac.soton.xeventb.xmachine.validation
 
+import ac.soton.eventb.emf.inclusion.EventSynchronisation
+import ac.soton.eventb.emf.inclusion.MachineInclusion
 import org.eclipse.xtext.validation.Check
+import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
-import ac.soton.eventb.emf.inclusion.EventSynchronisation;
-import ac.soton.eventb.emf.inclusion.MachineInclusion;
-import org.eventb.emf.core.machine.Event
+
 /**
  * <p>
  * XMachine validator, provides custom validation rules for the xtext machine file.
@@ -60,7 +61,8 @@ class XMachineValidator extends AbstractXMachineValidator {
 			
 			for(ext: mchContainer.extensions){
 				if(ext instanceof MachineInclusion ){
-					if((ext as MachineInclusion).abstractMachine.events.contains(evt.synchronisedEvent)){//used abstract machine as scoping
+					val events = (ext as MachineInclusion).abstractMachine.events
+					if((events).contains(evt.synchronisedEvent)){//used abstract machine as scoping
 						if((ext as MachineInclusion).prefixes.contains(prefix)){
 							return
 						}

@@ -40,3 +40,4 @@ Export-Package: ac.soton.xeventb.xmachine,
  ac.soton.xeventb.xmachine.validation,
  ac.soton.xeventb.xmachine.formatting2
 Import-Package: org.apache.log4j
+Automatic-Module-Name: ac.soton.xeventb.xmachine

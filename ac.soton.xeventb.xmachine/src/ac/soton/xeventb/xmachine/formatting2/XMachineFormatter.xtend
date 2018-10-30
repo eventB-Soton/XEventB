@@ -22,9 +22,8 @@ import org.eventb.emf.core.machine.Invariant
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.Parameter
 import org.eventb.emf.core.machine.Variable
+import org.eventb.emf.core.machine.Variant
 import org.eventb.emf.core.machine.Witness
-import org.eventb.emf.core.context.Context
-import org.eventb.emf.core.machine.MachinePackage
 
 /**
  * <p>
@@ -73,12 +72,13 @@ class XMachineFormatter extends AbstractFormatter2 {
 			invariant.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]	
 		}
 				
-		machine.getVariant.format.prepend[newLine];// add new line after multi line comment
-		
-		// add new line after multi line comment
-		machine.getVariant.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
-		
-		
+		for (Variant variant : machine.getVariants()) {
+			variant.format.prepend[newLine];	
+			
+			// add new line after multi line comment
+			variant.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]	
+		}
+				
 		for (Event event : machine.getEvents()) {
 			event.format.append[newLines=2];
 			
@@ -121,11 +121,10 @@ class XMachineFormatter extends AbstractFormatter2 {
 		}
 		
 		// indent the variant
-		if (machine.variant != null){
-			//val variantKeyword = machine.regionFor.keyword('variant').containingRegion
-			val Var = machine.variant
-			
-			set(Var.regionForEObject.previousHiddenRegion, Var.regionForEObject.nextHiddenRegion) [indent]
+		if (!machine.variants.empty){
+			val firstVariant = machine.variants.head
+			val lastVariant = machine.variants.last//.append[newLine]
+			set(firstVariant.regionForEObject.previousHiddenRegion, lastVariant.regionForEObject.nextHiddenRegion) [indent]	
 		}
 		
 		// indent the events
