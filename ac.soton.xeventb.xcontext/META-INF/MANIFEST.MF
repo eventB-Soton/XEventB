@@ -31,7 +31,6 @@ Export-Package: ac.soton.xeventb.xcontext,
  ac.soton.xeventb.xcontext.serializer,
  ac.soton.xeventb.xcontext.services,
  ac.soton.xeventb.xcontext.validation,
- ac.soton.xeventb.xcontext.formatting2,
- ac.soton.xeventb.xcontext.formatting
+ ac.soton.xeventb.xcontext.formatting2
 Import-Package: org.apache.log4j
 Automatic-Module-Name: ac.soton.xeventb.xcontext
