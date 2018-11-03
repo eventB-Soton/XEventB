@@ -33,6 +33,7 @@ import org.eventb.emf.core.context.Context;
  * </p>
  * 
  * @author dd4g12
+ * @since 1.0
  */
 @SuppressWarnings("all")
 public class XContextFormatter extends AbstractFormatter2 {
