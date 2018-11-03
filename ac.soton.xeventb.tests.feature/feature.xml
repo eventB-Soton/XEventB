@@ -1,8 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!--
+    Copyright (c) 2016,2018 University of Southampton.
+    All rights reserved. This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License v1.0
+    which accompanies this distribution, and is available at
+    http://www.eclipse.org/legal/epl-v10.html
+   
+    Contributors:
+        University of Southampton - initial API and implementation
+ -->
 <feature
       id="ac.soton.xeventb.tests.feature"
       label="%featureName"
-      version="0.0.8.qualifier"
+      version="1.0.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.license"
@@ -56,6 +66,13 @@
 
    <plugin
          id="ac.soton.xeventb.xmachine.ui.tests"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="ac.soton.xeventb.tests.common"
          download-size="0"
          install-size="0"
          version="0.0.0"
