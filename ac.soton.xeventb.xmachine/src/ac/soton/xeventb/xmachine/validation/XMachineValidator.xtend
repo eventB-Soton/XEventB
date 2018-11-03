@@ -21,22 +21,10 @@ import org.eventb.emf.core.machine.Machine
  * </p>
  *
  * @author dana
- * @version 
- * @see
- * @since 
+ * @version 0.1
+ * @since 1.0
  */
 class XMachineValidator extends AbstractXMachineValidator {
-
-//  public static val INVALID_NAME = 'invalidName'
-//
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					MyDslPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
 
     // Check the name of the .bumx file is the same as the machine name
 	@Check

@@ -1,12 +1,12 @@
 /*******************************************************************************
-* Copyright (c) 2016-2018 University of Southampton.
+* Copyright (c) 2016,2018 University of Southampton.
 * All rights reserved. This program and the accompanying materials
 * are made available under the terms of the Eclipse Public License v1.0
 * which accompanies this distribution, and is available at
 * http://www.eclipse.org/legal/epl-v10.html
 *
 * Contributors:
-* University of Southampton - initial API and implementation
+*     University of Southampton - initial API and implementation
 *******************************************************************************/
 package ac.soton.xeventb.xmachine.generator
 
@@ -35,18 +35,19 @@ import org.rodinp.core.RodinCore
 import org.eclipse.core.resources.IFile
 
 /**
-* Generates code from your model files on save.
-* 
- * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
-*/
-
-
-class XMachineGenerator// implements IGenerator {
-extends AbstractGenerator {
+ * <p>
+ * Generating Rodin Context from the XContext.
+ * </p>
+ *
+ * @author htson
+ * @author Dana
+ * @version 1.0
+ * @since 0.1
+ */
+class XMachineGenerator extends AbstractGenerator {
 
 	/* @htson Automatically compile to Rodin files */
-	//override void doGenerate(Resource resource, IFileSystemAccess fsa) {
-	
+
 	// Dana: In 0.0.6 generator is updated to extend AbstractGenerator
 	// Save is added after calling the translator 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
