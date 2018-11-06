@@ -22,7 +22,7 @@ package ac.soton.xeventb.ui
  * 
  * @author htson
  * @version 1.0
- * @since 1.0 
+ * @since 0.1 
  * @noextend This interface is not intended to be extended by clients.
  * @noimplement This interface is not intended to be implemented by clients.
  */

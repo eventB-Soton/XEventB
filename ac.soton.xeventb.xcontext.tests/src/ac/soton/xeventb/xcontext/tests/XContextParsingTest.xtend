@@ -15,6 +15,9 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
+/**
+ * @since 1.0 
+ */
 @RunWith(XtextRunner)
 @InjectWith(XContextInjectorProvider)
 class XContextParsingTest {
@@ -25,12 +28,18 @@ class XContextParsingTest {
 	
 	/**
 	 * Manually register any EPackage required for running the tests.
+	 * @since 1.0
 	 */
 	@Before
 	def void registerEPackages() {
 		registerContextEPackage
 	}
 	
+	/**
+	 * Successful test for context clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testContextClauseSuccessful() {
 		val testInput = 
@@ -50,6 +59,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for multi-line comments with context clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testContextClauseSuccessful_ML_COMMENT() {
 		val testInput = 
@@ -76,6 +90,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for single-line comments with context clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testContextClauseSuccessful_SL_COMMENT() {
 		val testInput = 
@@ -96,6 +115,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Test for erroneous context clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testContextClauseFailed_ErrornousName() {
 		val testInput = 
@@ -113,6 +137,11 @@ class XContextParsingTest {
 		Assert.assertTrue(result instanceof Context)
 	}
 
+	/**
+	 * Successful test for for sets clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Sets1() {
 		val testInput = 
@@ -133,6 +162,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for for sets clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Sets2() {
 		val testInput = 
@@ -153,6 +187,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for for constants clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Constants1() {
 		val testInput = 
@@ -173,6 +212,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for for constants clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Constants2() {
 		val testInput = 
@@ -193,6 +237,11 @@ class XContextParsingTest {
 		result.assertContextAxioms()
 	}
 
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Axioms1() {
 		val testInput = 
@@ -214,6 +263,11 @@ class XContextParsingTest {
 		result.assertContextAxioms("axm1:a ∈ S:false:")
 	}
 
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 1.0
+	 */
 	@Test
 	def void testSetsClauseSuccessful_Axioms2() {
 		val testInput = 

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2017 University of Southampton.
+ * Copyright (c) 2017,2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -50,13 +50,13 @@ public class AssertContextExtensions {
    * comments does not equal the expected comments.
    * 
    * @param ctx
-   * 		The input context to be analysed.
+   * 	The input context to be analysed.
    * @param expectedName
-   * 		The expected name of the context.
+   * 	The expected name of the context.
    * @param expectedComments
-   * 		The expected comments of the context.  This could be
+   * 	The expected comments of the context.  This could be
    * 		<code>null</code> indicating that the input context does not expect
-   * 		to have any comment.
+   * 	to have any comment.
    * @precondition The input context must not be <code>null</code>
    */
   public void assertContext(final Context ctx, final String expectedName, final String expectedComments) {
@@ -73,19 +73,23 @@ public class AssertContextExtensions {
    * The <b>order</b> of the EXTENDS names <b>matters</b>.
    * 
    * @param ctx
-   * 		The input context to be analysed.
+   * 	The input context to be analysed.
    * @param expectedExtendsNames
-   * 		The array of expected EXTENDS names.
+   * 	The array of expected EXTENDS names.
    * @precondition The input context must not be <code>null</code>
    */
   public void assertContextExtendsNames(final Context ctx, final String... expectedExtendsNames) {
     Assert.assertNotNull("Input context must not be null", ctx);
     final EList<String> actualExtendsNames = ctx.getExtendsNames();
-    Assert.assertEquals("Incorrect number of EXTENDS names", 
-      expectedExtendsNames.length, ((Object[])Conversions.unwrapArray(actualExtendsNames, Object.class)).length);
+    Assert.assertEquals(
+      "Incorrect number of EXTENDS names", 
+      expectedExtendsNames.length, 
+      ((Object[])Conversions.unwrapArray(actualExtendsNames, Object.class)).length);
     for (int i = 0; (i < expectedExtendsNames.length); i++) {
-      Assert.assertEquals("Incorrect EXTENDS name", 
-        expectedExtendsNames[i], actualExtendsNames.get(i));
+      Assert.assertEquals(
+        "Incorrect EXTENDS name", 
+        expectedExtendsNames[i], 
+        actualExtendsNames.get(i));
     }
   }
   
@@ -99,19 +103,23 @@ public class AssertContextExtensions {
    * not match the expected set. The <b>order</b> of the SETS <b>matters</b>.
    * 
    * @param ctx
-   * 		The input context to be analysed.
+   * 	The input context to be analysed.
    * @param expectedSets
-   * 		The array of expected (pretty-printed) sets.
+   * 	The array of expected (pretty-printed) sets.
    * @precondition The input context must not be <code>null</code>
    */
   public void assertContextSets(final Context ctx, final String... expectedSets) {
     Assert.assertNotNull("Input context must not be null", ctx);
     final EList<CarrierSet> actualSets = ctx.getSets();
-    Assert.assertEquals("Incorrect number of carrier sets", 
-      expectedSets.length, ((Object[])Conversions.unwrapArray(actualSets, Object.class)).length);
+    Assert.assertEquals(
+      "Incorrect number of carrier sets", 
+      expectedSets.length, 
+      ((Object[])Conversions.unwrapArray(actualSets, Object.class)).length);
     for (int i = 0; (i < expectedSets.length); i++) {
-      Assert.assertEquals("Incorrect carrier set name", 
-        expectedSets[i], this.prettyPrint(actualSets.get(i)));
+      Assert.assertEquals(
+        "Incorrect carrier set name", 
+        expectedSets[i], 
+        this.prettyPrint(actualSets.get(i)));
     }
   }
   
@@ -150,19 +158,23 @@ public class AssertContextExtensions {
    * <b>matters</b>.
    * 
    * @param ctx
-   * 		The input context to be analysed.
+   * 	The input context to be analysed.
    * @param expectedConstants
-   * 		The array of expected (pretty-printed) constants.
+   * 	The array of expected (pretty-printed) constants.
    * @precondition The input context must not be <code>null</code>
    */
   public void assertContextConstants(final Context ctx, final String... expectedConstants) {
     Assert.assertNotNull("Input context must not be null", ctx);
     final EList<Constant> actualConstants = ctx.getConstants();
-    Assert.assertEquals("Incorrect number of constants", 
-      expectedConstants.length, ((Object[])Conversions.unwrapArray(actualConstants, Object.class)).length);
+    Assert.assertEquals(
+      "Incorrect number of constants", 
+      expectedConstants.length, 
+      ((Object[])Conversions.unwrapArray(actualConstants, Object.class)).length);
     for (int i = 0; (i < expectedConstants.length); i++) {
-      Assert.assertEquals("Incorrect constant name", 
-        expectedConstants[i], this.prettyPrint(actualConstants.get(i)));
+      Assert.assertEquals(
+        "Incorrect constant name", 
+        expectedConstants[i], 
+        this.prettyPrint(actualConstants.get(i)));
     }
   }
   
@@ -201,19 +213,23 @@ public class AssertContextExtensions {
    * <b>matters</b>.
    * 
    * @param ctx
-   * 		The input context to be analysed.
+   * 	The input context to be analysed.
    * @param expectedAxioms
-   * 		The array of expected (pretty-printed) axioms.
+   * 	The array of expected (pretty-printed) axioms.
    * @precondition The input context must not be <code>null</code>
    */
   public void assertContextAxioms(final Context ctx, final String... expectedAxioms) {
     Assert.assertNotNull("Input context must not be null", ctx);
     final EList<Axiom> actualAxioms = ctx.getAxioms();
-    Assert.assertEquals("Incorrect number of constants", 
-      expectedAxioms.length, ((Object[])Conversions.unwrapArray(actualAxioms, Object.class)).length);
+    Assert.assertEquals(
+      "Incorrect number of constants", 
+      expectedAxioms.length, 
+      ((Object[])Conversions.unwrapArray(actualAxioms, Object.class)).length);
     for (int i = 0; (i < expectedAxioms.length); i++) {
-      Assert.assertEquals("Incorrect constant name", 
-        expectedAxioms[i], this.prettyPrint(actualAxioms.get(i)));
+      Assert.assertEquals(
+        "Incorrect constant name", 
+        expectedAxioms[i], 
+        this.prettyPrint(actualAxioms.get(i)));
     }
   }
   

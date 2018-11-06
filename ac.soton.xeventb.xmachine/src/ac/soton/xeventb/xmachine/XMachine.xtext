@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016-2018 University of Southampton.
+ * Copyright (c) 2016,2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -20,21 +20,23 @@ import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//machine"
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
 
 /*
- * For XEvent-B 0.0.8 comments are allowed everywhere
- * ML_COMMENT and SL_COMMEN are defined as hidden
+ * For CamilleX 1.0.0 comments are allowed everywhere
+ * ML_COMMENT and SL_COMMENT are defined as hidden
  */
 
 Machine returns emachine::Machine:
 	{emachine::Machine}
    (comment=(ML_COMMENT|SL_COMMENT))?
 	'machine' name=ID
-	( extensions+= MIncludes*)
-    ('refines' refines+=[emachine::Machine])?
-	('sees' sees+=[econtext::Context]+)?
+	(
+		(extensions+= MIncludes*) &
+    	('refines' refines+=[emachine::Machine])? &
+		('sees' sees+=[econtext::Context]+)?
+	)
     ('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
-	('variant' variant=XVariant)?
-	('events' events+=XEvent (events+=XEvent)*)?
+	('variants' variants+=XVariant+)?
+	('events' events+=XEvent+)?
 	('end')
 ;
 
@@ -56,7 +58,7 @@ XVariable returns emachine::Variable:
 
 XInvariant returns emachine::Invariant:
 	{emachine::Invariant}
-	name=XLABEL predicate=XPredicate(theorem?='theorem')?	
+	(theorem?='theorem')? name=XLABEL predicate=XFormula	
 ;
 
 terminal XLABEL returns ecore::EString:
@@ -65,38 +67,22 @@ terminal XLABEL returns ecore::EString:
 
 XVariant returns emachine::Variant:
 	{emachine::Variant}
-	expression= XPredicate
+	name=XLABEL expression= XFormula
 ;
 
 XEvent returns emachine::Event:
 	{emachine::Event}
-	name=ID
+	'event' name=ID
+	(convergence=XConvergence)?
 	(
-		(extended?='extended')? &
-		(convergence=XConvergence)?
-	)
-	( extensions+= EventSync*)
-	('refines' refines+=[emachine::Event]+)?
-	
-	(
-		('with' witnesses+=XWitness+)?
-		'begin'
-			actions+=XAction+
-		|	
-		'when'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-		|
-		'any'
-			parameters+=XParameter+
-		'where'
-			guards+=XGuard+
-		('with' witnesses+=XWitness+)?
-		('then'
-			actions+=XAction+)?
-	)?	
+		('refines' refines+=[emachine::Event]+) |
+		(extended?='extends' refines+=[emachine::Event])
+	)?
+	('any' parameters+=XParameter+)?
+	(extensions+= EventSync*)
+	('where' guards+=XGuard+)?
+	('then' actions+=XAction+)?
+	('with' witnesses+=XWitness+)?
 	'end'
 ;
 
@@ -106,7 +92,7 @@ EventSync returns einclusion::EventSynchronisation:
 ;
 
 enum XConvergence returns emachine::Convergence:
-				ordinary = 'ordinary' | convergent = 'convergent' | anticipated = 'anticipated'
+	ordinary = 'ordinary' | convergent = 'convergent' | anticipated = 'anticipated'
 ;
 
 XParameter returns emachine::Parameter:
@@ -116,22 +102,128 @@ XParameter returns emachine::Parameter:
 
 XGuard returns emachine::Guard:
 	{emachine::Guard}
-	name=XLABEL predicate= XPredicate (theorem?='theorem')?
+	 (theorem?='theorem')? name=XLABEL predicate= XFormula
 ;
 
 XWitness returns emachine::Witness:
 	{emachine::Witness}
-	name=XLABEL predicate= XPredicate
+	name=XLABEL predicate= XFormula
 ;
 
 XAction returns emachine::Action:
 	{emachine::Action}
-	name=XLABEL action= XPredicate
+	name=XLABEL action= XFormula
 ;
 
-XPredicate returns ecore::EString:
-	STRING
+XFormula returns ecore::EString:
+	(
+		EVENTB_IDENTIFIER_KEYWORD |
+		EVENTB_PREDICATE_SYMBOLS |
+		EVENTB_EXPRESSION_SYMBOLS |
+		ID |
+		INT
+	)+ 
 ;
+
+EVENTB_IDENTIFIER_KEYWORD returns ecore::EString:
+	'BOOL' |
+	'FALSE' |
+	'TRUE' |
+	'bool' |
+	'card' |
+	'dom' |
+	'finite' |
+	'id' |
+	'inter' |
+	'max' |
+	'min' |
+	'mod' |
+	'pred' |
+	'prj1' |
+	'prj2' |
+	'ran' |
+	'succ' |
+	'union' |
+	'ℕ1' |
+	'ℕ' |
+	'ℙ1' |
+	'ℙ' |
+	'ℤ'
+;
+
+EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
+	'(' | // Predicate calculus symbols
+	')' |
+	'⇔' | 
+	'⇒' |
+	'∧' | '&' |
+	'∨' |
+	'¬' |
+	'⊤' |
+	'⊥' |
+	'∀' | '!' |
+	'∃' | '#' |
+	',' |
+	'·' | '.' |
+	'=' | // Build predicates from expressions
+	'≠' |
+	'≤' |
+	'<' |
+	'≥' |
+	'>' |
+	'∈' | ':' | // Include this for Rodin keyboard
+	'∉' | 
+	'⊂' |
+	'⊄' |
+	'⊆' |
+	'⊈' |
+	'partition' // This is missing from the Rodin D7 deliverable
+;
+
+EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
+	'↔' | // Symbols for building set of relations
+	'' |
+	'' |
+	'' |
+	'⇸' |
+	'→' |
+	'⤔' |
+	'↣' |
+	'⤀' |
+	'↠' |
+	'⤖' |
+	'{' | // Symbols for manipulating sets
+	'}' |
+	'↦' |
+	'∅' |
+	'∩' |
+	'∪' |
+	'∖' |
+	'×' |
+	'[' | // Symbols for manipulating functions and relations
+	']' |
+	'' |
+	'∘' |
+	';' |
+	'⊗' |
+	'∥' |
+	'∼' |
+	'◁' |
+	'⩤' |
+	'▷' |
+	'⩥' |
+	'λ' | '%' // Symbols for quantified expressions
+	'⋂' |
+	'⋃' |
+	'∣' |
+	'‥' | // Symbols for arithmetic expressions
+	'+' |
+	'−' | '-' |
+	'∗' | '*' |
+	'÷' | '/' | 
+	'^' |
+	'\\' // Allowed for LaTeX combos
+;
+
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;
-

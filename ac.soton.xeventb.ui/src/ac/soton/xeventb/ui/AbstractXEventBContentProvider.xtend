@@ -24,7 +24,7 @@ import org.eclipse.jface.viewers.ITreeContentProvider
  * 
  * @author htson
  * @version 1.0
- * @since 1.0
+ * @since 0.1
  * @see IXEventBNavigatorObject
  */
 abstract class AbstractXEventBContentProvider implements ITreeContentProvider {

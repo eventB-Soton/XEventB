@@ -28,7 +28,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * 
  * @author htson
  * @version 1.0
- * @since 1.0
+ * @since 0.1
  * @see IXEventBNavigatorObject
  */
 @SuppressWarnings("all")

@@ -22,6 +22,7 @@ class XContextUiModule extends AbstractXContextUiModule {
 	override configure(Binder binder) {
 		super.configure(binder);
 		binder.bind(typeof(String)).annotatedWith(
-			Names.named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))).toInstance("!#%&*-:|~/\\");
+			Names.named((XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS))).toInstance("!#%&*-:|~/\\NIP");
+		// @TODO We should be able to query the Rodin Keyboard for these letters
 	}
 }

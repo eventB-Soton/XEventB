@@ -20,7 +20,7 @@ import org.osgi.framework.BundleContext
  * 
  * @author htson
  * @version 1.0
- * @since 1.0 
+ * @since 0.1 
  * @noextend This class is not intended to be extended by clients.
  */
 final class XEventBUIPlugin extends AbstractUIPlugin {

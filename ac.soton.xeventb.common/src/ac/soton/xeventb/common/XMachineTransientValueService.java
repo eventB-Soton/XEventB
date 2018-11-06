@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -71,7 +71,7 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__INVARIANTS))
 				return false;
-			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANT))
+			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANTS))
 				return false;
 			if (feature.equals(MachinePackage.Literals.MACHINE__EVENTS))
 				return false;

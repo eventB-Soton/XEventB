@@ -5,42 +5,19 @@ package ac.soton.xeventb.xmachine.tests;
 
 import ac.soton.xeventb.xmachine.tests.XMachineInjectorProvider;
 import com.google.inject.Inject;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.testing.InjectWith;
 import org.eclipse.xtext.testing.XtextRunner;
 import org.eclipse.xtext.testing.util.ParseHelper;
-import org.eclipse.xtext.xbase.lib.Exceptions;
-import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eventb.emf.core.machine.Machine;
-import org.junit.Assert;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * @since 1.0
+ */
 @RunWith(XtextRunner.class)
 @InjectWith(XMachineInjectorProvider.class)
 @SuppressWarnings("all")
 public class XMachineParsingTest {
   @Inject
   private ParseHelper<Machine> parseHelper;
-  
-  @Test
-  public void loadModel() {
-    try {
-      StringConcatenation _builder = new StringConcatenation();
-      _builder.append("Hello Xtext!");
-      _builder.newLine();
-      final Machine result = this.parseHelper.parse(_builder);
-      Assert.assertNotNull(result);
-      final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Unexpected errors: ");
-      String _join = IterableExtensions.join(errors, ", ");
-      _builder_1.append(_join);
-      Assert.assertTrue(_builder_1.toString(), errors.isEmpty());
-    } catch (Throwable _e) {
-      throw Exceptions.sneakyThrow(_e);
-    }
-  }
 }

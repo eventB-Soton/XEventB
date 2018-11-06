@@ -1,4 +1,4 @@
-== Documentation project for Event-B XText Front-end ==
+== Documentation project for CamilleX ==
 =======================================================
 
 The source is in the **latex** folder and is used to generate the documentations in different format.

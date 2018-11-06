@@ -29,7 +29,7 @@ import org.eventb.emf.persistence.EMFRodinDB
  * @author htson
  * @version 0.1
  * @see EMFRodinDB
- * @since 0.0.2
+ * @since 0.2
  */
 class XContextScopeProvider extends AbstractXContextScopeProvider {
 

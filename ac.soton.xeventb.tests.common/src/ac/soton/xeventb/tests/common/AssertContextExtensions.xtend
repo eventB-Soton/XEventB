@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017 University of Southampton.
+ * Copyright (c) 2017,2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -47,19 +47,19 @@ class AssertContextExtensions {
 	 * comments does not equal the expected comments. 
 	 * 
 	 * @param ctx
-	 *		The input context to be analysed.
+	 * 	The input context to be analysed.
 	 * @param expectedName
-	 *		The expected name of the context.
+	 * 	The expected name of the context.
 	 * @param expectedComments
-	 *		The expected comments of the context.  This could be
+	 * 	The expected comments of the context.  This could be
 	 * 		<code>null</code> indicating that the input context does not expect
-	 *		to have any comment. 
+	 * 	to have any comment. 
 	 * @precondition The input context must not be <code>null</code>
 	 */
 	def assertContext(Context ctx, String expectedName, String expectedComments) {
 		// Assert precondition
 		Assert.assertNotNull("Input context must not be null", ctx)
-		
+
 		Assert.assertEquals("Incorrect context's name", expectedName, ctx.name)
 		Assert.assertEquals("Incorrect context's comments", expectedComments, ctx.comment)
 	}
@@ -72,22 +72,26 @@ class AssertContextExtensions {
 	 * The <b>order</b> of the EXTENDS names <b>matters</b>. 
 	 * 
 	 * @param ctx
-	 *		The input context to be analysed.
+	 * 	The input context to be analysed.
 	 * @param expectedExtendsNames
-	 *		The array of expected EXTENDS names.
+	 * 	The array of expected EXTENDS names.
 	 * @precondition The input context must not be <code>null</code>
 	 */
 	def assertContextExtendsNames(Context ctx, String... expectedExtendsNames) {
 		// Assert precondition
 		Assert.assertNotNull("Input context must not be null", ctx)
-		
+
 		val actualExtendsNames = ctx.extendsNames
-		Assert.assertEquals("Incorrect number of EXTENDS names", 
-			expectedExtendsNames.length, actualExtendsNames.length
+		Assert.assertEquals(
+			"Incorrect number of EXTENDS names",
+			expectedExtendsNames.length,
+			actualExtendsNames.length
 		)
 		for (var i = 0; i < expectedExtendsNames.length; i++) {
-			Assert.assertEquals("Incorrect EXTENDS name", 
-				expectedExtendsNames.get(i), actualExtendsNames.get(i)
+			Assert.assertEquals(
+				"Incorrect EXTENDS name",
+				expectedExtendsNames.get(i),
+				actualExtendsNames.get(i)
 			)
 		}
 	}
@@ -102,22 +106,26 @@ class AssertContextExtensions {
 	 * not match the expected set. The <b>order</b> of the SETS <b>matters</b>. 
 	 * 
 	 * @param ctx
-	 *		The input context to be analysed.
+	 * 	The input context to be analysed.
 	 * @param expectedSets
-	 *		The array of expected (pretty-printed) sets.
+	 * 	The array of expected (pretty-printed) sets.
 	 * @precondition The input context must not be <code>null</code>
 	 */
 	def assertContextSets(Context ctx, String... expectedSets) {
 		// Assert precondition
 		Assert.assertNotNull("Input context must not be null", ctx)
-		
+
 		val actualSets = ctx.sets
-		Assert.assertEquals("Incorrect number of carrier sets", 
-			expectedSets.length, actualSets.length
+		Assert.assertEquals(
+			"Incorrect number of carrier sets",
+			expectedSets.length,
+			actualSets.length
 		)
 		for (var i = 0; i < expectedSets.length; i++) {
-			Assert.assertEquals("Incorrect carrier set name", 
-				expectedSets.get(i), actualSets.get(i).prettyPrint
+			Assert.assertEquals(
+				"Incorrect carrier set name",
+				expectedSets.get(i),
+				actualSets.get(i).prettyPrint
 			)
 		}
 	}
@@ -148,22 +156,26 @@ class AssertContextExtensions {
 	 * <b>matters</b>. 
 	 * 
 	 * @param ctx
-	 *		The input context to be analysed.
+	 * 	The input context to be analysed.
 	 * @param expectedConstants
-	 *		The array of expected (pretty-printed) constants.
+	 * 	The array of expected (pretty-printed) constants.
 	 * @precondition The input context must not be <code>null</code>
 	 */
 	def assertContextConstants(Context ctx, String... expectedConstants) {
 		// Assert precondition
 		Assert.assertNotNull("Input context must not be null", ctx)
-		
+
 		val actualConstants = ctx.constants
-		Assert.assertEquals("Incorrect number of constants", 
-			expectedConstants.length, actualConstants.length
+		Assert.assertEquals(
+			"Incorrect number of constants",
+			expectedConstants.length,
+			actualConstants.length
 		)
 		for (var i = 0; i < expectedConstants.length; i++) {
-			Assert.assertEquals("Incorrect constant name", 
-				expectedConstants.get(i), actualConstants.get(i).prettyPrint
+			Assert.assertEquals(
+				"Incorrect constant name",
+				expectedConstants.get(i),
+				actualConstants.get(i).prettyPrint
 			)
 		}
 	}
@@ -182,7 +194,7 @@ class AssertContextExtensions {
 	def private prettyPrint(Constant cst) {
 		cst.name + ":" + (cst.comment ?: "")
 	}
-	
+
 	/**
 	 * This method asserts the AXIOMS of the input context against the
 	 * array of expected (pretty-printed) axioms. The pretty print of an
@@ -194,22 +206,26 @@ class AssertContextExtensions {
 	 * <b>matters</b>. 
 	 * 
 	 * @param ctx
-	 *		The input context to be analysed.
+	 * 	The input context to be analysed.
 	 * @param expectedAxioms
-	 *		The array of expected (pretty-printed) axioms.
+	 * 	The array of expected (pretty-printed) axioms.
 	 * @precondition The input context must not be <code>null</code>
 	 */
 	def assertContextAxioms(Context ctx, String... expectedAxioms) {
 		// Assert precondition
 		Assert.assertNotNull("Input context must not be null", ctx)
-		
+
 		val actualAxioms = ctx.axioms
-		Assert.assertEquals("Incorrect number of constants", 
-			expectedAxioms.length, actualAxioms.length
+		Assert.assertEquals(
+			"Incorrect number of constants",
+			expectedAxioms.length,
+			actualAxioms.length
 		)
 		for (var i = 0; i < expectedAxioms.length; i++) {
-			Assert.assertEquals("Incorrect constant name", 
-				expectedAxioms.get(i), actualAxioms.get(i).prettyPrint
+			Assert.assertEquals(
+				"Incorrect constant name",
+				expectedAxioms.get(i),
+				actualAxioms.get(i).prettyPrint
 			)
 		}
 	}

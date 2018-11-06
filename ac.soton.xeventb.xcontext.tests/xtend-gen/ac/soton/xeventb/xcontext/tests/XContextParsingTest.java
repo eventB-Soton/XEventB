@@ -21,6 +21,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+/**
+ * @since 1.0
+ */
 @RunWith(XtextRunner.class)
 @InjectWith(XContextInjectorProvider.class)
 @SuppressWarnings("all")
@@ -37,12 +40,18 @@ public class XContextParsingTest {
   
   /**
    * Manually register any EPackage required for running the tests.
+   * @since 1.0
    */
   @Before
   public void registerEPackages() {
     this._assertContextExtensions.registerContextEPackage();
   }
   
+  /**
+   * Successful test for context clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testContextClauseSuccessful() {
     try {
@@ -67,6 +76,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for multi-line comments with context clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testContextClauseSuccessful_ML_COMMENT() {
     try {
@@ -106,6 +120,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for single-line comments with context clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testContextClauseSuccessful_SL_COMMENT() {
     try {
@@ -132,6 +151,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Test for erroneous context clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testContextClauseFailed_ErrornousName() {
     try {
@@ -154,6 +178,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for sets clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Sets1() {
     try {
@@ -180,6 +209,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for sets clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Sets2() {
     try {
@@ -206,6 +240,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for constants clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Constants1() {
     try {
@@ -232,6 +271,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for constants clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Constants2() {
     try {
@@ -258,6 +302,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for axioms clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Axioms1() {
     try {
@@ -287,6 +336,11 @@ public class XContextParsingTest {
     }
   }
   
+  /**
+   * Successful test for for axioms clause.
+   * 
+   * @since 1.0
+   */
   @Test
   public void testSetsClauseSuccessful_Axioms2() {
     try {

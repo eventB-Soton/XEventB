@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2018 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -16,7 +16,6 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -213,34 +212,34 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	 * 
 	 * @return the value converter for XPredicate.
 	 */
-	@ValueConverter(rule = "XPredicate")
-    public IValueConverter<String> XPredicate() {
-		return new IValueConverter<String>() {
-
-
-			/**
-			 * Convert string to XLabel.
-			 * 
-			 * @param value
-			 *            the predicate
-			 * @return the predicate value by removing the double qoutes
-			 * @see IValueConverter#toString(Object)
-			 */
-	
-
-			@Override
-			public String toValue(String string, INode node) throws ValueConverterException {
-				// TODO Auto-generated method stub
-				return RodinKeyboardCore.translate(string.substring(1, string.length()-1));
-				
-			}
-			//not sure about this 
-			@Override
-			public String toString(String value) throws ValueConverterException {
-				return "\"" + value + "\"";
-				
-			}
-			
-		};
-	}
+//	@ValueConverter(rule = "XPredicate")
+//    public IValueConverter<String> XPredicate() {
+//		return new IValueConverter<String>() {
+//
+//
+//			/**
+//			 * Convert string to XLabel.
+//			 * 
+//			 * @param value
+//			 *            the predicate
+//			 * @return the predicate value by removing the double qoutes
+//			 * @see IValueConverter#toString(Object)
+//			 */
+//	
+//
+//			@Override
+//			public String toValue(String string, INode node) throws ValueConverterException {
+//				// TODO Auto-generated method stub
+//				return RodinKeyboardCore.translate(string.substring(1, string.length()-1));
+//				
+//			}
+//			//not sure about this 
+//			@Override
+//			public String toString(String value) throws ValueConverterException {
+//				return "\"" + value + "\"";
+//				
+//			}
+//			
+//		};
+//	}
 }
