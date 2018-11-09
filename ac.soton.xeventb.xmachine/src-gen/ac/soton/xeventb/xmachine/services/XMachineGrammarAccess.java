@@ -71,8 +71,8 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		///*
-		// * For XEvent-B 0.0.8 comments are allowed everywhere
-		// * ML_COMMENT and SL_COMMEN are defined as hidden
+		// * For CamilleX 1.0.0 comments are allowed everywhere
+		// * ML_COMMENT and SL_COMMENT are defined as hidden
 		// */ Machine emachine::Machine:
 		//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 		//	'machine' name=ID (extensions+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
@@ -1374,6 +1374,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	private final EVENTB_PREDICATE_SYMBOLSElements pEVENTB_PREDICATE_SYMBOLS;
 	private final EVENTB_EXPRESSION_SYMBOLSElements pEVENTB_EXPRESSION_SYMBOLS;
 	private final TerminalRule tID;
+	private final TerminalRule tSTRING;
 	
 	private final Grammar grammar;
 	
@@ -1403,6 +1404,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEVENTB_PREDICATE_SYMBOLS = new EVENTB_PREDICATE_SYMBOLSElements();
 		this.pEVENTB_EXPRESSION_SYMBOLS = new EVENTB_EXPRESSION_SYMBOLSElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1433,8 +1435,8 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	///*
-	// * For XEvent-B 0.0.8 comments are allowed everywhere
-	// * ML_COMMENT and SL_COMMEN are defined as hidden
+	// * For CamilleX 1.0.0 comments are allowed everywhere
+	// * ML_COMMENT and SL_COMMENT are defined as hidden
 	// */ Machine emachine::Machine:
 	//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 	//	'machine' name=ID (extensions+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
@@ -1713,22 +1715,22 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//@Override
 	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9')*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9' | "'")*;
 	public TerminalRule getIDRule() {
 		return tID;
+	}
+	
+	//@Override
+	//terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"';
+	public TerminalRule getSTRINGRule() {
+		return tSTRING;
 	}
 	
 	//terminal INT returns ecore::EInt:
 	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
-	}
-	
-	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
-	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
 	}
 	
 	//terminal ML_COMMENT:
