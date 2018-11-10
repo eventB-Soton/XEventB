@@ -2523,9 +2523,9 @@ rule__XEvent__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXEventAccess().getEventKeyword_1()); }
-	'event'
-	{ after(grammarAccess.getXEventAccess().getEventKeyword_1()); }
+	{ before(grammarAccess.getXEventAccess().getConvergenceAssignment_1()); }
+	(rule__XEvent__ConvergenceAssignment_1)?
+	{ after(grammarAccess.getXEventAccess().getConvergenceAssignment_1()); }
 )
 ;
 finally {
@@ -2550,9 +2550,9 @@ rule__XEvent__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXEventAccess().getNameAssignment_2()); }
-	(rule__XEvent__NameAssignment_2)
-	{ after(grammarAccess.getXEventAccess().getNameAssignment_2()); }
+	{ before(grammarAccess.getXEventAccess().getEventKeyword_2()); }
+	'event'
+	{ after(grammarAccess.getXEventAccess().getEventKeyword_2()); }
 )
 ;
 finally {
@@ -2577,9 +2577,9 @@ rule__XEvent__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getXEventAccess().getConvergenceAssignment_3()); }
-	(rule__XEvent__ConvergenceAssignment_3)?
-	{ after(grammarAccess.getXEventAccess().getConvergenceAssignment_3()); }
+	{ before(grammarAccess.getXEventAccess().getNameAssignment_3()); }
+	(rule__XEvent__NameAssignment_3)
+	{ after(grammarAccess.getXEventAccess().getNameAssignment_3()); }
 )
 ;
 finally {
@@ -4123,30 +4123,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XEvent__NameAssignment_2
+rule__XEvent__ConvergenceAssignment_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_2_0()); }
-		RULE_ID
-		{ after(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_2_0()); }
+		{ before(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_1_0()); }
+		ruleXConvergence
+		{ after(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__XEvent__ConvergenceAssignment_3
+rule__XEvent__NameAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_3_0()); }
-		ruleXConvergence
-		{ after(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_3_0()); }
+		{ before(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_3_0()); }
+		RULE_ID
+		{ after(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_3_0()); }
 	)
 ;
 finally {

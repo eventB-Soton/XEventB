@@ -72,8 +72,8 @@ XVariant returns emachine::Variant:
 
 XEvent returns emachine::Event:
 	{emachine::Event}
-	'event' name=ID
 	(convergence=XConvergence)?
+	'event' name=ID
 	(
 		('refines' refines+=[emachine::Event]+) |
 		(extended?='extends' refines+=[emachine::Event])
