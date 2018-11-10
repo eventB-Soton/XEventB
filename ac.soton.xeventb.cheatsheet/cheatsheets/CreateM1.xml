@@ -43,59 +43,57 @@
          <br/>
          invariants
          <br/>
-         @inv1_1: &quot;prtcpts ∈ crs ↔ PRTCPT&quot;
+         @inv1_1: prtcpts ∈ crs ↔ PRTCPT
          <br/>
-         @inv1_2: &quot;∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[{c}]&quot;
+         @inv1_2: ∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[{c}]
          <br/>
-         variant &quot;(crs × PRTCPT) ∖ prtcpts&quot;
+         variants
+         <br/>
+         @v0: (crs × PRTCPT) ∖ prtcpts
          <br/>
          events
          <br/>
-         INITIALISATION extended
+         event INITIALISATION extends INITIALISATION
          <br/>
-		 begin
+		 then
 		 <br/>
-		 @act1_2: &quot;prtcpts ≔ ∅&quot;
-		 <br/>
-		 end
-		 <br/>
-		 OpenCourses extended
-		 <br/>
-		 refines OpenCourses
-		 <br/>
-		 when
-		 <br/>
-		 @thm1_2: &quot;dom(prtcpts) ⊆ crs&quot; theorem 
+		 @act1_2: prtcpts ≔ ∅
 		 <br/>
 		 end
 		 <br/>
-		 CloseCourses extended anticipated
+		 event OpenCourses extends OpenCourses
 		 <br/>
-		 refines CloseCourses
+		 where
 		 <br/>
-		 begin
-		 <br/>
-		 @act1_2: &quot;prtcpts ≔ cs ⩤ prtcpts&quot;
+		 theorem @thm1_2: dom(prtcpts) ⊆ crs
 		 <br/>
 		 end
 		 <br/>
-		 Register convergent
+		 anticipated event CloseCourses extends CloseCourses 
+		 <br/>
+		 then
+		 <br/>
+		 @act1_2: prtcpts ≔ cs ⩤ prtcpts
+		 <br/>
+		 end
+		 <br/>
+		 convergent event Register
 		 <br/>
 		 any p c
 		 <br/>
 		 where
 		 <br/>
-		 @grd1_1: &quot;p ∈ PRTCPT&quot;
+		 @grd1_1: p ∈ PRTCPT
 		 <br/>
-		 @grd1_2: &quot;c ∈ crs&quot;
+		 @grd1_2: c ∈ crs
 		 <br/>
-		 @grd1_3: &quot;p ≠ instrs(c)&quot;
+		 @grd1_3: p ≠ instrs(c)
 		 <br/>
-		 @grd1_4: &quot;c ↦ p ∉ prtcpts&quot;
+		 @grd1_4: c ↦ p ∉ prtcpts
 		 <br/>
 		 then
 		 <br/>
-		 @act1_1: &quot;prtcpts ≔ prtcpts ∪ {c ↦ p}&quot;
+		 @act1_1: prtcpts ≔ prtcpts ∪ {c ↦ p}
 		 <br/>
 		 end
 		 <br/>

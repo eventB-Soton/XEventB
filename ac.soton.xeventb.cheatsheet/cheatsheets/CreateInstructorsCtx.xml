@@ -41,9 +41,9 @@
          <br/>
          axioms
          <br/>
-         @axm1_3: &quot;INSTR ∈ ℙ(MEM)&quot;
+         @axm1_3: INSTR ∈ ℙ(MEM)
          <br/>
-         @axm1_4: &quot;instrs ∈ CRS → INSTR&quot;
+         @axm1_4: instrs ∈ CRS → INSTR
          <br/>
          end
       </description>
