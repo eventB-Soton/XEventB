@@ -1,0 +1,349 @@
+%%
+%% This is file `lstEventB.sty',
+%% generated with the docstrip utility.
+%%
+%% The original source files were:
+%%
+%% lstEventB.dtx  (with options: `lstEventB')
+%% 
+%% This is a generated file.
+%% 
+%% Copyright (C) 2018 University of Southampton
+%% 
+%% This file may be distributed and/or modified under the
+%% conditions of the LaTeX Project Public License, either version 1.3c
+%% of this license or (at your option) any later version.
+%% The latest version of this license is in:
+%% 
+%%    http://www.latex-project.org/lppl.txt
+%% 
+%% and version 1.3c or later is part of all distributions of LaTeX
+%% version 2008/05/04 or later.
+%% 
+%% This work has the LPPL maintenance status "author-maintained".
+%% 
+%% The Current Maintainer of this work is T. S. Hoang and C. Zhu
+%% (<T dot S dot Hoang and C dot Zhu at ecs dot soton dot ac dot uk>).
+%% 
+\NeedsTeXFormat{LaTeX2e}\relax
+\ProvidesPackage{lstEventB}
+    [2018/05/14 v1.0 Package for listing Event-B code]
+
+%%%%% BEGIN Package loading %%%%%
+\RequirePackage{listings}
+\RequirePackage{xspace}
+\RequirePackage{xcolor}
+\RequirePackage{bsymb}
+\RequirePackage{xargs}
+\RequirePackage{mdframed}
+%%%%% END Package loading %%%%%
+
+%%%%% BEGIN Declaration of options %%%%%
+% ========================
+
+% Macro to set the colour of the Event-B keywords.
+% The default colour is black.
+\newcommand{\EventB@SetKeywordColour}[1]{%
+  \colorlet{EventB@keywordcolour}{#1}%
+}
+\EventB@SetKeywordColour{black}
+
+% Macro to set the colour of the Event-B secondary keywords.
+% The default colour is black.
+\newcommand{\EventB@SetNdKeywordColour}[1]{%
+  \colorlet{EventB@ndkeywordcolour}{#1}%
+}
+\EventB@SetNdKeywordColour{black}
+
+% Macro to set the colour of Event-B identifiers.
+% The default colour is black.
+\newcommand{\EventB@SetIdentifierColour}[1]{%
+  \colorlet{EventB@identifiercolour}{#1}%
+}
+\EventB@SetIdentifierColour{black}
+
+% Macro to set the colour of Event-B comments.
+% The default colour is black.
+\newcommand{\EventB@SetCommentColour}[1]{%
+  \colorlet{EventB@commentcolour}{#1}%
+}
+\EventB@SetCommentColour{black}
+
+% Macro to set the colour of Event-B formulae.
+% The default colour is black.
+\newcommand{\EventB@SetFormulaColour}[1]{%
+  \colorlet{EventB@formulacolour}{#1}%
+}
+\EventB@SetFormulaColour{black}
+
+% Declaration of the *colour* option.
+\DeclareOption{colour}{
+  \EventB@SetKeywordColour{red}
+  \EventB@SetNdKeywordColour{red}
+  \EventB@SetIdentifierColour{purple}
+  \EventB@SetCommentColour{green!50!black}
+  \EventB@SetFormulaColour{blue}
+}
+
+% Declaration of the *color* option as an alias of *colour*.
+\DeclareOption{color}{
+  \ExecuteOptions{colour}
+}
+%%%%% END Declaration of options %%%%%
+
+%%%%% BEGIN Execution of options %%%%%
+% ========================
+
+\ProcessOptions
+%%%%% END Execution of options %%%%%
+%%%%% BEGIN Typesetting of the Event-B Language %%%%%
+% ===================================
+
+% Defining the Event-B language
+\def\lst@visiblespace{\hspace{0.2em}}
+\lstdefinelanguage{Event-B}{%
+  basicstyle=\rmfamily\footnotesize,
+  keywords={%
+    % Keywords for contexts
+    context,extends,sets,constants,axioms,theorem,end,%
+    % Keywords for machines
+    machine,sees,refines,variables,invariants,variant,events,%
+  },%
+  keywordstyle=\color{EventB@keywordcolour}\bfseries\sffamily,%
+  sensitive=false,
+  ndkeywords={%
+    % Keywords for events
+    extended,theorem,any,where,when,with,begin,then%
+  },%
+  ndkeywordstyle=\color{EventB@ndkeywordcolour}\bfseries\sffamily,%
+  identifierstyle=\color{EventB@identifiercolour}\sffamily,
+  comment=[l]{//},%
+  morecomment=[s]{/*}{*/},%
+  commentstyle=\color{EventB@commentcolour}\rmfamily,%
+  stringstyle=\color{EventB@formulacolour}\sffamily,
+  string=[b]",
+  showstringspaces=true, % Do not show the space in formulae
+  inputencoding=utf8, % Allow UTF-8 input encoding
+  extendedchars=true, % Use extended characters
+  literate= % Event-B mathematical symbols
+  % Short sequences should appear before long sequences containing them
+  % Predicates
+  {⊥}{{$\bfalse$}}1% False
+  {⊤}{{$\btrue$}}1% True
+  {∧}{{$\land$}}1% Conjunction
+  {∨}{{$\lor$}}1% Disjunction
+  {⇒}{{$\limp$}}1% Implication
+  {⇔}{{$\leqv$}}1% Equivalence
+  {¬}{{$\lnot$}}1% Negation
+  {∀}{{$\forall$}}1% Universal quantification
+  {∃}{{$\exists$}}1% Existential quantification
+  {·}{{$\qdot$}}1% Quantification dot
+  {=}{{$=$}}1% Equality
+  {≠}{{$\neq$}}1% Inequality
+  % Sets
+  {!}{{$\forall$}}1% Universal quantification (This is moved here from ASCII perdicates)
+  {∅}{{$\emptyset$}}1% Empty set
+  {∣}{{$\mid$}}1% Vertical bar, e.g., in set comprehension
+  {∪}{{$\bunion$}}1% Union
+  {∩}{{$\binter$}}1% Intersection
+  {∖}{{$\setminus$}}1% Set difference
+  {↦}{{$\mapsto$}}1% Ordered pair
+  {×}{{$\cprod$}}1% Cartesian product
+  {ℙ}{{$\pow$}}1% Powerset
+  {ℙ1}{{$\pown$}}1% Non-empty subsets
+  {!card}{{$\card$}}1% Cardinality
+  {!union}{{$\union$}}1% Generalised union
+  {!inter}{{$\inter$}}1% Generalised intersection
+  {⋃}{{$\Union$}}1% Quantified union
+  {⋂}{{$\Inter$}}1% Quantified intersection
+  % Set predicates
+  {∈}{{$\in$}}1% Set membership
+  {∉}{{$\notin$}}1% Set non-membership
+  {⊆}{{$\subseteq$}}1% Subset
+  {⊈}{{$\not\subseteq$}}1% Not a subset
+  {⊂}{{$\subset$}}1% Proper subset
+  {⊄}{{$\not\subset$}}1% Not a proper subset
+  {!finite}{{$\finite$}}1% Finite set
+  {!partition}{{$\partition$}}1% Partition
+  % Bool and bool
+  {!BOOL}{{$\Bool$}}1% BOOL set
+  {!TRUE}{{$\True$}}1% TRUE
+  {!FALSE}{{$\False$}}1% FALSE
+  {!bool}{{$\bool$}}1% bool predicate set
+  % Numbers
+  {ℤ}{{$\intg$}}1% Set of integer numbers
+  {ℕ}{{$\nat$}}1% Set of natural numbers
+  {ℕ1}{{$\natn$}}1% Set of positive natural numbers
+  {!min}{{$\min$}}1% Minimum
+  {!max}{{$\max$}}1% Maximum
+  {+}{{$+$}}1% Sum
+  {−}{{$-$}}1% Difference
+  {∗}{{$\times$}}1% Product
+  {÷}{{$\div$}}1% Quotient
+  {!mod}{{$\textrm{mod}$}}1% Remainder
+  {‥}{{$\upto$}}1% Interval
+  % Number predicates
+  {≥}{{$\geq$}}1% Greater or equal
+  {≤}{{$\leq$}}1% Less or equal
+  % Relations
+  {↔}{{$\rel$}}1% Relations
+  {!dom}{{$\dom$}}1% Domain
+  {!ran}{{$\ran$}}1% Range
+  {}{{$\trel$}}1% Total relations
+  {}{{$\srel$}}1% Surjective relations
+  {}{{$\strel$}}1% Total surjective relations
+  {∘}{{$\circ$}}1% Backward composition
+  {!id}{{$\id$}}1% Identity
+  {◁}{{$\domres$}}1% Domain restriction
+  {⩤}{{$\domsub$}}1% Domain subtraction
+  {▷}{{$\ranres$}}1% Range restriction
+  {⩥}{{$\ransub$}}1% Range subtraction
+  {∼}{{$^{-1}$}}1% Inverse
+  {}{{$\ovl$}}1% Overriding
+  {⊗}{{$\dprod$}}1% Direct product
+  {∥}{{$\pprod$}}1% Parallel product
+  {!prj1}{{$\prjone$}}1% First projection
+  {!prj2}{{$\prjtwo$}}1% Second projection
+  % Functions
+  {⇸}{{$\pfun$}}1% Partial functions
+  {→}{{$\tfun$}}1% Total functions
+  {⤔}{{$\pinj$}}1% Partial injections
+  {↣}{{$\tinj$}}1% Total injections
+  {⤀}{{$\psur$}}1% Partial surjections
+  {↠}{{$\tsur$}}1% Total surjections
+  {⤖}{{$\tbij$}}1% Bijections
+  {λ}{{$\lambda$}}1% Lambda abstraction
+  % Assignment
+  {≔}{{$\bcmeq$}}1% Becomes equal to
+  {:∈}{{$\bcmin$}}1% Choice from a set
+  {:∣}{{$\bcmsuch$}}1% Choice by predicate
+  % ASCII Number predicates (This has to be before ASCII Predicates)
+  {>}{{$>$}}1% Greater
+  {<}{{$<$}}1% Less
+  {>=}{{$\geq$}}1% Greater or equal
+  {<=}{{$\leq$}}1% Less or equal
+  % ASCII Predicates
+  {!false}{{$\bfalse$}}1% False
+  {!true}{{$\btrue$}}1% True
+  {\&}{{$\land$}}1% Conjunction (note the backslash)
+  {!or}{{$\lor$}}1% Disjunction
+  {=>}{{$\limp$}}1% Implication
+  {<=>}{{$\leqv$}}1% Equivalence
+  {!not}{{$\lnot$}}1% Negation
+  {\#}{{$\exists$}}1% Existential quantification (note the backslash)
+  {!.}{{$\qdot$}}1% Quantification dot
+  {/=}{{$\neq$}}1% Inequality
+  % ASCII Sets
+  {\{\}}{{$\emptyset$}}1% Empty set (note the backslashes)
+  {\|}{{$\mid$}}1% Vertical bar, e.g., in set comprehension (not the backslash)
+  {\\}{{$\setminus$}}1% Difference
+  {\\/}{{$\bunion$}}1% Union
+  {/\\}{{$\binter$}}1% Intersection
+  {|->}{{$\mapsto$}}1% Ordered pair
+  {**}{{$\cprod$}}1% Cartesian product
+  {!POW}{{$\pow$}}1% Powerset
+  {!POW1}{{$\pown$}}1% Non-empty subsets
+  {!UNION}{{$\Union$}}1% Quantified union
+  % ASCII Set predicates
+  {/:}{{$\notin$}}1% Set non-membership
+  {/<:}{{$\not\subseteq$}}1% Not a subset
+  {/<<:}{{$\not\subset$}}1% Not a proper subset
+  {<<:}{{$\subset$}}1% Proper subset
+  {<:}{{$\subseteq$}}1% Subset
+  {!:}{{$\in$}}1% Set membership
+  % ASCII Numbers
+  {!INT}{{$\intg$}}1% Set of integer numbers
+  {!INTER}{{$\Inter$}}1% Quantified intersection (This is moved here from ASCII Sets)
+  {!NAT}{{$\nat$}}1% Set of natural numbers
+  {!NAT1}{{$\natn$}}1% Set of positive natural numbers
+  {-}{{$-$}}1% Difference
+  {!*}{{$\times$}}1% Product (Note the !)
+  {!/}{{$\div$}}1% Quotient (Note the !)
+  {..}{{$\upto$}}1% Interval
+  % ASCII Relations
+  {<->}{{$\rel$}}1% Relations
+  {<<->}{{$\trel$}}1% Total relations
+  {<->>}{{$\srel$}}1% Surjective relations
+  {<<->>}{{$\strel$}}1% Total surjective relations
+  {!circ}{{$\circ$}}1% Backward composition
+  {<|}{{$\domres$}}1% Domain restriction
+  {<<|}{{$\domsub$}}1% Domain subtraction
+  {|>}{{$\ranres$}}1% Range restriction
+  {|>>}{{$\ransub$}}1% Range subtraction
+  {~}{{$^{-1}$}}1% Inverse
+  {<+}{{$\ovl$}}1% Overriding
+  {><}{{$\dprod$}}1% Direct product
+  {||}{{$\pprod$}}1% Parallel product
+  % ASCII Functions
+  {+->}{{$\pfun$}}1% Partial functions
+  {-->}{{$\tfun$}}1% Total functions
+  {>+>}{{$\pinj$}}1% Partial injections
+  {>->}{{$\tinj$}}1% Total injections
+  {+>>}{{$\psur$}}1% Partial surjections
+  {->>}{{$\tsur$}}1% Total surjections
+  {>->>}{{$\tbij$}}1% Bijections
+  {\%}{{$\lambda$}}1% Lambda abstraction
+  % ASCII Assignment
+  {:=}{{$\bcmeq$}}1% Becomes equal to
+  {::}{{$\bcmin$}}1% Choice from a set
+  {:|}{{$\bcmsuch$}}1% Choice by predicate
+  , % End of Event-B mathematical symbols
+}
+
+% Type setting inline Event-B code using |
+\lstMakeShortInline%
+[language=Event-B, breaklines=f, basicstyle=\rmfamily\normalsize]|%
+
+% Multi-line Event-B code should be wrapped in EventBcode environment.
+\lstnewenvironment{EventBcode}{\lstset{language=Event-B}}{}
+
+% Multi-line Event-B code should be wrapped in EventBcode environment.
+\newenvironment{EventBNoShortInline}
+{
+  % Remove the short-inline
+  \lstDeleteShortInline|
+  % Set the language to be Event-B
+  \lstset{language=Event-B, breaklines=f, basicstyle=\rmfamily\normalsize}
+}
+{
+  % Restore the short inline
+  \lstMakeShortInline[language=Event-B,breaklines=f,basicstyle=\rmfamily\normalsize]|
+}
+\newcommand{\EventBInline}[1]{%
+  \lstinline[language=Event-B, breaklines=f,basicstyle=\rmfamily\normalsize]$#1$
+}
+\lstset{%
+  columns=fullflexible, % The columns are fully flexible.
+  numberbychapter=false,
+  frame=top,frame=bottom, % There are line (frame at top and bottom).
+  stepnumber=1, % the step between two line-numbers. If it is 1 each line will be numbered
+  numberstyle=\tiny,
+  numbersep=5pt, % how far the line-numbers are from the code
+  tabsize=2, % tab size in blank spaces
+  breaklines=true, % sets automatic line breaking
+  captionpos=b, % sets the caption-position to top
+  mathescape=false,
+  showspaces=true, % Do not show spaces
+  showtabs=false, % Do not show tabs
+  xleftmargin=10pt,
+  framexleftmargin=10pt,
+  framexrightmargin=0pt,
+  framexbottommargin=5pt,
+  framextopmargin=5pt,
+  escapechar=\%,
+  numbers=left, % where to put the line-numbers; possible values are (none, left, right)
+  numbersep=5pt,
+}
+\newcommandx{\EventBinputlisting}[2][1=]{%
+  \begin{mdframed}[backgroundcolor=yellow!10, rightline=false,leftline=false]
+    \lstinputlisting[language=Event-B,mathescape,frame={},#1]{#2}
+  \end{mdframed}
+}
+%%%%% END Typesetting of the Event-B Language %%%%%
+%%%%% BEGIN Public commands %%%%%
+\let\EventBSetKeywordColour\EventB@SetKeywordColour
+\newcommand{\EventB}{Event-B\xspace}
+%%%%% BEGIN Public commands %%%%%
+\endinput
+%%
+%% End of file `lstEventB.sty'.

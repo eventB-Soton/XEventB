@@ -28,16 +28,16 @@
 
 % Package for typesetting dates and times
 \ifplastex
-\newcommand{\XEventBManualDate}{August 21st, 2017}
+\newcommand{\CamilleXManualDate}{August 21st, 2017}
 \else
 \usepackage{datetime}
-\newdate{XEventBManualDate}{21}{8}{2017}
+\newdate{CamilleXManualDate}{12}{11}{2018}
 \fi
-\newcommand{\XEventBFeatureVersion}{0.0.7}
-\newcommand{\XEventBManualVersion}{0.0.3}
+\newcommand{\CamilleXFeatureVersion}{1.0.0}
+\newcommand{\CamilleXManualVersion}{1.0.0}
 
 % Title
-\title{XEvent-B User Manual} 
+\title{CamilleX User Manual} 
 
 % Author
 \author{%
@@ -49,12 +49,12 @@
 
 % Date
 \date{%
-  Version \XEventBManualVersion\\%
-  (for feature version \XEventBFeatureVersion)\\
+  Version \CamilleXManualVersion\\%
+  (for feature version \CamilleXFeatureVersion)\\
   \ifplastex
-  \XEventBManualDate
+  \CamilleXManualDate
   \else
-  \displaydate{XEventBManualDate}%
+  \displaydate{CamilleXManualDate}%
   \fi
 }
 
@@ -81,6 +81,8 @@
 %\input{samples}
 
 \input{legal}
+
+\input{appendix}
 
 \end{document}
 

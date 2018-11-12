@@ -19,34 +19,15 @@ XLABEL ::= @STRING:\\
 \begin{center}
   \begin{Bcode}
     XCONTEXT ::= \\
-    \Btab \Btab [ ML_COMMENT | SL_COMMENT ]\\
     \Btab \Btab \Bcontext{} ID \\
     \Btab \Btab [\Bextends{} ID \{ ID \}]\\
     \Btab \Btab [\Bsets{} XSET \{XSET\}]\\
     \Btab \Btab [\Bconstants{} XCONSTANT \{ XCONSTANT \}]\\
     \Btab \Btab [\Baxioms{} XAXIOM \{XAXIOM\}]\\[2ex]
     \Btab \Btab \Bend\\
-    XSET ::= \\
-    \Btab \Btab XSET\_NO\_COMMENT | \\
-    \Btab \Btab XSET\_ML\_COMMENT | \\
-    \Btab \Btab XSET\_SL\_COMMENT \\
-    XSET\_NO\_COMMENT ::= ID \\
-    XSET\_ML\_COMMENT ::= ML\_COMMENT ID\\
-    XSET\_SL\_COMMENT ::= ID ML\_COMMENT\\
-    XCONSTANT ::= \\
-    \Btab \Btab XCONSTANT\_NO\_COMMENT | \\
-    \Btab \Btab XCONSANT\_ML\_COMMENT | \\
-    \Btab \Btab XCONSTANT\_SL\_COMMENT \\
-    XCONSTANT\_NO\_COMMENT ::= ID \\
-    XCONSTANT\_ML\_COMMENT ::= ML\_COMMENT ID\\
-    XCONSTANT\_SL\_COMMENT ::= ID ML\_COMMENT\\
-    XAXIOM ::= \\
-    \Btab \Btab XAXIOM\_NO\_COMMENT | \\
-    \Btab \Btab XAXIOM\_ML\_COMMENT | \\
-    \Btab \Btab XAXIOM\_SL\_COMMENT \\
-    XAXIOM\_NO\_COMMENT ::= XLABEL "XPREDICATE" [\Btheorem]\\
-    XAXIOM\_ML\_COMMENT ::= ML\_COMMENT XLABEL "XPREDICATE" [\Btheorem]\\
-    XAXIOM\_SL\_COMMENT ::= XLABEL "XPREDICATE" [\Btheorem] SL\_COMMENT\\
+    XSET ::= ID \\
+    XCONSTANT ::= ID \\
+    XAXIOM ::= [\Btheorem] XLABEL "XPREDICATE" \\
   \end{Bcode}
 \end{center}
 
@@ -54,132 +35,37 @@ XLABEL ::= @STRING:\\
 \label{sec:xmachine-syntax}
 \begin{center}
   \begin{Bcode}
-    XMACHINE ::= [ ML_COMMENT | SL_COMMENT ]\\
+    XMACHINE ::= \\
     \Btab \Btab \Bmachine{} ID \\
     \Btab \Btab [XINCLUDE \{ XINCLUDE \}]\\
     \Btab \Btab [\Brefines{} ID]\\
     \Btab \Btab [\Bsees{} ID \{ ID \}]\\
     \Btab \Btab [\Bvariables{} XVARIABLE \{XVARIABLE\}]\\
     \Btab \Btab [\Binvariants{} XINVARIANT \{ XINVARIANT \}]\\
-    \Btab \Btab [\Bvariant{} XVARIANT]\\
+    \Btab \Btab [\textcolor{blue}{variants} XVARIANT \{XVARIANT\}]\\
     \Btab \Btab [\Bevents{} XEVENT \{ XEVENT \}] \\
     \Btab \Btab \Bend \\
     XINCLUDE ::= \\
     \Btab \Btab \textcolor{blue}{includes} ID.ID\\
     \Btab \Btab [\textcolor{blue}{as} ID \{ID\}]\\
-    XVARIABLE ::= \\
-    \Btab \Btab XVARIABLE\_NO\_COMMENT | \\
-    \Btab \Btab XVARIABLE\_ML\_COMMENT | \\
-    \Btab \Btab XVARIABLE\_SL\_COMMENT \\
-    XVARIABLE\_NO\_COMMENT ::= ID \\
-    XVARIABLE\_ML\_COMMENT ::= ML\_COMMENT ID \\
-    XVARIABLE\_SL\_COMMENT ::= ID SL\_COMMENT \\
-    XINVARIANT ::=\\
-    \Btab \Btab XINVARIANT\_NO\_COMMENT\\
-    \Btab \Btab XINVARIANT\_ML\_COMMENT\\
-    \Btab \Btab XINVARIANT\_SL\_COMMENT\\
-    XINVARIANT\_NO\_COMMENT ::= \\
-    \Btab \Btab XLABEL "XPREDICATE" [\Btheorem] \\
-    XINVARIANT\_ML\_COMMENT ::= \\
-    \Btab \Btab ML\_COMMENT XLABEL "XPREDICATE" [\Btheorem]\\
-    XINVARIANT\_SL\_COMMENT ::= \\
-    \Btab \Btab XLABEL "XPREDICATE" [\Btheorem] SL\_COMMENT\\
-    XEVENT ::= \\
-    \Btab \Btab XEVENT\_NO\_COMMENT\\
-    \Btab \Btab XEVENT\_ML\_COMMENT\\
-    \Btab \Btab XEVENT\_SL\_COMMENT\\
-    XEVENT\_NO\_COMMENT ::=\\
-    \Btab \Btab ID \\
-    \Btab \Btab ([\Bextended] \& [\Bordinary | \Bconvergent | \Banticipated])\\
+    XVARIABLE ::= ID \\
+    XINVARIANT ::= [\Btheorem] XLABEL "XPREDICATE" \\
+    XVARIANT ::= XLABEL "XEXPRESSION" \\
+    XEVENT ::= 
+    \Btab \Btab [\Bordinary | \Bconvergent | \Banticipated] \textcolor{blue}{event} ID \\
+    \Btab \Btab ([\Bextended ID | \Brefines{} ID \{ ID \}])\\
+    \Btab \Btab \Btab [\Bany{} XPARAMETER \{ XPARAMETER \}]\\
     \Btab \Btab [XSYNC \{ XSYNC \}]\\
-    \Btab \Btab [\Brefines{} ID \{ ID \}]\\
-    \Btab \Btab [\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab \Bbegin{} XACTION \{ XACTION \} \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bwhen{} XGUARD \{ XGUARD \}\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
+    \Btab \Btab \Btab [\Bwhere{} XGUARD \{ XGUARD \}]\\
     \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bany{} XPARAMETER \{ XPARAMETER \}\\
-    \Btab \Btab \Btab \Bwhere{} XGUARD \{ XGUARD \}\\
     \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab ]\\
-    \Btab \Btab \Bend\\
-    XEVENT\_ML\_COMMENT ::=\\
-    \Btab \Btab ML\_COMMENT\\
-    \Btab \Btab ID \\
-    \Btab \Btab ([\Bextended] \& [\Bordinary | \Bconvergent | \Banticipated])\\
-    \Btab \Btab [XSYNC \{ XSYNC \}]\\
-    \Btab \Btab [\Brefines{} ID \{ ID \}]\\
-    \Btab \Btab [\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab \Bbegin{} XACTION \{ XACTION \} \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bwhen{} XGUARD \{ XGUARD \}\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bany{} XPARAMETER \{ XPARAMETER \}\\
-    \Btab \Btab \Btab \Bwhere{} XGUARD \{ XGUARD \}\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab ]\\
-    \Btab \Btab \Bend\\
-    XEVENT\_SL\_COMMENT ::=\\
-    \Btab \Btab ID \\
-    \Btab \Btab ([\Bextended] \& [\Bordinary | \Bconvergent | \Banticipated])\\
-    \Btab \Btab [XSYNC \{ XSYNC \}]\\
-    \Btab \Btab [\Brefines{} ID \{ ID \}]\\
-    \Btab \Btab SL\_COMMENT\\
-    \Btab \Btab [\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab \Bbegin{} XACTION \{ XACTION \} \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bwhen{} XGUARD \{ XGUARD \}\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab \Btab | \\
-    \Btab \Btab \Btab \Bany{} XPARAMETER \{ XPARAMETER \}\\
-    \Btab \Btab \Btab \Bwhere{} XGUARD \{ XGUARD \}\\
-    \Btab \Btab \Btab [\Bwith{} XWITNESS \{ XWITNESS \}] \\
-    \Btab \Btab \Btab [\Bthen{} XACTION \{ XACTION \}] \\
-    \Btab \Btab ]\\
     \Btab \Btab \Bend\\
     XSYNC ::= \\
     \Btab \Btab \textcolor{blue}{synchronises} [ID.]ID\\
-    XWITNESS ::= \\
-    \Btab \Btab XWITNESS\_NO\_COMMENT | \\
-    \Btab \Btab XWITNESS\_ML\_COMMENT | \\
-    \Btab \Btab XWITNESS\_SL\_COMMENT | \\
-    XWITNESS\_NO\_COMMENT ::= XLABEL "XPREDICATE" \\
-    XWITNESS\_ML\_COMMENT ::= ML\_COMMENT XLABEL "XPREDICATE" \\
-    XWITNESS\_SL\_COMMENT ::= XLABEL "XPREDICATE" SL\_COMMENT \\
-    XPARAMETER ::= \\
-    \Btab \Btab XPARAMETER\_NO\_COMMENT | \\
-    \Btab \Btab XPARAMETER\_ML\_COMMENT | \\
-    \Btab \Btab XPARAMETER\_SL\_COMMENT \\
-    XPARAMETER\_NO\_COMMENT ::= ID \\
-    XPARAMETER\_ML\_COMMENT ::= ML\_COMMENT ID \\
-    XPARAMETER\_SL\_COMMENT ::= ID SL\_COMMENT \\
-    XGUARD ::=\\
-    \Btab \Btab XGUARD\_NO\_COMMENT |\\
-    \Btab \Btab XGUARD\_ML\_COMMENT |\\
-    \Btab \Btab XGUARD\_SL\_COMMENT\\
-    XGUARD\_NO\_COMMENT ::= \\
-    \Btab \Btab XLABEL "XPREDICATE" [\Btheorem]\\
-    XGUARD\_ML\_COMMENT ::= \\
-    \Btab \Btab ML\_COMMENT XLABEL "XPREDICATE" [\Btheorem]\\
-    XGUARD\_SL\_COMMENT ::= \\
-    \Btab \Btab XLABEL "XPREDICATE" [\Btheorem] SL\_COMMENT\\
-    XACTION ::=\\
-    \Btab \Btab XACTION\_NO\_COMMENT |\\
-    \Btab \Btab XACTION\_ML\_COMMENT |\\
-    \Btab \Btab XACTION\_SL\_COMMENT\\
-    XACTION\_NO\_COMMENT ::= XLABEL "XASSIGNMENT" [\Btheorem]\\
-    XACTION\_ML\_COMMENT ::= ML\_COMMENT XLABEL "XASSIGNMENT"\\
-    XACTION\_SL\_COMMENT ::= XLABEL "XASSIGNMENT" SL\_COMMENT
+    XPARAMETER ::= ID \\
+    XGUARD ::=  [\Btheorem] XLABEL "XPREDICATE"\\
+    XACTION ::= XLABEL "XASSIGNMENT"\\
+    XWITNESS ::= XLABEL "XPREDICATE" \\
   \end{Bcode}
 \end{center}
 
