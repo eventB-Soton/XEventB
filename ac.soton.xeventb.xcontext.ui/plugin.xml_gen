@@ -249,15 +249,6 @@
 		<super type="org.eclipse.xtext.ui.check.expensive"/>
 		<persistent value="true"/>
 	</extension>
-	<extension point="org.eclipse.ui.preferencePages">
-		<page
-			category="ac.soton.xeventb.xcontext.XContext"
-			class="ac.soton.xeventb.xcontext.ui.XContextExecutableExtensionFactory:org.eclipse.xtext.ui.validation.ValidatorPreferencePage"
-			id="ac.soton.xeventb.xcontext.XContext.validator.preferencePage"
-			name="Errors/Warnings">
-			<keywordReference id="ac.soton.xeventb.xcontext.ui.keyword_XContext"/>
-		</page>
-	</extension>
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="ac.soton.xeventb.xcontext.ui.XContextExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
