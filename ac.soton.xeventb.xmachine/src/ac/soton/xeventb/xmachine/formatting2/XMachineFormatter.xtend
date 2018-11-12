@@ -48,7 +48,7 @@ class XMachineFormatter extends AbstractFormatter2 {
 		machine.regionFor.keyword("sees").prepend[newLine]
 		machine.regionFor.keyword("variables").prepend[newLine]
 		machine.regionFor.keyword("invariants").prepend[newLine]
-		machine.regionFor.keyword("variant").prepend[newLine]
+		machine.regionFor.keyword("variants").prepend[newLine]
 		machine.regionFor.keyword("events").prepend[newLine].append[newLine];
 
 		// add new line after multi line comment
@@ -145,11 +145,12 @@ class XMachineFormatter extends AbstractFormatter2 {
      	event.regionFor.keyword("synchronises").prepend[newLine];
 		event.regionFor.keyword("refines").prepend[newLine];
 		event.regionFor.keyword("any").prepend[newLine];
-		event.regionFor.keyword("when").prepend[newLine];
+//		event.regionFor.keyword("when").prepend[newLine];
 		event.regionFor.keyword("where").prepend[newLine];
 		event.regionFor.keyword("with").prepend[newLine];
-		event.regionFor.keyword("begin").prepend[newLine];
+//		event.regionFor.keyword("begin").prepend[newLine];
 		event.regionFor.keyword("then").prepend[newLine];
+		event.regionFor.keyword("end").prepend[newLine];
 		
 		
 		//add new line before event attributes and after the last attribute
