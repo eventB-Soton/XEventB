@@ -154,8 +154,8 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
-	 *         name=ID 
 	 *         convergence=XConvergence? 
+	 *         name=ID 
 	 *         (refines+=[Event|ID]+ | (extended?='extends' refines+=[Event|ID]))? 
 	 *         parameters+=XParameter* 
 	 *         extensions+=EventSync* 

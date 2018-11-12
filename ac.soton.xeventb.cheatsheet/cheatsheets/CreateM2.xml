@@ -43,27 +43,29 @@
          <br/>
          invariants
          <br/>
-         @inv2_1: &quot;atnds ∈ CRS ⇸ ℙ(PRTCPT)&quot;
+         @inv2_1: atnds ∈ CRS ⇸ ℙ(PRTCPT)
          <br/>
-         @inv2_2: &quot;crs = dom(atnds)&quot;
+         @inv2_2: crs = dom(atnds)
          <br/>
-         @inv2_3: &quot;∀c·c ∈ crs ⇒ prtcpts[{c}] = atnds(c)&quot;
+         @inv2_3: ∀c·c ∈ crs ⇒ prtcpts[{c}] = atnds(c)
          <br/>
-         @thm2_1: &quot;finite(atnds)&quot; theorem
+         theorem @thm2_1: finite(atnds)
          <br/>
-         variant &quot;card(atnds)&quot;
+         variants
+         <br/>
+         @v0: card(atnds)
          <br/>
          events
          <br/>
-         INITIALISATION
+         event INITIALISATION
          <br/>
-		 begin
+		 then
 		 <br/>
-		 @act2_1: &quot;atnds ≔ ∅&quot;
+		 @act2_1: atnds ≔ ∅
 		 <br/>
 		 end
 		 <br/>
-		 OpenCourse
+		 event OpenCourse
 		 <br/>
 		 refines OpenCourses
 		 <br/>
@@ -72,23 +74,23 @@
 		 <br/>
 		 where
 		 <br/>
-		 @grd2_1: &quot;c ∉ dom(atnds)&quot; 
+		 @grd2_1: c ∉ dom(atnds)
 		 <br/>
-		 @grd2_2: &quot;card(atnds) ≠ m&quot; 
+		 @grd2_2: card(atnds) ≠ m
 		 <br/>
-		 @thm2_2: &quot;card(crs) ≠ m&quot; theorem
-		 <br/>
-		 with
-		 <br/>
-		 @crs': &quot;crs' = crs ∪ {c}&quot;
+		 theorem @thm2_2: card(crs) ≠ m
 		 <br/>
 		 then
 		 <br/>
 		 @act2_1: &quot;atnds(c) ≔ ∅&quot;
 		 <br/>
+		 with
+		 <br/>
+		 @crs&apos;: crs&apos; = crs ∪ {c}
+		 <br/>
 		 end
 		 <br/>
-		 CloseCourse convergent
+		 convergent event CloseCourse
 		 <br/>
 		 refines CloseCourses
 		 <br/>
@@ -96,19 +98,19 @@
 		 <br/>
 		 where
 		 <br/>
-		 @grd2_1: &quot;c ∈ dom(atnds)&quot;
-		 <br/>
-		 with
-		 <br/>
-		 @cs: &quot;cs = {c}&quot;
+		 @grd2_1: c ∈ dom(atnds)
 		 <br/>
 		 then
 		 <br/>
-		 @act1_2: &quot;atnds ≔ {c} ⩤ atnds&quot;
+		 @act1_2: atnds ≔ {c} ⩤ atnds
+		 <br/>
+		 with
+		 <br/>
+		 @cs: cs = {c}
 		 <br/>
 		 end
 		 <br/>
-		 Register convergent
+		 convergent event Register
 		 <br/>
 		 refines Register
 		 <br/>
@@ -116,19 +118,19 @@
 		 <br/>
 		 where
 		 <br/>
-		 @grd2_1: &quot;p ∈ PRTCPT&quot;
+		 @grd2_1: p ∈ PRTCPT
 		 <br/>
-		 @grd2_2: &quot;p ≠ instrs(c)&quot;
+		 @grd2_2: p ≠ instrs(c)
 		 <br/>
-		 @grd2_3: &quot;c ∈ dom(atnds)&quot;
+		 @grd2_3: c ∈ dom(atnds)
 		 <br/>
-		 @grd2_4: &quot;p ∉ atnds(c)&quot;
+		 @grd2_4: p ∉ atnds(c)
 		 <br/>
-		 @thm2_3: &quot;atnds(c) = prtcpts[{c}]&quot; theorem
+		 theorem @thm2_3: atnds(c) = prtcpts[{c}]
 		 <br/>
 		 then
 		 <br/>
-		 @act2_1: &quot;atnds(c) ≔ atnds(c) ∪ {p}&quot;
+		 @act2_1: atnds(c) ≔ atnds(c) ∪ {p}
 		 <br/>
 		 end
 		 <br/>

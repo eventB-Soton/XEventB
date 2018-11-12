@@ -71,8 +71,8 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		///*
-		// * For XEvent-B 0.0.8 comments are allowed everywhere
-		// * ML_COMMENT and SL_COMMEN are defined as hidden
+		// * For CamilleX 1.0.0 comments are allowed everywhere
+		// * ML_COMMENT and SL_COMMENT are defined as hidden
 		// */ Machine emachine::Machine:
 		//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 		//	'machine' name=ID (extensions+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
@@ -405,11 +405,11 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XEvent");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cEventAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cEventKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Assignment cConvergenceAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cConvergenceXConvergenceEnumRuleCall_3_0 = (RuleCall)cConvergenceAssignment_3.eContents().get(0);
+		private final Assignment cConvergenceAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cConvergenceXConvergenceEnumRuleCall_1_0 = (RuleCall)cConvergenceAssignment_1.eContents().get(0);
+		private final Keyword cEventKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
 		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
 		private final Keyword cRefinesKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
@@ -443,15 +443,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cEndKeyword_10 = (Keyword)cGroup.eContents().get(10);
 		
 		//XEvent emachine::Event:
-		//	{emachine::Event}
-		//	'event' name=ID
-		//	convergence=XConvergence? ('refines' refines+=[emachine::Event]+ | extended?='extends' refines+=[emachine::Event])?
-		//	('any' parameters+=XParameter+)?
+		//	{emachine::Event} convergence=XConvergence?
+		//	'event' name=ID ('refines' refines+=[emachine::Event]+ | extended?='extends' refines+=[emachine::Event])? ('any'
+		//	parameters+=XParameter+)?
 		//	extensions+=EventSync* ('where' guards+=XGuard+)? ('then' actions+=XAction+)? ('with' witnesses+=XWitness+)?
 		//	'end';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{emachine::Event} 'event' name=ID convergence=XConvergence? ('refines' refines+=[emachine::Event]+ | extended?='extends'
+		//{emachine::Event} convergence=XConvergence? 'event' name=ID ('refines' refines+=[emachine::Event]+ | extended?='extends'
 		//refines+=[emachine::Event])? ('any' parameters+=XParameter+)? extensions+=EventSync* ('where' guards+=XGuard+)? ('then'
 		//actions+=XAction+)? ('with' witnesses+=XWitness+)? 'end'
 		public Group getGroup() { return cGroup; }
@@ -459,20 +458,20 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//{emachine::Event}
 		public Action getEventAction_0() { return cEventAction_0; }
 		
-		//'event'
-		public Keyword getEventKeyword_1() { return cEventKeyword_1; }
-		
-		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-		
 		//convergence=XConvergence?
-		public Assignment getConvergenceAssignment_3() { return cConvergenceAssignment_3; }
+		public Assignment getConvergenceAssignment_1() { return cConvergenceAssignment_1; }
 		
 		//XConvergence
-		public RuleCall getConvergenceXConvergenceEnumRuleCall_3_0() { return cConvergenceXConvergenceEnumRuleCall_3_0; }
+		public RuleCall getConvergenceXConvergenceEnumRuleCall_1_0() { return cConvergenceXConvergenceEnumRuleCall_1_0; }
+		
+		//'event'
+		public Keyword getEventKeyword_2() { return cEventKeyword_2; }
+		
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
 		//('refines' refines+=[emachine::Event]+ | extended?='extends' refines+=[emachine::Event])?
 		public Alternatives getAlternatives_4() { return cAlternatives_4; }
@@ -1374,6 +1373,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	private final EVENTB_PREDICATE_SYMBOLSElements pEVENTB_PREDICATE_SYMBOLS;
 	private final EVENTB_EXPRESSION_SYMBOLSElements pEVENTB_EXPRESSION_SYMBOLS;
 	private final TerminalRule tID;
+	private final TerminalRule tSTRING;
 	
 	private final Grammar grammar;
 	
@@ -1403,6 +1403,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEVENTB_PREDICATE_SYMBOLS = new EVENTB_PREDICATE_SYMBOLSElements();
 		this.pEVENTB_EXPRESSION_SYMBOLS = new EVENTB_EXPRESSION_SYMBOLSElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1433,8 +1434,8 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	///*
-	// * For XEvent-B 0.0.8 comments are allowed everywhere
-	// * ML_COMMENT and SL_COMMEN are defined as hidden
+	// * For CamilleX 1.0.0 comments are allowed everywhere
+	// * ML_COMMENT and SL_COMMENT are defined as hidden
 	// */ Machine emachine::Machine:
 	//	{emachine::Machine} comment=(ML_COMMENT | SL_COMMENT)?
 	//	'machine' name=ID (extensions+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
@@ -1507,10 +1508,9 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XEvent emachine::Event:
-	//	{emachine::Event}
-	//	'event' name=ID
-	//	convergence=XConvergence? ('refines' refines+=[emachine::Event]+ | extended?='extends' refines+=[emachine::Event])?
-	//	('any' parameters+=XParameter+)?
+	//	{emachine::Event} convergence=XConvergence?
+	//	'event' name=ID ('refines' refines+=[emachine::Event]+ | extended?='extends' refines+=[emachine::Event])? ('any'
+	//	parameters+=XParameter+)?
 	//	extensions+=EventSync* ('where' guards+=XGuard+)? ('then' actions+=XAction+)? ('with' witnesses+=XWitness+)?
 	//	'end';
 	public XEventElements getXEventAccess() {
@@ -1713,22 +1713,22 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//@Override
 	//terminal ID:
-	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9')*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9' | "'")*;
 	public TerminalRule getIDRule() {
 		return tID;
+	}
+	
+	//@Override
+	//terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"';
+	public TerminalRule getSTRINGRule() {
+		return tSTRING;
 	}
 	
 	//terminal INT returns ecore::EInt:
 	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
-	}
-	
-	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
-	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
 	}
 	
 	//terminal ML_COMMENT:

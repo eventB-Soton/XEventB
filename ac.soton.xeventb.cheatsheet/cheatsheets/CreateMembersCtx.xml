@@ -33,16 +33,15 @@
       <description>
          <b>Set the content of &quot;membersCtx.bucx&quot; as follows</b>.
          <br/>
-         context memebersCtx
+         context membersCtx
          <br/>
          sets MEM
          <br/>
          axioms
          <br/>
-         @axm0_1: &quot;finite(MEM)&quot;
+         @axm0_1: finite(MEM)
          <br/>
-         end
-      </description>
+         endcription>
    </item>
    <item
          skip="false"
