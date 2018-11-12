@@ -21,7 +21,7 @@
          skip="false"
          title="Step 1. Create a new XMachine m0.bumx">
       <description>
-         <b>Create a new XMachine</b> named &quot;m0.bumx&quot; using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
+         <b>Create a new XMachine</b> named &quot;m0.bumx&quot; within the &quot;Club&quot; project using the New File wizard. The newly created file should be opened automatically in an XMachine editor.
       </description>
       <command
             required="true"
@@ -29,9 +29,9 @@
    </item>
    <item
          skip="false"
-         title="Step 2. Set the content of m0.bumx">
-      <description>
-         <b>Set the content of &quot;m0.bumx&quot; as follows</b>.
+         title="Step 2. Set the content of m0.">
+    <description>
+    <b>Set the content of &quot;m0.bumx&quot; as follows</b>.
          <br/>
          machine m0
          <br/>
@@ -39,49 +39,49 @@
          <br/>
          invariants
          <br/>
-         @inv0_1: &quot;crs ∈ ℙ(CRS)&quot;
+         @inv0_1: crs ∈ ℙ(CRS)
          <br/>
-         @thm0_2: &quot;finite(crs)&quot; theorem
+         theorem @thm0_2: finite(crs)
          <br/>
-         @inv0_2: &quot;card(crs) ≤ m&quot;
+         @inv0_2: card(crs) ≤ m
          <br/>
-         @DLF: &quot;(card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅)&quot;
+         @DLF: (card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅)
          <br/>
          events
          <br/>
-         INITIALISATION
+         event INITIALISATION
          <br/>
-		 begin
+		 then
 		 <br/>
-		 @act0_1: &quot;crs ≔ ∅&quot;
+		 @act0_1: crs ≔ ∅
 		 <br/>
 		 end
 		 <br/>
-		 OpenCourses
+		 event OpenCourses
 		 <br/>
-		 when
+		 where
 		 <br/>
-		 @grd0_1: &quot;card(crs) ≠ m&quot; 
+		 @grd0_1: card(crs) ≠ m
 		 <br/>
-		 @thm0_3: &quot;crs ≠ CRS&quot; theorem 
+		 theorem @thm0_3: crs ≠ CRS
 		 <br/>
 		 then
 		 <br/>
-		 @act0_1: &quot;crs :∣ crs ⊂ crs&apos; ∧ card(crs&apos;) ≤ m&quot;
+		 @act0_1: crs :∣ crs ⊂ crs&apos; ∧ card(crs&apos;) ≤ m
 		 <br/>
 		 end
 		 <br/>
-		 CloseCourses anticipated
+		 anticipated event CloseCourses
 		 <br/>
 		 any cs where
 		 <br/>
-		 @grd0_1: &quot;cs ⊆ crs&quot;
+		 @grd0_1: cs ⊆ crs
 		 <br/>
-		 @grd0_2: &quot;cs ≠ ∅&quot;
+		 @grd0_2: cs ≠ ∅
 		 <br/>
 		 then
 		 <br/>
-		 @act0_1: &quot;crs ≔ crs ∖ cs&quot;
+		 @act0_1: crs ≔ crs ∖ cs
 		 <br/>
 		 end
 		 <br/>

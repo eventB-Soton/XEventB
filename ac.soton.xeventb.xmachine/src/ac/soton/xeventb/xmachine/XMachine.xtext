@@ -72,8 +72,8 @@ XVariant returns emachine::Variant:
 
 XEvent returns emachine::Event:
 	{emachine::Event}
-	'event' name=ID
 	(convergence=XConvergence)?
+	'event' name=ID
 	(
 		('refines' refines+=[emachine::Event]+) |
 		(extended?='extends' refines+=[emachine::Event])
@@ -226,4 +226,7 @@ EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
 ;
 
 @Override 
-terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9')*;
+terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9' | "'")*;
+
+@Override 
+terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';

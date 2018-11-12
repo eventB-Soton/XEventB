@@ -1,15 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-    Copyright (c) 2016,2018 University of Southampton.
-    All rights reserved. This program and the accompanying materials
-    are made available under the terms of the Eclipse Public License v1.0
-    which accompanies this distribution, and is available at
-    http://www.eclipse.org/legal/epl-v10.html
-   
-    Contributors:
-        University of Southampton - initial API and implementation
- -->
-
 <compositeCheatsheet name="Event-B XText Basic Tutorial">
    <taskGroup kind="sequence" name="Event-B XText Basic Tutorial" skip="false">
       <intro>
@@ -18,17 +7,7 @@
       <onCompletion>
          <b>Conclusion</b> You should now be familiar with the syntax of XEvent-B constructs, i.e., XContexts and XMachines, and their compilation to Rodin constructs, i.e., Contexts and Machines. While the outer syntax is checked by XEvent-B, the inner syntax (e.g., within mathematical expressions and predicates) is checked at the Rodin Event-B level.
       </onCompletion>
-      <task kind="cheatsheet" name="Task 1. Customise the Event-B Explorer" skip="false">
-         <intro>
-            <b>Introduction</b> The purpose of this task is to customise the Event-B Explorer so that XEvent-B constructs are visible.
-         </intro>
-         <onCompletion>
-            <b>Conclusion</b> Since the filter on &quot;All files and folders&quot; is now disabled, there might be other files and folders than XEvent-B constructs will also be visible in the Event-B Explorer.
-         </onCompletion>
-         <param name="path" value="CustomiseEventBExplorer.xml">
-         </param>
-      </task>
-      <task kind="cheatsheet" name="Task 2. Create an Event-B Project" skip="false">
+      <task kind="cheatsheet" name="Task 1. Create an Event-B Project" skip="false">
          <intro>
             <b>Introduction</b> The purpose of this task is to create an Event-B project for the XEvent-B constructs.
          </intro>
@@ -38,7 +17,7 @@
          <param name="path" value="CreateEventBProject.xml">
          </param>
       </task>
-      <task kind="cheatsheet" name="Task 3. Create a simple XContext coursesCtx.bucx" skip="false">
+      <task kind="cheatsheet" name="Task 2. Create a simple XContext coursesCtx.bucx" skip="false">
          <intro>
             <b>Introduction</b> The purpose of this task is to create a simple XContext within the newly created project.
          </intro>
@@ -48,7 +27,7 @@
          <param name="path" value="CreateCoursesCtx.xml">
          </param>
       </task>
-      <task kind="cheatsheet" name="Task 4. Create a simple XMachine m0.bumx" skip="false">
+      <task kind="cheatsheet" name="Task 3. Create a simple XMachine m0.bumx" skip="false">
          <intro>
             <b>Introduction</b> The purpose of this task is to create a simple XMachine within the newly created project.
          </intro>
@@ -58,14 +37,14 @@
          <param name="path" value="CreateM0.xml">
          </param>
       </task>
-      <taskGroup kind="sequence" name="Task 5. Create extended XContexts" skip="false">
+      <taskGroup kind="sequence" name="Task 4. Create extended XContexts" skip="false">
          <intro>
             <b>Introduction</b> The purpose of this task is to create some more extended XContexts within the &quot;Club&quot; project.
          </intro>
          <onCompletion>
             <b>Conclusion</b> By now, the XContexts and the corresponding Rodin Contexts should be visible in the Event-B Explorer.
          </onCompletion>
-         <task kind="cheatsheet" name="Task 5.1. Create a simple XContext membersCtx.bucx" skip="false">
+         <task kind="cheatsheet" name="Task 4.1. Create a simple XContext membersCtx.bucx" skip="false">
             <intro>
                <b>Introduction</b> The purpose of this sub-task is to create a simple XContext &quot;membersCtx.bucx&quot; within the &quot;Club&quot; project.
             </intro>
@@ -75,7 +54,7 @@
             <param name="path" value="CreateMembersCtx.xml">
             </param>
          </task>
-         <task kind="cheatsheet" name="Task 5.2. Create an extended XContext participantsCtx.bucx" skip="false">
+         <task kind="cheatsheet" name="Task 4.2. Create an extended XContext participantsCtx.bucx" skip="false">
             <intro>
                <b>Introduction</b> The purpose of this sub-task is to create an extended XContext &quot;participantsCtx.bucx&quot; within the &quot;Club&quot; project.
             </intro>
@@ -85,7 +64,7 @@
             <param name="path" value="CreateParticipantsCtx.xml">
             </param>
          </task>
-         <task kind="cheatsheet" name="Task 5.3. Create an extended XContext instructorsCtx.bucx" skip="false">
+         <task kind="cheatsheet" name="Task 4.3. Create an extended XContext instructorsCtx.bucx" skip="false">
             <intro>
                <b>Introduction</b> The purpose of this sub-task is to create an extended XContext &quot;instructorsCtx.bucx&quot; within the &quot;Club&quot; project.
             </intro>
@@ -96,14 +75,14 @@
             </param>
          </task>
       </taskGroup>
-      <taskGroup kind="sequence" name="Task 6. Create refined XMachines" skip="false">
+      <taskGroup kind="sequence" name="Task 5. Create refined XMachines" skip="false">
          <intro>
             <b>Introduction</b> The purpose of this task is to create some more refined XMachines within the &quot;Club&quot; project.
          </intro>
          <onCompletion>
             <b>Conclusion</b> By now, the XMachines and the corresponding Rodin Machines should be visible in the Event-B Explorer.
          </onCompletion>
-         <task kind="cheatsheet" name="Task 6.1. Create a refined XMachine m1.bumx" skip="false">
+         <task kind="cheatsheet" name="Task 5.1. Create a refined XMachine m1.bumx" skip="false">
             <intro>
                <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m1.bumx&quot; within the &quot;Club&quot; project.
             </intro>
@@ -113,7 +92,7 @@
             <param name="path" value="CreateM1.xml">
             </param>
          </task>
-         <task kind="cheatsheet" name="Task 6.2. Create a refined XMachine m2.bumx" skip="false">
+         <task kind="cheatsheet" name="Task 5.2. Create a refined XMachine m2.bumx" skip="false">
             <intro>
                <b>Introduction</b> The purpose of this sub-task is to create a refined XMachine &quot;m2.bumx&quot; within the &quot;Club&quot; project.
             </intro>

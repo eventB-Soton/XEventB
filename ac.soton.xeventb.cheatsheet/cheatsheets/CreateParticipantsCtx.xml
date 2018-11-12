@@ -41,9 +41,9 @@
          <br/>
          axioms
          <br/>
-         @axm1_2: &quot;PRTCPT ∈ ℙ(MEM)&quot;
+         @axm1_2: PRTCPT ∈ ℙ(MEM)
          <br/>
-         @thm1_1: &quot;finite(PRTCPT)&quot; theorem
+         theorem @thm1_1: finite(PRTCPT)
          <br/>
          end
       </description>

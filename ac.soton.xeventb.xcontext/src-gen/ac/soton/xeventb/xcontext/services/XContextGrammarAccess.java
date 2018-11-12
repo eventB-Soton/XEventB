@@ -828,6 +828,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	private final EVENTB_PREDICATE_SYMBOLSElements pEVENTB_PREDICATE_SYMBOLS;
 	private final EVENTB_EXPRESSION_SYMBOLSElements pEVENTB_EXPRESSION_SYMBOLS;
 	private final TerminalRule tID;
+	private final TerminalRule tSTRING;
 	
 	private final Grammar grammar;
 	
@@ -849,6 +850,7 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEVENTB_PREDICATE_SYMBOLS = new EVENTB_PREDICATE_SYMBOLSElements();
 		this.pEVENTB_EXPRESSION_SYMBOLS = new EVENTB_EXPRESSION_SYMBOLSElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.ID");
+		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.STRING");
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1069,22 +1071,22 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	
 	//@Override
 	//terminal ID:
-	//	('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9')*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9' | "'")*;
 	public TerminalRule getIDRule() {
 		return tID;
+	}
+	
+	//@Override
+	//terminal STRING:
+	//	'"' ('\\' . | !('\\' | '"'))* '"';
+	public TerminalRule getSTRINGRule() {
+		return tSTRING;
 	}
 	
 	//terminal INT returns ecore::EInt:
 	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
-	}
-	
-	//terminal STRING:
-	//	'"' ('\\' . | !('\\' | '"'))* '"' |
-	//	"'" ('\\' . | !('\\' | "'"))* "'";
-	public TerminalRule getSTRINGRule() {
-		return gaTerminals.getSTRINGRule();
 	}
 	
 	//terminal ML_COMMENT:

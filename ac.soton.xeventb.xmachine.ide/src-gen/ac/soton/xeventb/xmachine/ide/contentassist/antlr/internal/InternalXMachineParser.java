@@ -6787,7 +6787,7 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
                 int alt18=2;
                 int LA18_0 = input.LA(1);
 
-                if ( (LA18_0==124) ) {
+                if ( ((LA18_0>=110 && LA18_0<=112)||LA18_0==124) ) {
                     alt18=1;
                 }
 
@@ -8979,7 +8979,7 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
             // InternalXMachine.g:2512:1: ( rule__XEvent__Group__1__Impl rule__XEvent__Group__2 )
             // InternalXMachine.g:2513:2: rule__XEvent__Group__1__Impl rule__XEvent__Group__2
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_13);
             rule__XEvent__Group__1__Impl();
 
             state._fsp--;
@@ -9008,24 +9008,45 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XEvent__Group__1__Impl"
-    // InternalXMachine.g:2520:1: rule__XEvent__Group__1__Impl : ( 'event' ) ;
+    // InternalXMachine.g:2520:1: rule__XEvent__Group__1__Impl : ( ( rule__XEvent__ConvergenceAssignment_1 )? ) ;
     public final void rule__XEvent__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXMachine.g:2524:1: ( ( 'event' ) )
-            // InternalXMachine.g:2525:1: ( 'event' )
+            // InternalXMachine.g:2524:1: ( ( ( rule__XEvent__ConvergenceAssignment_1 )? ) )
+            // InternalXMachine.g:2525:1: ( ( rule__XEvent__ConvergenceAssignment_1 )? )
             {
-            // InternalXMachine.g:2525:1: ( 'event' )
-            // InternalXMachine.g:2526:2: 'event'
+            // InternalXMachine.g:2525:1: ( ( rule__XEvent__ConvergenceAssignment_1 )? )
+            // InternalXMachine.g:2526:2: ( rule__XEvent__ConvergenceAssignment_1 )?
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXEventAccess().getEventKeyword_1()); 
+               before(grammarAccess.getXEventAccess().getConvergenceAssignment_1()); 
             }
-            match(input,124,FOLLOW_2); if (state.failed) return ;
+            // InternalXMachine.g:2527:2: ( rule__XEvent__ConvergenceAssignment_1 )?
+            int alt24=2;
+            int LA24_0 = input.LA(1);
+
+            if ( ((LA24_0>=110 && LA24_0<=112)) ) {
+                alt24=1;
+            }
+            switch (alt24) {
+                case 1 :
+                    // InternalXMachine.g:2527:3: rule__XEvent__ConvergenceAssignment_1
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__XEvent__ConvergenceAssignment_1();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+
+            }
+
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXEventAccess().getEventKeyword_1()); 
+               after(grammarAccess.getXEventAccess().getConvergenceAssignment_1()); 
             }
 
             }
@@ -9058,7 +9079,7 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
             // InternalXMachine.g:2539:1: ( rule__XEvent__Group__2__Impl rule__XEvent__Group__3 )
             // InternalXMachine.g:2540:2: rule__XEvent__Group__2__Impl rule__XEvent__Group__3
             {
-            pushFollow(FOLLOW_19);
+            pushFollow(FOLLOW_5);
             rule__XEvent__Group__2__Impl();
 
             state._fsp--;
@@ -9087,34 +9108,24 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XEvent__Group__2__Impl"
-    // InternalXMachine.g:2547:1: rule__XEvent__Group__2__Impl : ( ( rule__XEvent__NameAssignment_2 ) ) ;
+    // InternalXMachine.g:2547:1: rule__XEvent__Group__2__Impl : ( 'event' ) ;
     public final void rule__XEvent__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXMachine.g:2551:1: ( ( ( rule__XEvent__NameAssignment_2 ) ) )
-            // InternalXMachine.g:2552:1: ( ( rule__XEvent__NameAssignment_2 ) )
+            // InternalXMachine.g:2551:1: ( ( 'event' ) )
+            // InternalXMachine.g:2552:1: ( 'event' )
             {
-            // InternalXMachine.g:2552:1: ( ( rule__XEvent__NameAssignment_2 ) )
-            // InternalXMachine.g:2553:2: ( rule__XEvent__NameAssignment_2 )
+            // InternalXMachine.g:2552:1: ( 'event' )
+            // InternalXMachine.g:2553:2: 'event'
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXEventAccess().getNameAssignment_2()); 
+               before(grammarAccess.getXEventAccess().getEventKeyword_2()); 
             }
-            // InternalXMachine.g:2554:2: ( rule__XEvent__NameAssignment_2 )
-            // InternalXMachine.g:2554:3: rule__XEvent__NameAssignment_2
-            {
-            pushFollow(FOLLOW_2);
-            rule__XEvent__NameAssignment_2();
-
-            state._fsp--;
-            if (state.failed) return ;
-
-            }
-
+            match(input,124,FOLLOW_2); if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXEventAccess().getNameAssignment_2()); 
+               after(grammarAccess.getXEventAccess().getEventKeyword_2()); 
             }
 
             }
@@ -9176,45 +9187,34 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
 
 
     // $ANTLR start "rule__XEvent__Group__3__Impl"
-    // InternalXMachine.g:2574:1: rule__XEvent__Group__3__Impl : ( ( rule__XEvent__ConvergenceAssignment_3 )? ) ;
+    // InternalXMachine.g:2574:1: rule__XEvent__Group__3__Impl : ( ( rule__XEvent__NameAssignment_3 ) ) ;
     public final void rule__XEvent__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXMachine.g:2578:1: ( ( ( rule__XEvent__ConvergenceAssignment_3 )? ) )
-            // InternalXMachine.g:2579:1: ( ( rule__XEvent__ConvergenceAssignment_3 )? )
+            // InternalXMachine.g:2578:1: ( ( ( rule__XEvent__NameAssignment_3 ) ) )
+            // InternalXMachine.g:2579:1: ( ( rule__XEvent__NameAssignment_3 ) )
             {
-            // InternalXMachine.g:2579:1: ( ( rule__XEvent__ConvergenceAssignment_3 )? )
-            // InternalXMachine.g:2580:2: ( rule__XEvent__ConvergenceAssignment_3 )?
+            // InternalXMachine.g:2579:1: ( ( rule__XEvent__NameAssignment_3 ) )
+            // InternalXMachine.g:2580:2: ( rule__XEvent__NameAssignment_3 )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXEventAccess().getConvergenceAssignment_3()); 
+               before(grammarAccess.getXEventAccess().getNameAssignment_3()); 
             }
-            // InternalXMachine.g:2581:2: ( rule__XEvent__ConvergenceAssignment_3 )?
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // InternalXMachine.g:2581:2: ( rule__XEvent__NameAssignment_3 )
+            // InternalXMachine.g:2581:3: rule__XEvent__NameAssignment_3
+            {
+            pushFollow(FOLLOW_2);
+            rule__XEvent__NameAssignment_3();
 
-            if ( ((LA24_0>=110 && LA24_0<=112)) ) {
-                alt24=1;
-            }
-            switch (alt24) {
-                case 1 :
-                    // InternalXMachine.g:2581:3: rule__XEvent__ConvergenceAssignment_3
-                    {
-                    pushFollow(FOLLOW_2);
-                    rule__XEvent__ConvergenceAssignment_3();
-
-                    state._fsp--;
-                    if (state.failed) return ;
-
-                    }
-                    break;
+            state._fsp--;
+            if (state.failed) return ;
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXEventAccess().getConvergenceAssignment_3()); 
+               after(grammarAccess.getXEventAccess().getNameAssignment_3()); 
             }
 
             }
@@ -14255,62 +14255,21 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
     // $ANTLR end "rule__XVariant__ExpressionAssignment_2"
 
 
-    // $ANTLR start "rule__XEvent__NameAssignment_2"
-    // InternalXMachine.g:4126:1: rule__XEvent__NameAssignment_2 : ( RULE_ID ) ;
-    public final void rule__XEvent__NameAssignment_2() throws RecognitionException {
+    // $ANTLR start "rule__XEvent__ConvergenceAssignment_1"
+    // InternalXMachine.g:4126:1: rule__XEvent__ConvergenceAssignment_1 : ( ruleXConvergence ) ;
+    public final void rule__XEvent__ConvergenceAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalXMachine.g:4130:1: ( ( RULE_ID ) )
-            // InternalXMachine.g:4131:2: ( RULE_ID )
+            // InternalXMachine.g:4130:1: ( ( ruleXConvergence ) )
+            // InternalXMachine.g:4131:2: ( ruleXConvergence )
             {
-            // InternalXMachine.g:4131:2: ( RULE_ID )
-            // InternalXMachine.g:4132:3: RULE_ID
-            {
-            if ( state.backtracking==0 ) {
-               before(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_2_0()); 
-            }
-            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
-            if ( state.backtracking==0 ) {
-               after(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_2_0()); 
-            }
-
-            }
-
-
-            }
-
-        }
-        catch (RecognitionException re) {
-            reportError(re);
-            recover(input,re);
-        }
-        finally {
-
-            	restoreStackSize(stackSize);
-
-        }
-        return ;
-    }
-    // $ANTLR end "rule__XEvent__NameAssignment_2"
-
-
-    // $ANTLR start "rule__XEvent__ConvergenceAssignment_3"
-    // InternalXMachine.g:4141:1: rule__XEvent__ConvergenceAssignment_3 : ( ruleXConvergence ) ;
-    public final void rule__XEvent__ConvergenceAssignment_3() throws RecognitionException {
-
-        		int stackSize = keepStackSize();
-        	
-        try {
-            // InternalXMachine.g:4145:1: ( ( ruleXConvergence ) )
-            // InternalXMachine.g:4146:2: ( ruleXConvergence )
-            {
-            // InternalXMachine.g:4146:2: ( ruleXConvergence )
-            // InternalXMachine.g:4147:3: ruleXConvergence
+            // InternalXMachine.g:4131:2: ( ruleXConvergence )
+            // InternalXMachine.g:4132:3: ruleXConvergence
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_3_0()); 
+               before(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_1_0()); 
             }
             pushFollow(FOLLOW_2);
             ruleXConvergence();
@@ -14318,7 +14277,7 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_3_0()); 
+               after(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_1_0()); 
             }
 
             }
@@ -14338,7 +14297,48 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
         }
         return ;
     }
-    // $ANTLR end "rule__XEvent__ConvergenceAssignment_3"
+    // $ANTLR end "rule__XEvent__ConvergenceAssignment_1"
+
+
+    // $ANTLR start "rule__XEvent__NameAssignment_3"
+    // InternalXMachine.g:4141:1: rule__XEvent__NameAssignment_3 : ( RULE_ID ) ;
+    public final void rule__XEvent__NameAssignment_3() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalXMachine.g:4145:1: ( ( RULE_ID ) )
+            // InternalXMachine.g:4146:2: ( RULE_ID )
+            {
+            // InternalXMachine.g:4146:2: ( RULE_ID )
+            // InternalXMachine.g:4147:3: RULE_ID
+            {
+            if ( state.backtracking==0 ) {
+               before(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_3_0()); 
+            }
+            match(input,RULE_ID,FOLLOW_2); if (state.failed) return ;
+            if ( state.backtracking==0 ) {
+               after(grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_3_0()); 
+            }
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__XEvent__NameAssignment_3"
 
 
     // $ANTLR start "rule__XEvent__RefinesAssignment_4_0_1"
@@ -15217,13 +15217,13 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000102L,0x0000000000000000L,0x0000000000000010L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000100L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x1000000000000000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000002L,0x1000000000000000L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000000000L,0x1001C00000000000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000000002L,0x1001C00000000000L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000000000000L,0x0200000000000000L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000000L,0x0C00000000000000L});
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0008000000000000L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0xFFFFFFFFFFFFF0C0L,0x00003FFFFFFFFFFFL,0x0000000000000004L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0xE00DC00000000000L,0x0000000000000023L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0xE00C000000000000L,0x0000000000000023L});
     public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000008L});

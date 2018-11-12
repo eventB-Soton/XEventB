@@ -702,15 +702,34 @@ ruleXEvent returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='event'
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_1_0());
+				}
+				lv_convergence_1_0=ruleXConvergence
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getXEventRule());
+					}
+					set(
+						$current,
+						"convergence",
+						lv_convergence_1_0,
+						"ac.soton.xeventb.xmachine.XMachine.XConvergence");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)?
+		otherlv_2='event'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getXEventAccess().getEventKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getXEventAccess().getEventKeyword_2());
 		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getXEventAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -719,30 +738,11 @@ ruleXEvent returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_3_0,
 						"ac.soton.xeventb.xmachine.XMachine.ID");
 				}
 			)
 		)
-		(
-			(
-				{
-					newCompositeNode(grammarAccess.getXEventAccess().getConvergenceXConvergenceEnumRuleCall_3_0());
-				}
-				lv_convergence_3_0=ruleXConvergence
-				{
-					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getXEventRule());
-					}
-					set(
-						$current,
-						"convergence",
-						lv_convergence_3_0,
-						"ac.soton.xeventb.xmachine.XMachine.XConvergence");
-					afterParserOrEnumRuleCall();
-				}
-			)
-		)?
 		(
 			(
 				otherlv_4='refines'
@@ -1995,11 +1995,11 @@ ruleXConvergence returns [Enumerator current=null]
 
 RULE_XLABEL : '@' ~(':')+ ':';
 
-RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9')*;
+RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9'|'\'')*;
+
+RULE_STRING : '"' ('\\' .|~(('\\'|'"')))* '"';
 
 RULE_INT : ('0'..'9')+;
-
-RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 
 RULE_ML_COMMENT : '/*' ( options {greedy=false;} : . )*'*/';
 

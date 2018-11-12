@@ -88,8 +88,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXInvariantAccess().getPredicateAssignment_3(), "rule__XInvariant__PredicateAssignment_3");
 			builder.put(grammarAccess.getXVariantAccess().getNameAssignment_1(), "rule__XVariant__NameAssignment_1");
 			builder.put(grammarAccess.getXVariantAccess().getExpressionAssignment_2(), "rule__XVariant__ExpressionAssignment_2");
-			builder.put(grammarAccess.getXEventAccess().getNameAssignment_2(), "rule__XEvent__NameAssignment_2");
-			builder.put(grammarAccess.getXEventAccess().getConvergenceAssignment_3(), "rule__XEvent__ConvergenceAssignment_3");
+			builder.put(grammarAccess.getXEventAccess().getConvergenceAssignment_1(), "rule__XEvent__ConvergenceAssignment_1");
+			builder.put(grammarAccess.getXEventAccess().getNameAssignment_3(), "rule__XEvent__NameAssignment_3");
 			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_4_0_1(), "rule__XEvent__RefinesAssignment_4_0_1");
 			builder.put(grammarAccess.getXEventAccess().getExtendedAssignment_4_1_0(), "rule__XEvent__ExtendedAssignment_4_1_0");
 			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_4_1_1(), "rule__XEvent__RefinesAssignment_4_1_1");
