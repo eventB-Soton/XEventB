@@ -21,7 +21,6 @@ import org.eclipse.xtext.parsetree.reconstr.ITransientValueService
 import org.eclipse.xtext.scoping.IScopeProvider
 import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding
 
-
 /**
  * <p>
  * Use this class to register components for XContext to be used at runtime /
