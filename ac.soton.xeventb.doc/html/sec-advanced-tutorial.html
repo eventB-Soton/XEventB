@@ -3,8 +3,8 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
-<link href="index.html" title="XEvent-B User Manual" rel="start" />
-<link href="index.html" title="XEvent-B User Manual" rel="first" />
+<link href="index.html" title="CamilleX User Manual" rel="start" />
+<link href="index.html" title="CamilleX User Manual" rel="first" />
 <link href="index.html" rel="contents" title="Contents" />
 <link rel="index" title="Index" />
 <link href="sec-concepts.html" rel="next" />
@@ -21,7 +21,7 @@
 <td class="online-navigation"><a title="2.2 Basic Tutorial" href="sec-basic-tutorial.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
 <td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
 <td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
-<td align="center" width="100%">XEvent-B User Manual</td>
+<td align="center" width="100%">CamilleX User Manual</td>
 <td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
@@ -40,7 +40,7 @@
 
 
 <div><h2 id="sec:advanced-tutorial">2.3 Advanced Tutorial</h2>
-<p>This tutorial provides a step-by-step walk-through working with <em>machine inclusion</em> using XEvent-B. Following the same steps as in Section <a href="sec-basic-tutorial.html">2.2</a> to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via <em>event synchronisation</em>. </p><p>We illustrate the application of machine inclusion using XEvent-B by modelling a small example of “controlling cars on a bridge”, which is based on Chapter 2 of “<em>Modeling in Event-B: System and Software Engineering</em>” book. </p><h3 id="a0000000018">Task 1. Create the reusable model</h3>
+<p>This tutorial provides a step-by-step walk-through working with <em>machine inclusion</em> using XEvent-B. Following the same steps as in Section <a href="sec-basic-tutorial.html">2.2</a> to create machines and contexts, we can create a machine that can include other machines and can update the included machines variables via <em>event synchronisation</em>. </p><p>We illustrate the application of machine inclusion using XEvent-B by modelling a small example of “controlling cars on a bridge”, which is based on Chapter 2 of “<em>Modeling in Event-B: System and Software Engineering</em>” book. </p><h3 id="a0000000009">Task 1. Create the reusable model</h3>
 <p> <b class="bfseries">Introduction</b> The purpose of this task is to create the model that will be reused by other models using machine inclusion. </p><dl class="description">
 
     <dt>Step 1. Create a new Project (Sensor) with XMachine m0_SNSR.bumx</dt>
@@ -66,7 +66,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@thm0_1: "SNSR ∈ BOOL" <tt class="ttfamily">theorem</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">theorem</tt> @thm0_1: SNSR ∈ BOOL</p></td>
 
 </tr><tr>
 
@@ -76,37 +76,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>INITIALISATION</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@act1: "SNSR ≔ FALSE"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>SNSR_on</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@grd1: "SNSR = FALSE"</p></td>
+    <td style="text-align:left"><p>event INITIALISATION</p></td>
 
 </tr><tr>
 
@@ -116,7 +86,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "SNSR ≔ TRUE"</p></td>
+    <td style="text-align:left"><p>@act1: SNSR ≔ FALSE</p></td>
 
 </tr><tr>
 
@@ -126,17 +96,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>SNSR_off</p></td>
+    <td style="text-align:left"><p>event SNSR_on</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@grd1: "SNSR = TRUE"</p></td>
+    <td style="text-align:left"><p>@grd1: SNSR = FALSE</p></td>
 
 </tr><tr>
 
@@ -146,7 +116,37 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "SNSR ≔ FALSE"</p></td>
+    <td style="text-align:left"><p>@act1: SNSR ≔ TRUE</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>event SNSR_off</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: SNSR = TRUE</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: SNSR ≔ FALSE</p></td>
 
 </tr><tr>
 
@@ -164,7 +164,7 @@
     <dt>Step 3. Auto-format and Save the file “m0_SNSR.bumx”</dt>
     <dd></dd>
 
-</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “m0_SNSR.bumx” and the corresponding Rodin Machine “m0_SNSR” should be visible in the Event-B Explorer. </p><h3 id="a0000000019">Task 2. Model the abstract level of cars on a bridge</h3>
+</dl><p><b class="bfseries">Conclusion</b> By now, the XMachine “m0_SNSR.bumx” and the corresponding Rodin Machine “m0_SNSR” should be visible in the Event-B Explorer. </p><h3 id="a0000000010">Task 2. Model the abstract level of cars on a bridge</h3>
 <p> <b class="bfseries">Introduction</b> The purpose of this task is to create the abstract model of the “cars on a bridge” example. At this level, we have not applied machine inclusion, but it is possible to apply machine inclusion right from the abstract level. </p><dl class="description">
 
     <dt>Step 1. Create the Context Car_c0_limit.bucx in a new project Car</dt>
@@ -187,7 +187,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@axm1: "D ∈ ℕ1"</p></td>
+    <td style="text-align:left"><p>@axm1: D ∈ ℕ1</p></td>
 
 </tr><tr>
 
@@ -222,32 +222,32 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv0_1: "A ∈ ℕ"</p></td>
+    <td style="text-align:left"><p>@inv0_1: A ∈ ℕ</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv0_2: "B ∈ ℕ"</p></td>
+    <td style="text-align:left"><p>@inv0_2: B ∈ ℕ</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv0_3: "C ∈ ℕ"</p></td>
+    <td style="text-align:left"><p>@inv0_3: C ∈ ℕ</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv0_4: "A = 0 ∨ C = 0"</p></td>
+    <td style="text-align:left"><p>@inv0_4: A = 0 ∨ C = 0</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv0_5: "A + B + C ≤ D"</p></td>
+    <td style="text-align:left"><p>@inv0_5: A + B + C ≤ D</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@thm0_1: "B ≤ D" <tt class="ttfamily">theorem</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">theorem</tt> @thm0_1: B ≤ D</p></td>
 
 </tr><tr>
 
@@ -257,52 +257,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>INITIALISATION</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">begin</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@act1: "A ≔ 0"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@act2: "B ≔ 0"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@act3: "C ≔ 0"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>ML_out</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@grd1: "C = 0"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@grd2: "A + B ≠ D"</p></td>
+    <td style="text-align:left"><p>event INITIALISATION</p></td>
 
 </tr><tr>
 
@@ -312,7 +267,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "A ≔ A + 1"</p></td>
+    <td style="text-align:left"><p>@act1: A ≔ 0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: B ≔ 0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act3: C ≔ 0</p></td>
 
 </tr><tr>
 
@@ -322,17 +287,22 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>ML_in</p></td>
+    <td style="text-align:left"><p>event ML_out</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@grd1: "C ≠ 0"</p></td>
+    <td style="text-align:left"><p>@grd1: C = 0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: A + B ≠ D</p></td>
 
 </tr><tr>
 
@@ -342,7 +312,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "C ≔ C − 1"</p></td>
+    <td style="text-align:left"><p>@act1: A ≔ A + 1</p></td>
 
 </tr><tr>
 
@@ -352,17 +322,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>IL_in</p></td>
+    <td style="text-align:left"><p>event ML_in</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@grd1: "A ≠ 0"</p></td>
+    <td style="text-align:left"><p>@grd1: C ≠ 0</p></td>
 
 </tr><tr>
 
@@ -372,12 +342,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "A ≔ A − 1"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@act2: "B ≔ B + 1"</p></td>
+    <td style="text-align:left"><p>@act1: C ≔ C − 1</p></td>
 
 </tr><tr>
 
@@ -387,22 +352,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>IL_out</p></td>
+    <td style="text-align:left"><p>event IL_in</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@grd1: "B ≠ 0"</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@grd2: "A = 0"</p></td>
+    <td style="text-align:left"><p>@grd1: A ≠ 0</p></td>
 
 </tr><tr>
 
@@ -412,12 +372,52 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "B ≔ B − 1"</p></td>
+    <td style="text-align:left"><p>@act1: A ≔ A − 1</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act2: "C ≔ C + 1"</p></td>
+    <td style="text-align:left"><p>@act2: B ≔ B + 1</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>event IL_out</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd1: B ≠ 0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@grd2: A = 0</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p><tt class="ttfamily">then</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act1: B ≔ B − 1</p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>@act2: C ≔ C + 1</p></td>
 
 </tr><tr>
 
@@ -432,7 +432,7 @@
 </tr>
 </table></tt> </center></dd>
 
-</dl><p> <b class="bfseries">Conclusion</b> Saving the XContext and XMachine files will generate the corresponding Rodin files. In the “Car” you have the context “Car_c0_limit” and the machine “Car_m0_cars”. Ideally the reusable models should be in a different project, that is why we added the reusable model in a different project “Sensor”. </p><h3 id="a0000000020">Task 3. Model an XMachine using machine inclusion</h3>
+</dl><p> <b class="bfseries">Conclusion</b> Saving the XContext and XMachine files will generate the corresponding Rodin files. In the “Car” you have the context “Car_c0_limit” and the machine “Car_m0_cars”. Ideally the reusable models should be in a different project, that is why we added the reusable model in a different project “Sensor”. </p><h3 id="a0000000011">Task 3. Model an XMachine using machine inclusion</h3>
 <p> <b class="bfseries">Introduction</b> In this task we define the XMachine “Car_m1_SNSR.bumx” which is a refinement of the machine “Car_m0_cars” and includes two instances of “m0_SNSR”. The keywords in red are <b class="bfseries">not</b> part of the standard Event-B syntax, they correspond to machine inclusion and event synchronisation. </p><dl class="description">
 
     <dt>Step 1. Create the file “Car_m1_SNSR.bumx”</dt>
@@ -470,7 +470,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@inv1_1: "IL_out_SNSR = TRUE ⇒ B ≠ 0"</p></td>
+    <td style="text-align:left"><p>@inv1_1: IL_out_SNSR = TRUE ⇒ B ≠ 0</p></td>
 
 </tr><tr>
 
@@ -480,7 +480,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>INITIALISATION <tt class="ttfamily">extended</tt></p></td>
+    <td style="text-align:left"><p>event INITIALISATION extends INITIALISATION</p></td>
 
 </tr><tr>
 
@@ -495,17 +495,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> INITIALISATION</p></td>
-
-</tr><tr>
-
-    
     <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>ML_out <tt class="ttfamily">extended</tt></p></td>
+    <td style="text-align:left"><p>event ML_out extends ML_out</p></td>
 
 </tr><tr>
 
@@ -515,7 +510,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> ML_out</p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
+
+</tr><tr>
+
+    
+    <td style="text-align:left"><p>event ML_in extends ML_in</p></td>
 
 </tr><tr>
 
@@ -525,37 +525,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>ML_in <tt class="ttfamily">extended</tt></p></td>
+    <td style="text-align:left"><p>event IL_in extends IL_in</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> ML_in</p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">end</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>IL_in <tt class="ttfamily">extended</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> IL_in</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@inv0_2−copy: "B ∈ ℕ" <tt class="ttfamily">theorem</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">theorem</tt> @inv0_2−copy: B ∈ ℕ </p></td>
 
 </tr><tr>
 
@@ -565,7 +545,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>IL_out</p></td>
+    <td style="text-align:left"><p>event IL_out <tt class="ttfamily">refines</tt> IL_out</p></td>
 
 </tr><tr>
 
@@ -575,17 +555,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">refines</tt> IL_out</p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>@grd2: "A = 0"</p></td>
+    <td style="text-align:left"><p>@grd2: A = 0</p></td>
 
 </tr><tr>
 
@@ -595,12 +570,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act1: "B ≔ B − 1"</p></td>
+    <td style="text-align:left"><p>@act1: B ≔ B − 1</p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@act2: "C ≔ C + 1"</p></td>
+    <td style="text-align:left"><p>@act2: C ≔ C + 1</p></td>
 
 </tr><tr>
 
@@ -610,7 +585,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>ML_out_ARR</p></td>
+    <td style="text-align:left"><p>event ML_out_ARR</p></td>
 
 </tr><tr>
 
@@ -625,7 +600,7 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>IL_out_ARR</p></td>
+    <td style="text-align:left"><p>event IL_out_ARR</p></td>
 
 </tr><tr>
 
@@ -635,12 +610,12 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p><tt class="ttfamily">when</tt></p></td>
+    <td style="text-align:left"><p><tt class="ttfamily">where</tt></p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>@grd2: "B ≠ 0"</p></td>
+    <td style="text-align:left"><p>@grd2: B ≠ 0</p></td>
 
 </tr><tr>
 
@@ -671,7 +646,7 @@
 <td class="online-navigation"><a title="2.2 Basic Tutorial" href="sec-basic-tutorial.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
 <td class="online-navigation"><a title="2 Getting Started" href="sec-getting-started.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
 <td class="online-navigation"><a title="Concepts" href="sec-concepts.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
-<td align="center" width="100%">XEvent-B User Manual</td>
+<td align="center" width="100%">CamilleX User Manual</td>
 <td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>

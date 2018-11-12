@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <toc version="1.0"> 
-<tocitem>XEvent-B User Manual
-    <tocitem target="sec:overview">XEvent-B Front-end Overview
+<tocitem>CamilleX User Manual
+    <tocitem target="sec:overview">CamilleX Overview
         
     </tocitem><tocitem target="sec:getting-started">Getting Started
         <tocitem target="sec:installation">Installation
@@ -14,13 +14,13 @@
     </tocitem><tocitem target="sec:concepts">Concepts
         <tocitem target="sec:xtext-projects">XText Projects
             
-        </tocitem><tocitem target="sec:xevent-b-builders">XEvent-B Builders
+        </tocitem><tocitem target="sec:xevent-b-builders">CamilleX Builders
             
         </tocitem><tocitem target="sec:content-assist">Content Assist
             
         </tocitem>
     </tocitem><tocitem target="sec:tasks">Tasks
-        <tocitem target="sec:creating-xevent-b">Creating XEvent-B Files
+        <tocitem target="sec:creating-xevent-b">Creating CamilleX Files
             
         </tocitem><tocitem target="sec:typesetting-event-b">Typesetting Event-B Mathematical Symbols
             
@@ -41,6 +41,8 @@
         <tocitem target="sec:user-agreement">RODIN Software User Agreement
             
         </tocitem>
+    </tocitem><tocitem target="sec:release-notes">Release Notes
+        
     </tocitem>
 </tocitem>
 </toc>
