@@ -21,5 +21,6 @@
 <mapID target="sec:xevent-b-editors" url="sec-xevent-b-editors.html" />
 <mapID target="sec:legal" url="sec-legal.html" />
 <mapID target="sec:user-agreement" url="sec-user-agreement.html" />
+<mapID target="sec:release-notes" url="sec-release-notes.html" />
 </mapID>
 </map>

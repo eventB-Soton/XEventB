@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='ISO-8859-1' ?>
 <helpset version="2.0">
-<title>XEvent-B User Manual</title>
+<title>CamilleX User Manual</title>
 <maps>
 <homeID>main_contents</homeID>
 <mapref location="javahelp2.jhm" />

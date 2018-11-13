@@ -4,7 +4,7 @@
 \subsection{XText Projects}
 \label{sec:xtext-projects}
 
-Each project containing XEvent-B constructs must be set to be XText project.  An XText project has an associated XContext and XMachine builders that can compile XEvent-B source files into Rodin files as they are changed.  The builders can be turn off via the preferences, either workspace-wise or project-wise (see Figure~\ref{fig:XContextPreference}.
+Each project containing CamilleX constructs must be set to be XText project.  An XText project has an associated XContext and XMachine builders that can compile CamilleX source files into Rodin files as they are changed.  The builders can be turn off via the preferences, either workspace-wise or project-wise (see Figure~\ref{fig:XContextPreference}.
 \begin{figure}[!htbp]
   \centering
   \ifplastex
@@ -16,11 +16,11 @@ Each project containing XEvent-B constructs must be set to be XText project.  An
   \label{fig:XContextPreference}
 \end{figure}
 
-The XText projects must be organised such that all XEvent-B constructs has the project as the source container.
+The XText projects must be organised such that all CamilleX constructs has the project as the source container.
 
-\subsection{XEvent-B Builders}
+\subsection{CamilleX Builders}
 \label{sec:xevent-b-builders}
-The XEvent-B Builders, i.e., XContext builder and XMachine builder, build XEvent-B constructs, i.e., XContext and XMachine using their own compiler.  If they are enabled, the XEvent-B builders are run everytime an individual XEvent-B file is saved.  Problems detected by the XEvent-B builders are classified as either warnings or errors.  Compile-time errors are always reported as errors by the XEvent-B buiders and in the presence of errors, no new Rodin files are created or updated, i.e., the XEvent-B builders do not produce any new Rodin file content. In the case of machine inclusion and event synchronisation, a flattened machine is generated which includes data from the included machine and the synchronised events, which can be renamed if prefixing is applied.
+The CamilleX Builders, i.e., XContext builder and XMachine builder, build CamilleX constructs, i.e., XContext and XMachine using their own compiler.  If they are enabled, the CamilleX builders are run everytime an individual CamilleX file is saved.  Problems detected by the CamilleX builders are classified as either warnings or errors.  Compile-time errors are always reported as errors by the CamilleX buiders and in the presence of errors, no new Rodin files are created or updated, i.e., the CamilleX builders do not produce any new Rodin file content. In the case of machine inclusion and event synchronisation, a flattened machine is generated which includes data from the included machine and the synchronised events, which can be renamed if prefixing is applied.
 
 \subsection{Content Assist}
 \label{sec:content-assist}

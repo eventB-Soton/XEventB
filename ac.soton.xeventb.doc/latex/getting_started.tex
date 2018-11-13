@@ -8,7 +8,7 @@
 \label{sec:setup}
 
 \begin{itemize}
-\item Before installing the XEvent-B Front-end feature, you need to add the XText update site (\url{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}) as an additional software site (see Figure~\ref{fig:xtext-updatesite}).
+\item Before installing the CamilleX feature, you need to add the XText update site (\url{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}) as an additional software site (see Figure~\ref{fig:xtext-updatesite}).
 \begin{figure}[!htbp]
   \centering
   \ifplastex
@@ -21,7 +21,7 @@
 \end{figure}
 
 
-\item The XEvent-B front-end feature is available from the main Rodin update site (under ``Modelling Extensions'' category). There are two versions of the feature, \emph{eXtended Event-B (XEvent-B)} providing facilities for working with XEvent-B Front-end, and the \emph{eXtended Event-B (XEvent-B) (SDK)} is the feature including source code for software developers (see Figure~\ref{fig:EventBXText-installation}).
+\item The CamilleX feature is available from the main Rodin update site (under ``Modelling Extensions'' category). There are two versions of the feature, \emph{CamilleX} providing facilities for working with CamilleX, and the \emph{CamilleX (SDK)} is the feature including source code for software developers (see Figure~\ref{fig:EventBXText-installation}).
 \begin{figure}[!htbp]
   \centering
   \ifplastex
@@ -35,151 +35,15 @@
 
 \end{itemize}
 
-\subsubsection{Release Notes}
-\label{sec:release-notes}
-\paragraph{0.0.7}
-\begin{itemize}
-\item XEvent-B Branding (0.0.3): Updated logo to XEvent-B.
-\item XEvent-B Common (0.0.4): Enhancement (Issue \#11).
-  \begin{itemize}
-  \item Machines from different projects can now be included.
-
-  \item  Machines are now included using qualified name defined as:
-    \emph{projectName.machineName}
-  \end{itemize}
-
-\item  XEvent-B Documentations (0.0.7): Update documentation for 0.0.7 release.
-\item  XEvent-B XContext (0.0.5): Changed dependency on XText to [2.12.0, 3.0.0).
-\item  XEvent-B XContext IDE (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
-\item  XEvent-B XContext UI (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
-\item  XEvent-B XMachine (0.0.5):
-  \begin{itemize}
-  \item Changed dependency on XText to [2.12.0, 3.0.0).
-  
-  \item  Fixed Issue \#8: Comments are not parsed.
-  
-  \item  Fixed Issue \#10: Variants not translated: Fix is part of inclusion plug-in release 0.2.0.  
-  
-  \item  Flattened machines now have the included machine elements generated before the source machine.
-  
-  \item  Order of generating elements of multiple inclusions and/or instances is from last to first.
-  
-  \item  This update is part of inclusion plug-in release 0.2.0.
-  \end{itemize}
-
-\item  XEvent-B XMachine IDE (0.0.4): Changed dependency on XText to [2.12.0, 3.0.0).
-\item  XEvent-B XMachine UI (0.0.4): 
-  \begin{itemize}
-  \item Changed dependency on XText to [2.12.0, 3.0.0).
-  \item Regenerated from XEvent-B XMachine 0.0.5
-  \end{itemize}
-\end{itemize}
-
-\paragraph{0.0.6}
-\begin{itemize}
-\item Renamed plug-ins and features to XEvent-B (instead of Event-B XText).
-\item XEvent-B Branding (0.0.2): Renamed from Event-B XText Branding.
-\item XEvent-B Documentations (0.0.2): Renamed from Event-B XText Documentations.
-\item XEvent-B Cheatsheets (0.0.2): Renamed from Event-B XText Cheatsheets.
-\item XEvent-B Common (0.0.3): Renamed from Event-B XText Common.
-\item XEvent-B UI (0.0.2): Renamed from Event-B XText UI.
-\item XEvent-B XContext (0.0.4): Renamed from Event-B XText Context.
-\item XEvent-B XContext IDE (0.0.3): Renamed from Event-B XText Context IDE.
-\item XEvent-B XContext UI (0.0.3): Renamed from Event-B Context UI.
-\item XEvent-B XMachine (0.0.4): Renamed from Event-B XText Machine.
-	\begin{itemize}
-		\item Support Machine Inclusion and Event Synchronisation.
-	\end{itemize}	
-\item XEvent-B XMachine IDE (0.0.3): Renamed from Event-B XText Machine IDE.
-\item XEvent-B XMachine UI (0.0.3): Renamed from Event-B XText Machine UI.
-\end{itemize}
-
-\paragraph{0.0.5}
-\begin{itemize}
-\item Event-B XText Documentations (0.0.1): Documentation plug-in (Initial version).
-\end{itemize}
-
-\paragraph{0.0.4}
-\begin{itemize}
-\item Updated plug-in dependency for the feature
-\end{itemize}
-
-\paragraph{0.0.3}
-\begin{itemize}
-\item Event-B XText Context (0.0.3):
-  \begin{itemize}
-  \item Issue \#3: Single-line comment after the element, multi-line comment before
-    the element
-  \end{itemize}
-
-\item Event-B XText Context IDE (0.0.2): Regenerated
- 
-\item Event-B XText ContextUI IDE (0.0.2): Regenerated
-
-\item Event-B XText Machine (0.0.3):
-  \begin{itemize}
-  \item Issue \#3: Single-line comment after the element, multi-line comment before
-    the element.
-
-  \item Issue \#5: Event terminator using 'end' keyword instead of ';'
-  \end{itemize}
-
-\item Event-B XText Machine IDE (0.0.2) Regenerated
-  
-\item Event-B XText Machine UI IDE (0.0.2) Regenerated
-\end{itemize}
-
-
-\paragraph{0.0.2}
-\begin{itemize}
-\item Event-B XText Common (0.0.2):
-  \begin{itemize}
-  \item Added transient value service for XContext and XMachine.
-  \end{itemize}
-
-\item Event-B XText Context (0.0.2):
-  \begin{itemize}
-  \item Added formatter (used for auto-indentation).
-  \end{itemize}
-
-\item Event-B XText Machine (0.0.2):
-  \begin{itemize}
-  \item Added formatter (used for auto-indentation).
-  \end{itemize}
-
-\item Event-B XText UI (0.0.1): Initial version
-  \begin{itemize}
-  \item Added context menu for converting machines and contexts to XText.
-  \end{itemize}
-\end{itemize}
-
-\paragraph{0.0.1} Initial version contains the following plug-ins:
-\begin{itemize}
-\item Event-B XText Branding (0.0.1) Initial version: Branding information
-
-\item Event-B XText Common (0.0.1) Initial version: Common facilities
-
-\item Event-B XText Context (0.0.1) Initial version: Core support for Event-B contexts
-
-\item Event-B XText Context IDE (0.0.1) Initial version: IDE for Event-B contexts
-
-\item Event-B XText Context UI (0.0.1) Initial version: UI for Event-B contexts
-
-\item Event-B XText Machine (0.0.1) Initial version: Core support for Event-B machines
-
-\item Event-B XText Machine IDE (0.0.1) Initial version: IDE for Event-B machines
-
-\item Event-B XText Machine UI (0.0.1) Initial version: UI for Event-B machines
-\end{itemize}
-
 \subsubsection{IMPORTANT}
 \label{sec:important}
 
 \begin{itemize}
-\item Currently, XEvent-B front-end \textbf{not only} supports ``standard'' Event-B machines and contexts, but also supports ``\emph{Machine Inclusion}'' and ``\emph{Event Synchronisation}''.
+\item Currently, CamilleX \textbf{not only} supports ``standard'' Event-B machines and contexts, but also supports ``\emph{Machine Inclusion}'' and ``\emph{Event Synchronisation}''.
+
 \item Since the XContexts and XMachines are compiled to the Rodin files, the corresponding Rodin contexts and machines will be \textbf{OVER-WRITTEN}. Any changes in the Rodin files will not be lost.
 
-\item \textbf{DO NOT USE} the XEvent-B Front-end if you use modelling plug-ins such as \emph{iUML-B} state-machines and class-diagrams, as the additional modelling elements will be over-written.
+\item \textbf{DO NOT USE} the CamilleX if you use modelling plug-ins such as \emph{iUML-B} state-machines and class-diagrams, as the additional modelling elements will be over-written.
 
 \item Windows users \textbf{must} change the workspace text file encoding to \textbf{UTF-8}. This can be updated under the Rodin Preferences: General/Workspace then in the ``\emph{Text file encoding}'' section, select Other: UTF-8.
 
@@ -189,8 +53,6 @@
 \label{sec:known-issues}
 
 \begin{itemize}
-\item Converting to XText: Currently, the ``extended'' attribute of events are not serialised.
-
 \item Machine Inclusion: 
 \begin{itemize}
 	\item Including the \textbf{same} machine to both the abstract and its refining machine can result in the repetition of invariants.
@@ -198,27 +60,12 @@
 
 \end{itemize}
 
-\subsubsection{Configuration}
-\label{sec:configuration}
-
-\paragraph{Event-B Explorer}
-By default, XContext files (extension .bucx) and XMachine files (extension .bumx) are not displayed in the \emph{Event-B Explorer}. To enable this, select \emph{Customize view} for \emph{Event-B Explorer} and uncheck the option \emph{All files and folders}.
-
 \subsection{Basic Tutorial}
 \label{sec:basic-tutorial}
 
-This tutorial provides a step-by-step walk-through working with XEvent-B constructs. This tutorial also available as Cheatsheets with the Rodin Platform (\texttt{Help/Cheat Sheets/Event-B XText Cheatsheets/Event-B XText Basic Tutorial}).
+This tutorial provides a step-by-step walk-through working with CamilleX constructs. This tutorial also available as Cheatsheets with the Rodin Platform (\texttt{Help/Cheat Sheets/CamilleX Cheatsheets/CamilleX Basic Tutorial}).
 
-\subsubsection{Task 1. Customise the Event-B Explorer}
-\textbf{Introduction}
-The purpose of this task is to customise the Event-B Explorer so that XEvent-B constructs are visible.
-\begin{description}
-\item[Step 1. Disable the filter on ``All files and folders''] Select ``Customize View'' of Event-B Explorer View. Make sure that ``All files and folders'' from the dialog is \textbf{Unchecked}.
-\end{description}
-
-\textbf{Conclusion} Since the filter on ``All files and folders'' is now disabled, there might be other files and folders than XEvent-B constructs will also be visible in the Event-B Explorer.
-
-\subsubsection{Task 2. Create an Event-B Project}\label{CreateProject}
+\subsubsection{Task 1. Create an Event-B Project}\label{CreateProject}
 \textbf{Introduction} The purpose of this task is to create an Event-B project for the XEvent-B constructs. 
 \begin{description}
 \item[Step 1. Create a new Event-B Project] Create a new Event-B Project named ``Club'' using the \emph{New Event-B Project} wizard (see Figure~\ref{fig:CreateProject}).
@@ -237,7 +84,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \textbf{Conclusion} By now, the project ``Club'' should be visible in the Event-B Explorer.
 
 
-\subsubsection{Task 3. Create a simple XContext coursesCtx.bucx}\label{Sec:SimpleContext}
+\subsubsection{Task 2. Create a simple XContext coursesCtx.bucx}\label{Sec:SimpleContext}
 \textbf{Introduction} The purpose of this task is to create a simple XContext within the newly created project.
 \begin{description}
 \item[Step 1. Create a new XContext coursesCtx.bucx] Create a new XContext named ``coursesCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateCoursesCtx}).
@@ -272,23 +119,23 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsets{} CRS\\
       \Bconstants{} m\\
       \Baxioms\\
-      @axm0_1: "finite(CRS)"\\
-      @axm0_2: "m ∈ ℕ1"\\
-      @thm0_1: "0 < m" \Btheorem\\
+      @axm0_1: finite(CRS)\\
+      @axm0_2: m ∈ ℕ1\\
+      \Btheorem{} @thm0_1: 0 < m \\
       \Bend
       \else
 \Bcontext{} coursesCtx\\
 \Bsets{} CRS\\
 \Bconstants{} m\\
 \Baxioms\\
-\Btab @axm0\_1: "\(\finite(CRS)\)"\\
-\Btab @axm0\_2: "\(m \in \natn\)"\\
-\Btab @thm0\_1: "\(0 < m\)" \Btheorem\\
+\Btab @axm0\_1: \(\finite(CRS)\)\\
+\Btab @axm0\_2: \(m \in \natn\)\\
+\Btab \Btheorem{} @thm0\_1: \(0 < m\)\\
 \Bend
        \fi
     \end{Bcode}
   \end{center}
-  \textbf{Important}: In order to typeset Event-B mathematical symbol, e.g., \ifplastex ℕ1 \else $\natn$ \fi, one can use content assist. For example, typing \texttt{NAT} and invoking content assist (e.g., on Mac OS \texttt{Ctrl+Space}), a dropdown list will appear with options for typesetting \ifplastex ℕ \else $\natn$ \fi and \ifplastex ℕ1 \else $\natn$ \fi (See Figure~\ref{fig:NAT1ContentAssist}.
+  \textbf{Important}: In order to typeset Event-B mathematical symbol, e.g., \ifplastex ℕ1 \else $\natn$ \fi, one can use content assist. For example, typing \texttt{NAT} and invoking content assist (e.g., on Mac OS \texttt{Ctrl+Space}), a dropdown list will appear with options for typesetting \ifplastex ℕ \else $\nat$ \fi and \ifplastex ℕ1 \else $\natn$ \fi (See Figure~\ref{fig:NAT1ContentAssist}.
   \begin{figure}[!htbp]
     \centering
     \ifplastex
@@ -341,56 +188,56 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bmachine{} m0 \\
       \Bvariables{} crs \\
       \Binvariants \\
-      @inv0_1: "crs ∈ ℙ(CRS)"\\
-      @thm0_2: "finite(crs)" \Btheorem \\
-      @inv0_2: "card(crs) ≤ m" \\
-      @DLF: "(card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅)" \\
+      @inv0_1: crs ∈ ℙ(CRS)\\
+      \Btheorem{} @thm0_2: finite(crs) \\
+      @inv0_2: card(crs) ≤ m \\
+      @DLF: (card(crs) ≠ m) ∨ (∃cs·cs ⊆ crs ∧ cs ≠ ∅) \\
       \Bevents\\
-      INITIALISATION\\
-      \Bbegin \\
-      @act0_1: "crs ≔ ∅"\\
+      event INITIALISATION\\
+      \Bthen \\
+      @act0_1: crs ≔ ∅\\
       \Bend\\
-      OpenCourses\\
-      \Bwhen\\
-      @grd0_1: "card(crs) ≠ m" \\
-      @thm0_3: "crs ≠ CRS" \Btheorem \\
+      event OpenCourses\\
+      \Bwhere\\
+      @grd0_1: card(crs) ≠ m\\
+      \Btheorem{} @thm0_3: crs ≠ CRS\\
       \Bthen\\
-      @act0_1: "crs :∣ crs ⊂ crs' ∧ card(crs') ≤ m"\\
+      @act0_1: crs :∣ crs ⊂ crs' ∧ card(crs') ≤ m\\
       \Bend\\
-      CloseCourses \Banticipated\\
+      \Banticipated{} event CloseCourses \\
       \Bany{} cs \Bwhere\\
-      @grd0_1: "cs ⊆ crs"\\
-      @grd0_2: "cs ≠ ∅"\\
+      @grd0_1: cs ⊆ crs\\
+      @grd0_2: cs ≠ ∅\\
       \Bthen\\
-      @act0_1: "crs ≔ crs ∖ cs"\\
+      @act0_1: crs ≔ crs ∖ cs\\
       \Bend\\
       \Bend
       \else
       \Bmachine{} m0 \\
       \Bvariables{} crs \\
       \Binvariants \\
-      \Btab @inv0\_1: "\(crs \in \pow(CRS)\)"\\
-      \Btab @thm0\_2: "\(\finite(crs)\)" \Btheorem \\
-      \Btab @inv0\_2: "\(\card(crs) \leq m\)" \\
-      \Btab @DLF: "\((\card(crs) \neq m) \lor (\exists cs \qdot cs \subseteq crs \land cs \neq \emptyset)\)" \\
+      \Btab @inv0\_1: \(crs \in \pow(CRS)\)\\
+      \Btab \Btheorem{} @thm0\_2: \(\finite(crs)\) \\
+      \Btab @inv0\_2: \(\card(crs) \leq m\) \\
+      \Btab @DLF: \((\card(crs) \neq m) \lor (\exists cs \qdot cs \subseteq crs \land cs \neq \emptyset)\) \\
       \Bevents\\
-      \Btab INITIALISATION\\
+      \Btab event INITIALISATION\\
       \Btab \Bbegin \\
-      \Btab\Btab @act0\_1: "\(crs \bcmeq \emptyset\)"\\
+      \Btab\Btab @act0\_1: \(crs \bcmeq \emptyset\)\\
       \Btab \Bend\\
-      \Btab OpenCourses\\
-      \Btab \Bwhen\\
-      \Btab \Btab @grd0\_1: "\(\card(crs) \neq m\)" \\
-      \Btab \Btab @thm0\_3: "\(crs \neq CRS\)" \Btheorem \\
+      \Btab event OpenCourses\\
+      \Btab \Bwhere\\
+      \Btab \Btab @grd0\_1: \(\card(crs) \neq m\) \\
+      \Btab \Btab \Btheorem{} @thm0\_3: \(crs \neq CRS\) \\
       \Btab \Bthen\\
-      \Btab \Btab @act0\_1: "\(crs \bcmsuch crs \subset crs' \land \card(crs') \leq m\)"\\
+      \Btab \Btab @act0\_1: \(crs \bcmsuch crs \subset crs' \land \card(crs') \leq m\)\\
       \Btab \Bend\\
-      \Btab CloseCourses \Banticipated\\
+      \Btab \Banticipated{} event CloseCourses \\
       \Btab \Bany{} cs \Bwhere\\
-      \Btab \Btab @grd0\_1: "\(cs \subseteq crs\)"\\
-      \Btab \Btab @grd0\_2: "\(cs \neq \emptyset\)"\\
+      \Btab \Btab @grd0\_1: \(cs \subseteq crs\)\\
+      \Btab \Btab @grd0\_2: \(cs \neq \emptyset\)\\
       \Btab \Bthen\\
-      \Btab \Btab @act0\_1: "\(crs \bcmeq crs \setminus cs\)"\\
+      \Btab \Btab @act0\_1: \(crs \bcmeq crs \setminus cs\)\\
       \Btab \Bend\\
       \Bend
       \fi
@@ -458,13 +305,13 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bcontext{} memebersCtx\\
       \Bsets{} MEM\\
       \Baxioms\\
-      @axm0_1: "finite(MEM)"\\
+      @axm0_1: finite(MEM)\\
       \Bend
       \else
       \Bcontext{} memebersCtx\\
       \Bsets{} MEM\\
       \Baxioms\\
-      \Btab @axm0_1: "\(\finite(MEM)\)"\\
+      \Btab @axm0_1: \(\finite(MEM)\)\\
       \Bend
       \fi
     \end{Bcode}
@@ -472,7 +319,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 
 \item [Step 3. Auto-format the code] \textbf{Automatically format the content of ``membersCtx.bucx''} by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
 
-\item[Step 4. Save the file] <b>Save the file \textbf{``membersCtx.bucx''}.
+\item[Step 4. Save the file] Save the file \textbf{``membersCtx.bucx''}.
 \end{description}
 
 \textbf{Conclusion} By now, the XContext ``membersCtx.bucx'' and the corresponding Rodin Context ``membersCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:membersCtx}.
@@ -486,6 +333,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
     \caption{XContext membersCtx.bucx}
     \label{fig:membersCtx}
   \end{figure}
+
 \paragraph{Task 5.2. Create an extended XContext participantsCtx.bucx}
 \textbf{Introduction} The purpose of this sub-task is to create an extended XContext ``participantsCtx.bucx'' within the ``Club'' project.
 
@@ -510,16 +358,16 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bextends{} membersCtx\\
       \Bconstants{} PRTCPT\\
       \Baxioms\\
-      @axm1_2: "PRTCPT ∈ ℙ(MEM)"\\
-      @thm1_1: "finite(PRTCPT)" \Btheorem\\
+      @axm1_2: PRTCPT ∈ ℙ(MEM)\\
+      \Btheorem{} @thm1_1: finite(PRTCPT)\\
       \Bend
       \else
       \Bcontext{} participantsCtx\\
       \Bextends{} membersCtx\\
       \Bconstants{} PRTCPT\\
       \Baxioms\\
-      \Btab @axm1_2: "\(PRTCPT \in \pow(MEM)\)"\\
-      \Btab @thm1_1: "\(\finite(PRTCPT)\)" \Btheorem\\
+      \Btab @axm1_2: \(PRTCPT \in \pow(MEM)\)\\
+      \Btab \Btheorem{} @thm1_1: \(\finite(PRTCPT)\)\\
       \Bend
       \fi
     \end{Bcode}
@@ -565,16 +413,16 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bextends{} membersCtx coursesCtx\\
       \Bconstants{} INSTR instrs\\
       \Baxioms\\
-      @axm1_3: "INSTR ∈ ℙ(MEM)"\\
-      @axm1_4: "instrs ∈ CRS → INSTR"\\
+      @axm1_3: INSTR ∈ ℙ(MEM)\\
+      @axm1_4: instrs ∈ CRS → INSTR\\
       \Bend
       \else
       \Bcontext{} instructorsCtx\\
       \Bextends{} membersCtx coursesCtx\\
       \Bconstants{} INSTR instrs\\
       \Baxioms\\
-      \Btab @axm1_3: "\(INSTR \in \pow(MEM)\)"\\
-      \Btab @axm1_4: "\(instrs \in CRS \tfun INSTR\)"\\
+      \Btab @axm1_3: \(INSTR \in \pow(MEM)\)\\
+      \Btab @axm1_4: \(instrs \in CRS \tfun INSTR\)\\
       \Bend
       \fi
     \end{Bcode}
@@ -624,32 +472,30 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsees{} instructorsCtx participantsCtx \\
       \Bvariables{} crs prtcpts \\
       \Binvariants\\
-      @inv1_1: "prtcpts ∈ crs ↔ PRTCPT"\\
-      @inv1_2: "∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[\{c\}]"\\
-      \Bvariant{} "(crs × PRTCPT) ∖ prtcpts"\\
+      @inv1_1: prtcpts ∈ crs ↔ PRTCPT\\
+      @inv1_2: ∀c·c ∈ crs ⇒ instrs(c) ∉ prtcpts[\{c\}]\\
+      variants @v0: (crs × PRTCPT) ∖ prtcpts\\
       \Bevents\\
-      INITIALISATION \Bextended\\
-      \Bbegin\\
-      @act1_2: "prtcpts ≔ ∅"\\
-      \Bend\\
-      OpenCourses \Bextended\\
-      \Brefines{} OpenCourses\\
-      \Bwhen\\
-      @thm1_2: "dom(prtcpts) ⊆ crs" theorem \\
-      \Bend\\
-      CloseCourses \Bextended{} \Banticipated\\
-      \Brefines{} CloseCourses\\
-      \Bbegin\\
-      @act1_2: "prtcpts ≔ cs ⩤ prtcpts"\\
-      \Bend\\
-      Register \Bconvergent\\
-      \Bany{} p c \Bwhere \\
-      @grd1_1: "p ∈ PRTCPT"\\
-      @grd1_2: "c ∈ crs"\\
-      @grd1_3: "p ≠ instrs(c)"\\
-      @grd1_4: "c ↦ p ∉ prtcpts"\\
+      event INITIALISATION extends INITIALISATION\\
       \Bthen\\
-      @act1_1: "prtcpts ≔ prtcpts ∪ \{c ↦ p\}"\\
+      @act1_2: prtcpts ≔ ∅\\
+      \Bend\\
+      event OpenCourses \Brefines{} OpenCourses\\
+      \Bwhere\\
+      \Btheorem{} @thm1_2: dom(prtcpts) ⊆ crs\\
+      \Bend\\
+      \Banticipated{} event CloseCourses extends CloseCourses\\
+      \Bthen\\
+      @act1_2: prtcpts ≔ cs ⩤ prtcpts\\
+      \Bend\\
+      \Bconvergent event Register \\
+      \Bany{} p c \Bwhere \\
+      @grd1_1: p ∈ PRTCPT\\
+      @grd1_2: c ∈ crs\\
+      @grd1_3: p ≠ instrs(c)\\
+      @grd1_4: c ↦ p ∉ prtcpts\\
+      \Bthen\\
+      @act1_1: prtcpts ≔ prtcpts ∪ \{c ↦ p\}\\
       \Bend\\
       \Bend
       \else
@@ -658,32 +504,30 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsees{} instructorsCtx participantsCtx \\
       \Bvariables{} crs prtcpts \\
       \Binvariants\\
-      \Btab @inv1_1: "\(prtcpts \in crs \rel PRTCPT\)"\\
-      \Btab @inv1_2: "\(\forall c \qdot c ∈ crs \limp instrs(c) \notin prtcpts[\{c\}]\)"\\
-      \Bvariant{} "\((crs \cprod PRTCPT) \setminus prtcpts\)"\\
+      \Btab @inv1_1: \(prtcpts \in crs \rel PRTCPT\)\\
+      \Btab @inv1_2: \(\forall c \qdot c ∈ crs \limp instrs(c) \notin prtcpts[\{c\}]\)\\
+      variants @v0:\((crs \cprod PRTCPT) \setminus prtcpts\)\\
       \Bevents\\
-      \Btab INITIALISATION \Bextended\\
-      \Btab \Bbegin\\
-      \Btab \Btab @act1_2: "\(prtcpts \bcmeq \emptyset\)"\\
-      \Btab \Bend\\
-      \Btab OpenCourses \Bextended\\
-      \Btab \Brefines{} OpenCourses\\
-      \Btab \Bwhen\\
-      \Btab \Btab @thm1_2: "\(\dom(prtcpts) \subseteq crs\)" theorem \\
-      \Btab \Bend\\
-      \Btab CloseCourses \Bextended{} \Banticipated\\
-      \Btab \Brefines{} CloseCourses\\
-      \Btab \Bbegin\\
-      \Btab \Btab @act1_2: "\(prtcpts \bcmeq cs \domsub prtcpts\)"\\
-      \Btab \Bend\\
-      \Btab Register \Bconvergent\\
-      \Btab \Bany{} p c \Bwhere \\
-      \Btab \Btab @grd1_1: "\(p \in PRTCPT\)"\\
-      \Btab \Btab @grd1_2: "\(c \in crs\)"\\
-      \Btab \Btab @grd1_3: "\(p \neq instrs(c)\)"\\
-      \Btab \Btab @grd1_4: "\(c \mapsto p \neq prtcpts\)"\\
+      \Btab event INITIALISATION extends INITIALISATION\\
       \Btab \Bthen\\
-      \Btab \Btab @act1_1: "\(prtcpts \bcmeq prtcpts \bunion \{c \mapsto p\}\)"\\
+      \Btab \Btab @act1_2: \(prtcpts \bcmeq \emptyset\)\\
+      \Btab \Bend\\
+      \Btab event OpenCourses extends OpenCourses\\
+      \Btab \Bwhere\\
+      \Btab \Btab \Btheorem{} @thm1_2: \(\dom(prtcpts) \subseteq crs\) \\
+      \Btab \Bend\\
+      \Btab \Banticipated{} event CloseCourses extends CloseCourses\\
+      \Btab \Bthen\\
+      \Btab \Btab @act1_2: \(prtcpts \bcmeq cs \domsub prtcpts\)\\
+      \Btab \Bend\\
+      \Btab \Bconvergent{} event Register \\
+      \Btab \Bany{} p c \Bwhere \\
+      \Btab \Btab @grd1_1: \(p \in PRTCPT\)\\
+      \Btab \Btab @grd1_2: \(c \in crs\)\\
+      \Btab \Btab @grd1_3: \(p \neq instrs(c)\)\\
+      \Btab \Btab @grd1_4: \(c \mapsto p \neq prtcpts\)\\
+      \Btab \Bthen\\
+      \Btab \Btab @act1_1: \(prtcpts \bcmeq prtcpts \bunion \{c \mapsto p\}\)\\
       \Btab \Bend\\
       \Bend
       \fi
@@ -695,7 +539,7 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
 \item[Step 4. Save the file] Save the file ``m1.bumx''.
 \end{description}
 
-\textbf{Conclusion} By now, the XMachine ``m1.bucx'' and the corresponding Rodin Machine ``m1'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M1}.
+\textbf{Conclusion} By now, the XMachine ``m1.bucx'' and the corresponding Rodin Machine ``m1'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M1}).
   \begin{figure}[!htbp]
     \centering
     \ifplastex
@@ -732,46 +576,45 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsees{} instructorsCtx participantsCtx\\
       \Bvariables{} atnds\\
       \Binvariants\\
-      @inv2_1: "atnds ∈ CRS ⇸ ℙ(PRTCPT)"\\
-      @inv2_2: "crs = dom(atnds)"\\
-      @inv2_3: "∀c·c ∈ crs ⇒ prtcpts[\{c\}] = atnds(c)"\\
-      @thm2_1: "finite(atnds)" \Btheorem\\
-      \Bvariant{} "card(atnds)"\\
+      @inv2_1: atnds ∈ CRS ⇸ ℙ(PRTCPT)\\
+      @inv2_2: crs = dom(atnds)\\
+      @inv2_3: ∀c·c ∈ crs ⇒ prtcpts[\{c\}] = atnds(c)\\
+      \Btheorem{} @thm2_1: finite(atnds)\\
+      variants @v0: card(atnds)\\
       \Bevents\\
-      INITIALISATION\\
-      \Bbegin\\
-      @act2_1: "atnds ≔ ∅"\\
+      event INITIALISATION\\
+      \Bthen \\
+      @act2_1: atnds ≔ ∅\\
       \Bend\\
-      OpenCourse\\
-      \Brefines{} OpenCourses\\
+      event OpenCourse \Brefines{} OpenCourses\\
       \Bany{} c \Bwhere\\
-      @grd2_1: "c ∉ dom(atnds)"\\
-      @grd2_2: "card(atnds) ≠ m" \\
-      @thm2_2: "card(crs) ≠ m" theorem\\
-      \Bwith\\
-      @crs': "crs' = crs ∪ \{c\}"\\
+      @grd2_1: c ∉ dom(atnds)\\
+      @grd2_2: card(atnds) ≠ m \\
+      \Btheorem{} @thm2_2: card(crs) ≠ m\\
       \Bthen\\
-      @act2_1: "atnds(c) ≔ ∅"\\
+      @act2_1: atnds(c) ≔ ∅\\
+      \Bwith\\
+      @crs': crs' = crs ∪ \{c\}\\
       \Bend\\
-      CloseCourse \Bconvergent\\
+      \Bconvergent{} event CloseCourse \\
       \Brefines{} CloseCourses\\
       \Bany{} c \Bwhere\\
-      @grd2_1: "c ∈ dom(atnds)"\\
-      \Bwith\\
-      @cs: "cs = \{c\}"\\
+      @grd2_1: c ∈ dom(atnds)\\
       \Bthen\\
-      @act1_2: "atnds ≔\{c\} ⩤ atnds"\\
+      @act1_2: atnds ≔\{c\} ⩤ atnds\\
+      \Bwith\\
+      @cs: cs = \{c\}\\
       \Bend\\
-      Register \Bconvergent\\
+      \Bconvergent{} event Register \\
       \Brefines{} Register\\
       \Bany{} p c \Bwhere\\
-      @grd2_1: "p ∈ PRTCPT"\\
-      @grd2_2: "p ≠ instrs(c)"\\
-      @grd2_3: "c ∈ dom(atnds)"\\
-      @grd2_4: "p ∉ atnds(c)"\\
-      @thm2_3: "atnds(c) = prtcpts[\{c\}]" theorem\\
+      @grd2_1: p ∈ PRTCPT\\
+      @grd2_2: p ≠ instrs(c)\\
+      @grd2_3: c ∈ dom(atnds)\\
+      @grd2_4: p ∉ atnds(c)\\
+      \Btheorem{} @thm2_3: atnds(c) = prtcpts[\{c\}]\\
       \Bthen\\
-      @act2_1: "atnds(c) ≔ atnds(c) ∪ \{p\}"\\
+      @act2_1: atnds(c) ≔ atnds(c) ∪ \{p\}\\
       \Bend\\
       \Bend
       \else
@@ -780,46 +623,46 @@ The purpose of this task is to customise the Event-B Explorer so that XEvent-B c
       \Bsees{} instructorsCtx participantsCtx\\
       \Bvariables{} atnds\\
       \Binvariants\\
-      \Btab @inv2_1: "\(atnds \in CRS \pfun \pow(PRTCPT)\)"\\
-      \Btab @inv2_2: "\(crs = \dom(atnds)\)"\\
-      \Btab @inv2_3: "\(\forall c \qdot c \in crs \limp prtcpts[\{c\}] = atnds(c)\)"\\
-      \Btab @thm2_1: "\(\finite(atnds)\)" \Btheorem\\
-      \Bvariant{} "\(\card(atnds)\)"\\
+      \Btab @inv2_1: \(atnds \in CRS \pfun \pow(PRTCPT)\)\\
+      \Btab @inv2_2: \(crs = \dom(atnds)\)\\
+      \Btab @inv2_3: \(\forall c \qdot c \in crs \limp prtcpts[\{c\}] = atnds(c)\)\\
+      \Btab \Btheorem{} @thm2_1: \(\finite(atnds)\)\\
+      variants @v0: \(\card(atnds)\)\\
       \Bevents\\
-      \Btab INITIALISATION\\
-      \Btab \Bbegin\\
-      \Btab \Btab @act2_1: "\(atnds \bcmeq \emptyset\)"\\
+      \Btab event INITIALISATION\\
+      \Btab \Bthen\\
+      \Btab \Btab @act2_1: \(atnds \bcmeq \emptyset\)\\
       \Btab \Bend\\
-      \Btab OpenCourse\\
+      \Btab event OpenCourse\\
       \Btab \Brefines{} OpenCourses\\
       \Btab \Bany{} c \Bwhere\\
-      \Btab \Btab @grd2_1: "\(c \notin \dom(atnds)\)"\\
-      \Btab \Btab @grd2_2: "\(\card(atnds) \neq m\)" \\
-      \Btab \Btab @thm2_2: "\(\card(crs) \neq m\)" \Btheorem\\
-      \Btab \Bwith\\
-      \Btab \Btab @crs': "\(crs' = crs \bunion \{c\}\)"\\
+      \Btab \Btab @grd2_1: \(c \notin \dom(atnds)\)\\
+      \Btab \Btab @grd2_2: \(\card(atnds) \neq m\) \\
+      \Btab \Btab \Btheorem{} @thm2_2: \(\card(crs) \neq m\)\\
       \Btab \Bthen\\
-      \Btab \Btab @act2_1: "\(atnds(c) \bcmeq \emptyset\)"\\
+      \Btab \Btab @act2_1: \(atnds(c) \bcmeq \emptyset\)\\
+      \Btab \Bwith\\
+      \Btab \Btab @crs': \(crs' = crs \bunion \{c\}\)\\
       \Btab \Bend\\
-      \Btab CloseCourse \Bconvergent\\
+      \Btab \Bconvergent{} event CloseCourse \\
       \Btab \Brefines{} CloseCourses\\
       \Btab \Bany{} c \Bwhere\\
-      \Btab \Btab @grd2_1: "\(c \in \dom(atnds)\)"\\
-      \Btab \Bwith\\
-      \Btab \Btab @cs: "\(cs = \{c\}\)"\\
+      \Btab \Btab @grd2_1: \(c \in \dom(atnds)\)\\
       \Btab \Bthen\\
-      \Btab \Btab @act1_2: "\(atnds \bcmeq \{c\} \domsub atnds\)"\\
+      \Btab \Btab @act1_2: \(atnds \bcmeq \{c\} \domsub atnds\)\\
+      \Btab \Bwith\\
+      \Btab \Btab @cs: \(cs = \{c\}\)\\
       \Btab \Bend\\
-      \Btab  Register \Bconvergent\\
+      \Btab  \Bconvergent{} event Register \\
       \Btab \Brefines{} Register\\
       \Btab \Bany{} p c \Bwhere\\
-      \Btab \Btab @grd2_1: "\(p \in PRTCPT\)"\\
-      \Btab \Btab @grd2_2: "\(p \neq instrs(c)\)"\\
-      \Btab \Btab @grd2_3: "\(c \in \dom(atnds)\)"\\
-      \Btab \Btab @grd2_4: "\(p \notin atnds(c)\)"\\
-      \Btab \Btab @thm2_3: "\(atnds(c) = prtcpts[\{c\}]\)" theorem\\
+      \Btab \Btab @grd2_1: \(p \in PRTCPT\)\\
+      \Btab \Btab @grd2_2: \(p \neq instrs(c)\)\\
+      \Btab \Btab @grd2_3: \(c \in \dom(atnds)\)\\
+      \Btab \Btab @grd2_4: \(p \notin atnds(c)\)\\
+      \Btab \Btab \Btheorem{} @thm2_3: \(atnds(c) = prtcpts[\{c\}]\)\\
       \Btab \Bthen\\
-      \Btab \Btab @act2_1: "\(atnds(c) \bcmeq atnds(c) ∪ \{p\}\)"\\
+      \Btab \Btab @act2_1: \(atnds(c) \bcmeq atnds(c) ∪ \{p\}\)\\
       \Btab \Bend\\
       \Bend
       \fi
@@ -868,46 +711,46 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 		\Bmachine{} m0_SNSR\\
 		\Bvariables{} SNSR\\
 		\Binvariants\\
-		@thm0_1: "SNSR ∈ BOOL" \Btheorem\\
+                \Btheorem{} @thm0_1: SNSR ∈ BOOL\\
 		\Bevents\\
-		INITIALISATION\\
-		\Bbegin\\
-		@act1: "SNSR ≔ FALSE"\\
-		\Bend\\
-		SNSR_on\\
-		\Bwhen\\
-		@grd1: "SNSR = FALSE"\\
+		event INITIALISATION\\
 		\Bthen\\
-		@act1: "SNSR ≔ TRUE"\\
+		@act1: SNSR ≔ FALSE\\
 		\Bend\\
-	    SNSR_off\\
-	    \Bwhen\\
-	    @grd1: "SNSR = TRUE"\\
+		event SNSR_on\\
+		\Bwhere\\
+		@grd1: SNSR = FALSE\\
+		\Bthen\\
+		@act1: SNSR ≔ TRUE\\
+		\Bend\\
+	    event SNSR_off\\
+	    \Bwhere\\
+	    @grd1: SNSR = TRUE\\
 	    \Bthen\\
-	    @act1: "SNSR ≔ FALSE"\\
+	    @act1: SNSR ≔ FALSE\\
 	    \Bend\\
 		\Bend
 		\else
 		\Bmachine{} m0_SNSR\\
 		\Bvariables{} SNSR\\
 		\Binvariants\\
-		\Btab @thm0_1: "\(SNSR \in BOOL\)" \Btheorem\\
+		\Btab  \Btheorem{} @thm0_1: \(SNSR \in BOOL\)\\
 		\Bevents\\
-		\Btab INITIALISATION\\
-		\Btab \Bbegin\\
-		\Btab \Btab @act1: "\(SNSR \bcmeq FALSE\)"\\
-		\Btab \Bend\\
-		\Btab SNSR_on\\
-		\Btab \Bwhen\\
-		\Btab \Btab @grd1: "\(SNSR = FALSE\)"\\
+		\Btab event INITIALISATION\\
 		\Btab \Bthen\\
-		\Btab \Btab @act1: "\(SNSR \bcmeq TRUE\)"\\
+		\Btab \Btab @act1: \(SNSR \bcmeq FALSE\)\\
 		\Btab \Bend\\
-		\Btab SNSR_off\\
-		\Btab \Bwhen\\
-		\Btab \Btab @grd1: "\(SNSR = TRUE\)"\\
+		\Btab event SNSR_on\\
+		\Btab \Bwhere\\
+		\Btab \Btab @grd1: \(SNSR = FALSE\)\\
 		\Btab \Bthen\\
-		\Btab \Btab @act1: "\(SNSR \bcmeq FALSE\)"\\
+		\Btab \Btab @act1: \(SNSR \bcmeq TRUE\)\\
+		\Btab \Bend\\
+		\Btab event SNSR_off\\
+		\Btab \Bwhere\\
+		\Btab \Btab @grd1: \(SNSR = TRUE\)\\
+		\Btab \Bthen\\
+		\Btab \Btab @act1: \(SNSR \bcmeq FALSE\)\\
 		\Btab \Bend\\
 		\Bend
 		\fi
@@ -937,13 +780,13 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bcontext{} Car\_c0_limit\\
 			\Bconstants{} D\\
 			\Baxioms\\
-			@axm1: "D ∈ ℕ1"\\
+			@axm1: D ∈ ℕ1\\
 			\Bend
 			\else
 			\Bcontext{} Car_c0_limit\\
 			\Bconstants{} D\\
 			\Baxioms\\
-			\Btab @axm1: "\(D \in \nat1\)"\\
+			\Btab @axm1: \(D \in \nat1\)\\
 			\Bend
 			\fi
 		\end{Bcode}
@@ -957,46 +800,46 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bsees{} Car\_c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
-			@inv0_1: "A ∈ ℕ"\\
-			@inv0_2: "B ∈ ℕ"\\
-			@inv0_3: "C ∈ ℕ"\\
-			@inv0_4: "A = 0 ∨ C = 0"\\
-			@inv0_5: "A + B + C ≤ D"\\
-			@thm0_1: "B ≤ D" \Btheorem\\
+			@inv0_1: A ∈ ℕ\\
+			@inv0_2: B ∈ ℕ\\
+			@inv0_3: C ∈ ℕ\\
+			@inv0_4: A = 0 ∨ C = 0\\
+			@inv0_5: A + B + C ≤ D\\
+                        \Btheorem{} @thm0_1: B ≤ D\\
 			\Bevents\\
-			INITIALISATION\\
-			\Bbegin\\
-			@act1: "A ≔ 0"\\
-			@act2: "B ≔ 0"\\
-			@act3: "C ≔ 0"\\
-			\Bend\\
-			ML_out\\
-			\Bwhen\\
-			@grd1: "C = 0"\\
-			@grd2: "A + B ≠ D"\\
+			event INITIALISATION\\
 			\Bthen\\
-			@act1: "A ≔ A + 1"\\
+			@act1: A ≔ 0\\
+			@act2: B ≔ 0\\
+			@act3: C ≔ 0\\
 			\Bend\\
-			ML_in\\
-			\Bwhen\\
-			@grd1: "C ≠ 0"\\
+			event ML_out\\
+			\Bwhere\\
+			@grd1: C = 0\\
+			@grd2: A + B ≠ D\\
 			\Bthen\\
-			@act1: "C ≔ C − 1"\\
+			@act1: A ≔ A + 1\\
 			\Bend\\
-			IL_in\\
-			\Bwhen\\
-			@grd1: "A ≠ 0"\\
+			event ML_in\\
+			\Bwhere\\
+			@grd1: C ≠ 0\\
 			\Bthen\\
-			@act1: "A ≔ A − 1"\\
-			@act2: "B ≔ B + 1"\\
+			@act1: C ≔ C − 1\\
 			\Bend\\
-			IL_out\\
-			\Bwhen\\
-			@grd1: "B ≠ 0"\\
-			@grd2: "A = 0"\\
+			event IL_in\\
+			\Bwhere\\
+			@grd1: A ≠ 0\\
 			\Bthen\\
-			@act1: "B ≔ B − 1"\\
-			@act2: "C ≔ C + 1"\\
+			@act1: A ≔ A − 1\\
+			@act2: B ≔ B + 1\\
+			\Bend\\
+			event IL_out\\
+			\Bwhere\\
+			@grd1: B ≠ 0\\
+			@grd2: A = 0\\
+			\Bthen\\
+			@act1: B ≔ B − 1\\
+			@act2: C ≔ C + 1\\
 			\Bend\\
 			\Bend
 			\else
@@ -1004,46 +847,46 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bsees{} Car\_c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
-			\Btab @inv0_1: "\(A \in \nat\)"\\
-			\Btab @inv0_2: "\(B \in \nat"\)\\
-			\Btab @inv0_3: "\(C \in \nat\)"\\
-			\Btab @inv0_4: "\(A = 0 \vee C = 0\)"\\
-			\Btab @inv0_5: "\(A + B + C \leq D\)"\\
-			\Btab @thm0_1: "\(B \leq D\)" \Btheorem\\
+			\Btab @inv0_1: \(A \in \nat\)\\
+			\Btab @inv0_2: \(B \in \nat\)\\
+			\Btab @inv0_3: \(C \in \nat\)\\
+			\Btab @inv0_4: \(A = 0 \vee C = 0\)\\
+			\Btab @inv0_5: \(A + B + C \leq D\)\\
+			\Btab  \Btheorem{} @thm0_1: \(B \leq D\)\\
 			\Bevents\\
-			\Btab INITIALISATION\\
-			\Btab \Bbegin\\
-			\Btab \Btab @act1: "\(A \bcmeq 0\)"\\
-			\Btab \Btab @act2: "\(B \bcmeq 0\)"\\
-			\Btab \Btab @act3: "\(C \bcmeq 0\)"\\
-			\Btab \Bend\\
-			\Btab ML_out\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd1: "\(C = 0\)"\\
-			\Btab \Btab @grd2: "\(A + B \neq D\)"\\
+			\Btab event INITIALISATION\\
 			\Btab \Bthen\\
-			\Btab \Btab @act1: "\(A \bcmeq A + 1\)"\\
+			\Btab \Btab @act1: \(A \bcmeq 0\)\\
+			\Btab \Btab @act2: \(B \bcmeq 0\)\\
+			\Btab \Btab @act3: \(C \bcmeq 0\)\\
 			\Btab \Bend\\
-			\Btab ML_in\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd1: "\(C \neq 0\)"\\
+			\Btab event ML_out\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd1: \(C = 0\)\\
+			\Btab \Btab @grd2: \(A + B \neq D\)\\
 			\Btab \Bthen\\
-			\Btab \Btab @act1: "\(C \bcmeq C - 1\)"\\
+			\Btab \Btab @act1: \(A \bcmeq A + 1\)\\
 			\Btab \Bend\\
-			\Btab IL_in\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd1: "\(A \neq 0\)"\\
+			\Btab event ML_in\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd1: \(C \neq 0\)\\
 			\Btab \Bthen\\
-			\Btab \Btab @act1: "\(A \bcmeq A - 1\)"\\
-			\Btab \Btab @act2: "\(B \bcmeq B + 1\)"\\
+			\Btab \Btab @act1: \(C \bcmeq C - 1\)\\
 			\Btab \Bend\\
-			\Btab IL_out\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd1: "\(B \neq 0\)"\\
-			\Btab \Btab @grd2: "\(A = 0\)"\\
+			\Btab event IL_in\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd1: \(A \neq 0\)\\
 			\Btab \Bthen\\
-			\Btab \Btab @act1: "\(B \bcmeq B - 1\)"\\
-			\Btab \Btab @act2: "\(C \bcmeq C + 1\)"\\
+			\Btab \Btab @act1: \(A \bcmeq A - 1\)\\
+			\Btab \Btab @act2: \(B \bcmeq B + 1\)\\
+			\Btab \Bend\\
+			\Btab event IL_out\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd1: \(B \neq 0\)\\
+			\Btab \Btab @grd2: \(A = 0\)\\
+			\Btab \Bthen\\
+			\Btab \Btab @act1: \(B \bcmeq B - 1\)\\
+			\Btab \Btab @act2: \(C \bcmeq C + 1\)\\
 			\Btab \Bend\\
 			\Bend
 			\fi
@@ -1068,41 +911,36 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bsees{} Car_c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
-			@inv1_1: "IL_out_SNSR = TRUE ⇒ B ≠ 0"\\
+			@inv1_1: IL_out_SNSR = TRUE ⇒ B ≠ 0\\
 			\Bevents\\
-			INITIALISATION \Bextended\\
+			event INITIALISATION extends INITIALISATION\\
 			\textcolor{red}{\textbf{synchronises}} IL_out.INITIALISATION\\
 			\textcolor{red}{\textbf{synchronises}} ML_out.INITIALISATION\\
-			\Brefines{} INITIALISATION\\
 			\Bend\\
-			ML_out \Bextended\\
+			event ML_out extends ML_out\\
 			\textcolor{red}{\textbf{synchronises}} ML_out.SNSR_off\\
-			\Brefines{} ML_out\\
 			\Bend\\
-			ML_in \Bextended\\
-			\Brefines{} ML_in\\
+			event ML_in extends ML_in\\
 			\Bend\\
-			IL_in \Bextended\\
-			\Brefines{} IL_in\\
-			\Bwhen\\
-			@inv0_2−copy: "B ∈ ℕ" \Btheorem\\
+			event IL_in extends IL_in\\
+			\Bwhere\\
+			\Btheorem{} @inv0_2−copy: B ∈ ℕ \\
 			\Bend\\
-			IL_out\\
+			event IL_out \Brefines{} IL_out\\
 			\textcolor{red}{\textbf{synchronises}} IL_out.SNSR_off\\
-			\Brefines{} IL_out\\
-			\Bwhen\\
-			@grd2: "A = 0"\\
+			\Bwhere\\
+			@grd2: A = 0\\
 			\Bthen\\
-			@act1: "B ≔ B − 1"\\
-			@act2: "C ≔ C + 1"\\
+			@act1: B ≔ B − 1\\
+			@act2: C ≔ C + 1\\
 			\Bend\\
-			ML_out_ARR\\
+			event ML_out_ARR\\
 			\textcolor{red}{\textbf{synchronises}} ML_out.SNSR_on\\
 			\Bend\\
-			IL_out_ARR\\
+			event IL_out_ARR\\
 			\textcolor{red}{\textbf{synchronises}} IL_out.SNSR_on\\
-			\Bwhen\\
-			@grd2: "B ≠ 0"\\
+			\Bwhere\\
+			@grd2: B ≠ 0\\
 			\Bend\\
 			\Bend
 			\else
@@ -1112,41 +950,36 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Bsees{} Car_c0_limit\\
 			\Bvariables{} A B C\\
 			\Binvariants\\
-			\Btab @inv1_1: "\("IL_out_SNSR = TRUE \Rightarrow B \neq 0"\)"\\
+			\Btab @inv1_1: \(IL\_out\_SNSR = TRUE \Rightarrow B \neq 0\)\\
 			\Bevents\\
-			\Btab INITIALISATION \Bextended\\
+			\Btab event INITIALISATION extends INITIALISATION\\
 			\Btab \textcolor{red}{synchronises} IL_out.INITIALISATION\\
             \Btab \textcolor{red}{synchronises} ML_out.INITIALISATION\\
-            \Btab \Brefines{} INITIALISATION\\
 			\Btab \Bend\\
-			\Btab ML_out \Bextended\\
+			\Btab event ML_out extends ML_out\\
 			\Btab \textcolor{red}{synchronises} ML_out.SNSR_off\\
-			\Btab \Brefines{} ML_out\\
 			\Btab \Bend\\
-			\Btab ML_in \Bextended\\
-			\Btab \Brefines{} ML_in\\
+			\Btab event ML_in extends ML_in\\
 			\Btab \Bend\\
-			\Btab IL_in \Bextended\\
-			\Btab \Brefines{} IL_in\\
-			\Btab \Bwhen\\
+			\Btab event IL_in extends IL_in\\
+			\Btab \Bwhere\\
 			\Btab \Btab @inv0_2−copy: "\(B \in \nat\)" \Btheorem\\
 			\Btab \Bend\\
-			\Btab IL_out\\
+			\Btab IL_out \Brefines{} IL_out\\
 			\Btab \textcolor{red}{synchronises} IL_out.SNSR_off\\
-			\Btab \Brefines{} IL_out\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd2: "\(A = 0\)"\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd2: \(A = 0\)\\
 			\Btab \Bthen\\
-			\Btab \Btab @act1: "\(B \bcmeq B - 1\)"\\
-			\Btab \Btab @act2: "\(C \bcmeq C + 1\)"\\
+			\Btab \Btab @act1: \(B \bcmeq B - 1\)\\
+			\Btab \Btab @act2: \(C \bcmeq C + 1\)\\
 			\Btab \Bend\\
-			\Btab ML_out_ARR\\
+			\Btab event ML_out_ARR\\
 			\Btab \textcolor{red}{synchronises} ML_out.SNSR_on\\
 			\Btab \Bend\\
-			\Btab IL_out_ARR\\
+			\Btab event IL_out_ARR\\
 			\Btab \textcolor{red}{synchronises} IL_out.SNSR_on\\
-			\Btab \Bwhen\\
-			\Btab \Btab @grd2: "\(B \neq 0\)"\\
+			\Btab \Bwhere\\
+			\Btab \Btab @grd2: \(B \neq 0\)\\
 			\Btab \Bend\\
 			\Bend
 			\fi

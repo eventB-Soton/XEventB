@@ -9,33 +9,34 @@ Error log file=help.log
 Full-text search=Yes
 Index file=chm.hhk
 Language=0x0 
-Title=XEvent-B User Manual
+Title=CamilleX User Manual
 
 [WINDOWS]
-Help="XEvent-B User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
+Help="CamilleX User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
 
 [FILES]
-sec-common-syntax.html
-sec-preferences.html
-sec-content-assist.html
-sec-concepts.html
-sec-tasks.html
-sec-user-agreement.html
-sec-basic-tutorial.html
-sec-legal.html
-index.html
-sec-xevent-b-editors.html
-sec-getting-started.html
-sec-creating-xevent-b.html
-sec-typesetting-event-b.html
-sec-installation.html
-sec-advanced-tutorial.html
-sec-xcontext-syntax.html
-sec-overview.html
-sec-reference.html
-sec-xevent-b-builders.html
 sec-xtext-projects.html
+sec-xevent-b-builders.html
+sec-content-assist.html
+sec-release-notes.html
+sec-typesetting-event-b.html
+sec-getting-started.html
+sec-xevent-b-editors.html
+sec-xcontext-syntax.html
+sec-user-agreement.html
+index.html
+sec-creating-xevent-b.html
+sec-preferences.html
 sec-xmachine-syntax.html
+sec-basic-tutorial.html
+sec-tasks.html
+sec-concepts.html
+sec-advanced-tutorial.html
+sec-common-syntax.html
+sec-installation.html
+sec-reference.html
+sec-overview.html
+sec-legal.html
 
 
 [MERGE FILES]

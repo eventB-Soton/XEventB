@@ -10,14 +10,14 @@
 </object>
 <ul>
     <li><object type="text/sitemap">
-        <param name="Name" value="XEvent-B User Manual">
+        <param name="Name" value="CamilleX User Manual">
         <param name="Local" value="index.html">
         
     </object></li>
     <ul>
       
       <li><object type="text/sitemap">
-          <param name="Name" value="XEvent-B Front-end Overview">
+          <param name="Name" value="CamilleX Overview">
           <param name="Local" value="sec-overview.html">
           <param name="ImageNumber" value="11">
       </object></li>
@@ -68,7 +68,7 @@
          
          
          <li><object type="text/sitemap">
-             <param name="Name" value="XEvent-B Builders">
+             <param name="Name" value="CamilleX Builders">
              <param name="Local" value="sec-xevent-b-builders.html">
              <param name="ImageNumber" value="11">
          </object></li>
@@ -91,7 +91,7 @@
       <ul>
          
          <li><object type="text/sitemap">
-             <param name="Name" value="Creating XEvent-B Files">
+             <param name="Name" value="Creating CamilleX Files">
              <param name="Local" value="sec-creating-xevent-b.html">
              <param name="ImageNumber" value="11">
          </object></li>
@@ -165,6 +165,13 @@
          
          
       </ul>
+      
+      <li><object type="text/sitemap">
+          <param name="Name" value="Release Notes">
+          <param name="Local" value="sec-release-notes.html">
+          <param name="ImageNumber" value="11">
+      </object></li>
+      
       
     </ul>
 </ul>

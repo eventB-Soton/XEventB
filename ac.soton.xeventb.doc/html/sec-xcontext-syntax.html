@@ -3,8 +3,8 @@
 <head>
 <link rel="stylesheet" href="style.css" type="text/css" />
 <link rel="shortcut icon" href="icons/pyfav.png" type="image/png" />
-<link href="index.html" title="XEvent-B User Manual" rel="start" />
-<link href="index.html" title="XEvent-B User Manual" rel="first" />
+<link href="index.html" title="CamilleX User Manual" rel="start" />
+<link href="index.html" title="CamilleX User Manual" rel="first" />
 <link href="index.html" rel="contents" title="Contents" />
 <link rel="index" title="Index" />
 <link href="sec-xmachine-syntax.html" rel="next" />
@@ -21,7 +21,7 @@
 <td class="online-navigation"><a title="5.1 Common Syntax" href="sec-common-syntax.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
 <td class="online-navigation"><a title="5 Reference" href="sec-reference.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
 <td class="online-navigation"><a title="XMachine syntax" href="sec-xmachine-syntax.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
-<td align="center" width="100%">XEvent-B User Manual</td>
+<td align="center" width="100%">CamilleX User Manual</td>
 <td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
@@ -45,11 +45,6 @@
 
     
     <td style="text-align:left"><p> XCONTEXT ::= </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    [ ML_COMMENT | SL_COMMENT ]</p></td>
 
 </tr><tr>
 
@@ -84,107 +79,17 @@
 </tr><tr>
 
     
-    <td style="text-align:left"><p>XSET ::= </p></td>
+    <td style="text-align:left"><p>XSET ::= ID </p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>    XSET_NO_COMMENT | </p></td>
+    <td style="text-align:left"><p>XCONSTANT ::= ID </p></td>
 
 </tr><tr>
 
     
-    <td style="text-align:left"><p>    XSET_ML_COMMENT | </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XSET_SL_COMMENT </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XSET_NO_COMMENT ::= ID </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XSET_ML_COMMENT ::= ML_COMMENT ID</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XSET_SL_COMMENT ::= ID ML_COMMENT</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XCONSTANT ::= </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XCONSTANT_NO_COMMENT | </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XCONSANT_ML_COMMENT | </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XCONSTANT_SL_COMMENT </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XCONSTANT_NO_COMMENT ::= ID </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XCONSTANT_ML_COMMENT ::= ML_COMMENT ID</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XCONSTANT_SL_COMMENT ::= ID ML_COMMENT</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XAXIOM ::= </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XAXIOM_NO_COMMENT | </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XAXIOM_ML_COMMENT | </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>    XAXIOM_SL_COMMENT </p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XAXIOM_NO_COMMENT ::= XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>]</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XAXIOM_ML_COMMENT ::= ML_COMMENT XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>]</p></td>
-
-</tr><tr>
-
-    
-    <td style="text-align:left"><p>XAXIOM_SL_COMMENT ::= XLABEL "XPREDICATE" [<tt class="ttfamily">theorem</tt>] SL_COMMENT</p></td>
+    <td style="text-align:left"><p>XAXIOM ::= [<tt class="ttfamily">theorem</tt>] XLABEL "XPREDICATE" </p></td>
 
 </tr>
 </table></tt> </center></div>
@@ -199,7 +104,7 @@
 <td class="online-navigation"><a title="5.1 Common Syntax" href="sec-common-syntax.html" rel="prev"><img src="icons/previous.png" border="0" height="32" alt="Previous Page" width="32" /></a></td>
 <td class="online-navigation"><a title="5 Reference" href="sec-reference.html" rel="parent"><img src="icons/up.png" border="0" height="32" alt="Up One Level" width="32" /></a></td>
 <td class="online-navigation"><a title="XMachine syntax" href="sec-xmachine-syntax.html" rel="next"><img src="icons/next.png" border="0" height="32" alt="Next Page" width="32" /></a></td>
-<td align="center" width="100%">XEvent-B User Manual</td>
+<td align="center" width="100%">CamilleX User Manual</td>
 <td class="online-navigation"><a href="index.html" rel="contents" title="Table of Contents"><img src="icons/contents.png" border="0" height="32" alt="Contents" width="32" /></a></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" alt="" width="32" /></td>
 <td class="online-navigation"><img src="icons/blank.png" border="0" height="32" width="32" /></td>
