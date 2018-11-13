@@ -232,10 +232,10 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				return RodinKeyboardCore.translate(string);
 				
 			}
-			//not sure about this 
+			
 			@Override
 			public String toString(String value) throws ValueConverterException {
-				return "\"" + value + "\"";
+				return value;
 				
 			}
 			
