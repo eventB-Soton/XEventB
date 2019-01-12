@@ -48,13 +48,13 @@ public abstract class AbstractXMachineProposalProvider extends TerminalsProposal
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	/**
-	 * @since 1.1
+	 * @since 2.0
 	 */
 	public void completeMContains_Name(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	/**
-	 * @since 1.1
+	 * @since 2.0
 	 */
 	public void completeMContains_Extension(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		lookupCrossReference(((CrossReference)assignment.getTerminal()), context, acceptor);
@@ -148,7 +148,7 @@ public abstract class AbstractXMachineProposalProvider extends TerminalsProposal
 		// subclasses may override
 	}
 	/**
-	 * @since 1.1
+	 * @since 2.0
 	 */
 	public void complete_MContains(EObject model, RuleCall ruleCall, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		// subclasses may override
