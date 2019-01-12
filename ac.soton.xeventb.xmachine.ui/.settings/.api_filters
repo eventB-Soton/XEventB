@@ -4,7 +4,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.ui.contentassist.AbstractXMachineProposalProvider"/>
-                <message_argument value="ac.soton.xeventb.xmachine.ui_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.ui_1.1.0"/>
             </message_arguments>
         </filter>
     </resource>
@@ -12,7 +12,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.ui.contentassist.XMachineProposalProvider"/>
-                <message_argument value="ac.soton.xeventb.xmachine.ui_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.ui_1.1.0"/>
             </message_arguments>
         </filter>
     </resource>
@@ -20,7 +20,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.ui.internal.XmachineActivator"/>
-                <message_argument value="ac.soton.xeventb.xmachine.ui_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.ui_1.1.0"/>
             </message_arguments>
         </filter>
     </resource>
@@ -28,7 +28,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.ui.quickfix.XMachineQuickfixProvider"/>
-                <message_argument value="ac.soton.xeventb.xmachine.ui_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.ui_1.1.0"/>
             </message_arguments>
         </filter>
     </resource>
