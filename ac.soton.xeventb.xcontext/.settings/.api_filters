@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ac.soton.xeventb.xcontext" version="2">
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.AbstractXContextRuntimeModule">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.AbstractXContextRuntimeModule"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.XContextRuntimeModule">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.XContextRuntimeModule"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.XContextStandaloneSetup">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.XContextStandaloneSetup"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.XContextStandaloneSetupGenerated">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.XContextStandaloneSetupGenerated"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.formatting2.XContextFormatter">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.formatting2.XContextFormatter"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.generator.XContextGenerator">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.generator.XContextGenerator"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.parser.antlr.XContextAntlrTokenFileProvider">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.parser.antlr.XContextAntlrTokenFileProvider"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.parser.antlr.XContextParser">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.parser.antlr.XContextParser"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.parser.antlr.internal.InternalXContextLexer">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.parser.antlr.internal.InternalXContextLexer"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.parser.antlr.internal.InternalXContextParser">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.parser.antlr.internal.InternalXContextParser"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.scoping.AbstractXContextScopeProvider">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.scoping.AbstractXContextScopeProvider"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.scoping.XContextScopeProvider">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.scoping.XContextScopeProvider"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.serializer.XContextSemanticSequencer">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.serializer.XContextSemanticSequencer"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.serializer.XContextSyntacticSequencer">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.serializer.XContextSyntacticSequencer"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.services.XContextGrammarAccess">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.services.XContextGrammarAccess"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.validation.AbstractXContextValidator">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.validation.AbstractXContextValidator"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.validation.XContextValidator">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.validation.XContextValidator"/>
+                <message_argument value="ac.soton.xeventb.xcontext_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>
