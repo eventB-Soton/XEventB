@@ -4,7 +4,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.tests.XMachineInjectorProvider"/>
-                <message_argument value="ac.soton.xeventb.xmachine.tests_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.tests_1.0.1"/>
             </message_arguments>
         </filter>
     </resource>
@@ -12,7 +12,7 @@
         <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
             <message_arguments>
                 <message_argument value="bin.ac.soton.xeventb.xmachine.tests.XMachineParsingTest"/>
-                <message_argument value="ac.soton.xeventb.xmachine.tests_1.0.0"/>
+                <message_argument value="ac.soton.xeventb.xmachine.tests_1.0.1"/>
             </message_arguments>
         </filter>
     </resource>
