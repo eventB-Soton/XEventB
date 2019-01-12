@@ -64,7 +64,12 @@ class XMachineGenerator extends AbstractGenerator {
 	
     // Dana: If machine contains inclusion, call the inclusion translator to generate
     // the event-b machine
-    else{
+
+    else {
+	    // TODO (@htson -> Dana): We need to check which extension this is and call 
+    	// the appropriate generator
+    	val extensions = mch.extensions
+    	
     	
 			   var commandId = 'ac.soton.eventb.emf.inclusion.commands.include' 
 			   var factory = TranslatorFactory.getFactory() as TranslatorFactory
