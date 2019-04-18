@@ -11,6 +11,8 @@
 package ac.soton.xeventb.xmachine.generator
 
 import ac.soton.emf.translator.TranslatorFactory
+import ac.soton.eventb.emf.containment.Containment
+import ac.soton.eventb.statemachines.Statemachine
 import org.eclipse.core.commands.ExecutionException
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IWorkspaceRunnable
@@ -28,11 +30,10 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eventb.emf.core.CoreFactory
 import org.eventb.emf.core.machine.Machine
-import org.eventb.emf.persistence.EMFRodinDB
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
-import org.eclipse.core.resources.IFile
 
 /**
  * <p>
@@ -51,94 +52,82 @@ class XMachineGenerator extends AbstractGenerator {
 	// Dana: In 0.0.6 generator is updated to extend AbstractGenerator
 	// Save is added after calling the translator 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		
-	var mch = resource.contents.get(0) as Machine
-	if(mch.extensions.empty){
-		var emfRodinDB = new EMFRodinDB
-	    var uriString = resource.URI.toString
-	    uriString = uriString.substring(0, uriString.lastIndexOf('bumx'))
-	    uriString = uriString + "bum"
-	    var uri = URI.createURI(uriString)
-	    emfRodinDB.saveResource(uri, mch)
-	}
-	
-    // Dana: If machine contains inclusion, call the inclusion translator to generate
-    // the event-b machine
 
-    else {
-	    // TODO (@htson -> Dana): We need to check which extension this is and call 
-    	// the appropriate generator
-    	val extensions = mch.extensions
-    	
-    	
-			   var commandId = 'ac.soton.eventb.emf.inclusion.commands.include' 
-			   var factory = TranslatorFactory.getFactory() as TranslatorFactory
-				if (factory !== null && factory.canTranslate(commandId, mch.eClass())){
-	
-                var TransactionalEditingDomain editingDomain = null;
-				if (mch.eResource !== null && mch.eResource.getResourceSet !== null) {
-					editingDomain = TransactionalEditingDomain.Factory.INSTANCE.getEditingDomain(
-						mch.eResource.getResourceSet);
+		var mch = resource.contents.get(0) as Machine
+		
+		var uriString = resource.URI.toString
+		uriString = uriString.substring(0, uriString.lastIndexOf('bumx'))
+		uriString = uriString + "bum"
+		var uri = URI.createURI(uriString)
+
+		// @htson: Set the source machine (from XText) as the content of the Rodin machine.
+		var editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain()
+		var rodinResource = editingDomain.resourceSet.createResource(uri)
+		rodinResource.eSetDeliver(false);
+		rodinResource.contents.add(0, mch)
+		rodinResource.eSetDeliver(true);
+		
+		if (!mch.extensions.empty) {
+			val extensions = mch.extensions
+			val factory = TranslatorFactory.getFactory() as TranslatorFactory
+
+			// First deal with containments
+			var containmentCommandId = 'ac.soton.eventb.emf.diagrams.generator.translateToEventB'
+			for (ex : extensions) {
+				if (ex instanceof Containment) {
+					val ctmt = ex as Containment;
+					val diagram = ctmt.getExtension();
+					
+					// If the diagrams is an instance of Statemachine then set the translation target annotation.
+					if (diagram instanceof Statemachine) {
+						val stm = diagram as Statemachine
+						var annotations = stm.annotations
+						val annot = CoreFactory.eINSTANCE.createAnnotation()
+						annot.setSource("ac.soton.diagrams.translationTarget")
+						annot.references.add(mch)
+						annotations.add(annot)
+					}
+					
+					// Translate the diagram using the translate factory
+					if (factory.canTranslate(containmentCommandId, diagram.eClass())) {
+						var monitor = new NullProgressMonitor as IProgressMonitor;
+						factory.translate(editingDomain, diagram, containmentCommandId, monitor)
+					}
 				}
-				if (editingDomain === null) {
-					editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
-				}    
-				
-				 val monitor =   new NullProgressMonitor as IProgressMonitor;    
-				//factory.translate(editingDomain, mch, commandId, new NullProgressMonitor)
+			}
+
+			// @Dana: Now deal with inclusion
+			var commandId = 'ac.soton.eventb.emf.inclusion.commands.include'
+
+			if (factory.canTranslate(commandId, mch.eClass())) {
+				val monitor = new NullProgressMonitor;
 				factory.translate(editingDomain, mch, commandId, monitor)
+			}
 
-				// add save
+		}
 
-//				try{
-//					for (Resource resource2 : editingDomain.getResourceSet().getResources()){
-//						if (resource2.isModified()){
-//							
-//							resource2.save(Collections.emptyMap());
-//							monitor.worked(1);
-//						
-//						}
-//					}
-//					
-//				}
-//				catch (Exception e) {
-//					//throw this as a CoreException
-//					new Exception(e);
-//				}
-//				monitor.done();
-
-			//--------------
-			// save all resources that have been modified	
-		val saveCommand = new SaveResourcesCommand(editingDomain)  
-		
-			val wsRunnable = 
-						new IWorkspaceRunnable() {
-							
-							override  void run(IProgressMonitor monitor)  {
-								try {
-									saveCommand.execute(monitor, null);
-								} catch (ExecutionException e) {
-									val status = new Status(IStatus.ERROR, "ac.soton.xeventb.xmachine" , "Nothing" , e);
-									throw new CoreException(status);
-								}
-			
-							}
-						}
-			
+		// --------------
+		// save all resources that have been modified	
+		val saveCommand = new SaveResourcesCommand(editingDomain)
+		val wsRunnable = new IWorkspaceRunnable() {
+			override void run(IProgressMonitor monitor) {
+				try {
+					saveCommand.execute(monitor, null);
+				} catch (ExecutionException e) {
+					val status = new Status(IStatus.ERROR, "ac.soton.xeventb.xmachine", "Nothing", e);
+					throw new CoreException(status);
+				}
+			}
+		}
+		val monitor = new NullProgressMonitor
 		if (saveCommand.canExecute()) {
-		val Resource[] emptyResource = #[]
-		
-		RodinCore.run(wsRunnable
-		, getSchedulingRule(editingDomain.getResourceSet().getResources().toArray(emptyResource)), monitor);
+			val Resource[] emptyResource = #[]
+
+			RodinCore.run(wsRunnable,
+				getSchedulingRule(editingDomain.getResourceSet().getResources().toArray(emptyResource)), monitor);
 		}
 		monitor.done();
-			//------------
-				
-
-				}
-			
-					
-		}
+			// ------------
 	}
 
 	def private ISchedulingRule getSchedulingRule(Resource[] resources) {
