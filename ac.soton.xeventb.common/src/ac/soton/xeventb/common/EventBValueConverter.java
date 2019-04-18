@@ -16,6 +16,7 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
+import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -23,8 +24,8 @@ import org.eclipse.xtext.nodemodel.INode;
  * labels.
  * </p>
  *
- * @author htson
- * @version 0.2
+ * @author htson, dd4g12
+ * @version 0.3
  * @since 0.0.1
  */
 public class EventBValueConverter extends Ecore2XtextTerminalConverters {
@@ -206,7 +207,40 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 			
 		};
 	}
+	/**
+	 * Returns the value converter for XFormula.
+	 * 
+	 * @return the value converter for XFormula.
+	 */
+	@ValueConverter(rule = "XFormula")
+    public IValueConverter<String> XFormula() {
+		return new IValueConverter<String>() {
+
+
+			/**
+			 * Convert string to XLabel.
+			 * 
+			 * @param value
+			 *            the predicate
+			 * @return the predicate value by calling the Rodin keyboard
+			 * @see IValueConverter#toString(Object)
+			 */
 	
+
+			@Override
+			public String toValue(String string, INode node) throws ValueConverterException {
+				return RodinKeyboardCore.translate(string);
+				
+			}
+			
+			@Override
+			public String toString(String value) throws ValueConverterException {
+				return value;
+				
+			}
+			
+		};
+	}
 	/**
 	 * Returns the value converter for XPredicate.
 	 * 
