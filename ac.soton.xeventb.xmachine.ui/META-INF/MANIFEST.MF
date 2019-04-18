@@ -2,11 +2,11 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 1.0.0.release
+Bundle-Version: 2.0.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[1.0.0,2.0.0)",
- ac.soton.xeventb.xmachine.ide;bundle-version="[0.1.0,1.0.0)",
+Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[2.0.0,3.0.0)",
+ ac.soton.xeventb.xmachine.ide;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.xtext.ui;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.ui.shared;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.ui.codetemplates.ui;bundle-version="[2.13.0,3.0.0)",
@@ -26,8 +26,8 @@ Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[1.0.0,2.0.0)",
  org.rodinp.core;bundle-version="[1.7.1,2.0.0)"
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: ac.soton.xeventb.xmachine.ui.contentassist,
- ac.soton.xeventb.xmachine.ui.internal,
- ac.soton.xeventb.xmachine.ui.quickfix
+Export-Package: ac.soton.xeventb.xmachine.ui.contentassist;x-internal:=true,
+ ac.soton.xeventb.xmachine.ui.internal;x-internal:=true,
+ ac.soton.xeventb.xmachine.ui.quickfix;x-internal:=true
 Bundle-Activator: ac.soton.xeventb.xmachine.ui.internal.XmachineActivator
 Automatic-Module-Name: ac.soton.xeventb.xmachine.ui
