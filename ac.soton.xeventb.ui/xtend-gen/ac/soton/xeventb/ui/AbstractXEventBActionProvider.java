@@ -44,7 +44,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * @since 0.1
  */
 @SuppressWarnings("all")
-public class AbstractXEventBActionProvider extends CommonActionProvider {
+public abstract class AbstractXEventBActionProvider extends CommonActionProvider {
   /**
    * Adds the following to the input action bars.
    * <ul>

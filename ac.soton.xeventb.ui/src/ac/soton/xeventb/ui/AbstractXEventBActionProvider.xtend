@@ -39,7 +39,7 @@ import org.eclipse.core.resources.ResourcesPlugin
  * @version 1.0
  * @since 0.1 
  */
-class AbstractXEventBActionProvider extends CommonActionProvider {
+abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 
 	/**
 	 * Adds the following to the input action bars.
