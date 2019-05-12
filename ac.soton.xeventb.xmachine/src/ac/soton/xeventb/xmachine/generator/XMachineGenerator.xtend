@@ -63,9 +63,11 @@ class XMachineGenerator extends AbstractGenerator {
 		// @htson: Set the source machine (from XText) as the content of the Rodin machine.
 		var editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain()
 		var rodinResource = editingDomain.resourceSet.createResource(uri)
-		rodinResource.eSetDeliver(false);
+		rodinResource.eSetDeliver(false)
 		rodinResource.contents.add(0, mch)
-		rodinResource.eSetDeliver(true);
+		// Set modified resource to be true (otherwise, saving might ignore this).
+		rodinResource.modified = true
+		rodinResource.eSetDeliver(true)
 		
 		if (!mch.extensions.empty) {
 			val extensions = mch.extensions
@@ -120,6 +122,7 @@ class XMachineGenerator extends AbstractGenerator {
 			}
 		}
 		val monitor = new NullProgressMonitor
+		// TODO [--> cfs] Why this can not be execute (i.e. no resource change initially?)
 		if (saveCommand.canExecute()) {
 			val Resource[] emptyResource = #[]
 
