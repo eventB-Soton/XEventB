@@ -88,8 +88,8 @@ XEvent returns emachine::Event:
 	)?
 	('any' parameters+=XParameter+)?
 	(extensions+= EventSync*)
-	('where' guards+=XGuard+)?
-	('then' actions+=XAction+)?
+	(('where' | 'when') guards+=XGuard+)?
+	(('then' | 'begin') actions+=XAction+)?
 	('with' witnesses+=XWitness+)?
 	'end'
 ;

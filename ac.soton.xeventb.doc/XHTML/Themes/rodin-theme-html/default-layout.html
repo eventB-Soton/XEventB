@@ -1,0 +1,196 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html tal:define="links self/links" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta name="generator" content="plasTeX" />
+<meta http-equiv="content-type" 
+      tal:attributes="content string:text/html;; charset=${config/files/output-encoding}" />
+<title tal:condition="python:path('self/level') &gt; -10" tal:content="stripped string:${links/document/title}: ${self/title}">Morbi metus pede, imperdiet vitae</title>
+<title tal:condition="python:path('self/level') &lt;= -10" tal:content="stripped self/title">Morbi metus pede, imperdiet vitae</title>
+<link tal:condition="links/next" rel="next" tal:attributes="href links/next/url; title links/next/title/textContent" />
+<link tal:condition="links/prev" rel="prev" tal:attributes="href links/prev/url; title links/prev/title/textContent" />
+<link tal:condition="links/up" rel="up" tal:attributes="href links/up/url; title links/up/title/textContent" />
+<link rel="stylesheet" href="styles/styles.css" />
+<style tal:condition="not:links/prev" type="text/css">
+  #indexbg {
+	background-image:url('icons/rodin_miikka_skaffari_index.jpg');
+	background-repeat:no-repeat;
+	background-position:top left;
+	margin:0;
+	padding:0;
+  }
+</style>
+</head>
+<body>
+
+<table width="100%" border="0">
+<tr><td valign="top" width="135px">
+
+<center>
+<h2><a id="navlist" href="index.html">Rodin Handbook</a></h2>
+</center>
+
+<div id="navcontainer">
+<ul id="navlist">
+<li><a href="index.html">Handbook Home</a>
+<li><a href="" id="feedback">Feedback</a>
+<li><a href="" id="feedbackmail">Email Feedback</a>
+<li><a href="../pdf/rodin-doc.pdf">Handbook as PDF</a>
+<li><a href="http://www.amazon.de/gp/product/1495438147/ref=as_li_tf_tl?ie=UTF8&camp=1638&creative=6742&creativeASIN=1495438147&linkCode=as2&tag=jastramde-21">Handbook Hardcopy</a>
+<li><a href="http://wiki.event-b.org/">Rodin Wiki</a>
+<li><a href=" http://wiki.event-b.org/index.php/Rodin_Platform_Releases">Rodin Download</a>
+<li><a href="mailto:rodin-handbook@formalmind.com">Contact</a>
+</ul>
+</div>
+
+<br/>
+<br/>
+
+<form id="searchbox_017699211055551047357:sj1wifmh8k8" action="http://handbook.event-b.org/searchresult.html">
+  <input value="017699211055551047357:sj1wifmh8k8" name="cx" type="hidden"/>
+  <input value="FORID:11" name="cof" type="hidden"/>
+  <input id="q" style="width:100px;" name="q" size="75" type="text"/>
+  <input value="Go" name="sa" type="image" src="icons/search.png"/>
+</form>
+
+<br/>
+<br/>
+<center id="navlist">
+
+<img src="icons/deploy.png" border="0"><br>
+This work is sponsored by the 
+<a href="http://www.deploy-project.eu/">Deploy Project</a><br>
+
+<br/>
+
+<img src="icons/advance-logo.png" border="0" width="125"><br/><br/>
+This work is sponsored by the 
+<a href="http://www.advance-ict.eu/">ADVANCE Project</a><br>
+
+<br/>
+<br/>
+
+<img alt="Creative Commons License" style="border-width:0" src="icons/cc-by-sa.png" /><br />
+This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution 3.0 Unported License</a>
+
+</center>
+
+<div style="visibility:hidden;" id="section" tal:content="self/title"></div>
+<div style="visibility:hidden;" id="doctitle" tal:content="links/document/title"></div>
+
+<script>
+section = encodeURIComponent(document.getElementById("section").innerHTML);
+doctitle = encodeURIComponent(document.getElementById("doctitle").innerHTML);
+url = "https://spreadsheets.google.com/spreadsheet/viewform?formkey=dEJmXzUydnRzZGdDVE16WFZmZmd1alE6MQ"
+    + String.fromCharCode(38) + "entry_0=" + section;
+mail = "mailto:rodin-handbook@formalmind.com?subject=Feedback " + doctitle + " (" + section + ")";
+document.getElementById("feedback").href = url;
+document.getElementById("feedbackmail").href = mail;
+</script>
+
+
+</td><td valign="top" width="40">&nbsp;</td><td valign="top">
+<div id="indexbg">
+
+<div class="navigation" metal:define-macro="navigation">
+<table cellspacing="2" cellpadding="0" width="100%">
+<tr>
+<td tal:condition="links/prev"><a tal:attributes="href links/prev/url; title stripped:links/prev/title"><img border="0" tal:attributes="alt stripped:Previous: ${links/prev/title}" src="icons/arrow_left.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/prev"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/up"><a tal:attributes="href links/up/url; title stripped:links/up/title"><img border="0" tal:attributes="alt stripped:Up: ${links/up/title}" src="icons/arrow_up.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/up"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/next"><a tal:attributes="href links/next/url; title stripped:links/next/title"><img border="0" tal:attributes="alt stripped:Next: ${links/next/title}" src="icons/arrow_right.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/next"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td class="navtitle" align="center" tal:content="links/document/title">Section Title</td>
+<td tal:condition="links/contents"><a tal:attributes="href links/contents/url" title="Table of Contents"><img border="0" alt="" src="icons/home.png" width="32" height="32" /></a></td>
+<td tal:condition="not:links/contents"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/index"><a tal:attributes="href links/index/url" title="Index"><img border="0" alt="" src="icons/go-jump.png" width="32" height="32" /></a></td>
+<td tal:condition="not:links/index"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+</tr>
+</table>
+</div>
+
+<!--
+<div style="float: right; text-align: center; font-family: sans-serif;">
+<a href="" id="feedbackbubble" style="color: red; text-decoration: none;">
+<img src="icons/bubble_48.png" border="0" align="middle"><br><b>Feedback</b></a>
+<script>
+document.getElementById("feedbackbubble").href = url;
+</script>
+</div>
+-->
+
+<div tal:content="self">File contents</div>
+
+<div tal:condition="self/tableofcontents" tal:attributes="class string:contents ${self/nodeName}-contents"><!--<strong>Subsections</strong>-->
+<ul>
+<li tal:repeat="section self/tableofcontents"><a href="." tal:attributes="href section/url" tal:content="section/fullTocEntry">Aliquam est. Aliquam fringilla pede</a>
+   <ul tal:condition="section/tableofcontents">
+   <li tal:repeat="subsection section/tableofcontents"><a href="." tal:attributes="href subsection/url" tal:content="subsection/fullTocEntry"></a>
+       <ul tal:condition="subsection/tableofcontents">
+       <li tal:repeat="subsubsection subsection/tableofcontents"><a href="." tal:attributes="href subsubsection/url" tal:content="subsubsection/fullTocEntry"></a>
+           <ul tal:condition="subsubsection/tableofcontents">
+           <li tal:repeat="paragraph subsubsection/tableofcontents"><a href="." tal:attributes="href paragraph/url" tal:content="paragraph/fullTocEntry"></a>
+               <ul tal:condition="paragraph/tableofcontents">
+               <li tal:repeat="subparagraph paragraph/tableofcontents"><a href="." tal:attributes="href subparagraph/url" tal:content="subparagraph/fullTocEntry"></a></li>
+               </ul>
+           </li>
+           </ul>
+       </li>
+       </ul>
+   </li>
+   </ul>
+</li>
+<li tal:replace="nothing"><a href=".">Maecenas id purus</a></li>
+<li tal:replace="nothing"><a href=".">Duis et eros</a></li>
+<li tal:replace="nothing"><a href=".">Duis est</a></li>
+</ul>
+</div>
+
+</div>
+
+<div class="navigation">
+<table cellspacing="2" cellpadding="0" width="100%">
+<tr>
+<td tal:condition="links/prev"><a tal:attributes="href links/prev/url; title stripped:links/prev/title"><img border="0" tal:attributes="alt stripped:Previous: ${links/prev/title}" src="icons/arrow_left.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/prev"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/up"><a tal:attributes="href links/up/url; title stripped:links/up/title"><img border="0" tal:attributes="alt stripped:Up: ${links/up/title}" src="icons/arrow_up.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/up"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/next"><a tal:attributes="href links/next/url; title stripped:links/next/title"><img border="0" tal:attributes="alt stripped:Next: ${links/next/title}" src="icons/arrow_right.png" width="28" height="28" /></a></td>
+<td tal:condition="not:links/next"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td style="width:100%">&nbsp;</td>
+<td tal:condition="links/contents"><a tal:attributes="href links/contents/url" title="Table of Contents"><img border="0" alt="" src="icons/home.png" width="32" height="32" /></a></td>
+<td tal:condition="not:links/contents"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td tal:condition="links/index"><a tal:attributes="href links/index/url" title="Index"><img border="0" alt="" src="icons/go-jump.png" width="32" height="32" /></a></td>
+<td tal:condition="not:links/index"><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+<td><img border="0" alt="" src="icons/blank.gif" width="16" height="16" /></td>
+</tr>
+</table>
+</div>
+
+<div id="footnotes" tal:condition="self/footnotes">
+<p><b>Footnotes</b></p>
+<ol>
+<li tal:repeat="footnote self/footnotes" tal:content="footnote" tal:attributes="id footnote/id">footnote text</li>
+</ol>
+</div>
+
+<hr />
+<div tal:condition="python:path('self/level') &gt; -10" class="breadcrumbs">
+<span tal:repeat="crumb links/breadcrumbs">
+<span tal:condition="not:repeat/crumb/end">
+<a href="." tal:attributes="href crumb/url" tal:content="crumb/title">Parent Section</a> <b>:</b>
+</span>
+<span tal:condition="repeat/crumb/end">
+<b class="current" tal:content="crumb/title">Current Section</b>
+</span>
+</span>
+</div>
+
+</td></tr></table>
+
+<script language="javascript" src="icons/imgadjust.js" type="text/javascript"></script>
+<script language="javascript" src="makeindex.js" type="text/javascript"></script>
+
+</body>
+</html>
