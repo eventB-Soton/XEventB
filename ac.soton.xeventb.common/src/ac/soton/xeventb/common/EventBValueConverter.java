@@ -25,7 +25,7 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  * </p>
  *
  * @author htson, dd4g12
- * @version 0.3
+ * @version 0.3.1
  * @since 0.0.1
  */
 public class EventBValueConverter extends Ecore2XtextTerminalConverters {
@@ -36,16 +36,14 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	 * @return the value converter for single-line comments.
 	 */
 	@ValueConverter(rule = "SL_COMMENT")
-    public IValueConverter<String> SL_COMMENT() {
+	public IValueConverter<String> SL_COMMENT() {
 		return new IValueConverter<String>() {
 
 			/**
 			 * Convert XComment to string.
 			 * 
-			 * @param string
-			 *            the XComment string
-			 * @param node
-			 *            the node in the semantics tree.
+			 * @param string the XComment string
+			 * @param node   the node in the semantics tree.
 			 * @return the comment by stripping the leading "//" or "// ".
 			 * @see IValueConverter#toValue(String, INode)
 			 * @precondition the input string must be not <code>null</code> and
@@ -56,7 +54,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 					throws ValueConverterException {
 				assert string != null;
 				assert string.startsWith("//");
-				
+
 				if (string.startsWith("// "))
 					return string.substring(3, string.lastIndexOf('\n'));
 				if (string.startsWith("//"))
@@ -67,18 +65,18 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 			/**
 			 * Convert string to XComment.
 			 * 
-			 * @param value
-			 *            the comment
+			 * @param value the comment
 			 * @return the XComment by prefixing "// " to the input value.
 			 * @see IValueConverter#toString(Object)
 			 */
 			@Override
-			public String toString(String value) throws ValueConverterException {
+			public String toString(String value)
+					throws ValueConverterException {
 				return "// " + value;
 			}
 		};
 	}
-	
+
 	/**
 	 * Returns the value converter for multi-line comments.
 	 * 
@@ -87,15 +85,14 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	@ValueConverter(rule = "ML_COMMENT")
 	public IValueConverter<String> ML_COMMENT() {
 		return new IValueConverter<String>() {
-	
+
 			/**
 			 * Convert XComment to string.
 			 * 
-			 * @param string
-			 *            the XComment string
-			 * @param node
-			 *            the node in the semantics tree.
-			 * @return the comment by stripping the leading the multi-line syntax.
+			 * @param string the XComment string
+			 * @param node   the node in the semantics tree.
+			 * @return the comment by stripping the leading the multi-line
+			 *         syntax.
 			 * @see IValueConverter#toValue(String, INode)
 			 * @precondition the input string must be not <code>null</code>.
 			 */
@@ -122,10 +119,10 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 					String str = splits[i];
 					int index = str.indexOf("*");
 					if (index != -1) {
-						str = str.substring(index+1);
-					    if (str.startsWith(" ")) {
-					    	str = str.substring(1);
-					    }
+						str = str.substring(index + 1);
+						if (str.startsWith(" ")) {
+							str = str.substring(1);
+						}
 					} else {
 						str = str.trim();
 					}
@@ -138,17 +135,17 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				}
 				return sb.toString();
 			}
-	
+
 			/**
 			 * Convert string to XComment.
 			 * 
-			 * @param value
-			 *            the comment
+			 * @param value the comment
 			 * @return the XComment by prefixing and suffixing the input value.
 			 * @see IValueConverter#toString(Object)
 			 */
 			@Override
-			public String toString(String value) throws ValueConverterException {
+			public String toString(String value)
+					throws ValueConverterException {
 				if (value == null)
 					return "";
 				String[] splits = value.split("\n");
@@ -157,7 +154,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 				StringBuilder sb = new StringBuilder();
 				sb.append("/* " + value + " */");
 				return sb.toString();
-			}		
+			}
 		};
 	}
 
@@ -167,20 +164,18 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	 * @return the value converter for XLabel.
 	 */
 	@ValueConverter(rule = "XLABEL")
-    public IValueConverter<String> XLABEL() {
+	public IValueConverter<String> XLABEL() {
 		return new IValueConverter<String>() {
 
 			/**
 			 * Convert XLabel to string.
 			 * 
-			 * @param string
-			 *            the XLabel string
-			 * @param node
-			 *            the node in the semantics tree.
+			 * @param string the XLabel string
+			 * @param node   the node in the semantics tree.
 			 * @return the comment by stripping the leading "@" and the ending
 			 *         ":".
 			 * @see IValueConverter#toValue(String, INode)
-			 * @precondition the input string must be not <code>null</code>. 
+			 * @precondition the input string must be not <code>null</code>.
 			 *               have "@" as its prefix and ended with a ":".
 			 */
 			@Override
@@ -188,25 +183,26 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 					throws ValueConverterException {
 				assert string.startsWith("@");
 				assert string.endsWith(":");
-				return string.substring(1, string.length()-1);
+				return string.substring(1, string.length() - 1);
 			}
 
 			/**
 			 * Convert string to XLabel.
 			 * 
-			 * @param value
-			 *            the label
+			 * @param value the label
 			 * @return the XComment by prefixing "@" and suffixing ":" to the
 			 *         input value.
 			 * @see IValueConverter#toString(Object)
 			 */
 			@Override
-			public String toString(String value) throws ValueConverterException {
+			public String toString(String value)
+					throws ValueConverterException {
 				return "@" + value + ":";
 			}
-			
+
 		};
 	}
+
 	/**
 	 * Returns the value converter for XFormula.
 	 * 
@@ -214,67 +210,33 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	 * @since 0.1
 	 */
 	@ValueConverter(rule = "XFormula")
-    public IValueConverter<String> XFormula() {
+	public IValueConverter<String> XFormula() {
 		return new IValueConverter<String>() {
-
 
 			/**
 			 * Convert string to XLabel.
 			 * 
-			 * @param value
-			 *            the predicate
-			 * @return the predicate value by calling the Rodin keyboard
+			 * @param string the formula string
+			 * @return the translated formula value by calling the Rodin
+			 *         keyboard
 			 * @see IValueConverter#toString(Object)
 			 */
-	
 
 			@Override
-			public String toValue(String string, INode node) throws ValueConverterException {
+			public String toValue(String string, INode node)
+					throws ValueConverterException {
+				if (string == null)
+					return null;
 				return RodinKeyboardCore.translate(string);
-				
 			}
-			
+
 			@Override
-			public String toString(String value) throws ValueConverterException {
+			public String toString(String value)
+					throws ValueConverterException {
 				return value;
-				
 			}
-			
+
 		};
 	}
-	/**
-	 * Returns the value converter for XPredicate.
-	 * 
-	 * @return the value converter for XPredicate.
-	 */
-//	@ValueConverter(rule = "XPredicate")
-//    public IValueConverter<String> XPredicate() {
-//		return new IValueConverter<String>() {
-//
-//
-//			/**
-//			 * Convert string to XLabel.
-//			 * 
-//			 * @param value
-//			 *            the predicate
-//			 * @return the predicate value by removing the double qoutes
-//			 * @see IValueConverter#toString(Object)
-//			 */
-//	
-//
-//			@Override
-//			public String toValue(String string, INode node) throws ValueConverterException {
-//				// TODO Auto-generated method stub
-//				return RodinKeyboardCore.translate(string.substring(1, string.length()-1));
-//				
-//			}
-//			//not sure about this 
-//			@Override
-//			public String toString(String value) throws ValueConverterException {
-//				return "\"" + value + "\"";
-//				
-//			}
-//			
-//		};
-//	}
+
 }
