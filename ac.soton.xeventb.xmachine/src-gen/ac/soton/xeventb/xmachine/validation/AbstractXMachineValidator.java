@@ -16,6 +16,7 @@ public abstract class AbstractXMachineValidator extends AbstractDeclarativeValid
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://emf.eventb.org/models/core/machine/2014"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://soton.ac.uk/models/eventb/containment/2017"));
 		result.add(EPackage.Registry.INSTANCE.getEPackage("http://soton.ac.uk/models/eventb/inclusion/2017"));
+		result.add(EPackage.Registry.INSTANCE.getEPackage("http://soton.ac.uk/models/eventb/records/2019"));
 		return result;
 	}
 }
