@@ -15,6 +15,8 @@ grammar ac.soton.xeventb.xmachine.XMachine with org.eclipse.xtext.common.Termina
 //import "http://emf.eventb.org/models/core/context/2014" as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://soton.ac.uk/models/eventb/inclusion/2017" as einclusion 
+import "http://soton.ac.uk/models/eventb/containment/2017" as econtainment
+import "http://soton.ac.uk/models/eventb/diagrams" as ediagrams
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore" as eventbcore
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//machine"as emachine
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
@@ -33,11 +35,17 @@ Machine returns emachine::Machine:
     	('refines' refines+=[emachine::Machine])? &
 		('sees' sees+=[econtext::Context]+)?
 	)
+	('contains' extensions += MContains+)?
     ('variables' variables+=XVariable+)?
 	('invariants' invariants+=XInvariant+)?
 	('variants' variants+=XVariant+)?
 	('events' events+=XEvent+)?
 	('end')
+;
+
+MContains returns econtainment::Containment:
+	{econtainment::Containment}
+	name=ID ':' extension=[ediagrams::Diagram|QualifiedName]
 ;
 
 MIncludes returns einclusion::MachineInclusion:
@@ -80,8 +88,8 @@ XEvent returns emachine::Event:
 	)?
 	('any' parameters+=XParameter+)?
 	(extensions+= EventSync*)
-	('where' guards+=XGuard+)?
-	('then' actions+=XAction+)?
+	(('where' | 'when') guards+=XGuard+)?
+	(('then' | 'begin') actions+=XAction+)?
 	('with' witnesses+=XWitness+)?
 	'end'
 ;

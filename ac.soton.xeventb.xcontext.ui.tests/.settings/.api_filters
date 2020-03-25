@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<component id="ac.soton.xeventb.xcontext.ui.tests" version="2">
+    <resource path="META-INF/MANIFEST.MF" type="bin.ac.soton.xeventb.xcontext.ui.tests.XContextUiInjectorProvider">
+        <filter comment="Ignore missing binary corresponding to XTend source" id="305324134">
+            <message_arguments>
+                <message_argument value="bin.ac.soton.xeventb.xcontext.ui.tests.XContextUiInjectorProvider"/>
+                <message_argument value="ac.soton.xeventb.xcontext.ui.tests_1.0.0"/>
+            </message_arguments>
+        </filter>
+    </resource>
+</component>

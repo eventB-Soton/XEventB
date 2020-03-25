@@ -188,6 +188,8 @@ Workflow {
 			name = "ac.soton.xeventb.xmachine.XMachine"
 			fileExtensions = "bumx"
 			referencedResource = "platform:/resource/ac.soton.eventb.emf.inclusion/model/inclusion.genmodel"
+			referencedResource = "platform:/resource/ac.soton.eventb.emf.containment/model/containment.genmodel"
+			referencedResource = "platform:/resource/ac.soton.eventb.emf.diagrams/model/diagrams.genmodel"
 			//referencedResource = "http://soton.ac.uk/models/eventb/inclusion/2017"
 			referencedResource = "platform:/resource/org.eventb.emf.core/model/eventbcore.genmodel"
 			

@@ -26,7 +26,7 @@ import org.osgi.framework.BundleContext;
  */
 @SuppressWarnings("all")
 public final class XEventBUIPlugin extends AbstractUIPlugin {
-  public final static String PLUGIN_ID = "ac.soton.xeventb.ui";
+  public static final String PLUGIN_ID = "ac.soton.xeventb.ui";
   
   private static XEventBUIPlugin plugin;
   

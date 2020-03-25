@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 1.0.0.release
+Bundle-Version: 2.0.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.13.0,3.0.0)",
@@ -28,16 +28,20 @@ Require-Bundle: org.eclipse.xtext;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.emf.transaction;bundle-version="[1.9.0,2.0.0)",
  org.eclipse.xtend.lib;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.emf.workspace;bundle-version="[1.5.1,2.0.0)",
- org.eclipse.xtext.ui;bundle-version="[2.13.0,3.0.0)"
+ org.eclipse.xtext.ui;bundle-version="[2.13.0,3.0.0)",
+ ac.soton.eventb.emf.containment;bundle-version="[0.0.1,1.0.0)",
+ ac.soton.eventb.emf.diagrams;bundle-version="[4.1.1,5.0.0)",
+ ac.soton.eventb.statemachines;bundle-version="[4.0.0,5.0.0)",
+ ac.soton.eventb.emf.core.extension;bundle-version="[5.0.0,6.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xmachine,
- ac.soton.xeventb.xmachine.generator,
- ac.soton.xeventb.xmachine.parser.antlr,
- ac.soton.xeventb.xmachine.parser.antlr.internal,
- ac.soton.xeventb.xmachine.scoping,
- ac.soton.xeventb.xmachine.serializer,
- ac.soton.xeventb.xmachine.services,
- ac.soton.xeventb.xmachine.validation,
- ac.soton.xeventb.xmachine.formatting2
+ ac.soton.xeventb.xmachine.formatting2;x-internal:=true,
+ ac.soton.xeventb.xmachine.generator;x-internal:=true,
+ ac.soton.xeventb.xmachine.parser.antlr;x-internal:=true,
+ ac.soton.xeventb.xmachine.parser.antlr.internal;x-internal:=true,
+ ac.soton.xeventb.xmachine.scoping;x-internal:=true,
+ ac.soton.xeventb.xmachine.serializer;x-internal:=true,
+ ac.soton.xeventb.xmachine.services;x-internal:=true,
+ ac.soton.xeventb.xmachine.validation;x-internal:=true
 Import-Package: org.apache.log4j
 Automatic-Module-Name: ac.soton.xeventb.xmachine
