@@ -48,7 +48,7 @@ Workflow {
 			name = "ac.soton.xeventb.xcontext.XContext"
 			fileExtensions = "bucx"
 			referencedResource = "platform:/resource/org.eventb.emf.core/model/eventbcore.genmodel"
-			referencedResource = "platform:/resource/ac.soton.eventb.records/model/records.genmodel"
+			referencedResource = "platform:/resource/ac.soton.eventb.emf.record/model/record.genmodel"
 			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
