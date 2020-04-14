@@ -20,6 +20,11 @@ import org.eventb.core.basis.ContextRoot
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.context.ContextPackage
 import org.eventb.emf.persistence.EMFRodinDB
+import ac.soton.eventb.records.Record
+import ac.soton.eventb.records.RecordsPackage
+import org.eclipse.xtext.EcoreUtil2
+import org.eventb.emf.core.EventBObject
+import org.eventb.emf.core.machine.Machine
 
 /**
  * <p>
@@ -59,6 +64,35 @@ class XContextScopeProvider extends AbstractXContextScopeProvider {
 			}
 			return Scopes.scopeFor(ctxs);
 		}
+		
+		// The scope for record extension is the set of all records in the context/extends context(s)
+		if (context instanceof Record && reference == RecordsPackage.Literals.RECORD__SUBSETS) {
+			val cntx = EcoreUtil2.getRootContainer(context, true) as Context
+			val components = getComponentsInScope(cntx)
+			val records = EcoreUtil2.getAllContentsOfType(cntx, Record);
+			for (c : components)
+				records.addAll(EcoreUtil2.getAllContentsOfType(c as EObject, Record));
+			return Scopes.scopeFor(records);
+		}
 	}
+	
+	def private getComponentsInScope(EventBObject eventBObject) {
+		var list = new ArrayList
+		if (eventBObject instanceof Machine){
+			var m = eventBObject as Machine;
+			list.add(m);
+			for (Context c : m.getSees()){
+				list.addAll(getComponentsInScope(c));
+			}			
+		}else if (eventBObject instanceof Context){
+			var c = eventBObject as Context;
+			list.add(c);
+			for (Context x : c.getExtends()){
+				list.addAll(getComponentsInScope(x));
+			}
+		}
+		return list;
+	}
+	
 
 }

@@ -35,6 +35,8 @@ import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
 
+//import ac.soton.eventb.records.Record
+
 /**
  * <p>
  * Generating Rodin Context from the XContext.
@@ -42,6 +44,7 @@ import org.rodinp.core.RodinCore
  *
  * @author htson
  * @author Dana
+ * * @author asiehsalehi
  * @version 1.0
  * @since 0.1
  */
@@ -76,6 +79,7 @@ class XMachineGenerator extends AbstractGenerator {
 			// First deal with containments
 			var containmentCommandId = 'ac.soton.eventb.emf.diagrams.generator.translateToEventB'
 			for (ex : extensions) {
+				//containment
 				if (ex instanceof Containment) {
 					val ctmt = ex as Containment;
 					val diagram = ctmt.getExtension();
@@ -104,6 +108,14 @@ class XMachineGenerator extends AbstractGenerator {
 			if (factory.canTranslate(commandId, mch.eClass())) {
 				val monitor = new NullProgressMonitor;
 				factory.translate(editingDomain, mch, commandId, monitor)
+			}
+			
+			//record
+			var recordCommandId = "ac.soton.eventb.records.commands.record"
+			
+			if (factory.canTranslate(recordCommandId, mch.eClass())) {
+				val monitor = new NullProgressMonitor;
+				factory.translate(editingDomain, mch, recordCommandId, monitor)
 			}
 
 		}

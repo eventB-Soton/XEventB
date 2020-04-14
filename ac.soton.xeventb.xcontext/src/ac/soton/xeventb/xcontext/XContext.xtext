@@ -10,8 +10,10 @@
  *******************************************************************************/
 grammar ac.soton.xeventb.xcontext.XContext with org.eclipse.xtext.common.Terminals hidden(WS, ML_COMMENT, SL_COMMENT)
 
-import "http://emf.eventb.org/models/core/context/2014" as econtext
+//import "http://emf.eventb.org/models/core/context/2014" as econtext
+import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://soton.ac.uk/models/eventb/records/2019" as erecords
 
 XContext returns econtext::Context:
 	{econtext::Context}
@@ -19,6 +21,7 @@ XContext returns econtext::Context:
 	('extends' extends+=[econtext::Context |QualifiedName]+)?
 	('sets' sets+=XCarrierSet+)?
 	('constants' constants+=XConstant+)?
+	('records' extensions += Record+)?
 	('axioms' axioms+=XAxiom+)?
 	'end'
 ;
@@ -166,3 +169,26 @@ terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'
 
 @Override 
 terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';
+
+/*
+ * support for records
+ */
+ 
+ Record returns erecords::Record:
+	{erecords::Record}
+	'record' name = ID
+		('extends' subsets=[erecords::Record|ID])?
+		(fields+=Field (fields+=Field)*)?
+;
+
+Field returns erecords::Field:
+	    name = ID (':')
+	    (multiplicity=Multiplicity)?
+		(type=ID)	
+;
+
+EString returns ecore::EString:
+	STRING | ID;
+
+enum Multiplicity returns erecords::Multiplicity:
+				ONE = 'one' | MANY = 'many' | OPTIONAL = 'opt';

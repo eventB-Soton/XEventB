@@ -8,6 +8,9 @@ import ac.soton.eventb.emf.containment.ContainmentPackage;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.InclusionPackage;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
+import ac.soton.eventb.records.Field;
+import ac.soton.eventb.records.Record;
+import ac.soton.eventb.records.RecordsPackage;
 import ac.soton.xeventb.xmachine.services.XMachineGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -87,6 +90,15 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_XWitness(context, (Witness) semanticObject); 
 				return; 
 			}
+		else if (epackage == RecordsPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case RecordsPackage.FIELD:
+				sequence_Field(context, (Field) semanticObject); 
+				return; 
+			case RecordsPackage.RECORD:
+				sequence_Record(context, (Record) semanticObject); 
+				return; 
+			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
@@ -99,6 +111,18 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (prefix=ID? synchronisedEvent=[Event|ID])
 	 */
 	protected void sequence_EventSync(ISerializationContext context, EventSynchronisation semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Field returns Field
+	 *
+	 * Constraint:
+	 *     (name=ID multiplicity=Multiplicity? type=ID)
+	 */
+	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -147,12 +171,25 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         (extensions+=MIncludes | refines+=[Machine|ID] | sees+=[Context|ID])* 
 	 *         extensions+=MContains* 
 	 *         variables+=XVariable* 
+	 *         extensions+=Record* 
 	 *         invariants+=XInvariant* 
 	 *         variants+=XVariant* 
 	 *         events+=XEvent*
 	 *     )
 	 */
 	protected void sequence_Machine(ISerializationContext context, Machine semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Record returns Record
+	 *
+	 * Constraint:
+	 *     (name=ID subsets=[Record|ID] (fields+=Field fields+=Field*)?)
+	 */
+	protected void sequence_Record(ISerializationContext context, Record semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

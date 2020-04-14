@@ -3,6 +3,9 @@
  */
 package ac.soton.xeventb.xcontext.serializer;
 
+import ac.soton.eventb.records.Field;
+import ac.soton.eventb.records.Record;
+import ac.soton.eventb.records.RecordsPackage;
 import ac.soton.xeventb.xcontext.services.XContextGrammarAccess;
 import com.google.inject.Inject;
 import java.util.Set;
@@ -49,9 +52,42 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_XContext(context, (Context) semanticObject); 
 				return; 
 			}
+		else if (epackage == RecordsPackage.eINSTANCE)
+			switch (semanticObject.eClass().getClassifierID()) {
+			case RecordsPackage.FIELD:
+				sequence_Field(context, (Field) semanticObject); 
+				return; 
+			case RecordsPackage.RECORD:
+				sequence_Record(context, (Record) semanticObject); 
+				return; 
+			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * Contexts:
+	 *     Field returns Field
+	 *
+	 * Constraint:
+	 *     (name=ID multiplicity=Multiplicity? type=ID)
+	 */
+	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     Record returns Record
+	 *
+	 * Constraint:
+	 *     (name=ID subsets=[Record|ID]? (fields+=Field fields+=Field*)?)
+	 */
+	protected void sequence_Record(ISerializationContext context, Record semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * Contexts:
@@ -106,7 +142,14 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XContext returns Context
 	 *
 	 * Constraint:
-	 *     (name=ID extends+=[Context|QualifiedName]* sets+=XCarrierSet* constants+=XConstant* axioms+=XAxiom*)
+	 *     (
+	 *         name=ID 
+	 *         extends+=[Context|QualifiedName]* 
+	 *         sets+=XCarrierSet* 
+	 *         constants+=XConstant* 
+	 *         extensions+=Record* 
+	 *         axioms+=XAxiom*
+	 *     )
 	 */
 	protected void sequence_XContext(ISerializationContext context, Context semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
