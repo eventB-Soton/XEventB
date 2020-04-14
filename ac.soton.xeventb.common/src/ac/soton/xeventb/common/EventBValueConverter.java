@@ -207,7 +207,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 	 * Returns the value converter for XFormula.
 	 * 
 	 * @return the value converter for XFormula.
-	 * @since 0.1
+	 * @since 1.0
 	 */
 	@ValueConverter(rule = "XFormula")
 	public IValueConverter<String> XFormula() {
