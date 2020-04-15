@@ -16,10 +16,6 @@
       %copyright
    </copyright>
 
-   <license url="">
-      
-   </license>
-
    <url>
       <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
    </url>
@@ -29,15 +25,13 @@
          version="0.0.0"/>
 
    <includes
-         id="ac.soton.xeventb.source.feature"
-         version="0.0.0"/>
-
-   <includes
          id="ac.soton.xeventb.tests.feature"
          version="0.0.0"/>
 
-   <includes
-         id="ac.soton.xeventb.tests.source.feature"
+   <plugin
+         id="ac.soton.xeventb.branding.source"
+         download-size="0"
+         install-size="0"
          version="0.0.0"/>
 
 </feature>
