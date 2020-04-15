@@ -15,7 +15,7 @@
       version="1.0.1.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
-      license-feature="org.rodinp.license"
+      license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
 
    <description>
