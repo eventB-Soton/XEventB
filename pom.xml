@@ -34,5 +34,6 @@
     <module>ac.soton.xeventb.xmachine</module>
     <module>ac.soton.xeventb.xmachine.ide</module>
     <module>ac.soton.xeventb.xmachine.ui</module>
+    <module>ac.soton.xeventb.feature</module>
   </modules>
 </project>
