@@ -21,7 +21,7 @@ import "http://soton.ac.uk/models/eventb/diagrams" as ediagrams
 import "http://soton.ac.uk/models/eventb/coreextension/2014" as eventbcoreex
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//machine"as emachine
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
-import "http://soton.ac.uk/models/eventb/records/2019" as erecords
+import "http://soton.ac.uk/models/eventb/record/2019" as erecords
 //import "platform:/resource/ac.soton.eventb.records/model/records.ecore" as erecords
 
 /*

@@ -1,0 +1,39 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.xeventb</groupId>
+  <!-- Name of this artifact -->
+  <artifactId>root</artifactId>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>CamilleX Root POM</name>
+  <description>Root artifact for CamilleX</description>
+  <!-- REQUIRED: Version number (using semantic versioning) -->
+  <version>1.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.xeventb</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>1.0.1-SNAPSHOT</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>./ac.soton.xeventb.releng</relativePath>
+  </parent>
+
+  <modules>
+    <!-- LATER: List of modules in this build -->
+    <module>ac.soton.xeventb.branding</module>
+    <module>ac.soton.xeventb.cheatsheet</module>
+    <module>ac.soton.xeventb.common</module>
+    <module>ac.soton.xeventb.doc</module>
+    <module>ac.soton.xeventb.ui</module>
+    <module>ac.soton.xeventb.xcontext</module>
+    <module>ac.soton.xeventb.xcontext.ide</module>
+    <module>ac.soton.xeventb.xcontext.ui</module>
+    <module>ac.soton.xeventb.xmachine</module>
+    <module>ac.soton.xeventb.xmachine.ide</module>
+    <module>ac.soton.xeventb.xmachine.ui</module>
+    <module>ac.soton.xeventb.feature</module>
+  </modules>
+</project>

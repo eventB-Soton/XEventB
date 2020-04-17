@@ -13,31 +13,27 @@ package ac.soton.xeventb.xmachine.scoping
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.InclusionPackage
 import ac.soton.eventb.emf.inclusion.MachineInclusion
+import ac.soton.eventb.emf.record.Record
+import ac.soton.eventb.emf.record.RecordPackage
+import ac.soton.xeventb.common.EventBContainerManager
+import ac.soton.xeventb.common.EventBQualifiedNameProvider
 import ch.ethz.eventb.utils.EventBUtils
 import com.google.inject.Inject
 import java.util.ArrayList
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.resource.IContainer
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eventb.core.basis.ContextRoot
 import org.eventb.core.basis.MachineRoot
+import org.eventb.emf.core.EventBObject
+import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
 import org.eventb.emf.persistence.EMFRodinDB
-import ac.soton.xeventb.common.EventBQualifiedNameProvider
-import ac.soton.xeventb.common.EventBContainerManager
-import ac.soton.eventb.records.Record
-import ac.soton.eventb.records.RecordsPackage
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eventb.emf.core.EventBNamedCommentedComponentElement
-import java.util.List
-import org.eventb.emf.core.EventBObject
-import org.eventb.emf.core.context.Context
 
 /**
  * <p>
@@ -141,7 +137,7 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		}
 		
 		// The scope for record extension is the set of all records in the machine/refined machine(s) and sees context(s)
-		if (context instanceof Record && reference == RecordsPackage.Literals.RECORD__SUBSETS) {
+		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
 			val mch = EcoreUtil2.getRootContainer(context, true) as Machine
 			val components = getComponentsInScope(mch)
 			val records = EcoreUtil2.getAllContentsOfType(mch, Record);

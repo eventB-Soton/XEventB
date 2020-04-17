@@ -15,7 +15,7 @@
       version="1.0.1.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
-      license-feature="org.rodinp.license"
+      license-feature="org.rodinp.licence"
       license-feature-version="1.0.0.release">
 
    <description>
@@ -35,7 +35,6 @@
       <import plugin="org.eclipse.xtext.xbase" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.equinox.common" version="3.5.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.inclusion" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.generator" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.util" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.13.0" match="compatible"/>
@@ -48,15 +47,20 @@
       <import plugin="org.eventb.emf.persistence" version="3.5.0" match="compatible"/>
       <import plugin="ac.soton.emf.translator" version="3.0.0" match="compatible"/>
       <import plugin="org.eclipse.ui" version="3.106.1" match="compatible"/>
-      <import plugin="ac.soton.xeventb.common" version="0.0.5" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.inclusion.generator" version="0.1.0" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.1" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui" version="2.13.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.containment" version="0.0.1" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.diagrams" version="4.1.1" match="compatible"/>
+      <import plugin="ac.soton.eventb.statemachines" version="4.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.core.extension" version="5.0.0" match="compatible"/>
       <import plugin="org.apache.log4j"/>
+      <import plugin="ac.soton.xeventb.xmachine" version="2.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ide" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.ide" version="2.13.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xmachine.ide" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.shared" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.ui.editors" version="3.5.0" match="compatible"/>
@@ -68,6 +72,7 @@
       <import plugin="org.eclipse.ui.navigator" version="3.7.0" match="compatible"/>
       <import plugin="org.eventb.core" version="3.3.1" match="compatible"/>
       <import plugin="ch.ethz.eventb.utils" version="0.2.4" match="compatible"/>
+      <import plugin="ac.soton.xeventb.ui" version="1.0.0" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.1" match="compatible"/>
       <import plugin="org.eclipse.help" version="3.8.1" match="compatible"/>
       <import plugin="org.eclipse.ui.cheatsheets" version="3.4.200" match="compatible"/>
@@ -86,27 +91,25 @@
       <import plugin="org.eclipse.xtext.util" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ide" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.ide" version="2.12.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xcontext.ide" version="2.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.shared" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui.codetemplates.ui" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.builder" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.10.2" match="compatible"/>
       <import plugin="org.eclipse.core.expressions" version="3.4.600" match="compatible"/>
       <import plugin="org.eclipse.ui.ide" version="3.13.1" match="compatible"/>
-      <import plugin="com.google.guava" version="21.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib.macro" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.emf.common"/>
-      <import plugin="ac.soton.eventb.emf.containment" version="0.0.1" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.diagrams" version="4.1.1" match="compatible"/>
-      <import plugin="ac.soton.eventb.statemachines" version="4.0.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.core.extension" version="5.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xmachine" version="2.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xmachine.ide" version="1.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.ui" version="1.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xcontext.ide" version="2.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.inclusion" version="2.0.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.common" version="1.0.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.record" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="ac.soton.eventb.emf.record.generator" version="0.1.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
+      <import plugin="com.google.guava" version="27.1.0" match="compatible"/>
    </requires>
 
    <plugin

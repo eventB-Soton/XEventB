@@ -13,7 +13,7 @@ grammar ac.soton.xeventb.xcontext.XContext with org.eclipse.xtext.common.Termina
 //import "http://emf.eventb.org/models/core/context/2014" as econtext
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://soton.ac.uk/models/eventb/records/2019" as erecords
+import "http://soton.ac.uk/models/eventb/record/2019" as erecords
 
 XContext returns econtext::Context:
 	{econtext::Context}

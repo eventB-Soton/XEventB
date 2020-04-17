@@ -11,20 +11,21 @@
 
 package ac.soton.xeventb.xcontext.scoping
 
+import ac.soton.eventb.emf.record.Record
+import ac.soton.eventb.emf.record.RecordPackage
 import ch.ethz.eventb.utils.EventBUtils
 import java.util.ArrayList
+import java.util.List
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.Scopes
 import org.eventb.core.basis.ContextRoot
+import org.eventb.emf.core.EventBObject
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.context.ContextPackage
-import org.eventb.emf.persistence.EMFRodinDB
-import ac.soton.eventb.records.Record
-import ac.soton.eventb.records.RecordsPackage
-import org.eclipse.xtext.EcoreUtil2
-import org.eventb.emf.core.EventBObject
 import org.eventb.emf.core.machine.Machine
+import org.eventb.emf.persistence.EMFRodinDB
 
 /**
  * <p>
@@ -66,7 +67,7 @@ class XContextScopeProvider extends AbstractXContextScopeProvider {
 		}
 		
 		// The scope for record extension is the set of all records in the context/extends context(s)
-		if (context instanceof Record && reference == RecordsPackage.Literals.RECORD__SUBSETS) {
+		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
 			val cntx = EcoreUtil2.getRootContainer(context, true) as Context
 			val components = getComponentsInScope(cntx)
 			val records = EcoreUtil2.getAllContentsOfType(cntx, Record);
@@ -76,7 +77,7 @@ class XContextScopeProvider extends AbstractXContextScopeProvider {
 		}
 	}
 	
-	def private getComponentsInScope(EventBObject eventBObject) {
+	def private List<EventBObject> getComponentsInScope(EventBObject eventBObject) {
 		var list = new ArrayList
 		if (eventBObject instanceof Machine){
 			var m = eventBObject as Machine;
