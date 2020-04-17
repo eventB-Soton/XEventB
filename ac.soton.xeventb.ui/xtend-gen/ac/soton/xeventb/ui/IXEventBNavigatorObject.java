@@ -27,5 +27,5 @@ public interface IXEventBNavigatorObject {
    * 
    * @return the resource of the XEvent-B navigator object.
    */
-  public abstract IFile getResource();
+  IFile getResource();
 }
