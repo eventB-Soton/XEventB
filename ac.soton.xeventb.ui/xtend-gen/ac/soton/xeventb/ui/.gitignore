@@ -1,11 +1,3 @@
-/AbstractRootContentProvider.java
-/AbstractXEventBActionProvider.java
-/AbstractXEventBContentProvider.java
-/AbstractXEventBNavigatorLabelProvider.java
-/AbstractXEventBNavigatorObject.java
-/IXEventBNavigatorObject.java
-/IXEventBSharedImages.java
-/XEventBUIPlugin.java
 /.AbstractRootContentProvider.xtendbin
 /.AbstractXEventBActionProvider.xtendbin
 /.AbstractXEventBContentProvider.xtendbin
