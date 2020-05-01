@@ -905,6 +905,25 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//Field
 		public RuleCall getFieldsFieldParserRuleCall_4_1_0() { return cFieldsFieldParserRuleCall_4_1_0; }
 	}
+	public class FieldTypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.FieldType");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//FieldType:
+		//	ID | EVENTB_IDENTIFIER_KEYWORD;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//ID | EVENTB_IDENTIFIER_KEYWORD
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
+		
+		//EVENTB_IDENTIFIER_KEYWORD
+		public RuleCall getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1() { return cEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1; }
+	}
 	public class FieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.Field");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -914,14 +933,14 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cMultiplicityAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final RuleCall cMultiplicityMultiplicityEnumRuleCall_2_0 = (RuleCall)cMultiplicityAssignment_2.eContents().get(0);
 		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cTypeIDTerminalRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
+		private final RuleCall cTypeFieldTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		
 		//Field erecords::Field:
 		//	name=ID ':' multiplicity=Multiplicity?
-		//	type=ID;
+		//	type=FieldType;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//name=ID ':' multiplicity=Multiplicity? type=ID
+		//name=ID ':' multiplicity=Multiplicity? type=FieldType
 		public Group getGroup() { return cGroup; }
 		
 		//name=ID
@@ -939,30 +958,11 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		//Multiplicity
 		public RuleCall getMultiplicityMultiplicityEnumRuleCall_2_0() { return cMultiplicityMultiplicityEnumRuleCall_2_0; }
 		
-		//type=ID
+		//type=FieldType
 		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 		
-		//ID
-		public RuleCall getTypeIDTerminalRuleCall_3_0() { return cTypeIDTerminalRuleCall_3_0; }
-	}
-	public class EStringElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.EString");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cSTRINGTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cIDTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//EString:
-		//	STRING | ID;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//STRING | ID
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//STRING
-		public RuleCall getSTRINGTerminalRuleCall_0() { return cSTRINGTerminalRuleCall_0; }
-		
-		//ID
-		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
+		//FieldType
+		public RuleCall getTypeFieldTypeParserRuleCall_3_0() { return cTypeFieldTypeParserRuleCall_3_0; }
 	}
 	
 	public class MultiplicityElements extends AbstractEnumRuleElementFinder {
@@ -1014,8 +1014,8 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 	private final TerminalRule tID;
 	private final TerminalRule tSTRING;
 	private final RecordElements pRecord;
+	private final FieldTypeElements pFieldType;
 	private final FieldElements pField;
-	private final EStringElements pEString;
 	private final MultiplicityElements eMultiplicity;
 	
 	private final Grammar grammar;
@@ -1040,8 +1040,8 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.ID");
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.STRING");
 		this.pRecord = new RecordElements();
+		this.pFieldType = new FieldTypeElements();
 		this.pField = new FieldElements();
-		this.pEString = new EStringElements();
 		this.eMultiplicity = new MultiplicityElements();
 	}
 	
@@ -1288,25 +1288,25 @@ public class XContextGrammarAccess extends AbstractGrammarElementFinder {
 		return getRecordAccess().getRule();
 	}
 	
+	//FieldType:
+	//	ID | EVENTB_IDENTIFIER_KEYWORD;
+	public FieldTypeElements getFieldTypeAccess() {
+		return pFieldType;
+	}
+	
+	public ParserRule getFieldTypeRule() {
+		return getFieldTypeAccess().getRule();
+	}
+	
 	//Field erecords::Field:
 	//	name=ID ':' multiplicity=Multiplicity?
-	//	type=ID;
+	//	type=FieldType;
 	public FieldElements getFieldAccess() {
 		return pField;
 	}
 	
 	public ParserRule getFieldRule() {
 		return getFieldAccess().getRule();
-	}
-	
-	//EString:
-	//	STRING | ID;
-	public EStringElements getEStringAccess() {
-		return pEString;
-	}
-	
-	public ParserRule getEStringRule() {
-		return getEStringAccess().getRule();
 	}
 	
 	//enum Multiplicity returns erecords::Multiplicity:
