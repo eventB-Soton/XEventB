@@ -181,14 +181,18 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
 		(fields+=Field (fields+=Field)*)?
 ;
 
+FieldType returns ecore::EString:
+	(
+		ID |
+		EVENTB_IDENTIFIER_KEYWORD 
+	)
+;
+
 Field returns erecords::Field:
 	    name = ID (':')
 	    (multiplicity=Multiplicity)?
-		(type=ID)	
+		(type= FieldType)	
 ;
-
-EString returns ecore::EString:
-	STRING | ID;
 
 enum Multiplicity returns erecords::Multiplicity:
 				ONE = 'one' | MANY = 'many' | OPTIONAL = 'opt';
