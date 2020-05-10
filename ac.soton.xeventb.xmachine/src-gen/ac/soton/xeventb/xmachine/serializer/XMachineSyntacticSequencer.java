@@ -22,15 +22,15 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XMachineGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_Machine_SeesKeyword_4_2_0_q;
-	protected AbstractElementAlias match_XEvent_BeginKeyword_8_0_1_or_ThenKeyword_8_0_0;
-	protected AbstractElementAlias match_XEvent_WhenKeyword_7_0_1_or_WhereKeyword_7_0_0;
+	protected AbstractElementAlias match_XEvent_BeginKeyword_9_0_1_or_ThenKeyword_9_0_0;
+	protected AbstractElementAlias match_XEvent_WhenKeyword_8_0_1_or_WhereKeyword_8_0_0;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XMachineGrammarAccess) access;
 		match_Machine_SeesKeyword_4_2_0_q = new TokenAlias(false, true, grammarAccess.getMachineAccess().getSeesKeyword_4_2_0());
-		match_XEvent_BeginKeyword_8_0_1_or_ThenKeyword_8_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXEventAccess().getBeginKeyword_8_0_1()), new TokenAlias(false, false, grammarAccess.getXEventAccess().getThenKeyword_8_0_0()));
-		match_XEvent_WhenKeyword_7_0_1_or_WhereKeyword_7_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXEventAccess().getWhenKeyword_7_0_1()), new TokenAlias(false, false, grammarAccess.getXEventAccess().getWhereKeyword_7_0_0()));
+		match_XEvent_BeginKeyword_9_0_1_or_ThenKeyword_9_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXEventAccess().getBeginKeyword_9_0_1()), new TokenAlias(false, false, grammarAccess.getXEventAccess().getThenKeyword_9_0_0()));
+		match_XEvent_WhenKeyword_8_0_1_or_WhereKeyword_8_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXEventAccess().getWhenKeyword_8_0_1()), new TokenAlias(false, false, grammarAccess.getXEventAccess().getWhereKeyword_8_0_0()));
 	}
 	
 	@Override
@@ -47,10 +47,10 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_Machine_SeesKeyword_4_2_0_q.equals(syntax))
 				emit_Machine_SeesKeyword_4_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XEvent_BeginKeyword_8_0_1_or_ThenKeyword_8_0_0.equals(syntax))
-				emit_XEvent_BeginKeyword_8_0_1_or_ThenKeyword_8_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XEvent_WhenKeyword_7_0_1_or_WhereKeyword_7_0_0.equals(syntax))
-				emit_XEvent_WhenKeyword_7_0_1_or_WhereKeyword_7_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XEvent_BeginKeyword_9_0_1_or_ThenKeyword_9_0_0.equals(syntax))
+				emit_XEvent_BeginKeyword_9_0_1_or_ThenKeyword_9_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XEvent_WhenKeyword_8_0_1_or_WhereKeyword_8_0_0.equals(syntax))
+				emit_XEvent_WhenKeyword_8_0_1_or_WhereKeyword_8_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -71,13 +71,14 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'then' | 'begin'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     comment=STRING (ambiguity) actions+=XAction
 	 *     extensions+=EventSync (ambiguity) actions+=XAction
 	 *     guards+=XGuard (ambiguity) actions+=XAction
 	 *     name=ID (ambiguity) actions+=XAction
 	 *     parameters+=XParameter (ambiguity) actions+=XAction
 	 *     refines+=[Event|ID] (ambiguity) actions+=XAction
 	 */
-	protected void emit_XEvent_BeginKeyword_8_0_1_or_ThenKeyword_8_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XEvent_BeginKeyword_9_0_1_or_ThenKeyword_9_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -86,12 +87,13 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'where' | 'when'
 	 *
 	 * This ambiguous syntax occurs at:
+	 *     comment=STRING (ambiguity) guards+=XGuard
 	 *     extensions+=EventSync (ambiguity) guards+=XGuard
 	 *     name=ID (ambiguity) guards+=XGuard
 	 *     parameters+=XParameter (ambiguity) guards+=XGuard
 	 *     refines+=[Event|ID] (ambiguity) guards+=XGuard
 	 */
-	protected void emit_XEvent_WhenKeyword_7_0_1_or_WhereKeyword_7_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XEvent_WhenKeyword_8_0_1_or_WhereKeyword_8_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

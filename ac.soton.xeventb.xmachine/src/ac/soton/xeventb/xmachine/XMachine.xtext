@@ -66,6 +66,7 @@ QualifiedName:
 XVariable returns emachine::Variable:
 	{emachine::Variable}
 	name=ID
+	(comment=STRING)?
 ;
 
 XInvariant returns emachine::Invariant:
@@ -85,7 +86,7 @@ XVariant returns emachine::Variant:
 XEvent returns emachine::Event:
 	{emachine::Event}
 	(convergence=XConvergence)?
-	'event' name=ID
+	'event' name=ID (comment = STRING)?
 	(
 		('refines' refines+=[emachine::Event]+) |
 		(extended?='extends' refines+=[emachine::Event])
