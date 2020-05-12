@@ -9,7 +9,7 @@
  *  SPDX-License-Identifier: EPL-2.0
  *
  *  Contributors:
- *  University of Southampton - initial API and implementation 
+ *    University of Southampton - initial API and implementation 
  *******************************************************************************/
 
 package ac.soton.xeventb.xmachine
