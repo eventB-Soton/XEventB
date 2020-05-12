@@ -1,20 +1,25 @@
 /**
- * Copyright (c) 2016,2018 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2016,2020 University of Southampton.
  * 
- * Contributors:
- *     University of Southampton - initial API and implementation
+ *  This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License 2.0
+ *  which accompanies this distribution, and is available at
+ *  https://www.eclipse.org/legal/epl-2.0/
+ * 
+ *  SPDX-License-Identifier: EPL-2.0
+ * 
+ *  Contributors:
+ *    University of Southampton - initial API and implementation
  */
 package ac.soton.xeventb.xmachine.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.emf.containment.Containment;
 import ac.soton.eventb.emf.diagrams.Diagram;
-import ac.soton.eventb.statemachines.Statemachine;
+import ac.soton.xeventb.xmachine.IContainmentGenerator;
+import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
 import com.google.common.base.Objects;
+import java.util.Collection;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
@@ -37,8 +42,6 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.AbstractExtension;
-import org.eventb.emf.core.Annotation;
-import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
@@ -48,10 +51,10 @@ import org.rodinp.core.RodinCore;
  * Generating Rodin Context from the XContext.
  * </p>
  * 
- * @author htson
- * @author Dana
- * * @author asiehsalehi
- * @version 1.0
+ * @author htson - Initial implementation
+ * @author Dana - Implementation for machine inclusion
+ * @author asiehsalehi - Implementation for record extension
+ * @version 2.0
  * @since 0.1
  */
 @SuppressWarnings("all")
@@ -80,38 +83,28 @@ public class XMachineGenerator extends AbstractGenerator {
         final EList<AbstractExtension> extensions = mch.getExtensions();
         TranslatorFactory _factory = TranslatorFactory.getFactory();
         final TranslatorFactory factory = ((TranslatorFactory) _factory);
-        String containmentCommandId = "ac.soton.eventb.emf.diagrams.generator.translateToEventB";
+        final ContainmentRegistry registry = ContainmentRegistry.getDefault();
         for (final AbstractExtension ex : extensions) {
           if ((ex instanceof Containment)) {
             final Containment ctmt = ((Containment) ex);
             final Diagram diagram = ctmt.getExtension();
-            if ((diagram instanceof Statemachine)) {
-              final Statemachine stm = ((Statemachine) diagram);
-              EList<Annotation> annotations = stm.getAnnotations();
-              final Annotation annot = CoreFactory.eINSTANCE.createAnnotation();
-              annot.setSource("ac.soton.diagrams.translationTarget");
-              annot.getReferences().add(mch);
-              annotations.add(annot);
-            }
-            boolean _canTranslate = factory.canTranslate(containmentCommandId, diagram.eClass());
-            if (_canTranslate) {
-              NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
-              IProgressMonitor monitor = ((IProgressMonitor) _nullProgressMonitor);
-              factory.translate(editingDomain, diagram, containmentCommandId, monitor);
+            final Collection<IContainmentGenerator> generators = registry.getGenerators(diagram);
+            for (final IContainmentGenerator generator : generators) {
+              generator.generate(mch, diagram, editingDomain);
             }
           }
         }
         String commandId = "ac.soton.eventb.emf.inclusion.commands.include";
-        boolean _canTranslate_1 = factory.canTranslate(commandId, mch.eClass());
-        if (_canTranslate_1) {
-          final NullProgressMonitor monitor_1 = new NullProgressMonitor();
-          factory.translate(editingDomain, mch, commandId, monitor_1);
+        boolean _canTranslate = factory.canTranslate(commandId, mch.eClass());
+        if (_canTranslate) {
+          final NullProgressMonitor monitor = new NullProgressMonitor();
+          factory.translate(editingDomain, mch, commandId, monitor);
         }
         String recordCommandId = "ac.soton.eventb.records.commands.record";
-        boolean _canTranslate_2 = factory.canTranslate(recordCommandId, mch.eClass());
-        if (_canTranslate_2) {
-          final NullProgressMonitor monitor_2 = new NullProgressMonitor();
-          factory.translate(editingDomain, mch, recordCommandId, monitor_2);
+        boolean _canTranslate_1 = factory.canTranslate(recordCommandId, mch.eClass());
+        if (_canTranslate_1) {
+          final NullProgressMonitor monitor_1 = new NullProgressMonitor();
+          factory.translate(editingDomain, mch, recordCommandId, monitor_1);
         }
       }
       final SaveResourcesCommand saveCommand = new SaveResourcesCommand(editingDomain);
@@ -135,14 +128,14 @@ public class XMachineGenerator extends AbstractGenerator {
           }
         }
       };
-      final NullProgressMonitor monitor_3 = new NullProgressMonitor();
+      final NullProgressMonitor monitor_2 = new NullProgressMonitor();
       boolean _canExecute = saveCommand.canExecute();
       if (_canExecute) {
         final Resource[] emptyResource = {};
         RodinCore.run(wsRunnable, 
-          this.getSchedulingRule(editingDomain.getResourceSet().getResources().<Resource>toArray(emptyResource)), monitor_3);
+          this.getSchedulingRule(editingDomain.getResourceSet().getResources().<Resource>toArray(emptyResource)), monitor_2);
       }
-      monitor_3.done();
+      monitor_2.done();
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
