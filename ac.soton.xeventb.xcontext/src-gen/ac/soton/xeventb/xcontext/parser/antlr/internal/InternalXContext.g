@@ -1269,6 +1269,43 @@ ruleRecord returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleFieldType
+entryRuleFieldType returns [String current=null]:
+	{ newCompositeNode(grammarAccess.getFieldTypeRule()); }
+	iv_ruleFieldType=ruleFieldType
+	{ $current=$iv_ruleFieldType.current.getText(); }
+	EOF;
+
+// Rule FieldType
+ruleFieldType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		this_ID_0=RULE_ID
+		{
+			$current.merge(this_ID_0);
+		}
+		{
+			newLeafNode(this_ID_0, grammarAccess.getFieldTypeAccess().getIDTerminalRuleCall_0());
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getFieldTypeAccess().getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1());
+		}
+		this_EVENTB_IDENTIFIER_KEYWORD_1=ruleEVENTB_IDENTIFIER_KEYWORD
+		{
+			$current.merge(this_EVENTB_IDENTIFIER_KEYWORD_1);
+		}
+		{
+			afterParserOrEnumRuleCall();
+		}
+	)
+;
+
 // Entry rule entryRuleField
 entryRuleField returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getFieldRule()); }
@@ -1328,19 +1365,20 @@ ruleField returns [EObject current=null]
 		)?
 		(
 			(
-				lv_type_3_0=RULE_ID
 				{
-					newLeafNode(lv_type_3_0, grammarAccess.getFieldAccess().getTypeIDTerminalRuleCall_3_0());
+					newCompositeNode(grammarAccess.getFieldAccess().getTypeFieldTypeParserRuleCall_3_0());
 				}
+				lv_type_3_0=ruleFieldType
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getFieldRule());
+						$current = createModelElementForParent(grammarAccess.getFieldRule());
 					}
-					setWithLastConsumed(
+					set(
 						$current,
 						"type",
 						lv_type_3_0,
-						"ac.soton.xeventb.xcontext.XContext.ID");
+						"ac.soton.xeventb.xcontext.XContext.FieldType");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)

@@ -120,7 +120,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Field returns Field
 	 *
 	 * Constraint:
-	 *     (name=ID multiplicity=Multiplicity? type=ID)
+	 *     (name=ID multiplicity=Multiplicity? type=FieldType)
 	 */
 	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

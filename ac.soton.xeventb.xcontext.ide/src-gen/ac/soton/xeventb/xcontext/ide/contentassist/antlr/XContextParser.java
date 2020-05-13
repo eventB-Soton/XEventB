@@ -35,7 +35,7 @@ public class XContextParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getAlternatives(), "rule__EVENTB_IDENTIFIER_KEYWORD__Alternatives");
 			builder.put(grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getAlternatives(), "rule__EVENTB_PREDICATE_SYMBOLS__Alternatives");
 			builder.put(grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getAlternatives(), "rule__EVENTB_EXPRESSION_SYMBOLS__Alternatives");
-			builder.put(grammarAccess.getEStringAccess().getAlternatives(), "rule__EString__Alternatives");
+			builder.put(grammarAccess.getFieldTypeAccess().getAlternatives(), "rule__FieldType__Alternatives");
 			builder.put(grammarAccess.getMultiplicityAccess().getAlternatives(), "rule__Multiplicity__Alternatives");
 			builder.put(grammarAccess.getXContextAccess().getGroup(), "rule__XContext__Group__0");
 			builder.put(grammarAccess.getXContextAccess().getGroup_3(), "rule__XContext__Group_3__0");

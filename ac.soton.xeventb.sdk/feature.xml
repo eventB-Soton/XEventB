@@ -28,6 +28,14 @@
          id="ac.soton.xeventb.tests.feature"
          version="0.0.0"/>
 
+   <includes
+         id="ac.soton.eventb.emf.inclusion.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="ac.soton.eventb.emf.inclusion.tests.feature"
+         version="0.0.0"/>
+
    <plugin
          id="ac.soton.xeventb.branding.source"
          download-size="0"
@@ -93,6 +101,5 @@
          download-size="0"
          install-size="0"
          version="0.0.0"/>
-
 
 </feature>

@@ -3624,8 +3624,132 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleRecord"
 
 
+    // $ANTLR start "entryRuleFieldType"
+    // InternalXContext.g:1273:1: entryRuleFieldType returns [String current=null] : iv_ruleFieldType= ruleFieldType EOF ;
+    public final String entryRuleFieldType() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleFieldType = null;
+
+
+        try {
+            // InternalXContext.g:1273:49: (iv_ruleFieldType= ruleFieldType EOF )
+            // InternalXContext.g:1274:2: iv_ruleFieldType= ruleFieldType EOF
+            {
+             newCompositeNode(grammarAccess.getFieldTypeRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleFieldType=ruleFieldType();
+
+            state._fsp--;
+
+             current =iv_ruleFieldType.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleFieldType"
+
+
+    // $ANTLR start "ruleFieldType"
+    // InternalXContext.g:1280:1: ruleFieldType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (this_ID_0= RULE_ID | this_EVENTB_IDENTIFIER_KEYWORD_1= ruleEVENTB_IDENTIFIER_KEYWORD ) ;
+    public final AntlrDatatypeRuleToken ruleFieldType() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token this_ID_0=null;
+        AntlrDatatypeRuleToken this_EVENTB_IDENTIFIER_KEYWORD_1 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalXContext.g:1286:2: ( (this_ID_0= RULE_ID | this_EVENTB_IDENTIFIER_KEYWORD_1= ruleEVENTB_IDENTIFIER_KEYWORD ) )
+            // InternalXContext.g:1287:2: (this_ID_0= RULE_ID | this_EVENTB_IDENTIFIER_KEYWORD_1= ruleEVENTB_IDENTIFIER_KEYWORD )
+            {
+            // InternalXContext.g:1287:2: (this_ID_0= RULE_ID | this_EVENTB_IDENTIFIER_KEYWORD_1= ruleEVENTB_IDENTIFIER_KEYWORD )
+            int alt20=2;
+            int LA20_0 = input.LA(1);
+
+            if ( (LA20_0==RULE_ID) ) {
+                alt20=1;
+            }
+            else if ( ((LA20_0>=21 && LA20_0<=43)) ) {
+                alt20=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 20, 0, input);
+
+                throw nvae;
+            }
+            switch (alt20) {
+                case 1 :
+                    // InternalXContext.g:1288:3: this_ID_0= RULE_ID
+                    {
+                    this_ID_0=(Token)match(input,RULE_ID,FOLLOW_2); 
+
+                    			current.merge(this_ID_0);
+                    		
+
+                    			newLeafNode(this_ID_0, grammarAccess.getFieldTypeAccess().getIDTerminalRuleCall_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalXContext.g:1296:3: this_EVENTB_IDENTIFIER_KEYWORD_1= ruleEVENTB_IDENTIFIER_KEYWORD
+                    {
+
+                    			newCompositeNode(grammarAccess.getFieldTypeAccess().getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1());
+                    		
+                    pushFollow(FOLLOW_2);
+                    this_EVENTB_IDENTIFIER_KEYWORD_1=ruleEVENTB_IDENTIFIER_KEYWORD();
+
+                    state._fsp--;
+
+
+                    			current.merge(this_EVENTB_IDENTIFIER_KEYWORD_1);
+                    		
+
+                    			afterParserOrEnumRuleCall();
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleFieldType"
+
+
     // $ANTLR start "entryRuleField"
-    // InternalXContext.g:1273:1: entryRuleField returns [EObject current=null] : iv_ruleField= ruleField EOF ;
+    // InternalXContext.g:1310:1: entryRuleField returns [EObject current=null] : iv_ruleField= ruleField EOF ;
     public final EObject entryRuleField() throws RecognitionException {
         EObject current = null;
 
@@ -3633,8 +3757,8 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalXContext.g:1273:46: (iv_ruleField= ruleField EOF )
-            // InternalXContext.g:1274:2: iv_ruleField= ruleField EOF
+            // InternalXContext.g:1310:46: (iv_ruleField= ruleField EOF )
+            // InternalXContext.g:1311:2: iv_ruleField= ruleField EOF
             {
              newCompositeNode(grammarAccess.getFieldRule()); 
             pushFollow(FOLLOW_1);
@@ -3661,31 +3785,32 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleField"
-    // InternalXContext.g:1280:1: ruleField returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= RULE_ID ) ) ) ;
+    // InternalXContext.g:1317:1: ruleField returns [EObject current=null] : ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= ruleFieldType ) ) ) ;
     public final EObject ruleField() throws RecognitionException {
         EObject current = null;
 
         Token lv_name_0_0=null;
         Token otherlv_1=null;
-        Token lv_type_3_0=null;
         Enumerator lv_multiplicity_2_0 = null;
+
+        AntlrDatatypeRuleToken lv_type_3_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalXContext.g:1286:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= RULE_ID ) ) ) )
-            // InternalXContext.g:1287:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= RULE_ID ) ) )
+            // InternalXContext.g:1323:2: ( ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= ruleFieldType ) ) ) )
+            // InternalXContext.g:1324:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= ruleFieldType ) ) )
             {
-            // InternalXContext.g:1287:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= RULE_ID ) ) )
-            // InternalXContext.g:1288:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= RULE_ID ) )
+            // InternalXContext.g:1324:2: ( ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= ruleFieldType ) ) )
+            // InternalXContext.g:1325:3: ( (lv_name_0_0= RULE_ID ) ) otherlv_1= ':' ( (lv_multiplicity_2_0= ruleMultiplicity ) )? ( (lv_type_3_0= ruleFieldType ) )
             {
-            // InternalXContext.g:1288:3: ( (lv_name_0_0= RULE_ID ) )
-            // InternalXContext.g:1289:4: (lv_name_0_0= RULE_ID )
+            // InternalXContext.g:1325:3: ( (lv_name_0_0= RULE_ID ) )
+            // InternalXContext.g:1326:4: (lv_name_0_0= RULE_ID )
             {
-            // InternalXContext.g:1289:4: (lv_name_0_0= RULE_ID )
-            // InternalXContext.g:1290:5: lv_name_0_0= RULE_ID
+            // InternalXContext.g:1326:4: (lv_name_0_0= RULE_ID )
+            // InternalXContext.g:1327:5: lv_name_0_0= RULE_ID
             {
             lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_19); 
 
@@ -3711,24 +3836,24 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_1, grammarAccess.getFieldAccess().getColonKeyword_1());
             		
-            // InternalXContext.g:1310:3: ( (lv_multiplicity_2_0= ruleMultiplicity ) )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalXContext.g:1347:3: ( (lv_multiplicity_2_0= ruleMultiplicity ) )?
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( ((LA20_0>=121 && LA20_0<=123)) ) {
-                alt20=1;
+            if ( ((LA21_0>=121 && LA21_0<=123)) ) {
+                alt21=1;
             }
-            switch (alt20) {
+            switch (alt21) {
                 case 1 :
-                    // InternalXContext.g:1311:4: (lv_multiplicity_2_0= ruleMultiplicity )
+                    // InternalXContext.g:1348:4: (lv_multiplicity_2_0= ruleMultiplicity )
                     {
-                    // InternalXContext.g:1311:4: (lv_multiplicity_2_0= ruleMultiplicity )
-                    // InternalXContext.g:1312:5: lv_multiplicity_2_0= ruleMultiplicity
+                    // InternalXContext.g:1348:4: (lv_multiplicity_2_0= ruleMultiplicity )
+                    // InternalXContext.g:1349:5: lv_multiplicity_2_0= ruleMultiplicity
                     {
 
                     					newCompositeNode(grammarAccess.getFieldAccess().getMultiplicityMultiplicityEnumRuleCall_2_0());
                     				
-                    pushFollow(FOLLOW_3);
+                    pushFollow(FOLLOW_20);
                     lv_multiplicity_2_0=ruleMultiplicity();
 
                     state._fsp--;
@@ -3753,25 +3878,30 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalXContext.g:1329:3: ( (lv_type_3_0= RULE_ID ) )
-            // InternalXContext.g:1330:4: (lv_type_3_0= RULE_ID )
+            // InternalXContext.g:1366:3: ( (lv_type_3_0= ruleFieldType ) )
+            // InternalXContext.g:1367:4: (lv_type_3_0= ruleFieldType )
             {
-            // InternalXContext.g:1330:4: (lv_type_3_0= RULE_ID )
-            // InternalXContext.g:1331:5: lv_type_3_0= RULE_ID
+            // InternalXContext.g:1367:4: (lv_type_3_0= ruleFieldType )
+            // InternalXContext.g:1368:5: lv_type_3_0= ruleFieldType
             {
-            lv_type_3_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
-            					newLeafNode(lv_type_3_0, grammarAccess.getFieldAccess().getTypeIDTerminalRuleCall_3_0());
+            					newCompositeNode(grammarAccess.getFieldAccess().getTypeFieldTypeParserRuleCall_3_0());
             				
+            pushFollow(FOLLOW_2);
+            lv_type_3_0=ruleFieldType();
+
+            state._fsp--;
+
 
             					if (current==null) {
-            						current = createModelElement(grammarAccess.getFieldRule());
+            						current = createModelElementForParent(grammarAccess.getFieldRule());
             					}
-            					setWithLastConsumed(
+            					set(
             						current,
             						"type",
             						lv_type_3_0,
-            						"ac.soton.xeventb.xcontext.XContext.ID");
+            						"ac.soton.xeventb.xcontext.XContext.FieldType");
+            					afterParserOrEnumRuleCall();
             				
 
             }
@@ -3802,7 +3932,7 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicity"
-    // InternalXContext.g:1351:1: ruleMultiplicity returns [Enumerator current=null] : ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) ) ;
+    // InternalXContext.g:1389:1: ruleMultiplicity returns [Enumerator current=null] : ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) ) ;
     public final Enumerator ruleMultiplicity() throws RecognitionException {
         Enumerator current = null;
 
@@ -3814,40 +3944,40 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXContext.g:1357:2: ( ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) ) )
-            // InternalXContext.g:1358:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
+            // InternalXContext.g:1395:2: ( ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) ) )
+            // InternalXContext.g:1396:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
             {
-            // InternalXContext.g:1358:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
-            int alt21=3;
+            // InternalXContext.g:1396:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
+            int alt22=3;
             switch ( input.LA(1) ) {
             case 121:
                 {
-                alt21=1;
+                alt22=1;
                 }
                 break;
             case 122:
                 {
-                alt21=2;
+                alt22=2;
                 }
                 break;
             case 123:
                 {
-                alt21=3;
+                alt22=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 21, 0, input);
+                    new NoViableAltException("", 22, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
-                    // InternalXContext.g:1359:3: (enumLiteral_0= 'one' )
+                    // InternalXContext.g:1397:3: (enumLiteral_0= 'one' )
                     {
-                    // InternalXContext.g:1359:3: (enumLiteral_0= 'one' )
-                    // InternalXContext.g:1360:4: enumLiteral_0= 'one'
+                    // InternalXContext.g:1397:3: (enumLiteral_0= 'one' )
+                    // InternalXContext.g:1398:4: enumLiteral_0= 'one'
                     {
                     enumLiteral_0=(Token)match(input,121,FOLLOW_2); 
 
@@ -3861,10 +3991,10 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalXContext.g:1367:3: (enumLiteral_1= 'many' )
+                    // InternalXContext.g:1405:3: (enumLiteral_1= 'many' )
                     {
-                    // InternalXContext.g:1367:3: (enumLiteral_1= 'many' )
-                    // InternalXContext.g:1368:4: enumLiteral_1= 'many'
+                    // InternalXContext.g:1405:3: (enumLiteral_1= 'many' )
+                    // InternalXContext.g:1406:4: enumLiteral_1= 'many'
                     {
                     enumLiteral_1=(Token)match(input,122,FOLLOW_2); 
 
@@ -3878,10 +4008,10 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalXContext.g:1375:3: (enumLiteral_2= 'opt' )
+                    // InternalXContext.g:1413:3: (enumLiteral_2= 'opt' )
                     {
-                    // InternalXContext.g:1375:3: (enumLiteral_2= 'opt' )
-                    // InternalXContext.g:1376:4: enumLiteral_2= 'opt'
+                    // InternalXContext.g:1413:3: (enumLiteral_2= 'opt' )
+                    // InternalXContext.g:1414:4: enumLiteral_2= 'opt'
                     {
                     enumLiteral_2=(Token)match(input,123,FOLLOW_2); 
 
@@ -3939,6 +4069,6 @@ public class InternalXContextParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000000002012L});
     public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x0000000000000012L});
     public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000008L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000010L,0x0E00000000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x00000FFFFFE00010L,0x0E00000000000000L});
 
 }
