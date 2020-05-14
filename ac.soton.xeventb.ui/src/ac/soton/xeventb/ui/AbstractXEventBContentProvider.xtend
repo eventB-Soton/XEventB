@@ -69,13 +69,14 @@ abstract class AbstractXEventBContentProvider implements ITreeContentProvider {
 		  	new ArrayList<IXEventBNavigatorObject>;
 
 		if (parentElement instanceof IProject) {
-			val resources = parentElement.members
-			for (IResource resource : resources) {
-				val fileExtension = resource.fileExtension
-				if (fileExtension == getFileExtension()) {
-					val IXEventBNavigatorObject navObj = 
-						getNavigatorObject(resource as IFile) 
-					children.add(navObj)
+			if((parentElement as IProject).open){
+				val resources = parentElement.members
+				for (IResource resource : resources) {
+					val fileExtension = resource.fileExtension
+					if (fileExtension == getFileExtension()) {
+						val IXEventBNavigatorObject navObj = getNavigatorObject(resource as IFile) 
+						children.add(navObj)
+					}
 				}
 			}
 		}
