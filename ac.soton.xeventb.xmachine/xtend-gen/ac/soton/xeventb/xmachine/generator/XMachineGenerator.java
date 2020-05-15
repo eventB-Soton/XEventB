@@ -35,6 +35,8 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.xtext.generator.AbstractGenerator;
@@ -43,6 +45,7 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
 
@@ -53,47 +56,43 @@ import org.rodinp.core.RodinCore;
  * 
  * @author htson - Initial implementation
  * @author Dana - Implementation for machine inclusion
- * @author asiehsalehi - Implementation for record extension
+ * @author asiehsalehi - Implementation for record extension (2.0)
+ * @author htson - Introduce generator for containment via extension points (2.0)
  * @version 2.0
  * @since 0.1
  */
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {
-  /**
-   * @htson Automatically compile to Rodin files
-   */
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
       EObject _get = resource.getContents().get(0);
-      Machine mch = ((Machine) _get);
+      final Machine mch = ((Machine) _get);
       String uriString = resource.getURI().toString();
       uriString = uriString.substring(0, uriString.lastIndexOf("bumx"));
       uriString = (uriString + "bum");
-      URI uri = URI.createURI(uriString);
-      TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
-      Resource rodinResource = editingDomain.getResourceSet().createResource(uri);
-      rodinResource.eSetDeliver(false);
-      rodinResource.getContents().add(0, mch);
-      rodinResource.setModified(true);
-      rodinResource.eSetDeliver(true);
+      final URI uri = URI.createURI(uriString);
+      ResourceSet _resourceSet = resource.getResourceSet();
+      final EMFRodinDB emfRodinDB = new EMFRodinDB(_resourceSet);
+      final TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
+      final Resource rodinResource = emfRodinDB.loadResource(uri);
+      final RecordingCommand command = new RecordingCommand(editingDomain, "Set Contents") {
+        @Override
+        public void doExecute() {
+          rodinResource.getContents().clear();
+          rodinResource.getContents().add(0, mch);
+        }
+      };
+      boolean _canExecute = command.canExecute();
+      if (_canExecute) {
+        editingDomain.getCommandStack().execute(command);
+      }
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
         final EList<AbstractExtension> extensions = mch.getExtensions();
         TranslatorFactory _factory = TranslatorFactory.getFactory();
         final TranslatorFactory factory = ((TranslatorFactory) _factory);
-        final ContainmentRegistry registry = ContainmentRegistry.getDefault();
-        for (final AbstractExtension ex : extensions) {
-          if ((ex instanceof Containment)) {
-            final Containment ctmt = ((Containment) ex);
-            final Diagram diagram = ctmt.getExtension();
-            final Collection<IContainmentGenerator> generators = registry.getGenerators(diagram);
-            for (final IContainmentGenerator generator : generators) {
-              generator.generate(mch, diagram, editingDomain);
-            }
-          }
-        }
         String commandId = "ac.soton.eventb.emf.inclusion.commands.include";
         boolean _canTranslate = factory.canTranslate(commandId, mch.eClass());
         if (_canTranslate) {
@@ -105,6 +104,17 @@ public class XMachineGenerator extends AbstractGenerator {
         if (_canTranslate_1) {
           final NullProgressMonitor monitor_1 = new NullProgressMonitor();
           factory.translate(editingDomain, mch, recordCommandId, monitor_1);
+        }
+        final ContainmentRegistry registry = ContainmentRegistry.getDefault();
+        for (final AbstractExtension ex : extensions) {
+          if ((ex instanceof Containment)) {
+            final Containment ctmt = ((Containment) ex);
+            final Diagram diagram = ctmt.getExtension();
+            final Collection<IContainmentGenerator> generators = registry.getGenerators(diagram);
+            for (final IContainmentGenerator generator : generators) {
+              generator.generate(mch, diagram, editingDomain);
+            }
+          }
         }
       }
       final SaveResourcesCommand saveCommand = new SaveResourcesCommand(editingDomain);
@@ -129,8 +139,8 @@ public class XMachineGenerator extends AbstractGenerator {
         }
       };
       final NullProgressMonitor monitor_2 = new NullProgressMonitor();
-      boolean _canExecute = saveCommand.canExecute();
-      if (_canExecute) {
+      boolean _canExecute_1 = saveCommand.canExecute();
+      if (_canExecute_1) {
         final Resource[] emptyResource = {};
         RodinCore.run(wsRunnable, 
           this.getSchedulingRule(editingDomain.getResourceSet().getResources().<Resource>toArray(emptyResource)), monitor_2);
