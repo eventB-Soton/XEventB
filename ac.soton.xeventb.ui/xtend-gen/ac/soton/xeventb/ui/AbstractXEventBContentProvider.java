@@ -71,15 +71,18 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
     try {
       List<IXEventBNavigatorObject> children = new ArrayList<IXEventBNavigatorObject>();
       if ((parentElement instanceof IProject)) {
-        final IResource[] resources = ((IProject)parentElement).members();
-        for (final IResource resource : resources) {
-          {
-            final String fileExtension = resource.getFileExtension();
-            String _fileExtension = this.getFileExtension();
-            boolean _equals = Objects.equal(fileExtension, _fileExtension);
-            if (_equals) {
-              final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IFile) resource));
-              children.add(navObj);
+        boolean _isOpen = ((IProject) parentElement).isOpen();
+        if (_isOpen) {
+          final IResource[] resources = ((IProject)parentElement).members();
+          for (final IResource resource : resources) {
+            {
+              final String fileExtension = resource.getFileExtension();
+              String _fileExtension = this.getFileExtension();
+              boolean _equals = Objects.equal(fileExtension, _fileExtension);
+              if (_equals) {
+                final IXEventBNavigatorObject navObj = this.getNavigatorObject(((IFile) resource));
+                children.add(navObj);
+              }
             }
           }
         }
