@@ -81,6 +81,7 @@ public class XMachineGenerator extends AbstractGenerator {
         public void doExecute() {
           rodinResource.getContents().clear();
           rodinResource.getContents().add(0, mch);
+          rodinResource.setModified(true);
         }
       };
       boolean _canExecute = command.canExecute();

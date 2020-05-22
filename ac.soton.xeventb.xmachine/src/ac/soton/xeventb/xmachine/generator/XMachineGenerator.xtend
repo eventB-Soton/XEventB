@@ -75,6 +75,8 @@ class XMachineGenerator extends AbstractGenerator {
 			override doExecute() {
 				rodinResource.contents.clear()
 				rodinResource.contents.add(0, mch)
+				 // Ensure that the resource will be saved
+				rodinResource.modified = true;
 			}
 		}
 		if (command.canExecute()){
