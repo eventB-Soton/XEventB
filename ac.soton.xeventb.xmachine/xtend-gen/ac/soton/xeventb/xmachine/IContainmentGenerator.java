@@ -35,6 +35,9 @@ import org.eventb.emf.core.machine.Machine;
 public interface IContainmentGenerator {
   /**
    * Method to generate the content of the contained component into the source machine.
+   * IMPORTANT: At the end, the source machine will be serialised into a Rodin file. As a result, the
+   * content of the Rodin file will be replaced by this source machine. It is important that the
+   * generator generates the content into this source machine rather than the Rodin file directly.
    * 
    * @param mch
    * 		The input source machine (with contains clause)
