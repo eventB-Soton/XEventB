@@ -2,5 +2,24 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension-point id="ac.soton.xeventb.xmachine.containment" name="Contains Clause" schema="schema/ac.soton.xeventb.xmachine.containment.exsd"/>
+   <extension
+         point="org.eventb.core.scModuleTypes">
+      <processorType
+            class="ac.soton.xeventb.xmachine.validation.XMachineMarkerModule"
+            id="XMachineMarkerModule"
+            name="Generate XMachine Markers"
+            parent="org.eventb.core.machineModule">
+      </processorType>
+   </extension>
+   <extension
+         point="org.eventb.core.configurations">
+      <configuration
+            id="base"
+            name="XMachine additional Static Checking">
+         <scModule
+               id="ac.soton.xeventb.xmachine.XMachineMarkerModule">
+         </scModule>
+      </configuration>
+   </extension>
 
 </plugin>
