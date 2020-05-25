@@ -35,24 +35,30 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eventb.emf.core.CoreFactory
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.persistence.EMFRodinDB
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
+import org.eventb.emf.persistence.PersistencePlugin
 
 /**
  * <p>
- * Generating Rodin Context from the XContext.
+ * Generating Rodin Machine from the XMachine.
  * </p>
  *
  * @author htson - Initial implementation
- * @author Dana - Implementation for machine inclusion
+ * @author Dana - Implementation for machine inclusion (0.0.6)
  * @author asiehsalehi - Implementation for record extension (2.0)
  * @author htson - Introduce generator for containment via extension points (2.0)
+ * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
  * @version 2.0
  * @since 0.1
  */
 class XMachineGenerator extends AbstractGenerator {
+
+	// htson: (2.0) This is the key for Rodin Machine configuration 
+	val String CONFIGURATION = "configuration";
 
 	// Dana: In 0.0.6 generator is updated to extend AbstractGenerator
 	// Save is added after calling the translator 
@@ -75,7 +81,14 @@ class XMachineGenerator extends AbstractGenerator {
 			override doExecute() {
 				rodinResource.contents.clear()
 				rodinResource.contents.add(0, mch)
-				 // Ensure that the resource will be saved
+				val rodinInternals = CoreFactory.eINSTANCE.createAnnotation()
+				rodinInternals.source = PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION
+				val rodinInternalDetails = rodinInternals.getDetails()
+				rodinInternalDetails.put(CONFIGURATION,
+					"org.eventb.core.fwd;ac.soton.xeventb.xmachine.base"
+				)
+				mch.getAnnotations().add(rodinInternals)
+				// Ensure that the resource will be saved
 				rodinResource.modified = true;
 			}
 		}

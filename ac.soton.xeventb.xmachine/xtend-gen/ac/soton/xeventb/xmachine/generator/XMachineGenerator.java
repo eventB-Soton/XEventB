@@ -32,6 +32,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -44,25 +45,31 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.AbstractExtension;
+import org.eventb.emf.core.Annotation;
+import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
 
 /**
  * <p>
- * Generating Rodin Context from the XContext.
+ * Generating Rodin Machine from the XMachine.
  * </p>
  * 
  * @author htson - Initial implementation
- * @author Dana - Implementation for machine inclusion
+ * @author Dana - Implementation for machine inclusion (0.0.6)
  * @author asiehsalehi - Implementation for record extension (2.0)
  * @author htson - Introduce generator for containment via extension points (2.0)
+ * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
  * @version 2.0
  * @since 0.1
  */
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {
+  private final String CONFIGURATION = "configuration";
+  
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
@@ -81,6 +88,12 @@ public class XMachineGenerator extends AbstractGenerator {
         public void doExecute() {
           rodinResource.getContents().clear();
           rodinResource.getContents().add(0, mch);
+          final Annotation rodinInternals = CoreFactory.eINSTANCE.createAnnotation();
+          rodinInternals.setSource(PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION);
+          final EMap<String, String> rodinInternalDetails = rodinInternals.getDetails();
+          rodinInternalDetails.put(XMachineGenerator.this.CONFIGURATION, 
+            "org.eventb.core.fwd;ac.soton.xeventb.xmachine.base");
+          mch.getAnnotations().add(rodinInternals);
           rodinResource.setModified(true);
         }
       };

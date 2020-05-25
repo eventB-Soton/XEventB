@@ -10,18 +10,18 @@
  *******************************************************************************/
 package ac.soton.xeventb.xmachine
 
-
-import ac.soton.xeventb.common.EventBValueConverter;
-import ac.soton.xeventb.common.XMachineTransientValueService;
-import ac.soton.xeventb.xmachine.scoping.XMachineScopeProvider;
-import com.google.inject.Binder;
-import org.eclipse.xtext.conversion.IValueConverterService;
-import org.eclipse.xtext.parsetree.reconstr.ITransientValueService;
-import org.eclipse.xtext.scoping.IScopeProvider;
-import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding;
-import ac.soton.xeventb.common.EventBContainerManager;
-import ac.soton.xeventb.common.EventBQualifiedNameProvider;
-
+import ac.soton.xeventb.common.EventBContainerManager
+import ac.soton.xeventb.common.EventBQualifiedNameProvider
+import ac.soton.xeventb.common.EventBValueConverter
+import ac.soton.xeventb.common.XMachineTransientValueService
+import ac.soton.xeventb.xmachine.scoping.XMachineScopeProvider
+import com.google.inject.Binder
+import org.eclipse.xtext.conversion.IValueConverterService
+import org.eclipse.xtext.naming.IQualifiedNameProvider
+import org.eclipse.xtext.parsetree.reconstr.ITransientValueService
+import org.eclipse.xtext.resource.IContainer
+import org.eclipse.xtext.scoping.IScopeProvider
+import org.eclipse.xtext.serializer.tokens.SerializerScopeProviderBinding
 
 /**
  * <p>
@@ -43,7 +43,7 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 	 * @see EventBValueConverter
 	 */
 	 override Class<? extends IValueConverterService> bindIValueConverterService() {
-		return typeof(EventBValueConverter);
+		EventBValueConverter
 	}
 	/**
 	 * Bind the transient value service for XMachine, use for serialisation of
@@ -52,7 +52,7 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 	 * @see XMachineTransientValueService
 	 */
 	 override Class<? extends ITransientValueService> bindITransientValueService() {
-		return typeof(XMachineTransientValueService);
+		XMachineTransientValueService
 	}
 	 /**
 		 * Bind the scope provider, use for references for context seeing, machine
@@ -61,7 +61,7 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 		 * @see XMachineScopeProvider
 		 */
 		override Class<? extends IScopeProvider> bindIScopeProvider() {
-			return typeof(XMachineScopeProvider);
+			XMachineScopeProvider
 		}	
 
 		/**
@@ -83,8 +83,8 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 		 * 
 		 * @see EventBQualifiedNameProvider
 		 */
-		override Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
-			return typeof(EventBQualifiedNameProvider);
+		override Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
+			EventBQualifiedNameProvider
 		}
 
 		/**
@@ -93,9 +93,8 @@ class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
 		 * 
 		 * @see EventBContainerManager
 		 */
-		override Class<? extends org.eclipse.xtext.resource.IContainer.Manager> bindIContainer$Manager() {
-			return typeof(EventBContainerManager);
+		override Class<? extends IContainer.Manager> bindIContainer$Manager() {
+			EventBContainerManager
 		}
 
-	
 }
