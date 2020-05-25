@@ -48,8 +48,9 @@ import org.rodinp.core.RodinMarkerUtil
  * XMachine validator, provides custom validation rules for the xtext machine file.
  * </p>
  *
- * @author dana
- * @version 0.1
+ * @author dana - Initial implementation
+ * @author htson - Added support for lifting Rodin issues into XMachine
+ * @version 1.0
  * @since 1.0
  */
 class XMachineValidator extends AbstractXMachineValidator {
