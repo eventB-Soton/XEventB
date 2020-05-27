@@ -16,7 +16,6 @@ import org.eclipse.xtext.conversion.IValueConverter;
 import org.eclipse.xtext.conversion.ValueConverter;
 import org.eclipse.xtext.conversion.ValueConverterException;
 import org.eclipse.xtext.nodemodel.INode;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -203,40 +202,40 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
 		};
 	}
 
-	/**
-	 * Returns the value converter for XFormula.
-	 * 
-	 * @return the value converter for XFormula.
-	 * @since 1.0
-	 */
-	@ValueConverter(rule = "XFormula")
-	public IValueConverter<String> XFormula() {
-		return new IValueConverter<String>() {
-
-			/**
-			 * Convert string to XLabel.
-			 * 
-			 * @param string the formula string
-			 * @return the translated formula value by calling the Rodin
-			 *         keyboard
-			 * @see IValueConverter#toString(Object)
-			 */
-
-			@Override
-			public String toValue(String string, INode node)
-					throws ValueConverterException {
-				if (string == null)
-					return null;
-				return RodinKeyboardCore.translate(string);
-			}
-
-			@Override
-			public String toString(String value)
-					throws ValueConverterException {
-				return value;
-			}
-
-		};
-	}
+//	/**
+//	 * Returns the value converter for XFormula.
+//	 * 
+//	 * @return the value converter for XFormula.
+//	 * @since 1.0
+//	 */
+//	@ValueConverter(rule = "XFormula")
+//	public IValueConverter<String> XFormula() {
+//		return new IValueConverter<String>() {
+//
+//			/**
+//			 * Convert string to XLabel.
+//			 * 
+//			 * @param string the formula string
+//			 * @return the translated formula value by calling the Rodin
+//			 *         keyboard
+//			 * @see IValueConverter#toString(Object)
+//			 */
+//
+//			@Override
+//			public String toValue(String string, INode node)
+//					throws ValueConverterException {
+//				if (string == null)
+//					return null;
+//				return RodinKeyboardCore.translate(string);
+//			}
+//
+//			@Override
+//			public String toString(String value)
+//					throws ValueConverterException {
+//				return value;
+//			}
+//
+//		};
+//	}
 
 }
