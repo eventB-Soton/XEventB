@@ -1,11 +1,15 @@
 /**
- * Copyright (c) 2018 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * Contributors:
- * University of Southampton - initial API and implementation
+ * Copyright (c) 2018, 2020 University of Southampton.
+ * 
+ *  This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License 2.0
+ *  which accompanies this distribution, and is available at
+ *  https://www.eclipse.org/legal/epl-2.0/
+ * 
+ *  SPDX-License-Identifier: EPL-2.0
+ * 
+ *  Contributors:
+ *    University of Southampton - initial API and implementation
  */
 package ac.soton.xeventb.common;
 
@@ -25,8 +29,9 @@ import org.eventb.emf.core.context.ContextPackage;
  * An implementation of transient value service in order to filter out
  * unsupported elements during serilisation of XContext from Event-B EMF.
  * </p>
- * @author htson
- * @version 0.1
+ * 
+ * @author htson - Initial implementation
+ * @version 0.1.1
  * @since 0.1
  */
 @SuppressWarnings("all")
@@ -84,12 +89,10 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       boolean _equals_8 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals_8) {
         return false;
-      } else {
-        boolean _equals_9 = feature.equals(
-          CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
-        if (_equals_9) {
-          return true;
-        }
+      }
+      boolean _equals_9 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_9) {
+        return true;
       }
       return true;
     }

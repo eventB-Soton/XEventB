@@ -1,12 +1,17 @@
-/** 
- * Copyright (c) 2018 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * Contributors:
- * University of Southampton - initial API and implementation
- */
+/*******************************************************************************
+ *  Copyright (c) 2018, 2020 University of Southampton.
+ *
+ *  This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License 2.0
+ *  which accompanies this distribution, and is available at
+ *  https://www.eclipse.org/legal/epl-2.0/
+ *
+ *  SPDX-License-Identifier: EPL-2.0
+ *
+ *  Contributors:
+ *    University of Southampton - initial API and implementation 
+ *******************************************************************************/
+
 package ac.soton.xeventb.common
 
 import org.eclipse.xtext.common.services.Ecore2XtextTerminalConverters
@@ -21,7 +26,7 @@ import org.eclipse.xtext.nodemodel.INode
  * labels.
  * </p>
  * @author htson, dd4g12
- * @version 0.3.1
+ * @version 0.3.2
  * @since 0.0.1
  */
 class EventBValueConverter extends Ecore2XtextTerminalConverters {
