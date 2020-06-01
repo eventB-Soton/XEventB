@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2016,2020 University of Southampton.
+ *  Copyright (c) 2020 University of Southampton.
  *
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -12,7 +12,7 @@
  *    University of Southampton - initial API and implementation 
  *******************************************************************************/
 
-package ac.soton.xeventb.xmachine.validation
+package ac.soton.xeventb.xcontext.validation
 
 import java.util.regex.Pattern
 import org.eclipse.core.resources.IMarker
@@ -36,33 +36,33 @@ import org.rodinp.core.IRodinFile
 
 /**
  * <p>
- * Rodin Static Checker Module for lifting Rodin markers to XMachine.
+ * Rodin Static Checker Module for lifting Rodin markers to XContext.
  * </p>
  *
- * @author htson - Initial implementation
+ * @author htson
  * @version 0.1
+ * @see
  * @since 2.0
  */
-class XMachineMarkerModule extends SCProcessorModule {
-
+class XContextMarkerModule extends SCProcessorModule {
+	
 	// Module type: This must be consistent with the extension
-	val IModuleType<XMachineMarkerModule> MODULE_TYPE = SCCore
-		.getModuleType("ac.soton.xeventb.xmachine.XMachineMarkerModule"); //$NON-NLS-1$
-
+	val IModuleType<XContextMarkerModule> MODULE_TYPE = SCCore
+		.getModuleType("ac.soton.xeventb.xcontext.XContextMarkerModule"); //$NON-NLS-1$
 
 	/**
 	 * The main process method, which get the issues by running expensive
 	 * validation rules, and created the markers based on the result.
 	 */
-	override void process(IRodinElement element, IInternalElement target,
+	override process(IRodinElement element, IInternalElement target,
 		ISCStateRepository repository, IProgressMonitor monitor
 	) throws CoreException {
-		val machineFile = element as IRodinFile;
+		val contextFile = element as IRodinFile;
 		val emfRodinDB = new EMFRodinDB()
-		val resource = emfRodinDB.loadResource(machineFile.getRoot())
+		val resource = emfRodinDB.loadResource(contextFile.getRoot())
 		var uriString = resource.URI.toString
-		uriString = uriString.substring(0, uriString.lastIndexOf('bum'))
-		uriString = uriString + "bumx"
+		uriString = uriString.substring(0, uriString.lastIndexOf('buc'))
+		uriString = uriString + "bucx"
 		val uri = URI.createURI(uriString)
 		
 		// Get the XMachine resource.
@@ -114,12 +114,12 @@ class XMachineMarkerModule extends SCProcessorModule {
 		}
     	return
 	}
-
+	
 	/**
 	 * Return the module type.
 	 */
-	override IModuleType<?> getModuleType() {
-		return MODULE_TYPE;
+	override getModuleType() {
+		return MODULE_TYPE
 	}
-
+	
 }

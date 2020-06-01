@@ -25,6 +25,7 @@ import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -36,9 +37,12 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eventb.emf.core.Annotation;
+import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
 
@@ -53,6 +57,8 @@ import org.rodinp.core.RodinCore;
  */
 @SuppressWarnings("all")
 public class XContextGenerator extends AbstractGenerator {
+  private static final String CONFIGURATION = "configuration";
+  
   /**
    * @htson Automatically compile to Rodin files
    */
@@ -74,6 +80,12 @@ public class XContextGenerator extends AbstractGenerator {
         public void doExecute() {
           rodinResource.getContents().clear();
           rodinResource.getContents().add(0, ctx);
+          final Annotation rodinInternals = CoreFactory.eINSTANCE.createAnnotation();
+          rodinInternals.setSource(PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION);
+          final EMap<String, String> rodinInternalDetails = rodinInternals.getDetails();
+          rodinInternalDetails.put(XContextGenerator.CONFIGURATION, 
+            "org.eventb.core.fwd;ac.soton.xeventb.xcontext.base");
+          ctx.getAnnotations().add(rodinInternals);
           rodinResource.setModified(true);
         }
       };

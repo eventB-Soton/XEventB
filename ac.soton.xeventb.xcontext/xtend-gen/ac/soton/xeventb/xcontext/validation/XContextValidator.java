@@ -339,6 +339,10 @@ public class XContextValidator extends AbstractXContextValidator {
       if (_equals_2) {
         return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
+      boolean _equals_3 = Objects.equal(id, "org.eventb.core.predicate");
+      if (_equals_3) {
+        return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE;
+      }
       return null;
     }
     return null;

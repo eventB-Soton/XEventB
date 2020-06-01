@@ -291,6 +291,8 @@ class XContextValidator extends AbstractXContextValidator {
 			// "Identifier" for variables will be "name"
 			if (id == "org.eventb.core.label")
 				return CorePackage.Literals.EVENT_BNAMED__NAME
+			if (id == "org.eventb.core.predicate")
+				return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE
 			return null
 		}
 		return null

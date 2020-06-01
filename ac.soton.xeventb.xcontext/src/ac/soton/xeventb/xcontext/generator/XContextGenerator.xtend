@@ -29,9 +29,11 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eventb.emf.core.CoreFactory
 import org.eventb.emf.core.CorePackage
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.persistence.EMFRodinDB
+import org.eventb.emf.persistence.PersistencePlugin
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
 
@@ -45,6 +47,9 @@ import org.rodinp.core.RodinCore
  * @since 0.1
  */
 class XContextGenerator extends AbstractGenerator {
+
+	// htson: (2.0) This is the key for Rodin Machine configuration 
+	val static CONFIGURATION = "configuration";
 
 	/* @htson Automatically compile to Rodin files */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
@@ -64,6 +69,13 @@ class XContextGenerator extends AbstractGenerator {
 			override doExecute() {
 				rodinResource.contents.clear()
 				rodinResource.contents.add(0, ctx)
+				val rodinInternals = CoreFactory.eINSTANCE.createAnnotation()
+				rodinInternals.source = PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION
+				val rodinInternalDetails = rodinInternals.getDetails()
+				rodinInternalDetails.put(CONFIGURATION,
+					"org.eventb.core.fwd;ac.soton.xeventb.xcontext.base"
+				)
+				ctx.getAnnotations().add(rodinInternals)
 				 // Ensure that the resource will be saved
 				rodinResource.modified = true;
 			}
