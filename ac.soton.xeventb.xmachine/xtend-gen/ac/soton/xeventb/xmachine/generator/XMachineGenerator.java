@@ -47,11 +47,16 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Annotation;
 import org.eventb.emf.core.CoreFactory;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBAction;
+import org.eventb.emf.core.EventBExpression;
+import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
+import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -101,6 +106,7 @@ public class XMachineGenerator extends AbstractGenerator {
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
       }
+      this.translateFormulae(mch);
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -202,5 +208,89 @@ public class XMachineGenerator extends AbstractGenerator {
       _elvis = null;
     }
     return _elvis;
+  }
+  
+  /**
+   * Utility method to translate formulae in the input machine to Event-B
+   * mathematics.
+   * 
+   * @param mch
+   * 		The input machine
+   * @author htson
+   * @since 2.0
+   */
+  private void translateFormulae(final Machine mch) {
+    final EList<EObject> predElements = mch.getAllContained(
+      CorePackage.Literals.EVENT_BPREDICATE, false);
+    this.translatePredicates(predElements);
+    final EList<EObject> exprElements = mch.getAllContained(
+      CorePackage.Literals.EVENT_BEXPRESSION, false);
+    this.translatePredicates(exprElements);
+    final EList<EObject> asgnElements = mch.getAllContained(
+      CorePackage.Literals.EVENT_BACTION, false);
+    this.translatePredicates(asgnElements);
+  }
+  
+  /**
+   * Utility method to translate the list of predicates to Event-B mathematics.
+   * 
+   * @param predElements
+   * 		A list of predicate elements
+   * @author htson
+   * @since 2.0
+   */
+  private void translatePredicates(final EList<EObject> predElements) {
+    for (final EObject predElement : predElements) {
+      if ((predElement instanceof EventBPredicate)) {
+        final String predicate = ((EventBPredicate)predElement).getPredicate();
+        final String translated = RodinKeyboardCore.translate(predicate);
+        boolean _notEquals = (!Objects.equal(translated, predicate));
+        if (_notEquals) {
+          ((EventBPredicate)predElement).setPredicate(translated);
+        }
+      }
+    }
+  }
+  
+  /**
+   * Utility method to translate the list of expressions to Event-B mathematics.
+   * 
+   * @param exprElements
+   * 		A list of expression elements
+   * @author htson
+   * @since 2.0
+   */
+  private void translateExpressions(final EList<EObject> exprElements) {
+    for (final EObject exprElement : exprElements) {
+      if ((exprElement instanceof EventBExpression)) {
+        final String expression = ((EventBExpression)exprElement).getExpression();
+        final String translated = RodinKeyboardCore.translate(expression);
+        boolean _notEquals = (!Objects.equal(translated, expression));
+        if (_notEquals) {
+          ((EventBExpression)exprElement).setExpression(translated);
+        }
+      }
+    }
+  }
+  
+  /**
+   * Utility method to translate the list of assignments to Event-B mathematics.
+   * 
+   * @param asgnElements
+   * 		A list of assignment elements
+   * @author htson
+   * @since 2.0
+   */
+  private void translateAssignments(final EList<EObject> asgnElements) {
+    for (final EObject asgnElement : asgnElements) {
+      if ((asgnElement instanceof EventBAction)) {
+        final String expression = ((EventBAction)asgnElement).getAction();
+        final String translated = RodinKeyboardCore.translate(expression);
+        boolean _notEquals = (!Objects.equal(translated, expression));
+        if (_notEquals) {
+          ((EventBAction)asgnElement).setAction(translated);
+        }
+      }
+    }
   }
 }
