@@ -341,7 +341,9 @@ class XMachineValidator extends AbstractXMachineValidator {
 		// htson: This clear all markers associated with the XMachine file.
 		// We probably should register a new marker type and clear only those.
 		val uri = mch.eResource.URI
-		val resource = ResourcesPlugin.workspace.root.getFile(new Path(uri.toPlatformString(true)))
+		val resource = ResourcesPlugin.workspace.root.getFile(
+			new Path(uri.toPlatformString(true))
+		)
 		val markers = resource.findMarkers(null, true,
 				IResource.DEPTH_INFINITE);
 		for (marker : markers)
