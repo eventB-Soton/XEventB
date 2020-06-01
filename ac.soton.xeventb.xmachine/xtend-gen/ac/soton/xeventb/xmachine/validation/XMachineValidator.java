@@ -552,7 +552,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if (_notEquals) {
       this.warning(("Untranslated Predicate: " + predicate), obj, 
         CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
-        IValidationIssueCode.UNTRANSLATE_PREDICATE, predicate, translated);
+        IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
     }
   }
   
@@ -576,7 +576,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if (_notEquals) {
       this.warning(("Untranslated Expression: " + expression), obj, 
         CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION, 
-        IValidationIssueCode.UNTRANSLATE_EXPRESSION, expression, translated);
+        IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated);
     }
   }
   
@@ -600,7 +600,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if (_notEquals) {
       this.warning(("Untranslated Assignment: " + action), obj, 
         CorePackage.Literals.EVENT_BACTION__ACTION, 
-        IValidationIssueCode.UNTRANSLATE_ASSIGNMENT, action, translated);
+        IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated);
     }
   }
 }

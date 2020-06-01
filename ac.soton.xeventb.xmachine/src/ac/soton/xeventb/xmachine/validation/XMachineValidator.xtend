@@ -472,7 +472,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 		if (predicate != translated)
 			warning("Untranslated Predicate: " + predicate, obj,
 				CorePackage.Literals.EVENT_BPREDICATE__PREDICATE,
-				IValidationIssueCode.UNTRANSLATE_PREDICATE, predicate, translated
+				IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated
 			)
 	}
 
@@ -495,7 +495,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 		if (expression != translated)
 			warning("Untranslated Expression: " + expression, obj,
 				CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION,
-				IValidationIssueCode.UNTRANSLATE_EXPRESSION, expression, translated
+				IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated
 			)
 	}
 
@@ -518,7 +518,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 		if (action != translated)
 			warning("Untranslated Assignment: " + action, obj,
 				CorePackage.Literals.EVENT_BACTION__ACTION,
-				IValidationIssueCode.UNTRANSLATE_ASSIGNMENT, action, translated
+				IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated
 			)
 	}
 

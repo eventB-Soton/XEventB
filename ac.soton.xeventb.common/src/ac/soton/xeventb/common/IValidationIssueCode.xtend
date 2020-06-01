@@ -16,7 +16,7 @@ package ac.soton.xeventb.common
 
 /**
  * <p>
- * This interface provides validation issue codes/  
+ * This interface provides validation issue codes 
  * </p>
  * <p>
  * This interface is not intended to implement by clients.
@@ -31,16 +31,16 @@ interface IValidationIssueCode {
 	/**
 	 * Issue code for Untranslated predicates.
 	 */
-	val public String UNTRANSLATE_PREDICATE = "ac.soton.xeventb.quickfix.UntranslatedPredicate";
+	val public String UNTRANSLATED_PREDICATE = "ac.soton.xeventb.quickfix.UntranslatedPredicate";
 
 	/**
 	 * Issue code for Untranslated expressions.
 	 */
-	val public String UNTRANSLATE_EXPRESSION = "ac.soton.xeventb.quickfix.UntranslatedExpression";
+	val public String UNTRANSLATED_EXPRESSION = "ac.soton.xeventb.quickfix.UntranslatedExpression";
 
 	/**
 	 * Issue code for Untranslated assignments.
 	 */
-	val public String UNTRANSLATE_ASSIGNMENT = "ac.soton.xeventb.quickfix.UntranslatedAssignment";
+	val public String UNTRANSLATED_ASSIGNMENT = "ac.soton.xeventb.quickfix.UntranslatedAssignment";
 	
 }
