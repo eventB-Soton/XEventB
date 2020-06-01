@@ -504,6 +504,14 @@ ruleXFormula returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 		{
 			newLeafNode(this_INT_4, grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_4());
 		}
+		    |
+		this_UNTRANSLATED_TOKEN_5=RULE_UNTRANSLATED_TOKEN
+		{
+			$current.merge(this_UNTRANSLATED_TOKEN_5);
+		}
+		{
+			newLeafNode(this_UNTRANSLATED_TOKEN_5, grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5());
+		}
 	)+
 ;
 
@@ -1423,6 +1431,8 @@ ruleMultiplicity returns [Enumerator current=null]
 RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9'|'\'')*;
+
+RULE_UNTRANSLATED_TOKEN : ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 RULE_STRING : '"' ('\\' .|~(('\\'|'"')))* '"';
 

@@ -59,7 +59,8 @@ XFormula returns ecore::EString:
 		EVENTB_PREDICATE_SYMBOLS |
 		EVENTB_EXPRESSION_SYMBOLS |
 		ID |
-		INT
+		INT |
+		UNTRANSLATED_TOKEN
 	)+ 
 ;
 
@@ -166,6 +167,9 @@ EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
 
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9' | "'")*;
+
+// This to allow untranslated mathematical symbols in XFormula
+terminal UNTRANSLATED_TOKEN: ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 @Override 
 terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';
