@@ -696,15 +696,21 @@ rule__XFormula__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_3()); }
-		RULE_ID
-		{ after(grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_3()); }
+		{ before(grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_3()); }
+		RULE_INT
+		{ after(grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_3()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_4()); }
-		RULE_INT
-		{ after(grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_4()); }
+		{ before(grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_4()); }
+		RULE_ID
+		{ after(grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5()); }
+		RULE_UNTRANSLATED_TOKEN
+		{ after(grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5()); }
 	)
 ;
 finally {
@@ -5544,6 +5550,8 @@ finally {
 RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9'|'\'')*;
+
+RULE_UNTRANSLATED_TOKEN : ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 RULE_STRING : '"' ('\\' .|~(('\\'|'"')))* '"';
 

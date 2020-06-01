@@ -1449,20 +1449,28 @@ ruleXFormula returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken(
 			afterParserOrEnumRuleCall();
 		}
 		    |
-		this_ID_3=RULE_ID
+		this_INT_3=RULE_INT
 		{
-			$current.merge(this_ID_3);
+			$current.merge(this_INT_3);
 		}
 		{
-			newLeafNode(this_ID_3, grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_3());
+			newLeafNode(this_INT_3, grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_3());
 		}
 		    |
-		this_INT_4=RULE_INT
+		this_ID_4=RULE_ID
 		{
-			$current.merge(this_INT_4);
+			$current.merge(this_ID_4);
 		}
 		{
-			newLeafNode(this_INT_4, grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_4());
+			newLeafNode(this_ID_4, grammarAccess.getXFormulaAccess().getIDTerminalRuleCall_4());
+		}
+		    |
+		this_UNTRANSLATED_TOKEN_5=RULE_UNTRANSLATED_TOKEN
+		{
+			$current.merge(this_UNTRANSLATED_TOKEN_5);
+		}
+		{
+			newLeafNode(this_UNTRANSLATED_TOKEN_5, grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5());
 		}
 	)+
 ;
@@ -2418,6 +2426,8 @@ ruleMultiplicity returns [Enumerator current=null]
 RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9'|'\'')*;
+
+RULE_UNTRANSLATED_TOKEN : ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 RULE_STRING : '"' ('\\' .|~(('\\'|'"')))* '"';
 

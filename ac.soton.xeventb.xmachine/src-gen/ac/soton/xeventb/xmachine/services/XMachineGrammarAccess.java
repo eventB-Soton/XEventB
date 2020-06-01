@@ -855,14 +855,15 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEVENTB_IDENTIFIER_KEYWORDParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cEVENTB_PREDICATE_SYMBOLSParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cEVENTB_EXPRESSION_SYMBOLSParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cIDTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
-		private final RuleCall cINTTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cINTTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cIDTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
+		private final RuleCall cUNTRANSLATED_TOKENTerminalRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//XFormula:
-		//	(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | ID | INT)+;
+		//	(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | INT | ID | UNTRANSLATED_TOKEN)+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | ID | INT)+
+		//(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | INT | ID | UNTRANSLATED_TOKEN)+
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//EVENTB_IDENTIFIER_KEYWORD
@@ -874,11 +875,14 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		//EVENTB_EXPRESSION_SYMBOLS
 		public RuleCall getEVENTB_EXPRESSION_SYMBOLSParserRuleCall_2() { return cEVENTB_EXPRESSION_SYMBOLSParserRuleCall_2; }
 		
-		//ID
-		public RuleCall getIDTerminalRuleCall_3() { return cIDTerminalRuleCall_3; }
-		
 		//INT
-		public RuleCall getINTTerminalRuleCall_4() { return cINTTerminalRuleCall_4; }
+		public RuleCall getINTTerminalRuleCall_3() { return cINTTerminalRuleCall_3; }
+		
+		//ID
+		public RuleCall getIDTerminalRuleCall_4() { return cIDTerminalRuleCall_4; }
+		
+		//UNTRANSLATED_TOKEN
+		public RuleCall getUNTRANSLATED_TOKENTerminalRuleCall_5() { return cUNTRANSLATED_TOKENTerminalRuleCall_5; }
 	}
 	public class EVENTB_IDENTIFIER_KEYWORDElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.EVENTB_IDENTIFIER_KEYWORD");
@@ -1646,6 +1650,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	private final EVENTB_PREDICATE_SYMBOLSElements pEVENTB_PREDICATE_SYMBOLS;
 	private final EVENTB_EXPRESSION_SYMBOLSElements pEVENTB_EXPRESSION_SYMBOLS;
 	private final TerminalRule tID;
+	private final TerminalRule tUNTRANSLATED_TOKEN;
 	private final TerminalRule tSTRING;
 	private final RecordElements pRecord;
 	private final FieldTypeElements pFieldType;
@@ -1681,6 +1686,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 		this.pEVENTB_PREDICATE_SYMBOLS = new EVENTB_PREDICATE_SYMBOLSElements();
 		this.pEVENTB_EXPRESSION_SYMBOLS = new EVENTB_EXPRESSION_SYMBOLSElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
+		this.tUNTRANSLATED_TOKEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.UNTRANSLATED_TOKEN");
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.STRING");
 		this.pRecord = new RecordElements();
 		this.pFieldType = new FieldTypeElements();
@@ -1878,7 +1884,7 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//XFormula:
-	//	(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | ID | INT)+;
+	//	(EVENTB_IDENTIFIER_KEYWORD | EVENTB_PREDICATE_SYMBOLS | EVENTB_EXPRESSION_SYMBOLS | INT | ID | UNTRANSLATED_TOKEN)+;
 	public XFormulaElements getXFormulaAccess() {
 		return pXFormula;
 	}
@@ -2012,6 +2018,12 @@ public class XMachineGrammarAccess extends AbstractGrammarElementFinder {
 	//	'^'? ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ') ('a'..'z' | 'A'..'Z' | '_' | 'i'..'ￜ' | '0'..'9' | "'")*;
 	public TerminalRule getIDRule() {
 		return tID;
+	}
+	
+	//terminal UNTRANSLATED_TOKEN:
+	//	'!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\' | ',' | '~' | '/' | '.'+;
+	public TerminalRule getUNTRANSLATED_TOKENRule() {
+		return tUNTRANSLATED_TOKEN;
 	}
 	
 	//@Override
