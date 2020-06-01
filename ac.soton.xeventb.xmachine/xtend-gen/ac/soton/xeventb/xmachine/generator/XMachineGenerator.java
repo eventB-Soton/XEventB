@@ -16,6 +16,7 @@ package ac.soton.xeventb.xmachine.generator;
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.emf.containment.Containment;
 import ac.soton.eventb.emf.diagrams.Diagram;
+import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
 import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
 import com.google.common.base.Objects;
@@ -48,15 +49,11 @@ import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Annotation;
 import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBAction;
-import org.eventb.emf.core.EventBExpression;
-import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -222,75 +219,12 @@ public class XMachineGenerator extends AbstractGenerator {
   private void translateFormulae(final Machine mch) {
     final EList<EObject> predElements = mch.getAllContained(
       CorePackage.Literals.EVENT_BPREDICATE, false);
-    this.translatePredicates(predElements);
+    Utils.translatePredicates(predElements);
     final EList<EObject> exprElements = mch.getAllContained(
       CorePackage.Literals.EVENT_BEXPRESSION, false);
-    this.translatePredicates(exprElements);
+    Utils.translatePredicates(exprElements);
     final EList<EObject> asgnElements = mch.getAllContained(
       CorePackage.Literals.EVENT_BACTION, false);
-    this.translatePredicates(asgnElements);
-  }
-  
-  /**
-   * Utility method to translate the list of predicates to Event-B mathematics.
-   * 
-   * @param predElements
-   * 		A list of predicate elements
-   * @author htson
-   * @since 2.0
-   */
-  private void translatePredicates(final EList<EObject> predElements) {
-    for (final EObject predElement : predElements) {
-      if ((predElement instanceof EventBPredicate)) {
-        final String predicate = ((EventBPredicate)predElement).getPredicate();
-        final String translated = RodinKeyboardCore.translate(predicate);
-        boolean _notEquals = (!Objects.equal(translated, predicate));
-        if (_notEquals) {
-          ((EventBPredicate)predElement).setPredicate(translated);
-        }
-      }
-    }
-  }
-  
-  /**
-   * Utility method to translate the list of expressions to Event-B mathematics.
-   * 
-   * @param exprElements
-   * 		A list of expression elements
-   * @author htson
-   * @since 2.0
-   */
-  private void translateExpressions(final EList<EObject> exprElements) {
-    for (final EObject exprElement : exprElements) {
-      if ((exprElement instanceof EventBExpression)) {
-        final String expression = ((EventBExpression)exprElement).getExpression();
-        final String translated = RodinKeyboardCore.translate(expression);
-        boolean _notEquals = (!Objects.equal(translated, expression));
-        if (_notEquals) {
-          ((EventBExpression)exprElement).setExpression(translated);
-        }
-      }
-    }
-  }
-  
-  /**
-   * Utility method to translate the list of assignments to Event-B mathematics.
-   * 
-   * @param asgnElements
-   * 		A list of assignment elements
-   * @author htson
-   * @since 2.0
-   */
-  private void translateAssignments(final EList<EObject> asgnElements) {
-    for (final EObject asgnElement : asgnElements) {
-      if ((asgnElement instanceof EventBAction)) {
-        final String expression = ((EventBAction)asgnElement).getAction();
-        final String translated = RodinKeyboardCore.translate(expression);
-        boolean _notEquals = (!Objects.equal(translated, expression));
-        if (_notEquals) {
-          ((EventBAction)asgnElement).setAction(translated);
-        }
-      }
-    }
+    Utils.translatePredicates(asgnElements);
   }
 }

@@ -16,6 +16,7 @@ package ac.soton.xeventb.xmachine.generator
 
 import ac.soton.emf.translator.TranslatorFactory
 import ac.soton.eventb.emf.containment.Containment
+import ac.soton.xeventb.common.Utils
 import ac.soton.xeventb.xmachine.IContainmentGenerator
 import java.util.Collection
 import org.eclipse.core.commands.ExecutionException
@@ -28,9 +29,7 @@ import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Status
 import org.eclipse.core.runtime.jobs.ISchedulingRule
-import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.transaction.RecordingCommand
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
@@ -39,15 +38,11 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eventb.emf.core.CoreFactory
 import org.eventb.emf.core.CorePackage
-import org.eventb.emf.core.EventBAction
-import org.eventb.emf.core.EventBExpression
-import org.eventb.emf.core.EventBPredicate
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.persistence.EMFRodinDB
 import org.eventb.emf.persistence.PersistencePlugin
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
-import org.rodinp.keyboard.core.RodinKeyboardCore
 
 /**
  * <p>
@@ -203,79 +198,19 @@ class XMachineGenerator extends AbstractGenerator {
 		val predElements = mch.getAllContained(
 			CorePackage.Literals.EVENT_BPREDICATE, false
 		)
-		translatePredicates(predElements)
+		Utils.translatePredicates(predElements)
 
 		// Translate all expressions
 		val exprElements = mch.getAllContained(
 			CorePackage.Literals.EVENT_BEXPRESSION, false
 		)
-		translatePredicates(exprElements)
+		Utils.translatePredicates(exprElements)
 
 		// Translate all assignments
 		val asgnElements = mch.getAllContained(
 			CorePackage.Literals.EVENT_BACTION, false
 		)
-		translatePredicates(asgnElements)
+		Utils.translatePredicates(asgnElements)
 	}
 	
-	/**
-	 * Utility method to translate the list of predicates to Event-B mathematics.
-	 * 
-	 * @param predElements
-	 * 		A list of predicate elements
-	 * @author htson
-	 * @since 2.0
-	 */
-	def private translatePredicates(EList<EObject> predElements) {
-		for (predElement : predElements) {
-			if (predElement instanceof EventBPredicate) {
-				val predicate = predElement.predicate
-				val translated = RodinKeyboardCore.translate(predicate)
-				if (translated != predicate) {
-					predElement.predicate = translated
-				}
-			}
-		}		
-	}
-
-	/**
-	 * Utility method to translate the list of expressions to Event-B mathematics.
-	 * 
-	 * @param exprElements
-	 * 		A list of expression elements
-	 * @author htson
-	 * @since 2.0
-	 */
-	def private translateExpressions(EList<EObject> exprElements) {
-		for (exprElement : exprElements) {
-			if (exprElement instanceof EventBExpression) {
-				val expression = exprElement.expression
-				val translated = RodinKeyboardCore.translate(expression)
-				if (translated != expression) {
-					exprElement.expression = translated
-				}
-			}
-		}		
-	}
-
-	/**
-	 * Utility method to translate the list of assignments to Event-B mathematics.
-	 * 
-	 * @param asgnElements
-	 * 		A list of assignment elements
-	 * @author htson
-	 * @since 2.0
-	 */
-	def private translateAssignments(EList<EObject> asgnElements) {
-		for (asgnElement : asgnElements) {
-			if (asgnElement instanceof EventBAction) {
-				val expression = asgnElement.action
-				val translated = RodinKeyboardCore.translate(expression)
-				if (translated != expression) {
-					asgnElement.action = translated
-				}
-			}
-		}		
-	}
-
 }
