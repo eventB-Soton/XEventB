@@ -31,6 +31,7 @@ import org.eventb.core.IInvariant
 import org.eventb.core.IMachineRoot
 import org.eventb.core.IParameter
 import org.eventb.core.IVariable
+import org.eventb.emf.core.CorePackage
 import org.eventb.emf.core.machine.Action
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Guard
@@ -42,6 +43,11 @@ import org.eventb.emf.persistence.EventBEMFUtils
 import org.rodinp.core.IAttributeType
 import org.rodinp.core.IRodinElement
 import org.rodinp.core.RodinMarkerUtil
+import org.rodinp.keyboard.core.RodinKeyboardCore
+import org.eventb.emf.core.EventBPredicate
+import org.eventb.emf.core.EventBAction
+import ac.soton.xeventb.common.IValidationIssueCode
+import org.eventb.emf.core.EventBExpression
 
 /**
  * <p>
@@ -134,7 +140,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 	}
 
 	/**
-	 * Empty array of markers
+	 * Empty array of markers.
 	 * 
 	 * @since 2.0
 	 */
@@ -179,7 +185,7 @@ class XMachineValidator extends AbstractXMachineValidator {
 	 */
 	// TODO This is probably incomplete
 	def private EStructuralFeature getFeature(EObject obj,
-		IAttributeType attributeType
+		IAttributeType attributeType // This is the Rodin Attribute Type
 	) {
 	 	// TODO Colin: Is there a better way to do this
 		if (attributeType === null)
@@ -188,7 +194,8 @@ class XMachineValidator extends AbstractXMachineValidator {
 		if (obj instanceof Variable) {
 			// "Identifier" for variables will be "name"
 			if (id == "org.eventb.core.identifier")
-				return getFeature(obj, "name")
+			return CorePackage.Literals.EVENT_BNAMED__NAME
+				//return getFeature(obj, CorePackage.Literals."name")
 			return null
 		}
 		if (obj instanceof Invariant) {
@@ -444,6 +451,75 @@ class XMachineValidator extends AbstractXMachineValidator {
 				return action
 		}
 		return null		
+	}
+
+	/**
+	 * Check for untranslated predicates by comparing the translated string
+	 * with the predicate. Raise a warning with code
+	 * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
+	 * providing quick fixes.
+	 * 
+	 * @param obj 
+	 * 		an Event-B predicate EObject.
+	 * @author htson
+	 * @see IValidationIssueCode
+	 * @since 2.0
+	 */
+	@Check
+	def untranslatedPredicate(EventBPredicate obj) {
+		val predicate = obj.predicate
+		val translated = RodinKeyboardCore.translate(predicate)
+		if (predicate != translated)
+			warning("Untranslated Predicate: " + predicate, obj,
+				CorePackage.Literals.EVENT_BPREDICATE__PREDICATE,
+				IValidationIssueCode.UNTRANSLATE_PREDICATE, predicate, translated
+			)
+	}
+
+	/**
+	 * Check for untranslated expressions by comparing the translated string
+	 * with the expression. Raise a warning with code
+	 * {@link IValidationIssueCode#UNTRANSLATE_EXPRESSION}. The code is used for
+	 * providing quick fixes.
+	 * 
+	 * @param obj 
+	 * 		an Event-B expression EObject.
+	 * @author htson
+	 * @see IValidationIssueCode
+	 * @since 2.0
+	 */
+	@Check
+	def untranslatedExpression(EventBExpression obj) {
+		val expression = obj.expression
+		val translated = RodinKeyboardCore.translate(expression)
+		if (expression != translated)
+			warning("Untranslated Expression: " + expression, obj,
+				CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION,
+				IValidationIssueCode.UNTRANSLATE_EXPRESSION, expression, translated
+			)
+	}
+
+	/**
+	 * Check for untranslated assignments by comparing the translated string
+	 * with the assignment. Raise a warning with code
+	 * {@link IValidationIssueCode#UNTRANSLATE_ASSIGNMENT}. The code is used for
+	 * providing quick fixes.
+	 * 
+	 * @param obj 
+	 * 		an Event-B action EObject.
+	 * @author htson
+	 * @see IValidationIssueCode
+	 * @since 2.0
+	 */
+	@Check
+	def untranslatedAssignment(EventBAction obj) {
+		val action = obj.action
+		val translated = RodinKeyboardCore.translate(action)
+		if (action != translated)
+			warning("Untranslated Assignment: " + action, obj,
+				CorePackage.Literals.EVENT_BACTION__ACTION,
+				IValidationIssueCode.UNTRANSLATE_ASSIGNMENT, action, translated
+			)
 	}
 
 }

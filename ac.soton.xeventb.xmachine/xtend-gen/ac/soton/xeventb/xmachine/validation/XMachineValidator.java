@@ -15,6 +15,7 @@ package ac.soton.xeventb.xmachine.validation;
 
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
+import ac.soton.xeventb.common.IValidationIssueCode;
 import ac.soton.xeventb.xmachine.validation.AbstractXMachineValidator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
@@ -43,6 +44,10 @@ import org.eventb.core.IMachineRoot;
 import org.eventb.core.IParameter;
 import org.eventb.core.IVariable;
 import org.eventb.emf.core.AbstractExtension;
+import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBAction;
+import org.eventb.emf.core.EventBExpression;
+import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
@@ -54,6 +59,7 @@ import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinMarkerUtil;
+import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -163,7 +169,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
   }
   
   /**
-   * Empty array of markers
+   * Empty array of markers.
    * 
    * @since 2.0
    */
@@ -215,7 +221,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if ((obj instanceof Variable)) {
       boolean _equals = Objects.equal(id, "org.eventb.core.identifier");
       if (_equals) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       return null;
     }
@@ -524,5 +530,77 @@ public class XMachineValidator extends AbstractXMachineValidator {
       }
     }
     return null;
+  }
+  
+  /**
+   * Check for untranslated predicates by comparing the translated string
+   * with the predicate. Raise a warning with code
+   * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
+   * providing quick fixes.
+   * 
+   * @param obj
+   * 		an Event-B predicate EObject.
+   * @author htson
+   * @see IValidationIssueCode
+   * @since 2.0
+   */
+  @Check
+  public void untranslatedPredicate(final EventBPredicate obj) {
+    final String predicate = obj.getPredicate();
+    final String translated = RodinKeyboardCore.translate(predicate);
+    boolean _notEquals = (!Objects.equal(predicate, translated));
+    if (_notEquals) {
+      this.warning(("Untranslated Predicate: " + predicate), obj, 
+        CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
+        IValidationIssueCode.UNTRANSLATE_PREDICATE, predicate, translated);
+    }
+  }
+  
+  /**
+   * Check for untranslated expressions by comparing the translated string
+   * with the expression. Raise a warning with code
+   * {@link IValidationIssueCode#UNTRANSLATE_EXPRESSION}. The code is used for
+   * providing quick fixes.
+   * 
+   * @param obj
+   * 		an Event-B expression EObject.
+   * @author htson
+   * @see IValidationIssueCode
+   * @since 2.0
+   */
+  @Check
+  public void untranslatedExpression(final EventBExpression obj) {
+    final String expression = obj.getExpression();
+    final String translated = RodinKeyboardCore.translate(expression);
+    boolean _notEquals = (!Objects.equal(expression, translated));
+    if (_notEquals) {
+      this.warning(("Untranslated Expression: " + expression), obj, 
+        CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION, 
+        IValidationIssueCode.UNTRANSLATE_EXPRESSION, expression, translated);
+    }
+  }
+  
+  /**
+   * Check for untranslated assignments by comparing the translated string
+   * with the assignment. Raise a warning with code
+   * {@link IValidationIssueCode#UNTRANSLATE_ASSIGNMENT}. The code is used for
+   * providing quick fixes.
+   * 
+   * @param obj
+   * 		an Event-B action EObject.
+   * @author htson
+   * @see IValidationIssueCode
+   * @since 2.0
+   */
+  @Check
+  public void untranslatedAssignment(final EventBAction obj) {
+    final String action = obj.getAction();
+    final String translated = RodinKeyboardCore.translate(action);
+    boolean _notEquals = (!Objects.equal(action, translated));
+    if (_notEquals) {
+      this.warning(("Untranslated Assignment: " + action), obj, 
+        CorePackage.Literals.EVENT_BACTION__ACTION, 
+        IValidationIssueCode.UNTRANSLATE_ASSIGNMENT, action, translated);
+    }
   }
 }
