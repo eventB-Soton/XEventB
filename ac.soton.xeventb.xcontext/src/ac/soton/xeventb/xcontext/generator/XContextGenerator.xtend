@@ -11,6 +11,7 @@
 package ac.soton.xeventb.xcontext.generator
 
 import ac.soton.emf.translator.TranslatorFactory
+import ac.soton.xeventb.common.Utils
 import org.eclipse.core.commands.ExecutionException
 import org.eclipse.core.resources.IProject
 import org.eclipse.core.resources.IWorkspaceRunnable
@@ -28,6 +29,7 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eventb.emf.core.CorePackage
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.persistence.EMFRodinDB
 import org.eventb.emf.persistence.SaveResourcesCommand
@@ -70,6 +72,9 @@ class XContextGenerator extends AbstractGenerator {
 			editingDomain.getCommandStack().execute(command);
 		}
 		
+		// Translated formulae
+		translateFormulae(ctx)
+
 		val factory = TranslatorFactory.getFactory() as TranslatorFactory
 			
 		//records
@@ -128,5 +133,22 @@ class XContextGenerator extends AbstractGenerator {
 		return file?.getProject()?:null;
 	}
 	
+	
+	/**
+	 * Utility method to translate formulae in the input context to Event-B
+	 * mathematics.
+	 * 
+	 * @param ctx
+	 * 		The input context
+	 * @author htson
+	 * @since 2.0
+	 */
+	def private translateFormulae(Context ctx) {
+		// Translate all predicates
+		val predElements = ctx.getAllContained(
+			CorePackage.Literals.EVENT_BPREDICATE, false
+		)
+		Utils.translatePredicates(predElements)
+	}
 	
 }

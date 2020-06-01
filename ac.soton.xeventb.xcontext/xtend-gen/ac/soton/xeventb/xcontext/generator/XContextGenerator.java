@@ -11,6 +11,7 @@
 package ac.soton.xeventb.xcontext.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
+import ac.soton.xeventb.common.Utils;
 import com.google.common.base.Objects;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -23,6 +24,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -34,6 +36,7 @@ import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.SaveResourcesCommand;
@@ -78,6 +81,7 @@ public class XContextGenerator extends AbstractGenerator {
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
       }
+      this.translateFormulae(ctx);
       TranslatorFactory _factory = TranslatorFactory.getFactory();
       final TranslatorFactory factory = ((TranslatorFactory) _factory);
       String recordCommandId = "ac.soton.eventb.records.commands.record";
@@ -157,5 +161,20 @@ public class XContextGenerator extends AbstractGenerator {
       _elvis = null;
     }
     return _elvis;
+  }
+  
+  /**
+   * Utility method to translate formulae in the input context to Event-B
+   * mathematics.
+   * 
+   * @param ctx
+   * 		The input context
+   * @author htson
+   * @since 2.0
+   */
+  private void translateFormulae(final Context ctx) {
+    final EList<EObject> predElements = ctx.getAllContained(
+      CorePackage.Literals.EVENT_BPREDICATE, false);
+    Utils.translatePredicates(predElements);
   }
 }
