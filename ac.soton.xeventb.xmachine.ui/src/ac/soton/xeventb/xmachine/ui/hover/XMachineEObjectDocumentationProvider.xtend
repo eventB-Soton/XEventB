@@ -182,12 +182,13 @@ class XMachineEObjectDocumentationProvider implements IEObjectDocumentationProvi
 		val witnesses = evt.witnesses
 		if (!witnesses.isEmpty()) {
 			result.append(keyword("with"))
+			result.append("<br>")
 			for (wit : evt.witnesses) {
 				result.append(TAB)
 				result.append(label(wit.name))
 				result.append(SPACE)
 				result.append(formula(wit.predicate))
-				if (wit.comment !== null || "" != wit.comment) {
+				if (wit.comment !== null && "" != wit.comment) {
 					result.append(comment(wit.comment))
 				}
 				result.append("<br>")

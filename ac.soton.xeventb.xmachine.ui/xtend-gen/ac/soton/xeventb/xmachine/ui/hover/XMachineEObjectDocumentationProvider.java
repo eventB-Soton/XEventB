@@ -189,6 +189,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     boolean _not = (!_isEmpty);
     if (_not) {
       result.append(this.keyword("with"));
+      result.append("<br>");
       EList<Witness> _witnesses = evt.getWitnesses();
       for (final Witness wit : _witnesses) {
         {
@@ -196,7 +197,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
           result.append(this.label(wit.getName()));
           result.append(this.SPACE);
           result.append(this.formula(wit.getPredicate()));
-          if (((wit.getComment() != null) || (!Objects.equal("", wit.getComment())))) {
+          if (((wit.getComment() != null) && (!Objects.equal("", wit.getComment())))) {
             result.append(this.comment(wit.getComment()));
           }
           result.append("<br>");
