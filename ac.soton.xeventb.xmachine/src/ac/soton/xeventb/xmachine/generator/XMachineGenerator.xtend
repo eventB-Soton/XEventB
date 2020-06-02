@@ -204,13 +204,13 @@ class XMachineGenerator extends AbstractGenerator {
 		val exprElements = mch.getAllContained(
 			CorePackage.Literals.EVENT_BEXPRESSION, false
 		)
-		Utils.translatePredicates(exprElements)
+		Utils.translateExpressions(exprElements)
 
 		// Translate all assignments
 		val asgnElements = mch.getAllContained(
 			CorePackage.Literals.EVENT_BACTION, false
 		)
-		Utils.translatePredicates(asgnElements)
+		Utils.translateAssignments(asgnElements)
 	}
 	
 }

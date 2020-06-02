@@ -222,9 +222,9 @@ public class XMachineGenerator extends AbstractGenerator {
     Utils.translatePredicates(predElements);
     final EList<EObject> exprElements = mch.getAllContained(
       CorePackage.Literals.EVENT_BEXPRESSION, false);
-    Utils.translatePredicates(exprElements);
+    Utils.translateExpressions(exprElements);
     final EList<EObject> asgnElements = mch.getAllContained(
       CorePackage.Literals.EVENT_BACTION, false);
-    Utils.translatePredicates(asgnElements);
+    Utils.translateAssignments(asgnElements);
   }
 }
