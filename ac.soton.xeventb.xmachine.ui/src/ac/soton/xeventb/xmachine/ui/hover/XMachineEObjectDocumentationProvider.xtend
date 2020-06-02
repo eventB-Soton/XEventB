@@ -42,6 +42,8 @@ class XMachineEObjectDocumentationProvider implements IEObjectDocumentationProvi
 
 	// TAB space
 	val TAB = "&nbsp&nbsp&nbsp&nbsp" //$NON-NLS-1$
+	// SPACE
+	val SPACE = "&nbsp" //$NON-NLS-1$
 
 	// A dummy cancel indicator (used for resolve cross references
 	val cancelIndicator = new CancelIndicator() {
@@ -65,83 +67,134 @@ class XMachineEObjectDocumentationProvider implements IEObjectDocumentationProvi
 		return ""
 	}
 
+	def private String keyword(String keyword) {
+		return "<span style=\"color:blue\"><b>" + keyword + "</b></span>"
+	}
+
+	def private String inheritedFormula(String formula) {
+		return "<span style=\"color:grey\"><i>" + formula + "</i></span>"
+	}
+
+	def private String formula(String formula) {
+		return "<span style=\"color:black\">" + formula + "</span>"
+	}
+
+	def private String inheritedLabel(String label) {
+		return "<span style=\"color:grey\"><i>@" + label + ":</i></span>"
+	}
+
+	def private String label(String label) {
+		return "<span style=\"color:black\">@" + label + ":</span>"
+	}
+
+	def private String inheritedComment(String comment) {
+		return "<span style=\"color:grey\"><i>" + SPACE + "//" + SPACE +
+				comment + "</i></span>"
+	}
+
+	def private String comment(String comment) {
+		return "<span style=\"color:black\">" + SPACE + "//" + SPACE +
+				comment + "</span>"
+	}
+
 	/*
 	 * Pretty print event as HTML with inherited elements.
 	 */
 	def private prettyprint(Event evt, List<Parameter> inheritedPars,
 		List<Guard> inheritedGrds, List<Action> inheritedActs) {
 		var result = new StringBuffer
-		result.append("<b>any</b><br>")
+		result.append(keyword("any"))
+		result.append("<br>")
 		// Inherited parameters
 		for (par : inheritedPars) {
-			result.append(TAB + "<i>" + par.name)
+			result.append(TAB)
+			result.append(inheritedFormula(par.name))
 			if (par.comment === null || "" === par.comment) {
-				result.append(" // inherited element</i><br>")
+				result.append(inheritedComment("inherited element"))
 			} else {
-				result.append(" // " + par.comment + "</i><br>")
+				result.append(inheritedComment(par.comment))
 			}
+			result.append("<br>")
 		}
 		// Owned parameters
 		for (par : evt.parameters) {
-			result.append(TAB + par.name)
-			if (par.comment === null || "" === par.comment) {
-				result.append("<br>")
-			} else {
-				result.append(" // " + par.comment + "<br>")
+			result.append(TAB)
+			result.append(formula(par.name))
+			if (par.comment !== null && "" != par.comment) {
+				result.append(comment(par.comment))
 			}
-
+			result.append("<br>")
 		}
-		result.append("<b>where</b><br>")
+
+		result.append(keyword("where"))
+		result.append("<br>")
 		// Inherited guards
 		for (grd : inheritedGrds) {
-			result.append(TAB + "<i>@" + grd.name + ": " + grd.predicate)
+			result.append(TAB)
+			result.append(inheritedLabel(grd.name))
+			result.append(SPACE)
+			result.append(inheritedFormula(grd.predicate))
 			if (grd.comment === null || "" === grd.comment) {
-				result.append(" // inherited element</i><br>")
+				result.append(inheritedComment("inherited element"))
 			} else {
-				result.append(" // " + grd.comment + "</i><br>")
+				result.append(inheritedComment(grd.comment))
 			}
+			result.append("<br>")
 		}
 		// Owned guards
 		for (grd : evt.guards) {
-			result.append(TAB + "@" + grd.name + ": " + grd.predicate)
-			if (grd.comment === null || "" === grd.comment) {
-				result.append("<br>")
-			} else {
-				result.append(" // " + grd.comment + "<br>")
+			result.append(TAB)
+			result.append(label(grd.name))
+			result.append(SPACE)
+			result.append(formula(grd.predicate))
+			if (grd.comment !== null && "" != grd.comment) {
+				result.append(comment(grd.comment))
 			}
+			result.append("<br>")
 		}
-		result.append("<b>then</b><br>")
+
+		result.append(keyword("then"))
+		result.append("<br>")
 		// Inherited actions
 		for (act : inheritedActs) {
-			result.append(TAB + "<i>@" + act.name + ": " + act.action)
+			result.append(TAB)
+			result.append(inheritedLabel(act.name))
+			result.append(SPACE)
+			result.append(inheritedFormula(act.action))
 			if (act.comment === null || "" === act.comment) {
-				result.append(" // inherited element</i><br>")
+				result.append(inheritedComment("inherited element"))
 			} else {
-				result.append(" // " + act.comment + "</i><br>")
+				result.append(inheritedComment(act.comment))
 			}
+			result.append("<br>")
 		}
 		// Owned actions
 		for (act : evt.actions) {
-			result.append(TAB + "@" + act.name + ": " + act.action)
-			if (act.comment === null || "" === act.comment) {
-				result.append("<br>")
-			} else {
-				result.append(" // " + act.comment + "<br>")
+			result.append(TAB)
+			result.append(label(act.name))
+			result.append(SPACE)
+			result.append(formula(act.action))
+			if (act.comment !== null && "" != act.comment) {
+				result.append(comment(act.comment))
 			}
+			result.append("<br>")
 		}
 		val witnesses = evt.witnesses
 		if (!witnesses.isEmpty()) {
-			result.append("<b>with</b><br>")
+			result.append(keyword("with"))
 			for (wit : evt.witnesses) {
-				result.append(TAB + "@" + wit.name + ": " + wit.predicate)
-				if (wit.comment === null || "" === wit.comment) {
-					result.append("<br>")
-				} else {
-					result.append(" // " + wit.comment + "<br>")
+				result.append(TAB)
+				result.append(label(wit.name))
+				result.append(SPACE)
+				result.append(formula(wit.predicate))
+				if (wit.comment !== null || "" != wit.comment) {
+					result.append(comment(wit.comment))
 				}
+				result.append("<br>")
 			}
 		}
-		result.append("<b>end</b>")
+		result.append(keyword("end"))
+
 		return result.toString()
 	}
 

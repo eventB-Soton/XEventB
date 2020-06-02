@@ -14,6 +14,7 @@
 package ac.soton.xeventb.xmachine.ui.hover;
 
 import ac.soton.xeventb.xmachine.ui.XMachineUiModule;
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.core.runtime.NullProgressMonitor;
@@ -43,6 +44,8 @@ import org.eventb.emf.core.machine.Witness;
 public class XMachineEObjectDocumentationProvider implements IEObjectDocumentationProvider {
   private final String TAB = "&nbsp&nbsp&nbsp&nbsp";
   
+  private final String SPACE = "&nbsp";
+  
   private final CancelIndicator cancelIndicator = new CancelIndicator() {
     @Override
     public boolean isCanceled() {
@@ -65,145 +68,142 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     return "";
   }
   
+  private String keyword(final String keyword) {
+    return (("<span style=\"color:blue\"><b>" + keyword) + "</b></span>");
+  }
+  
+  private String inheritedFormula(final String formula) {
+    return (("<span style=\"color:grey\"><i>" + formula) + "</i></span>");
+  }
+  
+  private String formula(final String formula) {
+    return (("<span style=\"color:black\">" + formula) + "</span>");
+  }
+  
+  private String inheritedLabel(final String label) {
+    return (("<span style=\"color:grey\"><i>@" + label) + ":</i></span>");
+  }
+  
+  private String label(final String label) {
+    return (("<span style=\"color:black\">@" + label) + ":</span>");
+  }
+  
+  private String inheritedComment(final String comment) {
+    return ((((("<span style=\"color:grey\"><i>" + this.SPACE) + "//") + this.SPACE) + comment) + "</i></span>");
+  }
+  
+  private String comment(final String comment) {
+    return ((((("<span style=\"color:black\">" + this.SPACE) + "//") + this.SPACE) + comment) + "</span>");
+  }
+  
   /**
    * Pretty print event as HTML with inherited elements.
    */
   private String prettyprint(final Event evt, final List<Parameter> inheritedPars, final List<Guard> inheritedGrds, final List<Action> inheritedActs) {
     StringBuffer result = new StringBuffer();
-    result.append("<b>any</b><br>");
+    result.append(this.keyword("any"));
+    result.append("<br>");
     for (final Parameter par : inheritedPars) {
       {
-        String _name = par.getName();
-        String _plus = ((this.TAB + "<i>") + _name);
-        result.append(_plus);
+        result.append(this.TAB);
+        result.append(this.inheritedFormula(par.getName()));
         if (((par.getComment() == null) || ("" == par.getComment()))) {
-          result.append(" // inherited element</i><br>");
+          result.append(this.inheritedComment("inherited element"));
         } else {
-          String _comment = par.getComment();
-          String _plus_1 = (" // " + _comment);
-          String _plus_2 = (_plus_1 + "</i><br>");
-          result.append(_plus_2);
+          result.append(this.inheritedComment(par.getComment()));
         }
+        result.append("<br>");
       }
     }
     EList<Parameter> _parameters = evt.getParameters();
     for (final Parameter par_1 : _parameters) {
       {
-        String _name = par_1.getName();
-        String _plus = (this.TAB + _name);
-        result.append(_plus);
-        if (((par_1.getComment() == null) || ("" == par_1.getComment()))) {
-          result.append("<br>");
-        } else {
-          String _comment = par_1.getComment();
-          String _plus_1 = (" // " + _comment);
-          String _plus_2 = (_plus_1 + "<br>");
-          result.append(_plus_2);
+        result.append(this.TAB);
+        result.append(this.formula(par_1.getName()));
+        if (((par_1.getComment() != null) && (!Objects.equal("", par_1.getComment())))) {
+          result.append(this.comment(par_1.getComment()));
         }
+        result.append("<br>");
       }
     }
-    result.append("<b>where</b><br>");
+    result.append(this.keyword("where"));
+    result.append("<br>");
     for (final Guard grd : inheritedGrds) {
       {
-        String _name = grd.getName();
-        String _plus = ((this.TAB + "<i>@") + _name);
-        String _plus_1 = (_plus + ": ");
-        String _predicate = grd.getPredicate();
-        String _plus_2 = (_plus_1 + _predicate);
-        result.append(_plus_2);
+        result.append(this.TAB);
+        result.append(this.inheritedLabel(grd.getName()));
+        result.append(this.SPACE);
+        result.append(this.inheritedFormula(grd.getPredicate()));
         if (((grd.getComment() == null) || ("" == grd.getComment()))) {
-          result.append(" // inherited element</i><br>");
+          result.append(this.inheritedComment("inherited element"));
         } else {
-          String _comment = grd.getComment();
-          String _plus_3 = (" // " + _comment);
-          String _plus_4 = (_plus_3 + "</i><br>");
-          result.append(_plus_4);
+          result.append(this.inheritedComment(grd.getComment()));
         }
+        result.append("<br>");
       }
     }
     EList<Guard> _guards = evt.getGuards();
     for (final Guard grd_1 : _guards) {
       {
-        String _name = grd_1.getName();
-        String _plus = ((this.TAB + "@") + _name);
-        String _plus_1 = (_plus + ": ");
-        String _predicate = grd_1.getPredicate();
-        String _plus_2 = (_plus_1 + _predicate);
-        result.append(_plus_2);
-        if (((grd_1.getComment() == null) || ("" == grd_1.getComment()))) {
-          result.append("<br>");
-        } else {
-          String _comment = grd_1.getComment();
-          String _plus_3 = (" // " + _comment);
-          String _plus_4 = (_plus_3 + "<br>");
-          result.append(_plus_4);
+        result.append(this.TAB);
+        result.append(this.label(grd_1.getName()));
+        result.append(this.SPACE);
+        result.append(this.formula(grd_1.getPredicate()));
+        if (((grd_1.getComment() != null) && (!Objects.equal("", grd_1.getComment())))) {
+          result.append(this.comment(grd_1.getComment()));
         }
+        result.append("<br>");
       }
     }
-    result.append("<b>then</b><br>");
+    result.append(this.keyword("then"));
+    result.append("<br>");
     for (final Action act : inheritedActs) {
       {
-        String _name = act.getName();
-        String _plus = ((this.TAB + "<i>@") + _name);
-        String _plus_1 = (_plus + ": ");
-        String _action = act.getAction();
-        String _plus_2 = (_plus_1 + _action);
-        result.append(_plus_2);
+        result.append(this.TAB);
+        result.append(this.inheritedLabel(act.getName()));
+        result.append(this.SPACE);
+        result.append(this.inheritedFormula(act.getAction()));
         if (((act.getComment() == null) || ("" == act.getComment()))) {
-          result.append(" // inherited element</i><br>");
+          result.append(this.inheritedComment("inherited element"));
         } else {
-          String _comment = act.getComment();
-          String _plus_3 = (" // " + _comment);
-          String _plus_4 = (_plus_3 + "</i><br>");
-          result.append(_plus_4);
+          result.append(this.inheritedComment(act.getComment()));
         }
+        result.append("<br>");
       }
     }
     EList<Action> _actions = evt.getActions();
     for (final Action act_1 : _actions) {
       {
-        String _name = act_1.getName();
-        String _plus = ((this.TAB + "@") + _name);
-        String _plus_1 = (_plus + ": ");
-        String _action = act_1.getAction();
-        String _plus_2 = (_plus_1 + _action);
-        result.append(_plus_2);
-        if (((act_1.getComment() == null) || ("" == act_1.getComment()))) {
-          result.append("<br>");
-        } else {
-          String _comment = act_1.getComment();
-          String _plus_3 = (" // " + _comment);
-          String _plus_4 = (_plus_3 + "<br>");
-          result.append(_plus_4);
+        result.append(this.TAB);
+        result.append(this.label(act_1.getName()));
+        result.append(this.SPACE);
+        result.append(this.formula(act_1.getAction()));
+        if (((act_1.getComment() != null) && (!Objects.equal("", act_1.getComment())))) {
+          result.append(this.comment(act_1.getComment()));
         }
+        result.append("<br>");
       }
     }
     final EList<Witness> witnesses = evt.getWitnesses();
     boolean _isEmpty = witnesses.isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      result.append("<b>with</b><br>");
+      result.append(this.keyword("with"));
       EList<Witness> _witnesses = evt.getWitnesses();
       for (final Witness wit : _witnesses) {
         {
-          String _name = wit.getName();
-          String _plus = ((this.TAB + "@") + _name);
-          String _plus_1 = (_plus + ": ");
-          String _predicate = wit.getPredicate();
-          String _plus_2 = (_plus_1 + _predicate);
-          result.append(_plus_2);
-          if (((wit.getComment() == null) || ("" == wit.getComment()))) {
-            result.append("<br>");
-          } else {
-            String _comment = wit.getComment();
-            String _plus_3 = (" // " + _comment);
-            String _plus_4 = (_plus_3 + "<br>");
-            result.append(_plus_4);
+          result.append(this.TAB);
+          result.append(this.label(wit.getName()));
+          result.append(this.SPACE);
+          result.append(this.formula(wit.getPredicate()));
+          if (((wit.getComment() != null) || (!Objects.equal("", wit.getComment())))) {
+            result.append(this.comment(wit.getComment()));
           }
+          result.append("<br>");
         }
       }
     }
-    result.append("<b>end</b>");
+    result.append(this.keyword("end"));
     return result.toString();
   }
   

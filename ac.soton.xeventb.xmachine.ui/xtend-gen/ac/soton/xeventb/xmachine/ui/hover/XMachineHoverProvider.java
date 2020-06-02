@@ -30,14 +30,19 @@ import org.eventb.emf.core.machine.Event;
  */
 @SuppressWarnings("all")
 public class XMachineHoverProvider extends DefaultEObjectHoverProvider {
+  private String keyword(final String keyword) {
+    return (("<span style=\"color:blue\"><b>" + keyword) + "</b></span>");
+  }
+  
   /**
    * Get the first line of the hover information.
    */
   @Override
   public String getFirstLine(final EObject obj) {
     if ((obj instanceof Event)) {
+      String _keyword = this.keyword("event ");
       String _label = this.getLabel(obj);
-      return ("<b>event</b> " + _label);
+      return (_keyword + _label);
     }
     return super.getFirstLine(obj);
   }

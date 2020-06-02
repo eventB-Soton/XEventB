@@ -31,12 +31,16 @@ import ac.soton.xeventb.xmachine.ui.XMachineUiModule
  */
 class XMachineHoverProvider extends DefaultEObjectHoverProvider {
 	
+	def private String keyword(String keyword) {
+		return "<span style=\"color:blue\"><b>" + keyword + "</b></span>"
+	}
+
 	/**
 	 * Get the first line of the hover information.
 	 */
 	override getFirstLine(EObject obj) {
 		if (obj instanceof Event) {
-			return "<b>event</b> " + obj.label
+			return keyword("event ") + obj.label
 		}
 		return super.getFirstLine(obj)
 	}
