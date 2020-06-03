@@ -16,6 +16,7 @@ package ac.soton.xeventb.xmachine.validation
 
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.MachineInclusion
+import ac.soton.xeventb.common.IValidationIssueCode
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.ResourcesPlugin
@@ -32,6 +33,9 @@ import org.eventb.core.IMachineRoot
 import org.eventb.core.IParameter
 import org.eventb.core.IVariable
 import org.eventb.emf.core.CorePackage
+import org.eventb.emf.core.EventBAction
+import org.eventb.emf.core.EventBExpression
+import org.eventb.emf.core.EventBPredicate
 import org.eventb.emf.core.machine.Action
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Guard
@@ -39,15 +43,13 @@ import org.eventb.emf.core.machine.Invariant
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.Parameter
 import org.eventb.emf.core.machine.Variable
+import org.eventb.emf.core.machine.Variant
+import org.eventb.emf.core.machine.Witness
 import org.eventb.emf.persistence.EventBEMFUtils
 import org.rodinp.core.IAttributeType
 import org.rodinp.core.IRodinElement
 import org.rodinp.core.RodinMarkerUtil
 import org.rodinp.keyboard.core.RodinKeyboardCore
-import org.eventb.emf.core.EventBPredicate
-import org.eventb.emf.core.EventBAction
-import ac.soton.xeventb.common.IValidationIssueCode
-import org.eventb.emf.core.EventBExpression
 
 /**
  * <p>
@@ -194,83 +196,77 @@ class XMachineValidator extends AbstractXMachineValidator {
 		if (obj instanceof Variable) {
 			// "Identifier" for variables will be "name"
 			if (id == "org.eventb.core.identifier")
-			return CorePackage.Literals.EVENT_BNAMED__NAME
-				//return getFeature(obj, CorePackage.Literals."name")
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			return null
 		}
 		if (obj instanceof Invariant) {
 			// "Label" for invariants will be "name"
 			if (id == "org.eventb.core.label") {
-				return getFeature(obj, "name")				
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			}
 			// "Predicate" for invariants will be "predicate"
 			if (id == "org.eventb.core.predicate") {
-				return getFeature(obj, "predicate")				
+				return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE				
 			}
 			return null
 		}
 		if (obj instanceof Event) {
 			// "Label" for events will be "name"
 			if (id == "org.eventb.core.label") {
-				return getFeature(obj, "name")				
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			}
 			return null
 		}
 		if (obj instanceof Parameter) {
 			// "Identifier" for parameters will be "name"
 			if (id == "org.eventb.core.identifier") {
-				return getFeature(obj, "name")				
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			}
 			return null
 		}
 		if (obj instanceof Guard) {
 			// "Label" for guards will be "name"
 			if (id == "org.eventb.core.label") {
-				return getFeature(obj, "name")				
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			}
 			// "Predicate" for guards will be "predicate"
 			if (id == "org.eventb.core.predicate") {
-				return getFeature(obj, "predicate")				
+				return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE				
 			}
 			return null
 		}
 		if (obj instanceof Action) {
 			// "Label" for actions will be "name"
 			if (id == "org.eventb.core.label") {
-				return getFeature(obj, "name")				
+				return CorePackage.Literals.EVENT_BNAMED__NAME
 			}
 			// "Assignment" for actions will be "action"
 			if (id == "org.eventb.core.assignment") {
-				return getFeature(obj, "action")				
+				return CorePackage.Literals.EVENT_BACTION__ACTION			
+			}
+			return null
+		}
+		if (obj instanceof Witness) {
+			// "Label" for witnesses will be "name"
+			if (id == "org.eventb.core.label") {
+				return CorePackage.Literals.EVENT_BNAMED__NAME
+			}
+			// "Predicate" for witnesses will be "predicate"
+			if (id == "org.eventb.core.predicate") {
+				return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE				
+			}
+			return null
+		}
+		if (obj instanceof Variant) {
+			// "Expression" for variant will be "expression"
+			if (id == "org.eventb.core.expression") {
+				return CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION
 			}
 			return null
 		}
 		return null
 	}
 	
-	/**
-	 * Get the EStructuralFeature for an EObject given the name of the feature.
-	 * 
-	 * @param obj
-	 * 			The input EObject
-	 * @param name
-	 * 			The name of the feature.
-	 * @return The EStructuralFeature corresponding to input name for
-	 * 			the EObject. If no EStructuralFeature exists, return
-	 * 			<code>null</code>. 
-	 * 
-	 * @author htson
-	 * @since 2.0
-	 */
-	def private EStructuralFeature getFeature(EObject obj, String name) {
-		val features = obj.eClass.EAllStructuralFeatures
-		for (feature : features) {
-			if (feature.name == name)
-				return feature			
-		}
-		return null
-	}
-
 	/**
 	 * Utility method to create an issue associated with an EObject from a Rodin
 	 * marker associated with the Rodin element corresponding to the EObject.

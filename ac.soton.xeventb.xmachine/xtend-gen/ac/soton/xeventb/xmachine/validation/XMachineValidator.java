@@ -55,6 +55,8 @@ import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Variable;
+import org.eventb.emf.core.machine.Variant;
+import org.eventb.emf.core.machine.Witness;
 import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
@@ -228,75 +230,67 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if ((obj instanceof Invariant)) {
       boolean _equals_1 = Objects.equal(id, "org.eventb.core.label");
       if (_equals_1) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       boolean _equals_2 = Objects.equal(id, "org.eventb.core.predicate");
       if (_equals_2) {
-        return this.getFeature(obj, "predicate");
+        return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE;
       }
       return null;
     }
     if ((obj instanceof Event)) {
       boolean _equals_3 = Objects.equal(id, "org.eventb.core.label");
       if (_equals_3) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       return null;
     }
     if ((obj instanceof Parameter)) {
       boolean _equals_4 = Objects.equal(id, "org.eventb.core.identifier");
       if (_equals_4) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       return null;
     }
     if ((obj instanceof Guard)) {
       boolean _equals_5 = Objects.equal(id, "org.eventb.core.label");
       if (_equals_5) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       boolean _equals_6 = Objects.equal(id, "org.eventb.core.predicate");
       if (_equals_6) {
-        return this.getFeature(obj, "predicate");
+        return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE;
       }
       return null;
     }
     if ((obj instanceof Action)) {
       boolean _equals_7 = Objects.equal(id, "org.eventb.core.label");
       if (_equals_7) {
-        return this.getFeature(obj, "name");
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
       boolean _equals_8 = Objects.equal(id, "org.eventb.core.assignment");
       if (_equals_8) {
-        return this.getFeature(obj, "action");
+        return CorePackage.Literals.EVENT_BACTION__ACTION;
       }
       return null;
     }
-    return null;
-  }
-  
-  /**
-   * Get the EStructuralFeature for an EObject given the name of the feature.
-   * 
-   * @param obj
-   * 			The input EObject
-   * @param name
-   * 			The name of the feature.
-   * @return The EStructuralFeature corresponding to input name for
-   * 			the EObject. If no EStructuralFeature exists, return
-   * 			<code>null</code>.
-   * 
-   * @author htson
-   * @since 2.0
-   */
-  private EStructuralFeature getFeature(final EObject obj, final String name) {
-    final EList<EStructuralFeature> features = obj.eClass().getEAllStructuralFeatures();
-    for (final EStructuralFeature feature : features) {
-      String _name = feature.getName();
-      boolean _equals = Objects.equal(_name, name);
-      if (_equals) {
-        return feature;
+    if ((obj instanceof Witness)) {
+      boolean _equals_9 = Objects.equal(id, "org.eventb.core.label");
+      if (_equals_9) {
+        return CorePackage.Literals.EVENT_BNAMED__NAME;
       }
+      boolean _equals_10 = Objects.equal(id, "org.eventb.core.predicate");
+      if (_equals_10) {
+        return CorePackage.Literals.EVENT_BPREDICATE__PREDICATE;
+      }
+      return null;
+    }
+    if ((obj instanceof Variant)) {
+      boolean _equals_11 = Objects.equal(id, "org.eventb.core.expression");
+      if (_equals_11) {
+        return CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION;
+      }
+      return null;
     }
     return null;
   }
