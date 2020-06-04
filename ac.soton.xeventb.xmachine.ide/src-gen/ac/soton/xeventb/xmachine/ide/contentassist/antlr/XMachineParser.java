@@ -32,9 +32,9 @@ public class XMachineParser extends AbstractContentAssistParser {
 		
 		private static void init(ImmutableMap.Builder<AbstractElement, String> builder, XMachineGrammarAccess grammarAccess) {
 			builder.put(grammarAccess.getMachineAccess().getCommentAlternatives_1_0(), "rule__Machine__CommentAlternatives_1_0");
-			builder.put(grammarAccess.getXEventAccess().getAlternatives_4(), "rule__XEvent__Alternatives_4");
-			builder.put(grammarAccess.getXEventAccess().getAlternatives_7_0(), "rule__XEvent__Alternatives_7_0");
+			builder.put(grammarAccess.getXEventAccess().getAlternatives_5(), "rule__XEvent__Alternatives_5");
 			builder.put(grammarAccess.getXEventAccess().getAlternatives_8_0(), "rule__XEvent__Alternatives_8_0");
+			builder.put(grammarAccess.getXEventAccess().getAlternatives_9_0(), "rule__XEvent__Alternatives_9_0");
 			builder.put(grammarAccess.getXFormulaAccess().getAlternatives(), "rule__XFormula__Alternatives");
 			builder.put(grammarAccess.getEVENTB_IDENTIFIER_KEYWORDAccess().getAlternatives(), "rule__EVENTB_IDENTIFIER_KEYWORD__Alternatives");
 			builder.put(grammarAccess.getEVENTB_PREDICATE_SYMBOLSAccess().getAlternatives(), "rule__EVENTB_PREDICATE_SYMBOLS__Alternatives");
@@ -62,12 +62,12 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXInvariantAccess().getGroup(), "rule__XInvariant__Group__0");
 			builder.put(grammarAccess.getXVariantAccess().getGroup(), "rule__XVariant__Group__0");
 			builder.put(grammarAccess.getXEventAccess().getGroup(), "rule__XEvent__Group__0");
-			builder.put(grammarAccess.getXEventAccess().getGroup_4_0(), "rule__XEvent__Group_4_0__0");
-			builder.put(grammarAccess.getXEventAccess().getGroup_4_1(), "rule__XEvent__Group_4_1__0");
-			builder.put(grammarAccess.getXEventAccess().getGroup_5(), "rule__XEvent__Group_5__0");
-			builder.put(grammarAccess.getXEventAccess().getGroup_7(), "rule__XEvent__Group_7__0");
+			builder.put(grammarAccess.getXEventAccess().getGroup_5_0(), "rule__XEvent__Group_5_0__0");
+			builder.put(grammarAccess.getXEventAccess().getGroup_5_1(), "rule__XEvent__Group_5_1__0");
+			builder.put(grammarAccess.getXEventAccess().getGroup_6(), "rule__XEvent__Group_6__0");
 			builder.put(grammarAccess.getXEventAccess().getGroup_8(), "rule__XEvent__Group_8__0");
 			builder.put(grammarAccess.getXEventAccess().getGroup_9(), "rule__XEvent__Group_9__0");
+			builder.put(grammarAccess.getXEventAccess().getGroup_10(), "rule__XEvent__Group_10__0");
 			builder.put(grammarAccess.getEventSyncAccess().getGroup(), "rule__EventSync__Group__0");
 			builder.put(grammarAccess.getEventSyncAccess().getGroup_1(), "rule__EventSync__Group_1__0");
 			builder.put(grammarAccess.getEventSyncAccess().getGroup_1_1(), "rule__EventSync__Group_1_1__0");
@@ -98,6 +98,7 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMIncludesAccess().getPrefixesAssignment_3_1(), "rule__MIncludes__PrefixesAssignment_3_1");
 			builder.put(grammarAccess.getMIncludesAccess().getPrefixesAssignment_3_2(), "rule__MIncludes__PrefixesAssignment_3_2");
 			builder.put(grammarAccess.getXVariableAccess().getNameAssignment_1(), "rule__XVariable__NameAssignment_1");
+			builder.put(grammarAccess.getXVariableAccess().getCommentAssignment_2(), "rule__XVariable__CommentAssignment_2");
 			builder.put(grammarAccess.getXInvariantAccess().getTheoremAssignment_1(), "rule__XInvariant__TheoremAssignment_1");
 			builder.put(grammarAccess.getXInvariantAccess().getNameAssignment_2(), "rule__XInvariant__NameAssignment_2");
 			builder.put(grammarAccess.getXInvariantAccess().getPredicateAssignment_3(), "rule__XInvariant__PredicateAssignment_3");
@@ -105,14 +106,15 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXVariantAccess().getExpressionAssignment_2(), "rule__XVariant__ExpressionAssignment_2");
 			builder.put(grammarAccess.getXEventAccess().getConvergenceAssignment_1(), "rule__XEvent__ConvergenceAssignment_1");
 			builder.put(grammarAccess.getXEventAccess().getNameAssignment_3(), "rule__XEvent__NameAssignment_3");
-			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_4_0_1(), "rule__XEvent__RefinesAssignment_4_0_1");
-			builder.put(grammarAccess.getXEventAccess().getExtendedAssignment_4_1_0(), "rule__XEvent__ExtendedAssignment_4_1_0");
-			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_4_1_1(), "rule__XEvent__RefinesAssignment_4_1_1");
-			builder.put(grammarAccess.getXEventAccess().getParametersAssignment_5_1(), "rule__XEvent__ParametersAssignment_5_1");
-			builder.put(grammarAccess.getXEventAccess().getExtensionsAssignment_6(), "rule__XEvent__ExtensionsAssignment_6");
-			builder.put(grammarAccess.getXEventAccess().getGuardsAssignment_7_1(), "rule__XEvent__GuardsAssignment_7_1");
-			builder.put(grammarAccess.getXEventAccess().getActionsAssignment_8_1(), "rule__XEvent__ActionsAssignment_8_1");
-			builder.put(grammarAccess.getXEventAccess().getWitnessesAssignment_9_1(), "rule__XEvent__WitnessesAssignment_9_1");
+			builder.put(grammarAccess.getXEventAccess().getCommentAssignment_4(), "rule__XEvent__CommentAssignment_4");
+			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_5_0_1(), "rule__XEvent__RefinesAssignment_5_0_1");
+			builder.put(grammarAccess.getXEventAccess().getExtendedAssignment_5_1_0(), "rule__XEvent__ExtendedAssignment_5_1_0");
+			builder.put(grammarAccess.getXEventAccess().getRefinesAssignment_5_1_1(), "rule__XEvent__RefinesAssignment_5_1_1");
+			builder.put(grammarAccess.getXEventAccess().getParametersAssignment_6_1(), "rule__XEvent__ParametersAssignment_6_1");
+			builder.put(grammarAccess.getXEventAccess().getExtensionsAssignment_7(), "rule__XEvent__ExtensionsAssignment_7");
+			builder.put(grammarAccess.getXEventAccess().getGuardsAssignment_8_1(), "rule__XEvent__GuardsAssignment_8_1");
+			builder.put(grammarAccess.getXEventAccess().getActionsAssignment_9_1(), "rule__XEvent__ActionsAssignment_9_1");
+			builder.put(grammarAccess.getXEventAccess().getWitnessesAssignment_10_1(), "rule__XEvent__WitnessesAssignment_10_1");
 			builder.put(grammarAccess.getEventSyncAccess().getPrefixAssignment_1_1_0(), "rule__EventSync__PrefixAssignment_1_1_0");
 			builder.put(grammarAccess.getEventSyncAccess().getSynchronisedEventAssignment_1_2(), "rule__EventSync__SynchronisedEventAssignment_1_2");
 			builder.put(grammarAccess.getXParameterAccess().getNameAssignment_1(), "rule__XParameter__NameAssignment_1");

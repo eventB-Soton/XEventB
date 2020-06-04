@@ -9,10 +9,26 @@ IMPORTANT:
 
 KNOWN ISSUES:
 ------------
-- Converting to XText: Currently, the "extended" attribute of events are not serialised.
+- None at the moment
 
 Release history:
 ---------------
+### 1.0.0 ###
+The feature is now called CamilleX (instead of XEvent-B).
+- Branding (0.0.4): Updated logo to CamilleX.
+- Common (0.0.5): Update copyright statements in source code.
+- Cheatsheets (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
+- Documentation (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
+- UI (0.1.0): Updated the name to use CamilleX instead of XEvent-B.
+- XContext (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
+  + Update dependency ranges
+- XContext IDE (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
+  + Update dependency ranges
+- XContext UI (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
+  + Update dependency ranges
+- XMachine (1.0.0): Updated the name to use CamilleX instead of XEvent-B.
++ Update dependency ranges
+
 ### 0.0.7 ###
 - XEvent-B Branding (0.0.3): Updated logo to XEvent-B.
 - XEvent-B Common (0.0.4): Enhancement (Issue #11).

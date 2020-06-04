@@ -11,6 +11,7 @@
 package ac.soton.xeventb.xcontext.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
+import ac.soton.xeventb.common.Utils;
 import com.google.common.base.Objects;
 import org.eclipse.core.commands.ExecutionException;
 import org.eclipse.core.resources.IFile;
@@ -23,17 +24,25 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.core.runtime.Status;
 import org.eclipse.core.runtime.jobs.ISchedulingRule;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.EMap;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.transaction.RecordingCommand;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eventb.emf.core.Annotation;
+import org.eventb.emf.core.CoreFactory;
+import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
 import org.rodinp.core.RodinCore;
 
@@ -48,6 +57,8 @@ import org.rodinp.core.RodinCore;
  */
 @SuppressWarnings("all")
 public class XContextGenerator extends AbstractGenerator {
+  private static final String CONFIGURATION = "configuration";
+  
   /**
    * @htson Automatically compile to Rodin files
    */
@@ -55,19 +66,34 @@ public class XContextGenerator extends AbstractGenerator {
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
       EObject _get = resource.getContents().get(0);
-      Context ctx = ((Context) _get);
-      EMFRodinDB emfRodinDB = new EMFRodinDB();
+      final Context ctx = ((Context) _get);
       String uriString = resource.getURI().toString();
       uriString = uriString.substring(0, uriString.lastIndexOf("bucx"));
       uriString = (uriString + "buc");
       URI uri = URI.createURI(uriString);
-      emfRodinDB.saveResource(uri, ctx);
-      TransactionalEditingDomain editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain();
-      Resource rodinResource = editingDomain.getResourceSet().createResource(uri);
-      rodinResource.eSetDeliver(false);
-      rodinResource.getContents().add(0, ctx);
-      rodinResource.setModified(true);
-      rodinResource.eSetDeliver(true);
+      ResourceSet _resourceSet = resource.getResourceSet();
+      final EMFRodinDB emfRodinDB = new EMFRodinDB(_resourceSet);
+      final TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
+      final Resource rodinResource = emfRodinDB.loadResource(uri);
+      final RecordingCommand command = new RecordingCommand(editingDomain, "Set Contents") {
+        @Override
+        public void doExecute() {
+          rodinResource.getContents().clear();
+          rodinResource.getContents().add(0, ctx);
+          final Annotation rodinInternals = CoreFactory.eINSTANCE.createAnnotation();
+          rodinInternals.setSource(PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION);
+          final EMap<String, String> rodinInternalDetails = rodinInternals.getDetails();
+          rodinInternalDetails.put(XContextGenerator.CONFIGURATION, 
+            "org.eventb.core.fwd;ac.soton.xeventb.xcontext.base");
+          ctx.getAnnotations().add(rodinInternals);
+          rodinResource.setModified(true);
+        }
+      };
+      boolean _canExecute = command.canExecute();
+      if (_canExecute) {
+        editingDomain.getCommandStack().execute(command);
+      }
+      this.translateFormulae(ctx);
       TranslatorFactory _factory = TranslatorFactory.getFactory();
       final TranslatorFactory factory = ((TranslatorFactory) _factory);
       String recordCommandId = "ac.soton.eventb.records.commands.record";
@@ -98,8 +124,8 @@ public class XContextGenerator extends AbstractGenerator {
         }
       };
       final NullProgressMonitor monitor_1 = new NullProgressMonitor();
-      boolean _canExecute = saveCommand.canExecute();
-      if (_canExecute) {
+      boolean _canExecute_1 = saveCommand.canExecute();
+      if (_canExecute_1) {
         final Resource[] emptyResource = {};
         RodinCore.run(wsRunnable, 
           this.getSchedulingRule(editingDomain.getResourceSet().getResources().<Resource>toArray(emptyResource)), monitor_1);
@@ -147,5 +173,20 @@ public class XContextGenerator extends AbstractGenerator {
       _elvis = null;
     }
     return _elvis;
+  }
+  
+  /**
+   * Utility method to translate formulae in the input context to Event-B
+   * mathematics.
+   * 
+   * @param ctx
+   * 		The input context
+   * @author htson
+   * @since 2.0
+   */
+  private void translateFormulae(final Context ctx) {
+    final EList<EObject> predElements = ctx.getAllContained(
+      CorePackage.Literals.EVENT_BPREDICATE, false);
+    Utils.translatePredicates(predElements);
   }
 }

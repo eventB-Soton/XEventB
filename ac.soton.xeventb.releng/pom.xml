@@ -26,11 +26,11 @@
     <!-- URL for EMF Validation Update site -->
     <emf_validation-repo.url>http://download.eclipse.org/modeling/emf/validation/updates/releases</emf_validation-repo.url>
     <!-- URL for GEF Legacy Update site -->
-    <gef_legacy-repo.url>http://download.eclipse.org/tools/gef/updates/legacy/releases/</gef_legacy-repo.url>
+    <!-- <gef_legacy-repo.url>http://download.eclipse.org/tools/gef/updates/legacy/releases/</gef_legacy-repo.url> -->
     <!-- URL for GMF Runtime Milestones Update site -->
-    <gmf_runtime_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/</gmf_runtime_milestones-repo.url>
+    <!-- <gmf_runtime_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/</gmf_runtime_milestones-repo.url> -->
     <!-- URL for GMF Notation Milestones Update site -->
-    <gmf_notation_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/</gmf_notation_milestones-repo.url>
+    <!-- <gmf_notation_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/</gmf_notation_milestones-repo.url> -->
     <!-- <!-\- URL for the Rodin Update site -\-> -->
     <!-- <rodin_update_site-repo.url>http://rodin-b-sharp.sourceforge.net/updates</rodin_update_site-repo.url> -->
     <!-- URL for the Soton Prototype Update site -->
@@ -74,23 +74,23 @@
       <layout>p2</layout>
     </repository>
     <!-- GEF Legacy repository -->
-    <repository>
-      <id>gef-legacy</id>
-      <url>${gef_legacy-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
+    <!-- <repository> -->
+    <!--   <id>gef-legacy</id> -->
+    <!--   <url>${gef_legacy-repo.url}</url> -->
+    <!--   <layout>p2</layout> -->
+    <!-- </repository> -->
     <!-- GMF Runtime milestones repository -->
-    <repository>
-      <id>gmf-runtime-milestones</id>
-      <url>${gmf_runtime_milestones-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
+    <!-- <repository> -->
+    <!--   <id>gmf-runtime-milestones</id> -->
+    <!--   <url>${gmf_runtime_milestones-repo.url}</url> -->
+    <!--   <layout>p2</layout> -->
+    <!-- </repository> -->
     <!-- GMF Notation milestones repository -->
-    <repository>
-      <id>gmf-notation-milestones</id>
-      <url>${gmf_notation_milestones-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
+    <!-- <repository> -->
+    <!--   <id>gmf-notation-milestones</id> -->
+    <!--   <url>${gmf_notation_milestones-repo.url}</url> -->
+    <!--   <layout>p2</layout> -->
+    <!-- </repository> -->
     <!-- <!-\- Rodin Update Site repository -\-> -->
     <!-- <repository> -->
     <!--   <id>rodin-update-site</id> -->

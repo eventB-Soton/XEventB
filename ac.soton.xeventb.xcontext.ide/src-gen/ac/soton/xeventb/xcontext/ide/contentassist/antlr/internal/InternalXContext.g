@@ -406,6 +406,12 @@ rule__XFormula__Alternatives
 		RULE_INT
 		{ after(grammarAccess.getXFormulaAccess().getINTTerminalRuleCall_4()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5()); }
+		RULE_UNTRANSLATED_TOKEN
+		{ after(grammarAccess.getXFormulaAccess().getUNTRANSLATED_TOKENTerminalRuleCall_5()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2642,6 +2648,8 @@ finally {
 RULE_XLABEL : '@' ~(':')+ ':';
 
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC') ('a'..'z'|'A'..'Z'|'_'|'i'..'\uFFDC'|'0'..'9'|'\'')*;
+
+RULE_UNTRANSLATED_TOKEN : ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 RULE_STRING : '"' ('\\' .|~(('\\'|'"')))* '"';
 

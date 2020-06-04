@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eventb.core.scModuleTypes">
+      <processorType
+            class="ac.soton.xeventb.xcontext.validation.XContextMarkerModule"
+            id="XContextMarkerModule"
+            name="Generate XContext Markers"
+            parent="org.eventb.core.contextModule">
+      </processorType>
+   </extension>
+   <extension
+         point="org.eventb.core.configurations">
+      <configuration
+            id="base"
+            name="XContext additional Static Checking">
+         <scModule
+               id="ac.soton.xeventb.xcontext.XContextMarkerModule">
+         </scModule>
+      </configuration>
+   </extension>
+
+</plugin>

@@ -223,6 +223,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (
 	 *         convergence=XConvergence? 
 	 *         name=ID 
+	 *         comment=STRING? 
 	 *         (refines+=[Event|ID]+ | (extended?='extends' refines+=[Event|ID]))? 
 	 *         parameters+=XParameter* 
 	 *         extensions+=EventSync* 
@@ -283,16 +284,10 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XVariable returns Variable
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (name=ID comment=STRING?)
 	 */
 	protected void sequence_XVariable(ISerializationContext context, Variable semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXVariableAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

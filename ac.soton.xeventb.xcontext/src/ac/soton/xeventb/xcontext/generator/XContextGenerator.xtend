@@ -10,28 +10,32 @@
  *******************************************************************************/
 package ac.soton.xeventb.xcontext.generator
 
+import ac.soton.emf.translator.TranslatorFactory
+import ac.soton.xeventb.common.Utils
+import org.eclipse.core.commands.ExecutionException
+import org.eclipse.core.resources.IProject
+import org.eclipse.core.resources.IWorkspaceRunnable
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.core.runtime.CoreException
+import org.eclipse.core.runtime.IProgressMonitor
+import org.eclipse.core.runtime.IStatus
+import org.eclipse.core.runtime.NullProgressMonitor
+import org.eclipse.core.runtime.Status
+import org.eclipse.core.runtime.jobs.ISchedulingRule
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.transaction.RecordingCommand
+import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eventb.emf.core.CoreFactory
+import org.eventb.emf.core.CorePackage
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.persistence.EMFRodinDB
-import org.eclipse.core.runtime.NullProgressMonitor
-import org.eclipse.emf.transaction.TransactionalEditingDomain
-import ac.soton.emf.translator.TranslatorFactory
+import org.eventb.emf.persistence.PersistencePlugin
 import org.eventb.emf.persistence.SaveResourcesCommand
-import org.eclipse.core.resources.IWorkspaceRunnable
-import org.eclipse.core.runtime.IProgressMonitor
-import org.eclipse.core.commands.ExecutionException
-import org.eclipse.core.runtime.Status
-import org.eclipse.core.runtime.IStatus
-import org.eclipse.core.runtime.CoreException
 import org.rodinp.core.RodinCore
-import org.eclipse.core.runtime.jobs.ISchedulingRule
-import org.eclipse.core.resources.IProject
-import org.eclipse.core.resources.ResourcesPlugin
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
 
 /**
  * <p>
@@ -44,35 +48,54 @@ import org.eclipse.emf.workspace.util.WorkspaceSynchronizer
  */
 class XContextGenerator extends AbstractGenerator {
 
+	// htson: (2.0) This is the key for Rodin Machine configuration 
+	val static CONFIGURATION = "configuration";
+
 	/* @htson Automatically compile to Rodin files */
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-		var ctx = resource.contents.get(0) as Context
-		var emfRodinDB = new EMFRodinDB
+		val ctx = resource.contents.get(0) as Context
 		var uriString = resource.URI.toString
 		uriString = uriString.substring(0, uriString.lastIndexOf('bucx'))
 		uriString = uriString + "buc"
 		var uri = URI.createURI(uriString)
-		emfRodinDB.saveResource(uri, ctx)
 		
 		//copied from XMachineGenerator: Set the source context (from XText) as the content of the Rodin machine.
-		var editingDomain = TransactionalEditingDomain.Factory.INSTANCE.createEditingDomain()
-		var rodinResource = editingDomain.resourceSet.createResource(uri)
-		rodinResource.eSetDeliver(false)
-		rodinResource.contents.add(0, ctx)
-		// Set modified resource to be true (otherwise, saving might ignore this).
-		rodinResource.modified = true
-		rodinResource.eSetDeliver(true)
-
-		
-			val factory = TranslatorFactory.getFactory() as TranslatorFactory
-			
-			//records
-			var recordCommandId = "ac.soton.eventb.records.commands.record"
-			
-			if (factory.canTranslate(recordCommandId, ctx.eClass())) {
-				val monitor = new NullProgressMonitor
-				factory.translate(editingDomain, ctx, recordCommandId, monitor)
+		// @htsonImportant: Create the EMF RodinDB with the CURRENT resource set (2.0)
+		val emfRodinDB = new EMFRodinDB(resource.resourceSet)
+	    val editingDomain = emfRodinDB.editingDomain
+		val rodinResource = emfRodinDB.loadResource(uri)
+		// @htson: Use recording command for write transaction (2.0)
+		val command = new RecordingCommand(editingDomain, "Set Contents") {
+			override doExecute() {
+				rodinResource.contents.clear()
+				rodinResource.contents.add(0, ctx)
+				val rodinInternals = CoreFactory.eINSTANCE.createAnnotation()
+				rodinInternals.source = PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION
+				val rodinInternalDetails = rodinInternals.getDetails()
+				rodinInternalDetails.put(CONFIGURATION,
+					"org.eventb.core.fwd;ac.soton.xeventb.xcontext.base"
+				)
+				ctx.getAnnotations().add(rodinInternals)
+				 // Ensure that the resource will be saved
+				rodinResource.modified = true;
 			}
+		}
+		if (command.canExecute()){
+			editingDomain.getCommandStack().execute(command);
+		}
+		
+		// Translated formulae
+		translateFormulae(ctx)
+
+		val factory = TranslatorFactory.getFactory() as TranslatorFactory
+			
+		//records
+		var recordCommandId = "ac.soton.eventb.records.commands.record"
+			
+		if (factory.canTranslate(recordCommandId, ctx.eClass())) {
+			val monitor = new NullProgressMonitor
+			factory.translate(editingDomain, ctx, recordCommandId, monitor)
+		}
 			
 		//copied from XMachineGenerator
 		// --------------
@@ -122,5 +145,22 @@ class XContextGenerator extends AbstractGenerator {
 		return file?.getProject()?:null;
 	}
 	
+	
+	/**
+	 * Utility method to translate formulae in the input context to Event-B
+	 * mathematics.
+	 * 
+	 * @param ctx
+	 * 		The input context
+	 * @author htson
+	 * @since 2.0
+	 */
+	def private translateFormulae(Context ctx) {
+		// Translate all predicates
+		val predElements = ctx.getAllContained(
+			CorePackage.Literals.EVENT_BPREDICATE, false
+		)
+		Utils.translatePredicates(predElements)
+	}
 	
 }
