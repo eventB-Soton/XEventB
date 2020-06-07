@@ -1,81 +1,131 @@
 /**
- * Copyright (C) 2016 Thai Son Hoang
+ * Copyright (C) 2016,2020 Thai Son Hoang
  * Gradle LaTeX build file.
  *
  * Contributors
  *   Thai Son Hoang - Initial API and implementation.
  */
 
-defaultTasks 'pdf'
+// The default task is 'build'
+defaultTasks 'build'
 
 /**
- * Extra Properties:
- * - The base name for the main LaTeX file
- * - The LaTeX Program
+ * Extra Properties
  */
 ext {
-  BASENAME = 'user_manual'
-  LATEX = 'pdflatex'
-  PLASTEX = 'plastex'
-  SED = 'sed'
-  BIBTEX = 'bibtex'
-  COPY_TASK_PREFIX = 'copySty'
-  ROOT_FOLDER = '..'
-  HTML_FOLDER = ROOT_FOLDER + '/html'
-  LATEX_FOLDER = ROOT_FOLDER + '/latex'
-  DOCUMENTATION_FOLDER = ROOT_FOLDER + '/documentations'
+  BASENAME = 'user_manual'                      // The name for the main LaTeX file
+  LATEX = 'pdflatex'                            // The LaTeX program
+  BIBTEX = 'bibtex'                             // The BiBTeX program
+  PLASTEX = 'plastex'                           // The PlasTex program
+  SED = 'sed'                                   // The stream editor 
+  ROOT_FOLDER = '..'                            // The root folder
+  LATEX_FOLDER = ROOT_FOLDER + '/latex'         // The source LaTeX folder
+  HTML_FOLDER = ROOT_FOLDER + '/html'           // The target HTML folder
+  TIKZ_FILES = ['tikz-overview']                // The list of tikz files
+  TOCFile = HTML_FOLDER + '/eclipse-toc.xml'    // The target TOC File
+  GENERATED_EXTENSIONS = ['aux', 'bbl', 'bcf', 'blg', 'log', 'nav', 'out', 'rel', 'run.xml', 'snm', 'toc', 'vrb']                               // The list of generated extensions
 }
 
-/* The project */
-project.ext {
-  TEXFile = BASENAME + '.tex'
-  AUXFile = BASENAME + '.aux'
-  BIBFile = BASENAME + '.bib'
-  BBLFile = BASENAME + '.bbl'
-  PDFFile = BASENAME + '.pdf'
-  TOCFile = HTML_FOLDER + '/eclipse-toc.xml'
-  TOCBAKFile = HTML_FOLDER + '/eclipse-toc.xml.bak'
+// The default task is 'build'
+defaultTasks 'build'
+
+/*
+ * The build task:
+ * - Build all tasks with prefix 'PDF_BUILD'
+ */
+task build {
+  dependsOn 'pdf', 'sed'
 }
 
-task aux(type : Exec) {
+/*
+ * For each suffix, create a 'PDF_BUILD' task
+ * - Input files:
+ *   + all class files,
+ *   + all style files,
+ *   + all bibliography files,
+ *   + the tex file corresponding to the suffix,
+ *   + the main content text file.
+ *   + all files in 'figures' folder
+ * - Output file: the pdf file corresponding to the suffix.
+ * - The build is done by the pdf_build_steps
+ */
+task pdf {
   dependsOn tasks.matching {
-    Task task -> task.name.startsWith(COPY_TASK_PREFIX)
+    Task task -> task.name.startsWith('TIKZ_BUILD')
   }
-  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.sty')
-  outputs.file AUXFile
-  commandLine LATEX, "$project.TEXFile"
-}
-
-task bibtex(type: Exec) {
-  dependsOn aux
-  inputs.files AUXFile
-  outputs.file BBLFile
-  commandLine BIBTEX, BASENAME
-}
-
-task pdf(type : Exec) {
-  dependsOn aux
-  inputs.files BBLFile, fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.sty')
-  outputs.file PDFFile
-  doFirst {
-    println "First run the $project.TEXFile"
+  inputs.files fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
+  outputs.file BASENAME+".pdf"
+  doLast{
+    pdf_build_steps(BASENAME)
   }
-
-  commandLine LATEX, "$project.TEXFile"
-
-  doLast {
-    println "Compiled $project.TEXFile to $project.PDFFile"
-  }   
 }
 
-task clean(type : Delete) {
-  delete fileTree(LATEX_FOLDER) { include '**/*.aux', '**/*.log', '**/*.rel', '**/*.paux', '**/*.out', '**/*.synctex.gz', '**/*.toc' }
+/*
+ * Method to build the pdf for the given file name
+ * 1. Latex
+ * 2. Bibtex
+ * 3. Latex
+ * 4. Latex
+ */
+void pdf_build_steps(name) {
+  exec {
+    commandLine LATEX, name 
+  }
+/*  exec {
+    commandLine BIBTEX, name 
+  }
+  exec {
+    commandLine LATEX, name 
+  }*/
+  exec {
+    commandLine LATEX, name 
+  }
+}
+
+task clean(type: Delete) {
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('CLEAN_GENERATED')
+  }
+}
+
+GENERATED_EXTENSIONS.each { def extension ->
+  task "CLEAN_GENERATED_$extension"(type: Delete) {
+    delete fileTree('.').include('**/*.'+extension)
+  }
+}
+
+task cleanall(type: Delete) {
+  dependsOn clean
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('CLEANALL_')
+  }
+}
+
+task "CLEANALL_$BASENAME"(type: Delete) {
+  delete BASENAME+".pdf"
+}
+
+TIKZ_FILES.each { def tikzFile ->
+  task "TIKZ_BUILD_$tikzFile"(type: Exec) {
+    inputs.file tikzFile+".tex"
+    outputs.file tikzFile+".pdf"
+    commandLine LATEX, tikzFile
+  }
+}
+
+TIKZ_FILES.each { def tikzFile ->
+  task "CLEANALL_$tikzFile"(type: Delete) {
+    delete tikzFile+".pdf"
+  }
 }
 
 task html(type : Exec) {
-  inputs.file TEXFile
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('TIKZ_BUILD')
+  }
+  inputs.files fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex",  fileTree('./figures').include('**/*')
   outputs.file TOCFile
-  commandLine PLASTEX, '-d', HTML_FOLDER, '--theme=python', "$project.TEXFile"
+  commandLine PLASTEX, '-d', HTML_FOLDER, '--theme=python', BASENAME+".tex"
 }
 
 task sed(type : Exec) {
@@ -83,6 +133,12 @@ task sed(type : Exec) {
   commandLine SED, '-i.bak', '-f', 'sed_commands', "$project.TOCFile"
 }
 
-task build(dependsOn: ['pdf', 'sed']) {
-  
+// 'clean' should run after 'build'
+clean.shouldRunAfter build
+
+/*
+ * The 'all' task include 'build' and 'clean'.
+ */
+task all {
+  dependsOn 'build', 'clean'
 }
