@@ -7,7 +7,7 @@ accordingly. Facility for translating from Rodin Event-B components to
 CamilleX components can be invoked manually. The overall process can be
 seen in Figure [1](#fig:overview).
 
-![Overview of CamilleX and Rodin Event-B Constructs](tikz-overview.pdf)
+![Overview of CamilleX and Rodin Event-B Constructs](tikz-overview.png)
 
 # Reference
 
