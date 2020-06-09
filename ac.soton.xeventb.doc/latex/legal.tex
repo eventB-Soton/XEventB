@@ -1,4 +1,4 @@
-\ifplastex
+\ifdef{PLASTEX}
 \section{Legal}
 \label{sec:legal}
 
@@ -7,7 +7,6 @@
 
 \input{rodin-user_agreement}
 \else
-  \ifstandalone
   \section{Legal}
   \label{sec:legal}
 
@@ -15,9 +14,7 @@
   \label{sec:user-agreement}
 
   \input{rodin-user_agreement}
-  \else
-  \fi
-\fi
+\endif
 
 %%% Local Variables:
 %%% mode: latex

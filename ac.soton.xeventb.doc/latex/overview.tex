@@ -4,14 +4,31 @@
 The CamilleX provides new CamilleX constructs (XMachines and XContexts) which are text files which are automatically translated into the corresponding Rodin Event-B constructs (i.e., Machine and Context) accordingly.  Facility for translating from Rodin Event-B components to CamilleX components can be invoked manually. The overall process can be seen in Figure~\ref{fig:overview}.
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
-  \includegraphics[width=512]{tikz-overview}
-  \else
-  \includegraphics[width=0.9\textwidth]{tikz-overview}
-  \fi
+  \includegraphics{tikz-overview.png}
   \caption{Overview of CamilleX and Rodin Event-B Constructs}
   \label{fig:overview}
 \end{figure}
+
+\ifdef{PANDOC}
+\begin{lstlisting}[language=Event-B]
+Testing
+machine
+context
+\end{lstlisting}
+\endif
+\ifdef{PLASTEX}
+\begin{verbatim}
+Testing
+machine
+\end{verbatim}
+\endif
+\ifdef{LATEX}
+\begin{lstlisting}[language=Event-B]
+Testing
+machine
+context
+\end{lstlisting}
+\endif
 
 %%% Local Variables:
 %%% mode: latex

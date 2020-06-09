@@ -11,11 +11,11 @@
 \item Before installing the CamilleX feature, you need to add the XText update site (\url{http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/}) as an additional software site (see Figure~\ref{fig:xtext-updatesite}).
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/XTextUpdateSite}
   \else
   \includegraphics[width=0.9\textwidth]{figures/XTextUpdateSite}
-  \fi
+  \endif
   \caption{Adding XText Update Site}
   \label{fig:xtext-updatesite}
 \end{figure}
@@ -24,11 +24,11 @@
 \item The CamilleX feature is available from the main Rodin update site (under ``Modelling Extensions'' category). There are two versions of the feature, \emph{CamilleX} providing facilities for working with CamilleX, and the \emph{CamilleX (SDK)} is the feature including source code for software developers (see Figure~\ref{fig:EventBXText-installation}).
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/EventBXTextInstallation}
   \else
   \includegraphics[width=0.9\textwidth]{figures/EventBXTextInstallation}
-  \fi
+  \endif
   \caption{Adding XText Update Site}
   \label{fig:EventBXText-installation}
 \end{figure}
@@ -71,11 +71,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new Event-B Project] Create a new Event-B Project named ``Club'' using the \emph{New Event-B Project} wizard (see Figure~\ref{fig:CreateProject}).
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/CreateProject}
   \else
   \includegraphics[width=0.9\textwidth]{figures/CreateProject}
-  \fi
+  \endif
   \caption{Create Event-B Project called ``Club''}
   \label{fig:CreateProject}
 \end{figure}
@@ -92,21 +92,21 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
          project to XText project, please answer \textbf{Yes} (see Figure~\ref{fig:ConvertToXText}).
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/CreateCoursesCtx}
   \else
   \includegraphics[width=0.9\textwidth]{figures/CreateCoursesCtx}
-  \fi
+  \endif
   \caption{Create an XContext called ``coursesCtx.bucx''}
   \label{fig:CreateCoursesCtx}
 \end{figure}
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/ConvertToXText}
   \else
   \includegraphics[width=0.9\textwidth]{figures/ConvertToXText}
-  \fi
+  \endif
   \caption{Convert ``Club'' to XText project}
   \label{fig:ConvertToXText}
 \end{figure}
@@ -114,7 +114,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of courseCtx.bucx] Set the content of ``coursesCtx.bucx'' as follows.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bcontext{} coursesCtx\\
       \Bsets{} CRS\\
       \Bconstants{} m\\
@@ -132,18 +132,18 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \Btab @axm0\_2: \(m \in \natn\)\\
 \Btab \Btheorem{} @thm0\_1: \(0 < m\)\\
 \Bend
-       \fi
+       \endif
     \end{Bcode}
   \end{center}
-  \textbf{Important}: In order to typeset Event-B mathematical symbol, e.g., \ifplastex ℕ1 \else $\natn$ \fi, one can use content assist. For example, typing \texttt{NAT} and invoking content assist (e.g., on Mac OS \texttt{Ctrl+Space}), a dropdown list will appear with options for typesetting \ifplastex ℕ \else $\nat$ \fi and \ifplastex ℕ1 \else $\natn$ \fi (See Figure~\ref{fig:NAT1ContentAssist}.
+  \textbf{Important}: In order to typeset Event-B mathematical symbol, e.g., \ifdef{PLASTEX} ℕ1 \else $\natn$ \endif, one can use content assist. For example, typing \texttt{NAT} and invoking content assist (e.g., on Mac OS \texttt{Ctrl+Space}), a dropdown list will appear with options for typesetting \ifdef{PLASTEX} ℕ \else $\nat$ \endif and \ifdef{PLASTEX} ℕ1 \else $\natn$ \endif (See Figure~\ref{fig:NAT1ContentAssist}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/NAT1ContentAssist}
     \else
     \includegraphics[width=0.9\textwidth]{figures/NAT1ContentAssist}
-    \fi
-    \caption{Type-setting \ifplastex ℕ1 \else $\natn$ \fi using Content Assist}
+    \endif
+    \caption{Type-setting \ifdef{PLASTEX} ℕ1 \else $\natn$ \endif using Content Assist}
     \label{fig:NAT1ContentAssist}
   \end{figure}
 
@@ -154,11 +154,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XContext ``coursesCtx.bucx'' and the corresponding Rodin Context ``coursesCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:CoursesCtx}). 
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CoursesCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CoursesCtx}
-    \fi
+    \endif
     \caption{The final XContext coursesCtx.bucx}
     \label{fig:CoursesCtx}
   \end{figure}
@@ -172,19 +172,19 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XMachine m0.bumx] \textbf{Create a new XMachine} named ``m0.bumx'' using the New File wizard (see Figure~\ref{fig:CreateM0}. The newly created file should be opened automatically in an XMachine editor.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateM0}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateM0}
-    \fi
-    \caption{Type-setting \ifplastex ℕ1 \else $\natn$ \fi using Content Assist}
+    \endif
+    \caption{Type-setting \ifdef{PLASTEX} ℕ1 \else $\natn$ \endif using Content Assist}
     \label{fig:CreateM0}
   \end{figure}
 
 \item[Step 2. Set the content of m0.bumx] \textbf{Set the content of "m0.bumx" as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bmachine{} m0 \\
       \Bvariables{} crs \\
       \Binvariants \\
@@ -240,7 +240,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Btab \Btab @act0\_1: \(crs \bcmeq crs \setminus cs\)\\
       \Btab \Bend\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 \item[Step 3. Auto-format the code] \textbf{Automatically format the content of ``m0.bumx''} by using short-cut (e.g., on Mac OS: Cmd+Shift+F).
@@ -257,11 +257,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
   (Note: One can use \emph{Content Assist} after typing the ``sees'' keyword to select the context, see Figure~\ref{fig:SeesCoursesCtx}).
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/SeesCoursesCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/SeesCoursesCtx}
-    \fi
+    \endif
     \caption{Content Assist for adding Sees clause}
     \label{fig:SeesCoursesCtx}
   \end{figure}
@@ -271,11 +271,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XMachine ``m0.bumx'' and the corresponding Rodin Machine ``m0'' (without any error) should be visible in the Event-B Explorer (see Figure~\ref{fig:M0}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/M0}
     \else
     \includegraphics[width=0.9\textwidth]{figures/M0}
-    \fi
+    \endif
     \caption{XMachine m0.bucx}
     \label{fig:M0}
   \end{figure}
@@ -289,11 +289,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XContext membersCtx.bucx] \textbf{Create a new XContext} named ``membersCtx.bucx'' using the \emph{New File} wizard (see Figure~\ref{fig:CreateMembersCtx}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateMembersCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateMembersCtx}
-    \fi
+    \endif
     \caption{Create membersCtx.bucx}
     \label{fig:CreateMembersCtx}
   \end{figure}
@@ -301,7 +301,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of membersCtx.bucx] \textbf{Set the content of ``membersCtx.bucx'' as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bcontext{} memebersCtx\\
       \Bsets{} MEM\\
       \Baxioms\\
@@ -313,7 +313,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Baxioms\\
       \Btab @axm0_1: \(\finite(MEM)\)\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 
@@ -325,11 +325,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XContext ``membersCtx.bucx'' and the corresponding Rodin Context ``membersCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:membersCtx}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/MembersCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/MembersCtx}
-    \fi
+    \endif
     \caption{XContext membersCtx.bucx}
     \label{fig:membersCtx}
   \end{figure}
@@ -341,11 +341,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XContext participantsCtx.bucx] \textbf{Create a new XContext} named ``participantsCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateParticipantsCtx}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateParticipantsCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateParticipantsCtx}
-    \fi
+    \endif
     \caption{Create participantsCtx.bucx}
     \label{fig:CreateParticipantsCtx}
   \end{figure}
@@ -353,7 +353,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of participantsCtx.bucx] \textbf{Set the content of ``participantsCtx.bucx'' as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bcontext{} participantsCtx\\
       \Bextends{} membersCtx\\
       \Bconstants{} PRTCPT\\
@@ -369,7 +369,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Btab @axm1_2: \(PRTCPT \in \pow(MEM)\)\\
       \Btab \Btheorem{} @thm1_1: \(\finite(PRTCPT)\)\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 
@@ -381,11 +381,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XContext ``participantsCtx.bucx'' and the corresponding Rodin Context ``participantsCtx'' should be visible in the Event-B Explorer (see Figure~\ref{fig:ParticipantsCtx}).
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/ParticipantsCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/ParticipantsCtx}
-    \fi
+    \endif
     \caption{XContext participantsCtx.bucx}
     \label{fig:ParticipantsCtx}
   \end{figure}
@@ -396,11 +396,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XContext instructorsCtx.bucx] \textbf{Create a new XContext} named ``instructorsCtx.bucx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateInstructorsCtx}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateInstructorsCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateInstructorsCtx}
-    \fi
+    \endif
     \caption{Create instructorsCtx.bucx}
     \label{fig:CreateInstructorsCtx}
   \end{figure}
@@ -408,7 +408,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of instructorsCtx.bucx] \textbf{Set the content of ``instructorsCtx.bucx'' as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bcontext{} instructorsCtx\\
       \Bextends{} membersCtx coursesCtx\\
       \Bconstants{} INSTR instrs\\
@@ -424,7 +424,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Btab @axm1_3: \(INSTR \in \pow(MEM)\)\\
       \Btab @axm1_4: \(instrs \in CRS \tfun INSTR\)\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 
@@ -436,11 +436,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XContext ``instructorsCtx.bucx'' and the corresponding Rodin Context ``instructorsCtx'' should be visible in the Event-B Explorer (see Figure.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/InstructorsCtx}
     \else
     \includegraphics[width=0.9\textwidth]{figures/InstructorsCtx}
-    \fi
+    \endif
     \caption{XContext instructorsCtx.bucx}
     \label{fig:instructorsCtx}
   \end{figure}
@@ -454,11 +454,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XMachine m1.bumx] \textbf{Create a new XMachine} named ``m1.bumx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateM1}. The newly created file should be opened automatically in an XMachine editor.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateM1}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateM1}
-    \fi
+    \endif
     \caption{Create m1.bumx}
     \label{fig:CreateM1}
   \end{figure}
@@ -466,7 +466,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of m1.bumx] \textbf{Set the content of ``m1.bumx'' as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bmachine{} m1\\
       \Brefines{} m0\\
       \Bsees{} instructorsCtx participantsCtx \\
@@ -530,7 +530,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Btab \Btab @act1_1: \(prtcpts \bcmeq prtcpts \bunion \{c \mapsto p\}\)\\
       \Btab \Bend\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 
@@ -542,11 +542,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XMachine ``m1.bucx'' and the corresponding Rodin Machine ``m1'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M1}).
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/M1}
     \else
     \includegraphics[width=0.9\textwidth]{figures/M1}
-    \fi
+    \endif
     \caption{XMachine m1.bumx}
     \label{fig:M1}
   \end{figure}
@@ -558,11 +558,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 1. Create a new XMachine m2.bumx] \textbf{Create a new XMachine} named ``m2.bumx'' using the \emph{New File wizard} (see Figure~\ref{fig:CreateM2}. The newly created file should be opened automatically in an XMachine editor.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/CreateM2}
     \else
     \includegraphics[width=0.9\textwidth]{figures/CreateM2}
-    \fi
+    \endif
     \caption{Create m2.bumx}
     \label{fig:CreateM2}
   \end{figure}
@@ -570,7 +570,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \item[Step 2. Set the content of m2.bumx] \textbf{Set the content of ``m2.bumx'' as follows}.
   \begin{center}
     \begin{Bcode}
-      \ifplastex
+      \ifdef{PLASTEX}
       \Bmachine{} m2\\
       \Brefines{} m1\\
       \Bsees{} instructorsCtx participantsCtx\\
@@ -665,7 +665,7 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
       \Btab \Btab @act2_1: \(atnds(c) \bcmeq atnds(c) ∪ \{p\}\)\\
       \Btab \Bend\\
       \Bend
-      \fi
+      \endif
     \end{Bcode}
   \end{center}
 
@@ -676,11 +676,11 @@ This tutorial provides a step-by-step walk-through working with CamilleX constru
 \textbf{Conclusion} By now, the XMachine ``m2.bucx'' and the corresponding Rodin Machine ``m2'' should be visible in the Event-B Explorer (see Figure~\ref{fig:M2}.
   \begin{figure}[!htbp]
     \centering
-    \ifplastex
+    \ifdef{PLASTEX}
     \includegraphics[width=512]{figures/M2}
     \else
     \includegraphics[width=0.9\textwidth]{figures/M2}
-    \fi
+    \endif
     \caption{XMachine m2.bumx}
     \label{fig:M2}
   \end{figure}
@@ -698,16 +698,16 @@ We illustrate the application of machine inclusion using XEvent-B by modelling a
 \item[Step 1. Create a new Project (Sensor) with XMachine m0\_SNSR.bumx] 
 
 Following the same steps as 
-\ifplastex
+\ifdef{PLASTEX}
 in tasks 2 and 4 in Section~\ref{sec:basic-tutorial} for creating project and machines.
 \else
 in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and machines.
-\fi
+\endif
 
 \item[Step 2. Set the content of m0\_SNSR.bumx] \textbf{Set the content of ``m0\_SNSR.bumx'' as follows}.
 \begin{center}
 	\begin{Bcode}
-		\ifplastex
+		\ifdef{PLASTEX}
 		\Bmachine{} m0_SNSR\\
 		\Bvariables{} SNSR\\
 		\Binvariants\\
@@ -753,7 +753,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 		\Btab \Btab @act1: \(SNSR \bcmeq FALSE\)\\
 		\Btab \Bend\\
 		\Bend
-		\fi
+		\endif
 	\end{Bcode}
 \end{center}
 
@@ -767,16 +767,16 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 \begin{description}
 	\item[Step 1. Create the Context Car\_c0\_limit.bucx in a new project Car] 
 	Following the same steps as 
-	\ifplastex
+	\ifdef{PLASTEX}
 	in task 3 of Section~\ref{sec:basic-tutorial} for creating a simple context.  
 	\else
 	in Section~\ref{Sec:SimpleContext} for creating a simple context.
-	\fi
+	\endif
 	\textbf{Set the content of ``Car\_c0\_limit.bucx'' as follows and save the file}.
 	  
 	  \begin{center}
 		\begin{Bcode}
-			\ifplastex
+			\ifdef{PLASTEX}
 			\Bcontext{} Car\_c0_limit\\
 			\Bconstants{} D\\
 			\Baxioms\\
@@ -788,14 +788,14 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Baxioms\\
 			\Btab @axm1: \(D \in \nat1\)\\
 			\Bend
-			\fi
+			\endif
 		\end{Bcode}
 	\end{center}
 	\item[Step 2. Create the Machine Car\_m0\_cars.bumx]\textbf{Set the content of ``Car\_m0\_cars.bumx'' as follows and save the file}.
 
 	\begin{center}
 		\begin{Bcode}
-			\ifplastex
+			\ifdef{PLASTEX}
 			\Bmachine{} Car\_m0_cars\\
 			\Bsees{} Car\_c0_limit\\
 			\Bvariables{} A B C\\
@@ -889,7 +889,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Btab \Btab @act2: \(C \bcmeq C + 1\)\\
 			\Btab \Bend\\
 			\Bend
-			\fi
+			\endif
 		\end{Bcode}
 	\end{center}
 	
@@ -904,7 +904,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 	
 		\begin{center}
 		\begin{Bcode}
-			\ifplastex
+			\ifdef{PLASTEX}
 			\Bmachine{} Car_m1_SNSR\\
 			\textcolor{red}{\textbf{includes}} Sensor.m0_SNSR \textcolor{red}{\textbf{as}} IL_out ML_out\\
 			\Brefines{} Car_m0_cars\\
@@ -982,7 +982,7 @@ in Sections~\ref{CreateProject} and~\ref{CreateMachine} for creating project and
 			\Btab \Btab @grd2: \(B \neq 0\)\\
 			\Btab \Bend\\
 			\Bend
-			\fi
+			\endif
 		\end{Bcode}
 	\end{center}
 	\item[Step 2. Auto-format the file ``Car\_m1\_SNSR.bumx'' and Save it.]
@@ -993,11 +993,11 @@ When synchronising an event you can add the prefix of the required machine follo
 
 \begin{figure}[!htbp]
 	\centering
-	\ifplastex
+	\ifdef{PLASTEX}
 	\includegraphics[width=512]{figures/Flattened_var_m1_snsr}
 	\else
 	\includegraphics[width=0.9\textwidth]{figures/Flattened_var_m1_snsr}
-	\fi
+	\endif
 	\caption{Flattened Machine ``Car\_m1\_SNSR''}
 	\label{fig:FlattenedMachine}
 \end{figure}

@@ -7,11 +7,15 @@
 Each project containing CamilleX constructs must be set to be XText project.  An XText project has an associated XContext and XMachine builders that can compile CamilleX source files into Rodin files as they are changed.  The builders can be turn off via the preferences, either workspace-wise or project-wise (see Figure~\ref{fig:XContextPreference}.
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/XContextPreference}
-  \else
+  \endif
+  \ifdef{LATEX}
   \includegraphics[width=0.9\textwidth]{figures/XContextPreference}
-  \fi
+  \endif
+  \ifdef{PANDOC}
+  \includegraphics[width=0.9\textwidth]{figures/XContextPreference}
+  \endif
   \caption{XContext Preference}
   \label{fig:XContextPreference}
 \end{figure}
@@ -27,11 +31,12 @@ The CamilleX Builders, i.e., XContext builder and XMachine builder, build Camill
 Content assist are available for typesetting keywords and Event-B mathematical symbols. The short-cut for invoking content assist is \texttt{Ctrl+Space}.  Figure~\ref{fig:KeywordContentAssist} shows an example for content assist with keywords.
 \begin{figure}[!htbp]
   \centering
-  \ifplastex
+  \ifdef{PLASTEX}
   \includegraphics[width=512]{figures/KeywordContentAssist}
-  \else
+  \endif
+  \ifdef{PDF}
   \includegraphics[width=0.9\textwidth]{figures/KeywordContentAssist}
-  \fi
+  \endif
   \caption{Keyword Content Assist}
   \label{fig:KeywordContentAssist}
 \end{figure}

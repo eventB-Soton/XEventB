@@ -3,15 +3,17 @@
 % %%%% Define new conditional \ifplastex
 % %%%% This ensure that the file complied normally without plasTeX.
 \usepackage{plastex}
-
+\usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 
-\ifplastex\else
+\ifndef{PLASTEX}
 \usepackage{standalone} %%%% Only load standalone when not in plasTeX
 \standalonetrue
 \usepackage{longtable} %%%% Only load longtable and ltcaption when not in plasTeX
 \usepackage{ltcaption}
-\fi
+% Package for typesetting Event-B models
+\usepackage[colour]{lstEventB}
+\endif
 
 % Package for typesetting URLs
 \usepackage{url}
@@ -19,20 +21,13 @@
 % Package for including graphics.
 \usepackage{graphicx}
 
-\usepackage{multicol}
-
-\usepackage{bsymb}
-
-% Package for typesetting Event-B models
-\usepackage[colour]{eventB}
-
 % Package for typesetting dates and times
-\ifplastex
+\ifdef{PLASTEX}
 \newcommand{\CamilleXManualDate}{August 21st, 2017}
 \else
 \usepackage{datetime}
 \newdate{CamilleXManualDate}{12}{11}{2018}
-\fi
+\endif
 \newcommand{\CamilleXFeatureVersion}{1.0.0}
 \newcommand{\CamilleXManualVersion}{1.0.0}
 
@@ -44,37 +39,32 @@
   Thai Son Hoang and Dana Dghaym\\%
   ECS, University of Southampton\\%
   \texttt{\{T.S.Hoang, dd4g12\} at ecs dot soton dot ac dot uk}%
-}%
-
-
-% Date
-\date{%
   Version \CamilleXManualVersion\\%
   (for feature version \CamilleXFeatureVersion)\\
-  \ifplastex
+  \ifdef{PLASTEX}
   \CamilleXManualDate
   \else
   \displaydate{CamilleXManualDate}%
-  \fi
-}
+  \endif
+}%
+
+
+% DO NOT use date
 
 \begin{document}
-\ifplastex%
+\ifdef{PLASTEX}%
 \maketitle% Make title if in plasTeX mode.
 \else%
- \ifstandalone%
  \maketitle % Make title if in standalone mode.
- \else%
- \fi%
-\fi%
+\endif%
 
 \input{overview}
 
-\input{getting_started}
+%\input{getting_started}
 
 \input{concepts}
 
-\input{tasks}
+%\input{tasks}
 
 \input{reference}
 
