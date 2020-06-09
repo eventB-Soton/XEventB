@@ -6,3 +6,4 @@
 *.paux
 *.synctex.gz
 __pycache__
+.tmp*
