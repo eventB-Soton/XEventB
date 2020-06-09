@@ -3,11 +3,16 @@ BASENAME=$1
 TEXFile="$BASENAME.tex"
 HTML_FOLDER=$2
 
+export XHTMLTEMPLATES=$(pwd)/../XHTML
+cd ../.tmp_PLASTEX
+
 echo "rm -rf $HTML_FOLDER"
 rm -rf $HTML_FOLDER
 
-echo "plastex -d $HTML_FOLDER --theme=python $TEXFile"
-plastex -d $HTML_FOLDER --theme=python $TEXFile
+echo "plastex -d $HTML_FOLDER --theme=rodin-theme-eclipse $TEXFile"
+plastex -d $HTML_FOLDER --theme=rodin-theme-eclipse $TEXFile
 
 echo "sed -f sed_commands -i '' $HTML_FOLDER/eclipse-toc.xml"
 sed -f sed_commands -i '' $HTML_FOLDER/eclipse-toc.xml
+
+cp ../latex/$BASENAME.pdf $HTML_FOLDER

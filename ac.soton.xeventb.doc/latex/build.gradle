@@ -13,32 +13,47 @@ defaultTasks 'build'
  * Extra Properties
  */
 ext {
-  BASENAME = 'user_manual'                      // The name for the main LaTeX file
-  LATEX = 'pdflatex'                            // The LaTeX program
-  BIBTEX = 'bibtex'                             // The BiBTeX program
-  PLASTEX = 'plastex'                           // The PlasTex program
-  SED = 'sed'                                   // The stream editor 
-  ROOT_FOLDER = '..'                            // The root folder
-  LATEX_FOLDER = ROOT_FOLDER + '/latex'         // The source LaTeX folder
-  HTML_FOLDER = ROOT_FOLDER + '/html'           // The target HTML folder
-  TIKZ_FILES = ['tikz-overview']                // The list of tikz files
-  TOCFile = HTML_FOLDER + '/eclipse-toc.xml'    // The target TOC File
-  GENERATED_EXTENSIONS = ['aux', 'bbl', 'bcf', 'blg', 'log', 'nav', 'out', 'rel', 'run.xml', 'snm', 'toc', 'vrb']                               // The list of generated extensions
+  BASENAME = 'user_manual'                          // The name for the main LaTeX file
+  LATEX = 'pdflatex'                                // The LaTeX program
+  BIBTEX = 'bibtex'                                 // The BiBTeX program
+  PLASTEX = 'plastex'                               // The PlasTex program
+  SED = 'sed'                                       // The stream editor 
+  ROOT_FOLDER = '..'                                // The root folder
+  TMP_LATEX_FOLDER = ROOT_FOLDER+'/.tmp_LATEX'      // The temporary LaTeX folder
+  TMP_PLASTEX_FOLDER = ROOT_FOLDER+'/.tmp_PLASTEX'  // The temporary LaTeX folder
+  TMP_PANDOC_FOLDER = ROOT_FOLDER+'/.tmp_PANDOC'    // The temporary LaTeX folder
+  LATEX_FOLDER = ROOT_FOLDER + '/latex'             // The source LaTeX folder
+  HTML_FOLDER = ROOT_FOLDER + '/html'               // The target HTML folder
+  STANDALONE_FILES = ['tikz-overview']              // The list of tikz files
+  TOCFile = HTML_FOLDER + '/eclipse-toc.xml'        // The target TOC File
+  TEXFiles = fileTree('.').include('*.tex').files.name  // All .tex files
+  GENERATED_EXTENSIONS = ['aux', 'bbl', 'bcf', 'blg', 'log', 'nav', 'out', 'rel', 'run.xml', 'paux', 'snm', 'toc', 'vrb']                               // The list of generated extensions
 }
 
 // The default task is 'build'
 defaultTasks 'build'
 
-/*
+/**
  * The build task:
- * - Build all tasks with prefix 'PDF_BUILD'
+ * - PDF
+ * - XHMTL (Eclipse help)
+ * - GFM (GitHub-Flavoured Markdown)
+ * - MediaWiki
  */
 task build {
-  dependsOn 'pdf', 'sed'
+  dependsOn 'pdf', 'xhtml', 'gfm'
 }
 
+/********************
+ * Standalone Tasks *
+ ********************/
+
+
+/************
+ * PDF Task *
+ ***********/
 /*
- * For each suffix, create a 'PDF_BUILD' task
+ * - Depends on all STANDALONE tasks
  * - Input files:
  *   + all class files,
  *   + all style files,
@@ -46,46 +61,34 @@ task build {
  *   + the tex file corresponding to the suffix,
  *   + the main content text file.
  *   + all files in 'figures' folder
- * - Output file: the pdf file corresponding to the suffix.
+ * - Output file: the pdf file.
  * - The build is done by the pdf_build_steps
  */
-task pdf {
+task pdf(type:Exec) {
   dependsOn tasks.matching {
-    Task task -> task.name.startsWith('TIKZ_BUILD')
+    Task task -> task.name.startsWith('STANDALONE')
   }
-  inputs.files fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
+  dependsOn 'TMP_LATEX'
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('LATEX_SOURCE')
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
   outputs.file BASENAME+".pdf"
-  doLast{
-    pdf_build_steps(BASENAME)
-  }
+  commandLine './pdf.sh', BASENAME
 }
 
-/*
- * Method to build the pdf for the given file name
- * 1. Latex
- * 2. Bibtex
- * 3. Latex
- * 4. Latex
+/******************
+ * Cleaning Tasks *
+ *****************/
+
+/**
+ * Simple clean task runs clean generated
  */
-void pdf_build_steps(name) {
-  exec {
-    commandLine LATEX, name 
-  }
-/*  exec {
-    commandLine BIBTEX, name 
-  }
-  exec {
-    commandLine LATEX, name 
-  }*/
-  exec {
-    commandLine LATEX, name 
-  }
-}
-
 task clean(type: Delete) {
   dependsOn tasks.matching {
     Task task -> task.name.startsWith('CLEAN_GENERATED')
   }
+  mustRunAfter build
 }
 
 GENERATED_EXTENSIONS.each { def extension ->
@@ -102,39 +105,167 @@ task cleanall(type: Delete) {
 }
 
 task "CLEANALL_$BASENAME"(type: Delete) {
-  delete BASENAME+".pdf"
+  delete BASENAME+".pdf", BASENAME+".md", BASENAME+".wiki"
 }
 
-TIKZ_FILES.each { def tikzFile ->
-  task "TIKZ_BUILD_$tikzFile"(type: Exec) {
+/********************
+ * Standalone files *
+ *******************/
+STANDALONE_FILES.each { def tikzFile ->
+  task "STANDALONE_$tikzFile"(type: Exec) {
     inputs.file tikzFile+".tex"
     outputs.file tikzFile+".pdf"
-    commandLine LATEX, tikzFile
+    commandLine LATEX, '-shell-escape', tikzFile
   }
 }
 
-TIKZ_FILES.each { def tikzFile ->
+STANDALONE_FILES.each { def tikzFile ->
   task "CLEANALL_$tikzFile"(type: Delete) {
-    delete tikzFile+".pdf"
+    delete tikzFile+".pdf", tikzFile+".png"
   }
 }
 
-task html(type : Exec) {
+/***************
+ * XHTML tasks *
+ **************/
+task xhtml(type : Exec) {
   dependsOn tasks.matching {
-    Task task -> task.name.startsWith('TIKZ_BUILD')
+    Task task -> task.name.startsWith('STANDALONE')
   }
-  inputs.files fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex",  fileTree('./figures').include('**/*')
+  dependsOn 'TMP_PLASTEX'
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('PLASTEX_SOURCE')
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
   outputs.file TOCFile
-  commandLine PLASTEX, '-d', HTML_FOLDER, '--theme=python', BASENAME+".tex"
+  commandLine './xhtml.sh', BASENAME, HTML_FOLDER
 }
 
-task sed(type : Exec) {
-  dependsOn html
-  commandLine SED, '-i.bak', '-f', 'sed_commands', "$project.TOCFile"
+/************
+ * GFM task *
+ ***********/
+task gfm(type : Exec) {
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('STANDALONE')
+  }
+  dependsOn 'TMP_PANDOC'
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('PANDOC_SOURCE')
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
+  outputs.file BASENAME+".md"
+  commandLine './gfm.sh', BASENAME
 }
 
-// 'clean' should run after 'build'
-clean.shouldRunAfter build
+/******************
+ * MediaWiki task *
+ *****************/
+task mediawiki(type : Exec) {
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('STANDALONE')
+  }
+  dependsOn 'TMP_PANDOC'
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('PANDOC_SOURCE')
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
+  outputs.file BASENAME+".wiki"
+  commandLine './mediawiki.sh', BASENAME
+}
+
+/*************
+ * EPub task *
+ ************/
+task epub(type : Exec) {
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('STANDALONE')
+  }
+  dependsOn 'TMP_PANDOC'
+  dependsOn tasks.matching {
+    Task task -> task.name.startsWith('PANDOC_SOURCE')
+  }
+  inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
+  outputs.file BASENAME+".epub"
+  commandLine './epub.sh', BASENAME
+}
+
+/*******************
+ * TMP_LATEX tasks *
+ ******************/
+// Clean the TMP_LATEX
+task CLEAN_GENERATED_TMP_LATEX(type: Delete) {
+  delete TMP_LATEX_FOLDER
+}
+
+// Copy the files (clear the folder before copying)
+task TMP_LATEX(type: Copy) {
+  dependsOn CLEAN_GENERATED_TMP_LATEX
+  from "."
+  include "**/*"
+  into TMP_LATEX_FOLDER
+}
+
+// Process each .tex file using gpp with LATEX flag.
+TEXFiles.each { def texfile ->
+  task "LATEX_SOURCE_$texfile"(type: Exec) {
+    inputs.file texfile
+    outputs.file TMP_LATEX_FOLDER + "/" + texfile
+    commandLine 'gpp', '-T', '-DLATEX=1', texfile, '-o', TMP_LATEX_FOLDER + "/" + texfile
+    mustRunAfter 'TMP_LATEX'
+  }
+}
+
+/*********************
+ * TMP_PLASTEX tasks *
+ ********************/
+// Clean the TMP_PLASTEX
+task CLEAN_GENERATED_TMP_PLASTEX(type: Delete) {
+  delete TMP_PLASTEX_FOLDER
+}
+
+// Copy the files (clear the folder before copying)
+task TMP_PLASTEX(type: Copy) {
+  dependsOn CLEAN_GENERATED_TMP_PLASTEX
+  from "."
+  include "**/*"
+  into TMP_PLASTEX_FOLDER
+}
+
+// Process each .tex file using gpp with PLASTEX flag.
+TEXFiles.each { def texfile ->
+  task "PLASTEX_SOURCE_$texfile"(type: Exec) {
+    inputs.file texfile
+    outputs.file TMP_PLASTEX_FOLDER + "/" + texfile
+    commandLine 'gpp', '-T', '-DPLASTEX=1', texfile, '-o', TMP_PLASTEX_FOLDER + "/" + texfile
+    mustRunAfter 'TMP_PLASTEX'
+  }
+}
+
+/********************
+ * TMP_PANDOC tasks *
+ *******************/
+// Clean the TMP_PANDOC
+task CLEAN_GENERATED_TMP_PANDOC(type: Delete) {
+  delete TMP_PANDOC_FOLDER
+}
+
+// Copy the files (clear the folder before copying)
+task TMP_PANDOC(type: Copy) {
+  dependsOn CLEAN_GENERATED_TMP_PANDOC
+  from "."
+  include "**/*"
+  into TMP_PANDOC_FOLDER
+}
+
+// Process each .tex file using gpp with PANDOC flag.
+TEXFiles.each { def texfile ->
+  task "PANDOC_SOURCE_$texfile"(type: Exec) {
+    inputs.file texfile
+    outputs.file TMP_PANDOC_FOLDER + "/" + texfile
+    commandLine 'gpp', '-T', '-DPANDOC=1', texfile, '-o', TMP_PANDOC_FOLDER + "/" + texfile
+    mustRunAfter 'TMP_PANDOC'
+  }
+}
 
 /*
  * The 'all' task include 'build' and 'clean'.
