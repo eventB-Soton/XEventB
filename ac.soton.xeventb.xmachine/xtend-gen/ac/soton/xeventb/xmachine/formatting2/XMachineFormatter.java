@@ -10,8 +10,11 @@
  */
 package ac.soton.xeventb.xmachine.formatting2;
 
+import ac.soton.eventb.emf.record.Field;
+import ac.soton.eventb.emf.record.Record;
 import ac.soton.xeventb.xmachine.services.XMachineGrammarAccess;
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import org.eclipse.emf.common.util.EList;
@@ -83,105 +86,144 @@ public class XMachineFormatter extends AbstractFormatter2 {
     final Procedure1<IHiddenRegionFormatter> _function_8 = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
-    document.append(this.textRegionExtensions.allRegionsFor(machine).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_8);
+    document.prepend(this.textRegionExtensions.regionFor(machine).keyword("records"), _function_8);
+    final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+      it.newLine();
+    };
+    document.append(this.textRegionExtensions.allRegionsFor(machine).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_9);
     EList<AbstractExtension> _extensions = machine.getExtensions();
     for (final AbstractExtension abstractExtension : _extensions) {
       {
-        final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<AbstractExtension>prepend(document.<AbstractExtension>format(abstractExtension), _function_9);
         final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.append(this.textRegionExtensions.allRegionsFor(abstractExtension).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_10);
+        document.<AbstractExtension>prepend(document.<AbstractExtension>format(abstractExtension), _function_10);
+        if ((abstractExtension instanceof Record)) {
+          final Record record = ((Record) abstractExtension);
+          boolean _isEmpty = record.getFields().isEmpty();
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            EList<Field> _fields = record.getFields();
+            for (final Field field : _fields) {
+              final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+                it.newLine();
+              };
+              document.<Field>prepend(document.<Field>format(field), _function_11);
+            }
+            final Field first = IterableExtensions.<Field>head(record.getFields());
+            final Field last = IterableExtensions.<Field>last(record.getFields());
+            final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
+              it.indent();
+            };
+            document.set(this.textRegionExtensions.regionForEObject(first).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(last).getNextHiddenRegion(), _function_12);
+          }
+        }
+        final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.append(this.textRegionExtensions.allRegionsFor(abstractExtension).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_13);
       }
     }
     EList<Variable> _variables = machine.getVariables();
     for (final Variable variable : _variables) {
       {
-        final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<Variable>prepend(document.<Variable>format(variable), _function_9);
         final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.append(this.textRegionExtensions.allRegionsFor(variable).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_10);
+        document.<Variable>prepend(document.<Variable>format(variable), _function_10);
+        final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.append(this.textRegionExtensions.allRegionsFor(variable).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_11);
       }
     }
     EList<Invariant> _invariants = machine.getInvariants();
     for (final Invariant invariant : _invariants) {
       {
-        final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<Invariant>prepend(document.<Invariant>format(invariant), _function_9);
         final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.append(this.textRegionExtensions.allRegionsFor(invariant).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_10);
+        document.<Invariant>prepend(document.<Invariant>format(invariant), _function_10);
+        final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.append(this.textRegionExtensions.allRegionsFor(invariant).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_11);
       }
     }
     EList<Variant> _variants = machine.getVariants();
     for (final Variant variant : _variants) {
       {
-        final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
-          it.newLine();
-        };
-        document.<Variant>prepend(document.<Variant>format(variant), _function_9);
         final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
           it.newLine();
         };
-        document.append(this.textRegionExtensions.allRegionsFor(variant).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_10);
+        document.<Variant>prepend(document.<Variant>format(variant), _function_10);
+        final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+          it.newLine();
+        };
+        document.append(this.textRegionExtensions.allRegionsFor(variant).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_11);
       }
     }
     EList<Event> _events = machine.getEvents();
     for (final Event event : _events) {
-      final Procedure1<IHiddenRegionFormatter> _function_9 = (IHiddenRegionFormatter it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
         it.setNewLines(2);
       };
-      document.<Event>append(document.<Event>format(event), _function_9);
+      document.<Event>append(document.<Event>format(event), _function_10);
     }
     boolean _isEmpty = machine.getVariables().isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
       final Variable firstVar = IterableExtensions.<Variable>head(machine.getVariables());
       final Variable lastVar = IterableExtensions.<Variable>last(machine.getVariables());
-      final Procedure1<IHiddenRegionFormatter> _function_10 = (IHiddenRegionFormatter it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
         it.indent();
       };
-      document.set(this.textRegionExtensions.regionForEObject(firstVar).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastVar).getNextHiddenRegion(), _function_10);
+      document.set(this.textRegionExtensions.regionForEObject(firstVar).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastVar).getNextHiddenRegion(), _function_11);
     }
     boolean _isEmpty_1 = machine.getInvariants().isEmpty();
     boolean _not_1 = (!_isEmpty_1);
     if (_not_1) {
       final Invariant firstInv = IterableExtensions.<Invariant>head(machine.getInvariants());
       final Invariant lastInv = IterableExtensions.<Invariant>last(machine.getInvariants());
-      final Procedure1<IHiddenRegionFormatter> _function_11 = (IHiddenRegionFormatter it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
         it.indent();
       };
-      document.set(this.textRegionExtensions.regionForEObject(firstInv).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastInv).getNextHiddenRegion(), _function_11);
+      document.set(this.textRegionExtensions.regionForEObject(firstInv).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastInv).getNextHiddenRegion(), _function_12);
     }
     boolean _isEmpty_2 = machine.getVariants().isEmpty();
     boolean _not_2 = (!_isEmpty_2);
     if (_not_2) {
       final Variant firstVariant = IterableExtensions.<Variant>head(machine.getVariants());
       final Variant lastVariant = IterableExtensions.<Variant>last(machine.getVariants());
-      final Procedure1<IHiddenRegionFormatter> _function_12 = (IHiddenRegionFormatter it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
         it.indent();
       };
-      document.set(this.textRegionExtensions.regionForEObject(firstVariant).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastVariant).getNextHiddenRegion(), _function_12);
+      document.set(this.textRegionExtensions.regionForEObject(firstVariant).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastVariant).getNextHiddenRegion(), _function_13);
     }
     boolean _isEmpty_3 = machine.getEvents().isEmpty();
     boolean _not_3 = (!_isEmpty_3);
     if (_not_3) {
       final Event firstEvent = IterableExtensions.<Event>head(machine.getEvents());
       final Event lastEvent = IterableExtensions.<Event>last(machine.getEvents());
-      final Procedure1<IHiddenRegionFormatter> _function_13 = (IHiddenRegionFormatter it) -> {
+      final Procedure1<IHiddenRegionFormatter> _function_14 = (IHiddenRegionFormatter it) -> {
         it.indent();
       };
-      document.set(this.textRegionExtensions.regionForEObject(firstEvent).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastEvent).getNextHiddenRegion(), _function_13);
+      document.set(this.textRegionExtensions.regionForEObject(firstEvent).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(lastEvent).getNextHiddenRegion(), _function_14);
+    }
+    boolean _isEmpty_4 = machine.getExtensions().isEmpty();
+    boolean _not_4 = (!_isEmpty_4);
+    if (_not_4) {
+      final Iterable<Record> records = Iterables.<Record>filter(machine.getExtensions(), Record.class);
+      boolean _isEmpty_5 = IterableExtensions.isEmpty(records);
+      boolean _not_5 = (!_isEmpty_5);
+      if (_not_5) {
+        final Record first = IterableExtensions.<Record>head(records);
+        final Record last = IterableExtensions.<Record>last(records);
+        final Procedure1<IHiddenRegionFormatter> _function_15 = (IHiddenRegionFormatter it) -> {
+          it.indent();
+        };
+        document.set(this.textRegionExtensions.regionForEObject(first).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(last).getNextHiddenRegion(), _function_15);
+      }
     }
   }
   

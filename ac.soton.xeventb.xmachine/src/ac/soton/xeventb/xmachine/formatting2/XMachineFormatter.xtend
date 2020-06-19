@@ -24,6 +24,7 @@ import org.eventb.emf.core.machine.Parameter
 import org.eventb.emf.core.machine.Variable
 import org.eventb.emf.core.machine.Variant
 import org.eventb.emf.core.machine.Witness
+import ac.soton.eventb.emf.record.Record
 
 /**
  * <p>
@@ -50,6 +51,7 @@ class XMachineFormatter extends AbstractFormatter2 {
 		machine.regionFor.keyword("invariants").prepend[newLine]
 		machine.regionFor.keyword("variants").prepend[newLine]
 		machine.regionFor.keyword("events").prepend[newLine].append[newLine];
+		machine.regionFor.keyword("records").prepend[newLine];
 
 		// add new line after multi line comment
 		machine.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
@@ -57,6 +59,20 @@ class XMachineFormatter extends AbstractFormatter2 {
 		for (AbstractExtension abstractExtension : machine.getExtensions()) {
 			abstractExtension.format.prepend[newLine];
 			
+			// add a line before each field
+			if (abstractExtension instanceof Record) {
+				val record = abstractExtension as Record
+				if (!record.fields.empty) {
+					//add a line before each field
+					for (field : record.fields)
+						field.format.prepend[newLine];
+                  
+                   // indent the fields
+					val first = record.fields.head
+					val last = record.fields.last
+					set(first.regionForEObject.previousHiddenRegion, last.regionForEObject.nextHiddenRegion)[indent]
+				}
+			}
 			// add new line after multi line comment
 			abstractExtension.allRegionsFor.ruleCallTo(ML_COMMENTRule).append[newLine]
 		}
@@ -133,6 +149,16 @@ class XMachineFormatter extends AbstractFormatter2 {
 			val firstEvent = machine.events.head
 			val lastEvent = machine.events.last//.append[newLine]
 			set(firstEvent.regionForEObject.previousHiddenRegion, lastEvent.regionForEObject.nextHiddenRegion) [indent]	
+		}
+		
+		//indent records
+		if (!machine.extensions.empty) {
+			val records = machine.extensions.filter(Record)
+			if(!records.empty){
+				val first = records.head
+				val last = records.last
+				set(first.regionForEObject.previousHiddenRegion, last.regionForEObject.nextHiddenRegion)[indent]
+			}
 		}
 		
 	}
