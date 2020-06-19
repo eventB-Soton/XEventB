@@ -40,6 +40,10 @@ class XMachineFormatter extends AbstractFormatter2 {
 	@Inject extension XMachineGrammarAccess 
 
 	def dispatch void format(Machine machine, extension IFormattableDocument document) {
+		if (regionForEObject(machine) === null) {
+			return // Ignore if the document does not contain the machine
+		}
+		
 	     // format HiddenRegions around keywords, attributes, cross references, etc. 
 	     
 		// add new lines before and after some machine keywords
@@ -164,6 +168,9 @@ class XMachineFormatter extends AbstractFormatter2 {
 	}
 
 	def dispatch void format(Event event, extension IFormattableDocument document) {
+		if (regionForEObject(event) === null) {
+			return // Ignore if the document does not contain the event
+		}
 		// format HiddenRegions around keywords, attributes, cross references, etc. 
 				
 		// add new lines before events keywords

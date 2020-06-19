@@ -22,6 +22,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.formatting2.regionaccess.IEObjectRegion;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -52,6 +53,11 @@ public class XMachineFormatter extends AbstractFormatter2 {
   private XMachineGrammarAccess _xMachineGrammarAccess;
   
   protected void _format(final Machine machine, @Extension final IFormattableDocument document) {
+    IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(machine);
+    boolean _tripleEquals = (_regionForEObject == null);
+    if (_tripleEquals) {
+      return;
+    }
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
@@ -228,6 +234,11 @@ public class XMachineFormatter extends AbstractFormatter2 {
   }
   
   protected void _format(final Event event, @Extension final IFormattableDocument document) {
+    IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(event);
+    boolean _tripleEquals = (_regionForEObject == null);
+    if (_tripleEquals) {
+      return;
+    }
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
