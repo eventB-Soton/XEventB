@@ -84,7 +84,7 @@ public class XMachineGenerator extends AbstractGenerator {
       ResourceSet _resourceSet = resource.getResourceSet();
       final EMFRodinDB emfRodinDB = new EMFRodinDB(_resourceSet);
       final TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
-      final Resource rodinResource = emfRodinDB.loadResource(uri);
+      final Resource rodinResource = emfRodinDB.getResource(uri);
       final RecordingCommand command = new RecordingCommand(editingDomain, "Set Contents") {
         @Override
         public void doExecute() {
@@ -96,6 +96,7 @@ public class XMachineGenerator extends AbstractGenerator {
           rodinInternalDetails.put(XMachineGenerator.this.CONFIGURATION, 
             "org.eventb.core.fwd;ac.soton.xeventb.xmachine.base");
           mch.getAnnotations().add(rodinInternals);
+          XMachineGenerator.this.translateFormulae(mch);
           rodinResource.setModified(true);
         }
       };
@@ -103,7 +104,6 @@ public class XMachineGenerator extends AbstractGenerator {
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
       }
-      this.translateFormulae(mch);
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {

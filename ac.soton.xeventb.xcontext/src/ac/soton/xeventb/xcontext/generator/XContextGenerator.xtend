@@ -63,7 +63,8 @@ class XContextGenerator extends AbstractGenerator {
 		// @htsonImportant: Create the EMF RodinDB with the CURRENT resource set (2.0)
 		val emfRodinDB = new EMFRodinDB(resource.resourceSet)
 	    val editingDomain = emfRodinDB.editingDomain
-		val rodinResource = emfRodinDB.loadResource(uri)
+		val rodinResource = emfRodinDB.getResource(uri)
+		
 		// @htson: Use recording command for write transaction (2.0)
 		val command = new RecordingCommand(editingDomain, "Set Contents") {
 			override doExecute() {
@@ -76,6 +77,10 @@ class XContextGenerator extends AbstractGenerator {
 					"org.eventb.core.fwd;ac.soton.xeventb.xcontext.base"
 				)
 				ctx.getAnnotations().add(rodinInternals)
+
+				// Translated formulae
+				translateFormulae(ctx)
+
 				 // Ensure that the resource will be saved
 				rodinResource.modified = true;
 			}
@@ -84,8 +89,6 @@ class XContextGenerator extends AbstractGenerator {
 			editingDomain.getCommandStack().execute(command);
 		}
 		
-		// Translated formulae
-		translateFormulae(ctx)
 
 		val factory = TranslatorFactory.getFactory() as TranslatorFactory
 			
