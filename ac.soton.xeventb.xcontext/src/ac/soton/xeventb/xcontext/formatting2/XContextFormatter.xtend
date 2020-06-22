@@ -34,6 +34,10 @@ class XContextFormatter extends AbstractFormatter2 {
 	@Inject extension XContextGrammarAccess
 
 	def dispatch void format(Context context, extension IFormattableDocument document) {
+		if (regionForEObject(context) === null) {
+			return // Ignore if the document does not contain the context
+		}
+
 		// format HiddenRegions around keywords, attributes, cross references, etc. 
 		// add new lines before and after some context keywords
 		context.regionFor.keyword("extends").prepend[newLine];

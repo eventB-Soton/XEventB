@@ -74,7 +74,7 @@ public class XContextGenerator extends AbstractGenerator {
       ResourceSet _resourceSet = resource.getResourceSet();
       final EMFRodinDB emfRodinDB = new EMFRodinDB(_resourceSet);
       final TransactionalEditingDomain editingDomain = emfRodinDB.getEditingDomain();
-      final Resource rodinResource = emfRodinDB.loadResource(uri);
+      final Resource rodinResource = emfRodinDB.getResource(uri);
       final RecordingCommand command = new RecordingCommand(editingDomain, "Set Contents") {
         @Override
         public void doExecute() {
@@ -86,6 +86,7 @@ public class XContextGenerator extends AbstractGenerator {
           rodinInternalDetails.put(XContextGenerator.CONFIGURATION, 
             "org.eventb.core.fwd;ac.soton.xeventb.xcontext.base");
           ctx.getAnnotations().add(rodinInternals);
+          XContextGenerator.this.translateFormulae(ctx);
           rodinResource.setModified(true);
         }
       };
@@ -93,7 +94,6 @@ public class XContextGenerator extends AbstractGenerator {
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
       }
-      this.translateFormulae(ctx);
       TranslatorFactory _factory = TranslatorFactory.getFactory();
       final TranslatorFactory factory = ((TranslatorFactory) _factory);
       String recordCommandId = "ac.soton.eventb.records.commands.record";

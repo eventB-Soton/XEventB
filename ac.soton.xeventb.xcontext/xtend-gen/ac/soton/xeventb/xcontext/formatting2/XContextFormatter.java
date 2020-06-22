@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.formatting2.AbstractFormatter2;
 import org.eclipse.xtext.formatting2.IFormattableDocument;
 import org.eclipse.xtext.formatting2.IHiddenRegionFormatter;
+import org.eclipse.xtext.formatting2.regionaccess.IEObjectRegion;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
@@ -45,6 +46,11 @@ public class XContextFormatter extends AbstractFormatter2 {
   private XContextGrammarAccess _xContextGrammarAccess;
   
   protected void _format(final Context context, @Extension final IFormattableDocument document) {
+    IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(context);
+    boolean _tripleEquals = (_regionForEObject == null);
+    if (_tripleEquals) {
+      return;
+    }
     final Procedure1<IHiddenRegionFormatter> _function = (IHiddenRegionFormatter it) -> {
       it.newLine();
     };
