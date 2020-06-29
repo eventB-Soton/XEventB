@@ -178,10 +178,10 @@ class XMachineFormatter extends AbstractFormatter2 {
      	event.regionFor.keyword("synchronises").prepend[newLine];
 		event.regionFor.keyword("refines").prepend[newLine];
 		event.regionFor.keyword("any").prepend[newLine];
-//		event.regionFor.keyword("when").prepend[newLine];
+		event.regionFor.keyword("when").prepend[newLine];
 		event.regionFor.keyword("where").prepend[newLine];
 		event.regionFor.keyword("with").prepend[newLine];
-//		event.regionFor.keyword("begin").prepend[newLine];
+		event.regionFor.keyword("begin").prepend[newLine];
 		event.regionFor.keyword("then").prepend[newLine];
 		event.regionFor.keyword("end").prepend[newLine];
 		
