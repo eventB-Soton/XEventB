@@ -2,8 +2,8 @@
 %\documentclass[preview=false]{standalone}
 % %%%% Define new conditional \ifplastex
 % %%%% This ensure that the file complied normally without plasTeX.
-\usepackage{plastex}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage{hyperref}
 
 \ifndef{PLASTEX}
@@ -11,7 +11,7 @@
 \standalonetrue
 \usepackage{longtable} %%%% Only load longtable and ltcaption when not in plasTeX
 \usepackage{ltcaption}
-% Package for typesetting Event-B models
+\usepackage{tikz-eventB}
 \usepackage[colour]{lstEventB}
 \endif
 
@@ -38,9 +38,9 @@
 \author{%
   Thai Son Hoang and Dana Dghaym\\%
   ECS, University of Southampton\\%
-  \texttt{\{T.S.Hoang, dd4g12\} at ecs dot soton dot ac dot uk}%
+  \texttt{\{T.S.Hoang, dd4g12\} at ecs dot soton dot ac dot uk}\\%
   Version \CamilleXManualVersion\\%
-  (for feature version \CamilleXFeatureVersion)\\
+  (for feature version \CamilleXFeatureVersion)\\%
   \ifdef{PLASTEX}
   \CamilleXManualDate
   \else
@@ -52,15 +52,11 @@
 % DO NOT use date
 
 \begin{document}
-\ifdef{PLASTEX}%
 \maketitle% Make title if in plasTeX mode.
-\else%
- \maketitle % Make title if in standalone mode.
-\endif%
 
 \input{overview}
 
-%\input{getting_started}
+\input{getting_started}
 
 \input{concepts}
 

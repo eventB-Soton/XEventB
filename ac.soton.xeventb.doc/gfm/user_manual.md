@@ -10,11 +10,130 @@ seen in Figure [1](#fig:overview).
 ![Overview of CamilleX and Rodin Event-B
 Constructs](figures/tikz-overview.png)
 
-``` Event-B
-Testing
-machine
-context
-```
+# Getting Started
+
+## Installation
+
+### Setup
+
+  - Before installing the CamilleX feature, you need to add the XText
+    update site
+    (<http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/>)
+    as an additional software site (see
+    Figure [2](#fig:xtext-updatesite)).
+    
+    ![Adding XText Update Site](figures/XTextUpdateSite.jpg)
+
+  - The CamilleX feature is available from the main Rodin update site
+    (under “Modelling Extensions” category). There are two versions of
+    the feature, *CamilleX* providing facilities for working with
+    CamilleX, and the *CamilleX (SDK)* is the feature including source
+    code for software developers (see
+    Figure [3](#fig:EventBXText-installation)).
+    
+    ![Adding XText Update Site](figures/EventBXTextInstallation.jpg)
+
+### IMPORTANT
+
+  - Currently, CamilleX **not only** supports “standard” Event-B
+    machines and contexts, but also supports “*Machine Inclusion*” and
+    “*Event Synchronisation*”.
+
+  - Since the XContexts and XMachines are compiled to the Rodin files,
+    the corresponding Rodin contexts and machines will be
+    **OVER-WRITTEN**. Any changes in the Rodin files will not be lost.
+
+  - **DO NOT USE** the CamilleX if you use modelling plug-ins such as
+    *iUML-B* state-machines and class-diagrams, as the additional
+    modelling elements will be over-written.
+
+  - Windows users **must** change the workspace text file encoding to
+    **UTF-8**. This can be updated under the Rodin Preferences:
+    General/Workspace then in the “*Text file encoding*” section, select
+    Other: UTF-8.
+
+### Known Issues
+
+  - Machine Inclusion:
+    
+      - Including the **same** machine to both the abstract and its
+        refining machine can result in the repetition of invariants.
+
+## Basic Tutorial
+
+This tutorial provides a step-by-step walk-through working with CamilleX
+constructs. This tutorial also available as Cheatsheets with the Rodin
+Platform (`Help/Cheat Sheets/CamilleX Cheatsheets/CamilleX Basic
+Tutorial`).
+
+### Task 1. Create an Event-B Project
+
+**Introduction** The purpose of this task is to create an Event-B
+project for the XEvent-B constructs.
+
+  - Step 1. Create a new Event-B Project  
+    Create a new Event-B Project named “Club” using the *New Event-B
+    Project* wizard (see Figure [4](#fig:CreateProject)).
+    
+    ![Create Event-B Project called “Club”](figures/CreateProject.jpg)
+
+**Conclusion** By now, the project “Club” should be visible in the
+Event-B Explorer.
+
+### Task 2. Create a simple XContext coursesCtx.bucx
+
+**Introduction** The purpose of this task is to create a simple XContext
+within the newly created project.
+
+  - Step 1. Create a new XContext coursesCtx.bucx  
+    Create a new XContext named “coursesCtx.bucx” using the *New File
+    wizard* (see Figure [5](#fig:CreateCoursesCtx)). **Important**: A
+    pop-up dialog will be displayed asking to convert the “Club” project
+    to XText project, please answer **Yes** (see
+    Figure [6](#fig:ConvertToXText)).
+    
+    ![Create an XContext called
+    “coursesCtx.bucx”](figures/CreateCoursesCtx.jpg)
+    
+    ![Convert “Club” to XText project](figures/ConvertToXText.jpg)
+
+  - Step 2. Set the content of courseCtx.bucx  
+    Set the content of “coursesCtx.bucx” as follows.
+    
+    ``` Event-B
+    context coursesCtx
+    sets
+    	CRS
+    constants
+    	m
+    axioms
+    	axm0_1: finite(CRS)
+    	axm0_2: m ∈ ℕ1
+    	theorem thm0_1: 0 < m
+    end
+    ```
+    
+    **Important**: In order to typeset Event-B mathematical symbol,
+    e.g., \(\natn\) , one can use content assist. For example, typing
+    `NAT` and invoking content assist (e.g., on Mac OS `Ctrl+Space`), a
+    dropdown list will appear with options for typesetting \(\nat\) and
+    \(\natn\) (See Figure [7](#fig:NAT1ContentAssist).
+    
+    ![Type-setting \(\natn\) using Content
+    Assist](figures/NAT1ContentAssist.jpg)
+
+  - Step 3. Auto-format the code  
+    Automatically format the content of “coursesCtx.bucx” using
+    short-cut (e.g., on Mac OS: `Cmd+Shift+F`).
+
+  - Step 4. Save the file  
+    **Save the file “coursesCtx.bucx”**.
+
+**Conclusion** By now, the XContext “coursesCtx.bucx” and the
+corresponding Rodin Context “coursesCtx” should be visible in the
+Event-B Explorer (see Figure [8](#fig:CoursesCtx)).
+
+![The final XContext coursesCtx.bucx](figures/CoursesCtx.jpg)
 
 # Concepts
 
@@ -24,7 +143,7 @@ Each project containing CamilleX constructs must be set to be XText
 project. An XText project has an associated XContext and XMachine
 builders that can compile CamilleX source files into Rodin files as they
 are changed. The builders can be turn off via the preferences, either
-workspace-wise or project-wise (see Figure [2](#fig:XContextPreference).
+workspace-wise or project-wise (see Figure [9](#fig:XContextPreference).
 
 ![XContext Preference](figures/XContextPreference.jpg)
 

@@ -1,0 +1,18 @@
+\documentclass[convert={density=300,size=1080x800,outext=.png}]{standalone}
+\usepackage[colour]{lstEventB}
+
+\begin{document}
+\begin{lstlisting}[language=Event-B]
+context coursesCtx
+sets
+	CRS
+constants
+	m
+axioms
+	@axm0_1: finite(CRS)
+	@axm0_2: m ∈ ℕ1
+	theorem @thm0_1: 0 < m
+end
+\end{lstlisting}
+\end{document}
+ 
