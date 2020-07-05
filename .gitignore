@@ -2,3 +2,4 @@
 *.xtendbin
 .DS_Store
 target
+.cache
