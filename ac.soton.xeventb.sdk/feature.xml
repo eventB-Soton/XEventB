@@ -33,7 +33,11 @@
          version="0.0.0"/>
 
    <includes
-         id="ac.soton.eventb.emf.inclusion.tests.feature"
+         id="ac.soton.eventb.emf.record.sdk"
+         version="0.0.0"/>
+
+   <includes
+         id="ac.soton.eventb.emf.containment.sdk"
          version="0.0.0"/>
 
    <plugin
@@ -61,6 +65,12 @@
          version="0.0.0"/>
 
    <plugin
+         id="ac.soton.xeventb.tests.common.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="ac.soton.xeventb.ui.source"
          download-size="0"
          install-size="0"
@@ -79,6 +89,12 @@
          version="0.0.0"/>
 
    <plugin
+         id="ac.soton.xeventb.xcontext.tests.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
          id="ac.soton.xeventb.xcontext.ui.source"
          download-size="0"
          install-size="0"
@@ -92,6 +108,12 @@
 
    <plugin
          id="ac.soton.xeventb.xmachine.ide.source"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"/>
+
+   <plugin
+         id="ac.soton.xeventb.xmachine.tests.source"
          download-size="0"
          install-size="0"
          version="0.0.0"/>
