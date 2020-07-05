@@ -3,21 +3,100 @@
  */
 package ac.soton.xeventb.xmachine.tests
 
+import ac.soton.xeventb.tests.common.AssertExtensions
+import ac.soton.xeventb.tests.common.AssertMachineExtensions
 import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
 import org.eventb.emf.core.machine.Machine
 import org.junit.Assert
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
 /**
- * @since 1.0 
+ * @since 2.0 
  */
 @RunWith(XtextRunner)
 @InjectWith(XMachineInjectorProvider)
 class XMachineParsingTest {
-	@Inject
-	ParseHelper<Machine> parseHelper
+	@Inject	extension ParseHelper<Machine> parseHelper
+
+	extension AssertExtensions = new AssertExtensions()
+	extension AssertMachineExtensions = new AssertMachineExtensions()
+	
+	/**
+	 * Manually register any EPackage required for running the tests.
+	 * @since 2.0
+	 */
+	@Before
+	def void registerEPackages() {
+		registerMachineEPackage
+	}
+	
+	/**
+	 * Successful test for context clause.
+	 * 
+	 * @since 2.0
+	 */
+	@Test
+	def void testMachineClauseSuccessful() {
+		val testInput = 
+		'''
+			machine m0
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Machine)
+		result.assertMachine("m0", null)
+	}
+
+	/**
+	 * Successful test for multi-line comments with context clause.
+	 * 
+	 * @since 2.0
+	 */
+	@Test
+	def void testMachineClauseSuccessful_ML_COMMENT() {
+		val testInput = 
+		'''
+			/* 
+			 * Multi-line
+			 * comments
+			 */
+			machine m0
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Machine)
+		result.assertMachine("m0", null)
+	}
+
+	/**
+	 * Successful test for single-line comments with context clause.
+	 * 
+	 * @since 2.0
+	 */
+	@Test
+	def void testMachineClauseSuccessful_SL_COMMENT() {
+		val testInput = 
+		'''
+			// Single-line comment
+			machine m0
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Machine)
+		result.assertMachine("m0", null)
+	}
 }
