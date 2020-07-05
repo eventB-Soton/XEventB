@@ -1,0 +1,45 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.xeventb</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>2.0.0.release</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>../ac.soton.xeventb.releng</relativePath>
+  </parent>
+
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.xeventb</groupId>
+  <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
+  <artifactId>ac.soton.xeventb.xcontext.tests</artifactId>
+  <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
+  <version>2.0.0.release</version>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>CamilleX XContext Test Plugin</name>
+  <description>Unit tests for XContexts</description>
+
+  <packaging>eclipse-test-plugin</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+	<version>${tycho.version}</version>
+        <configuration>
+          <includes>
+            <!-- Optional: By default: Test*, *Test, and *Tests files are included -->
+          </includes>
+          <excludes>
+            <!-- Optional: pattern for excluding files -->
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

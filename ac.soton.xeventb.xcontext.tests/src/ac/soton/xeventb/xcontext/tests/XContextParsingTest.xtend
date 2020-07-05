@@ -80,10 +80,7 @@ class XContextParsingTest {
 		val errors = result.eResource.errors
 		errors.assertEmpty
 		Assert.assertTrue(result instanceof Context)
-		result.assertContext("c0", 
-		'''
-		Multi-line
-		comments''')
+		result.assertContext("c0", null)
 		result.assertContextExtendsNames()
 		result.assertContextSets()
 		result.assertContextConstants()
@@ -108,7 +105,7 @@ class XContextParsingTest {
 		val errors = result.eResource.errors
 		errors.assertEmpty
 		Assert.assertTrue(result instanceof Context)
-		result.assertContext("c0", 'Single-line comment')
+		result.assertContext("c0", null)
 		result.assertContextExtendsNames()
 		result.assertContextSets()
 		result.assertContextConstants()
@@ -248,7 +245,7 @@ class XContextParsingTest {
 		'''
 			context c0
 			axioms 
-				@axm1: "a ∈ S"
+				@axm1: a ∈ S
 			end
 		'''
 		val result = testInput.parse
@@ -274,8 +271,8 @@ class XContextParsingTest {
 		'''
 			context c0
 			axioms 
-				@axm1: "a ∈ S"
-				@axm2: "b ∈ T"
+				@axm1: a ∈ S
+				@axm2: b ∈ T
 			end
 		'''
 		val result = testInput.parse

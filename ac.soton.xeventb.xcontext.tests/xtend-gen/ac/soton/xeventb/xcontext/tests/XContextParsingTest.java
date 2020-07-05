@@ -106,11 +106,7 @@ public class XContextParsingTest {
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       this._assertExtensions.assertEmpty(errors);
       Assert.assertTrue((result instanceof Context));
-      StringConcatenation _builder_1 = new StringConcatenation();
-      _builder_1.append("Multi-line");
-      _builder_1.newLine();
-      _builder_1.append("comments");
-      this._assertContextExtensions.assertContext(result, "c0", _builder_1.toString());
+      this._assertContextExtensions.assertContext(result, "c0", null);
       this._assertContextExtensions.assertContextExtendsNames(result);
       this._assertContextExtensions.assertContextSets(result);
       this._assertContextExtensions.assertContextConstants(result);
@@ -141,7 +137,7 @@ public class XContextParsingTest {
       final EList<Resource.Diagnostic> errors = result.eResource().getErrors();
       this._assertExtensions.assertEmpty(errors);
       Assert.assertTrue((result instanceof Context));
-      this._assertContextExtensions.assertContext(result, "c0", "Single-line comment");
+      this._assertContextExtensions.assertContext(result, "c0", null);
       this._assertContextExtensions.assertContextExtendsNames(result);
       this._assertContextExtensions.assertContextSets(result);
       this._assertContextExtensions.assertContextConstants(result);
@@ -316,7 +312,7 @@ public class XContextParsingTest {
       _builder.append("axioms ");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("@axm1: \"a ∈ S\"");
+      _builder.append("@axm1: a ∈ S");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
@@ -350,10 +346,10 @@ public class XContextParsingTest {
       _builder.append("axioms ");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("@axm1: \"a ∈ S\"");
+      _builder.append("@axm1: a ∈ S");
       _builder.newLine();
       _builder.append("\t");
-      _builder.append("@axm2: \"b ∈ T\"");
+      _builder.append("@axm2: b ∈ T");
       _builder.newLine();
       _builder.append("end");
       _builder.newLine();
