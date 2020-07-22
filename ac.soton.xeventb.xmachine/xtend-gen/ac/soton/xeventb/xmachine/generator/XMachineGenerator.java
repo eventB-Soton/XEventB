@@ -15,7 +15,7 @@ package ac.soton.xeventb.xmachine.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.emf.containment.Containment;
-import ac.soton.eventb.emf.diagrams.Diagram;
+import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
 import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
@@ -126,10 +126,10 @@ public class XMachineGenerator extends AbstractGenerator {
         for (final AbstractExtension ex : extensions) {
           if ((ex instanceof Containment)) {
             final Containment ctmt = ((Containment) ex);
-            final Diagram diagram = ctmt.getExtension();
-            final Collection<IContainmentGenerator> generators = registry.getGenerators(diagram);
+            final DiagramOwner owner = ctmt.getExtension();
+            final Collection<IContainmentGenerator> generators = registry.getGenerators(owner);
             for (final IContainmentGenerator generator : generators) {
-              generator.generate(mch, diagram, editingDomain);
+              generator.generate(mch, owner, editingDomain);
             }
           }
         }

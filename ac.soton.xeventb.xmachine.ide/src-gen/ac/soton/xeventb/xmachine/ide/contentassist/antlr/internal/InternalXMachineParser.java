@@ -17044,13 +17044,13 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
             // InternalXMachine.g:4916:3: ( ruleQualifiedName )
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMContainsAccess().getExtensionDiagramCrossReference_3_0()); 
+               before(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerCrossReference_3_0()); 
             }
             // InternalXMachine.g:4917:3: ( ruleQualifiedName )
             // InternalXMachine.g:4918:4: ruleQualifiedName
             {
             if ( state.backtracking==0 ) {
-               before(grammarAccess.getMContainsAccess().getExtensionDiagramQualifiedNameParserRuleCall_3_0_1()); 
+               before(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1()); 
             }
             pushFollow(FOLLOW_2);
             ruleQualifiedName();
@@ -17058,13 +17058,13 @@ public class InternalXMachineParser extends AbstractInternalContentAssistParser 
             state._fsp--;
             if (state.failed) return ;
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMContainsAccess().getExtensionDiagramQualifiedNameParserRuleCall_3_0_1()); 
+               after(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1()); 
             }
 
             }
 
             if ( state.backtracking==0 ) {
-               after(grammarAccess.getMContainsAccess().getExtensionDiagramCrossReference_3_0()); 
+               after(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerCrossReference_3_0()); 
             }
 
             }

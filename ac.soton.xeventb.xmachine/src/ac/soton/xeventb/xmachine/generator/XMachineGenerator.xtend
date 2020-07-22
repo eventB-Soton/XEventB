@@ -129,11 +129,11 @@ class XMachineGenerator extends AbstractGenerator {
 				// Containment
 				if (ex instanceof Containment) {
 					val ctmt = ex as Containment;
-					val diagram = ctmt.getExtension();
+					val owner = ctmt.getExtension();
 					
-					val Collection<IContainmentGenerator> generators = registry.getGenerators(diagram)
+					val Collection<IContainmentGenerator> generators = registry.getGenerators(owner)
 					for (generator : generators) {
-						generator.generate(mch, diagram, editingDomain)
+						generator.generate(mch, owner, editingDomain)
 					}
 				}
 			}

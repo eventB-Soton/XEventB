@@ -1293,7 +1293,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             					}
             				
 
-            					newCompositeNode(grammarAccess.getMContainsAccess().getExtensionDiagramCrossReference_3_0());
+            					newCompositeNode(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerCrossReference_3_0());
             				
             pushFollow(FOLLOW_2);
             ruleQualifiedName();
@@ -1945,7 +1945,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     					if (current==null) {
                     						current = createModelElement(grammarAccess.getXInvariantRule());
                     					}
-                    					setWithLastConsumed(current, "theorem", true, "theorem");
+                    					setWithLastConsumed(current, "theorem", lv_theorem_1_0 != null, "theorem");
                     				
 
                     }
@@ -2469,7 +2469,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     							if (current==null) {
                     								current = createModelElement(grammarAccess.getXEventRule());
                     							}
-                    							setWithLastConsumed(current, "extended", true, "extends");
+                    							setWithLastConsumed(current, "extended", lv_extended_7_0 != null, "extends");
                     						
 
                     }
@@ -3326,7 +3326,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     					if (current==null) {
                     						current = createModelElement(grammarAccess.getXGuardRule());
                     					}
-                    					setWithLastConsumed(current, "theorem", true, "theorem");
+                    					setWithLastConsumed(current, "theorem", lv_theorem_1_0 != null, "theorem");
                     				
 
                     }

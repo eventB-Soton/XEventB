@@ -49,7 +49,7 @@ Machine returns emachine::Machine:
 
 MContains returns econtainment::Containment:
 	{econtainment::Containment}
-	name=ID ':' extension=[ediagrams::Diagram|QualifiedName]
+	name=ID ':' extension=[ediagrams::DiagramOwner|QualifiedName]
 ;
 
 MIncludes returns einclusion::MachineInclusion:

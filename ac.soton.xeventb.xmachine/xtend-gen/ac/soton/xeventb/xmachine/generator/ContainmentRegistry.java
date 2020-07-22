@@ -13,7 +13,7 @@
  */
 package ac.soton.xeventb.xmachine.generator;
 
-import ac.soton.eventb.emf.diagrams.Diagram;
+import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
 import ac.soton.xeventb.xmachine.utils.Identifiers;
 import java.util.ArrayList;
@@ -116,23 +116,23 @@ public class ContainmentRegistry {
   }
   
   /**
-   * Method to get a collection of generators related to an input diagram.
+   * Method to get a collection of generators related to an input diagram owner.
    * This is done by looking at the map of generators (load the registry if
    * necessary).
    * 
-   * @param diagram
-   * 		The input diagram
+   * @param owner
+   * 		The input diagram owner
    * @return
-   * 		The collection of generators corresponding to the input diagram
+   * 		The collection of generators corresponding to the input diagram owner
    */
-  public Collection<IContainmentGenerator> getGenerators(final Diagram diagram) {
+  public Collection<IContainmentGenerator> getGenerators(final DiagramOwner owner) {
     if ((this.generators == null)) {
       this.loadRegistry();
     }
     final ArrayList<IContainmentGenerator> result = new ArrayList<IContainmentGenerator>();
     final Set<Class<?>> classes = this.generators.keySet();
     for (final Class<?> clazz : classes) {
-      boolean _isInstance = clazz.isInstance(diagram);
+      boolean _isInstance = clazz.isInstance(owner);
       if (_isInstance) {
         result.addAll(this.generators.get(clazz));
       }
