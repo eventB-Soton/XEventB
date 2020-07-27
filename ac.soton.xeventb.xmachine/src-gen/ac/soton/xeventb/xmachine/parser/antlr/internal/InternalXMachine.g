@@ -421,35 +421,13 @@ ruleMContains returns [EObject current=null]
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
-				{
-					newLeafNode(lv_name_1_0, grammarAccess.getMContainsAccess().getNameIDTerminalRuleCall_1_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getMContainsRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"name",
-						lv_name_1_0,
-						"ac.soton.xeventb.xmachine.XMachine.ID");
-				}
-			)
-		)
-		otherlv_2=':'
-		{
-			newLeafNode(otherlv_2, grammarAccess.getMContainsAccess().getColonKeyword_2());
-		}
-		(
-			(
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getMContainsRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerCrossReference_3_0());
+					newCompositeNode(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerCrossReference_1_0());
 				}
 				ruleQualifiedName
 				{

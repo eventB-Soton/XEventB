@@ -132,18 +132,15 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     MContains returns Containment
 	 *
 	 * Constraint:
-	 *     (name=ID extension=[DiagramOwner|QualifiedName])
+	 *     extension=[DiagramOwner|QualifiedName]
 	 */
 	protected void sequence_MContains(ISerializationContext context, Containment semanticObject) {
 		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, ContainmentPackage.Literals.CONTAINMENT__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContainmentPackage.Literals.CONTAINMENT__NAME));
 			if (transientValues.isValueTransient(semanticObject, ContainmentPackage.Literals.CONTAINMENT__EXTENSION) == ValueTransient.YES)
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ContainmentPackage.Literals.CONTAINMENT__EXTENSION));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMContainsAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1(), semanticObject.eGet(ContainmentPackage.Literals.CONTAINMENT__EXTENSION, false));
+		feeder.accept(grammarAccess.getMContainsAccess().getExtensionDiagramOwnerQualifiedNameParserRuleCall_1_0_1(), semanticObject.eGet(ContainmentPackage.Literals.CONTAINMENT__EXTENSION, false));
 		feeder.finish();
 	}
 	

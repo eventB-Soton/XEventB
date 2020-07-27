@@ -238,40 +238,28 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.MContains");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cContainmentAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cExtensionAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cExtensionDiagramOwnerCrossReference_3_0 = (CrossReference)cExtensionAssignment_3.eContents().get(0);
-		private final RuleCall cExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1 = (RuleCall)cExtensionDiagramOwnerCrossReference_3_0.eContents().get(1);
+		private final Assignment cExtensionAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final CrossReference cExtensionDiagramOwnerCrossReference_1_0 = (CrossReference)cExtensionAssignment_1.eContents().get(0);
+		private final RuleCall cExtensionDiagramOwnerQualifiedNameParserRuleCall_1_0_1 = (RuleCall)cExtensionDiagramOwnerCrossReference_1_0.eContents().get(1);
 		
 		//MContains econtainment::Containment:
-		//	{econtainment::Containment} name=ID ':' extension=[ediagrams::DiagramOwner|QualifiedName];
+		//	{econtainment::Containment} extension=[ediagrams::DiagramOwner|QualifiedName];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{econtainment::Containment} name=ID ':' extension=[ediagrams::DiagramOwner|QualifiedName]
+		//{econtainment::Containment} extension=[ediagrams::DiagramOwner|QualifiedName]
 		public Group getGroup() { return cGroup; }
 		
 		//{econtainment::Containment}
 		public Action getContainmentAction_0() { return cContainmentAction_0; }
 		
-		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
-		
-		//':'
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
-		
 		//extension=[ediagrams::DiagramOwner|QualifiedName]
-		public Assignment getExtensionAssignment_3() { return cExtensionAssignment_3; }
+		public Assignment getExtensionAssignment_1() { return cExtensionAssignment_1; }
 		
 		//[ediagrams::DiagramOwner|QualifiedName]
-		public CrossReference getExtensionDiagramOwnerCrossReference_3_0() { return cExtensionDiagramOwnerCrossReference_3_0; }
+		public CrossReference getExtensionDiagramOwnerCrossReference_1_0() { return cExtensionDiagramOwnerCrossReference_1_0; }
 		
 		//QualifiedName
-		public RuleCall getExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1() { return cExtensionDiagramOwnerQualifiedNameParserRuleCall_3_0_1; }
+		public RuleCall getExtensionDiagramOwnerQualifiedNameParserRuleCall_1_0_1() { return cExtensionDiagramOwnerQualifiedNameParserRuleCall_1_0_1; }
 	}
 	public class MIncludesElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.MIncludes");
@@ -1740,7 +1728,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//MContains econtainment::Containment:
-	//	{econtainment::Containment} name=ID ':' extension=[ediagrams::DiagramOwner|QualifiedName];
+	//	{econtainment::Containment} extension=[ediagrams::DiagramOwner|QualifiedName];
 	public MContainsElements getMContainsAccess() {
 		return pMContains;
 	}

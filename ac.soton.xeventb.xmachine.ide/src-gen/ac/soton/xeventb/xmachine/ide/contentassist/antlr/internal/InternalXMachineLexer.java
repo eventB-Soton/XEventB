@@ -2822,11 +2822,11 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_XLABEL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5550:13: ( '@' (~ ( ':' ) )+ ':' )
-            // InternalXMachine.g:5550:15: '@' (~ ( ':' ) )+ ':'
+            // InternalXMachine.g:5481:13: ( '@' (~ ( ':' ) )+ ':' )
+            // InternalXMachine.g:5481:15: '@' (~ ( ':' ) )+ ':'
             {
             match('@'); 
-            // InternalXMachine.g:5550:19: (~ ( ':' ) )+
+            // InternalXMachine.g:5481:19: (~ ( ':' ) )+
             int cnt1=0;
             loop1:
             do {
@@ -2840,7 +2840,7 @@ public class InternalXMachineLexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // InternalXMachine.g:5550:19: ~ ( ':' )
+            	    // InternalXMachine.g:5481:19: ~ ( ':' )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='9')||(input.LA(1)>=';' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -2881,10 +2881,10 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5552:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )* )
-            // InternalXMachine.g:5552:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )*
+            // InternalXMachine.g:5483:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )* )
+            // InternalXMachine.g:5483:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )*
             {
-            // InternalXMachine.g:5552:11: ( '^' )?
+            // InternalXMachine.g:5483:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -2893,7 +2893,7 @@ public class InternalXMachineLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // InternalXMachine.g:5552:11: '^'
+                    // InternalXMachine.g:5483:11: '^'
                     {
                     match('^'); 
 
@@ -2911,7 +2911,7 @@ public class InternalXMachineLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalXMachine.g:5552:54: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )*
+            // InternalXMachine.g:5483:54: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | 'i' .. '\\uFFDC' | '0' .. '9' | '\\'' )*
             loop3:
             do {
                 int alt3=2;
@@ -2960,10 +2960,10 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_UNTRANSLATED_TOKEN;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5554:25: ( ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+ )
-            // InternalXMachine.g:5554:27: ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+
+            // InternalXMachine.g:5485:25: ( ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+ )
+            // InternalXMachine.g:5485:27: ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+
             {
-            // InternalXMachine.g:5554:27: ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+
+            // InternalXMachine.g:5485:27: ( '!' | '#' | '%' | '&' | '*' | '-' | ':' | '|' | '\\\\' | ',' | '~' | '/' | '.' )+
             int cnt4=0;
             loop4:
             do {
@@ -3017,11 +3017,11 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5556:13: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
-            // InternalXMachine.g:5556:15: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+            // InternalXMachine.g:5487:13: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' )
+            // InternalXMachine.g:5487:15: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
             {
             match('\"'); 
-            // InternalXMachine.g:5556:19: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+            // InternalXMachine.g:5487:19: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
             loop5:
             do {
                 int alt5=3;
@@ -3037,7 +3037,7 @@ public class InternalXMachineLexer extends Lexer {
 
                 switch (alt5) {
             	case 1 :
-            	    // InternalXMachine.g:5556:20: '\\\\' .
+            	    // InternalXMachine.g:5487:20: '\\\\' .
             	    {
             	    match('\\'); 
             	    matchAny(); 
@@ -3045,7 +3045,7 @@ public class InternalXMachineLexer extends Lexer {
             	    }
             	    break;
             	case 2 :
-            	    // InternalXMachine.g:5556:27: ~ ( ( '\\\\' | '\"' ) )
+            	    // InternalXMachine.g:5487:27: ~ ( ( '\\\\' | '\"' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3082,10 +3082,10 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5558:10: ( ( '0' .. '9' )+ )
-            // InternalXMachine.g:5558:12: ( '0' .. '9' )+
+            // InternalXMachine.g:5489:10: ( ( '0' .. '9' )+ )
+            // InternalXMachine.g:5489:12: ( '0' .. '9' )+
             {
-            // InternalXMachine.g:5558:12: ( '0' .. '9' )+
+            // InternalXMachine.g:5489:12: ( '0' .. '9' )+
             int cnt6=0;
             loop6:
             do {
@@ -3099,7 +3099,7 @@ public class InternalXMachineLexer extends Lexer {
 
                 switch (alt6) {
             	case 1 :
-            	    // InternalXMachine.g:5558:13: '0' .. '9'
+            	    // InternalXMachine.g:5489:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -3131,12 +3131,12 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5560:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalXMachine.g:5560:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalXMachine.g:5491:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalXMachine.g:5491:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalXMachine.g:5560:24: ( options {greedy=false; } : . )*
+            // InternalXMachine.g:5491:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -3161,7 +3161,7 @@ public class InternalXMachineLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalXMachine.g:5560:52: .
+            	    // InternalXMachine.g:5491:52: .
             	    {
             	    matchAny(); 
 
@@ -3191,12 +3191,12 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5562:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalXMachine.g:5562:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalXMachine.g:5493:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalXMachine.g:5493:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalXMachine.g:5562:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalXMachine.g:5493:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -3209,7 +3209,7 @@ public class InternalXMachineLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalXMachine.g:5562:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalXMachine.g:5493:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -3229,7 +3229,7 @@ public class InternalXMachineLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalXMachine.g:5562:40: ( ( '\\r' )? '\\n' )?
+            // InternalXMachine.g:5493:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -3238,9 +3238,9 @@ public class InternalXMachineLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalXMachine.g:5562:41: ( '\\r' )? '\\n'
+                    // InternalXMachine.g:5493:41: ( '\\r' )? '\\n'
                     {
-                    // InternalXMachine.g:5562:41: ( '\\r' )?
+                    // InternalXMachine.g:5493:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -3249,7 +3249,7 @@ public class InternalXMachineLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalXMachine.g:5562:41: '\\r'
+                            // InternalXMachine.g:5493:41: '\\r'
                             {
                             match('\r'); 
 
@@ -3281,10 +3281,10 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5564:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalXMachine.g:5564:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalXMachine.g:5495:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalXMachine.g:5495:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalXMachine.g:5564:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalXMachine.g:5495:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -3338,8 +3338,8 @@ public class InternalXMachineLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalXMachine.g:5566:16: ( . )
-            // InternalXMachine.g:5566:18: .
+            // InternalXMachine.g:5497:16: ( . )
+            // InternalXMachine.g:5497:18: .
             {
             matchAny(); 
 
