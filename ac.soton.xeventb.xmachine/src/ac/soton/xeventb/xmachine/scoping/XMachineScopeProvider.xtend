@@ -10,6 +10,9 @@
  *******************************************************************************/
 package ac.soton.xeventb.xmachine.scoping
 
+import ac.soton.eventb.emf.containment.Containment
+import ac.soton.eventb.emf.containment.ContainmentPackage
+import ac.soton.eventb.emf.diagrams.DiagramOwner
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.InclusionPackage
 import ac.soton.eventb.emf.inclusion.MachineInclusion
@@ -19,21 +22,31 @@ import ac.soton.xeventb.common.EventBContainerManager
 import ac.soton.xeventb.common.EventBQualifiedNameProvider
 import ch.ethz.eventb.utils.EventBUtils
 import com.google.inject.Inject
+import java.io.IOException
 import java.util.ArrayList
+import java.util.Collections
+import org.eclipse.core.resources.IFile
+import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.resource.ResourceSet
+import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eventb.core.basis.ContextRoot
 import org.eventb.core.basis.MachineRoot
+import org.eventb.emf.core.EventBElement
 import org.eventb.emf.core.EventBObject
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
 import org.eventb.emf.persistence.EMFRodinDB
+import org.rodinp.core.IInternalElement
 
 /**
  * <p>
@@ -64,6 +77,11 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 	 */
 	override getScope(EObject context, EReference reference) {
 
+		val resource = context.eResource
+		val resourceSet = resource.resourceSet
+//       	val emfRodinDB = new EMFRodinDB(resourceSet)
+//       	val emfRodinDB = new EMFRodinDB()
+
 		// The scope for a event refinement is the set of all events in refined machine.
   		if (context instanceof Event && reference == MachinePackage.Literals.EVENT__REFINES) {
 			val mch = EcoreUtil2.getRootContainer(context, true) as Machine
@@ -79,15 +97,14 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		// The scope for a context seeing is the set of all contexts in the
 		// current project containing the parent machine. 
 		if (context instanceof Machine && reference == MachinePackage.Literals.MACHINE__SEES) {
-			var emfRodinDB = new EMFRodinDB;
-			var prjName = emfRodinDB.getProjectName(context as Machine);
+			var prjName = getProjectName(context as Machine);
 			var eBPrj = EventBUtils.getEventBProject(prjName)
 			var rdPrj = eBPrj.getRodinProject()
 			var ctxRoots = rdPrj.getRootElementsOfType(ContextRoot.ELEMENT_TYPE)
 
 			var ctxs = new ArrayList()
 			for (ctxRoot : ctxRoots) {
-				var ctx = emfRodinDB.loadEventBComponent(ctxRoot)
+				var ctx = loadEventBComponent(ctxRoot, resourceSet)
 				ctxs.add(ctx)
 			}
 			return Scopes.scopeFor(ctxs);
@@ -96,15 +113,14 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		// The scope for a machine refinement is the set of all machines in the
 		// current project containing the parent machine. 
 		if (context instanceof Machine && reference == MachinePackage.Literals.MACHINE__REFINES) {
-			var emfRodinDB = new EMFRodinDB;
-			var prjName = emfRodinDB.getProjectName(context as Machine);
+			var prjName = getProjectName(context as Machine);
 			var eBPrj = EventBUtils.getEventBProject(prjName)
 			var rdPrj = eBPrj.getRodinProject()
 			var mchRoots = rdPrj.getRootElementsOfType(MachineRoot.ELEMENT_TYPE)
 
 			var mchs = new ArrayList()
 			for (mchRoot : mchRoots) {
-				var mch = emfRodinDB.loadEventBComponent(mchRoot)
+				var mch = loadEventBComponent(mchRoot, resourceSet)
 				mchs.add(mch)
 			}
 			return Scopes.scopeFor(mchs);
@@ -147,6 +163,38 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 			return Scopes.scopeFor(records);
 		}
 		
+		// The scope for a context seeing is the set of all contexts in the
+		// current project containing the parent machine. 
+		if (context instanceof Containment &&
+			reference == ContainmentPackage.Literals.CONTAINMENT__EXTENSION
+		) {
+			// Get the project
+			val machine = context.eContainer as Machine
+			val uri = EcoreUtil.getURI(machine);
+			val projectName = uri.segment(1)
+			val workspace = ResourcesPlugin.getWorkspace();
+        	val root = workspace.getRoot();
+        	val project = root.getProject(projectName);
+        	var diagramOwners = new ArrayList<DiagramOwner>()
+        	val members = project.members()
+			for (file : members) {
+        		if (file instanceof IFile) {
+					val fileExtension = file.fileExtension
+					if (fileExtension == "umlb") {
+						val umlbURI = URI.createPlatformResourceURI(file.getFullPath().toString(), true)
+						val umlbResource = loadResource(umlbURI, resourceSet)
+						val diagramOwner = umlbResource.contents.get(0) as DiagramOwner
+						diagramOwners.add(diagramOwner)
+					}
+        		}
+        	}
+			return Scopes.scopeFor(diagramOwners);
+			// Return all the DiagramOwners within the project.
+			// Load project into EMF?
+			// Find all files with .umlb extension
+			// EMFUtils to construct URI from file name and project.
+			// for each file, load the resource and get the first content.
+		}
        return super.getScope(context, reference);
 	}
 	
@@ -196,7 +244,70 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		return list;
 	}
 	
+	def private Resource loadResource(URI fileURI, ResourceSet resourceSet) {
+		var resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
+		if (resource == null) {
+			resource = resourceSet.createResource(fileURI);
+		}
+		// Try to load the resource
+		if (!resource.isLoaded()) {
+			val deliver = resource.eDeliver();
+			resource.eSetDeliver(false); // turn off notifications while loading
+			try {
+				resource.load(Collections.emptyMap());
+				// TODO throw exception instead (break API)
+			} catch (IOException e) {
+				return null;
+			} finally {
+				resource.eSetDeliver(deliver);
+			}
+		}
+		return resource;
+	}
 	
+		/**
+	 * this returns the project name by checking the uri of the given element
+	 * The element must be loaded or an npe will occur
+	 *
+	 * @param element
+	 * @return
+	 */
+	def private String getProjectName(EventBElement element) {
+		val uri = EcoreUtil.getURI(element);
+		return uri.segment(1);
+	}
+	
+	/**
+	 * loads an Event-B component (URI) into EMF
+	 *
+	 * @param root
+	 * @return
+	 */
+	def private EventBElement loadEventBComponent(URI fileURI, ResourceSet resourceSet) {
+		val resource = loadResource(fileURI, resourceSet);
+		if (resource === null) {
+			return null;
+		}
+		if (resource.isLoaded() && !resource.getContents().isEmpty() && resource.getContents().get(0) instanceof EventBElement) {
+			return resource.getContents().get(0) as EventBElement;
+		} else {
+			return null;
+		}
+	}
+
+	/**
+	 * loads an Event-B component (root) into EMF
+	 *
+	 * @param root
+	 * @return
+	 */
+	def private EventBElement loadEventBComponent(IInternalElement element, ResourceSet resourceSet) {
+		val root = element.getRoot();
+		if (root === null || !root.exists())
+			return null;
+		val fileURI = URI.createPlatformResourceURI(root.getResource().getFullPath().toString(), true);
+		return loadEventBComponent(fileURI, resourceSet);
+	}
 	
 }	
 
