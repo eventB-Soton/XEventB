@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016,2017 University of Southampton.
+ * Copyright (c) 2016,2020 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -21,9 +21,9 @@ import ac.soton.eventb.emf.record.RecordPackage
 import ac.soton.xeventb.common.EventBContainerManager
 import ac.soton.xeventb.common.EventBQualifiedNameProvider
 import ch.ethz.eventb.utils.EventBUtils
-import com.google.inject.Inject
 import java.io.IOException
 import java.util.ArrayList
+import java.util.Collection
 import java.util.Collections
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
@@ -34,12 +34,12 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.EcoreUtil2
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider
 import org.eclipse.xtext.scoping.Scopes
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eventb.core.basis.ContextRoot
 import org.eventb.core.basis.MachineRoot
 import org.eventb.emf.core.EventBElement
+import org.eventb.emf.core.EventBNamedCommentedComponentElement
 import org.eventb.emf.core.EventBObject
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.machine.Event
@@ -62,7 +62,7 @@ import org.rodinp.core.IInternalElement
  * @since 0.0.1
  */
 class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
-	@Inject ResourceDescriptionsProvider rdp
+//	@Inject ResourceDescriptionsProvider rdp
 	
 
 //	@Inject IContainer.Manager cm
@@ -226,27 +226,32 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 			return Scopes.scopeFor(mchs, superScope);		
 	}
 	
-	def private getComponentsInScope(EventBObject eventBObject) {
+	def private Collection<EventBNamedCommentedComponentElement>
+			getComponentsInScope(EventBObject eventBObject) {
 		var list = new ArrayList
-		if (eventBObject instanceof Machine){
+		if (eventBObject instanceof Machine) {
 			var m = eventBObject as Machine;
 			list.add(m);
-			for (Context c : m.getSees()){
+			for (Context c : m.getSees()) {
 				list.addAll(getComponentsInScope(c));
-			}			
-		}else if (eventBObject instanceof Context){
+			}
+		} else if (eventBObject instanceof Context) {
 			var c = eventBObject as Context;
 			list.add(c);
-			for (Context x : c.getExtends()){
+			for (Context x : c.getExtends()) {
 				list.addAll(getComponentsInScope(x));
 			}
 		}
 		return list;
 	}
 	
+	/**
+	 * THESE METHODS WERE COPIED FROM EMFRodinDB
+	 */
+
 	def private Resource loadResource(URI fileURI, ResourceSet resourceSet) {
 		var resource = resourceSet.getResource(fileURI, false); //n.b. do not load until notifications disabled
-		if (resource == null) {
+		if (resource === null) {
 			resource = resourceSet.createResource(fileURI);
 		}
 		// Try to load the resource
@@ -265,7 +270,7 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		return resource;
 	}
 	
-		/**
+	/**
 	 * this returns the project name by checking the uri of the given element
 	 * The element must be loaded or an npe will occur
 	 *

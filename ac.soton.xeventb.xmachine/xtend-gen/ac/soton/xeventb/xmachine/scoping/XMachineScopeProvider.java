@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016,2017 University of Southampton.
+ * Copyright (c) 2016,2020 University of Southampton.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -23,9 +23,9 @@ import ac.soton.xeventb.common.EventBQualifiedNameProvider;
 import ch.ethz.eventb.utils.EventBUtils;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.eclipse.core.resources.IFile;
@@ -42,11 +42,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.core.IContextRoot;
@@ -55,6 +53,7 @@ import org.eventb.core.IMachineRoot;
 import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
@@ -79,9 +78,6 @@ import org.rodinp.core.IRodinProject;
  */
 @SuppressWarnings("all")
 public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
-  @Inject
-  private ResourceDescriptionsProvider rdp;
-  
   /**
    * Getting the scope for the a reference feature of an input object.
    * 
@@ -166,10 +162,10 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       if (((context instanceof Record) && Objects.equal(reference, RecordPackage.Literals.RECORD__SUBSETS))) {
         EObject _rootContainer_2 = EcoreUtil2.getRootContainer(context, true);
         final Machine mch_2 = ((Machine) _rootContainer_2);
-        final ArrayList<Object> components = this.getComponentsInScope(mch_2);
+        final Collection<EventBNamedCommentedComponentElement> components = this.getComponentsInScope(mch_2);
         final List<Record> records = EcoreUtil2.<Record>getAllContentsOfType(mch_2, Record.class);
         records.remove(context);
-        for (final Object c : components) {
+        for (final EventBNamedCommentedComponentElement c : components) {
           records.addAll(EcoreUtil2.<Record>getAllContentsOfType(((EObject) c), Record.class));
         }
         return Scopes.scopeFor(records);
@@ -239,14 +235,14 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     }
   }
   
-  private ArrayList<Object> getComponentsInScope(final EventBObject eventBObject) {
-    ArrayList<Object> list = new ArrayList<Object>();
+  private Collection<EventBNamedCommentedComponentElement> getComponentsInScope(final EventBObject eventBObject) {
+    ArrayList<EventBNamedCommentedComponentElement> list = new ArrayList<EventBNamedCommentedComponentElement>();
     if ((eventBObject instanceof Machine)) {
       Machine m = ((Machine) eventBObject);
       list.add(m);
       EList<Context> _sees = m.getSees();
       for (final Context c : _sees) {
-        CollectionExtensions.<Object>addAll(list, this.getComponentsInScope(c));
+        list.addAll(this.getComponentsInScope(c));
       }
     } else {
       if ((eventBObject instanceof Context)) {
@@ -254,17 +250,19 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
         list.add(c_1);
         EList<Context> _extends = c_1.getExtends();
         for (final Context x : _extends) {
-          CollectionExtensions.<Object>addAll(list, this.getComponentsInScope(x));
+          list.addAll(this.getComponentsInScope(x));
         }
       }
     }
     return list;
   }
   
+  /**
+   * THESE METHODS WERE COPIED FROM EMFRodinDB
+   */
   private Resource loadResource(final URI fileURI, final ResourceSet resourceSet) {
     Resource resource = resourceSet.getResource(fileURI, false);
-    boolean _equals = Objects.equal(resource, null);
-    if (_equals) {
+    if ((resource == null)) {
       resource = resourceSet.createResource(fileURI);
     }
     boolean _isLoaded = resource.isLoaded();
