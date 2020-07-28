@@ -1,10 +1,13 @@
 /*******************************************************************************
- * Copyright (c) 2016 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
+ * Copyright (c) 2016,2020 University of Southampton.
+ *
+ * This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License 2.0
  * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
- * 
+ * https://www.eclipse.org/legal/epl-2.0/
+ *
+ * SPDX-License-Identifier: EPL-2.0
+ *
  * Contributors:
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
@@ -32,7 +35,6 @@ import org.eventb.emf.core.EventBObject
 import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.context.ContextPackage
 import org.eventb.emf.core.machine.Machine
-import org.eventb.emf.persistence.EMFRodinDB
 import org.rodinp.core.IInternalElement
 
 /**
@@ -41,8 +43,7 @@ import org.rodinp.core.IInternalElement
  * </p>
  * 
  * @author htson
- * @version 0.1
- * @see EMFRodinDB
+ * @version 0.2
  * @since 0.2
  */
 class XContextScopeProvider extends AbstractXContextScopeProvider {
