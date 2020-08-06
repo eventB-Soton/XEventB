@@ -24,7 +24,7 @@ ext {
   TMP_PANDOC_FOLDER = ROOT_FOLDER+'/.tmp_PANDOC'    // The temporary LaTeX folder
   LATEX_FOLDER = ROOT_FOLDER + '/latex'             // The source LaTeX folder
   HTML_FOLDER = ROOT_FOLDER + '/html'               // The target HTML folder
-  STANDALONE_FILES = ['tikz-overview']              // The list of tikz files
+  STANDALONE_FILES = ['tikz-overview', 'xeventb-coursesCtx']              // The list of standalone files
   TOCFile = HTML_FOLDER + '/eclipse-toc.xml'        // The target TOC File
   TEXFiles = fileTree('.').include('*.tex').files.name  // All .tex files
   GENERATED_EXTENSIONS = ['aux', 'bbl', 'bcf', 'blg', 'log', 'nav', 'out', 'rel', 'run.xml', 'paux', 'snm', 'toc', 'vrb']                               // The list of generated extensions
@@ -41,7 +41,7 @@ defaultTasks 'build'
  * - MediaWiki
  */
 task build {
-  dependsOn 'pdf', 'xhtml', 'gfm'
+  dependsOn 'pdf', 'xhtml', 'gfm', 'mediawiki', 'epub'
 }
 
 /********************
@@ -116,6 +116,11 @@ STANDALONE_FILES.each { def tikzFile ->
     inputs.file tikzFile+".tex"
     outputs.file tikzFile+".pdf"
     commandLine LATEX, '-shell-escape', tikzFile
+    doLast {
+      exec {
+        commandLine 'cp', tikzFile+".png", 'figures'
+      }
+    }
   }
 }
 
@@ -136,6 +141,7 @@ task xhtml(type : Exec) {
   dependsOn tasks.matching {
     Task task -> task.name.startsWith('PLASTEX_SOURCE')
   }
+  dependsOn 'pdf'
   inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
   outputs.file TOCFile
   commandLine './xhtml.sh', BASENAME, HTML_FOLDER
@@ -153,7 +159,7 @@ task gfm(type : Exec) {
     Task task -> task.name.startsWith('PANDOC_SOURCE')
   }
   inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
-  outputs.file BASENAME+".md"
+  outputs.file "../gfm/" + BASENAME+".md"
   commandLine './gfm.sh', BASENAME
 }
 
@@ -169,7 +175,7 @@ task mediawiki(type : Exec) {
     Task task -> task.name.startsWith('PANDOC_SOURCE')
   }
   inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
-  outputs.file BASENAME+".wiki"
+  outputs.file "../wiki/" + BASENAME+".wiki"
   commandLine './mediawiki.sh', BASENAME
 }
 
@@ -185,7 +191,7 @@ task epub(type : Exec) {
     Task task -> task.name.startsWith('PANDOC_SOURCE')
   }
   inputs.files fileTree('.').include('**/*.tex'), fileTree('.').include('**/*.cls'), fileTree('.').include('**/*.sty'), fileTree('.').include('**/*.bib'), BASENAME+".tex", fileTree('./figures').include('**/*')
-  outputs.file BASENAME+".epub"
+  outputs.file "../" + BASENAME+".epub"
   commandLine './epub.sh', BASENAME
 }
 

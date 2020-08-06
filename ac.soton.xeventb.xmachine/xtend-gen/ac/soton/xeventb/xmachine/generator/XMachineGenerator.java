@@ -15,7 +15,7 @@ package ac.soton.xeventb.xmachine.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.emf.containment.Containment;
-import ac.soton.eventb.emf.diagrams.Diagram;
+import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
 import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
@@ -107,7 +107,6 @@ public class XMachineGenerator extends AbstractGenerator {
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
-        final EList<AbstractExtension> extensions = mch.getExtensions();
         TranslatorFactory _factory = TranslatorFactory.getFactory();
         final TranslatorFactory factory = ((TranslatorFactory) _factory);
         String commandId = "ac.soton.eventb.emf.inclusion.commands.include";
@@ -121,17 +120,6 @@ public class XMachineGenerator extends AbstractGenerator {
         if (_canTranslate_1) {
           final NullProgressMonitor monitor_1 = new NullProgressMonitor();
           factory.translate(editingDomain, mch, recordCommandId, monitor_1);
-        }
-        final ContainmentRegistry registry = ContainmentRegistry.getDefault();
-        for (final AbstractExtension ex : extensions) {
-          if ((ex instanceof Containment)) {
-            final Containment ctmt = ((Containment) ex);
-            final Diagram diagram = ctmt.getExtension();
-            final Collection<IContainmentGenerator> generators = registry.getGenerators(diagram);
-            for (final IContainmentGenerator generator : generators) {
-              generator.generate(mch, diagram, editingDomain);
-            }
-          }
         }
       }
       final SaveResourcesCommand saveCommand = new SaveResourcesCommand(editingDomain);
@@ -163,6 +151,18 @@ public class XMachineGenerator extends AbstractGenerator {
           this.getSchedulingRule(editingDomain.getResourceSet().getResources().<Resource>toArray(emptyResource)), monitor_2);
       }
       monitor_2.done();
+      final ContainmentRegistry registry = ContainmentRegistry.getDefault();
+      EList<AbstractExtension> _extensions = mch.getExtensions();
+      for (final AbstractExtension ex : _extensions) {
+        if ((ex instanceof Containment)) {
+          final Containment ctmt = ((Containment) ex);
+          final DiagramOwner owner = ctmt.getExtension();
+          final Collection<IContainmentGenerator> generators = registry.getGenerators(owner);
+          for (final IContainmentGenerator generator : generators) {
+            generator.generate(mch, owner, editingDomain);
+          }
+        }
+      }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

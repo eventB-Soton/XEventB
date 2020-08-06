@@ -30,7 +30,6 @@
 %%%%% BEGIN Package loading %%%%%
 % ========================
 \RequirePackage{tikz}
-\RequirePackage{eventB}
 %%%%% END Package loading %%%%%
 
 
@@ -78,7 +77,7 @@
 % automatically.
 \newcommand{\tikzCtx}[4][]{
   \draw(#2,#3)
-  node[draw, rounded corners, inner sep = 2ex, minimum width = 4em](#1){\Bctx{#4}};
+  node[draw, rounded corners, inner sep = 2ex, minimum width = 4em](#1){#4};
 }
 
 %%%%% END Commands for Creating Diagrams Event-B Models %%%%%
@@ -98,7 +97,7 @@
 % The labels must be created as (optional arguments) before using
 % the \tikzMch and \tikzCtx commands.
 \newcommand{\tikzSees}[3][]{
-  \draw[->, #1] (#2) --node[fill=white]{\Bsees} (#3);
+  \draw[->, #1] (#2) --node[fill=white]{sees} (#3);
 }
 
 % Macro for drawing a REFINES relationship between a (concrete) machine and an (abstract) machine.
@@ -115,7 +114,7 @@
 % The labels must be created as (optional arguments) before using
 % rhe \tikzMch command.
 \newcommand{\tikzRefines}[3][]{
-  \draw[->, #1] (#2) --node[fill=white]{\Brefines} (#3);
+  \draw[->, #1] (#2) --node[fill=white]{refines} (#3);
 }
 
 % Macro for drawing a transtive REFINES relationship between a (concrete) machine and an (abstract) machine.
@@ -132,7 +131,7 @@
 % The labels must be created as (optional arguments) before using
 % the \tikzMch command.
 \newcommand{\tikzRefinesTransitive}[3][]{
-  \draw[->, dashed,#1] (#2) --node[fill=white]{\Brefines} (#3);
+  \draw[->, dashed,#1] (#2) --node[fill=white]{refines} (#3);
 }
 
 % Macro for drawing a EXTENDS relationship between a (concrete) context and an (abstract) context.
@@ -149,7 +148,7 @@
 % The labels must be created as (optional arguments) before using
 % the \tikzCtx command.
 \newcommand{\tikzExtends}[3][]{
-  \draw[->,#1] (#2) --node[fill=white]{\Bextends} (#3);
+  \draw[->,#1] (#2) --node[fill=white]{extends} (#3);
 }
 
 % Macro for drawing a transtive EXTENDS relationship between a (concrete) conctext and an (abstract) context.
@@ -166,7 +165,7 @@
 % The labels must be created as (optional arguments) before using
 % \tikzCtx command.
 \newcommand{\tikzExtendsTransitive}[3][]{
-  \draw[->, dashed,#1] (#2) --node[fill=white]{\Bextends} (#3);
+  \draw[->, dashed,#1] (#2) --node[fill=white]{extends} (#3);
 }
 \endinput
 %%

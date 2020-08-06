@@ -1,0 +1,10 @@
+context coursesCtx
+sets
+	CRS
+constants
+	m
+axioms
+	@axm0_1: finite(CRS)
+	@axm0_2: m ∈ ℕ1
+	theorem @thm0_1: 0 < m
+end

@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
     Copyright (c) 2016,2018 University of Southampton.
-    All rights reserved. This program and the accompanying materials
-    are made available under the terms of the Eclipse Public License v1.0
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
     which accompanies this distribution, and is available at
-    http://www.eclipse.org/legal/epl-v10.html
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
    
     Contributors:
         University of Southampton - initial API and implementation
@@ -12,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.tests.feature"
       label="%featureName"
-      version="1.0.0.release"
+      version="2.0.0.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -27,6 +30,7 @@
    </copyright>
 
    <requires>
+      <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
       <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
       <import plugin="org.junit" version="4.7.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.junit4" version="2.12.0" match="compatible"/>
@@ -36,24 +40,19 @@
       <import plugin="org.eclipse.xtext.xbase.testing" version="2.12.0" match="compatible"/>
       <import plugin="ac.soton.xeventb.tests.common" version="0.0.1" match="compatible"/>
       <import plugin="org.hamcrest.core"/>
-      <import plugin="org.eclipse.core.runtime" version="3.13.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xmachine" version="2.0.0" match="compatible"/>
       <import plugin="org.junit" version="4.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.testing" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.testing" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.junit4" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.13.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xmachine.ui" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="org.eclipse.xtext.xbase.junit" version="2.13.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xmachine.ui" version="2.0.0" match="compatible"/>
+      <import plugin="org.eclipse.core.runtime" version="3.13.0" match="compatible"/>
+      <import plugin="com.google.guava" version="27.1.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib.macro" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.13.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xcontext.ui" version="2.0.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.ui.testing"/>
-      <import plugin="ac.soton.xeventb.xmachine" version="2.0.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xmachine.ui" version="2.0.0" match="compatible"/>
-      <import plugin="com.google.guava" version="27.1.0" match="compatible"/>
    </requires>
 
    <plugin
@@ -64,21 +63,7 @@
          unpack="false"/>
 
    <plugin
-         id="ac.soton.xeventb.xcontext.ui.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="ac.soton.xeventb.xmachine.tests"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
-         id="ac.soton.xeventb.xmachine.ui.tests"
          download-size="0"
          install-size="0"
          version="0.0.0"

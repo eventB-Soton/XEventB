@@ -1,15 +1,21 @@
 /**
- * Copyright (c) 2016,2017 University of Southampton.
- * All rights reserved. This program and the accompanying materials
- * are made available under the terms of the Eclipse Public License v1.0
- * which accompanies this distribution, and is available at
- * http://www.eclipse.org/legal/epl-v10.html
+ * Copyright (c) 2016,2020 University of Southampton.
  * 
- * Contributors:
- *     University of Southampton - initial API and implementation
+ *  This program and the accompanying materials
+ *  are made available under the terms of the Eclipse Public License 2.0
+ *  which accompanies this distribution, and is available at
+ *  https://www.eclipse.org/legal/epl-2.0/
+ * 
+ *  SPDX-License-Identifier: EPL-2.0
+ * 
+ *  Contributors:
+ *    University of Southampton - initial API and implementation
  */
 package ac.soton.xeventb.xmachine.scoping;
 
+import ac.soton.eventb.emf.containment.Containment;
+import ac.soton.eventb.emf.containment.ContainmentPackage;
+import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.InclusionPackage;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
@@ -20,18 +26,28 @@ import ac.soton.xeventb.common.EventBQualifiedNameProvider;
 import ch.ethz.eventb.utils.EventBUtils;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+import org.eclipse.core.resources.IFile;
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.core.resources.IWorkspace;
+import org.eclipse.core.resources.IWorkspaceRoot;
+import org.eclipse.core.resources.ResourcesPlugin;
 import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.EcoreUtil2;
-import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider;
-import org.eclipse.xtext.xbase.lib.CollectionExtensions;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.core.IContextRoot;
@@ -40,12 +56,14 @@ import org.eventb.core.IMachineRoot;
 import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.EventBNamedCommentedComponentElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.persistence.EMFRodinDB;
+import org.rodinp.core.IInternalElement;
 import org.rodinp.core.IRodinProject;
 
 /**
@@ -63,9 +81,6 @@ import org.rodinp.core.IRodinProject;
  */
 @SuppressWarnings("all")
 public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
-  @Inject
-  private ResourceDescriptionsProvider rdp;
-  
   /**
    * Getting the scope for the a reference feature of an input object.
    * 
@@ -77,6 +92,8 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
   @Override
   public IScope getScope(final EObject context, final EReference reference) {
     try {
+      final Resource resource = context.eResource();
+      final ResourceSet resourceSet = resource.getResourceSet();
       if (((context instanceof Event) && Objects.equal(reference, MachinePackage.Literals.EVENT__REFINES))) {
         EObject _rootContainer = EcoreUtil2.getRootContainer(context, true);
         final Machine mch = ((Machine) _rootContainer);
@@ -91,30 +108,28 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
         return super.getScope(context, reference);
       }
       if (((context instanceof Machine) && Objects.equal(reference, MachinePackage.Literals.MACHINE__SEES))) {
-        EMFRodinDB emfRodinDB = new EMFRodinDB();
-        String prjName = emfRodinDB.getProjectName(((Machine) context));
+        String prjName = this.getProjectName(((Machine) context));
         IEventBProject eBPrj = EventBUtils.getEventBProject(prjName);
         IRodinProject rdPrj = eBPrj.getRodinProject();
         IContextRoot[] ctxRoots = rdPrj.<IContextRoot>getRootElementsOfType(ContextRoot.ELEMENT_TYPE);
         ArrayList<EventBElement> ctxs = new ArrayList<EventBElement>();
         for (final IContextRoot ctxRoot : ctxRoots) {
           {
-            EventBElement ctx = emfRodinDB.loadEventBComponent(ctxRoot);
+            EventBElement ctx = this.loadEventBComponent(ctxRoot, resourceSet);
             ctxs.add(ctx);
           }
         }
         return Scopes.scopeFor(ctxs);
       }
       if (((context instanceof Machine) && Objects.equal(reference, MachinePackage.Literals.MACHINE__REFINES))) {
-        EMFRodinDB emfRodinDB_1 = new EMFRodinDB();
-        String prjName_1 = emfRodinDB_1.getProjectName(((Machine) context));
+        String prjName_1 = this.getProjectName(((Machine) context));
         IEventBProject eBPrj_1 = EventBUtils.getEventBProject(prjName_1);
         IRodinProject rdPrj_1 = eBPrj_1.getRodinProject();
         IMachineRoot[] mchRoots = rdPrj_1.<IMachineRoot>getRootElementsOfType(MachineRoot.ELEMENT_TYPE);
         ArrayList<EventBElement> mchs = new ArrayList<EventBElement>();
         for (final IMachineRoot mchRoot : mchRoots) {
           {
-            EventBElement mch_1 = emfRodinDB_1.loadEventBComponent(mchRoot);
+            EventBElement mch_1 = this.loadEventBComponent(mchRoot, resourceSet);
             mchs.add(mch_1);
           }
         }
@@ -150,13 +165,39 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       if (((context instanceof Record) && Objects.equal(reference, RecordPackage.Literals.RECORD__SUBSETS))) {
         EObject _rootContainer_2 = EcoreUtil2.getRootContainer(context, true);
         final Machine mch_2 = ((Machine) _rootContainer_2);
-        final ArrayList<Object> components = this.getComponentsInScope(mch_2);
+        final Collection<EventBNamedCommentedComponentElement> components = this.getComponentsInScope(mch_2);
         final List<Record> records = EcoreUtil2.<Record>getAllContentsOfType(mch_2, Record.class);
         records.remove(context);
-        for (final Object c : components) {
+        for (final EventBNamedCommentedComponentElement c : components) {
           records.addAll(EcoreUtil2.<Record>getAllContentsOfType(((EObject) c), Record.class));
         }
         return Scopes.scopeFor(records);
+      }
+      if (((context instanceof Containment) && 
+        Objects.equal(reference, ContainmentPackage.Literals.CONTAINMENT__EXTENSION))) {
+        EObject _eContainer = context.eContainer();
+        final Machine machine = ((Machine) _eContainer);
+        final URI uri = EcoreUtil.getURI(machine);
+        final String projectName = uri.segment(1);
+        final IWorkspace workspace = ResourcesPlugin.getWorkspace();
+        final IWorkspaceRoot root = workspace.getRoot();
+        final IProject project = root.getProject(projectName);
+        ArrayList<DiagramOwner> diagramOwners = new ArrayList<DiagramOwner>();
+        final IResource[] members = project.members();
+        for (final IResource file : members) {
+          if ((file instanceof IFile)) {
+            final String fileExtension = ((IFile)file).getFileExtension();
+            boolean _equals = Objects.equal(fileExtension, "umlb");
+            if (_equals) {
+              final URI umlbURI = URI.createPlatformResourceURI(((IFile)file).getFullPath().toString(), true);
+              final Resource umlbResource = this.loadResource(umlbURI, resourceSet);
+              EObject _get = umlbResource.getContents().get(0);
+              final DiagramOwner diagramOwner = ((DiagramOwner) _get);
+              diagramOwners.add(diagramOwner);
+            }
+          }
+        }
+        return Scopes.scopeFor(diagramOwners);
       }
       return super.getScope(context, reference);
     } catch (Throwable _e) {
@@ -197,14 +238,14 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     }
   }
   
-  private ArrayList<Object> getComponentsInScope(final EventBObject eventBObject) {
-    ArrayList<Object> list = new ArrayList<Object>();
+  private Collection<EventBNamedCommentedComponentElement> getComponentsInScope(final EventBObject eventBObject) {
+    ArrayList<EventBNamedCommentedComponentElement> list = new ArrayList<EventBNamedCommentedComponentElement>();
     if ((eventBObject instanceof Machine)) {
       Machine m = ((Machine) eventBObject);
       list.add(m);
       EList<Context> _sees = m.getSees();
       for (final Context c : _sees) {
-        CollectionExtensions.<Object>addAll(list, this.getComponentsInScope(c));
+        list.addAll(this.getComponentsInScope(c));
       }
     } else {
       if ((eventBObject instanceof Context)) {
@@ -212,10 +253,84 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
         list.add(c_1);
         EList<Context> _extends = c_1.getExtends();
         for (final Context x : _extends) {
-          CollectionExtensions.<Object>addAll(list, this.getComponentsInScope(x));
+          list.addAll(this.getComponentsInScope(x));
         }
       }
     }
     return list;
+  }
+  
+  /**
+   * THESE METHODS WERE COPIED FROM EMFRodinDB
+   */
+  private Resource loadResource(final URI fileURI, final ResourceSet resourceSet) {
+    Resource resource = resourceSet.getResource(fileURI, false);
+    if ((resource == null)) {
+      resource = resourceSet.createResource(fileURI);
+    }
+    boolean _isLoaded = resource.isLoaded();
+    boolean _not = (!_isLoaded);
+    if (_not) {
+      final boolean deliver = resource.eDeliver();
+      resource.eSetDeliver(false);
+      try {
+        resource.load(Collections.<Object, Object>emptyMap());
+      } catch (final Throwable _t) {
+        if (_t instanceof IOException) {
+          return null;
+        } else {
+          throw Exceptions.sneakyThrow(_t);
+        }
+      } finally {
+        resource.eSetDeliver(deliver);
+      }
+    }
+    return resource;
+  }
+  
+  /**
+   * this returns the project name by checking the uri of the given element
+   * The element must be loaded or an npe will occur
+   * 
+   * @param element
+   * @return
+   */
+  private String getProjectName(final EventBElement element) {
+    final URI uri = EcoreUtil.getURI(element);
+    return uri.segment(1);
+  }
+  
+  /**
+   * loads an Event-B component (URI) into EMF
+   * 
+   * @param root
+   * @return
+   */
+  private EventBElement loadEventBComponent(final URI fileURI, final ResourceSet resourceSet) {
+    final Resource resource = this.loadResource(fileURI, resourceSet);
+    if ((resource == null)) {
+      return null;
+    }
+    if (((resource.isLoaded() && (!resource.getContents().isEmpty())) && (resource.getContents().get(0) instanceof EventBElement))) {
+      EObject _get = resource.getContents().get(0);
+      return ((EventBElement) _get);
+    } else {
+      return null;
+    }
+  }
+  
+  /**
+   * loads an Event-B component (root) into EMF
+   * 
+   * @param root
+   * @return
+   */
+  private EventBElement loadEventBComponent(final IInternalElement element, final ResourceSet resourceSet) {
+    final IInternalElement root = element.getRoot();
+    if (((root == null) || (!root.exists()))) {
+      return null;
+    }
+    final URI fileURI = URI.createPlatformResourceURI(root.getResource().getFullPath().toString(), true);
+    return this.loadEventBComponent(fileURI, resourceSet);
   }
 }

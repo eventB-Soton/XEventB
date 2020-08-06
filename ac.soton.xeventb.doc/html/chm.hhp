@@ -15,28 +15,22 @@ Title=CamilleX User Manual
 Help="CamilleX User Manual","chm.hhc","chm.hhk","index.html","index.html",,,,,0x73520,,0x383e,[200,200,1000,800],,,,,,,0
 
 [FILES]
-sec-xtext-projects.html
-sec-xevent-b-builders.html
-sec-content-assist.html
-sec-release-notes.html
-sec-typesetting-event-b.html
-sec-getting-started.html
-sec-xevent-b-editors.html
-sec-xcontext-syntax.html
-sec-user-agreement.html
-index.html
-sec-creating-xevent-b.html
-sec-preferences.html
-sec-xmachine-syntax.html
-sec-basic-tutorial.html
-sec-tasks.html
-sec-concepts.html
-sec-advanced-tutorial.html
-sec-common-syntax.html
-sec-installation.html
 sec-reference.html
+sec-basic-tutorial.html
+sec-release-notes.html
+sec-xevent-b-builders.html
+sec-common-syntax.html
 sec-overview.html
+sec-user-agreement.html
+sec-preferences.html
+sec-xevent-b-editors.html
 sec-legal.html
+sec-getting-started.html
+sec-installation.html
+sec-xtext-projects.html
+sec-concepts.html
+index.html
+sec-content-assist.html
 
 
 [MERGE FILES]

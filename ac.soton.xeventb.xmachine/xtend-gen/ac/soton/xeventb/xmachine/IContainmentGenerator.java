@@ -13,7 +13,7 @@
  */
 package ac.soton.xeventb.xmachine;
 
-import ac.soton.eventb.emf.diagrams.Diagram;
+import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
 import ac.soton.xeventb.xmachine.generator.XMachineGenerator;
 import org.eclipse.emf.transaction.TransactionalEditingDomain;
@@ -46,5 +46,5 @@ public interface IContainmentGenerator {
    * @param editingDomain
    * 		The editing domain used for working with the input machine
    */
-  void generate(final Machine mch, final Diagram containedComponent, final TransactionalEditingDomain editingDomain);
+  void generate(final Machine mch, final DiagramOwner containedComponent, final TransactionalEditingDomain editingDomain);
 }

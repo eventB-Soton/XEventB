@@ -14,7 +14,7 @@
 
 package ac.soton.xeventb.xmachine.generator
 
-import ac.soton.eventb.emf.diagrams.Diagram
+import ac.soton.eventb.emf.diagrams.DiagramOwner
 import ac.soton.xeventb.xmachine.IContainmentGenerator
 import ac.soton.xeventb.xmachine.utils.Identifiers
 import java.util.ArrayList
@@ -100,22 +100,22 @@ class ContainmentRegistry {
 	}
 	
 	/**
-	 * Method to get a collection of generators related to an input diagram.
+	 * Method to get a collection of generators related to an input diagram owner.
 	 * This is done by looking at the map of generators (load the registry if
 	 * necessary). 
 	 * 
-	 * @param diagram
-	 * 		The input diagram
+	 * @param owner
+	 * 		The input diagram owner
 	 * @return
-	 * 		The collection of generators corresponding to the input diagram
+	 * 		The collection of generators corresponding to the input diagram owner
 	 */
-	def Collection<IContainmentGenerator> getGenerators(Diagram diagram) {
+	def Collection<IContainmentGenerator> getGenerators(DiagramOwner owner) {
 		if (generators === null)
 			loadRegistry
 		val result = new ArrayList<IContainmentGenerator>() 
 		val classes = generators.keySet
 		for (clazz : classes) {
-			if (clazz.isInstance(diagram)) {
+			if (clazz.isInstance(owner)) {
 				result.addAll(generators.get(clazz))
 			}
 		}

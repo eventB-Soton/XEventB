@@ -1,0 +1,58 @@
+<!--
+    Copyright (c) 2020 University of Southampton.
+   
+    This program and the accompanying materials
+    are made available under the terms of the Eclipse Public License 2.0
+    which accompanies this distribution, and is available at
+    https://www.eclipse.org/legal/epl-2.0/
+   
+    SPDX-License-Identifier: EPL-2.0
+   
+    Contributors:
+        University of Southampton - initial API and implementation
+ -->
+<project>
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <!-- REQUIRED: Group ID is the feature ID -->
+    <groupId>ac.soton.xeventb</groupId>
+    <!-- Name of the release engineering artifact -->
+    <artifactId>releng</artifactId>
+    <!-- REQUIRED: Version number of the release engineering artifact -->
+    <version>2.0.0.release</version>
+    <!-- REQUIRED: Relative path to the release engineering artifact -->
+    <relativePath>../ac.soton.xeventb.releng</relativePath>
+  </parent>
+
+  <!-- REQUIRED: Group ID is the feature ID -->
+  <groupId>ac.soton.xeventb</groupId>
+  <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
+  <artifactId>ac.soton.xeventb.xcontext.ui.tests</artifactId>
+  <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
+  <version>1.0.0.release</version>
+  <!-- REQUIRED: Name and description of this this root build -->
+  <name>CamilleX XContext UI Test Plugin</name>
+  <description>Unit tests for XContext UI</description>
+
+  <packaging>eclipse-test-plugin</packaging>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.eclipse.tycho</groupId>
+        <artifactId>tycho-surefire-plugin</artifactId>
+	<version>${tycho.version}</version>
+        <configuration>
+          <includes>
+            <!-- Optional: By default: Test*, *Test, and *Tests files are included -->
+          </includes>
+          <excludes>
+            <!-- Optional: pattern for excluding files -->
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>

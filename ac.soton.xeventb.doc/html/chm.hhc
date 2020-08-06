@@ -44,13 +44,6 @@
          </object></li>
          
          
-         <li><object type="text/sitemap">
-             <param name="Name" value="Advanced Tutorial">
-             <param name="Local" value="sec-advanced-tutorial.html">
-             <param name="ImageNumber" value="11">
-         </object></li>
-         
-         
       </ul>
       
       <li><object type="text/sitemap">
@@ -84,29 +77,6 @@
       </ul>
       
       <li><object type="text/sitemap">
-          <param name="Name" value="Tasks">
-          <param name="Local" value="sec-tasks.html">
-          
-      </object></li>
-      <ul>
-         
-         <li><object type="text/sitemap">
-             <param name="Name" value="Creating CamilleX Files">
-             <param name="Local" value="sec-creating-xevent-b.html">
-             <param name="ImageNumber" value="11">
-         </object></li>
-         
-         
-         <li><object type="text/sitemap">
-             <param name="Name" value="Typesetting Event-B Mathematical Symbols">
-             <param name="Local" value="sec-typesetting-event-b.html">
-             <param name="ImageNumber" value="11">
-         </object></li>
-         
-         
-      </ul>
-      
-      <li><object type="text/sitemap">
           <param name="Name" value="Reference">
           <param name="Local" value="sec-reference.html">
           
@@ -114,22 +84,8 @@
       <ul>
          
          <li><object type="text/sitemap">
-             <param name="Name" value="Common Syntax">
+             <param name="Name" value="Combmon Syntax">
              <param name="Local" value="sec-common-syntax.html">
-             <param name="ImageNumber" value="11">
-         </object></li>
-         
-         
-         <li><object type="text/sitemap">
-             <param name="Name" value="XContext Syntax">
-             <param name="Local" value="sec-xcontext-syntax.html">
-             <param name="ImageNumber" value="11">
-         </object></li>
-         
-         
-         <li><object type="text/sitemap">
-             <param name="Name" value="XMachine syntax">
-             <param name="Local" value="sec-xmachine-syntax.html">
              <param name="ImageNumber" value="11">
          </object></li>
          
