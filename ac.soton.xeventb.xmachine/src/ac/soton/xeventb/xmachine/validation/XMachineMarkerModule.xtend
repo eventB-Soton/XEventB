@@ -67,8 +67,12 @@ class XMachineMarkerModule extends SCProcessorModule {
 		
 		// Get the XMachine resource.
 		val xresource = emfRodinDB.loadResource(uri) as XtextResource
+		// Do nothing if there is no resource, e.g., when there is no XContext file
+		if (xresource === null)
+			return
 		// Get the resource validator for the XMachine.
-		val resourceValidator = xresource.resourceServiceProvider.resourceValidator
+		val resourceServiceProvider = xresource.resourceServiceProvider
+		val resourceValidator = resourceServiceProvider.resourceValidator
 		// Get the issues by running the resrouce validator.
 		val issues = resourceValidator.validate(xresource, CheckMode.EXPENSIVE_ONLY, null)
 
