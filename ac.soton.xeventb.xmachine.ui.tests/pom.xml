@@ -30,7 +30,7 @@
   <!-- REQUIRED: Artifact ID of the test plug-in. Must be the same as the project ID -->
   <artifactId>ac.soton.xeventb.xmachine.ui.tests</artifactId>
   <!-- REQUIRED: Version the test plug-in. Must be the same as the project version -->
-  <version>0.1.0.release</version>
+  <version>0.1.1-SNAPSHOT</version>
   <!-- REQUIRED: Name and description of this this root build -->
   <name>CamilleX XMachine UI Test Plugin</name>
   <description>Unit tests for XMachine UI</description>

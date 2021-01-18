@@ -2,29 +2,18 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.0.0.release
+Bundle-Version: 2.0.1.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[2.0.0,3.0.0)",
  org.junit;bundle-version="[4.12.0,5.0.0)",
  org.eclipse.xtext.testing;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.xbase.testing;bundle-version="[2.13.0,3.0.0)",
- org.eclipse.xtext.junit4;bundle-version="[2.13.0,3.0.0)",
- org.eclipse.xtext.xbase.lib;bundle-version="[2.13.0,3.0.0)",
- ac.soton.xeventb.xmachine.ui;bundle-version="[2.0.0,3.0.0)",
- org.eclipse.core.runtime;bundle-version="[3.13.0,4.0.0)",
- org.eclipse.ui.workbench;bundle-version="[3.110.1,4.0.0)";resolution:=optional,
- org.objectweb.asm;bundle-version="[5.0.1,6.0.0)";resolution:=optional,
  org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  ac.soton.xeventb.tests.common;bundle-version="[0.1.0,1.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: ac.soton.xeventb.xmachine.tests;x-internal=true
 Import-Package: ac.soton.xeventb.xmachine,
- org.hamcrest.core,
- org.junit.runner;version="4.5.0",
- org.junit.runner.manipulation;version="4.5.0",
- org.junit.runner.notification;version="4.5.0",
- org.junit.runners;version="4.5.0",
- org.junit.runners.model;version="4.5.0",
- org.junit;version="4.5.0"
+ org.junit;version="4.5.0",
+ org.junit.runner;version="4.5.0"
 Automatic-Module-Name: ac.soton.xeventb.xmachine.tests

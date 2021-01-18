@@ -21,7 +21,7 @@
   <name>CamilleX Root POM</name>
   <description>Root artifact for CamilleX</description>
   <!-- REQUIRED: Version number (using semantic versioning) -->
-  <version>2.0.0.release</version>
+  <version>2.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
   <parent>
     <!-- REQUIRED: Group ID is the feature ID -->
@@ -29,7 +29,7 @@
     <!-- Name of the release engineering artifact -->
     <artifactId>releng</artifactId>
     <!-- REQUIRED: Version number of the release engineering artifact -->
-    <version>2.0.0.release</version>
+    <version>2.0.1-SNAPSHOT</version>
     <!-- REQUIRED: Relative path to the release engineering artifact -->
     <relativePath>./ac.soton.xeventb.releng</relativePath>
   </parent>

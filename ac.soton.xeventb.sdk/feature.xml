@@ -12,11 +12,10 @@
     Contributors:
         University of Southampton - initial API and implementation
  -->
-
 <feature
       id="ac.soton.xeventb.sdk"
       label="%featureName"
-      version="2.0.0.release"
+      version="2.0.1.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"

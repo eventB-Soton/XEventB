@@ -18,47 +18,38 @@
   <!-- ID of this artifact -->
   <artifactId>releng</artifactId>
   <!-- REQUIRED: Version number (using semantic versioning) -->
-  <version>2.0.0.release</version>
+  <version>2.0.1-SNAPSHOT</version>
   <packaging>pom</packaging>
 
   <properties>
-    <tycho.version>1.6.0</tycho.version>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Plug-in versions -->
-    <tycho-version>1.6.0</tycho-version>
+    <tycho-version>2.0.0</tycho-version>
     <maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
-    <!-- URL for Eclipse repository (Oxygen) -->
-    <eclipse-repo.url>http://download.eclipse.org/eclipse/updates/4.7/</eclipse-repo.url>
-    <!-- URL for Rodin Platform @ Soton -->
-    <rodin-repo.url>http://eventb-soton.github.io/media_bin/org.rodinp.dev-3.4.0</rodin-repo.url>
+    <!-- URL for Eclipse Updates repository (4.16) -->
+    <eclipse_updates-repo.url>http://download.eclipse.org/eclipse/updates/4.16/</eclipse_updates-repo.url>
+    <!-- URL for Eclipse Releases repository (2020-06) -->
+    <eclipse_releases-repo.url>http://download.eclipse.org/releases/2020-06</eclipse_releases-repo.url>
+    <!-- URL for Rodin Platform (3.5) -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.5</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
-    <!-- URL for EMF Update site -->
-    <emf_core-repo.url>http://download.eclipse.org/modeling/emf/emf/builds/release/2.21</emf_core-repo.url>
-    <!-- URL for EMF Transaction Update site -->
-    <emf_transaction-repo.url>http://download.eclipse.org/modeling/emf/transaction/updates/releases</emf_transaction-repo.url>
-    <!-- URL for EMF Validation Update site -->
-    <emf_validation-repo.url>http://download.eclipse.org/modeling/emf/validation/updates/releases</emf_validation-repo.url>
-    <!-- URL for GEF Legacy Update site -->
-    <!-- <gef_legacy-repo.url>http://download.eclipse.org/tools/gef/updates/legacy/releases/</gef_legacy-repo.url> -->
-    <!-- URL for GMF Runtime Milestones Update site -->
-    <!-- <gmf_runtime_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-runtime/updates/releases/</gmf_runtime_milestones-repo.url> -->
-    <!-- URL for GMF Notation Milestones Update site -->
-    <!-- <gmf_notation_milestones-repo.url>https://download.eclipse.org/modeling/gmp/gmf-notation/updates/releases/</gmf_notation_milestones-repo.url> -->
-    <!-- <!-\- URL for the Rodin Update site -\-> -->
-    <!-- <rodin_update_site-repo.url>http://rodin-b-sharp.sourceforge.net/updates</rodin_update_site-repo.url> -->
     <!-- URL for the Soton Update site -->
     <soton-repo.url>http://eventb-soton.github.io/updateSite</soton-repo.url>
     <!-- URL for the Rodin Licence Update site -->
     <rodin_licence-repo.url>http://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
-    <!-- URL for the XText Update site -->
-    <xtext-repo.url>http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/</xtext-repo.url>
   </properties>
 
   <repositories>
-    <!-- Eclipse repository -->
+    <!-- Eclipse Updates repository -->
     <repository>
-      <id>oxygen-4.7</id>
-      <url>${eclipse-repo.url}</url>
+      <id>eclipse_updates-repo</id>
+      <url>${eclipse_updates-repo.url}</url>
+      <layout>p2</layout>
+    </repository>
+    <!-- Eclipse Releases repository -->
+    <repository>
+      <id>eclipse_releases-repo</id>
+      <url>${eclipse_releases-repo.url}</url>
       <layout>p2</layout>
     </repository>
     <!-- Rodin Platform repository -->
@@ -68,48 +59,6 @@
       <layout>p2</layout>
     </repository>
     <!-- OPTIONAL Additional repository -->
-    <!-- EMF Core repository -->
-    <repository>
-      <id>emf-core-2.21</id>
-      <url>${emf_core-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
-    <!-- EMF Transaction repository -->
-    <repository>
-      <id>emf-transaction-180514</id>
-      <url>${emf_transaction-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
-    <!-- EMF Validation repository -->
-    <repository>
-      <id>emf-validation-180503</id>
-      <url>${emf_validation-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
-    <!-- GEF Legacy repository -->
-    <!-- <repository> -->
-    <!--   <id>gef-legacy</id> -->
-    <!--   <url>${gef_legacy-repo.url}</url> -->
-    <!--   <layout>p2</layout> -->
-    <!-- </repository> -->
-    <!-- GMF Runtime milestones repository -->
-    <!-- <repository> -->
-    <!--   <id>gmf-runtime-milestones</id> -->
-    <!--   <url>${gmf_runtime_milestones-repo.url}</url> -->
-    <!--   <layout>p2</layout> -->
-    <!-- </repository> -->
-    <!-- GMF Notation milestones repository -->
-    <!-- <repository> -->
-    <!--   <id>gmf-notation-milestones</id> -->
-    <!--   <url>${gmf_notation_milestones-repo.url}</url> -->
-    <!--   <layout>p2</layout> -->
-    <!-- </repository> -->
-    <!-- <!-\- Rodin Update Site repository -\-> -->
-    <!-- <repository> -->
-    <!--   <id>rodin-update-site</id> -->
-    <!--   <url>${rodin_update_site-repo.url}</url> -->
-    <!--   <layout>p2</layout> -->
-    <!-- </repository> -->
     <!-- Soton  repository -->
     <repository>
       <id>soton</id>
@@ -120,12 +69,6 @@
     <repository>
       <id>rodin-licence</id>
       <url>${rodin_licence-repo.url}</url>
-      <layout>p2</layout>
-    </repository>
-    <!-- XText repository -->
-    <repository>
-      <id>xtext</id>
-      <url>${xtext-repo.url}</url>
       <layout>p2</layout>
     </repository>
   </repositories>

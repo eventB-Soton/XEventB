@@ -27,6 +27,7 @@ import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.diagnostics.Severity;
+import org.eclipse.xtext.resource.IResourceServiceProvider;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.validation.CheckMode;
 import org.eclipse.xtext.validation.IResourceValidator;
@@ -69,7 +70,11 @@ public class XContextMarkerModule extends SCProcessorModule {
     final URI uri = URI.createURI(uriString);
     Resource _loadResource = emfRodinDB.loadResource(uri);
     final XtextResource xresource = ((XtextResource) _loadResource);
-    final IResourceValidator resourceValidator = xresource.getResourceServiceProvider().getResourceValidator();
+    if ((xresource == null)) {
+      return;
+    }
+    final IResourceServiceProvider resourceServiceProvider = xresource.getResourceServiceProvider();
+    final IResourceValidator resourceValidator = resourceServiceProvider.getResourceValidator();
     final List<Issue> issues = resourceValidator.validate(xresource, CheckMode.EXPENSIVE_ONLY, null);
     IWorkspaceRoot _root = ResourcesPlugin.getWorkspace().getRoot();
     String _platformString = uri.toPlatformString(true);
