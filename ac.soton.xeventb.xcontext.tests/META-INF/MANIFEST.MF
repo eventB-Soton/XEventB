@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.0.1.qualifier
+Bundle-Version: 2.0.1.release
 Bundle-SymbolicName: ac.soton.xeventb.xcontext.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xcontext;bundle-version="[2.0.0,3.0.0)",

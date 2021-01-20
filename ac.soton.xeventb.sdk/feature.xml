@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.sdk"
       label="%featureName"
-      version="2.0.1.qualifier"
+      version="2.0.1.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -30,7 +30,7 @@
    </copyright>
 
    <url>
-      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+      <update label="%updateSiteName" url="http://eventb-soton.github.io/updateSite/releases"/>
    </url>
 
    <includes

@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.tests.feature"
       label="%featureName"
-      version="2.0.1.qualifier"
+      version="2.0.1.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -28,6 +28,10 @@
    <copyright>
       %featureCopyright
    </copyright>
+
+   <url>
+      <update label="%updateSiteName" url="http://eventb-soton.github.io/updateSite/releases"/>
+   </url>
 
    <requires>
       <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>

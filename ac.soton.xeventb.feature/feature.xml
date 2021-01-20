@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.feature"
       label="%featureName"
-      version="2.0.1.qualifier"
+      version="2.0.1.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -30,7 +30,7 @@
    </copyright>
 
    <url>
-      <update label="%updateSiteName" url="http://rodin-b-sharp.sourceforge.net/updates"/>
+      <update label="%updateSiteName" url="http://eventb-soton.github.io/updateSite/releases"/>
    </url>
 
    <includes
@@ -69,6 +69,7 @@
       <import plugin="org.eclipse.xtend.lib" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.emf.workspace" version="1.5.1" match="compatible"/>
       <import plugin="org.eclipse.xtext.ui" version="2.13.0" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.containment" version="0.0.2" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.diagrams" version="5.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.core.extension" version="5.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.record" version="0.1.0" match="compatible"/>
@@ -129,7 +130,7 @@
       <import plugin="org.eclipse.xtend.lib" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib.macro" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.emf.common"/>
-      <import plugin="ac.soton.eventb.emf.containment" version="0.0.2" match="compatible"/>
+      <import plugin="ac.soton.eventb.emf.core.extension" version="5.0.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

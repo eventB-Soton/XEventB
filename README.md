@@ -1,18 +1,51 @@
-XEvent-B Feature
+CamilleX Feature
 ================
-This feature provides the eXtended Event-B (XEvent-B).
-
-IMPORTANT:
----------
-- Require XText from the update site
-  http://download.eclipse.org/modeling/tmf/xtext/updates/composite/releases/
-
-KNOWN ISSUES:
-------------
-- None at the moment
+This feature provides a text editor (CamilleX) for Event-B constructs (e.g., XMachines and XContexts).
 
 Release history:
 ---------------
+### 2.0.1 Maintenance release ###
+#### Updated Plugins/Features ####
+- Branding (0.0.5): Update copyright information on branding.
+- XContext (2.0.1):
+  + Added missing dependency.
+  + Fixed NPE in XContextMarkerModule.
+- XMachine (2.0.1):
+  + Added missing dependency.
+  + Fixed NPE in XContextMarkerModule.
+### 2.0.0 ###
+Enhancement to CamilleX to improve its usability.
+- Issue #6: Show inherited information for extended events as hover information.
+- Issue #50: Show errors/warnings from Rodin components in CamilleX components.
+- Issue #51: Show warnings for untranslated formulae (predicates, expressions, assignments).
+- Support for records (in XContexts and XMachines).
+- Support for containment mechanisms (enabling external modelling extensions, e.g., UML-B models).
+#### Fixed Issues ####
+- Issue #33: Errors in the generated Machine.
+- Issue #36: Exceptions when projects are closed.
+#### Updated Plugins/Features ####
+- EMF Inclusion Feature (2.0.0): Added
+- EMF Containment Feature (0.0.1): Initial version
+- Records Feature (0.1.0): Initial version
+- Common (1.0.0):
+  + Added validation issue code (used for validation and quick fixes).
+- UI (1.0.0): Pumped the version number due to API breakage in earlier version.
+- XContext (2.0.0): Pumped the version number due to API breakage in earlier version.
+  + Issue #50: Show errors/warnings from Rodin Machine in XMachine.
+  + Issue #51: Show warnings for untranslated formulae (predicates).
+- XContext IDE (2.0.0): Pumped the version number due to API breakage in earlier version.
+- XContext UI (2.0.0): Pumped the version number due to API breakage in earlier version.
+  + Issue #51: Quick fixes for untranslated formulae (predicates)
+- XMachine (2.0.0): Pumped the version number due to API breakage in earlier version.
+  + Issue #6: Show inherited information for extended events as hover information.
+  + Issue #33: Errors in the generated Machine.
+  + Issue #50: Show errors/warnings from Rodin Machine in XMachine.
+  + Issue #51: Show warnings for untranslated formulae (predicates, expressions, assignments)
+  + Support for records in XMachines.
+  + Support for containment mechanisms (enabling external modelling extensions, e.g., UML-B models).
+- XMachine IDE (1.0.0): Pumped the version number due to API breakage in earlier version.
+- XMachine UI (2.0.0): Pumped the version number due to API breakage in earlier version.
+  + Issue #51: Quick fixes for untranslated formulae (predicates, expressions, assignments)
 ### 1.0.0 ###
 The feature is now called CamilleX (instead of XEvent-B).
 - Branding (0.0.4): Updated logo to CamilleX.
