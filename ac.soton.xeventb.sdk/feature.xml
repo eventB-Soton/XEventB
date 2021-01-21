@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.sdk"
       label="%featureName"
-      version="2.0.1.release"
+      version="2.0.2.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -39,18 +39,6 @@
 
    <includes
          id="ac.soton.xeventb.tests.feature"
-         version="0.0.0"/>
-
-   <includes
-         id="ac.soton.eventb.emf.inclusion.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="ac.soton.eventb.emf.record.sdk"
-         version="0.0.0"/>
-
-   <includes
-         id="ac.soton.eventb.emf.containment.sdk"
          version="0.0.0"/>
 
    <plugin
