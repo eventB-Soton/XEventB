@@ -84,7 +84,6 @@
       <import plugin="ch.ethz.eventb.utils" version="0.2.4" match="compatible"/>
       <import plugin="ac.soton.xeventb.ui" version="1.0.0" match="compatible"/>
       <import plugin="org.rodinp.core" version="1.7.1" match="compatible"/>
-      <import plugin="org.eventb.emf.core" version="5.0.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.help" version="3.8.1" match="compatible"/>
       <import plugin="org.eclipse.ui.cheatsheets" version="3.4.200" match="compatible"/>
       <import plugin="org.eclipse.jface" version="3.10.2" match="compatible"/>
@@ -105,7 +104,6 @@
       <import plugin="org.eclipse.xtext.util" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.core.resources" version="3.9.1" match="compatible"/>
-      <import plugin="org.eclipse.emf.transaction" version="1.9.0" match="greaterOrEqual"/>
       <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.ide" version="2.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.ide" version="2.12.0" match="compatible"/>
