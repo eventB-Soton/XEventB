@@ -107,7 +107,7 @@ class RegenerateHandler extends AbstractHandler implements IHandler {
                 }
             })
 
-            // Iterate through the 
+            // Iterate through the list of CamilleX resources.
             val emfRodinDB = new EMFRodinDB(resourceSet)
             val editingDomain = emfRodinDB.editingDomain
             for (resource : camilleXFile) {
