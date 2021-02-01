@@ -58,8 +58,9 @@ import org.rodinp.keyboard.core.RodinKeyboardCore
  *
  * @author dana - Initial implementation
  * @author htson - Added support for lifting Rodin issues into XMachine
- * @version 1.0
+ * @version 1.1
  * @since 1.0
+ * @see XMachineMarkerModule
  */
 class XMachineValidator extends AbstractXMachineValidator {
 
@@ -280,25 +281,69 @@ class XMachineValidator extends AbstractXMachineValidator {
 	 */
 	def private createIssue(EObject obj, IMarker rodinMarker) {
 		val attributeType = RodinMarkerUtil.getAttributeType(rodinMarker);
-		val feature = getFeature(obj, attributeType)
-		val attributes = rodinMarker.attributes
-		val severity = attributes.get(IMarker.SEVERITY)
-		// XText markers does not have information about "start" and "end"
-		// at the moment. We include this information in the message and
-		// "decode" it later when create the markers. 
-		val start = RodinMarkerUtil.getCharStart(rodinMarker)
-		val end = RodinMarkerUtil.getCharEnd(rodinMarker)
-		var message = attributes.get(IMarker.MESSAGE)
-		if (start != -1) {
-			message = message + " (from " + start + " to " + end + ")"
-		}
+        val attributes = rodinMarker.attributes
+        val severity = attributes.get(IMarker.SEVERITY)
+        var message = attributes.get(IMarker.MESSAGE)
+        
+        var feature = getFeature(obj, attributeType)
+        var elem = obj
+        // If cannot find feature attach to the Machine name
+	    if (feature === null) {
+	        elem = getMachine(obj)
+	        if (elem !== null)
+	           feature = CorePackage.Literals.EVENT_BNAMED__NAME
+	        else
+	           elem = obj
+	    } else {
+            // XText markers does not have information about "start" and "end"
+            // at the moment. We include this information in the message and
+            // "decode" it later when create the markers. 
+            val start = RodinMarkerUtil.getCharStart(rodinMarker)
+            val end = RodinMarkerUtil.getCharEnd(rodinMarker)
+            if (start != -1) {
+                message = message + " (from " + start + " to " + end + ")"
+            }	        
+	    }
 		if (severity == IMarker.SEVERITY_ERROR)
-			error(message.toString, obj, feature)
+			error(message.toString, elem, feature)
 		else if (severity == IMarker.SEVERITY_WARNING)
-			warning(message.toString, obj, feature)
+			warning(message.toString, elem, feature)
 		else
-			info(message.toString, obj, feature)
+			info(message.toString, elem, feature)
 	}
+    
+    /**
+     * Utility method to get the machine of an EObject. Return the Machine 
+     * parent of the input element. Return <code>null</code> if there is no
+     * Machine containing the input element.
+     * 
+     * @param obj
+     *          The input EObject
+     * @author htson
+     * @since 2.1
+     */
+     def EObject getMachine(EObject object) {
+        if (object instanceof Machine)
+            return object
+        if (object instanceof Variable)
+            return object.eContainer
+        if (object instanceof Invariant)
+            return object.eContainer
+        if (object instanceof Event)
+            return object.eContainer
+        if (object instanceof Parameter)
+            return object.eContainer.eContainer
+        if (object instanceof Guard)
+            return object.eContainer.eContainer
+        if (object instanceof Action)
+            return object.eContainer.eContainer
+        if (object instanceof Witness)
+            return object.eContainer.eContainer
+        if (object instanceof Variant)
+            return object.eContainer.eContainer
+        
+        return null
+    }
 
 	/**
 	 * An "expensive" check to convert the Rodin Markers of an input Rodin

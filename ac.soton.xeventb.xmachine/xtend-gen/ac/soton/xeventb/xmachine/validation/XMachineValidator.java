@@ -70,8 +70,9 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  * 
  * @author dana - Initial implementation
  * @author htson - Added support for lifting Rodin issues into XMachine
- * @version 1.0
+ * @version 1.1
  * @since 1.0
+ * @see XMachineMarkerModule
  */
 @SuppressWarnings("all")
 public class XMachineValidator extends AbstractXMachineValidator {
@@ -309,34 +310,85 @@ public class XMachineValidator extends AbstractXMachineValidator {
   private void createIssue(final EObject obj, final IMarker rodinMarker) {
     try {
       final IAttributeType attributeType = RodinMarkerUtil.getAttributeType(rodinMarker);
-      final EStructuralFeature feature = this.getFeature(obj, attributeType);
       final Map<String, Object> attributes = rodinMarker.getAttributes();
       final Object severity = attributes.get(IMarker.SEVERITY);
-      final int start = RodinMarkerUtil.getCharStart(rodinMarker);
-      final int end = RodinMarkerUtil.getCharEnd(rodinMarker);
       Object message = attributes.get(IMarker.MESSAGE);
-      if ((start != (-1))) {
-        String _plus = (message + " (from ");
-        String _plus_1 = (_plus + Integer.valueOf(start));
-        String _plus_2 = (_plus_1 + " to ");
-        String _plus_3 = (_plus_2 + Integer.valueOf(end));
-        String _plus_4 = (_plus_3 + ")");
-        message = _plus_4;
+      EStructuralFeature feature = this.getFeature(obj, attributeType);
+      EObject elem = obj;
+      if ((feature == null)) {
+        elem = this.getMachine(obj);
+        if ((elem != null)) {
+          feature = CorePackage.Literals.EVENT_BNAMED__NAME;
+        } else {
+          elem = obj;
+        }
+      } else {
+        final int start = RodinMarkerUtil.getCharStart(rodinMarker);
+        final int end = RodinMarkerUtil.getCharEnd(rodinMarker);
+        if ((start != (-1))) {
+          String _plus = (message + " (from ");
+          String _plus_1 = (_plus + Integer.valueOf(start));
+          String _plus_2 = (_plus_1 + " to ");
+          String _plus_3 = (_plus_2 + Integer.valueOf(end));
+          String _plus_4 = (_plus_3 + ")");
+          message = _plus_4;
+        }
       }
       boolean _equals = Objects.equal(severity, Integer.valueOf(IMarker.SEVERITY_ERROR));
       if (_equals) {
-        this.error(message.toString(), obj, feature);
+        this.error(message.toString(), elem, feature);
       } else {
         boolean _equals_1 = Objects.equal(severity, Integer.valueOf(IMarker.SEVERITY_WARNING));
         if (_equals_1) {
-          this.warning(message.toString(), obj, feature);
+          this.warning(message.toString(), elem, feature);
         } else {
-          this.info(message.toString(), obj, feature);
+          this.info(message.toString(), elem, feature);
         }
       }
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }
+  }
+  
+  /**
+   * Utility method to get the machine of an EObject. Return the Machine
+   * parent of the input element. Return <code>null</code> if there is no
+   * Machine containing the input element.
+   * 
+   * @param obj
+   *          The input EObject
+   * @author htson
+   * @since 2.1
+   */
+  public EObject getMachine(final EObject object) {
+    if ((object instanceof Machine)) {
+      return object;
+    }
+    if ((object instanceof Variable)) {
+      return ((Variable)object).eContainer();
+    }
+    if ((object instanceof Invariant)) {
+      return ((Invariant)object).eContainer();
+    }
+    if ((object instanceof Event)) {
+      return ((Event)object).eContainer();
+    }
+    if ((object instanceof Parameter)) {
+      return ((Parameter)object).eContainer().eContainer();
+    }
+    if ((object instanceof Guard)) {
+      return ((Guard)object).eContainer().eContainer();
+    }
+    if ((object instanceof Action)) {
+      return ((Action)object).eContainer().eContainer();
+    }
+    if ((object instanceof Witness)) {
+      return ((Witness)object).eContainer().eContainer();
+    }
+    if ((object instanceof Variant)) {
+      return ((Variant)object).eContainer().eContainer();
+    }
+    return null;
   }
   
   /**
