@@ -2,3 +2,8 @@ language: generic
 
 script:
   - mvn clean verify
+
+cache:
+  directories:
+  - .autoconf
+  - $HOME/.m2
