@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2017,2020 University of Southampton.
+ * Copyright (c) 2017,2021 University of Southampton.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -45,8 +45,10 @@ import org.rodinp.keyboard.core.RodinKeyboardCore
  * </p>
  *
  * @author dana - Initial Implementation
- * @version 0.1 
+ * @author htson - Added support for lifting Rodin issues into XContext
+ * @version 1.1
  * @since 1.0
+ * @see XContextMarkerModule
  */
 class XContextValidator extends AbstractXContextValidator {
 	
@@ -232,24 +234,34 @@ class XContextValidator extends AbstractXContextValidator {
 	 */
 	def private createIssue(EObject obj, IMarker rodinMarker) {
 		val attributeType = RodinMarkerUtil.getAttributeType(rodinMarker);
-		val feature = getFeature(obj, attributeType)
 		val attributes = rodinMarker.attributes
 		val severity = attributes.get(IMarker.SEVERITY)
-		// XText markers does not have information about "start" and "end"
-		// at the moment. We include this information in the message and
-		// "decode" it later when create the markers. 
-		val start = RodinMarkerUtil.getCharStart(rodinMarker)
-		val end = RodinMarkerUtil.getCharEnd(rodinMarker)
-		var message = attributes.get(IMarker.MESSAGE)
-		if (start != -1) {
-			message = message + " (from " + start + " to " + end + ")"
+        var message = attributes.get(IMarker.MESSAGE)
+		
+        var feature = getFeature(obj, attributeType)
+        var elem = obj
+        if (feature === null) {
+            elem = getContext(obj)
+            if (elem !== null)
+                feature = CorePackage.Literals.EVENT_BNAMED__NAME
+            else
+               elem = obj
+        } else {
+    		// XText markers does not have information about "start" and "end"
+	       	// at the moment. We include this information in the message and
+    		// "decode" it later when create the markers. 
+            val start = RodinMarkerUtil.getCharStart(rodinMarker)
+            val end = RodinMarkerUtil.getCharEnd(rodinMarker)
+            if (start != -1) {
+                message = message + " (from " + start + " to " + end + ")"
+            }
 		}
 		if (severity == IMarker.SEVERITY_ERROR)
-			error(message.toString, obj, feature)
+			error(message.toString, elem, feature)
 		else if (severity == IMarker.SEVERITY_WARNING)
-			warning(message.toString, obj, feature)
+			warning(message.toString, elem, feature)
 		else
-			info(message.toString, obj, feature)
+			info(message.toString, elem, feature)
 	}
 
 	/**
@@ -297,5 +309,29 @@ class XContextValidator extends AbstractXContextValidator {
 		}
 		return null
 	}
+	
+	/**
+     * Utility method to get the context of an EObject. Return the Context 
+     * parent of the input element. Return <code>null</code> if there is no
+     * Context containing the input element.
+     * 
+     * @param obj
+     *          The input EObject
+     * @author htson
+     * @since 2.1
+     */
+     def EObject getContext(EObject object) {
+        if (object instanceof Context)
+            return object
+        if (object instanceof CarrierSet)
+            return object.eContainer
+        if (object instanceof Constant)
+            return object.eContainer
+        if (object instanceof Axiom)
+            return object.eContainer
+        
+        return null
+    }
+
 	
 }
