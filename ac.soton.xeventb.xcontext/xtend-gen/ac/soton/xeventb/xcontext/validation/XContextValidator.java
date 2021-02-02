@@ -37,11 +37,13 @@ import org.eventb.core.ICarrierSet;
 import org.eventb.core.IConstant;
 import org.eventb.core.IContextRoot;
 import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
+import org.eventb.emf.core.context.ContextPackage;
 import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
@@ -98,7 +100,8 @@ public class XContextValidator extends AbstractXContextValidator {
     final String translated = RodinKeyboardCore.translate(predicate);
     boolean _notEquals = (!Objects.equal(predicate, translated));
     if (_notEquals) {
-      this.warning(("Untranslated Predicate: " + predicate), obj, 
+      this.warning(
+        ("Untranslated Predicate: " + predicate), obj, 
         CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
         IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
     }
@@ -121,8 +124,7 @@ public class XContextValidator extends AbstractXContextValidator {
       String _platformString = uri.toPlatformString(true);
       Path _path = new Path(_platformString);
       final IFile resource = _root.getFile(_path);
-      final IMarker[] markers = resource.findMarkers(null, true, 
-        IResource.DEPTH_INFINITE);
+      final IMarker[] markers = resource.findMarkers(null, true, IResource.DEPTH_INFINITE);
       for (final IMarker marker : markers) {
         marker.delete();
       }
@@ -186,8 +188,7 @@ public class XContextValidator extends AbstractXContextValidator {
     if (_not) {
       return this.NO_MARKER;
     }
-    return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, 
-      IResource.DEPTH_INFINITE);
+    return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
   }
   
   /**
@@ -195,7 +196,7 @@ public class XContextValidator extends AbstractXContextValidator {
    * object. This is the "identified" attribute such as "identifier", "label".
    * 
    * @param mch
-   * 			The input machine
+   * 		The input machine
    * @param rodinElement
    * 			The input Rodin element
    * @return the EObject corresponding to the input Rodin element within the
@@ -371,17 +372,8 @@ public class XContextValidator extends AbstractXContextValidator {
    * @since 2.1
    */
   public EObject getContext(final EObject object) {
-    if ((object instanceof Context)) {
-      return object;
-    }
-    if ((object instanceof CarrierSet)) {
-      return ((CarrierSet)object).eContainer();
-    }
-    if ((object instanceof Constant)) {
-      return ((Constant)object).eContainer();
-    }
-    if ((object instanceof Axiom)) {
-      return ((Axiom)object).eContainer();
+    if ((object instanceof EventBObject)) {
+      return ((EventBObject)object).getContaining(ContextPackage.Literals.CONTEXT);
     }
     return null;
   }

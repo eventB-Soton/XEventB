@@ -47,12 +47,14 @@ import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
 import org.eventb.emf.core.EventBExpression;
+import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
 import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.MachinePackage;
 import org.eventb.emf.core.machine.Parameter;
 import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.core.machine.Variant;
@@ -136,7 +138,8 @@ public class XMachineValidator extends AbstractXMachineValidator {
         if (_isEmpty) {
           String _name = inc.getAbstractMachine().getName();
           String _plus = ("Prefixing is not defined for " + _name);
-          String _plus_1 = (_plus + ". Possible synchronisation ambiguity. ");
+          String _plus_1 = (_plus + 
+            ". Possible synchronisation ambiguity. ");
           this.warning(_plus_1, null);
         }
       }
@@ -196,8 +199,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     if (_not) {
       return this.NO_MARKER;
     }
-    return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, 
-      IResource.DEPTH_INFINITE);
+    return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
   }
   
   /**
@@ -361,32 +363,8 @@ public class XMachineValidator extends AbstractXMachineValidator {
    * @since 2.1
    */
   public EObject getMachine(final EObject object) {
-    if ((object instanceof Machine)) {
-      return object;
-    }
-    if ((object instanceof Variable)) {
-      return ((Variable)object).eContainer();
-    }
-    if ((object instanceof Invariant)) {
-      return ((Invariant)object).eContainer();
-    }
-    if ((object instanceof Event)) {
-      return ((Event)object).eContainer();
-    }
-    if ((object instanceof Parameter)) {
-      return ((Parameter)object).eContainer().eContainer();
-    }
-    if ((object instanceof Guard)) {
-      return ((Guard)object).eContainer().eContainer();
-    }
-    if ((object instanceof Action)) {
-      return ((Action)object).eContainer().eContainer();
-    }
-    if ((object instanceof Witness)) {
-      return ((Witness)object).eContainer().eContainer();
-    }
-    if ((object instanceof Variant)) {
-      return ((Variant)object).eContainer().eContainer();
+    if ((object instanceof EventBObject)) {
+      return ((EventBObject)object).getContaining(MachinePackage.Literals.MACHINE);
     }
     return null;
   }
@@ -438,8 +416,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       String _platformString = uri.toPlatformString(true);
       Path _path = new Path(_platformString);
       final IFile resource = _root.getFile(_path);
-      final IMarker[] markers = resource.findMarkers(null, true, 
-        IResource.DEPTH_INFINITE);
+      final IMarker[] markers = resource.findMarkers(null, true, IResource.DEPTH_INFINITE);
       for (final IMarker marker : markers) {
         marker.delete();
       }
@@ -453,7 +430,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
    * object. This is the "identified" attribute such as "identifier", "label".
    * 
    * @param mch
-   * 			The input machine
+   * 		The input machine
    * @param rodinElement
    * 			The input Rodin element
    * @return the EObject corresponding to the input Rodin element within the
@@ -596,7 +573,8 @@ public class XMachineValidator extends AbstractXMachineValidator {
     final String translated = RodinKeyboardCore.translate(predicate);
     boolean _notEquals = (!Objects.equal(predicate, translated));
     if (_notEquals) {
-      this.warning(("Untranslated Predicate: " + predicate), obj, 
+      this.warning(
+        ("Untranslated Predicate: " + predicate), obj, 
         CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
         IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
     }
@@ -620,7 +598,8 @@ public class XMachineValidator extends AbstractXMachineValidator {
     final String translated = RodinKeyboardCore.translate(expression);
     boolean _notEquals = (!Objects.equal(expression, translated));
     if (_notEquals) {
-      this.warning(("Untranslated Expression: " + expression), obj, 
+      this.warning(
+        ("Untranslated Expression: " + expression), obj, 
         CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION, 
         IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated);
     }
@@ -644,7 +623,8 @@ public class XMachineValidator extends AbstractXMachineValidator {
     final String translated = RodinKeyboardCore.translate(action);
     boolean _notEquals = (!Objects.equal(action, translated));
     if (_notEquals) {
-      this.warning(("Untranslated Assignment: " + action), obj, 
+      this.warning(
+        ("Untranslated Assignment: " + action), obj, 
         CorePackage.Literals.EVENT_BACTION__ACTION, 
         IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated);
     }
