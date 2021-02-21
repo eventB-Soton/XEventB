@@ -11,7 +11,7 @@
  * Contributors:
  *     University of Southampton - initial API and implementation
  *******************************************************************************/
-package ac.soton.xeventb.internal.ui
+package ac.soton.xeventb.internal.ui.handlers
 
 import ac.soton.eventb.emf.inclusion.MachineInclusion
 import ac.soton.xeventb.xcontext.generator.XContextGenerator
