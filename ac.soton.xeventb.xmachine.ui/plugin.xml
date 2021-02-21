@@ -68,6 +68,18 @@
 				</and>
             </activeWhen>
         </handler>
+        <handler
+              class="ac.soton.xeventb.ui.handlers.InsertSymbolHandler"
+              commandId="org.eventb.ui.edit.insert">
+           <activeWhen>
+              <with
+                    variable="activeEditorId">
+                 <equals
+                       value="ac.soton.xeventb.xmachine.XMachine">
+                 </equals>
+              </with>
+           </activeWhen>
+        </handler>
     </extension>
     <extension point="org.eclipse.core.expressions.definitions">
         <definition id="ac.soton.xeventb.xmachine.XMachine.Editor.opened">
