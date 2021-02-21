@@ -4,6 +4,31 @@ This feature provides a text editor (CamilleX) for Event-B constructs (e.g., XMa
 
 Release history:
 ---------------
+### 2.1.0 Usability Update  ###
+#### Updated Plug-ins/Features ####
+- XContext (2.1.0): Attach the markers to the XContext's name if no child element found (see Issue #65).
+- XContext UI (2.1.0): Added handler to insert Event-B symbols into XContext Editor (see Issue #67).
+- XMachine (2.1.0): Attach the markers to the XMachine's name if no child element found (see Issue #65).
+- XMachine UI (2.1.0): Added handler to insert Event-B symbols into XMachine Editor (see Issue #67).
+- CamilleX UI (1.1.0): 
+  + Added a context menu item to do the batch generation of CamilleX source files (see Issue #63).
+  + Added common implementation for a handler to insert Event-B Symbols to a text editor (see Issue #67).
+#### Fixed Issues ####
+- Issue #63: Batch generation for a collection of CamilleX source files.
+- Issue #65: Markers attach to an XMachine or an XContext.
+- Issue #67: SymbolTable does not work with CamilleX editors
+### 2.0.2 Maintenance release ###
+- Fixed the Update Site name.
+- Removed the included features: Inclusion, Records, Containment
+#### Updated Plug-ins ####
+- XContext (2.0.2):
+  + Added extra dependency on the Record Edit Plug-in.
+- XMachine (2.0.2):
+  + Added extra dependency on the Inclusion Edit Plug-in.
+  + Added extra dependency on the Record Edit Plug-in.
+  + Added extra dependency on the Containment Edit Plug-in.
+- XMachine UI (2.0.1):
+  + Update dependency range for org.eventb.core.emf.
 ### 2.0.1 Maintenance release ###
 #### Updated Plugins/Features ####
 - Branding (0.0.5): Update copyright information on branding.
