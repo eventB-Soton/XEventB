@@ -11,7 +11,7 @@
  * Contributors:
  *     University of Southampton - initial API and implementation
  */
-package ac.soton.xeventb.internal.ui;
+package ac.soton.xeventb.internal.ui.handlers;
 
 import ch.ethz.eventb.utils.EventBUtils;
 import org.eclipse.core.commands.AbstractHandler;

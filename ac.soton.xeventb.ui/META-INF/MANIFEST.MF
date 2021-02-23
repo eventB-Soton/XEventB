@@ -33,5 +33,6 @@ Import-Package: org.eclipse.emf.common.util,
  org.eclipse.emf.ecore.util
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: ac.soton.xeventb.ui.XEventBUIPlugin
-Export-Package: ac.soton.xeventb.ui
+Export-Package: ac.soton.xeventb.ui,
+ ac.soton.xeventb.ui.handlers
 Automatic-Module-Name: ac.soton.xeventb.ui

@@ -25,7 +25,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="ac.soton.xeventb.internal.ui.XTextConvertHandler"
+            class="ac.soton.xeventb.internal.ui.handlers.XTextConvertHandler"
             commandId="ac.soton.eventb.xtext.ui.XTextConvert">
       </handler>
    </extension>
@@ -111,7 +111,7 @@
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            class="ac.soton.xeventb.internal.ui.RegenerateHandler"
+            class="ac.soton.xeventb.internal.ui.handlers.RegenerateHandler"
             commandId="ac.soton.eventb.xtext.ui.Regenerate">
       </handler>
    </extension>
