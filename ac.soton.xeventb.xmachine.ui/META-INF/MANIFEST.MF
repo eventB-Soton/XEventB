@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.1.0.release
+Bundle-Version: 2.0.3.release
 Bundle-SymbolicName: ac.soton.xeventb.xmachine.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[2.0.0,3.0.0)",
