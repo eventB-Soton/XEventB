@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.0.1.release
+Bundle-Version: 2.1.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xcontext.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xcontext;bundle-version="[2.0.0,3.0.0)",
@@ -12,7 +12,7 @@ Require-Bundle: ac.soton.xeventb.xcontext;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.xtext.testing;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase.testing;bundle-version="[2.12.0,3.0.0)",
  ac.soton.xeventb.tests.common;bundle-version="[0.0.1,1.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xcontext.tests;x-internal=true
 Import-Package: org.junit;version="4.5.0",
  org.junit.runner;version="4.5.0"
