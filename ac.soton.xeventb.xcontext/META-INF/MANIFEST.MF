@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.1.0.release
+Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xcontext;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
@@ -29,7 +29,7 @@ Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  ac.soton.eventb.emf.record;bundle-version="[0.1.0,1.0.0)",
  ac.soton.eventb.emf.core.extension;bundle-version="[5.0.0,6.0.0)",
  ac.soton.eventb.emf.record.edit;bundle-version="[0.1.1,1.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xcontext,
  ac.soton.xeventb.xcontext.generator,
  ac.soton.xeventb.xcontext.parser.antlr,
