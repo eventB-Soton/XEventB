@@ -14,6 +14,8 @@
 
 package ac.soton.xeventb.common
 
+import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
+import ac.soton.eventb.emf.core.^extension.coreextension.TypedConstant
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
@@ -47,21 +49,22 @@ class XContextTransientValueService extends DefaultTransientValueService {
 		if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
 			return true
 		}
-		// For context, serialise only "name", "context extension",
-		// "sets", "constants" and "axioms".
+		// For context, serialise only "name", "ordered children",
 		if (owner instanceof Context) {
+			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
+				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
 				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__SETS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__CONSTANTS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__AXIOMS))
-				return false
+				return true
 			return true
 		}
 		// For carrier set, serialise only "name"
@@ -69,6 +72,18 @@ class XContextTransientValueService extends DefaultTransientValueService {
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return true
+			return true
+		}
+		// For constant, serialise only "name"
+		if (owner instanceof TypedConstant) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.TYPE__TYPE))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.VALUE__VALUE))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
 				return true
 			return true
 		}

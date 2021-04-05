@@ -13,6 +13,8 @@
  */
 package ac.soton.xeventb.common;
 
+import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
+import ac.soton.eventb.emf.core.extension.coreextension.TypedConstant;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService;
@@ -48,60 +50,57 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       return true;
     }
     if ((owner instanceof Context)) {
-      boolean _equals = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      boolean _equals = feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
       if (_equals) {
         return false;
       }
-      boolean _equals_1 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      boolean _equals_1 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals_1) {
+        return false;
+      }
+      boolean _equals_2 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_2) {
         return true;
       }
-      boolean _equals_2 = feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS);
-      if (_equals_2) {
-        return false;
-      }
-      boolean _equals_3 = feature.equals(ContextPackage.Literals.CONTEXT__SETS);
+      boolean _equals_3 = feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS);
       if (_equals_3) {
-        return false;
+        return true;
       }
-      boolean _equals_4 = feature.equals(ContextPackage.Literals.CONTEXT__CONSTANTS);
+      boolean _equals_4 = feature.equals(ContextPackage.Literals.CONTEXT__SETS);
       if (_equals_4) {
-        return false;
+        return true;
       }
-      boolean _equals_5 = feature.equals(ContextPackage.Literals.CONTEXT__AXIOMS);
+      boolean _equals_5 = feature.equals(ContextPackage.Literals.CONTEXT__CONSTANTS);
       if (_equals_5) {
-        return false;
+        return true;
+      }
+      boolean _equals_6 = feature.equals(ContextPackage.Literals.CONTEXT__AXIOMS);
+      if (_equals_6) {
+        return true;
       }
       return true;
     }
     if ((owner instanceof CarrierSet)) {
-      boolean _equals_6 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
-      if (_equals_6) {
-        return false;
-      }
-      boolean _equals_7 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      boolean _equals_7 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals_7) {
-        return true;
-      }
-      return true;
-    }
-    if ((owner instanceof Constant)) {
-      boolean _equals_8 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
-      if (_equals_8) {
         return false;
       }
-      boolean _equals_9 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
-      if (_equals_9) {
+      boolean _equals_8 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_8) {
         return true;
       }
       return true;
     }
-    if ((owner instanceof Axiom)) {
-      boolean _equals_10 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+    if ((owner instanceof TypedConstant)) {
+      boolean _equals_9 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      if (_equals_9) {
+        return false;
+      }
+      boolean _equals_10 = feature.equals(CoreextensionPackage.Literals.TYPE__TYPE);
       if (_equals_10) {
         return false;
       }
-      boolean _equals_11 = feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE);
+      boolean _equals_11 = feature.equals(CoreextensionPackage.Literals.VALUE__VALUE);
       if (_equals_11) {
         return false;
       }
@@ -109,8 +108,34 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       if (_equals_12) {
         return true;
       }
-      boolean _equals_13 = feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM);
+      return true;
+    }
+    if ((owner instanceof Constant)) {
+      boolean _equals_13 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals_13) {
+        return false;
+      }
+      boolean _equals_14 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_14) {
+        return true;
+      }
+      return true;
+    }
+    if ((owner instanceof Axiom)) {
+      boolean _equals_15 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      if (_equals_15) {
+        return false;
+      }
+      boolean _equals_16 = feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE);
+      if (_equals_16) {
+        return false;
+      }
+      boolean _equals_17 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_17) {
+        return true;
+      }
+      boolean _equals_18 = feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM);
+      if (_equals_18) {
         return false;
       }
       return true;
