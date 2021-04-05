@@ -43,4 +43,13 @@ interface IValidationIssueCode {
 	 */
 	val public String UNTRANSLATED_ASSIGNMENT = "ac.soton.xeventb.quickfix.UntranslatedAssignment";
 	
+	/**
+	 * Issue code for Untranslated types.
+	 */
+	val public String UNTRANSLATED_TYPE = "ac.soton.xeventb.quickfix.UntranslatedType";
+
+	/**
+	 * Issue code for Untranslated types.
+	 */
+	val public String UNTRANSLATED_VALUE = "ac.soton.xeventb.quickfix.UntranslatedValue";
 }

@@ -13,6 +13,9 @@
  */
 package ac.soton.xeventb.xcontext.validation;
 
+import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
+import ac.soton.eventb.emf.core.extension.coreextension.Type;
+import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.xeventb.common.IValidationIssueCode;
 import ac.soton.xeventb.xcontext.validation.AbstractXContextValidator;
 import com.google.common.base.Objects;
@@ -37,6 +40,7 @@ import org.eventb.core.ICarrierSet;
 import org.eventb.core.IConstant;
 import org.eventb.core.IContextRoot;
 import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
 import org.eventb.emf.core.context.Axiom;
@@ -82,6 +86,54 @@ public class XContextValidator extends AbstractXContextValidator {
     }
   }
   
+  @Check
+  public void unstranslatedPredicate(final Context ctx) {
+    final EList<EventBElement> orderedChildren = ctx.getOrderedChildren();
+    for (final EventBElement child : orderedChildren) {
+      {
+        if ((child instanceof EventBPredicate)) {
+          this.untranslatedPredicate(((EventBPredicate)child));
+        }
+        if ((child instanceof Type)) {
+          this.untranslatedType(((Type)child));
+        }
+        if ((child instanceof Value)) {
+          this.untranslatedValue(((Value)child));
+        }
+      }
+    }
+  }
+  
+  public void untranslatedValue(final Value obj) {
+    final String value = obj.getValue();
+    if ((value == null)) {
+      return;
+    }
+    final String translated = RodinKeyboardCore.translate(value);
+    boolean _notEquals = (!Objects.equal(value, translated));
+    if (_notEquals) {
+      this.warning(
+        ("Untranslated Value: " + value), obj, 
+        CoreextensionPackage.Literals.VALUE__VALUE, 
+        IValidationIssueCode.UNTRANSLATED_VALUE, value, translated);
+    }
+  }
+  
+  public void untranslatedType(final Type obj) {
+    final String type = obj.getType();
+    if ((type == null)) {
+      return;
+    }
+    final String translated = RodinKeyboardCore.translate(type);
+    boolean _notEquals = (!Objects.equal(type, translated));
+    if (_notEquals) {
+      this.warning(
+        ("Untranslated Type: " + type), obj, 
+        CoreextensionPackage.Literals.TYPE__TYPE, 
+        IValidationIssueCode.UNTRANSLATED_TYPE, type, translated);
+    }
+  }
+  
   /**
    * Check for untranslated predicates by comparing the translated string
    * with the predicate. Raise a warning with code
@@ -94,8 +146,7 @@ public class XContextValidator extends AbstractXContextValidator {
    * @see IValidationIssueCode
    * @since 2.0
    */
-  @Check
-  public void untranslatedPredicate(final EventBPredicate obj) {
+  private void untranslatedPredicate(final EventBPredicate obj) {
     final String predicate = obj.getPredicate();
     final String translated = RodinKeyboardCore.translate(predicate);
     boolean _notEquals = (!Objects.equal(predicate, translated));
@@ -145,7 +196,7 @@ public class XContextValidator extends AbstractXContextValidator {
    * machine into issues for the corresponding XMachine.
    * 
    * @param mch
-   * 			The input Rodini machine
+   * 			The input Rodin machine
    * 
    * @author htson
    * @since 2.0

@@ -41,4 +41,14 @@ public interface IValidationIssueCode {
    * Issue code for Untranslated assignments.
    */
   static final String UNTRANSLATED_ASSIGNMENT = "ac.soton.xeventb.quickfix.UntranslatedAssignment";
+  
+  /**
+   * Issue code for Untranslated types.
+   */
+  static final String UNTRANSLATED_TYPE = "ac.soton.xeventb.quickfix.UntranslatedType";
+  
+  /**
+   * Issue code for Untranslated types.
+   */
+  static final String UNTRANSLATED_VALUE = "ac.soton.xeventb.quickfix.UntranslatedValue";
 }

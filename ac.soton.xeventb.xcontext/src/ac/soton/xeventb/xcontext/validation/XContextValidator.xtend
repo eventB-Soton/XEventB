@@ -14,6 +14,9 @@
 
 package ac.soton.xeventb.xcontext.validation
 
+import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
+import ac.soton.eventb.emf.core.^extension.coreextension.Type
+import ac.soton.eventb.emf.core.^extension.coreextension.Value
 import ac.soton.xeventb.common.IValidationIssueCode
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
@@ -70,6 +73,54 @@ class XContextValidator extends AbstractXContextValidator {
             error('Context name should be the same as the file name', null)
     }
 
+    @Check
+    def unstranslatedPredicate(Context ctx) {
+    	val orderedChildren = ctx.orderedChildren
+		for (child : orderedChildren) {
+			if (child instanceof EventBPredicate) {
+				untranslatedPredicate(child)
+			}
+			if (child instanceof Type) {
+				untranslatedType(child)
+			}
+			if (child instanceof Value) {
+				untranslatedValue(child)
+			}
+		}			
+    }
+		
+	def untranslatedValue(Value obj) {
+        val value = obj.value
+        if (value === null)
+        	return
+        val translated = RodinKeyboardCore.translate(value)
+        if (value != translated)
+            warning(
+                "Untranslated Value: " + value,
+                obj,
+                CoreextensionPackage.Literals.VALUE__VALUE,
+                IValidationIssueCode.UNTRANSLATED_VALUE,
+                value,
+                translated
+            )
+	}
+		
+	def untranslatedType(Type obj) {
+        val type = obj.type
+        if (type === null)
+        	return
+        val translated = RodinKeyboardCore.translate(type)
+        if (type != translated)
+            warning(
+                "Untranslated Type: " + type,
+                obj,
+                CoreextensionPackage.Literals.TYPE__TYPE,
+                IValidationIssueCode.UNTRANSLATED_TYPE,
+                type,
+                translated
+            )
+	}
+    
     /**
      * Check for untranslated predicates by comparing the translated string
      * with the predicate. Raise a warning with code
@@ -82,8 +133,7 @@ class XContextValidator extends AbstractXContextValidator {
      * @see IValidationIssueCode
      * @since 2.0
      */
-    @Check
-    def untranslatedPredicate(EventBPredicate obj) {
+    private def untranslatedPredicate(EventBPredicate obj) {
         val predicate = obj.predicate
         val translated = RodinKeyboardCore.translate(predicate)
         if (predicate != translated)
@@ -131,7 +181,7 @@ class XContextValidator extends AbstractXContextValidator {
      * machine into issues for the corresponding XMachine.
      * 
      * @param mch
-     * 			The input Rodini machine
+     * 			The input Rodin machine
      * 
      * @author htson
      * @since 2.0
