@@ -13,6 +13,8 @@
  */
 package ac.soton.xeventb.xcontext.ui.quickfix;
 
+import ac.soton.eventb.emf.core.extension.coreextension.Type;
+import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.xeventb.common.IValidationIssueCode;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
@@ -50,6 +52,48 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
         public void apply(final EObject element, final IModificationContext context) throws Exception {
           if ((element instanceof EventBPredicate)) {
             ((EventBPredicate)element).setPredicate(translated);
+          }
+        }
+      });
+  }
+  
+  /**
+   * Quick fix for untranslated types. Offer to replace the type by
+   * the translated formula.
+   */
+  @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
+  public void translateType(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final String[] data = issue.getData();
+    final String type = data[0];
+    final String translated = data[1];
+    acceptor.accept(issue, ("Translated type to " + translated), 
+      ((("Change from " + type) + " to ") + translated), null, 
+      new ISemanticModification() {
+        @Override
+        public void apply(final EObject element, final IModificationContext context) throws Exception {
+          if ((element instanceof Type)) {
+            ((Type)element).setType(translated);
+          }
+        }
+      });
+  }
+  
+  /**
+   * Quick fix for untranslated types. Offer to replace the type by
+   * the translated formula.
+   */
+  @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
+  public void translateValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final String[] data = issue.getData();
+    final String value = data[0];
+    final String translated = data[1];
+    acceptor.accept(issue, ("Translated value to " + translated), 
+      ((("Change from " + value) + " to ") + translated), null, 
+      new ISemanticModification() {
+        @Override
+        public void apply(final EObject element, final IModificationContext context) throws Exception {
+          if ((element instanceof Value)) {
+            ((Value)element).setValue(translated);
           }
         }
       });

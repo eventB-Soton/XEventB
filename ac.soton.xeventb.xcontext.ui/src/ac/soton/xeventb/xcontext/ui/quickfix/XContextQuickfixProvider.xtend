@@ -14,6 +14,8 @@
 
 package ac.soton.xeventb.xcontext.ui.quickfix
 
+import ac.soton.eventb.emf.core.^extension.coreextension.Type
+import ac.soton.eventb.emf.core.^extension.coreextension.Value
 import ac.soton.xeventb.common.IValidationIssueCode
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
@@ -57,4 +59,47 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 			});
 	}
 
+	/**
+	 * Quick fix for untranslated types. Offer to replace the type by
+	 * the translated formula.
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
+	def translateType(Issue issue, IssueResolutionAcceptor acceptor) {
+		val String[] data = issue.data
+		val type = data.get(0)
+		val translated = data.get(1)
+		acceptor.accept(issue, "Translated type to " + translated,
+			 "Change from " + type + " to " + translated, null,
+			 new ISemanticModification() {
+				override apply(EObject element, IModificationContext context)
+						throws Exception {
+					if (element instanceof Type) {
+						element.type = translated
+					}
+				}
+
+			});
+	}
+
+	/**
+	 * Quick fix for untranslated types. Offer to replace the type by
+	 * the translated formula.
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
+	def translateValue(Issue issue, IssueResolutionAcceptor acceptor) {
+		val String[] data = issue.data
+		val value = data.get(0)
+		val translated = data.get(1)
+		acceptor.accept(issue, "Translated value to " + translated,
+			 "Change from " + value + " to " + translated, null,
+			 new ISemanticModification() {
+				override apply(EObject element, IModificationContext context)
+						throws Exception {
+					if (element instanceof Value) {
+						element.value = translated
+					}
+				}
+
+			});
+	}
 }
