@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 University of Southampton.
+ * Copyright (c) 2018,2021 University of Southampton.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -34,12 +34,13 @@ import static org.eclipse.ui.navigator.ICommonMenuConstants.GROUP_OPEN
 
 
 import org.eclipse.core.resources.ResourcesPlugin
+import org.eclipse.ui.PlatformUI
 
 /**
  * Abstract implementation for action provider for XEvent-B element.
  * 
  * @author htson, dd4g12
- * @version 1.0
+ * @version 1.1
  * @since 0.1 
  */
 abstract class AbstractXEventBActionProvider extends CommonActionProvider {
@@ -55,13 +56,11 @@ abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 	 */
 	override fillActionBars(IActionBars actionBars) {
 		super.fillActionBars(actionBars);
-		val ICommonActionExtensionSite site = getActionSite();
+		val ICommonActionExtensionSite site = actionSite;
 		// forward doubleClick to doubleClickAction
 		actionBars.setGlobalActionHandler(OPEN, getOpenAction(site));
 		// TODO Add other actions
-         actionBars.setGlobalActionHandler(GROUP_EDIT, getDeleteAction(site) );
-
- 
+        actionBars.setGlobalActionHandler(GROUP_EDIT, getDeleteAction(site) );
 	}
 	
 	/**
@@ -79,12 +78,11 @@ abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 	 */
 	override fillContextMenu(IMenuManager menu) {
 		super.fillContextMenu(menu);
-		val ICommonActionExtensionSite site = getActionSite();
-		menu.add(new Separator(GROUP_NEW));
+		val ICommonActionExtensionSite site = actionSite
+		menu.add(new Separator(GROUP_NEW))
 
 		menu.appendToGroup(GROUP_OPEN, getOpenAction(site));
         menu.appendToGroup(GROUP_EDIT,getDeleteAction(site))
-
 	}
 
 	/**
@@ -97,34 +95,32 @@ abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 	def Action getOpenAction(ICommonActionExtensionSite site) {
 		val Action doubleClickAction = new Action("Open") {
 			override run() {
-				val ISelection selection = site.getStructuredViewer()
-						.getSelection();
+				val ISelection selection = site.structuredViewer.selection
 				val Object obj = (selection as IStructuredSelection)
-						.getFirstElement();
+						.firstElement
 				if (obj instanceof IXEventBNavigatorObject) {
 			
 					val resource = obj.resource
-					val IEditorDescriptor desc = IDE.getDefaultEditor(resource);
+					val IEditorDescriptor desc = IDE.getDefaultEditor(resource)
 					try {
-						
-						val activePage = XEventBUIPlugin.^default
-								.workbench.activeWorkbenchWindow.activePage
+						val activePage = PlatformUI.workbench
+								.activeWorkbenchWindow.activePage
 	
 						val IEditorPart editor = activePage.openEditor(
-							new FileEditorInput(resource), desc.getId());
+							new FileEditorInput(resource), desc.id)
 						if (editor === null) {
 							// External editor
-							return;
+							return
 						}
 					}
 					catch (PartInitException e) {
-						val String errorMsg = "Error opening Editor";
-						MessageDialog.openError(null, null, errorMsg);
+						val String errorMsg = "Error opening Editor"
+						MessageDialog.openError(null, null, errorMsg)
 					}
 				}
 			}
-		};
-		return doubleClickAction;
+		}
+		return doubleClickAction
 	}
 	
 	/**
@@ -138,10 +134,9 @@ abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 	def Action getDeleteAction(ICommonActionExtensionSite site) {
 		val Action doubleClickAction = new Action("Delete") {
 			override run() {
-				val ISelection selection = site.getStructuredViewer()
-						.getSelection();
+				val ISelection selection = site.structuredViewer.selection
 				val Object obj = (selection as IStructuredSelection)
-						.getFirstElement();
+						.firstElement
 				if (obj instanceof IXEventBNavigatorObject) {
 					val resource = obj.resource		
 					//resource.delete(true,null)  
@@ -154,29 +149,29 @@ abstract class AbstractXEventBActionProvider extends CommonActionProvider {
 				    path = path.removeLastSegments(1)
 				    path = path.addTrailingSeparator.append(name)
 				 
-		           val workspace= ResourcesPlugin.getWorkspace(); 
+		           val workspace = ResourcesPlugin.workspace 
 		           
-		           val ifile= workspace.getRoot().getFileForLocation(path);
-		          // ifile.delete(true,null)
+		           val ifile = workspace.root.getFileForLocation(path)
 	   
-                  val shell = site.viewSite.getShell();
-                  val msg = "Are you sure you want to delete \"" + resource.name + "\" and its corresponding Event-B files?";
+                  val shell = site.viewSite.shell
+                  val msg = "Are you sure you want to delete \"" + resource.name
+                  		+ "\" and its corresponding Event-B files?"
                   val String[] options = #["Yes to All", "Yes", "No"]
-                  val dialog = new MessageDialog(shell, "Confirm Delete", null, msg , MessageDialog.CONFIRM, options, 0)
+                  val dialog = new MessageDialog(shell, "Confirm Delete", null,
+                  		msg , MessageDialog.CONFIRM, options, 0
+                  )
                   val result = dialog.open;
                   if(result == 0){
-                  	resource.delete(true,null)  //xtext
-                  	ifile.delete(true,null)     //Event-B
+                  	resource.delete(true,null)	// XText
+                  	ifile.delete(true,null)		//Event-B
                   }
                   	
                   else if (result == 1)
-                  	resource.delete(true,null)   //only xtext
-                 
-	    
+                  	resource.delete(true,null)	// only XText
 				}
 			}
-		};
-		return doubleClickAction;
+		}
+		return doubleClickAction
 	}
 	  
 }

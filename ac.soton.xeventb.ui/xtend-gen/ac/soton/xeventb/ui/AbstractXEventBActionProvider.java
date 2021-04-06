@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 University of Southampton.
+ * Copyright (c) 2018,2021 University of Southampton.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -14,7 +14,6 @@
 package ac.soton.xeventb.ui;
 
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
-import ac.soton.xeventb.ui.XEventBUIPlugin;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IWorkspace;
 import org.eclipse.core.resources.ResourcesPlugin;
@@ -31,6 +30,7 @@ import org.eclipse.ui.IEditorDescriptor;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IWorkbenchPage;
 import org.eclipse.ui.PartInitException;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.navigator.CommonActionProvider;
 import org.eclipse.ui.navigator.ICommonActionConstants;
@@ -43,7 +43,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * Abstract implementation for action provider for XEvent-B element.
  * 
  * @author htson, dd4g12
- * @version 1.0
+ * @version 1.1
  * @since 0.1
  */
 @SuppressWarnings("all")
@@ -105,7 +105,7 @@ public abstract class AbstractXEventBActionProvider extends CommonActionProvider
           final IFile resource = ((IXEventBNavigatorObject)obj).getResource();
           final IEditorDescriptor desc = IDE.getDefaultEditor(resource);
           try {
-            final IWorkbenchPage activePage = XEventBUIPlugin.getDefault().getWorkbench().getActiveWorkbenchWindow().getActivePage();
+            final IWorkbenchPage activePage = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage();
             FileEditorInput _fileEditorInput = new FileEditorInput(resource);
             final IEditorPart editor = activePage.openEditor(_fileEditorInput, desc.getId());
             if ((editor == null)) {
