@@ -50,7 +50,6 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMachineAccess().getGroup_4_2(), "rule__Machine__Group_4_2__0");
 			builder.put(grammarAccess.getMachineAccess().getGroup_5(), "rule__Machine__Group_5__0");
 			builder.put(grammarAccess.getMachineAccess().getGroup_6_0(), "rule__Machine__Group_6_0__0");
-			builder.put(grammarAccess.getMachineAccess().getGroup_6_1(), "rule__Machine__Group_6_1__0");
 			builder.put(grammarAccess.getMContainsAccess().getGroup(), "rule__MContains__Group__0");
 			builder.put(grammarAccess.getMIncludesAccess().getGroup(), "rule__MIncludes__Group__0");
 			builder.put(grammarAccess.getMIncludesAccess().getGroup_1(), "rule__MIncludes__Group_1__0");
@@ -60,8 +59,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getQualifiedNameAccess().getGroup_1(), "rule__QualifiedName__Group_1__0");
 			builder.put(grammarAccess.getXVariableAccess().getGroup(), "rule__XVariable__Group__0");
 			builder.put(grammarAccess.getXTypedVariableAccess().getGroup(), "rule__XTypedVariable__Group__0");
-			builder.put(grammarAccess.getXTypedVariableAccess().getGroup_3(), "rule__XTypedVariable__Group_3__0");
 			builder.put(grammarAccess.getXTypedVariableAccess().getGroup_4(), "rule__XTypedVariable__Group_4__0");
+			builder.put(grammarAccess.getXTypedVariableAccess().getGroup_5(), "rule__XTypedVariable__Group_5__0");
 			builder.put(grammarAccess.getXTypeAccess().getGroup(), "rule__XType__Group__0");
 			builder.put(grammarAccess.getXTypeAccess().getGroup_1(), "rule__XType__Group_1__0");
 			builder.put(grammarAccess.getXTypePrimitiveAccess().getGroup_5(), "rule__XTypePrimitive__Group_5__0");
@@ -95,7 +94,7 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMachineAccess().getSeesAssignment_4_2_1(), "rule__Machine__SeesAssignment_4_2_1");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_5_1(), "rule__Machine__OrderedChildrenAssignment_5_1");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_0_1(), "rule__Machine__OrderedChildrenAssignment_6_0_1");
-			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_1_1(), "rule__Machine__OrderedChildrenAssignment_6_1_1");
+			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_1(), "rule__Machine__OrderedChildrenAssignment_6_1");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_2(), "rule__Machine__OrderedChildrenAssignment_6_2");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_3(), "rule__Machine__OrderedChildrenAssignment_6_3");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_4(), "rule__Machine__OrderedChildrenAssignment_6_4");
@@ -108,9 +107,9 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXVariableAccess().getCommentAssignment_1(), "rule__XVariable__CommentAssignment_1");
 			builder.put(grammarAccess.getXVariableAccess().getNameAssignment_2(), "rule__XVariable__NameAssignment_2");
 			builder.put(grammarAccess.getXTypedVariableAccess().getCommentAssignment_1(), "rule__XTypedVariable__CommentAssignment_1");
-			builder.put(grammarAccess.getXTypedVariableAccess().getNameAssignment_2(), "rule__XTypedVariable__NameAssignment_2");
-			builder.put(grammarAccess.getXTypedVariableAccess().getTypeAssignment_3_1(), "rule__XTypedVariable__TypeAssignment_3_1");
-			builder.put(grammarAccess.getXTypedVariableAccess().getValueAssignment_4_1(), "rule__XTypedVariable__ValueAssignment_4_1");
+			builder.put(grammarAccess.getXTypedVariableAccess().getNameAssignment_3(), "rule__XTypedVariable__NameAssignment_3");
+			builder.put(grammarAccess.getXTypedVariableAccess().getTypeAssignment_4_1(), "rule__XTypedVariable__TypeAssignment_4_1");
+			builder.put(grammarAccess.getXTypedVariableAccess().getValueAssignment_5_1(), "rule__XTypedVariable__ValueAssignment_5_1");
 			builder.put(grammarAccess.getXInvariantAccess().getCommentAssignment_1(), "rule__XInvariant__CommentAssignment_1");
 			builder.put(grammarAccess.getXInvariantAccess().getTheoremAssignment_2_0(), "rule__XInvariant__TheoremAssignment_2_0");
 			builder.put(grammarAccess.getXInvariantAccess().getNameAssignment_3(), "rule__XInvariant__NameAssignment_3");

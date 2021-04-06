@@ -82,7 +82,7 @@
 '^'=114
 'anticipated'=118
 'any'=134
-'as'=131
+'as'=130
 'begin'=33
 'bool'=36
 'card'=37
@@ -94,7 +94,7 @@
 'extends'=142
 'finite'=39
 'id'=40
-'includes'=129
+'includes'=128
 'inherits'=140
 'inter'=41
 'invariant'=29
@@ -118,9 +118,9 @@
 'synchronises'=136
 'then'=32
 'theorem'=141
-'to'=130
+'to'=129
 'union'=50
-'variable'=128
+'variable'=131
 'variables'=127
 'variant'=132
 'when'=31

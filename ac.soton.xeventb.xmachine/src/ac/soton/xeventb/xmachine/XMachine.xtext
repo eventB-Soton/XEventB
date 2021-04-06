@@ -45,7 +45,7 @@ Machine returns emachine::Machine:
 	// The following can be interleaved
 	(
     	('variables' orderedChildren += XVariable+) |
-    	('variable' orderedChildren += XTypedVariable) |
+    	(orderedChildren += XTypedVariable) |
     	(orderedChildren += Record) |
 		(orderedChildren += XInvariant) |
 		(orderedChildren += XVariant) |
@@ -79,7 +79,7 @@ XVariable returns emachine::Variable:
 XTypedVariable returns eventbcoreex::TypedVariable:
 	{eventbcoreex::TypedVariable}
 	(comment=STRING)?
-	name=ID (':' type = XType)? ('=' value=XFormula)?
+	'variable' name=ID (':' type = XType)? ('=' value=XFormula)?
 ;
 
 XType returns ecore::EString:

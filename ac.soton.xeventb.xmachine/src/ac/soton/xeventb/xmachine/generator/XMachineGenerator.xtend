@@ -16,6 +16,7 @@ package ac.soton.xeventb.xmachine.generator
 
 import ac.soton.emf.translator.TranslatorFactory
 import ac.soton.eventb.emf.containment.Containment
+import ac.soton.eventb.emf.core.^extension.coreextension.TypedVariable
 import ac.soton.xeventb.common.Utils
 import ac.soton.xeventb.xmachine.IContainmentGenerator
 import java.util.Collection
@@ -29,6 +30,7 @@ import org.eclipse.core.runtime.IStatus
 import org.eclipse.core.runtime.NullProgressMonitor
 import org.eclipse.core.runtime.Status
 import org.eclipse.core.runtime.jobs.ISchedulingRule
+import org.eclipse.emf.common.util.EList
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.transaction.RecordingCommand
@@ -38,12 +40,14 @@ import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.eventb.emf.core.CoreFactory
 import org.eventb.emf.core.CorePackage
+import org.eventb.emf.core.EventBElement
+import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
+import org.eventb.emf.core.machine.MachineFactory
 import org.eventb.emf.persistence.EMFRodinDB
 import org.eventb.emf.persistence.PersistencePlugin
 import org.eventb.emf.persistence.SaveResourcesCommand
 import org.rodinp.core.RodinCore
-import org.eclipse.emf.transaction.util.TransactionUtil
 
 /**
  * <p>
@@ -55,8 +59,9 @@ import org.eclipse.emf.transaction.util.TransactionUtil
  * @author asiehsalehi - Implementation for record extension (2.0)
  * @author htson - Introduce generator for containment via extension points (2.0)
  * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
+ * @author htson - Serialisation for typed variables
  * @version 2.0
- * @since 0.1
+ * @since 3.0
  */
 class XMachineGenerator extends AbstractGenerator {
 
@@ -92,7 +97,10 @@ class XMachineGenerator extends AbstractGenerator {
 				)
 				mch.getAnnotations().add(rodinInternals)
 
-				// Translated formulae
+				// Translate typed variables
+				translateTypedVariables(mch)
+
+				// Translate formulae
 				translateFormulae(mch)
 
 				// Ensure that the resource will be saved
@@ -167,6 +175,67 @@ class XMachineGenerator extends AbstractGenerator {
 				}
 			}
 		}
+	}
+
+	/*
+	 * Utility method to translate typed variables of a machine to variables,
+	 * typing invariants and initialisation action.
+	 * 
+	 * @param ctx The input machine
+	 */
+	private def translateTypedVariables(Machine mch) {
+		var orderedChildren = mch.eGet(
+			CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN
+		) as EList<EventBElement>
+		var i = 0
+		while (i < orderedChildren.size) {
+			val child = orderedChildren.get(i)
+			if (child instanceof TypedVariable) {
+				val name = child.name
+				val type = child.type
+				val value = child.value
+
+				// Create the corresponding variable
+				var vrb = MachineFactory.eINSTANCE.createVariable
+				vrb.setName(name);
+				orderedChildren.add(i, vrb)
+				i++
+
+				// Create the typing invariant
+				if (type !== null) {
+					var inv = MachineFactory.eINSTANCE.createInvariant
+					inv.name = name + "-typeof"
+					inv.predicate = name + " ∈ " + type
+					inv.theorem = false
+					orderedChildren.add(i, inv)
+					i++
+				}
+				// Create the value initialisation action
+				if (value !== null) {
+					// Find the Initialisation event
+					var Event initialisation = null
+					for (event : mch.events) {
+						if (event.name == "INITIALISATION") {
+							initialisation = event
+						}
+					}
+					if (initialisation === null) {
+						initialisation = MachineFactory.eINSTANCE.createEvent
+						initialisation.name = "INITIALISATION"
+						orderedChildren.add(i, initialisation)
+						i++
+					}
+					
+					var act = MachineFactory.eINSTANCE.createAction();
+					act.name = name + "-init"
+					act.action = name + " := " + value
+					initialisation.orderedChildren.add(act)
+				}
+			}
+			// Move to the next element 
+			i++
+		}
+
 	}
 
 	def private ISchedulingRule getSchedulingRule(Resource[] resources) {
