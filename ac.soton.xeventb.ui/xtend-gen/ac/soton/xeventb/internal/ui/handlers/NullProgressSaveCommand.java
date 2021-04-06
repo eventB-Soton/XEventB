@@ -17,6 +17,7 @@ import org.eclipse.core.runtime.IStatus;
 import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.transaction.TransactionalEditingDomain;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.persistence.EMFRodinDB;
@@ -31,7 +32,7 @@ import org.eventb.emf.persistence.SaveResourcesCommand;
  * @since 2.2
  */
 @SuppressWarnings("all")
-public class NullProgressSaveCommand extends SaveResourcesCommand {
+public class NullProgressSaveCommand {
   private EMFRodinDB emfRodinDB;
   
   private URI uri;
@@ -47,7 +48,6 @@ public class NullProgressSaveCommand extends SaveResourcesCommand {
    * @param content the content to be set for the resource.
    */
   public NullProgressSaveCommand(final EMFRodinDB emfRodinDB, final URI uri, final EventBElement content) {
-    super(emfRodinDB.getEditingDomain(), emfRodinDB.getResource(uri));
     this.emfRodinDB = emfRodinDB;
     this.uri = uri;
     this.content = content;
@@ -64,11 +64,13 @@ public class NullProgressSaveCommand extends SaveResourcesCommand {
         Resource resource = this.emfRodinDB.getResource(this.uri);
         this.emfRodinDB.setContent(resource, this.content);
         resource.setModified(true);
+        TransactionalEditingDomain _editingDomain = this.emfRodinDB.getEditingDomain();
+        final SaveResourcesCommand cmd = new SaveResourcesCommand(_editingDomain, resource);
         IStatus _xifexpression = null;
-        boolean _canExecute = this.canExecute();
+        boolean _canExecute = cmd.canExecute();
         if (_canExecute) {
           NullProgressMonitor _nullProgressMonitor = new NullProgressMonitor();
-          _xifexpression = this.execute(_nullProgressMonitor, null);
+          _xifexpression = cmd.execute(_nullProgressMonitor, null);
         }
         _xblockexpression = _xifexpression;
       }

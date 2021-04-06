@@ -27,7 +27,7 @@ import org.eventb.emf.persistence.SaveResourcesCommand
  * @author htson
  * @since 2.2
  */
-class NullProgressSaveCommand extends SaveResourcesCommand {
+class NullProgressSaveCommand {
 	
 	EMFRodinDB emfRodinDB
 
@@ -44,7 +44,6 @@ class NullProgressSaveCommand extends SaveResourcesCommand {
 	 * @param content the content to be set for the resource. 
 	 */
 	new(EMFRodinDB emfRodinDB, URI uri, EventBElement content) {
-		super(emfRodinDB.editingDomain, emfRodinDB.getResource(uri))
 		this.emfRodinDB = emfRodinDB
 		this.uri = uri
 		this.content = content
@@ -58,8 +57,9 @@ class NullProgressSaveCommand extends SaveResourcesCommand {
 		var resource = emfRodinDB.getResource(uri)
 		emfRodinDB.setContent(resource, content)
 		resource.modified = true
-		if (canExecute()) {
-			execute(new NullProgressMonitor, null)
+		val cmd = new SaveResourcesCommand(emfRodinDB.editingDomain, resource)
+		if (cmd.canExecute()) {
+			cmd.execute(new NullProgressMonitor, null)
 		}
 	}
 }
