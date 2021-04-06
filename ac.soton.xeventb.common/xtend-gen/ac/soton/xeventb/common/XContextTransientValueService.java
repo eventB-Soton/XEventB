@@ -60,7 +60,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       }
       boolean _equals_2 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
       if (_equals_2) {
-        return true;
+        return false;
       }
       boolean _equals_3 = feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS);
       if (_equals_3) {
@@ -87,7 +87,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       }
       boolean _equals_8 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
       if (_equals_8) {
-        return true;
+        return false;
       }
       return true;
     }
@@ -106,7 +106,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       }
       boolean _equals_12 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
       if (_equals_12) {
-        return true;
+        return false;
       }
       return true;
     }
@@ -117,7 +117,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       }
       boolean _equals_14 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
       if (_equals_14) {
-        return true;
+        return false;
       }
       return true;
     }
@@ -132,7 +132,7 @@ public class XContextTransientValueService extends DefaultTransientValueService 
       }
       boolean _equals_17 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
       if (_equals_17) {
-        return true;
+        return false;
       }
       boolean _equals_18 = feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM);
       if (_equals_18) {

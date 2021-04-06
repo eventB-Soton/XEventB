@@ -49,14 +49,14 @@ class XContextTransientValueService extends DefaultTransientValueService {
 		if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
 			return true
 		}
-		// For context, serialise only "name", "ordered children",
+		// For context, serialise only "name", "ordered children", "comment"
 		if (owner instanceof Context) {
 			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if(feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS))
 				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__SETS))
@@ -67,15 +67,15 @@ class XContextTransientValueService extends DefaultTransientValueService {
 				return true
 			return true
 		}
-		// For carrier set, serialise only "name"
+		// For carrier set, serialise only "name", "comment"
 		if (owner instanceof CarrierSet) {
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For constant, serialise only "name"
+		// For typed constant, serialise only "name", "type", "value" and "comment"
 		if (owner instanceof TypedConstant) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
@@ -84,25 +84,25 @@ class XContextTransientValueService extends DefaultTransientValueService {
 			if (feature.equals(CoreextensionPackage.Literals.VALUE__VALUE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For constant, serialise only "name"
+		// For constant, serialise only "name". "comment"
 		if (owner instanceof Constant) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For axiom, serialise only "name", "predicate", and "theorem"
+		// For axiom, serialise only "name", "predicate", "theorem", "comment"
 		if (owner instanceof Axiom) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
 				return false
 			return true
