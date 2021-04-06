@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2016,2021 University of Southampton.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -13,6 +13,7 @@
  */
 package ac.soton.xeventb.internal.ui.handlers;
 
+import ac.soton.xeventb.internal.ui.handlers.NullProgressSaveCommand;
 import ch.ethz.eventb.utils.EventBUtils;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -133,7 +134,8 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     _builder.append("bumx");
     uriString = _builder.toString();
     URI uri = URI.createURI(uriString);
-    emfRodinDB.saveResource(uri, mch);
+    final NullProgressSaveCommand cmd = new NullProgressSaveCommand(emfRodinDB, uri, mch);
+    cmd.save();
   }
   
   /**
@@ -152,6 +154,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     _builder.append("bucx");
     uriString = _builder.toString();
     URI uri = URI.createURI(uriString);
-    emfRodinDB.saveResource(uri, ctx);
+    final NullProgressSaveCommand cmd = new NullProgressSaveCommand(emfRodinDB, uri, ctx);
+    cmd.save();
   }
 }
