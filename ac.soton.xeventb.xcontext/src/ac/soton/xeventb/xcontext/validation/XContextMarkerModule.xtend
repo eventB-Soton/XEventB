@@ -65,12 +65,12 @@ class XContextMarkerModule extends SCProcessorModule {
 		uriString = uriString + "bucx"
 		val uri = URI.createURI(uriString)
 		
-		// Get the XMachine resource.
+		// Get the XContext resource.
 		val xresource = emfRodinDB.loadResource(uri) as XtextResource
 		// Do nothing if there is no resource, e.g., when there is no XContext file
 		if (xresource === null)
 			return
-		// Get the resource validator for the XMachine.
+		// Get the resource validator for the XContext.
 		val resourceServiceProvider = xresource.resourceServiceProvider
 		val resourceValidator = resourceServiceProvider.resourceValidator
 		// Get the issues by running the resrouce validator.
