@@ -17,10 +17,7 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -90,16 +87,10 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XCarrierSet returns CarrierSet
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (comment=STRING? name=ID)
 	 */
 	protected void sequence_XCarrierSet(ISerializationContext context, CarrierSet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXCarrierSetAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -108,16 +99,10 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XConstant returns Constant
 	 *
 	 * Constraint:
-	 *     name=ID
+	 *     (comment=STRING? name=ID)
 	 */
 	protected void sequence_XConstant(ISerializationContext context, Constant semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, CorePackage.Literals.EVENT_BNAMED__NAME));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getXConstantAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -127,6 +112,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *
 	 * Constraint:
 	 *     (
+	 *         comment=STRING? 
 	 *         name=ID 
 	 *         extends+=[Context|QualifiedName]* 
 	 *         (orderedChildren+=XCarrierSet | orderedChildren+=XConstant | orderedChildren+=XTypedConstant | orderedChildren+=XRecord | orderedChildren+=XSingleAxiom)*
@@ -154,7 +140,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XSingleAxiom returns Axiom
 	 *
 	 * Constraint:
-	 *     (theorem?='theorem'? name=XLABEL predicate=XFormula)
+	 *     (comment=STRING? theorem?='theorem'? name=XLABEL predicate=XFormula)
 	 */
 	protected void sequence_XSingleAxiom(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -166,7 +152,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XTypedConstant returns TypedConstant
 	 *
 	 * Constraint:
-	 *     (name=ID type=XType? value=XFormula?)
+	 *     (comment=STRING? name=ID type=XType? value=XFormula?)
 	 */
 	protected void sequence_XTypedConstant(ISerializationContext context, TypedConstant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

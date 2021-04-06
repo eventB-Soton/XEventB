@@ -84,15 +84,33 @@ ruleXContext returns [EObject current=null]
 					$current);
 			}
 		)
-		otherlv_1='context'
+		(
+			(
+				lv_comment_1_0=RULE_STRING
+				{
+					newLeafNode(lv_comment_1_0, grammarAccess.getXContextAccess().getCommentSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXContextRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"ac.soton.xeventb.xcontext.XContext.STRING");
+				}
+			)
+		)?
+		otherlv_2='context'
 		{
-			newLeafNode(otherlv_1, grammarAccess.getXContextAccess().getContextKeyword_1());
+			newLeafNode(otherlv_2, grammarAccess.getXContextAccess().getContextKeyword_2());
 		}
 		(
 			(
-				lv_name_2_0=RULE_ID
+				lv_name_3_0=RULE_ID
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getXContextAccess().getNameIDTerminalRuleCall_2_0());
+					newLeafNode(lv_name_3_0, grammarAccess.getXContextAccess().getNameIDTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -101,15 +119,15 @@ ruleXContext returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_3_0,
 						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
 		(
-			otherlv_3='extends'
+			otherlv_4='extends'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getXContextAccess().getExtendsKeyword_3_0());
+				newLeafNode(otherlv_4, grammarAccess.getXContextAccess().getExtendsKeyword_4_0());
 			}
 			(
 				(
@@ -119,7 +137,7 @@ ruleXContext returns [EObject current=null]
 						}
 					}
 					{
-						newCompositeNode(grammarAccess.getXContextAccess().getExtendsContextCrossReference_3_1_0());
+						newCompositeNode(grammarAccess.getXContextAccess().getExtendsContextCrossReference_4_1_0());
 					}
 					ruleQualifiedName
 					{
@@ -130,16 +148,16 @@ ruleXContext returns [EObject current=null]
 		)?
 		(
 			(
-				otherlv_5='sets'
+				otherlv_6='sets'
 				{
-					newLeafNode(otherlv_5, grammarAccess.getXContextAccess().getSetsKeyword_4_0_0());
+					newLeafNode(otherlv_6, grammarAccess.getXContextAccess().getSetsKeyword_5_0_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXCarrierSetParserRuleCall_4_0_1_0());
+							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXCarrierSetParserRuleCall_5_0_1_0());
 						}
-						lv_orderedChildren_6_0=ruleXCarrierSet
+						lv_orderedChildren_7_0=ruleXCarrierSet
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getXContextRule());
@@ -147,7 +165,7 @@ ruleXContext returns [EObject current=null]
 							add(
 								$current,
 								"orderedChildren",
-								lv_orderedChildren_6_0,
+								lv_orderedChildren_7_0,
 								"ac.soton.xeventb.xcontext.XContext.XCarrierSet");
 							afterParserOrEnumRuleCall();
 						}
@@ -156,16 +174,16 @@ ruleXContext returns [EObject current=null]
 			)
 			    |
 			(
-				otherlv_7='constants'
+				otherlv_8='constants'
 				{
-					newLeafNode(otherlv_7, grammarAccess.getXContextAccess().getConstantsKeyword_4_1_0());
+					newLeafNode(otherlv_8, grammarAccess.getXContextAccess().getConstantsKeyword_5_1_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXConstantParserRuleCall_4_1_1_0());
+							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXConstantParserRuleCall_5_1_1_0());
 						}
-						lv_orderedChildren_8_0=ruleXConstant
+						lv_orderedChildren_9_0=ruleXConstant
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getXContextRule());
@@ -173,7 +191,7 @@ ruleXContext returns [EObject current=null]
 							add(
 								$current,
 								"orderedChildren",
-								lv_orderedChildren_8_0,
+								lv_orderedChildren_9_0,
 								"ac.soton.xeventb.xcontext.XContext.XConstant");
 							afterParserOrEnumRuleCall();
 						}
@@ -182,16 +200,16 @@ ruleXContext returns [EObject current=null]
 			)
 			    |
 			(
-				otherlv_9='constant'
+				otherlv_10='constant'
 				{
-					newLeafNode(otherlv_9, grammarAccess.getXContextAccess().getConstantKeyword_4_2_0());
+					newLeafNode(otherlv_10, grammarAccess.getXContextAccess().getConstantKeyword_5_2_0());
 				}
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXTypedConstantParserRuleCall_4_2_1_0());
+							newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXTypedConstantParserRuleCall_5_2_1_0());
 						}
-						lv_orderedChildren_10_0=ruleXTypedConstant
+						lv_orderedChildren_11_0=ruleXTypedConstant
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getXContextRule());
@@ -199,7 +217,7 @@ ruleXContext returns [EObject current=null]
 							add(
 								$current,
 								"orderedChildren",
-								lv_orderedChildren_10_0,
+								lv_orderedChildren_11_0,
 								"ac.soton.xeventb.xcontext.XContext.XTypedConstant");
 							afterParserOrEnumRuleCall();
 						}
@@ -210,9 +228,9 @@ ruleXContext returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXRecordParserRuleCall_4_3_0());
+						newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXRecordParserRuleCall_5_3_0());
 					}
-					lv_orderedChildren_11_0=ruleXRecord
+					lv_orderedChildren_12_0=ruleXRecord
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getXContextRule());
@@ -220,7 +238,7 @@ ruleXContext returns [EObject current=null]
 						add(
 							$current,
 							"orderedChildren",
-							lv_orderedChildren_11_0,
+							lv_orderedChildren_12_0,
 							"ac.soton.xeventb.xcontext.XContext.XRecord");
 						afterParserOrEnumRuleCall();
 					}
@@ -230,9 +248,9 @@ ruleXContext returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXSingleAxiomParserRuleCall_4_4_0());
+						newCompositeNode(grammarAccess.getXContextAccess().getOrderedChildrenXSingleAxiomParserRuleCall_5_4_0());
 					}
-					lv_orderedChildren_12_0=ruleXSingleAxiom
+					lv_orderedChildren_13_0=ruleXSingleAxiom
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getXContextRule());
@@ -240,16 +258,16 @@ ruleXContext returns [EObject current=null]
 						add(
 							$current,
 							"orderedChildren",
-							lv_orderedChildren_12_0,
+							lv_orderedChildren_13_0,
 							"ac.soton.xeventb.xcontext.XContext.XSingleAxiom");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)*
-		otherlv_13='end'
+		otherlv_14='end'
 		{
-			newLeafNode(otherlv_13, grammarAccess.getXContextAccess().getEndKeyword_5());
+			newLeafNode(otherlv_14, grammarAccess.getXContextAccess().getEndKeyword_6());
 		}
 	)
 ;
@@ -319,9 +337,27 @@ ruleXCarrierSet returns [EObject current=null]
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_comment_1_0=RULE_STRING
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getXCarrierSetAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_comment_1_0, grammarAccess.getXCarrierSetAccess().getCommentSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXCarrierSetRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"ac.soton.xeventb.xcontext.XContext.STRING");
+				}
+			)
+		)?
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getXCarrierSetAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -330,7 +366,7 @@ ruleXCarrierSet returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
@@ -363,9 +399,27 @@ ruleXConstant returns [EObject current=null]
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_comment_1_0=RULE_STRING
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getXConstantAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_comment_1_0, grammarAccess.getXConstantAccess().getCommentSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXConstantRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"ac.soton.xeventb.xcontext.XContext.STRING");
+				}
+			)
+		)?
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getXConstantAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -374,7 +428,7 @@ ruleXConstant returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
@@ -407,9 +461,27 @@ ruleXTypedConstant returns [EObject current=null]
 		)
 		(
 			(
-				lv_name_1_0=RULE_ID
+				lv_comment_1_0=RULE_STRING
 				{
-					newLeafNode(lv_name_1_0, grammarAccess.getXTypedConstantAccess().getNameIDTerminalRuleCall_1_0());
+					newLeafNode(lv_comment_1_0, grammarAccess.getXTypedConstantAccess().getCommentSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXTypedConstantRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"ac.soton.xeventb.xcontext.XContext.STRING");
+				}
+			)
+		)?
+		(
+			(
+				lv_name_2_0=RULE_ID
+				{
+					newLeafNode(lv_name_2_0, grammarAccess.getXTypedConstantAccess().getNameIDTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -418,22 +490,22 @@ ruleXTypedConstant returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"ac.soton.xeventb.xcontext.XContext.ID");
 				}
 			)
 		)
 		(
-			otherlv_2=':'
+			otherlv_3=':'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getXTypedConstantAccess().getColonKeyword_2_0());
+				newLeafNode(otherlv_3, grammarAccess.getXTypedConstantAccess().getColonKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getXTypedConstantAccess().getTypeXTypeParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getXTypedConstantAccess().getTypeXTypeParserRuleCall_3_1_0());
 					}
-					lv_type_3_0=ruleXType
+					lv_type_4_0=ruleXType
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getXTypedConstantRule());
@@ -441,7 +513,7 @@ ruleXTypedConstant returns [EObject current=null]
 						set(
 							$current,
 							"type",
-							lv_type_3_0,
+							lv_type_4_0,
 							"ac.soton.xeventb.xcontext.XContext.XType");
 						afterParserOrEnumRuleCall();
 					}
@@ -449,16 +521,16 @@ ruleXTypedConstant returns [EObject current=null]
 			)
 		)?
 		(
-			otherlv_4='='
+			otherlv_5='='
 			{
-				newLeafNode(otherlv_4, grammarAccess.getXTypedConstantAccess().getEqualsSignKeyword_3_0());
+				newLeafNode(otherlv_5, grammarAccess.getXTypedConstantAccess().getEqualsSignKeyword_4_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getXTypedConstantAccess().getValueXFormulaParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getXTypedConstantAccess().getValueXFormulaParserRuleCall_4_1_0());
 					}
-					lv_value_5_0=ruleXFormula
+					lv_value_6_0=ruleXFormula
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getXTypedConstantRule());
@@ -466,7 +538,7 @@ ruleXTypedConstant returns [EObject current=null]
 						set(
 							$current,
 							"value",
-							lv_value_5_0,
+							lv_value_6_0,
 							"ac.soton.xeventb.xcontext.XContext.XFormula");
 						afterParserOrEnumRuleCall();
 					}
@@ -501,30 +573,48 @@ ruleXSingleAxiom returns [EObject current=null]
 		)
 		(
 			(
+				lv_comment_1_0=RULE_STRING
+				{
+					newLeafNode(lv_comment_1_0, grammarAccess.getXSingleAxiomAccess().getCommentSTRINGTerminalRuleCall_1_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getXSingleAxiomRule());
+					}
+					setWithLastConsumed(
+						$current,
+						"comment",
+						lv_comment_1_0,
+						"ac.soton.xeventb.xcontext.XContext.STRING");
+				}
+			)
+		)?
+		(
+			(
 				(
-					lv_theorem_1_0='theorem'
+					lv_theorem_2_0='theorem'
 					{
-						newLeafNode(lv_theorem_1_0, grammarAccess.getXSingleAxiomAccess().getTheoremTheoremKeyword_1_0_0());
+						newLeafNode(lv_theorem_2_0, grammarAccess.getXSingleAxiomAccess().getTheoremTheoremKeyword_2_0_0());
 					}
 					{
 						if ($current==null) {
 							$current = createModelElement(grammarAccess.getXSingleAxiomRule());
 						}
-						setWithLastConsumed($current, "theorem", lv_theorem_1_0 != null, "theorem");
+						setWithLastConsumed($current, "theorem", lv_theorem_2_0 != null, "theorem");
 					}
 				)
 			)
 			    |
-			otherlv_2='axiom'
+			otherlv_3='axiom'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getXSingleAxiomAccess().getAxiomKeyword_1_1());
+				newLeafNode(otherlv_3, grammarAccess.getXSingleAxiomAccess().getAxiomKeyword_2_1());
 			}
 		)
 		(
 			(
-				lv_name_3_0=RULE_XLABEL
+				lv_name_4_0=RULE_XLABEL
 				{
-					newLeafNode(lv_name_3_0, grammarAccess.getXSingleAxiomAccess().getNameXLABELTerminalRuleCall_2_0());
+					newLeafNode(lv_name_4_0, grammarAccess.getXSingleAxiomAccess().getNameXLABELTerminalRuleCall_3_0());
 				}
 				{
 					if ($current==null) {
@@ -533,7 +623,7 @@ ruleXSingleAxiom returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_3_0,
+						lv_name_4_0,
 						"ac.soton.xeventb.xcontext.XContext.XLABEL");
 				}
 			)
@@ -541,9 +631,9 @@ ruleXSingleAxiom returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getXSingleAxiomAccess().getPredicateXFormulaParserRuleCall_3_0());
+					newCompositeNode(grammarAccess.getXSingleAxiomAccess().getPredicateXFormulaParserRuleCall_4_0());
 				}
-				lv_predicate_4_0=ruleXFormula
+				lv_predicate_5_0=ruleXFormula
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getXSingleAxiomRule());
@@ -551,7 +641,7 @@ ruleXSingleAxiom returns [EObject current=null]
 					set(
 						$current,
 						"predicate",
-						lv_predicate_4_0,
+						lv_predicate_5_0,
 						"ac.soton.xeventb.xcontext.XContext.XFormula");
 					afterParserOrEnumRuleCall();
 				}

@@ -20,14 +20,14 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XContextGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_XContext_ConstantsKeyword_4_1_0_q;
-	protected AbstractElementAlias match_XContext_SetsKeyword_4_0_0_q;
+	protected AbstractElementAlias match_XContext_ConstantsKeyword_5_1_0_q;
+	protected AbstractElementAlias match_XContext_SetsKeyword_5_0_0_q;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XContextGrammarAccess) access;
-		match_XContext_ConstantsKeyword_4_1_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getConstantsKeyword_4_1_0());
-		match_XContext_SetsKeyword_4_0_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getSetsKeyword_4_0_0());
+		match_XContext_ConstantsKeyword_5_1_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getConstantsKeyword_5_1_0());
+		match_XContext_SetsKeyword_5_0_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getSetsKeyword_5_0_0());
 	}
 	
 	@Override
@@ -42,10 +42,10 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_XContext_ConstantsKeyword_4_1_0_q.equals(syntax))
-				emit_XContext_ConstantsKeyword_4_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XContext_SetsKeyword_4_0_0_q.equals(syntax))
-				emit_XContext_SetsKeyword_4_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_XContext_ConstantsKeyword_5_1_0_q.equals(syntax))
+				emit_XContext_ConstantsKeyword_5_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_SetsKeyword_5_0_0_q.equals(syntax))
+				emit_XContext_SetsKeyword_5_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -57,7 +57,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     orderedChildren+=XConstant (ambiguity) orderedChildren+=XConstant
 	 */
-	protected void emit_XContext_ConstantsKeyword_4_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XContext_ConstantsKeyword_5_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -68,7 +68,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     orderedChildren+=XCarrierSet (ambiguity) orderedChildren+=XCarrierSet
 	 */
-	protected void emit_XContext_SetsKeyword_4_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XContext_SetsKeyword_5_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
