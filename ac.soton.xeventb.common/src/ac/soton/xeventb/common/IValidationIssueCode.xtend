@@ -45,11 +45,17 @@ interface IValidationIssueCode {
 	
 	/**
 	 * Issue code for Untranslated types.
+	 * 
+	 * @author htson
+	 * @since 2.0
 	 */
 	val public String UNTRANSLATED_TYPE = "ac.soton.xeventb.quickfix.UntranslatedType";
 
 	/**
 	 * Issue code for Untranslated types.
+	 * 
+	 * @author htson
+	 * @since 2.0
 	 */
 	val public String UNTRANSLATED_VALUE = "ac.soton.xeventb.quickfix.UntranslatedValue";
 }
