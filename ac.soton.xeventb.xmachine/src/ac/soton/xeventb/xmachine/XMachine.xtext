@@ -34,20 +34,24 @@ import "http://soton.ac.uk/models/eventb/record/2019" as erecords
 
 Machine returns emachine::Machine:
 	{emachine::Machine}
-   (comment=(ML_COMMENT|SL_COMMENT))?
+   	(comment = STRING)?
 	'machine' name=ID
 	(
-		(extensions+= MIncludes*) &
+		(orderedChildren+= MIncludes*) &
     	('refines' refines+=[emachine::Machine])? &
 		('sees' sees+=[econtext::Context]+)?
 	)
-	('contains' extensions += MContains+)?
-    ('variables' variables+=XVariable+)?
-    ('records' extensions += Record+)?
-	('invariants' invariants+=XInvariant+)?
-	('variants' variants+=XVariant+)?
-	('events' events+=XEvent+)?
-	('end')
+	('contains' orderedChildren += MContains+)?
+	// The following can be interleaved
+	(
+    	('variables' orderedChildren += XVariable+) |
+    	('variable' orderedChildren += XTypedVariable) |
+    	(orderedChildren += Record) |
+		(orderedChildren += XInvariant) |
+		(orderedChildren += XVariant) |
+		(orderedChildren += XEvent)
+	)*
+	'end'
 ;
 
 MContains returns econtainment::Containment:
@@ -68,13 +72,50 @@ QualifiedName:
 
 XVariable returns emachine::Variable:
 	{emachine::Variable}
-	name=ID
 	(comment=STRING)?
+	name=ID
+;
+
+XTypedVariable returns eventbcoreex::TypedVariable:
+	{eventbcoreex::TypedVariable}
+	(comment=STRING)?
+	name=ID (':' type = XType)? ('=' value=XFormula)?
+;
+
+XType returns ecore::EString:
+	XTypePrimitive (XTYPEOPERATOR XTypePrimitive)*
+;
+
+XTYPEOPERATOR returns ecore::EString:
+	'↔' | // Symbols for building set of relations
+	'' | 
+	'' | 
+	'' | 
+	'⇸' | 
+	'→' | 
+	'⤔' | 
+	'↣' | 
+	'⤀' | 
+	'↠' | 
+	'⤖' | 
+	'×'
+;
+
+XTypePrimitive returns ecore::EString:
+	ID |
+	'BOOL' |
+	'ℕ1' | 
+	'ℕ' | 
+	'ℤ' | 
+	'(' XType ')'| 
+	'ℙ' '(' XType ')' |
+	'ℙ1' '(' XType ')'
 ;
 
 XInvariant returns emachine::Invariant:
 	{emachine::Invariant}
-	(theorem?='theorem')? name=XLABEL predicate=XFormula	
+	(comment=STRING)?
+	(theorem?='theorem' | 'invariant')? name=XLABEL predicate=XFormula	
 ;
 
 terminal XLABEL returns ecore::EString:
@@ -83,22 +124,24 @@ terminal XLABEL returns ecore::EString:
 
 XVariant returns emachine::Variant:
 	{emachine::Variant}
-	name=XLABEL expression= XFormula
+	(comment=STRING)?
+	'variant' name=XLABEL expression= XFormula
 ;
 
 XEvent returns emachine::Event:
 	{emachine::Event}
+	(comment=STRING)?
 	(convergence=XConvergence)?
-	'event' name=ID (comment = STRING)?
+	'event' name=ID
 	(
 		('refines' refines+=[emachine::Event]+) |
 		(extended?='extends' refines+=[emachine::Event])
 	)?
-	('any' parameters+=XParameter+)?
-	(extensions+= EventSync*)
-	(('where' | 'when') guards+=XGuard+)?
-	(('then' | 'begin') actions+=XAction+)?
-	('with' witnesses+=XWitness+)?
+	('any' orderedChildren += XParameter+)?
+	(orderedChildren += EventSync*)
+	(('where' | 'when') orderedChildren += XGuard+)?
+	(('then' | 'begin') orderedChildren += XAction+)?
+	('with' orderedChildren += XWitness+)?
 	'end'
 ;
 
@@ -113,21 +156,25 @@ enum XConvergence returns emachine::Convergence:
 
 XParameter returns emachine::Parameter:
 	{emachine::Parameter}
+	(comment=STRING)?
 	name=ID
 ;
 
 XGuard returns emachine::Guard:
 	{emachine::Guard}
-	 (theorem?='theorem')? name=XLABEL predicate= XFormula
+	(comment=STRING)?
+	(theorem?='theorem')? name=XLABEL predicate= XFormula
 ;
 
 XWitness returns emachine::Witness:
 	{emachine::Witness}
+	(comment=STRING)?
 	name=XLABEL predicate= XFormula
 ;
 
 XAction returns emachine::Action:
 	{emachine::Action}
+	(comment=STRING)?
 	name=XLABEL action= XFormula
 ;
 
@@ -258,7 +305,7 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
  Record returns erecords::Record:
 	{erecords::Record}
 	'record' name = ID
-		('extends' subsets=[erecords::Record|ID])
+		('inherits' subsets=[erecords::Record|ID])
 		(fields+=Field (fields+=Field)*)?
 ;
 
