@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-SymbolicName: ac.soton.xeventb.common
-Bundle-Version: 1.1.0.qualifier
+Bundle-Version: 2.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.common
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.12.0,3.0.0)",
@@ -14,6 +14,7 @@ Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.12.0,3.0.0)",
  com.google.guava;bundle-version="[27.1.0,28.0.0)",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.21.0,3.0.0)",
  org.eclipse.xtend.lib;bundle-version="[2.21.0,3.0.0)",
- org.eclipse.xtend.lib.macro;bundle-version="[2.21.0,3.0.0)"
+ org.eclipse.xtend.lib.macro;bundle-version="[2.21.0,3.0.0)",
+ ac.soton.eventb.emf.core.extension;bundle-version="[5.0.1,6.0.0)"
 Bundle-Vendor: %Bundle-Vendor
 Automatic-Module-Name: ac.soton.xeventb.common
