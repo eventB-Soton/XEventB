@@ -21,6 +21,7 @@ import "http://soton.ac.uk/models/eventb/coreextension/2014" as eventbcoreex
 
 XContext returns econtext::Context:
 	{econtext::Context}
+	(comment = STRING)?
 	'context' name=ID
 	('extends' extends+=[econtext::Context |QualifiedName]+)?
 	(
@@ -47,27 +48,26 @@ QualifiedName:
 
 XCarrierSet returns econtext::CarrierSet:
 	{econtext::CarrierSet}
+	(comment = STRING)?
 	name=ID
 ;
 
 
 XConstant returns econtext::Constant:
 	{econtext::Constant}
+	(comment = STRING)?
 	name=ID
 ;
 
 XTypedConstant returns eventbcoreex::TypedConstant:
 	{eventbcoreex::TypedConstant}
+	(comment = STRING)?
 	name=ID (':' type=XType)? ('=' value=XFormula)?
 ;
 
-//XAxiom returns econtext::Axiom:
-//	{econtext::Axiom}	
-//	(theorem?='thm')? name=XLABEL predicate=XFormula
-//;
-
 XSingleAxiom returns econtext::Axiom:
-	{econtext::Axiom}	
+	{econtext::Axiom}
+	(comment = STRING)?	
 	(theorem?='theorem' | 'axiom') name=XLABEL predicate=XFormula
 ;
 
