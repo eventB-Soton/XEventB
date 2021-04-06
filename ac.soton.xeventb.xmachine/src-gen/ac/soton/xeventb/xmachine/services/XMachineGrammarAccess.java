@@ -58,10 +58,8 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cVariablesKeyword_6_0_0 = (Keyword)cGroup_6_0.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_6_0_1 = (Assignment)cGroup_6_0.eContents().get(1);
 		private final RuleCall cOrderedChildrenXVariableParserRuleCall_6_0_1_0 = (RuleCall)cOrderedChildrenAssignment_6_0_1.eContents().get(0);
-		private final Group cGroup_6_1 = (Group)cAlternatives_6.eContents().get(1);
-		private final Keyword cVariableKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
-		private final RuleCall cOrderedChildrenXTypedVariableParserRuleCall_6_1_1_0 = (RuleCall)cOrderedChildrenAssignment_6_1_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_6_1 = (Assignment)cAlternatives_6.eContents().get(1);
+		private final RuleCall cOrderedChildrenXTypedVariableParserRuleCall_6_1_0 = (RuleCall)cOrderedChildrenAssignment_6_1.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_6_2 = (Assignment)cAlternatives_6.eContents().get(2);
 		private final RuleCall cOrderedChildrenRecordParserRuleCall_6_2_0 = (RuleCall)cOrderedChildrenAssignment_6_2.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_6_3 = (Assignment)cAlternatives_6.eContents().get(3);
@@ -81,7 +79,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//	{emachine::Machine} comment=STRING?
 		//	'machine' name=ID ( orderedChildren+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
 		//	sees+=[econtext::Context]+)?
-		//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ | 'variable'
+		//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ |
 		//	orderedChildren+=XTypedVariable | orderedChildren+=Record | orderedChildren+=XInvariant | orderedChildren+=XVariant
 		//	| orderedChildren+=XEvent)*
 		//	'end';
@@ -90,7 +88,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//{emachine::Machine} comment=STRING?
 		//'machine' name=ID ( orderedChildren+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
 		//sees+=[econtext::Context]+)?
-		//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ | 'variable'
+		//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ |
 		//orderedChildren+=XTypedVariable | orderedChildren+=Record | orderedChildren+=XInvariant | orderedChildren+=XVariant |
 		//orderedChildren+=XEvent)*
 		//'end'
@@ -166,7 +164,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//MContains
 		public RuleCall getOrderedChildrenMContainsParserRuleCall_5_1_0() { return cOrderedChildrenMContainsParserRuleCall_5_1_0; }
 		
-		//('variables' orderedChildren+=XVariable+ | 'variable' orderedChildren+=XTypedVariable | orderedChildren+=Record |
+		//('variables' orderedChildren+=XVariable+ | orderedChildren+=XTypedVariable | orderedChildren+=Record |
 		//orderedChildren+=XInvariant | orderedChildren+=XVariant | orderedChildren+=XEvent)*
 		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
@@ -182,17 +180,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//XVariable
 		public RuleCall getOrderedChildrenXVariableParserRuleCall_6_0_1_0() { return cOrderedChildrenXVariableParserRuleCall_6_0_1_0; }
 		
-		//'variable' orderedChildren+=XTypedVariable
-		public Group getGroup_6_1() { return cGroup_6_1; }
-		
-		//'variable'
-		public Keyword getVariableKeyword_6_1_0() { return cVariableKeyword_6_1_0; }
-		
 		//orderedChildren+=XTypedVariable
-		public Assignment getOrderedChildrenAssignment_6_1_1() { return cOrderedChildrenAssignment_6_1_1; }
+		public Assignment getOrderedChildrenAssignment_6_1() { return cOrderedChildrenAssignment_6_1; }
 		
 		//XTypedVariable
-		public RuleCall getOrderedChildrenXTypedVariableParserRuleCall_6_1_1_0() { return cOrderedChildrenXTypedVariableParserRuleCall_6_1_1_0; }
+		public RuleCall getOrderedChildrenXTypedVariableParserRuleCall_6_1_0() { return cOrderedChildrenXTypedVariableParserRuleCall_6_1_0; }
 		
 		//orderedChildren+=Record
 		public Assignment getOrderedChildrenAssignment_6_2() { return cOrderedChildrenAssignment_6_2; }
@@ -395,24 +387,25 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Action cTypedVariableAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cColonKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cTypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cTypeXTypeParserRuleCall_3_1_0 = (RuleCall)cTypeAssignment_3_1.eContents().get(0);
+		private final Keyword cVariableKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cEqualsSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cValueXFormulaParserRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
+		private final Keyword cColonKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cTypeXTypeParserRuleCall_4_1_0 = (RuleCall)cTypeAssignment_4_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cValueAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cValueXFormulaParserRuleCall_5_1_0 = (RuleCall)cValueAssignment_5_1.eContents().get(0);
 		
 		//XTypedVariable eventbcoreex::TypedVariable:
 		//	{eventbcoreex::TypedVariable} comment=STRING?
-		//	name=ID (':' type=XType)? ('=' value=XFormula)?;
+		//	'variable' name=ID (':' type=XType)? ('=' value=XFormula)?;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{eventbcoreex::TypedVariable} comment=STRING?
-		//name=ID (':' type=XType)? ('=' value=XFormula)?
+		//'variable' name=ID (':' type=XType)? ('=' value=XFormula)?
 		public Group getGroup() { return cGroup; }
 		
 		//{eventbcoreex::TypedVariable}
@@ -424,35 +417,38 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
 		
+		//'variable'
+		public Keyword getVariableKeyword_2() { return cVariableKeyword_2; }
+		
 		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
 		//(':' type=XType)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//':'
-		public Keyword getColonKeyword_3_0() { return cColonKeyword_3_0; }
-		
-		//type=XType
-		public Assignment getTypeAssignment_3_1() { return cTypeAssignment_3_1; }
-		
-		//XType
-		public RuleCall getTypeXTypeParserRuleCall_3_1_0() { return cTypeXTypeParserRuleCall_3_1_0; }
-		
-		//('=' value=XFormula)?
 		public Group getGroup_4() { return cGroup_4; }
 		
+		//':'
+		public Keyword getColonKeyword_4_0() { return cColonKeyword_4_0; }
+		
+		//type=XType
+		public Assignment getTypeAssignment_4_1() { return cTypeAssignment_4_1; }
+		
+		//XType
+		public RuleCall getTypeXTypeParserRuleCall_4_1_0() { return cTypeXTypeParserRuleCall_4_1_0; }
+		
+		//('=' value=XFormula)?
+		public Group getGroup_5() { return cGroup_5; }
+		
 		//'='
-		public Keyword getEqualsSignKeyword_4_0() { return cEqualsSignKeyword_4_0; }
+		public Keyword getEqualsSignKeyword_5_0() { return cEqualsSignKeyword_5_0; }
 		
 		//value=XFormula
-		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
+		public Assignment getValueAssignment_5_1() { return cValueAssignment_5_1; }
 		
 		//XFormula
-		public RuleCall getValueXFormulaParserRuleCall_4_1_0() { return cValueXFormulaParserRuleCall_4_1_0; }
+		public RuleCall getValueXFormulaParserRuleCall_5_1_0() { return cValueXFormulaParserRuleCall_5_1_0; }
 	}
 	public class XTypeElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XType");
@@ -2145,7 +2141,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//	{emachine::Machine} comment=STRING?
 	//	'machine' name=ID ( orderedChildren+=MIncludes* & ('refines' refines+=[emachine::Machine])? & ('sees'
 	//	sees+=[econtext::Context]+)?
-	//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ | 'variable'
+	//	) ('contains' orderedChildren+=MContains+)? ('variables' orderedChildren+=XVariable+ |
 	//	orderedChildren+=XTypedVariable | orderedChildren+=Record | orderedChildren+=XInvariant | orderedChildren+=XVariant
 	//	| orderedChildren+=XEvent)*
 	//	'end';
@@ -2201,7 +2197,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//XTypedVariable eventbcoreex::TypedVariable:
 	//	{eventbcoreex::TypedVariable} comment=STRING?
-	//	name=ID (':' type=XType)? ('=' value=XFormula)?;
+	//	'variable' name=ID (':' type=XType)? ('=' value=XFormula)?;
 	public XTypedVariableElements getXTypedVariableAccess() {
 		return pXTypedVariable;
 	}

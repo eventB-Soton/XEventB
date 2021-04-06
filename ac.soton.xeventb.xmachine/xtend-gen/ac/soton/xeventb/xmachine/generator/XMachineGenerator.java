@@ -74,7 +74,7 @@ import org.rodinp.core.RodinCore;
  * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
  * @author htson - Serialisation for typed variables
  * @version 2.0
- * @since 3.0
+ * @since 2.2
  */
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {

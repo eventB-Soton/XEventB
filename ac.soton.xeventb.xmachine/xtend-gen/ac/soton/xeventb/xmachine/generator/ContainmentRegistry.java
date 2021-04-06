@@ -35,7 +35,7 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * @version 0.1
  * @see IContainmentGenerator
  * @see XMachineGenerator
- * @since 2.0
+ * @since 2.2
  */
 @SuppressWarnings("all")
 public class ContainmentRegistry {

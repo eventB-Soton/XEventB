@@ -32,7 +32,7 @@ import org.eclipse.core.runtime.Platform
  * @version 0.1
  * @see IContainmentGenerator
  * @see XMachineGenerator
- * @since 2.0
+ * @since 2.2
  */
 class ContainmentRegistry {
 	
