@@ -8,7 +8,10 @@ Bundle-ActivationPolicy: lazy
 Require-Bundle: ac.soton.xeventb.xmachine.ui;bundle-version="1.0.0",
  org.eclipse.xtext.testing;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.xbase.junit;bundle-version="[2.13.0,3.0.0)",
- org.eclipse.xtext.ui.testing;bundle-version="[2.24.0,3.0.0)"
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.ui.workbench;bundle-version="[3.122.0,4.0.0)",
+ org.eclipse.xtext.ui.testing
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xmachine.ui.tests;x-internal=true
 Automatic-Module-Name: ac.soton.xeventb.xmachine.ui.tests
