@@ -13,9 +13,11 @@
  */
 package ac.soton.xeventb.xmachine.validation;
 
+import ac.soton.eventb.emf.core.extension.coreextension.Type;
+import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
-import ac.soton.xeventb.common.IValidationIssueCode;
+import ac.soton.xeventb.common.UntranslatedFormulaeValidator;
 import ac.soton.xeventb.xmachine.validation.AbstractXMachineValidator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
@@ -35,6 +37,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eventb.core.IAction;
 import org.eventb.core.IEvent;
@@ -46,6 +49,7 @@ import org.eventb.core.IVariable;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -63,7 +67,6 @@ import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinMarkerUtil;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -78,6 +81,22 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  */
 @SuppressWarnings("all")
 public class XMachineValidator extends AbstractXMachineValidator {
+  /**
+   * Object for validating untranslated formulae. This is an implementation of
+   * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
+   * the method provided by {@link XContextValidator#warning(String, EObject,
+   * EStructuralFeature, String, String[])}.
+   * 
+   * @since 3.0
+   */
+  @Extension
+  private UntranslatedFormulaeValidator validator = new UntranslatedFormulaeValidator() {
+    @Override
+    protected void warning(final String message, final EObject source, final EStructuralFeature feature, final String code, final String... issueData) {
+      XMachineValidator.this.warning(message, source, feature, code, issueData);
+    }
+  };
+  
   @Check
   public void checkMachineName(final Machine mch) {
     final Resource res = mch.eResource();
@@ -555,78 +574,50 @@ public class XMachineValidator extends AbstractXMachineValidator {
     return null;
   }
   
-  /**
-   * Check for untranslated predicates by comparing the translated string
-   * with the predicate. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B predicate EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
   @Check
-  public void untranslatedPredicate(final EventBPredicate obj) {
-    final String predicate = obj.getPredicate();
-    final String translated = RodinKeyboardCore.translate(predicate);
-    boolean _notEquals = (!Objects.equal(predicate, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Predicate: " + predicate), obj, 
-        CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
-        IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
+  public void checkUntranslatedFormulae(final Machine mch) {
+    final EList<EventBElement> orderedChildren = mch.getOrderedChildren();
+    for (final EventBElement child : orderedChildren) {
+      {
+        if ((child instanceof EventBPredicate)) {
+          this.validator.validatePredicate(((EventBPredicate)child));
+        }
+        if ((child instanceof EventBExpression)) {
+          this.validator.validateExpression(((EventBExpression)child));
+        }
+        if ((child instanceof Type)) {
+          this.validator.validateType(((Type)child));
+        }
+        if ((child instanceof Value)) {
+          this.validator.validateValue(((Value)child));
+        }
+        if ((child instanceof Event)) {
+          this.checkUntranslatedFormulae(((Event)child));
+        }
+      }
     }
   }
   
-  /**
-   * Check for untranslated expressions by comparing the translated string
-   * with the expression. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_EXPRESSION}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B expression EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
-  @Check
-  public void untranslatedExpression(final EventBExpression obj) {
-    final String expression = obj.getExpression();
-    final String translated = RodinKeyboardCore.translate(expression);
-    boolean _notEquals = (!Objects.equal(expression, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Expression: " + expression), obj, 
-        CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION, 
-        IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated);
-    }
-  }
-  
-  /**
-   * Check for untranslated assignments by comparing the translated string
-   * with the assignment. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_ASSIGNMENT}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B action EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
-  @Check
-  public void untranslatedAssignment(final EventBAction obj) {
-    final String action = obj.getAction();
-    final String translated = RodinKeyboardCore.translate(action);
-    boolean _notEquals = (!Objects.equal(action, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Assignment: " + action), obj, 
-        CorePackage.Literals.EVENT_BACTION__ACTION, 
-        IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated);
+  public void checkUntranslatedFormulae(final Event evt) {
+    final EList<EventBElement> orderedChildren = evt.getOrderedChildren();
+    for (final EventBElement child : orderedChildren) {
+      {
+        if ((child instanceof EventBPredicate)) {
+          this.validator.validatePredicate(((EventBPredicate)child));
+        }
+        if ((child instanceof EventBExpression)) {
+          this.validator.validateExpression(((EventBExpression)child));
+        }
+        if ((child instanceof EventBAction)) {
+          this.validator.validateAssignment(((EventBAction)child));
+        }
+        if ((child instanceof Type)) {
+          this.validator.validateType(((Type)child));
+        }
+        if ((child instanceof Value)) {
+          this.validator.validateValue(((Value)child));
+        }
+      }
     }
   }
 }

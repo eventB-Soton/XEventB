@@ -60,6 +60,8 @@ class XContextValidator extends AbstractXContextValidator {
 	 * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
 	 * the method provided by {@link XContextValidator#warning(String, EObject,
 	 * EStructuralFeature, String, String[])}.
+	 * 
+	 * @since 3.0
 	 */
    	extension UntranslatedFormulaeValidator validator =
    			new UntranslatedFormulaeValidator() {
@@ -97,17 +99,17 @@ class XContextValidator extends AbstractXContextValidator {
 	 * @since 3.0
 	 */
     @Check
-    def unstranslatedFormulae(Context ctx) {
+    def checkUntranslatedFormulae(Context ctx) {
     	val orderedChildren = ctx.orderedChildren
 		for (child : orderedChildren) {
 			if (child instanceof EventBPredicate) {
-				untranslatedPredicate(child)
+				validatePredicate(child)
 			}
 			if (child instanceof Type) {
-				untranslatedType(child)
+				validateType(child)
 			}
 			if (child instanceof Value) {
-				untranslatedValue(child)
+				validateValue(child)
 			}
 		}			
     }

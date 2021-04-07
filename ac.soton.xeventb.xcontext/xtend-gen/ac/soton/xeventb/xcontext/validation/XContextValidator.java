@@ -71,6 +71,8 @@ public class XContextValidator extends AbstractXContextValidator {
    * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
    * the method provided by {@link XContextValidator#warning(String, EObject,
    * EStructuralFeature, String, String[])}.
+   * 
+   * @since 3.0
    */
   @Extension
   private UntranslatedFormulaeValidator validator = new UntranslatedFormulaeValidator() {
@@ -108,18 +110,18 @@ public class XContextValidator extends AbstractXContextValidator {
    * @since 3.0
    */
   @Check
-  public void unstranslatedFormulae(final Context ctx) {
+  public void checkUntranslatedFormulae(final Context ctx) {
     final EList<EventBElement> orderedChildren = ctx.getOrderedChildren();
     for (final EventBElement child : orderedChildren) {
       {
         if ((child instanceof EventBPredicate)) {
-          this.validator.untranslatedPredicate(((EventBPredicate)child));
+          this.validator.validatePredicate(((EventBPredicate)child));
         }
         if ((child instanceof Type)) {
-          this.validator.untranslatedType(((Type)child));
+          this.validator.validateType(((Type)child));
         }
         if ((child instanceof Value)) {
-          this.validator.untranslatedValue(((Value)child));
+          this.validator.validateValue(((Value)child));
         }
       }
     }
