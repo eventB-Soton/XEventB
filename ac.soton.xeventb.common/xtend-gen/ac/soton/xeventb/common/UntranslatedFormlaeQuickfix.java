@@ -20,6 +20,8 @@ import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
+import org.eventb.emf.core.EventBAction;
+import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBPredicate;
 
 /**
@@ -47,6 +49,48 @@ public class UntranslatedFormlaeQuickfix {
         public void apply(final EObject element, final IModificationContext context) throws Exception {
           if ((element instanceof EventBPredicate)) {
             ((EventBPredicate)element).setPredicate(translated);
+          }
+        }
+      });
+  }
+  
+  /**
+   * Quick fix for untranslated expressions. Offer to replace the expression
+   * by the translated formula. This is copied from
+   * {@link ac.soton.xeventb.xcontext.ui.quickfix.XMachineQuickfixProvider}.
+   */
+  public void translateExpression(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final String[] data = issue.getData();
+    final String expression = data[0];
+    final String translated = data[1];
+    acceptor.accept(issue, ("Translated Expression to " + translated), 
+      ((("Change from " + expression) + " to ") + translated), null, 
+      new ISemanticModification() {
+        @Override
+        public void apply(final EObject element, final IModificationContext context) throws Exception {
+          if ((element instanceof EventBExpression)) {
+            ((EventBExpression)element).setExpression(translated);
+          }
+        }
+      });
+  }
+  
+  /**
+   * Quick fix for untranslated assignments. Offer to replace the assignment
+   * by the translated formula. This is copied from
+   * {@link ac.soton.xeventb.xcontext.ui.quickfix.XMachineQuickfixProvider}.
+   */
+  public void translateAssignment(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    final String[] data = issue.getData();
+    final String assignment = data[0];
+    final String translated = data[1];
+    acceptor.accept(issue, ("Translated Assignment to " + translated), 
+      ((("Change from " + assignment) + " to ") + translated), null, 
+      new ISemanticModification() {
+        @Override
+        public void apply(final EObject element, final IModificationContext context) throws Exception {
+          if ((element instanceof EventBAction)) {
+            ((EventBAction)element).setAction(translated);
           }
         }
       });

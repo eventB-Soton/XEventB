@@ -26,8 +26,9 @@ import org.eclipse.xtext.validation.Issue
  * This class provides custom quick fixes for the XContexts.
  * </p>
  *
- * @author htson - Initial Implementation
- * @version 0.1 
+ * @author htson (v0.1) - Initial API and Implementation
+ * @author htson (v0.2) - Refactor common quick fixes with XMachine
+ * @version 0.2 
  * @since 2.0
  */
 class XContextQuickfixProvider extends DefaultQuickfixProvider {
