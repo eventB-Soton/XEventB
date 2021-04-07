@@ -13,17 +13,13 @@
  */
 package ac.soton.xeventb.xcontext.ui.quickfix;
 
-import ac.soton.eventb.emf.core.extension.coreextension.Type;
-import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.xeventb.common.IValidationIssueCode;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
-import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
+import ac.soton.xeventb.common.UntranslatedFormlaeQuickfix;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
-import org.eventb.emf.core.EventBPredicate;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * <p>
@@ -37,65 +33,39 @@ import org.eventb.emf.core.EventBPredicate;
 @SuppressWarnings("all")
 public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   /**
+   * Extension instance of {@link UntranslatedFormlaeQuickfix} to use for
+   * quick fixes.
+   */
+  @Extension
+  private UntranslatedFormlaeQuickfix quickfix = new UntranslatedFormlaeQuickfix();
+  
+  /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
-   * the translated formula.
+   * the translated formula. This is delegated to the extension method of
+   * {@link XContextQuickfixProvider#quickfix}.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
-  public void translatePredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    final String[] data = issue.getData();
-    final String predicate = data[0];
-    final String translated = data[1];
-    acceptor.accept(issue, ("Translated Predicate to " + translated), 
-      ((("Change from " + predicate) + " to ") + translated), null, 
-      new ISemanticModification() {
-        @Override
-        public void apply(final EObject element, final IModificationContext context) throws Exception {
-          if ((element instanceof EventBPredicate)) {
-            ((EventBPredicate)element).setPredicate(translated);
-          }
-        }
-      });
+  public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickfix.translatePredicate(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
-   * the translated formula.
+   * the translated formula. This is delegated to the extension method of
+   * {@link XContextQuickfixProvider#quickfix}.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
-  public void translateType(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    final String[] data = issue.getData();
-    final String type = data[0];
-    final String translated = data[1];
-    acceptor.accept(issue, ("Translated type to " + translated), 
-      ((("Change from " + type) + " to ") + translated), null, 
-      new ISemanticModification() {
-        @Override
-        public void apply(final EObject element, final IModificationContext context) throws Exception {
-          if ((element instanceof Type)) {
-            ((Type)element).setType(translated);
-          }
-        }
-      });
+  public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickfix.translateType(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
-   * the translated formula.
+   * the translated formula. This is delegated to the extension method of
+   * {@link XContextQuickfixProvider#quickfix}.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
-  public void translateValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    final String[] data = issue.getData();
-    final String value = data[0];
-    final String translated = data[1];
-    acceptor.accept(issue, ("Translated value to " + translated), 
-      ((("Change from " + value) + " to ") + translated), null, 
-      new ISemanticModification() {
-        @Override
-        public void apply(final EObject element, final IModificationContext context) throws Exception {
-          if ((element instanceof Value)) {
-            ((Value)element).setValue(translated);
-          }
-        }
-      });
+  public void fixedUntranslatedValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickfix.translateValue(issue, acceptor);
   }
 }
