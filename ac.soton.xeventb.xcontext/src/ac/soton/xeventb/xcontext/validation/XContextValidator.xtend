@@ -14,10 +14,8 @@
 
 package ac.soton.xeventb.xcontext.validation
 
-import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
 import ac.soton.eventb.emf.core.^extension.coreextension.Type
 import ac.soton.eventb.emf.core.^extension.coreextension.Value
-import ac.soton.xeventb.common.IValidationIssueCode
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.ResourcesPlugin
@@ -42,7 +40,7 @@ import org.eventb.emf.persistence.EventBEMFUtils
 import org.rodinp.core.IAttributeType
 import org.rodinp.core.IRodinElement
 import org.rodinp.core.RodinMarkerUtil
-import org.rodinp.keyboard.core.RodinKeyboardCore
+import ac.soton.xeventb.common.UntranslatedFormulaeValidator
 
 /**
  * <p>
@@ -56,6 +54,23 @@ import org.rodinp.keyboard.core.RodinKeyboardCore
  * @see XContextMarkerModule
  */
 class XContextValidator extends AbstractXContextValidator {
+
+	/**
+	 * Object for validating untranslated formulae. This is an implementation of
+	 * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
+	 * the method provided by {@link XContextValidator#warning(String, EObject,
+	 * EStructuralFeature, String, String[])}.
+	 */
+   	extension UntranslatedFormulaeValidator validator =
+   			new UntranslatedFormulaeValidator() {
+				override protected warning(String message, EObject source,
+						EStructuralFeature feature, String code,
+						String... issueData) {
+					XContextValidator.this.warning(message, source, feature,
+							code, issueData
+					)
+				}
+			}
 
     /**
      * Check to ensure that the context name match the name of the file.
@@ -73,8 +88,16 @@ class XContextValidator extends AbstractXContextValidator {
             error('Context name should be the same as the file name', null)
     }
 
+	/**
+	 * Check for untranslated formulae in the context, i.e., predicates, types,
+	 * and values. The actual check is done via the extension methods of
+	 * {@link XContextValidator#validator}. 
+	 * 
+	 * @author htson
+	 * @since 3.0
+	 */
     @Check
-    def unstranslatedPredicate(Context ctx) {
+    def unstranslatedFormulae(Context ctx) {
     	val orderedChildren = ctx.orderedChildren
 		for (child : orderedChildren) {
 			if (child instanceof EventBPredicate) {
@@ -89,64 +112,6 @@ class XContextValidator extends AbstractXContextValidator {
 		}			
     }
 		
-	def untranslatedValue(Value obj) {
-        val value = obj.value
-        if (value === null)
-        	return
-        val translated = RodinKeyboardCore.translate(value)
-        if (value != translated)
-            warning(
-                "Untranslated Value: " + value,
-                obj,
-                CoreextensionPackage.Literals.VALUE__VALUE,
-                IValidationIssueCode.UNTRANSLATED_VALUE,
-                value,
-                translated
-            )
-	}
-		
-	def untranslatedType(Type obj) {
-        val type = obj.type
-        if (type === null)
-        	return
-        val translated = RodinKeyboardCore.translate(type)
-        if (type != translated)
-            warning(
-                "Untranslated Type: " + type,
-                obj,
-                CoreextensionPackage.Literals.TYPE__TYPE,
-                IValidationIssueCode.UNTRANSLATED_TYPE,
-                type,
-                translated
-            )
-	}
-    
-    /**
-     * Check for untranslated predicates by comparing the translated string
-     * with the predicate. Raise a warning with code
-     * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
-     * providing quick fixes.
-     * 
-     * @param obj 
-     * 		an Event-B predicate EObject.
-     * @author htson
-     * @see IValidationIssueCode
-     * @since 2.0
-     */
-    private def untranslatedPredicate(EventBPredicate obj) {
-        val predicate = obj.predicate
-        val translated = RodinKeyboardCore.translate(predicate)
-        if (predicate != translated)
-            warning(
-                "Untranslated Predicate: " + predicate,
-                obj,
-                CorePackage.Literals.EVENT_BPREDICATE__PREDICATE,
-                IValidationIssueCode.UNTRANSLATED_PREDICATE,
-                predicate,
-                translated
-            )
-    }
-
     /**
      * A "Normal" check to clear the markers associated with the Rodin context.
      * This is important as the markers generated as the consequence of

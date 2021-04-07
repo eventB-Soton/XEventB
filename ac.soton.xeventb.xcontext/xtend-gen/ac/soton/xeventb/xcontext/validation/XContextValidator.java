@@ -13,10 +13,9 @@
  */
 package ac.soton.xeventb.xcontext.validation;
 
-import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.Type;
 import ac.soton.eventb.emf.core.extension.coreextension.Value;
-import ac.soton.xeventb.common.IValidationIssueCode;
+import ac.soton.xeventb.common.UntranslatedFormulaeValidator;
 import ac.soton.xeventb.xcontext.validation.AbstractXContextValidator;
 import com.google.common.base.Objects;
 import java.util.Map;
@@ -35,6 +34,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eventb.core.IAxiom;
 import org.eventb.core.ICarrierSet;
 import org.eventb.core.IConstant;
@@ -52,7 +52,6 @@ import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinMarkerUtil;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -67,6 +66,20 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  */
 @SuppressWarnings("all")
 public class XContextValidator extends AbstractXContextValidator {
+  /**
+   * Object for validating untranslated formulae. This is an implementation of
+   * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
+   * the method provided by {@link XContextValidator#warning(String, EObject,
+   * EStructuralFeature, String, String[])}.
+   */
+  @Extension
+  private UntranslatedFormulaeValidator validator = new UntranslatedFormulaeValidator() {
+    @Override
+    protected void warning(final String message, final EObject source, final EStructuralFeature feature, final String code, final String... issueData) {
+      XContextValidator.this.warning(message, source, feature, code, issueData);
+    }
+  };
+  
   /**
    * Check to ensure that the context name match the name of the file.
    * 
@@ -86,75 +99,29 @@ public class XContextValidator extends AbstractXContextValidator {
     }
   }
   
+  /**
+   * Check for untranslated formulae in the context, i.e., predicates, types,
+   * and values. The actual check is done via the extension methods of
+   * {@link XContextValidator#validator}.
+   * 
+   * @author htson
+   * @since 3.0
+   */
   @Check
-  public void unstranslatedPredicate(final Context ctx) {
+  public void unstranslatedFormulae(final Context ctx) {
     final EList<EventBElement> orderedChildren = ctx.getOrderedChildren();
     for (final EventBElement child : orderedChildren) {
       {
         if ((child instanceof EventBPredicate)) {
-          this.untranslatedPredicate(((EventBPredicate)child));
+          this.validator.untranslatedPredicate(((EventBPredicate)child));
         }
         if ((child instanceof Type)) {
-          this.untranslatedType(((Type)child));
+          this.validator.untranslatedType(((Type)child));
         }
         if ((child instanceof Value)) {
-          this.untranslatedValue(((Value)child));
+          this.validator.untranslatedValue(((Value)child));
         }
       }
-    }
-  }
-  
-  public void untranslatedValue(final Value obj) {
-    final String value = obj.getValue();
-    if ((value == null)) {
-      return;
-    }
-    final String translated = RodinKeyboardCore.translate(value);
-    boolean _notEquals = (!Objects.equal(value, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Value: " + value), obj, 
-        CoreextensionPackage.Literals.VALUE__VALUE, 
-        IValidationIssueCode.UNTRANSLATED_VALUE, value, translated);
-    }
-  }
-  
-  public void untranslatedType(final Type obj) {
-    final String type = obj.getType();
-    if ((type == null)) {
-      return;
-    }
-    final String translated = RodinKeyboardCore.translate(type);
-    boolean _notEquals = (!Objects.equal(type, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Type: " + type), obj, 
-        CoreextensionPackage.Literals.TYPE__TYPE, 
-        IValidationIssueCode.UNTRANSLATED_TYPE, type, translated);
-    }
-  }
-  
-  /**
-   * Check for untranslated predicates by comparing the translated string
-   * with the predicate. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B predicate EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
-  private void untranslatedPredicate(final EventBPredicate obj) {
-    final String predicate = obj.getPredicate();
-    final String translated = RodinKeyboardCore.translate(predicate);
-    boolean _notEquals = (!Objects.equal(predicate, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Predicate: " + predicate), obj, 
-        CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
-        IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
     }
   }
   
