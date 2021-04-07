@@ -31,7 +31,7 @@ import org.eventb.emf.core.EventBPredicate
  * @author htson - Initial API and implementation.
  * @since 2.0
  */
-class UntranslatedFormlaeQuickfix {
+class UntranslatedFormulaeQuickfix {
 
 	/**
 	 * Quick fix for untranslated predicates. Offer to replace the predicate by

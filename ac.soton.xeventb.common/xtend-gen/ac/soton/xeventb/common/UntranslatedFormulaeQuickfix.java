@@ -32,7 +32,7 @@ import org.eventb.emf.core.EventBPredicate;
  * @since 2.0
  */
 @SuppressWarnings("all")
-public class UntranslatedFormlaeQuickfix {
+public class UntranslatedFormulaeQuickfix {
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
    * the translated formula. This is copied from
