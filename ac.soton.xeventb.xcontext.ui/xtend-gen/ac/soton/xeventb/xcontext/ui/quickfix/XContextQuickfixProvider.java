@@ -40,46 +40,66 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
    * predicate quick fixes.
    */
   @Extension
-  private UntranslatedPredicateQuickFix predicateQuickfix = new UntranslatedPredicateQuickFix();
+  private UntranslatedPredicateQuickFix predicateQuickFix = new UntranslatedPredicateQuickFix();
   
   /**
    * Extension instance of {@link UntranslatedTypeQuickFix} to use for
    * type quick fixes.
    */
   @Extension
-  private UntranslatedTypeQuickFix typeQuickfix = new UntranslatedTypeQuickFix();
+  private UntranslatedTypeQuickFix typeQuickFix = new UntranslatedTypeQuickFix();
   
   /**
    * Extension instance of {@link UntranslatedValueQuickFix} to use for
    * value quick fixes.
    */
   @Extension
-  private UntranslatedValueQuickFix valueQuickfix = new UntranslatedValueQuickFix();
+  private UntranslatedValueQuickFix valueQuickFix = new UntranslatedValueQuickFix();
   
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
    * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the predicate element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
   public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.predicateQuickfix.translatePredicate(issue, acceptor);
+    this.predicateQuickFix.translatePredicate(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
    * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the type element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see UntranslatedTypeQuickFix#translateType(Issue, IssueResolutionAcceptor)
+   * @since 3.0
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
   public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.typeQuickfix.translateType(issue, acceptor);
+    this.typeQuickFix.translateType(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
    * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the value element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see UntranslatedValueQuickFix#translateValue(Issue, IssueResolutionAcceptor)
+   * @since 3.0
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
   public void fixedUntranslatedValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.valueQuickfix.translateValue(issue, acceptor);
+    this.valueQuickFix.translateValue(issue, acceptor);
   }
 }

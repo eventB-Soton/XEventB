@@ -39,26 +39,32 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 	 * Extension instance of {@link UntranslatedPredicateQuickFix} to use for 
 	 * predicate quick fixes. 
 	 */
-	extension UntranslatedPredicateQuickFix predicateQuickfix =
+	extension UntranslatedPredicateQuickFix predicateQuickFix =
 			new UntranslatedPredicateQuickFix()
 
 	/**
 	 * Extension instance of {@link UntranslatedTypeQuickFix} to use for 
 	 * type quick fixes. 
 	 */
-	extension UntranslatedTypeQuickFix typeQuickfix =
+	extension UntranslatedTypeQuickFix typeQuickFix =
 			new UntranslatedTypeQuickFix()
 
 	/**
 	 * Extension instance of {@link UntranslatedValueQuickFix} to use for 
 	 * value quick fixes. 
 	 */
-	extension UntranslatedValueQuickFix valueQuickfix =
+	extension UntranslatedValueQuickFix valueQuickFix =
 			new UntranslatedValueQuickFix()
 
 	/**
 	 * Quick fix for untranslated predicates. Offer to replace the predicate by
 	 * the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the predicate element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
 	def fixUntranslatedPredicate(Issue issue, IssueResolutionAcceptor acceptor) {
@@ -68,6 +74,13 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 	/**
 	 * Quick fix for untranslated types. Offer to replace the type by
 	 * the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the type element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see UntranslatedTypeQuickFix#translateType(Issue, IssueResolutionAcceptor)
+	 * @since 3.0
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
 	def fixUntranslatedType(Issue issue, IssueResolutionAcceptor acceptor) {
@@ -77,6 +90,13 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 	/**
 	 * Quick fix for untranslated types. Offer to replace the type by
 	 * the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the value element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see UntranslatedValueQuickFix#translateValue(Issue, IssueResolutionAcceptor)
+	 * @since 3.0
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
 	def fixedUntranslatedValue(Issue issue, IssueResolutionAcceptor acceptor) {
