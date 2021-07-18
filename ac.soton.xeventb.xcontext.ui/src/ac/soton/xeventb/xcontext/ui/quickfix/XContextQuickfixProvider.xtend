@@ -15,11 +15,13 @@
 package ac.soton.xeventb.xcontext.ui.quickfix
 
 import ac.soton.xeventb.common.IValidationIssueCode
-import ac.soton.xeventb.common.UntranslatedFormlaeQuickfix
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
+import ac.soton.xeventb.common.quickfixes.UntranslatedPredicateQuickFix
+import ac.soton.xeventb.common.quickfixes.UntranslatedTypeQuickFix
+import ac.soton.xeventb.common.quickfixes.UntranslatedValueQuickFix
 
 /**
  * <p>
@@ -34,16 +36,29 @@ import org.eclipse.xtext.validation.Issue
 class XContextQuickfixProvider extends DefaultQuickfixProvider {
 
 	/**
-	 * Extension instance of {@link UntranslatedFormlaeQuickfix} to use for 
-	 * quick fixes. 
+	 * Extension instance of {@link UntranslatedPredicateQuickFix} to use for 
+	 * predicate quick fixes. 
 	 */
-	extension UntranslatedFormlaeQuickfix quickfix =
-			new UntranslatedFormlaeQuickfix()
+	extension UntranslatedPredicateQuickFix predicateQuickfix =
+			new UntranslatedPredicateQuickFix()
+
+	/**
+	 * Extension instance of {@link UntranslatedTypeQuickFix} to use for 
+	 * type quick fixes. 
+	 */
+	extension UntranslatedTypeQuickFix typeQuickfix =
+			new UntranslatedTypeQuickFix()
+
+	/**
+	 * Extension instance of {@link UntranslatedValueQuickFix} to use for 
+	 * value quick fixes. 
+	 */
+	extension UntranslatedValueQuickFix valueQuickfix =
+			new UntranslatedValueQuickFix()
 
 	/**
 	 * Quick fix for untranslated predicates. Offer to replace the predicate by
-	 * the translated formula. This is delegated to the extension method of
-	 * {@link XContextQuickfixProvider#quickfix}.
+	 * the translated formula.
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
 	def fixUntranslatedPredicate(Issue issue, IssueResolutionAcceptor acceptor) {
@@ -52,8 +67,7 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 
 	/**
 	 * Quick fix for untranslated types. Offer to replace the type by
-	 * the translated formula. This is delegated to the extension method of
-	 * {@link XContextQuickfixProvider#quickfix}.
+	 * the translated formula.
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
 	def fixUntranslatedType(Issue issue, IssueResolutionAcceptor acceptor) {
@@ -62,8 +76,7 @@ class XContextQuickfixProvider extends DefaultQuickfixProvider {
 
 	/**
 	 * Quick fix for untranslated types. Offer to replace the type by
-	 * the translated formula. This is delegated to the extension method of
-	 * {@link XContextQuickfixProvider#quickfix}.
+	 * the translated formula.
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
 	def fixedUntranslatedValue(Issue issue, IssueResolutionAcceptor acceptor) {

@@ -14,7 +14,9 @@
 package ac.soton.xeventb.xcontext.ui.quickfix;
 
 import ac.soton.xeventb.common.IValidationIssueCode;
-import ac.soton.xeventb.common.UntranslatedFormlaeQuickfix;
+import ac.soton.xeventb.common.quickfixes.UntranslatedPredicateQuickFix;
+import ac.soton.xeventb.common.quickfixes.UntranslatedTypeQuickFix;
+import ac.soton.xeventb.common.quickfixes.UntranslatedValueQuickFix;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
@@ -34,39 +36,50 @@ import org.eclipse.xtext.xbase.lib.Extension;
 @SuppressWarnings("all")
 public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   /**
-   * Extension instance of {@link UntranslatedFormlaeQuickfix} to use for
-   * quick fixes.
+   * Extension instance of {@link UntranslatedPredicateQuickFix} to use for
+   * predicate quick fixes.
    */
   @Extension
-  private UntranslatedFormlaeQuickfix quickfix = new UntranslatedFormlaeQuickfix();
+  private UntranslatedPredicateQuickFix predicateQuickfix = new UntranslatedPredicateQuickFix();
+  
+  /**
+   * Extension instance of {@link UntranslatedTypeQuickFix} to use for
+   * type quick fixes.
+   */
+  @Extension
+  private UntranslatedTypeQuickFix typeQuickfix = new UntranslatedTypeQuickFix();
+  
+  /**
+   * Extension instance of {@link UntranslatedValueQuickFix} to use for
+   * value quick fixes.
+   */
+  @Extension
+  private UntranslatedValueQuickFix valueQuickfix = new UntranslatedValueQuickFix();
   
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
-   * the translated formula. This is delegated to the extension method of
-   * {@link XContextQuickfixProvider#quickfix}.
+   * the translated formula.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
   public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.quickfix.translatePredicate(issue, acceptor);
+    this.predicateQuickfix.translatePredicate(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
-   * the translated formula. This is delegated to the extension method of
-   * {@link XContextQuickfixProvider#quickfix}.
+   * the translated formula.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
   public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.quickfix.translateType(issue, acceptor);
+    this.typeQuickfix.translateType(issue, acceptor);
   }
   
   /**
    * Quick fix for untranslated types. Offer to replace the type by
-   * the translated formula. This is delegated to the extension method of
-   * {@link XContextQuickfixProvider#quickfix}.
+   * the translated formula.
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
   public void fixedUntranslatedValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.quickfix.translateValue(issue, acceptor);
+    this.valueQuickfix.translateValue(issue, acceptor);
   }
 }
