@@ -30,7 +30,7 @@ import org.eclipse.xtext.validation.Issue
  * @since 2.0
  * @version 0.1
  */
-abstract class UntranslatedFormulaeQuickfix<T extends EObject> {
+abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
 
 	/**
 	 * Call back method to set the translated formula for the element.
