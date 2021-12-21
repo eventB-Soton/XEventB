@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2020 University of Southampton.
+ *  Copyright (c) 2020, 2021 University of Southampton.
  *
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -21,7 +21,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
 import org.eventb.emf.core.CorePackage
-import org.eventb.emf.core.EventBElement
 import org.eventb.emf.core.machine.Action
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Guard
@@ -40,8 +39,7 @@ import org.eventb.emf.core.machine.Witness
  * </p>
  * @author htson - Initial implementation
  * @author dana - 0.2 - Added inclusion
- * @version 0.2
- * @see
+ * @version 0.2.1
  * @since 0.1
  */
 class XMachineTransientValueService extends DefaultTransientValueService {
@@ -53,9 +51,10 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 	 */
 	override boolean isTransient(EObject owner, EStructuralFeature feature, int index) {
 		// Ignore generated elements
-		if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
-			return true
-		}
+		// v0.1.2 - htson - This cause issue #71.
+		// if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
+		//     return true
+		// }
 		// For machine, serialise only "name", "machine refinement",
 		// "context seeing", "orderedChildren", "comments".
 		// Dana: updated to include Machine Inclusion

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2020 University of Southampton.
+ * Copyright (c) 2020, 2021 University of Southampton.
  * 
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.machine.Action;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Guard;
@@ -39,8 +38,7 @@ import org.eventb.emf.core.machine.Witness;
  * </p>
  * @author htson - Initial implementation
  * @author dana - 0.2 - Added inclusion
- * @version 0.2
- * @see
+ * @version 0.2.1
  * @since 0.1
  */
 @SuppressWarnings("all")
@@ -53,9 +51,6 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
    */
   @Override
   public boolean isTransient(final EObject owner, final EStructuralFeature feature, final int index) {
-    if (((owner instanceof EventBElement) && ((EventBElement) owner).isGenerated())) {
-      return true;
-    }
     if ((owner instanceof Machine)) {
       boolean _equals = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals) {

@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2018, 2020 University of Southampton.
+ *  Copyright (c) 2018, 2021 University of Southampton.
  *
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -20,7 +20,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
 import org.eventb.emf.core.CorePackage
-import org.eventb.emf.core.EventBElement
 import org.eventb.emf.core.context.Axiom
 import org.eventb.emf.core.context.CarrierSet
 import org.eventb.emf.core.context.Constant
@@ -34,7 +33,7 @@ import org.eventb.emf.core.context.ContextPackage
  * </p>
  * 
  * @author htson - Initial implementation
- * @version 0.1.1
+ * @version 0.1.2
  * @since 0.1
  */
 class XContextTransientValueService extends DefaultTransientValueService {
@@ -46,10 +45,13 @@ class XContextTransientValueService extends DefaultTransientValueService {
 	 */
 	override boolean isTransient(EObject owner, EStructuralFeature feature, int index) {
 		// Ignore generated elements
-		if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
-			return true
-		}
-		// For context, serialise only "name", "ordered children", "comment"
+		// v0.1.2 - htson - This cause issue #71.
+		// if (owner instanceof EventBElement && ((owner as EventBElement)).isGenerated()) {
+		//	return true
+		// }
+		
+		// For context, serialise only "name", "context extension",
+		// "sets", "constants" and "axioms".
 		if (owner instanceof Context) {
 			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
 				return false
