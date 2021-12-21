@@ -44,10 +44,11 @@ Machine returns emachine::Machine:
 	('contains' orderedChildren += MContains+)?
 	// The following can be interleaved
 	(
-    	('variables' orderedChildren += XVariable+) |
-    	(orderedChildren += XTypedVariable) |
+    	('variables' orderedChildren += XGroupVariable+) |
+    	(orderedChildren += XIndividualVariable) |
+    	('invariants' orderedChildren += XGroupInvariant+) |
+    	(orderedChildren += XIndividualInvariant) |
     	(orderedChildren += Record) |
-		(orderedChildren += XInvariant) |
 		(orderedChildren += XVariant) |
 		(orderedChildren += XEvent)
 	)*
@@ -70,13 +71,13 @@ QualifiedName:
 	ID('.'ID)?
 ;
 
-XVariable returns emachine::Variable:
+XGroupVariable returns emachine::Variable:
 	{emachine::Variable}
 	(comment=STRING)?
-	name=ID
+	name=ID // No type or value
 ;
 
-XTypedVariable returns eventbcoreex::TypedVariable:
+XIndividualVariable returns eventbcoreex::TypedVariable:
 	{eventbcoreex::TypedVariable}
 	(comment=STRING)?
 	'variable' name=ID (':' type = XType)? ('=' value=XFormula)?
@@ -112,10 +113,18 @@ XTypePrimitive returns ecore::EString:
 	'ℙ1' '(' XType ')'
 ;
 
-XInvariant returns emachine::Invariant:
+XGroupInvariant returns emachine::Invariant:
 	{emachine::Invariant}
 	(comment=STRING)?
-	(theorem?='theorem' | 'invariant')? name=XLABEL predicate=XFormula	
+	//	No theorem 
+	name=XLABEL predicate=XFormula	
+;
+
+XIndividualInvariant returns emachine::Invariant:
+	{emachine::Invariant}
+	(comment=STRING)?
+	(theorem?='theorem' | 'invariant')
+	name=XLABEL predicate=XFormula	
 ;
 
 terminal XLABEL returns ecore::EString:

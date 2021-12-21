@@ -55,11 +55,11 @@ import org.rodinp.core.RodinCore
  * </p>
  *
  * @author htson - Initial implementation
- * @author Dana - Implementation for machine inclusion (0.0.6)
- * @author asiehsalehi - Implementation for record extension (2.0)
- * @author htson - Introduce generator for containment via extension points (2.0)
- * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
- * @author htson - Serialisation for typed variables
+ * @author Dana (0.0.6) - Implementation for machine inclusion (0.0.6)
+ * @author asiehsalehi (2.0) - Implementation for record extension (2.0)
+ * @author htson (2.0) - Introduce generator for containment via extension points (2.0)
+ * @author htson (2.0) - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
+ * @author htson (2.1) - Serialisation for typed variables
  * @version 2.0
  * @since 2.2
  */
@@ -111,6 +111,12 @@ class XMachineGenerator extends AbstractGenerator {
 			editingDomain.getCommandStack().execute(command);
 		}
 		
+		// Translate Unit-B
+		for (ext : mch.extensions) {
+			UnitBTranslator.translate(editingDomain, mch, ext)
+		}
+
+
 		
 		if (!mch.extensions.empty) {
 			val factory = TranslatorFactory.getFactory() as TranslatorFactory

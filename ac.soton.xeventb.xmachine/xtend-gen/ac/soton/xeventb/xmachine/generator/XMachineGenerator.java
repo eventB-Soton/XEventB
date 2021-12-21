@@ -20,6 +20,7 @@ import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
 import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
+import ac.soton.xeventb.xmachine.generator.UnitBTranslator;
 import com.google.common.base.Objects;
 import java.util.Collection;
 import org.eclipse.core.commands.ExecutionException;
@@ -68,11 +69,11 @@ import org.rodinp.core.RodinCore;
  * </p>
  * 
  * @author htson - Initial implementation
- * @author Dana - Implementation for machine inclusion (0.0.6)
- * @author asiehsalehi - Implementation for record extension (2.0)
- * @author htson - Introduce generator for containment via extension points (2.0)
- * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
- * @author htson - Serialisation for typed variables
+ * @author Dana (0.0.6) - Implementation for machine inclusion (0.0.6)
+ * @author asiehsalehi (2.0) - Implementation for record extension (2.0)
+ * @author htson (2.0) - Introduce generator for containment via extension points (2.0)
+ * @author htson (2.0) - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
+ * @author htson (2.1) - Serialisation for typed variables
  * @version 2.0
  * @since 2.2
  */
@@ -112,6 +113,10 @@ public class XMachineGenerator extends AbstractGenerator {
       boolean _canExecute = command.canExecute();
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
+      }
+      EList<AbstractExtension> _extensions = mch.getExtensions();
+      for (final AbstractExtension ext : _extensions) {
+        UnitBTranslator.translate(editingDomain, mch, ext);
       }
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
@@ -161,8 +166,8 @@ public class XMachineGenerator extends AbstractGenerator {
       }
       monitor_2.done();
       final ContainmentRegistry registry = ContainmentRegistry.getDefault();
-      EList<AbstractExtension> _extensions = mch.getExtensions();
-      for (final AbstractExtension ex : _extensions) {
+      EList<AbstractExtension> _extensions_1 = mch.getExtensions();
+      for (final AbstractExtension ex : _extensions_1) {
         if ((ex instanceof Containment)) {
           final Containment ctmt = ((Containment) ex);
           final DiagramOwner owner = ctmt.getExtension();
