@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018, 2020 University of Southampton.
+ * Copyright (c) 2018, 2021 University of Southampton.
  * 
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -17,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService;
 import org.eventb.emf.core.CorePackage;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.context.Axiom;
 import org.eventb.emf.core.context.CarrierSet;
 import org.eventb.emf.core.context.Constant;
@@ -31,7 +30,7 @@ import org.eventb.emf.core.context.ContextPackage;
  * </p>
  * 
  * @author htson - Initial implementation
- * @version 0.1.1
+ * @version 0.1.2
  * @since 0.1
  */
 @SuppressWarnings("all")
@@ -44,9 +43,6 @@ public class XContextTransientValueService extends DefaultTransientValueService 
    */
   @Override
   public boolean isTransient(final EObject owner, final EStructuralFeature feature, final int index) {
-    if (((owner instanceof EventBElement) && ((EventBElement) owner).isGenerated())) {
-      return true;
-    }
     if ((owner instanceof Context)) {
       boolean _equals = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
       if (_equals) {
