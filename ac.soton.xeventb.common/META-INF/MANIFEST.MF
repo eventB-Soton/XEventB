@@ -8,14 +8,14 @@ Export-Package: ac.soton.xeventb.common,
  ac.soton.xeventb.common.quickfixes
 Require-Bundle: org.eclipse.xtext.ui;bundle-version="[2.12.0,3.0.0)",
  org.rodinp.keyboard.core;bundle-version="[2.0.0,3.0.0)",
- org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
+ org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
  ac.soton.eventb.emf.inclusion;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.core.resources;bundle-version="[3.12.0,4.0.0)",
  org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
- com.google.guava;bundle-version="[27.1.0,28.0.0)",
+ com.google.guava;bundle-version="[30.1.0,31.0.0)",
  org.eclipse.xtext.xbase.lib;bundle-version="[2.21.0,3.0.0)",
  org.eclipse.xtend.lib;bundle-version="[2.21.0,3.0.0)",
  org.eclipse.xtend.lib.macro;bundle-version="[2.21.0,3.0.0)",
- ac.soton.eventb.emf.core.extension;bundle-version="[5.0.1,6.0.0)"
+ ac.soton.eventb.emf.core.extension;bundle-version="[6.0.0,7.0.0)"
 Bundle-Vendor: %Bundle-Vendor
 Automatic-Module-Name: ac.soton.xeventb.common
