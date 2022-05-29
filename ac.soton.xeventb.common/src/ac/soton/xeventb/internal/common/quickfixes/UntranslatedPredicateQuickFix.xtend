@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2021 University of Southampton.
+ *  Copyright (c) 2021, 2002 University of Southampton.
  * 
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -11,22 +11,26 @@
  *  Contributors:
  *    University of Southampton - initial API and implementation 
  *******************************************************************************/
-package ac.soton.xeventb.common.quickfixes
+package ac.soton.xeventb.internal.common.quickfixes
 
+import ac.soton.xeventb.common.quickfixes.IQuickFix
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
 import org.eventb.emf.core.EventBPredicate
-import ac.soton.xeventb.internal.common.UntranslatedFormulaeQuickFix
 
 /**
- * An implementation for quick fixes to translate untranslated predicates.
+ * An implementation of {@link IQuickFix} based on
+ * {@link UntranslatedFormulaeQuickFix} to fix untranslated predicates in
+ * {@link EventBPredicate} elements.
  * 
  * @since 2.0
  * @version 1.0
  * @author htson - Initial API and implementation.
  */
-class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBPredicate> {
+class UntranslatedPredicateQuickFix
+	extends UntranslatedFormulaeQuickFix<EventBPredicate>
+	implements IQuickFix {
 
 	// The type of the formulae
 	static String FORMULA_TYPE = "predicate"
@@ -60,7 +64,7 @@ class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBP
 	 * 			the issue resolution acceptor
 	 * @see UntranslatedFormulaeQuickfix#translateFormulae(Issue, IssueResolutionAcceptor, String)
 	 */
-	def translatePredicate(Issue issue, IssueResolutionAcceptor acceptor) {
+	override fix(Issue issue, IssueResolutionAcceptor acceptor) {
 		translateFormulae(issue, acceptor, FORMULA_TYPE)
 	}
 }

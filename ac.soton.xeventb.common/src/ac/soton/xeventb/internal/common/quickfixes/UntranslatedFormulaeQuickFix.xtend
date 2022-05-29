@@ -1,5 +1,5 @@
 /*******************************************************************************
- *  Copyright (c) 2021 University of Southampton.
+ *  Copyright (c) 2021, 2022 University of Southampton.
  * 
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -11,8 +11,9 @@
  *  Contributors:
  *    University of Southampton - initial API and implementation 
  *******************************************************************************/
-package ac.soton.xeventb.internal.common
+package ac.soton.xeventb.internal.common.quickfixes
 
+import ac.soton.xeventb.common.quickfixes.IQuickFix
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
 import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification
@@ -26,11 +27,12 @@ import org.eclipse.xtext.validation.Issue
  * <p>Clients must implement the abstract method to set the translated formula
  * for an element</p>
  * 
- * @author htson - v1.0 - Initial API and implementation.
  * @since 2.0
  * @version 1.0
+ * @author htson - v1.0 - Initial API and implementation.
  */
-abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
+abstract class UntranslatedFormulaeQuickFix<T extends EObject>
+	implements IQuickFix {
 
 	/**
 	 * Call back method to set the translated formulae for the element.
@@ -59,8 +61,7 @@ abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
 
 	/**
 	 * Quick fix for untranslated formulae. Offer to replace the formulae
-	 * by the translated formulae. This is copied from
-	 * {@link ac.soton.xeventb.xcontext.ui.quickfix.XMachineQuickfixProvider}.
+	 * by the translated formulae.
 	 * 
 	 * @param issue
 	 * 			the validation issue

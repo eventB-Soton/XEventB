@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2021 University of Southampton.
+ * Copyright (c) 2021, 2022 University of Southampton.
  * 
  *  This program and the accompanying materials
  *  are made available under the terms of the Eclipse Public License 2.0
@@ -11,23 +11,25 @@
  *  Contributors:
  *    University of Southampton - initial API and implementation
  */
-package ac.soton.xeventb.common.quickfixes;
+package ac.soton.xeventb.internal.common.quickfixes;
 
-import ac.soton.xeventb.internal.common.UntranslatedFormulaeQuickFix;
+import ac.soton.xeventb.common.quickfixes.IQuickFix;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
 import org.eventb.emf.core.EventBAction;
 
 /**
- * An implementation for quick fixes to translate untranslated assignments.
+ * An implementation of {@link IQuickFix} based on
+ * {@link UntranslatedFormulaeQuickFix} to fix untranslated assignments in
+ * {@link EventBAction} elements.
  * 
  * @since 2.0
  * @version 1.0
  * @author htson - v1.0 - Initial API and implementation.
  */
 @SuppressWarnings("all")
-public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventBAction> {
+public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventBAction> implements IQuickFix {
   private static String FORMULAE_TYPE = "assignment";
   
   /**
@@ -60,7 +62,8 @@ public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix
    * 			the issue resolution acceptor
    * @see UntranslatedFormulaeQuickfix#translateFormulae(Issue, IssueResolutionAcceptor, String)
    */
-  public void translateAssignment(final Issue issue, final IssueResolutionAcceptor acceptor) {
+  @Override
+  public void fix(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.translateFormulae(issue, acceptor, UntranslatedAssignmentQuickFix.FORMULAE_TYPE);
   }
 }
