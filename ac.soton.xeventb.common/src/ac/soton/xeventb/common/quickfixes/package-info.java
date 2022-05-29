@@ -17,13 +17,13 @@
  * Common quick fixes for CamilleX.
  * </p>
  *
+ * @since 2.0
+ * @version 1.0
  * @author htson
- * @version 0.1
  * @see ac.soton.xeventb.common.quickfixes.UntranslatedAssignmentQuickFix
  * @see ac.soton.xeventb.common.quickfixes.UntranslatedExpressionQuickFix
  * @see ac.soton.xeventb.common.quickfixes.UntranslatedPredicateQuickFix
  * @see ac.soton.xeventb.common.quickfixes.UntranslatedTypeQuickFix
  * @see ac.soton.xeventb.common.quickfixes.UntranslatedValueQuickFix
- * @since 2.0
  */
 package ac.soton.xeventb.common.quickfixes;
