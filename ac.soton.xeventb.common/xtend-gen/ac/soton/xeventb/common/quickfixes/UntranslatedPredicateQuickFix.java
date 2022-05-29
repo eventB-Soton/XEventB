@@ -22,9 +22,9 @@ import org.eventb.emf.core.EventBPredicate;
 /**
  * An implementation for quick fixes to translate untranslated predicates.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - Initial API and implementation.
  */
 @SuppressWarnings("all")
 public class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBPredicate> {
@@ -45,8 +45,9 @@ public class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<
   public void setFormulae(final EObject element, final String translatedFormula) {
     if ((element instanceof EventBPredicate)) {
       ((EventBPredicate)element).setPredicate(translatedFormula);
+    } else {
+      this.exception(element, UntranslatedPredicateQuickFix.FORMULA_TYPE);
     }
-    this.exception(element, UntranslatedPredicateQuickFix.FORMULA_TYPE);
   }
   
   /**

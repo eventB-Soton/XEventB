@@ -22,9 +22,9 @@ import ac.soton.xeventb.internal.common.UntranslatedFormulaeQuickFix
 /**
  * An implementation for quick fixes to translate untranslated assignments.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - v1.0 - Initial API and implementation.
  */
 class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventBAction> {
 
@@ -45,8 +45,9 @@ class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventB
 	override setFormulae(EObject element, String translatedFormulae) {
 		if (element instanceof EventBAction) {
 			element.action = translatedFormulae
+		} else {
+			exception(element, FORMULAE_TYPE)
 		}
-		exception(element, FORMULAE_TYPE)
 	}
 
 	/**

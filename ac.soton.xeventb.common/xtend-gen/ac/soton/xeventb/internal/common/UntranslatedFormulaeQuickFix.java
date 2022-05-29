@@ -26,14 +26,14 @@ import org.eclipse.xtext.validation.Issue;
  * <p>Clients must implement the abstract method to set the translated formula
  * for an element</p>
  * 
- * @author htson - Initial API and implementation.
+ * @author htson - v1.0 - Initial API and implementation.
  * @since 2.0
- * @version 0.1
+ * @version 1.0
  */
 @SuppressWarnings("all")
 public abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
   /**
-   * Call back method to set the translated formula for the element.
+   * Call back method to set the translated formulae for the element.
    * 
    * @param element
    * 			the EObject for containing the attribute
@@ -70,19 +70,20 @@ public abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
    */
   protected void translateFormulae(final Issue issue, final IssueResolutionAcceptor acceptor, final String formulaeType) {
     final String[] data = issue.getData();
-    final String predicate = data[0];
+    final String formulae = data[0];
     final String translated = data[1];
     acceptor.accept(issue, 
       ((("Translated " + formulaeType) + " to ") + translated), 
-      ((("Change from " + predicate) + " to ") + translated), 
+      ((("Change from " + formulae) + " to ") + translated), 
       null, 
       new ISemanticModification() {
         @Override
         public void apply(final EObject element, final IModificationContext context) throws Exception {
           if ((element instanceof EObject)) {
             UntranslatedFormulaeQuickFix.this.setFormulae(element, translated);
+          } else {
+            UntranslatedFormulaeQuickFix.this.exception(element, formulaeType);
           }
-          UntranslatedFormulaeQuickFix.this.exception(element, formulaeType);
         }
       });
   }

@@ -16,7 +16,6 @@ package ac.soton.xeventb.common;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.Type;
 import ac.soton.eventb.emf.core.extension.coreextension.Value;
-import ac.soton.xeventb.common.IValidationIssueCode;
 import com.google.common.base.Objects;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;

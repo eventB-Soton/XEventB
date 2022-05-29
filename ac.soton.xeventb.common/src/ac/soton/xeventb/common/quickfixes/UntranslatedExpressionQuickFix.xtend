@@ -22,12 +22,11 @@ import ac.soton.xeventb.internal.common.UntranslatedFormulaeQuickFix
 /**
  * An implementation for quick fixes to translate untranslated expressions.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - v1.0 - Initial API and implementation.
  */
-class UntranslatedExpressionQuickFix
-	extends UntranslatedFormulaeQuickFix<EventBExpression> {
+class UntranslatedExpressionQuickFix extends UntranslatedFormulaeQuickFix<EventBExpression> {
 
 	// The type of the formulae
 	static String FORMULA_TYPE = "expression"
@@ -46,8 +45,9 @@ class UntranslatedExpressionQuickFix
 	override setFormulae(EObject element, String translatedFormula) {
 		if (element instanceof EventBExpression) {
 			element.expression = translatedFormula
+		} else {
+			exception(element, FORMULA_TYPE)
 		}
-		exception(element, FORMULA_TYPE)
 	}
 
 	/**

@@ -22,9 +22,9 @@ import org.eventb.emf.core.EventBExpression;
 /**
  * An implementation for quick fixes to translate untranslated expressions.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - v1.0 - Initial API and implementation.
  */
 @SuppressWarnings("all")
 public class UntranslatedExpressionQuickFix extends UntranslatedFormulaeQuickFix<EventBExpression> {
@@ -45,8 +45,9 @@ public class UntranslatedExpressionQuickFix extends UntranslatedFormulaeQuickFix
   public void setFormulae(final EObject element, final String translatedFormula) {
     if ((element instanceof EventBExpression)) {
       ((EventBExpression)element).setExpression(translatedFormula);
+    } else {
+      this.exception(element, UntranslatedExpressionQuickFix.FORMULA_TYPE);
     }
-    this.exception(element, UntranslatedExpressionQuickFix.FORMULA_TYPE);
   }
   
   /**

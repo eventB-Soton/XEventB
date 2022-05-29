@@ -22,9 +22,9 @@ import org.eventb.emf.core.EventBAction;
 /**
  * An implementation for quick fixes to translate untranslated assignments.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - v1.0 - Initial API and implementation.
  */
 @SuppressWarnings("all")
 public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventBAction> {
@@ -45,8 +45,9 @@ public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix
   public void setFormulae(final EObject element, final String translatedFormulae) {
     if ((element instanceof EventBAction)) {
       ((EventBAction)element).setAction(translatedFormulae);
+    } else {
+      this.exception(element, UntranslatedAssignmentQuickFix.FORMULAE_TYPE);
     }
-    this.exception(element, UntranslatedAssignmentQuickFix.FORMULAE_TYPE);
   }
   
   /**

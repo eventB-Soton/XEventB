@@ -22,9 +22,9 @@ import org.eclipse.xtext.validation.Issue;
 /**
  * An implementation for quick fixes to translate untranslated types.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - Initial API and implementation.
  */
 @SuppressWarnings("all")
 public class UntranslatedTypeQuickFix extends UntranslatedFormulaeQuickFix<Type> {
@@ -45,8 +45,9 @@ public class UntranslatedTypeQuickFix extends UntranslatedFormulaeQuickFix<Type>
   public void setFormulae(final EObject element, final String translatedFormula) {
     if ((element instanceof Type)) {
       ((Type)element).setType(translatedFormula);
+    } else {
+      this.exception(element, UntranslatedTypeQuickFix.FORMULA_TYPE);
     }
-    this.exception(element, UntranslatedTypeQuickFix.FORMULA_TYPE);
   }
   
   /**

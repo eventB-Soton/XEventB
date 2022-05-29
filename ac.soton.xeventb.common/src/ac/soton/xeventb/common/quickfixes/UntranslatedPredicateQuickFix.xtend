@@ -22,9 +22,9 @@ import ac.soton.xeventb.internal.common.UntranslatedFormulaeQuickFix
 /**
  * An implementation for quick fixes to translate untranslated predicates.
  * 
- * @author htson - Initial API and implementation.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson - Initial API and implementation.
  */
 class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBPredicate> {
 
@@ -45,8 +45,9 @@ class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBP
 	override setFormulae(EObject element, String translatedFormula) {
 		if (element instanceof EventBPredicate) {
 			element.predicate = translatedFormula
+		} else {
+			exception(element, FORMULA_TYPE)
 		}
-		exception(element, FORMULA_TYPE)
 	}
 
 	/**
