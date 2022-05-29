@@ -26,14 +26,14 @@ import org.eclipse.xtext.validation.Issue
  * <p>Clients must implement the abstract method to set the translated formula
  * for an element</p>
  * 
- * @author htson - Initial API and implementation.
+ * @author htson - v1.0 - Initial API and implementation.
  * @since 2.0
- * @version 0.1
+ * @version 1.0
  */
 abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
 
 	/**
-	 * Call back method to set the translated formula for the element.
+	 * Call back method to set the translated formulae for the element.
 	 * 
 	 * @param element
 	 * 			the EObject for containing the attribute
@@ -75,12 +75,12 @@ abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
 		String formulaeType
 	) {
 		val String[] data = issue.data
-		val predicate = data.get(0)
+		val formulae = data.get(0)
 		val translated = data.get(1)
 		acceptor.accept(
 			issue,
 			"Translated " + formulaeType + " to " + translated,
-			"Change from " + predicate + " to " + translated,
+			"Change from " + formulae + " to " + translated,
 			null,
 			new ISemanticModification() {
 				override apply(
@@ -89,8 +89,9 @@ abstract class UntranslatedFormulaeQuickFix<T extends EObject> {
 				) throws Exception {
 					if (element instanceof EObject) {
 						setFormulae(element, translated)
+					} else {
+						exception(element, formulaeType)
 					}
-					exception(element, formulaeType)
 				}
 			}
 		)
