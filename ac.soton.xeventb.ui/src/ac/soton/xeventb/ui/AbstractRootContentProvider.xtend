@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2018 University of Southampton.
+ * Copyright (c) 2018, 2022 University of Southampton.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -25,9 +25,9 @@ import org.rodinp.core.IInternalElement
  * implementation provide the corresponding root element as a single
  * child of a XEvent-B navigator object. 
  * 
- * @author htson
- * @version 1.0
- * @since 0.1 
+ * @since 0.1
+ * @version 1.1
+ * @author htson - Initial API and implementation
  */
 abstract class AbstractRootContentProvider implements ITreeContentProvider {
 	
@@ -41,6 +41,7 @@ abstract class AbstractRootContentProvider implements ITreeContentProvider {
 	 *          The name of the root element.
 	 * @return the root element corresponding to the input project and
 	 *          name.
+	 * @since 2.0
 	 */
 	def abstract IInternalElement getRoot(IEventBProject project, String name) 
 	

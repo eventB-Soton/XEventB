@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.internal.ui.handlers;
 
-import ac.soton.xeventb.internal.ui.handlers.NullProgressSaveCommand;
 import ch.ethz.eventb.utils.EventBUtils;
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -39,9 +38,9 @@ import org.rodinp.core.RodinDBException;
 /**
  * An implementation of a handler for XText Convert (from Event-B model).
  * 
- * @author htson
- * @version 0.1
  * @since 0.0.2
+ * @version 0.1
+ * @author htson - Initial API and implementation
  */
 @SuppressWarnings("all")
 public class XTextConvertHandler extends AbstractHandler implements IHandler {

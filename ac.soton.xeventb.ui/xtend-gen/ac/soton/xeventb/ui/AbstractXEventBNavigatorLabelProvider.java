@@ -13,8 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBNavigatorObject;
-import ac.soton.xeventb.ui.XEventBUIPlugin;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.jface.viewers.ILabelProvider;
 import org.eclipse.jface.viewers.ILabelProviderListener;

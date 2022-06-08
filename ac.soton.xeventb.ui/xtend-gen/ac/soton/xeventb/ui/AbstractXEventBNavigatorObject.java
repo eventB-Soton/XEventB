@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import org.eclipse.core.resources.IFile;
 
 /**

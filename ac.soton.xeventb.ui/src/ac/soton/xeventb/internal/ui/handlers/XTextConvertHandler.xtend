@@ -36,11 +36,12 @@ import org.rodinp.core.RodinDBException
 /** 
  * An implementation of a handler for XText Convert (from Event-B model).
  * 
- * @author htson
- * @version 0.1
  * @since 0.0.2
+ * @version 0.1
+ * @author htson - Initial API and implementation
  */
 class XTextConvertHandler extends AbstractHandler implements IHandler {
+
 	/*
 	 * (non-Javadoc)
 	 * 

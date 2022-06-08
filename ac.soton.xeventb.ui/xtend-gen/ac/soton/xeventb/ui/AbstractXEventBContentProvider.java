@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
