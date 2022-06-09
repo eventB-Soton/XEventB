@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.xmachine.ui;
 
-import ac.soton.xeventb.xmachine.ui.AbstractXMachineUiModule;
 import ac.soton.xeventb.xmachine.ui.hover.XMachineEObjectDocumentationProvider;
 import ac.soton.xeventb.xmachine.ui.hover.XMachineHoverProvider;
 import com.google.inject.Binder;

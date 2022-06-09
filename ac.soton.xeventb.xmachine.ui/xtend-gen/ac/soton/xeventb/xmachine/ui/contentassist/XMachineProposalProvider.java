@@ -14,7 +14,6 @@
 package ac.soton.xeventb.xmachine.ui.contentassist;
 
 import ac.soton.xeventb.common.RodinSymbolsProposalProvider;
-import ac.soton.xeventb.xmachine.ui.contentassist.AbstractXMachineProposalProvider;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
