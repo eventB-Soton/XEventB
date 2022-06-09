@@ -18,7 +18,6 @@ import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
 import ac.soton.xeventb.common.UntranslatedFormulaeValidator;
-import ac.soton.xeventb.xmachine.validation.AbstractXMachineValidator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Map;

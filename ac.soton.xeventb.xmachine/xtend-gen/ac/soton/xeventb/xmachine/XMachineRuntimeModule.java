@@ -17,7 +17,6 @@ import ac.soton.xeventb.common.EventBContainerManager;
 import ac.soton.xeventb.common.EventBQualifiedNameProvider;
 import ac.soton.xeventb.common.EventBValueConverter;
 import ac.soton.xeventb.common.XMachineTransientValueService;
-import ac.soton.xeventb.xmachine.AbstractXMachineRuntimeModule;
 import ac.soton.xeventb.xmachine.scoping.XMachineScopeProvider;
 import com.google.inject.Binder;
 import org.eclipse.xtext.conversion.IValueConverterService;

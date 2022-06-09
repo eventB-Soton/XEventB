@@ -19,8 +19,6 @@ import ac.soton.eventb.emf.core.extension.coreextension.TypedVariable;
 import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
-import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
-import ac.soton.xeventb.xmachine.generator.UnitBTranslator;
 import com.google.common.base.Objects;
 import java.util.Collection;
 import org.eclipse.core.commands.ExecutionException;
@@ -75,7 +73,7 @@ import org.rodinp.core.RodinCore;
  * @author htson (2.0) - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
  * @author htson (2.1) - Serialisation for typed variables
  * @version 2.0
- * @since 2.2
+ * @since 2.1
  */
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {
@@ -114,10 +112,6 @@ public class XMachineGenerator extends AbstractGenerator {
       if (_canExecute) {
         editingDomain.getCommandStack().execute(command);
       }
-      EList<AbstractExtension> _extensions = mch.getExtensions();
-      for (final AbstractExtension ext : _extensions) {
-        UnitBTranslator.translate(editingDomain, mch, ext);
-      }
       boolean _isEmpty = mch.getExtensions().isEmpty();
       boolean _not = (!_isEmpty);
       if (_not) {
@@ -129,7 +123,7 @@ public class XMachineGenerator extends AbstractGenerator {
           final NullProgressMonitor monitor = new NullProgressMonitor();
           factory.translate(editingDomain, mch, commandId, monitor);
         }
-        String recordCommandId = "ac.soton.eventb.records.commands.record";
+        String recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords";
         boolean _canTranslate_1 = factory.canTranslate(recordCommandId, mch.eClass());
         if (_canTranslate_1) {
           final NullProgressMonitor monitor_1 = new NullProgressMonitor();
@@ -166,8 +160,8 @@ public class XMachineGenerator extends AbstractGenerator {
       }
       monitor_2.done();
       final ContainmentRegistry registry = ContainmentRegistry.getDefault();
-      EList<AbstractExtension> _extensions_1 = mch.getExtensions();
-      for (final AbstractExtension ex : _extensions_1) {
+      EList<AbstractExtension> _extensions = mch.getExtensions();
+      for (final AbstractExtension ex : _extensions) {
         if ((ex instanceof Containment)) {
           final Containment ctmt = ((Containment) ex);
           final DiagramOwner owner = ctmt.getExtension();
