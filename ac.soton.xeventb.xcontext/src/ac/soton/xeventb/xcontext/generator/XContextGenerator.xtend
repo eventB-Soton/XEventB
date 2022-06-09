@@ -104,7 +104,7 @@ class XContextGenerator extends AbstractGenerator {
 		val factory = TranslatorFactory.getFactory() as TranslatorFactory
 
 		// records
-		var recordCommandId = "ac.soton.eventb.records.commands.record"
+		var recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords"
 
 		if (factory.canTranslate(recordCommandId, ctx.eClass())) {
 			val monitor = new NullProgressMonitor

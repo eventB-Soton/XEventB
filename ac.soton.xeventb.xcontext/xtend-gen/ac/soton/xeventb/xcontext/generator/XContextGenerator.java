@@ -106,7 +106,7 @@ public class XContextGenerator extends AbstractGenerator {
       }
       TranslatorFactory _factory = TranslatorFactory.getFactory();
       final TranslatorFactory factory = ((TranslatorFactory) _factory);
-      String recordCommandId = "ac.soton.eventb.records.commands.record";
+      String recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords";
       boolean _canTranslate = factory.canTranslate(recordCommandId, ctx.eClass());
       if (_canTranslate) {
         final NullProgressMonitor monitor = new NullProgressMonitor();
