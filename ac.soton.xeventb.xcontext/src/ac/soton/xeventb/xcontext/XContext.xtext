@@ -16,7 +16,7 @@ grammar ac.soton.xeventb.xcontext.XContext with org.eclipse.xtext.common.Termina
 //import "http://emf.eventb.org/models/core/context/2014" as econtext
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://soton.ac.uk/models/eventb/record/2019" as erecords
+import "http://soton.ac.uk/models/eventb/record/2022" as erecords
 import "http://soton.ac.uk/models/eventb/coreextension/2014" as eventbcoreex
 
 XContext returns econtext::Context:
@@ -27,16 +27,15 @@ XContext returns econtext::Context:
 	(
 		('sets' orderedChildren+=XCarrierSet+) |
 		('constants' orderedChildren+=XConstant+) |
-		('constant' orderedChildren+=XTypedConstant) |
+		(('constant' | 'cst') orderedChildren+=XTypedConstant) |
 		(orderedChildren += XRecord) |
 		/*
-		 * At the moment, supporting both collection of axioms and individual
-		 * axiom/theorems cause problem with either ambiguity for the grammar or 
-		 * quick fixes. In particular, theorem needs to be declared to be a 
-		 * separate element rather than attributes. 
+		 * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
+		 * instead, keyword "theorem" will signify an individual theorem.
 		 */
-//		('axioms' orderedChildren+=XAxiom+) |
-		(orderedChildren+=XSingleAxiom)
+		('axioms' orderedChildren+=XAxiom+) |
+//		('theorems' orderedChildren += XTheorem+) |
+		(orderedChildren+=XIndividualAxiom)
 	)*
 	'end'
 ;
@@ -44,7 +43,6 @@ XContext returns econtext::Context:
 QualifiedName:
    ID ('.' ID)*
  ; 
-
 
 XCarrierSet returns econtext::CarrierSet:
 	{econtext::CarrierSet}
@@ -65,11 +63,23 @@ XTypedConstant returns eventbcoreex::TypedConstant:
 	name=ID (':' type=XType)? ('=' value=XFormula)?
 ;
 
-XSingleAxiom returns econtext::Axiom:
+XIndividualAxiom returns econtext::Axiom:
 	{econtext::Axiom}
 	(comment = STRING)?	
-	(theorem?='theorem' | 'axiom') name=XLABEL predicate=XFormula
+	(theorem?=('theorem' | 'thm') | ('axiom' | 'axm')) name=XLABEL predicate=XFormula
 ;
+
+XAxiom returns econtext::Axiom:
+	{econtext::Axiom}
+	(comment = STRING)?	
+	name=XLABEL predicate=XFormula
+;
+//
+//XTheorem returns econtext::Axiom:
+//	{econtext::Axiom}
+//	(comment = STRING)?	
+//	theorem?='thm' name=XLABEL predicate=XFormula
+//;
 
 terminal XLABEL returns ecore::EString:
 	'@' !(':')+ ':'
@@ -233,10 +243,14 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
  
 XRecord returns erecords::Record:
 	{erecords::Record}
+	(extended ?= 'extended')?
 	'record' name = ID
-		('inherits' subsets=[erecords::Record|ID])?
-		(fields+=Field (fields+=Field)*)?
+	('inherits' inheritsNames +=ID)?
+	('field' fields += Field | 'constraint' constraints += XConstraint)*
+	'end'
 ;
+
+
 
 FieldType returns ecore::EString:
 	(
@@ -246,10 +260,18 @@ FieldType returns ecore::EString:
 ;
 
 Field returns erecords::Field:
-	    name = ID (':')
-	    (multiplicity=Multiplicity)?
-		(type= FieldType)	
+	{erecords::Field}
+	(comment = STRING)?	
+	name = ID (':')
+	(multiplicity=Multiplicity)?
+	(type= FieldType)	
 ;
 
 enum Multiplicity returns erecords::Multiplicity:
 				ONE = 'one' | MANY = 'many' | OPTIONAL = 'opt';
+
+XConstraint returns erecords::Constraint:
+	{erecords::Constraint}
+	(comment = STRING)?	
+	name=XLABEL predicate=XFormula
+;
