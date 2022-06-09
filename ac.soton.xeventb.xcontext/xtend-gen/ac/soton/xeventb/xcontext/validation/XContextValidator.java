@@ -16,7 +16,6 @@ package ac.soton.xeventb.xcontext.validation;
 import ac.soton.eventb.emf.core.extension.coreextension.Type;
 import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.xeventb.common.UntranslatedFormulaeValidator;
-import ac.soton.xeventb.xcontext.validation.AbstractXContextValidator;
 import com.google.common.base.Objects;
 import java.util.Map;
 import org.eclipse.core.resources.IFile;
