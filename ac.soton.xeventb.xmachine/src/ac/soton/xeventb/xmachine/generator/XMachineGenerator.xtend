@@ -61,7 +61,7 @@ import org.rodinp.core.RodinCore
  * @author htson (2.0) - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
  * @author htson (2.1) - Serialisation for typed variables
  * @version 2.0
- * @since 2.2
+ * @since 2.1
  */
 class XMachineGenerator extends AbstractGenerator {
 
@@ -111,13 +111,6 @@ class XMachineGenerator extends AbstractGenerator {
 			editingDomain.getCommandStack().execute(command);
 		}
 		
-		// Translate Unit-B
-		for (ext : mch.extensions) {
-			UnitBTranslator.translate(editingDomain, mch, ext)
-		}
-
-
-		
 		if (!mch.extensions.empty) {
 			val factory = TranslatorFactory.getFactory() as TranslatorFactory
 
@@ -130,7 +123,7 @@ class XMachineGenerator extends AbstractGenerator {
 			}
 			
 			// @Asieh: record (2.0)
-			var recordCommandId = "ac.soton.eventb.records.commands.record"
+			var recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords"
 			
 			if (factory.canTranslate(recordCommandId, mch.eClass())) {
 				val monitor = new NullProgressMonitor;
