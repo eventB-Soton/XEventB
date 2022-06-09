@@ -15,62 +15,30 @@
 package ac.soton.xeventb.xmachine.ui.quickfix
 
 import ac.soton.xeventb.common.IValidationIssueCode
+import ac.soton.xeventb.common.quickfixes.QuickFixFactory
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
-import ac.soton.xeventb.common.quickfixes.UntranslatedAssignmentQuickFix
-import ac.soton.xeventb.common.quickfixes.UntranslatedExpressionQuickFix
-import ac.soton.xeventb.common.quickfixes.UntranslatedPredicateQuickFix
-import ac.soton.xeventb.common.quickfixes.UntranslatedTypeQuickFix
-import ac.soton.xeventb.common.quickfixes.UntranslatedValueQuickFix
 
 /**
  * <p>
  * Custom quick fixes for XMachine.  
  * </p>
  * 
- * @author htson (v0.1) - Initial API and implementation.
- * @author htson (v0.2) - Refactor common quick fixes with XContext
- * @version 0.2
  * @since 2.0
+ * @version 1.0
+ * @author htson (v1.1) - Initial API and implementation.
+ * @author htson (v0.2) - Refactor common quick fixes with XContext
+ * @author htson (v1.0) - Updated to use the new QuickFixFactory
  */
 class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 
 	/**
-	 * Extension instance of {@link UntranslatedAssignmentQuickFix} to use for 
-	 * assignment quick fixes. 
+	 * Extension instance of {@link QuickFixFactory} to use for getting various
+	 * quick fixes. 
 	 */
-	extension UntranslatedAssignmentQuickFix assignmentQuickFix =
-			new UntranslatedAssignmentQuickFix()
-
-	/**
-	 * Extension instance of {@link UntranslatedExpressionQuickFix} to use for 
-	 * expression quick fixes. 
-	 */
-	extension UntranslatedExpressionQuickFix expressionQuickFix =
-			new UntranslatedExpressionQuickFix()
-
-	/**
-	 * Extension instance of {@link UntranslatedPredicateQuickFix} to use for 
-	 * predicate quick fixes. 
-	 */
-	extension UntranslatedPredicateQuickFix predicateQuickFix =
-			new UntranslatedPredicateQuickFix()
-
-	/**
-	 * Extension instance of {@link UntranslatedTypeQuickFix} to use for 
-	 * type quick fixes. 
-	 */
-	extension UntranslatedTypeQuickFix typeQuickFix =
-			new UntranslatedTypeQuickFix()
-
-	/**
-	 * Extension instance of {@link UntranslatedValueQuickFix} to use for 
-	 * value quick fixes. 
-	 */
-	extension UntranslatedValueQuickFix valueQuickFix =
-			new UntranslatedValueQuickFix()
+	extension QuickFixFactory quickFixFactory = QuickFixFactory.^default
 
 	/**
 	 * Quick fix for untranslated assignments. Offer to replace the assignment
@@ -80,11 +48,11 @@ class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 	 * 			the validation issue for the assignment element.
 	 * @param acceptor
 	 * 			the issue resolution acceptor
-	 * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
+	 * @see QuickFixFactory#getUntranslatedAssignmentQuickFix()
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_ASSIGNMENT)
 	def fixUntranslatedAssignment(Issue issue, IssueResolutionAcceptor acceptor) {
-		translateAssignment(issue, acceptor)
+		untranslatedAssignmentQuickFix.fix(issue, acceptor)
 	}
 
 	/**
@@ -95,11 +63,11 @@ class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 	 * 			the validation issue for the expression element.
 	 * @param acceptor
 	 * 			the issue resolution acceptor
-	 * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
+	 * @see QuickFixFactory#getUntranslatedExpressionQuickFix()
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_EXPRESSION)
 	def fixUntranslatedExpression(Issue issue, IssueResolutionAcceptor acceptor) {
-		translateExpression(issue, acceptor)
+		untranslatedExpressionQuickFix.fix(issue, acceptor)
 	}
 
 	/**
@@ -110,11 +78,11 @@ class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 	 * 			the validation issue for the predicate element.
 	 * @param acceptor
 	 * 			the issue resolution acceptor
-	 * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
+	 * @see QuickFixFactory#getUntranslatedPredicateQuickFix()
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
 	def fixUntranslatedPredicate(Issue issue, IssueResolutionAcceptor acceptor) {
-		translatePredicate(issue, acceptor)
+		untranslatedPredicateQuickFix.fix(issue, acceptor)
 	}
 
 	/**
@@ -125,12 +93,12 @@ class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 	 * 			the validation issue for the type element.
 	 * @param acceptor
 	 * 			the issue resolution acceptor
-	 * @see UntranslatedTypeQuickFix#translateType(Issue, IssueResolutionAcceptor)
+	 * @see QuickFixFactory#getUntranslateTypeQuickFix()
 	 * @since 3.0
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
 	def fixUntranslatedType(Issue issue, IssueResolutionAcceptor acceptor) {
-		translateType(issue, acceptor)
+		untranslatedTypeQuickFix.fix(issue, acceptor)
 	}
 
 	/**
@@ -141,12 +109,12 @@ class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 	 * 			the validation issue for the value element.
 	 * @param acceptor
 	 * 			the issue resolution acceptor
-	 * @see UntranslatedValueQuickFix#translateValue(Issue, IssueResolutionAcceptor)
+	 * @see QuickFixFactory#getUntranslatedValueQuickFix()
 	 * @since 3.0
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
 	def fixedUntranslatedValue(Issue issue, IssueResolutionAcceptor acceptor) {
-		translateValue(issue, acceptor)
+		untranslatedValueQuickFix.fix(issue, acceptor)
 	}
 
 }
