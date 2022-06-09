@@ -2,13 +2,13 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.1.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.xbase;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="[3.5.0,4.0.0)",
- org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
+ org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
  ac.soton.eventb.emf.inclusion;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.xtext.generator;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.util;bundle-version="[2.13.0,3.0.0)",
