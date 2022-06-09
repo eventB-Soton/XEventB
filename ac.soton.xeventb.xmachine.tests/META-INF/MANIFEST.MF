@@ -5,11 +5,11 @@ Bundle-Vendor: %Bundle-Vendor
 Bundle-Version: 2.1.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xmachine.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[2.2.0,3.0.0)",
+Require-Bundle: ac.soton.xeventb.xmachine;bundle-version="[2.1.0,3.0.0)",
  org.junit;bundle-version="[4.12.0,5.0.0)",
  org.eclipse.xtext.testing;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.xbase.testing;bundle-version="[2.13.0,3.0.0)",
- org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
+ org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
  ac.soton.xeventb.tests.common;bundle-version="[0.1.0,1.0.0)",
  org.eclipse.xtext.xbase.lib;bundle-version="2.14.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
