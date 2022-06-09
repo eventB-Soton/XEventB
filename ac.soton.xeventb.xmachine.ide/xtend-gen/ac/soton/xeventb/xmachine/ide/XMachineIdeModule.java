@@ -3,8 +3,6 @@
  */
 package ac.soton.xeventb.xmachine.ide;
 
-import ac.soton.xeventb.xmachine.ide.AbstractXMachineIdeModule;
-
 /**
  * Use this class to register ide components.
  */
