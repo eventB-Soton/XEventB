@@ -14,9 +14,7 @@
 package ac.soton.xeventb.xcontext.ui.quickfix;
 
 import ac.soton.xeventb.common.IValidationIssueCode;
-import ac.soton.xeventb.common.quickfixes.UntranslatedPredicateQuickFix;
-import ac.soton.xeventb.common.quickfixes.UntranslatedTypeQuickFix;
-import ac.soton.xeventb.common.quickfixes.UntranslatedValueQuickFix;
+import ac.soton.xeventb.common.quickfixes.QuickFixFactory;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
@@ -36,25 +34,11 @@ import org.eclipse.xtext.xbase.lib.Extension;
 @SuppressWarnings("all")
 public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   /**
-   * Extension instance of {@link UntranslatedPredicateQuickFix} to use for
-   * predicate quick fixes.
+   * Extension instance of {@link QuickFixFactory} to use for getting various
+   * quick fixes.
    */
   @Extension
-  private UntranslatedPredicateQuickFix predicateQuickFix = new UntranslatedPredicateQuickFix();
-  
-  /**
-   * Extension instance of {@link UntranslatedTypeQuickFix} to use for
-   * type quick fixes.
-   */
-  @Extension
-  private UntranslatedTypeQuickFix typeQuickFix = new UntranslatedTypeQuickFix();
-  
-  /**
-   * Extension instance of {@link UntranslatedValueQuickFix} to use for
-   * value quick fixes.
-   */
-  @Extension
-  private UntranslatedValueQuickFix valueQuickFix = new UntranslatedValueQuickFix();
+  private QuickFixFactory quickFixFactory = QuickFixFactory.getDefault();
   
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
@@ -64,11 +48,11 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
    * 			the validation issue for the predicate element.
    * @param acceptor
    * 			the issue resolution acceptor
-   * @see UntranslatedPredicateQuickFix#translatePredicate(Issue, IssueResolutionAcceptor)
+   * @see QuickFixFactory#getUntranslatedPredicateQuickFix()
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
   public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.predicateQuickFix.translatePredicate(issue, acceptor);
+    this.quickFixFactory.getUntranslatedPredicateQuickFix().fix(issue, acceptor);
   }
   
   /**
@@ -79,12 +63,12 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
    * 			the validation issue for the type element.
    * @param acceptor
    * 			the issue resolution acceptor
-   * @see UntranslatedTypeQuickFix#translateType(Issue, IssueResolutionAcceptor)
+   * @see QuickFixFactory#getUntranslatedTypeQuickFix()
    * @since 3.0
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
   public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.typeQuickFix.translateType(issue, acceptor);
+    this.quickFixFactory.getUntranslatedTypeQuickFix().fix(issue, acceptor);
   }
   
   /**
@@ -95,11 +79,11 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
    * 			the validation issue for the value element.
    * @param acceptor
    * 			the issue resolution acceptor
-   * @see UntranslatedValueQuickFix#translateValue(Issue, IssueResolutionAcceptor)
+   * @see QuickFixFactory#getUntranslatedValueQuickFix()
    * @since 3.0
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
   public void fixedUntranslatedValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    this.valueQuickFix.translateValue(issue, acceptor);
+    this.quickFixFactory.getUntranslatedValueQuickFix().fix(issue, acceptor);
   }
 }

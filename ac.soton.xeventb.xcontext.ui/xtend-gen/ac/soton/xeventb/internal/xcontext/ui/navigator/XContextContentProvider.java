@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.internal.xcontext.ui.navigator;
 
-import ac.soton.xeventb.internal.xcontext.ui.navigator.XContextNavigatorObject;
 import ac.soton.xeventb.ui.AbstractXEventBContentProvider;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import org.eclipse.core.resources.IFile;
