@@ -5,7 +5,6 @@ package ac.soton.xeventb.xmachine.tests;
 
 import ac.soton.xeventb.tests.common.AssertExtensions;
 import ac.soton.xeventb.tests.common.AssertMachineExtensions;
-import ac.soton.xeventb.xmachine.tests.XMachineInjectorProvider;
 import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
