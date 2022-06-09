@@ -5,7 +5,7 @@ Bundle-Vendor: %Bundle-Vendor
 Bundle-Version: 3.0.0.qualifier
 Bundle-SymbolicName: ac.soton.xeventb.xcontext;singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
+Require-Bundle: org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.xtext;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.equinox.common;bundle-version="[3.5.0,4.0.0)",
@@ -26,9 +26,9 @@ Require-Bundle: org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
  org.eclipse.emf.workspace;bundle-version="[1.5.1,2.0.0)",
  ac.soton.emf.translator;bundle-version="[3.0.0,4.0.0)",
  ac.soton.eventb.emf.record.generator;bundle-version="[0.1.0,1.0.0)",
- ac.soton.eventb.emf.record;bundle-version="[0.1.0,1.0.0)",
- ac.soton.eventb.emf.core.extension;bundle-version="[5.0.0,6.0.0)",
- ac.soton.eventb.emf.record.edit;bundle-version="[0.1.1,1.0.0)"
+ ac.soton.eventb.emf.record;bundle-version="[1.0.0,2.0.0)",
+ ac.soton.eventb.emf.core.extension;bundle-version="[6.0.0,7.0.0)",
+ ac.soton.eventb.emf.record.edit;bundle-version="[1.0.0,2.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xcontext,
  ac.soton.xeventb.xcontext.generator,
