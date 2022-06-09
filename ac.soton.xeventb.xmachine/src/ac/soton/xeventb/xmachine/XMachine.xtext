@@ -13,9 +13,9 @@
  *******************************************************************************/
 grammar ac.soton.xeventb.xmachine.XMachine with org.eclipse.xtext.common.Terminals hidden (WS,ML_COMMENT,SL_COMMENT)
 
-//import "http://emf.eventb.org/models/core/2014" as eventbcore
-//import "http://emf.eventb.org/models/core/machine/2014" as emachine
-//import "http://emf.eventb.org/models/core/context/2014" as econtext
+//import "http://emf.eventb.org/models/core/2022" as eventbcore
+//import "http://emf.eventb.org/models/core/machine/2022" as emachine
+//import "http://emf.eventb.org/models/core/context/2022" as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://soton.ac.uk/models/eventb/inclusion/2017" as einclusion 
 import "http://soton.ac.uk/models/eventb/containment/2017" as econtainment
@@ -24,7 +24,7 @@ import "http://soton.ac.uk/models/eventb/diagrams/2020" as ediagrams
 import "http://soton.ac.uk/models/eventb/coreextension/2014" as eventbcoreex
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//machine"as emachine
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
-import "http://soton.ac.uk/models/eventb/record/2019" as erecords
+import "http://soton.ac.uk/models/eventb/record/2022" as erecords
 //import "platform:/resource/ac.soton.eventb.records/model/records.ecore" as erecords
 
 /*
@@ -48,7 +48,7 @@ Machine returns emachine::Machine:
     	(orderedChildren += XIndividualVariable) |
     	('invariants' orderedChildren += XGroupInvariant+) |
     	(orderedChildren += XIndividualInvariant) |
-    	(orderedChildren += Record) |
+    	(orderedChildren += XRecord) |
 		(orderedChildren += XVariant) |
 		(orderedChildren += XEvent)
 	)*
@@ -311,11 +311,13 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
  * support for records
  */
  
- Record returns erecords::Record:
+ XRecord returns erecords::Record:
 	{erecords::Record}
+	(extended ?= 'extended' | refined ?= 'refined')?
 	'record' name = ID
-		('inherits' subsets=[erecords::Record|ID])
-		(fields+=Field (fields+=Field)*)?
+	('inherits' inheritsNames +=ID)?
+	('field' fields += Field | 'constraint' constraints += XConstraint)*
+	'end'
 ;
 
 FieldType returns ecore::EString:
@@ -326,10 +328,18 @@ FieldType returns ecore::EString:
 ;
 
 Field returns erecords::Field:
-	    name = ID (':')
-	    (multiplicity=Multiplicity)?
-		(type=FieldType)	
+	{erecords::Field}
+	(comment = STRING)?	
+	name = ID (':')
+	(multiplicity=Multiplicity)?
+	(type= FieldType)	
 ;
 
 enum Multiplicity returns erecords::Multiplicity:
 				ONE = 'one' | MANY = 'many' | OPTIONAL = 'opt';
+
+XConstraint returns erecords::Constraint:
+	{erecords::Constraint}
+	(comment = STRING)?	
+	name=XLABEL predicate=XFormula
+;
