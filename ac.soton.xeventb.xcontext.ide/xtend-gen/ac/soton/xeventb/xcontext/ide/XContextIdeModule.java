@@ -3,8 +3,6 @@
  */
 package ac.soton.xeventb.xcontext.ide;
 
-import ac.soton.xeventb.xcontext.ide.AbstractXContextIdeModule;
-
 /**
  * Use this class to register ide components.
  */
