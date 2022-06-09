@@ -19,14 +19,11 @@ import ac.soton.eventb.emf.diagrams.DiagramOwner
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.InclusionPackage
 import ac.soton.eventb.emf.inclusion.MachineInclusion
-import ac.soton.eventb.emf.record.Record
-import ac.soton.eventb.emf.record.RecordPackage
 import ac.soton.xeventb.common.EventBContainerManager
 import ac.soton.xeventb.common.EventBQualifiedNameProvider
 import ch.ethz.eventb.utils.EventBUtils
 import java.io.IOException
 import java.util.ArrayList
-import java.util.Collection
 import java.util.Collections
 import org.eclipse.core.resources.IFile
 import org.eclipse.core.resources.ResourcesPlugin
@@ -42,9 +39,6 @@ import org.eclipse.xtext.scoping.impl.AbstractDeclarativeScopeProvider
 import org.eventb.core.basis.ContextRoot
 import org.eventb.core.basis.MachineRoot
 import org.eventb.emf.core.EventBElement
-import org.eventb.emf.core.EventBNamedCommentedComponentElement
-import org.eventb.emf.core.EventBObject
-import org.eventb.emf.core.context.Context
 import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
@@ -156,15 +150,15 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 		}
 		
 		// The scope for record extension is the set of all records in the machine/refined machine(s) and sees context(s)
-		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
-			val mch = EcoreUtil2.getRootContainer(context, true) as Machine
-			val components = getComponentsInScope(mch)
-			val records = EcoreUtil2.getAllContentsOfType(mch, Record);
-			records.remove(context);
-			for (c : components) 
-				records.addAll(EcoreUtil2.getAllContentsOfType(c as EObject, Record));
-			return Scopes.scopeFor(records);
-		}
+//		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
+//			val mch = EcoreUtil2.getRootContainer(context, true) as Machine
+//			val components = getComponentsInScope(mch)
+//			val records = EcoreUtil2.getAllContentsOfType(mch, Record);
+//			records.remove(context);
+//			for (c : components) 
+//				records.addAll(EcoreUtil2.getAllContentsOfType(c as EObject, Record));
+//			return Scopes.scopeFor(records);
+//		}
 		
 		// The scope for a context seeing is the set of all contexts in the
 		// current project containing the parent machine. 
@@ -229,24 +223,24 @@ class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
 			return Scopes.scopeFor(mchs, superScope);		
 	}
 	
-	def private Collection<EventBNamedCommentedComponentElement>
-			getComponentsInScope(EventBObject eventBObject) {
-		var list = new ArrayList
-		if (eventBObject instanceof Machine) {
-			var m = eventBObject as Machine;
-			list.add(m);
-			for (Context c : m.getSees()) {
-				list.addAll(getComponentsInScope(c));
-			}
-		} else if (eventBObject instanceof Context) {
-			var c = eventBObject as Context;
-			list.add(c);
-			for (Context x : c.getExtends()) {
-				list.addAll(getComponentsInScope(x));
-			}
-		}
-		return list;
-	}
+//	def private Collection<EventBNamedCommentedComponentElement>
+//			getComponentsInScope(EventBObject eventBObject) {
+//		var list = new ArrayList
+//		if (eventBObject instanceof Machine) {
+//			var m = eventBObject as Machine;
+//			list.add(m);
+//			for (Context c : m.getSees()) {
+//				list.addAll(getComponentsInScope(c));
+//			}
+//		} else if (eventBObject instanceof Context) {
+//			var c = eventBObject as Context;
+//			list.add(c);
+//			for (Context x : c.getExtends()) {
+//				list.addAll(getComponentsInScope(x));
+//			}
+//		}
+//		return list;
+//	}
 	
 	/**
 	 * THESE METHODS WERE COPIED FROM EMFRodinDB
