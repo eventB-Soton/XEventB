@@ -52,6 +52,7 @@ Machine returns emachine::Machine:
 		(orderedChildren += XVariant) |
 		(orderedChildren += XEvent)
 	)*
+	('records' (orderedChildren += XRecord)+)?
 	'end'
 ;
 
@@ -315,7 +316,7 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
 	{erecords::Record}
 	(extended ?= 'extended' | refined ?= 'refined')?
 	'record' name = ID
-	('inherits' inheritsNames +=ID)?
+	('inherits' inheritsNames += ID)?
 	('field' fields += Field | 'constraint' constraints += XConstraint)*
 	'end'
 ;

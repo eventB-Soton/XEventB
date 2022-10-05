@@ -400,9 +400,34 @@ ruleMachine returns [EObject current=null]
 				)
 			)
 		)*
-		otherlv_21='end'
+		(
+			otherlv_21='records'
+			{
+				newLeafNode(otherlv_21, grammarAccess.getMachineAccess().getRecordsKeyword_7_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMachineAccess().getOrderedChildrenXRecordParserRuleCall_7_1_0());
+					}
+					lv_orderedChildren_22_0=ruleXRecord
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMachineRule());
+						}
+						add(
+							$current,
+							"orderedChildren",
+							lv_orderedChildren_22_0,
+							"ac.soton.xeventb.xmachine.XMachine.XRecord");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+		otherlv_23='end'
 		{
-			newLeafNode(otherlv_21, grammarAccess.getMachineAccess().getEndKeyword_7());
+			newLeafNode(otherlv_23, grammarAccess.getMachineAccess().getEndKeyword_8());
 		}
 	)
 ;

@@ -72,7 +72,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cOrderedChildrenXVariantParserRuleCall_6_5_0 = (RuleCall)cOrderedChildrenAssignment_6_5.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_6_6 = (Assignment)cAlternatives_6.eContents().get(6);
 		private final RuleCall cOrderedChildrenXEventParserRuleCall_6_6_0 = (RuleCall)cOrderedChildrenAssignment_6_6.eContents().get(0);
-		private final Keyword cEndKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cRecordsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cOrderedChildrenXRecordParserRuleCall_7_1_0 = (RuleCall)cOrderedChildrenAssignment_7_1.eContents().get(0);
+		private final Keyword cEndKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		////import "platform:/resource/ac.soton.eventb.records/model/records.ecore" as erecords
 		///*
@@ -99,6 +103,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        (orderedChildren += XVariant) |
 		//        (orderedChildren += XEvent)
 		//    )*
+		//    ('records' (orderedChildren += XRecord)+)?
 		//    'end'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -122,6 +127,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    (orderedChildren += XVariant) |
 		//    (orderedChildren += XEvent)
 		//)*
+		//('records' (orderedChildren += XRecord)+)?
 		//'end'
 		public Group getGroup() { return cGroup; }
 		
@@ -264,8 +270,20 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//XEvent
 		public RuleCall getOrderedChildrenXEventParserRuleCall_6_6_0() { return cOrderedChildrenXEventParserRuleCall_6_6_0; }
 		
+		//('records' (orderedChildren += XRecord)+)?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'records'
+		public Keyword getRecordsKeyword_7_0() { return cRecordsKeyword_7_0; }
+		
+		//(orderedChildren += XRecord)+
+		public Assignment getOrderedChildrenAssignment_7_1() { return cOrderedChildrenAssignment_7_1; }
+		
+		//XRecord
+		public RuleCall getOrderedChildrenXRecordParserRuleCall_7_1_0() { return cOrderedChildrenXRecordParserRuleCall_7_1_0; }
+		
 		//'end'
-		public Keyword getEndKeyword_7() { return cEndKeyword_7; }
+		public Keyword getEndKeyword_8() { return cEndKeyword_8; }
 	}
 	public class MContainsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.MContains");
@@ -2041,7 +2059,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    {erecords::Record}
 		//    (extended ?= 'extended' | refined ?= 'refined')?
 		//    'record' name = ID
-		//    ('inherits' inheritsNames +=ID)?
+		//    ('inherits' inheritsNames += ID)?
 		//    ('field' fields += Field | 'constraint' constraints += XConstraint)*
 		//    'end'
 		//;
@@ -2050,7 +2068,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//{erecords::Record}
 		//(extended ?= 'extended' | refined ?= 'refined')?
 		//'record' name = ID
-		//('inherits' inheritsNames +=ID)?
+		//('inherits' inheritsNames += ID)?
 		//('field' fields += Field | 'constraint' constraints += XConstraint)*
 		//'end'
 		public Group getGroup() { return cGroup; }
@@ -2082,13 +2100,13 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
-		//('inherits' inheritsNames +=ID)?
+		//('inherits' inheritsNames += ID)?
 		public Group getGroup_4() { return cGroup_4; }
 		
 		//'inherits'
 		public Keyword getInheritsKeyword_4_0() { return cInheritsKeyword_4_0; }
 		
-		//inheritsNames +=ID
+		//inheritsNames += ID
 		public Assignment getInheritsNamesAssignment_4_1() { return cInheritsNamesAssignment_4_1; }
 		
 		//ID
@@ -2455,6 +2473,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        (orderedChildren += XVariant) |
 	//        (orderedChildren += XEvent)
 	//    )*
+	//    ('records' (orderedChildren += XRecord)+)?
 	//    'end'
 	//;
 	public MachineElements getMachineAccess() {
@@ -2890,7 +2909,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    {erecords::Record}
 	//    (extended ?= 'extended' | refined ?= 'refined')?
 	//    'record' name = ID
-	//    ('inherits' inheritsNames +=ID)?
+	//    ('inherits' inheritsNames += ID)?
 	//    ('field' fields += Field | 'constraint' constraints += XConstraint)*
 	//    'end'
 	//;

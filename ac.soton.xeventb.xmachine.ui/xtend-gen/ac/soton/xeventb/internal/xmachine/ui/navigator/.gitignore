@@ -3,3 +3,8 @@
 /.XMachineContentProvider.xtendbin
 /.XMachineNavigatorLabelProvider.xtendbin
 /.XMachineNavigatorObject.xtendbin
+/MachineRootContentProvider.java
+/XMachineActionProvider.java
+/XMachineContentProvider.java
+/XMachineNavigatorLabelProvider.java
+/XMachineNavigatorObject.java
