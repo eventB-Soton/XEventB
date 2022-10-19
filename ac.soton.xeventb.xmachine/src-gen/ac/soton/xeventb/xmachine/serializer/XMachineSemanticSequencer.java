@@ -196,8 +196,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *                 orderedChildren+=XEvent
 	 *             )? 
 	 *             orderedChildren+=XGroupVariable?
-	 *         )* 
-	 *         orderedChildren+=XRecord*
+	 *         )*
 	 *     )
 	 */
 	protected void sequence_Machine(ISerializationContext context, Machine semanticObject) {

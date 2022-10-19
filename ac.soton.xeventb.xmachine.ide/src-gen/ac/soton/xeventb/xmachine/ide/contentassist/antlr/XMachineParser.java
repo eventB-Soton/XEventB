@@ -53,7 +53,6 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMachineAccess().getGroup_5(), "rule__Machine__Group_5__0");
 			builder.put(grammarAccess.getMachineAccess().getGroup_6_0(), "rule__Machine__Group_6_0__0");
 			builder.put(grammarAccess.getMachineAccess().getGroup_6_2(), "rule__Machine__Group_6_2__0");
-			builder.put(grammarAccess.getMachineAccess().getGroup_7(), "rule__Machine__Group_7__0");
 			builder.put(grammarAccess.getMContainsAccess().getGroup(), "rule__MContains__Group__0");
 			builder.put(grammarAccess.getMIncludesAccess().getGroup(), "rule__MIncludes__Group__0");
 			builder.put(grammarAccess.getMIncludesAccess().getGroup_1(), "rule__MIncludes__Group_1__0");
@@ -107,7 +106,6 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_4(), "rule__Machine__OrderedChildrenAssignment_6_4");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_5(), "rule__Machine__OrderedChildrenAssignment_6_5");
 			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_6_6(), "rule__Machine__OrderedChildrenAssignment_6_6");
-			builder.put(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1(), "rule__Machine__OrderedChildrenAssignment_7_1");
 			builder.put(grammarAccess.getMContainsAccess().getExtensionAssignment_1(), "rule__MContains__ExtensionAssignment_1");
 			builder.put(grammarAccess.getMIncludesAccess().getAbstractMachineAssignment_1_1(), "rule__MIncludes__AbstractMachineAssignment_1_1");
 			builder.put(grammarAccess.getMIncludesAccess().getConcreteMachineAssignment_2_1(), "rule__MIncludes__ConcreteMachineAssignment_2_1");

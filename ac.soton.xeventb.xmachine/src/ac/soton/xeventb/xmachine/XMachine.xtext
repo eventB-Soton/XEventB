@@ -52,7 +52,6 @@ Machine returns emachine::Machine:
 		(orderedChildren += XVariant) |
 		(orderedChildren += XEvent)
 	)*
-	('records' (orderedChildren += XRecord)+)?
 	'end'
 ;
 
