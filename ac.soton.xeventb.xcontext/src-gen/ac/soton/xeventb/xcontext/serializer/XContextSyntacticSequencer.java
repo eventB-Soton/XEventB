@@ -21,20 +21,24 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XContextGrammarAccess grammarAccess;
-	protected AbstractElementAlias match_XContext_AxiomsKeyword_5_4_0_q;
-	protected AbstractElementAlias match_XContext_ConstantKeyword_5_2_0_0_or_CstKeyword_5_2_0_1;
-	protected AbstractElementAlias match_XContext_ConstantsKeyword_5_1_0_q;
-	protected AbstractElementAlias match_XContext_SetsKeyword_5_0_0_q;
-	protected AbstractElementAlias match_XIndividualAxiom_AxiomKeyword_2_1_0_or_AxmKeyword_2_1_1;
+	protected AbstractElementAlias match_XContext_AxiomsKeyword_4_7_0_q;
+	protected AbstractElementAlias match_XContext_ConstantsKeyword_4_4_0_q;
+	protected AbstractElementAlias match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0;
+	protected AbstractElementAlias match_XContext_ExtendsKeyword_4_0_0_q;
+	protected AbstractElementAlias match_XContext_SetsKeyword_4_2_0_q;
+	protected AbstractElementAlias match_XIndividualAxiom_AxiomKeyword_2_0_or_AxmKeyword_2_1;
+	protected AbstractElementAlias match_XIndividualConstant_ConstantKeyword_2_0_or_CstKeyword_2_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XContextGrammarAccess) access;
-		match_XContext_AxiomsKeyword_5_4_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getAxiomsKeyword_5_4_0());
-		match_XContext_ConstantKeyword_5_2_0_0_or_CstKeyword_5_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXContextAccess().getConstantKeyword_5_2_0_0()), new TokenAlias(false, false, grammarAccess.getXContextAccess().getCstKeyword_5_2_0_1()));
-		match_XContext_ConstantsKeyword_5_1_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getConstantsKeyword_5_1_0());
-		match_XContext_SetsKeyword_5_0_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getSetsKeyword_5_0_0());
-		match_XIndividualAxiom_AxiomKeyword_2_1_0_or_AxmKeyword_2_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXIndividualAxiomAccess().getAxiomKeyword_2_1_0()), new TokenAlias(false, false, grammarAccess.getXIndividualAxiomAccess().getAxmKeyword_2_1_1()));
+		match_XContext_AxiomsKeyword_4_7_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getAxiomsKeyword_4_7_0());
+		match_XContext_ConstantsKeyword_4_4_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getConstantsKeyword_4_4_0());
+		match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXContextAccess().getExtKeyword_4_1_0_1()), new TokenAlias(false, false, grammarAccess.getXContextAccess().getExtendKeyword_4_1_0_0()));
+		match_XContext_ExtendsKeyword_4_0_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getExtendsKeyword_4_0_0());
+		match_XContext_SetsKeyword_4_2_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getSetsKeyword_4_2_0());
+		match_XIndividualAxiom_AxiomKeyword_2_0_or_AxmKeyword_2_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXIndividualAxiomAccess().getAxiomKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getXIndividualAxiomAccess().getAxmKeyword_2_1()));
+		match_XIndividualConstant_ConstantKeyword_2_0_or_CstKeyword_2_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXIndividualConstantAccess().getConstantKeyword_2_0()), new TokenAlias(false, false, grammarAccess.getXIndividualConstantAccess().getCstKeyword_2_1()));
 	}
 	
 	@Override
@@ -49,16 +53,20 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_XContext_AxiomsKeyword_5_4_0_q.equals(syntax))
-				emit_XContext_AxiomsKeyword_5_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XContext_ConstantKeyword_5_2_0_0_or_CstKeyword_5_2_0_1.equals(syntax))
-				emit_XContext_ConstantKeyword_5_2_0_0_or_CstKeyword_5_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XContext_ConstantsKeyword_5_1_0_q.equals(syntax))
-				emit_XContext_ConstantsKeyword_5_1_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XContext_SetsKeyword_5_0_0_q.equals(syntax))
-				emit_XContext_SetsKeyword_5_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_XIndividualAxiom_AxiomKeyword_2_1_0_or_AxmKeyword_2_1_1.equals(syntax))
-				emit_XIndividualAxiom_AxiomKeyword_2_1_0_or_AxmKeyword_2_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			if (match_XContext_AxiomsKeyword_4_7_0_q.equals(syntax))
+				emit_XContext_AxiomsKeyword_4_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_ConstantsKeyword_4_4_0_q.equals(syntax))
+				emit_XContext_ConstantsKeyword_4_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0.equals(syntax))
+				emit_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_ExtendsKeyword_4_0_0_q.equals(syntax))
+				emit_XContext_ExtendsKeyword_4_0_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_SetsKeyword_4_2_0_q.equals(syntax))
+				emit_XContext_SetsKeyword_4_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XIndividualAxiom_AxiomKeyword_2_0_or_AxmKeyword_2_1.equals(syntax))
+				emit_XIndividualAxiom_AxiomKeyword_2_0_or_AxmKeyword_2_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XIndividualConstant_ConstantKeyword_2_0_or_CstKeyword_2_1.equals(syntax))
+				emit_XIndividualConstant_ConstantKeyword_2_0_or_CstKeyword_2_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -70,25 +78,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     orderedChildren+=XAxiom (ambiguity) orderedChildren+=XAxiom
 	 */
-	protected void emit_XContext_AxiomsKeyword_5_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'constant' | 'cst'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     extends+=[Context|QualifiedName] (ambiguity) orderedChildren+=XTypedConstant
-	 *     name=ID (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XAxiom (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XCarrierSet (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XConstant (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XIndividualAxiom (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XRecord (ambiguity) orderedChildren+=XTypedConstant
-	 *     orderedChildren+=XTypedConstant (ambiguity) orderedChildren+=XTypedConstant
-	 */
-	protected void emit_XContext_ConstantKeyword_5_2_0_0_or_CstKeyword_5_2_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XContext_AxiomsKeyword_4_7_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -99,7 +89,38 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     orderedChildren+=XConstant (ambiguity) orderedChildren+=XConstant
 	 */
-	protected void emit_XContext_ConstantsKeyword_5_1_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XContext_ConstantsKeyword_4_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'extend' | 'ext'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     extends+=[Context|QualifiedName] (ambiguity) extends+=[Context|QualifiedName]
+	 *     name=ID (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XAxiom (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XCarrierSet (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XConstant (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XIndividualAxiom (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XIndividualCarrierSet (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XIndividualConstant (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XIndividualTheorem (ambiguity) extends+=[Context|QualifiedName]
+	 *     orderedChildren+=XRecord (ambiguity) extends+=[Context|QualifiedName]
+	 */
+	protected void emit_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'extends'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     extends+=[Context|QualifiedName] (ambiguity) extends+=[Context|QualifiedName]
+	 */
+	protected void emit_XContext_ExtendsKeyword_4_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -110,7 +131,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * This ambiguous syntax occurs at:
 	 *     orderedChildren+=XCarrierSet (ambiguity) orderedChildren+=XCarrierSet
 	 */
-	protected void emit_XContext_SetsKeyword_5_0_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XContext_SetsKeyword_4_2_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -122,7 +143,19 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (rule start) (ambiguity) name=XLABEL
 	 *     comment=STRING (ambiguity) name=XLABEL
 	 */
-	protected void emit_XIndividualAxiom_AxiomKeyword_2_1_0_or_AxmKeyword_2_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_XIndividualAxiom_AxiomKeyword_2_0_or_AxmKeyword_2_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'constant' | 'cst'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=ID
+	 *     comment=STRING (ambiguity) name=ID
+	 */
+	protected void emit_XIndividualConstant_ConstantKeyword_2_0_or_CstKeyword_2_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

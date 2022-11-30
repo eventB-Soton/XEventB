@@ -39,7 +39,7 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
    */
   @Extension
   private QuickFixFactory quickFixFactory = QuickFixFactory.getDefault();
-  
+
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
    * the translated formula.
@@ -54,7 +54,7 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedPredicateQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated types. Offer to replace the type by
    * the translated formula.
@@ -70,7 +70,7 @@ public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedTypeQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated types. Offer to replace the type by
    * the translated formula.

@@ -19,17 +19,17 @@ public class XContextProposalProvider extends AbstractXContextProposalProvider {
   public void complete_ML_COMMENT(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor);
   }
-  
+
   @Override
   public void complete_SL_COMMENT(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor);
   }
-  
+
   @Override
   public void complete_XFormula(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor);
   }
-  
+
   @Override
   public void complete_XType(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     RodinSymbolsProposalProvider.completeRodinSymbol(this, context, acceptor);

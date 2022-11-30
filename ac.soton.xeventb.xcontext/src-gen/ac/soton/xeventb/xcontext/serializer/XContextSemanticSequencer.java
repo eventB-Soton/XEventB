@@ -48,10 +48,21 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 					sequence_XIndividualAxiom(context, (Axiom) semanticObject); 
 					return; 
 				}
+				else if (rule == grammarAccess.getXIndividualTheoremRule()) {
+					sequence_XIndividualTheorem(context, (Axiom) semanticObject); 
+					return; 
+				}
 				else break;
 			case ContextPackage.CARRIER_SET:
-				sequence_XCarrierSet(context, (CarrierSet) semanticObject); 
-				return; 
+				if (rule == grammarAccess.getXCarrierSetRule()) {
+					sequence_XCarrierSet(context, (CarrierSet) semanticObject); 
+					return; 
+				}
+				else if (rule == grammarAccess.getXIndividualCarrierSetRule()) {
+					sequence_XIndividualCarrierSet(context, (CarrierSet) semanticObject); 
+					return; 
+				}
+				else break;
 			case ContextPackage.CONSTANT:
 				sequence_XConstant(context, (Constant) semanticObject); 
 				return; 
@@ -62,7 +73,7 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		else if (epackage == CoreextensionPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
 			case CoreextensionPackage.TYPED_CONSTANT:
-				sequence_XTypedConstant(context, (TypedConstant) semanticObject); 
+				sequence_XIndividualConstant(context, (TypedConstant) semanticObject); 
 				return; 
 			}
 		else if (epackage == RecordPackage.eINSTANCE)
@@ -149,14 +160,17 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (
 	 *         comment=STRING? 
 	 *         name=ID 
-	 *         extends+=[Context|QualifiedName]* 
 	 *         (
+	 *             extends+=[Context|QualifiedName] | 
+	 *             extends+=[Context|QualifiedName] | 
 	 *             orderedChildren+=XCarrierSet | 
+	 *             orderedChildren+=XIndividualCarrierSet | 
 	 *             orderedChildren+=XConstant | 
-	 *             orderedChildren+=XTypedConstant | 
+	 *             orderedChildren+=XIndividualConstant | 
 	 *             orderedChildren+=XRecord | 
 	 *             orderedChildren+=XAxiom | 
-	 *             orderedChildren+=XIndividualAxiom
+	 *             orderedChildren+=XIndividualAxiom | 
+	 *             orderedChildren+=XIndividualTheorem
 	 *         )*
 	 *     )
 	 */
@@ -170,9 +184,45 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XIndividualAxiom returns Axiom
 	 *
 	 * Constraint:
-	 *     (comment=STRING? (theorem?='theorem' | theorem?='thm')? name=XLABEL predicate=XFormula)
+	 *     (comment=STRING? name=XLABEL predicate=XFormula)
 	 */
 	protected void sequence_XIndividualAxiom(ISerializationContext context, Axiom semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XIndividualCarrierSet returns CarrierSet
+	 *
+	 * Constraint:
+	 *     (comment=STRING? name=ID)
+	 */
+	protected void sequence_XIndividualCarrierSet(ISerializationContext context, CarrierSet semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XIndividualConstant returns TypedConstant
+	 *
+	 * Constraint:
+	 *     (comment=STRING? name=ID type=XType? value=XFormula?)
+	 */
+	protected void sequence_XIndividualConstant(ISerializationContext context, TypedConstant semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XIndividualTheorem returns Axiom
+	 *
+	 * Constraint:
+	 *     (comment=STRING? (theorem?='theorem' | theorem?='thm') name=XLABEL predicate=XFormula)
+	 */
+	protected void sequence_XIndividualTheorem(ISerializationContext context, Axiom semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -185,18 +235,6 @@ public class XContextSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (extended?='extended'? name=ID inheritsNames+=ID? (fields+=Field | constraints+=XConstraint)*)
 	 */
 	protected void sequence_XRecord(ISerializationContext context, Record semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XTypedConstant returns TypedConstant
-	 *
-	 * Constraint:
-	 *     (comment=STRING? name=ID type=XType? value=XFormula?)
-	 */
-	protected void sequence_XTypedConstant(ISerializationContext context, TypedConstant semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

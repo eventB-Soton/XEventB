@@ -23,21 +23,33 @@ XContext returns econtext::Context:
 	{econtext::Context}
 	(comment = STRING)?
 	'context' name=ID
-	('extends' extends+=[econtext::Context |QualifiedName]+)?
 	(
+		 // Multiple-extend clause
+		('extends' extends+=[econtext::Context |QualifiedName]+) |
+		// Individual-extend clause
+		(('extend' | 'ext') extends+=[econtext::Context |QualifiedName]) |
+		// Multiple-(carrier)set clause 
 		('sets' orderedChildren+=XCarrierSet+) |
+		// Individual-(carrier)set clause
+		(orderedChildren+=XIndividualCarrierSet) |
+		// Multiple-constant clause
 		('constants' orderedChildren+=XConstant+) |
-		(('constant' | 'cst') orderedChildren+=XTypedConstant) |
+		// Individual-constant clause
+		(orderedChildren+=XIndividualConstant) |
 		(orderedChildren += XRecord) |
 		/*
+		 * Multiple-axiom clause
 		 * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
 		 * instead, keyword "theorem" will signify an individual theorem.
 		 */
 		('axioms' orderedChildren+=XAxiom+) |
-//		('theorems' orderedChildren += XTheorem+) |
-		(orderedChildren+=XIndividualAxiom)
+		// Individual-axiom clause
+		(orderedChildren+=XIndividualAxiom) |
+		// Individual-theorem clause
+		(orderedChildren+=XIndividualTheorem)
 	)*
-	'end'
+	// Since CamilleX 3.0, we do not have the final 'end' keyword
+//	'end'
 ;
 
 QualifiedName:
@@ -50,6 +62,13 @@ XCarrierSet returns econtext::CarrierSet:
 	name=ID
 ;
 
+XIndividualCarrierSet returns econtext::CarrierSet:
+	{econtext::CarrierSet}
+	(comment = STRING)?
+	'set'
+	name=ID
+;
+
 
 XConstant returns econtext::Constant:
 	{econtext::Constant}
@@ -57,16 +76,11 @@ XConstant returns econtext::Constant:
 	name=ID
 ;
 
-XTypedConstant returns eventbcoreex::TypedConstant:
+XIndividualConstant returns eventbcoreex::TypedConstant:
 	{eventbcoreex::TypedConstant}
 	(comment = STRING)?
+	('constant' | 'cst') 
 	name=ID (':' type=XType)? ('=' value=XFormula)?
-;
-
-XIndividualAxiom returns econtext::Axiom:
-	{econtext::Axiom}
-	(comment = STRING)?	
-	(theorem?=('theorem' | 'thm') | ('axiom' | 'axm')) name=XLABEL predicate=XFormula
 ;
 
 XAxiom returns econtext::Axiom:
@@ -74,6 +88,19 @@ XAxiom returns econtext::Axiom:
 	(comment = STRING)?	
 	name=XLABEL predicate=XFormula
 ;
+
+XIndividualAxiom returns econtext::Axiom:
+	{econtext::Axiom}
+	(comment = STRING)?	
+	('axiom' | 'axm') name=XLABEL predicate=XFormula
+;
+
+XIndividualTheorem returns econtext::Axiom:
+	{econtext::Axiom}
+	(comment = STRING)?	
+	theorem?=('theorem' | 'thm') name=XLABEL predicate=XFormula
+;
+
 //
 //XTheorem returns econtext::Axiom:
 //	{econtext::Axiom}

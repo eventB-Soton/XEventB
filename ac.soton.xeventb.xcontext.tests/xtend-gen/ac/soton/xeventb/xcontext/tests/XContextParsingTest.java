@@ -30,13 +30,13 @@ public class XContextParsingTest {
   @Inject
   @Extension
   private ParseHelper<Context> parseHelper;
-  
+
   @Extension
   private AssertExtensions _assertExtensions = new AssertExtensions();
-  
+
   @Extension
   private AssertContextExtensions _assertContextExtensions = new AssertContextExtensions();
-  
+
   /**
    * Manually register any EPackage required for running the tests.
    * @since 1.0
@@ -45,7 +45,7 @@ public class XContextParsingTest {
   public void registerEPackages() {
     this._assertContextExtensions.registerContextEPackage();
   }
-  
+
   /**
    * Successful test for context clause.
    * 
@@ -74,7 +74,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for multi-line comments with context clause.
    * 
@@ -114,7 +114,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for single-line comments with context clause.
    * 
@@ -145,7 +145,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Test for erroneous context clause.
    * 
@@ -172,7 +172,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for sets clause.
    * 
@@ -203,7 +203,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for sets clause.
    * 
@@ -234,7 +234,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for constants clause.
    * 
@@ -265,7 +265,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for constants clause.
    * 
@@ -296,7 +296,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for axioms clause.
    * 
@@ -330,7 +330,7 @@ public class XContextParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for for axioms clause.
    * 

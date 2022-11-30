@@ -80,7 +80,7 @@ public class XContextValidator extends AbstractXContextValidator {
       XContextValidator.this.warning(message, source, feature, code, issueData);
     }
   };
-  
+
   /**
    * Check to ensure that the context name match the name of the file.
    * 
@@ -99,7 +99,7 @@ public class XContextValidator extends AbstractXContextValidator {
       this.error("Context name should be the same as the file name", null);
     }
   }
-  
+
   /**
    * Check for untranslated formulae in the context, i.e., predicates, types,
    * and values. The actual check is done via the extension methods of
@@ -125,7 +125,7 @@ public class XContextValidator extends AbstractXContextValidator {
       }
     }
   }
-  
+
   /**
    * A "Normal" check to clear the markers associated with the Rodin context.
    * This is important as the markers generated as the consequence of
@@ -151,14 +151,14 @@ public class XContextValidator extends AbstractXContextValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Empty array of markers.
    * 
    * @since 2.0
    */
   private final IMarker[] NO_MARKER = {};
-  
+
   /**
    * An "expensive" check to convert the Rodin Markers of an input Rodin
    * machine into issues for the corresponding XMachine.
@@ -188,7 +188,7 @@ public class XContextValidator extends AbstractXContextValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to find all Rodin markers associated with a machine root.
    * @param mchRoot
@@ -209,7 +209,7 @@ public class XContextValidator extends AbstractXContextValidator {
     }
     return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
   }
-  
+
   /**
    * Method to find the EObject in a machine corresponding to the input Rodin
    * object. This is the "identified" attribute such as "identifier", "label".
@@ -240,7 +240,7 @@ public class XContextValidator extends AbstractXContextValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   private CarrierSet findCarrierSet(final Context ctx, final String name) {
     final EList<CarrierSet> sets = ctx.getSets();
     for (final CarrierSet set : sets) {
@@ -252,7 +252,7 @@ public class XContextValidator extends AbstractXContextValidator {
     }
     return null;
   }
-  
+
   private Constant findConstant(final Context ctx, final String name) {
     final EList<Constant> csts = ctx.getConstants();
     for (final Constant cst : csts) {
@@ -264,7 +264,7 @@ public class XContextValidator extends AbstractXContextValidator {
     }
     return null;
   }
-  
+
   private Axiom findAxiom(final Context ctx, final String label) {
     final EList<Axiom> axms = ctx.getAxioms();
     for (final Axiom axm : axms) {
@@ -276,7 +276,7 @@ public class XContextValidator extends AbstractXContextValidator {
     }
     return null;
   }
-  
+
   /**
    * Utility method to create an issue associated with an EObject from a Rodin
    * marker associated with the Rodin element corresponding to the EObject.
@@ -330,7 +330,7 @@ public class XContextValidator extends AbstractXContextValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to get the EStructuralFeature corresponding to an
    * attribute of an input EObject (of some Event-B elements), given the
@@ -379,7 +379,7 @@ public class XContextValidator extends AbstractXContextValidator {
     }
     return null;
   }
-  
+
   /**
    * Utility method to get the context of an EObject. Return the Context
    * parent of the input element. Return <code>null</code> if there is no

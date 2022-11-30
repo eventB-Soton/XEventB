@@ -35,76 +35,104 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cContextKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cExtendsKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cExtendsAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final CrossReference cExtendsContextCrossReference_4_1_0 = (CrossReference)cExtendsAssignment_4_1.eContents().get(0);
-		private final RuleCall cExtendsContextQualifiedNameParserRuleCall_4_1_0_1 = (RuleCall)cExtendsContextCrossReference_4_1_0.eContents().get(1);
-		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
-		private final Group cGroup_5_0 = (Group)cAlternatives_5.eContents().get(0);
-		private final Keyword cSetsKeyword_5_0_0 = (Keyword)cGroup_5_0.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_5_0_1 = (Assignment)cGroup_5_0.eContents().get(1);
-		private final RuleCall cOrderedChildrenXCarrierSetParserRuleCall_5_0_1_0 = (RuleCall)cOrderedChildrenAssignment_5_0_1.eContents().get(0);
-		private final Group cGroup_5_1 = (Group)cAlternatives_5.eContents().get(1);
-		private final Keyword cConstantsKeyword_5_1_0 = (Keyword)cGroup_5_1.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_5_1_1 = (Assignment)cGroup_5_1.eContents().get(1);
-		private final RuleCall cOrderedChildrenXConstantParserRuleCall_5_1_1_0 = (RuleCall)cOrderedChildrenAssignment_5_1_1.eContents().get(0);
-		private final Group cGroup_5_2 = (Group)cAlternatives_5.eContents().get(2);
-		private final Alternatives cAlternatives_5_2_0 = (Alternatives)cGroup_5_2.eContents().get(0);
-		private final Keyword cConstantKeyword_5_2_0_0 = (Keyword)cAlternatives_5_2_0.eContents().get(0);
-		private final Keyword cCstKeyword_5_2_0_1 = (Keyword)cAlternatives_5_2_0.eContents().get(1);
-		private final Assignment cOrderedChildrenAssignment_5_2_1 = (Assignment)cGroup_5_2.eContents().get(1);
-		private final RuleCall cOrderedChildrenXTypedConstantParserRuleCall_5_2_1_0 = (RuleCall)cOrderedChildrenAssignment_5_2_1.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_5_3 = (Assignment)cAlternatives_5.eContents().get(3);
-		private final RuleCall cOrderedChildrenXRecordParserRuleCall_5_3_0 = (RuleCall)cOrderedChildrenAssignment_5_3.eContents().get(0);
-		private final Group cGroup_5_4 = (Group)cAlternatives_5.eContents().get(4);
-		private final Keyword cAxiomsKeyword_5_4_0 = (Keyword)cGroup_5_4.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_5_4_1 = (Assignment)cGroup_5_4.eContents().get(1);
-		private final RuleCall cOrderedChildrenXAxiomParserRuleCall_5_4_1_0 = (RuleCall)cOrderedChildrenAssignment_5_4_1.eContents().get(0);
-		private final Assignment cOrderedChildrenAssignment_5_5 = (Assignment)cAlternatives_5.eContents().get(5);
-		private final RuleCall cOrderedChildrenXIndividualAxiomParserRuleCall_5_5_0 = (RuleCall)cOrderedChildrenAssignment_5_5.eContents().get(0);
-		private final Keyword cEndKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cAlternatives_4.eContents().get(0);
+		private final Keyword cExtendsKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Assignment cExtendsAssignment_4_0_1 = (Assignment)cGroup_4_0.eContents().get(1);
+		private final CrossReference cExtendsContextCrossReference_4_0_1_0 = (CrossReference)cExtendsAssignment_4_0_1.eContents().get(0);
+		private final RuleCall cExtendsContextQualifiedNameParserRuleCall_4_0_1_0_1 = (RuleCall)cExtendsContextCrossReference_4_0_1_0.eContents().get(1);
+		private final Group cGroup_4_1 = (Group)cAlternatives_4.eContents().get(1);
+		private final Alternatives cAlternatives_4_1_0 = (Alternatives)cGroup_4_1.eContents().get(0);
+		private final Keyword cExtendKeyword_4_1_0_0 = (Keyword)cAlternatives_4_1_0.eContents().get(0);
+		private final Keyword cExtKeyword_4_1_0_1 = (Keyword)cAlternatives_4_1_0.eContents().get(1);
+		private final Assignment cExtendsAssignment_4_1_1 = (Assignment)cGroup_4_1.eContents().get(1);
+		private final CrossReference cExtendsContextCrossReference_4_1_1_0 = (CrossReference)cExtendsAssignment_4_1_1.eContents().get(0);
+		private final RuleCall cExtendsContextQualifiedNameParserRuleCall_4_1_1_0_1 = (RuleCall)cExtendsContextCrossReference_4_1_1_0.eContents().get(1);
+		private final Group cGroup_4_2 = (Group)cAlternatives_4.eContents().get(2);
+		private final Keyword cSetsKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_2_1 = (Assignment)cGroup_4_2.eContents().get(1);
+		private final RuleCall cOrderedChildrenXCarrierSetParserRuleCall_4_2_1_0 = (RuleCall)cOrderedChildrenAssignment_4_2_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_3 = (Assignment)cAlternatives_4.eContents().get(3);
+		private final RuleCall cOrderedChildrenXIndividualCarrierSetParserRuleCall_4_3_0 = (RuleCall)cOrderedChildrenAssignment_4_3.eContents().get(0);
+		private final Group cGroup_4_4 = (Group)cAlternatives_4.eContents().get(4);
+		private final Keyword cConstantsKeyword_4_4_0 = (Keyword)cGroup_4_4.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_4_1 = (Assignment)cGroup_4_4.eContents().get(1);
+		private final RuleCall cOrderedChildrenXConstantParserRuleCall_4_4_1_0 = (RuleCall)cOrderedChildrenAssignment_4_4_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_5 = (Assignment)cAlternatives_4.eContents().get(5);
+		private final RuleCall cOrderedChildrenXIndividualConstantParserRuleCall_4_5_0 = (RuleCall)cOrderedChildrenAssignment_4_5.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_6 = (Assignment)cAlternatives_4.eContents().get(6);
+		private final RuleCall cOrderedChildrenXRecordParserRuleCall_4_6_0 = (RuleCall)cOrderedChildrenAssignment_4_6.eContents().get(0);
+		private final Group cGroup_4_7 = (Group)cAlternatives_4.eContents().get(7);
+		private final Keyword cAxiomsKeyword_4_7_0 = (Keyword)cGroup_4_7.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_7_1 = (Assignment)cGroup_4_7.eContents().get(1);
+		private final RuleCall cOrderedChildrenXAxiomParserRuleCall_4_7_1_0 = (RuleCall)cOrderedChildrenAssignment_4_7_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_8 = (Assignment)cAlternatives_4.eContents().get(8);
+		private final RuleCall cOrderedChildrenXIndividualAxiomParserRuleCall_4_8_0 = (RuleCall)cOrderedChildrenAssignment_4_8.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_4_9 = (Assignment)cAlternatives_4.eContents().get(9);
+		private final RuleCall cOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0 = (RuleCall)cOrderedChildrenAssignment_4_9.eContents().get(0);
 		
 		//XContext returns econtext::Context:
 		//    {econtext::Context}
 		//    (comment = STRING)?
 		//    'context' name=ID
-		//    ('extends' extends+=[econtext::Context |QualifiedName]+)?
 		//    (
+		//         // Multiple-extend clause
+		//        ('extends' extends+=[econtext::Context |QualifiedName]+) |
+		//        // Individual-extend clause
+		//        (('extend' | 'ext') extends+=[econtext::Context |QualifiedName]) |
+		//        // Multiple-(carrier)set clause
 		//        ('sets' orderedChildren+=XCarrierSet+) |
+		//        // Individual-(carrier)set clause
+		//        (orderedChildren+=XIndividualCarrierSet) |
+		//        // Multiple-constant clause
 		//        ('constants' orderedChildren+=XConstant+) |
-		//        (('constant' | 'cst') orderedChildren+=XTypedConstant) |
+		//        // Individual-constant clause
+		//        (orderedChildren+=XIndividualConstant) |
 		//        (orderedChildren += XRecord) |
 		//        /*
+		//         * Multiple-axiom clause
 		//         * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
 		//         * instead, keyword "theorem" will signify an individual theorem.
 		//         */
 		//        ('axioms' orderedChildren+=XAxiom+) |
-		////        ('theorems' orderedChildren += XTheorem+) |
-		//        (orderedChildren+=XIndividualAxiom)
+		//        // Individual-axiom clause
+		//        (orderedChildren+=XIndividualAxiom) |
+		//        // Individual-theorem clause
+		//        (orderedChildren+=XIndividualTheorem)
 		//    )*
-		//    'end'
+		//    // Since CamilleX 3.0, we do not have the final 'end' keyword
+		////    'end'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//    {econtext::Context}
-		//    (comment = STRING)?
-		//    'context' name=ID
-		//    ('extends' extends+=[econtext::Context |QualifiedName]+)?
-		//    (
-		//        ('sets' orderedChildren+=XCarrierSet+) |
-		//        ('constants' orderedChildren+=XConstant+) |
-		//        (('constant' | 'cst') orderedChildren+=XTypedConstant) |
-		//        (orderedChildren += XRecord) |
-		//        /*
-		//         * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
-		//         * instead, keyword "theorem" will signify an individual theorem.
-		//         */
-		//        ('axioms' orderedChildren+=XAxiom+) |
-		////        ('theorems' orderedChildren += XTheorem+) |
-		//        (orderedChildren+=XIndividualAxiom)
-		//    )*
-		//    'end'
+		//{econtext::Context}
+		//(comment = STRING)?
+		//'context' name=ID
+		//(
+		//     // Multiple-extend clause
+		//    ('extends' extends+=[econtext::Context |QualifiedName]+) |
+		//    // Individual-extend clause
+		//    (('extend' | 'ext') extends+=[econtext::Context |QualifiedName]) |
+		//    // Multiple-(carrier)set clause
+		//    ('sets' orderedChildren+=XCarrierSet+) |
+		//    // Individual-(carrier)set clause
+		//    (orderedChildren+=XIndividualCarrierSet) |
+		//    // Multiple-constant clause
+		//    ('constants' orderedChildren+=XConstant+) |
+		//    // Individual-constant clause
+		//    (orderedChildren+=XIndividualConstant) |
+		//    (orderedChildren += XRecord) |
+		//    /*
+		//     * Multiple-axiom clause
+		//     * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
+		//     * instead, keyword "theorem" will signify an individual theorem.
+		//     */
+		//    ('axioms' orderedChildren+=XAxiom+) |
+		//    // Individual-axiom clause
+		//    (orderedChildren+=XIndividualAxiom) |
+		//    // Individual-theorem clause
+		//    (orderedChildren+=XIndividualTheorem)
+		//)*
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Context}
@@ -125,109 +153,147 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
-		//('extends' extends+=[econtext::Context |QualifiedName]+)?
-		public Group getGroup_4() { return cGroup_4; }
+		//(
+		//     // Multiple-extend clause
+		//    ('extends' extends+=[econtext::Context |QualifiedName]+) |
+		//    // Individual-extend clause
+		//    (('extend' | 'ext') extends+=[econtext::Context |QualifiedName]) |
+		//    // Multiple-(carrier)set clause
+		//    ('sets' orderedChildren+=XCarrierSet+) |
+		//    // Individual-(carrier)set clause
+		//    (orderedChildren+=XIndividualCarrierSet) |
+		//    // Multiple-constant clause
+		//    ('constants' orderedChildren+=XConstant+) |
+		//    // Individual-constant clause
+		//    (orderedChildren+=XIndividualConstant) |
+		//    (orderedChildren += XRecord) |
+		//    /*
+		//     * Multiple-axiom clause
+		//     * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
+		//     * instead, keyword "theorem" will signify an individual theorem.
+		//     */
+		//    ('axioms' orderedChildren+=XAxiom+) |
+		//    // Individual-axiom clause
+		//    (orderedChildren+=XIndividualAxiom) |
+		//    // Individual-theorem clause
+		//    (orderedChildren+=XIndividualTheorem)
+		//)*
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+		
+		// // Multiple-extend clause
+		//('extends' extends+=[econtext::Context |QualifiedName]+)
+		public Group getGroup_4_0() { return cGroup_4_0; }
 		
 		//'extends'
-		public Keyword getExtendsKeyword_4_0() { return cExtendsKeyword_4_0; }
+		public Keyword getExtendsKeyword_4_0_0() { return cExtendsKeyword_4_0_0; }
 		
 		//extends+=[econtext::Context |QualifiedName]+
-		public Assignment getExtendsAssignment_4_1() { return cExtendsAssignment_4_1; }
+		public Assignment getExtendsAssignment_4_0_1() { return cExtendsAssignment_4_0_1; }
 		
 		//[econtext::Context |QualifiedName]
-		public CrossReference getExtendsContextCrossReference_4_1_0() { return cExtendsContextCrossReference_4_1_0; }
+		public CrossReference getExtendsContextCrossReference_4_0_1_0() { return cExtendsContextCrossReference_4_0_1_0; }
 		
 		//QualifiedName
-		public RuleCall getExtendsContextQualifiedNameParserRuleCall_4_1_0_1() { return cExtendsContextQualifiedNameParserRuleCall_4_1_0_1; }
+		public RuleCall getExtendsContextQualifiedNameParserRuleCall_4_0_1_0_1() { return cExtendsContextQualifiedNameParserRuleCall_4_0_1_0_1; }
 		
-		//    (
-		//        ('sets' orderedChildren+=XCarrierSet+) |
-		//        ('constants' orderedChildren+=XConstant+) |
-		//        (('constant' | 'cst') orderedChildren+=XTypedConstant) |
-		//        (orderedChildren += XRecord) |
-		//        /*
-		//         * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
-		//         * instead, keyword "theorem" will signify an individual theorem.
-		//         */
-		//        ('axioms' orderedChildren+=XAxiom+) |
-		////        ('theorems' orderedChildren += XTheorem+) |
-		//        (orderedChildren+=XIndividualAxiom)
-		//    )*
-		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		//// Individual-extend clause
+		//(('extend' | 'ext') extends+=[econtext::Context |QualifiedName])
+		public Group getGroup_4_1() { return cGroup_4_1; }
 		
+		//('extend' | 'ext')
+		public Alternatives getAlternatives_4_1_0() { return cAlternatives_4_1_0; }
+		
+		//'extend'
+		public Keyword getExtendKeyword_4_1_0_0() { return cExtendKeyword_4_1_0_0; }
+		
+		//'ext'
+		public Keyword getExtKeyword_4_1_0_1() { return cExtKeyword_4_1_0_1; }
+		
+		//extends+=[econtext::Context |QualifiedName]
+		public Assignment getExtendsAssignment_4_1_1() { return cExtendsAssignment_4_1_1; }
+		
+		//[econtext::Context |QualifiedName]
+		public CrossReference getExtendsContextCrossReference_4_1_1_0() { return cExtendsContextCrossReference_4_1_1_0; }
+		
+		//QualifiedName
+		public RuleCall getExtendsContextQualifiedNameParserRuleCall_4_1_1_0_1() { return cExtendsContextQualifiedNameParserRuleCall_4_1_1_0_1; }
+		
+		//// Multiple-(carrier)set clause
 		//('sets' orderedChildren+=XCarrierSet+)
-		public Group getGroup_5_0() { return cGroup_5_0; }
+		public Group getGroup_4_2() { return cGroup_4_2; }
 		
 		//'sets'
-		public Keyword getSetsKeyword_5_0_0() { return cSetsKeyword_5_0_0; }
+		public Keyword getSetsKeyword_4_2_0() { return cSetsKeyword_4_2_0; }
 		
 		//orderedChildren+=XCarrierSet+
-		public Assignment getOrderedChildrenAssignment_5_0_1() { return cOrderedChildrenAssignment_5_0_1; }
+		public Assignment getOrderedChildrenAssignment_4_2_1() { return cOrderedChildrenAssignment_4_2_1; }
 		
 		//XCarrierSet
-		public RuleCall getOrderedChildrenXCarrierSetParserRuleCall_5_0_1_0() { return cOrderedChildrenXCarrierSetParserRuleCall_5_0_1_0; }
+		public RuleCall getOrderedChildrenXCarrierSetParserRuleCall_4_2_1_0() { return cOrderedChildrenXCarrierSetParserRuleCall_4_2_1_0; }
 		
+		//// Individual-(carrier)set clause
+		//(orderedChildren+=XIndividualCarrierSet)
+		public Assignment getOrderedChildrenAssignment_4_3() { return cOrderedChildrenAssignment_4_3; }
+		
+		//XIndividualCarrierSet
+		public RuleCall getOrderedChildrenXIndividualCarrierSetParserRuleCall_4_3_0() { return cOrderedChildrenXIndividualCarrierSetParserRuleCall_4_3_0; }
+		
+		//// Multiple-constant clause
 		//('constants' orderedChildren+=XConstant+)
-		public Group getGroup_5_1() { return cGroup_5_1; }
+		public Group getGroup_4_4() { return cGroup_4_4; }
 		
 		//'constants'
-		public Keyword getConstantsKeyword_5_1_0() { return cConstantsKeyword_5_1_0; }
+		public Keyword getConstantsKeyword_4_4_0() { return cConstantsKeyword_4_4_0; }
 		
 		//orderedChildren+=XConstant+
-		public Assignment getOrderedChildrenAssignment_5_1_1() { return cOrderedChildrenAssignment_5_1_1; }
+		public Assignment getOrderedChildrenAssignment_4_4_1() { return cOrderedChildrenAssignment_4_4_1; }
 		
 		//XConstant
-		public RuleCall getOrderedChildrenXConstantParserRuleCall_5_1_1_0() { return cOrderedChildrenXConstantParserRuleCall_5_1_1_0; }
+		public RuleCall getOrderedChildrenXConstantParserRuleCall_4_4_1_0() { return cOrderedChildrenXConstantParserRuleCall_4_4_1_0; }
 		
-		//(('constant' | 'cst') orderedChildren+=XTypedConstant)
-		public Group getGroup_5_2() { return cGroup_5_2; }
+		//// Individual-constant clause
+		//(orderedChildren+=XIndividualConstant)
+		public Assignment getOrderedChildrenAssignment_4_5() { return cOrderedChildrenAssignment_4_5; }
 		
-		//('constant' | 'cst')
-		public Alternatives getAlternatives_5_2_0() { return cAlternatives_5_2_0; }
-		
-		//'constant'
-		public Keyword getConstantKeyword_5_2_0_0() { return cConstantKeyword_5_2_0_0; }
-		
-		//'cst'
-		public Keyword getCstKeyword_5_2_0_1() { return cCstKeyword_5_2_0_1; }
-		
-		//orderedChildren+=XTypedConstant
-		public Assignment getOrderedChildrenAssignment_5_2_1() { return cOrderedChildrenAssignment_5_2_1; }
-		
-		//XTypedConstant
-		public RuleCall getOrderedChildrenXTypedConstantParserRuleCall_5_2_1_0() { return cOrderedChildrenXTypedConstantParserRuleCall_5_2_1_0; }
+		//XIndividualConstant
+		public RuleCall getOrderedChildrenXIndividualConstantParserRuleCall_4_5_0() { return cOrderedChildrenXIndividualConstantParserRuleCall_4_5_0; }
 		
 		//(orderedChildren += XRecord)
-		public Assignment getOrderedChildrenAssignment_5_3() { return cOrderedChildrenAssignment_5_3; }
+		public Assignment getOrderedChildrenAssignment_4_6() { return cOrderedChildrenAssignment_4_6; }
 		
 		//XRecord
-		public RuleCall getOrderedChildrenXRecordParserRuleCall_5_3_0() { return cOrderedChildrenXRecordParserRuleCall_5_3_0; }
+		public RuleCall getOrderedChildrenXRecordParserRuleCall_4_6_0() { return cOrderedChildrenXRecordParserRuleCall_4_6_0; }
 		
 		///*
+		// * Multiple-axiom clause
 		// * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
 		// * instead, keyword "theorem" will signify an individual theorem.
 		// */
 		//('axioms' orderedChildren+=XAxiom+)
-		public Group getGroup_5_4() { return cGroup_5_4; }
+		public Group getGroup_4_7() { return cGroup_4_7; }
 		
 		//'axioms'
-		public Keyword getAxiomsKeyword_5_4_0() { return cAxiomsKeyword_5_4_0; }
+		public Keyword getAxiomsKeyword_4_7_0() { return cAxiomsKeyword_4_7_0; }
 		
 		//orderedChildren+=XAxiom+
-		public Assignment getOrderedChildrenAssignment_5_4_1() { return cOrderedChildrenAssignment_5_4_1; }
+		public Assignment getOrderedChildrenAssignment_4_7_1() { return cOrderedChildrenAssignment_4_7_1; }
 		
 		//XAxiom
-		public RuleCall getOrderedChildrenXAxiomParserRuleCall_5_4_1_0() { return cOrderedChildrenXAxiomParserRuleCall_5_4_1_0; }
+		public RuleCall getOrderedChildrenXAxiomParserRuleCall_4_7_1_0() { return cOrderedChildrenXAxiomParserRuleCall_4_7_1_0; }
 		
-		////        ('theorems' orderedChildren += XTheorem+) |
-		//        (orderedChildren+=XIndividualAxiom)
-		public Assignment getOrderedChildrenAssignment_5_5() { return cOrderedChildrenAssignment_5_5; }
+		//// Individual-axiom clause
+		//(orderedChildren+=XIndividualAxiom)
+		public Assignment getOrderedChildrenAssignment_4_8() { return cOrderedChildrenAssignment_4_8; }
 		
 		//XIndividualAxiom
-		public RuleCall getOrderedChildrenXIndividualAxiomParserRuleCall_5_5_0() { return cOrderedChildrenXIndividualAxiomParserRuleCall_5_5_0; }
+		public RuleCall getOrderedChildrenXIndividualAxiomParserRuleCall_4_8_0() { return cOrderedChildrenXIndividualAxiomParserRuleCall_4_8_0; }
 		
-		//'end'
-		public Keyword getEndKeyword_6() { return cEndKeyword_6; }
+		//// Individual-theorem clause
+		//(orderedChildren+=XIndividualTheorem)
+		public Assignment getOrderedChildrenAssignment_4_9() { return cOrderedChildrenAssignment_4_9; }
+		
+		//XIndividualTheorem
+		public RuleCall getOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0() { return cOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0; }
 	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.QualifiedName");
@@ -293,6 +359,48 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
+	public class XIndividualCarrierSetElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XIndividualCarrierSet");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cCarrierSetAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Keyword cSetKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		
+		//XIndividualCarrierSet returns econtext::CarrierSet:
+		//    {econtext::CarrierSet}
+		//    (comment = STRING)?
+		//    'set'
+		//    name=ID
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::CarrierSet}
+		//(comment = STRING)?
+		//'set'
+		//name=ID
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::CarrierSet}
+		public Action getCarrierSetAction_0() { return cCarrierSetAction_0; }
+		
+		//(comment = STRING)?
+		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
+		
+		//STRING
+		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
+		
+		//'set'
+		public Keyword getSetKeyword_2() { return cSetKeyword_2; }
+		
+		//name=ID
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
+	}
 	public class XConstantElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XConstant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -329,32 +437,37 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 	}
-	public class XTypedConstantElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XTypedConstant");
+	public class XIndividualConstantElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XIndividualConstant");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cTypedConstantAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
-		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cColonKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cTypeAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cTypeXTypeParserRuleCall_3_1_0 = (RuleCall)cTypeAssignment_3_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cConstantKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cCstKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameIDTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
 		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cEqualsSignKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cValueAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cValueXFormulaParserRuleCall_4_1_0 = (RuleCall)cValueAssignment_4_1.eContents().get(0);
+		private final Keyword cColonKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
+		private final Assignment cTypeAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
+		private final RuleCall cTypeXTypeParserRuleCall_4_1_0 = (RuleCall)cTypeAssignment_4_1.eContents().get(0);
+		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
+		private final Keyword cEqualsSignKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
+		private final Assignment cValueAssignment_5_1 = (Assignment)cGroup_5.eContents().get(1);
+		private final RuleCall cValueXFormulaParserRuleCall_5_1_0 = (RuleCall)cValueAssignment_5_1.eContents().get(0);
 		
-		//XTypedConstant returns eventbcoreex::TypedConstant:
+		//XIndividualConstant returns eventbcoreex::TypedConstant:
 		//    {eventbcoreex::TypedConstant}
 		//    (comment = STRING)?
+		//    ('constant' | 'cst')
 		//    name=ID (':' type=XType)? ('=' value=XFormula)?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//{eventbcoreex::TypedConstant}
 		//(comment = STRING)?
+		//('constant' | 'cst')
 		//name=ID (':' type=XType)? ('=' value=XFormula)?
 		public Group getGroup() { return cGroup; }
 		
@@ -367,111 +480,44 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//STRING
 		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
 		
-		//name=ID
-		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
-		
-		//ID
-		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
-		
-		//(':' type=XType)?
-		public Group getGroup_3() { return cGroup_3; }
-		
-		//':'
-		public Keyword getColonKeyword_3_0() { return cColonKeyword_3_0; }
-		
-		//type=XType
-		public Assignment getTypeAssignment_3_1() { return cTypeAssignment_3_1; }
-		
-		//XType
-		public RuleCall getTypeXTypeParserRuleCall_3_1_0() { return cTypeXTypeParserRuleCall_3_1_0; }
-		
-		//('=' value=XFormula)?
-		public Group getGroup_4() { return cGroup_4; }
-		
-		//'='
-		public Keyword getEqualsSignKeyword_4_0() { return cEqualsSignKeyword_4_0; }
-		
-		//value=XFormula
-		public Assignment getValueAssignment_4_1() { return cValueAssignment_4_1; }
-		
-		//XFormula
-		public RuleCall getValueXFormulaParserRuleCall_4_1_0() { return cValueXFormulaParserRuleCall_4_1_0; }
-	}
-	public class XIndividualAxiomElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XIndividualAxiom");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
-		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
-		private final Assignment cTheoremAssignment_2_0 = (Assignment)cAlternatives_2.eContents().get(0);
-		private final Alternatives cTheoremAlternatives_2_0_0 = (Alternatives)cTheoremAssignment_2_0.eContents().get(0);
-		private final Keyword cTheoremTheoremKeyword_2_0_0_0 = (Keyword)cTheoremAlternatives_2_0_0.eContents().get(0);
-		private final Keyword cTheoremThmKeyword_2_0_0_1 = (Keyword)cTheoremAlternatives_2_0_0.eContents().get(1);
-		private final Alternatives cAlternatives_2_1 = (Alternatives)cAlternatives_2.eContents().get(1);
-		private final Keyword cAxiomKeyword_2_1_0 = (Keyword)cAlternatives_2_1.eContents().get(0);
-		private final Keyword cAxmKeyword_2_1_1 = (Keyword)cAlternatives_2_1.eContents().get(1);
-		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cNameXLABELTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
-		private final Assignment cPredicateAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cPredicateXFormulaParserRuleCall_4_0 = (RuleCall)cPredicateAssignment_4.eContents().get(0);
-		
-		//XIndividualAxiom returns econtext::Axiom:
-		//    {econtext::Axiom}
-		//    (comment = STRING)?
-		//    (theorem?=('theorem' | 'thm') | ('axiom' | 'axm')) name=XLABEL predicate=XFormula
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//{econtext::Axiom}
-		//(comment = STRING)?
-		//(theorem?=('theorem' | 'thm') | ('axiom' | 'axm')) name=XLABEL predicate=XFormula
-		public Group getGroup() { return cGroup; }
-		
-		//{econtext::Axiom}
-		public Action getAxiomAction_0() { return cAxiomAction_0; }
-		
-		//(comment = STRING)?
-		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
-		
-		//STRING
-		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
-		
-		//(theorem?=('theorem' | 'thm') | ('axiom' | 'axm'))
+		//('constant' | 'cst')
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
-		//theorem?=('theorem' | 'thm')
-		public Assignment getTheoremAssignment_2_0() { return cTheoremAssignment_2_0; }
+		//'constant'
+		public Keyword getConstantKeyword_2_0() { return cConstantKeyword_2_0; }
 		
-		//('theorem' | 'thm')
-		public Alternatives getTheoremAlternatives_2_0_0() { return cTheoremAlternatives_2_0_0; }
+		//'cst'
+		public Keyword getCstKeyword_2_1() { return cCstKeyword_2_1; }
 		
-		//'theorem'
-		public Keyword getTheoremTheoremKeyword_2_0_0_0() { return cTheoremTheoremKeyword_2_0_0_0; }
-		
-		//'thm'
-		public Keyword getTheoremThmKeyword_2_0_0_1() { return cTheoremThmKeyword_2_0_0_1; }
-		
-		//('axiom' | 'axm')
-		public Alternatives getAlternatives_2_1() { return cAlternatives_2_1; }
-		
-		//'axiom'
-		public Keyword getAxiomKeyword_2_1_0() { return cAxiomKeyword_2_1_0; }
-		
-		//'axm'
-		public Keyword getAxmKeyword_2_1_1() { return cAxmKeyword_2_1_1; }
-		
-		//name=XLABEL
+		//name=ID
 		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
 		
-		//XLABEL
-		public RuleCall getNameXLABELTerminalRuleCall_3_0() { return cNameXLABELTerminalRuleCall_3_0; }
+		//ID
+		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 		
-		//predicate=XFormula
-		public Assignment getPredicateAssignment_4() { return cPredicateAssignment_4; }
+		//(':' type=XType)?
+		public Group getGroup_4() { return cGroup_4; }
+		
+		//':'
+		public Keyword getColonKeyword_4_0() { return cColonKeyword_4_0; }
+		
+		//type=XType
+		public Assignment getTypeAssignment_4_1() { return cTypeAssignment_4_1; }
+		
+		//XType
+		public RuleCall getTypeXTypeParserRuleCall_4_1_0() { return cTypeXTypeParserRuleCall_4_1_0; }
+		
+		//('=' value=XFormula)?
+		public Group getGroup_5() { return cGroup_5; }
+		
+		//'='
+		public Keyword getEqualsSignKeyword_5_0() { return cEqualsSignKeyword_5_0; }
+		
+		//value=XFormula
+		public Assignment getValueAssignment_5_1() { return cValueAssignment_5_1; }
 		
 		//XFormula
-		public RuleCall getPredicateXFormulaParserRuleCall_4_0() { return cPredicateXFormulaParserRuleCall_4_0; }
+		public RuleCall getValueXFormulaParserRuleCall_5_1_0() { return cValueXFormulaParserRuleCall_5_1_0; }
 	}
 	public class XAxiomElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XAxiom");
@@ -516,6 +562,122 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//XFormula
 		public RuleCall getPredicateXFormulaParserRuleCall_3_0() { return cPredicateXFormulaParserRuleCall_3_0; }
+	}
+	public class XIndividualAxiomElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XIndividualAxiom");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cAxiomKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cAxmKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameXLABELTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Assignment cPredicateAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPredicateXFormulaParserRuleCall_4_0 = (RuleCall)cPredicateAssignment_4.eContents().get(0);
+		
+		//XIndividualAxiom returns econtext::Axiom:
+		//    {econtext::Axiom}
+		//    (comment = STRING)?
+		//    ('axiom' | 'axm') name=XLABEL predicate=XFormula
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Axiom}
+		//(comment = STRING)?
+		//('axiom' | 'axm') name=XLABEL predicate=XFormula
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Axiom}
+		public Action getAxiomAction_0() { return cAxiomAction_0; }
+		
+		//(comment = STRING)?
+		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
+		
+		//STRING
+		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
+		
+		//('axiom' | 'axm')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
+		//'axiom'
+		public Keyword getAxiomKeyword_2_0() { return cAxiomKeyword_2_0; }
+		
+		//'axm'
+		public Keyword getAxmKeyword_2_1() { return cAxmKeyword_2_1; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_3_0() { return cNameXLABELTerminalRuleCall_3_0; }
+		
+		//predicate=XFormula
+		public Assignment getPredicateAssignment_4() { return cPredicateAssignment_4; }
+		
+		//XFormula
+		public RuleCall getPredicateXFormulaParserRuleCall_4_0() { return cPredicateXFormulaParserRuleCall_4_0; }
+	}
+	public class XIndividualTheoremElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XIndividualTheorem");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Action cAxiomAction_0 = (Action)cGroup.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentSTRINGTerminalRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cTheoremAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Alternatives cTheoremAlternatives_2_0 = (Alternatives)cTheoremAssignment_2.eContents().get(0);
+		private final Keyword cTheoremTheoremKeyword_2_0_0 = (Keyword)cTheoremAlternatives_2_0.eContents().get(0);
+		private final Keyword cTheoremThmKeyword_2_0_1 = (Keyword)cTheoremAlternatives_2_0.eContents().get(1);
+		private final Assignment cNameAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cNameXLABELTerminalRuleCall_3_0 = (RuleCall)cNameAssignment_3.eContents().get(0);
+		private final Assignment cPredicateAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPredicateXFormulaParserRuleCall_4_0 = (RuleCall)cPredicateAssignment_4.eContents().get(0);
+		
+		//XIndividualTheorem returns econtext::Axiom:
+		//    {econtext::Axiom}
+		//    (comment = STRING)?
+		//    theorem?=('theorem' | 'thm') name=XLABEL predicate=XFormula
+		//;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//{econtext::Axiom}
+		//(comment = STRING)?
+		//theorem?=('theorem' | 'thm') name=XLABEL predicate=XFormula
+		public Group getGroup() { return cGroup; }
+		
+		//{econtext::Axiom}
+		public Action getAxiomAction_0() { return cAxiomAction_0; }
+		
+		//(comment = STRING)?
+		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
+		
+		//STRING
+		public RuleCall getCommentSTRINGTerminalRuleCall_1_0() { return cCommentSTRINGTerminalRuleCall_1_0; }
+		
+		//theorem?=('theorem' | 'thm')
+		public Assignment getTheoremAssignment_2() { return cTheoremAssignment_2; }
+		
+		//('theorem' | 'thm')
+		public Alternatives getTheoremAlternatives_2_0() { return cTheoremAlternatives_2_0; }
+		
+		//'theorem'
+		public Keyword getTheoremTheoremKeyword_2_0_0() { return cTheoremTheoremKeyword_2_0_0; }
+		
+		//'thm'
+		public Keyword getTheoremThmKeyword_2_0_1() { return cTheoremThmKeyword_2_0_1; }
+		
+		//name=XLABEL
+		public Assignment getNameAssignment_3() { return cNameAssignment_3; }
+		
+		//XLABEL
+		public RuleCall getNameXLABELTerminalRuleCall_3_0() { return cNameXLABELTerminalRuleCall_3_0; }
+		
+		//predicate=XFormula
+		public Assignment getPredicateAssignment_4() { return cPredicateAssignment_4; }
+		
+		//XFormula
+		public RuleCall getPredicateXFormulaParserRuleCall_4_0() { return cPredicateXFormulaParserRuleCall_4_0; }
 	}
 	public class XFormulaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XFormula");
@@ -1681,10 +1843,12 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final XContextElements pXContext;
 	private final QualifiedNameElements pQualifiedName;
 	private final XCarrierSetElements pXCarrierSet;
+	private final XIndividualCarrierSetElements pXIndividualCarrierSet;
 	private final XConstantElements pXConstant;
-	private final XTypedConstantElements pXTypedConstant;
-	private final XIndividualAxiomElements pXIndividualAxiom;
+	private final XIndividualConstantElements pXIndividualConstant;
 	private final XAxiomElements pXAxiom;
+	private final XIndividualAxiomElements pXIndividualAxiom;
+	private final XIndividualTheoremElements pXIndividualTheorem;
 	private final TerminalRule tXLABEL;
 	private final XFormulaElements pXFormula;
 	private final XTypeElements pXType;
@@ -1714,10 +1878,12 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pXContext = new XContextElements();
 		this.pQualifiedName = new QualifiedNameElements();
 		this.pXCarrierSet = new XCarrierSetElements();
+		this.pXIndividualCarrierSet = new XIndividualCarrierSetElements();
 		this.pXConstant = new XConstantElements();
-		this.pXTypedConstant = new XTypedConstantElements();
-		this.pXIndividualAxiom = new XIndividualAxiomElements();
+		this.pXIndividualConstant = new XIndividualConstantElements();
 		this.pXAxiom = new XAxiomElements();
+		this.pXIndividualAxiom = new XIndividualAxiomElements();
+		this.pXIndividualTheorem = new XIndividualTheoremElements();
 		this.tXLABEL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.XLABEL");
 		this.pXFormula = new XFormulaElements();
 		this.pXType = new XTypeElements();
@@ -1767,21 +1933,33 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    {econtext::Context}
 	//    (comment = STRING)?
 	//    'context' name=ID
-	//    ('extends' extends+=[econtext::Context |QualifiedName]+)?
 	//    (
+	//         // Multiple-extend clause
+	//        ('extends' extends+=[econtext::Context |QualifiedName]+) |
+	//        // Individual-extend clause
+	//        (('extend' | 'ext') extends+=[econtext::Context |QualifiedName]) |
+	//        // Multiple-(carrier)set clause
 	//        ('sets' orderedChildren+=XCarrierSet+) |
+	//        // Individual-(carrier)set clause
+	//        (orderedChildren+=XIndividualCarrierSet) |
+	//        // Multiple-constant clause
 	//        ('constants' orderedChildren+=XConstant+) |
-	//        (('constant' | 'cst') orderedChildren+=XTypedConstant) |
+	//        // Individual-constant clause
+	//        (orderedChildren+=XIndividualConstant) |
 	//        (orderedChildren += XRecord) |
 	//        /*
+	//         * Multiple-axiom clause
 	//         * To avoid ambiguity, theorems is no longer allowed to be a part of "axioms",
 	//         * instead, keyword "theorem" will signify an individual theorem.
 	//         */
 	//        ('axioms' orderedChildren+=XAxiom+) |
-	////        ('theorems' orderedChildren += XTheorem+) |
-	//        (orderedChildren+=XIndividualAxiom)
+	//        // Individual-axiom clause
+	//        (orderedChildren+=XIndividualAxiom) |
+	//        // Individual-theorem clause
+	//        (orderedChildren+=XIndividualTheorem)
 	//    )*
-	//    'end'
+	//    // Since CamilleX 3.0, we do not have the final 'end' keyword
+	////    'end'
 	//;
 	public XContextElements getXContextAccess() {
 		return pXContext;
@@ -1815,6 +1993,20 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getXCarrierSetAccess().getRule();
 	}
 	
+	//XIndividualCarrierSet returns econtext::CarrierSet:
+	//    {econtext::CarrierSet}
+	//    (comment = STRING)?
+	//    'set'
+	//    name=ID
+	//;
+	public XIndividualCarrierSetElements getXIndividualCarrierSetAccess() {
+		return pXIndividualCarrierSet;
+	}
+	
+	public ParserRule getXIndividualCarrierSetRule() {
+		return getXIndividualCarrierSetAccess().getRule();
+	}
+	
 	//XConstant returns econtext::Constant:
 	//    {econtext::Constant}
 	//    (comment = STRING)?
@@ -1828,30 +2020,18 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getXConstantAccess().getRule();
 	}
 	
-	//XTypedConstant returns eventbcoreex::TypedConstant:
+	//XIndividualConstant returns eventbcoreex::TypedConstant:
 	//    {eventbcoreex::TypedConstant}
 	//    (comment = STRING)?
+	//    ('constant' | 'cst')
 	//    name=ID (':' type=XType)? ('=' value=XFormula)?
 	//;
-	public XTypedConstantElements getXTypedConstantAccess() {
-		return pXTypedConstant;
+	public XIndividualConstantElements getXIndividualConstantAccess() {
+		return pXIndividualConstant;
 	}
 	
-	public ParserRule getXTypedConstantRule() {
-		return getXTypedConstantAccess().getRule();
-	}
-	
-	//XIndividualAxiom returns econtext::Axiom:
-	//    {econtext::Axiom}
-	//    (comment = STRING)?
-	//    (theorem?=('theorem' | 'thm') | ('axiom' | 'axm')) name=XLABEL predicate=XFormula
-	//;
-	public XIndividualAxiomElements getXIndividualAxiomAccess() {
-		return pXIndividualAxiom;
-	}
-	
-	public ParserRule getXIndividualAxiomRule() {
-		return getXIndividualAxiomAccess().getRule();
+	public ParserRule getXIndividualConstantRule() {
+		return getXIndividualConstantAccess().getRule();
 	}
 	
 	//XAxiom returns econtext::Axiom:
@@ -1865,6 +2045,32 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	public ParserRule getXAxiomRule() {
 		return getXAxiomAccess().getRule();
+	}
+	
+	//XIndividualAxiom returns econtext::Axiom:
+	//    {econtext::Axiom}
+	//    (comment = STRING)?
+	//    ('axiom' | 'axm') name=XLABEL predicate=XFormula
+	//;
+	public XIndividualAxiomElements getXIndividualAxiomAccess() {
+		return pXIndividualAxiom;
+	}
+	
+	public ParserRule getXIndividualAxiomRule() {
+		return getXIndividualAxiomAccess().getRule();
+	}
+	
+	//XIndividualTheorem returns econtext::Axiom:
+	//    {econtext::Axiom}
+	//    (comment = STRING)?
+	//    theorem?=('theorem' | 'thm') name=XLABEL predicate=XFormula
+	//;
+	public XIndividualTheoremElements getXIndividualTheoremAccess() {
+		return pXIndividualTheorem;
+	}
+	
+	public ParserRule getXIndividualTheoremRule() {
+		return getXIndividualTheoremAccess().getRule();
 	}
 	
 	////

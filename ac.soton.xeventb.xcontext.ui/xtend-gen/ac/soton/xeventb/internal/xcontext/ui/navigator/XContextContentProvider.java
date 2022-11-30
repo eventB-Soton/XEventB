@@ -36,7 +36,7 @@ public final class XContextContentProvider extends AbstractXEventBContentProvide
   public String getFileExtension() {
     return "bucx";
   }
-  
+
   /**
    * Returns the specific XContext navigator object constructed from
    * the corresponding resource.

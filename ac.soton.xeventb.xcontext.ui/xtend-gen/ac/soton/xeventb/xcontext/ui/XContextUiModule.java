@@ -16,7 +16,7 @@ public class XContextUiModule extends AbstractXContextUiModule {
   public XContextUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public void configure(final Binder binder) {
     super.configure(binder);

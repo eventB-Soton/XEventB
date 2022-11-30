@@ -79,7 +79,7 @@ public class XContextScopeProvider extends AbstractXContextScopeProvider {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * THESE METHODS WERE COPIED FROM EMFRodinDB
    */
@@ -107,7 +107,7 @@ public class XContextScopeProvider extends AbstractXContextScopeProvider {
     }
     return resource;
   }
-  
+
   /**
    * this returns the project name by checking the uri of the given element
    * The element must be loaded or an npe will occur
@@ -119,7 +119,7 @@ public class XContextScopeProvider extends AbstractXContextScopeProvider {
     final URI uri = EcoreUtil.getURI(element);
     return uri.segment(1);
   }
-  
+
   /**
    * loads an Event-B component (URI) into EMF
    * 
@@ -139,7 +139,7 @@ public class XContextScopeProvider extends AbstractXContextScopeProvider {
       return null;
     }
   }
-  
+
   /**
    * loads an Event-B component (root) into EMF
    * 

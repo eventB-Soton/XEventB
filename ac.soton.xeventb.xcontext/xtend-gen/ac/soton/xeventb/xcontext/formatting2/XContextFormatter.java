@@ -47,7 +47,7 @@ public class XContextFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
   private XContextGrammarAccess _xContextGrammarAccess;
-  
+
   protected void _format(final Context context, @Extension final IFormattableDocument document) {
     IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(context);
     boolean _tripleEquals = (_regionForEObject == null);
@@ -195,7 +195,7 @@ public class XContextFormatter extends AbstractFormatter2 {
       document.set(this.textRegionExtensions.regionForEObject(first).getPreviousHiddenRegion(), this.textRegionExtensions.regionForEObject(last).getNextHiddenRegion(), _function_10);
     }
   }
-  
+
   public void format(final Object context, final IFormattableDocument document) {
     if (context instanceof Context) {
       _format((Context)context, document);

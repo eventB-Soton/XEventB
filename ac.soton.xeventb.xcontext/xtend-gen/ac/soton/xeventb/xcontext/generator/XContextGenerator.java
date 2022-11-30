@@ -66,7 +66,7 @@ import org.rodinp.core.RodinCore;
 @SuppressWarnings("all")
 public class XContextGenerator extends AbstractGenerator {
   private static final String CONFIGURATION = "configuration";
-  
+
   /**
    * @htson Automatically compile to Rodin files
    */
@@ -145,7 +145,7 @@ public class XContextGenerator extends AbstractGenerator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to translate typed constants of a context to constants, typing axioms and definition axioms.
    * 
@@ -187,7 +187,7 @@ public class XContextGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private ISchedulingRule getSchedulingRule(final Resource[] resources) {
     int _length = resources.length;
     boolean _equals = (_length == 0);
@@ -211,7 +211,7 @@ public class XContextGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private IProject getProject(final Resource resource) {
     final IFile file = WorkspaceSynchronizer.getFile(resource);
     IProject _elvis = null;
@@ -226,7 +226,7 @@ public class XContextGenerator extends AbstractGenerator {
     }
     return _elvis;
   }
-  
+
   /**
    * Utility method to translate formulae in the input context to Event-B
    * mathematics.
