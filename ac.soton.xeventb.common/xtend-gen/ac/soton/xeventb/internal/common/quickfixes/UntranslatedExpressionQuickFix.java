@@ -29,7 +29,7 @@ import org.eventb.emf.core.EventBExpression;
 @SuppressWarnings("all")
 public class UntranslatedExpressionQuickFix extends UntranslatedFormulaeQuickFix<EventBExpression> implements IQuickFix {
   private static String FORMULA_TYPE = "expression";
-  
+
   /**
    * Implementation of the abstract method to set the expression of an Event-B
    * expression element to the translated formulae.
@@ -49,7 +49,7 @@ public class UntranslatedExpressionQuickFix extends UntranslatedFormulaeQuickFix
       this.exception(element, UntranslatedExpressionQuickFix.FORMULA_TYPE);
     }
   }
-  
+
   /**
    * Quick fix for untranslated expressions. Offer to replace the expression
    * with the translated formulae.

@@ -31,17 +31,17 @@ public interface IValidationIssueCode {
    * Issue code for Untranslated predicates.
    */
   static final String UNTRANSLATED_PREDICATE = "ac.soton.xeventb.quickfix.UntranslatedPredicate";
-  
+
   /**
    * Issue code for Untranslated expressions.
    */
   static final String UNTRANSLATED_EXPRESSION = "ac.soton.xeventb.quickfix.UntranslatedExpression";
-  
+
   /**
    * Issue code for Untranslated assignments.
    */
   static final String UNTRANSLATED_ASSIGNMENT = "ac.soton.xeventb.quickfix.UntranslatedAssignment";
-  
+
   /**
    * Issue code for Untranslated types.
    * 
@@ -49,7 +49,7 @@ public interface IValidationIssueCode {
    * @since 2.0
    */
   static final String UNTRANSLATED_TYPE = "ac.soton.xeventb.quickfix.UntranslatedType";
-  
+
   /**
    * Issue code for Untranslated types.
    * 

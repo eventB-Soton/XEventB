@@ -31,7 +31,7 @@ import org.eclipse.xtext.validation.Issue;
 @SuppressWarnings("all")
 public class UntranslatedTypeQuickFix extends UntranslatedFormulaeQuickFix<Type> implements IQuickFix {
   private static String FORMULA_TYPE = "type";
-  
+
   /**
    * Implementation of the abstract method to set the type of an Event-B
    * type element to the translated formulae.
@@ -51,7 +51,7 @@ public class UntranslatedTypeQuickFix extends UntranslatedFormulaeQuickFix<Type>
       this.exception(element, UntranslatedTypeQuickFix.FORMULA_TYPE);
     }
   }
-  
+
   /**
    * Quick fix for untranslated types. Offer to replace the type with the
    * translated formulae.

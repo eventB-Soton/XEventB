@@ -34,11 +34,11 @@ import org.eventb.emf.persistence.SaveResourcesCommand;
 @SuppressWarnings("all")
 public class NullProgressSaveCommand {
   private EMFRodinDB emfRodinDB;
-  
+
   private URI uri;
-  
+
   private EventBElement content;
-  
+
   /**
    * Constructor to create a command to save some content into a resource
    * specified by its URI using an EMF Rodin DB.
@@ -52,7 +52,7 @@ public class NullProgressSaveCommand {
     this.uri = uri;
     this.content = content;
   }
-  
+
   /**
    * Method to execute the command to save (without progress monitor) when the
    * command can be executed.

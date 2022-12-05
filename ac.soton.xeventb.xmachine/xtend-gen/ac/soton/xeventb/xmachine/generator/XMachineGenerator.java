@@ -78,7 +78,7 @@ import org.rodinp.core.RodinCore;
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {
   private final String CONFIGURATION = "configuration";
-  
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
@@ -175,7 +175,7 @@ public class XMachineGenerator extends AbstractGenerator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to translate typed variables of a machine to variables,
    * typing invariants and initialisation action.
@@ -232,7 +232,7 @@ public class XMachineGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private ISchedulingRule getSchedulingRule(final Resource[] resources) {
     int _length = resources.length;
     boolean _equals = (_length == 0);
@@ -256,7 +256,7 @@ public class XMachineGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private IProject getProject(final Resource resource) {
     final IFile file = WorkspaceSynchronizer.getFile(resource);
     IProject _elvis = null;
@@ -271,7 +271,7 @@ public class XMachineGenerator extends AbstractGenerator {
     }
     return _elvis;
   }
-  
+
   /**
    * Utility method to translate formulae in the input machine to Event-B
    * mathematics.

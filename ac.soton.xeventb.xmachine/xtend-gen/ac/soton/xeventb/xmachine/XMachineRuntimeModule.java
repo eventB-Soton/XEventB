@@ -50,7 +50,7 @@ public class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
   public Class<? extends IValueConverterService> bindIValueConverterService() {
     return EventBValueConverter.class;
   }
-  
+
   /**
    * Bind the transient value service for XMachine, use for serialisation of
    * EMF Event-B to XText.
@@ -61,7 +61,7 @@ public class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
   public Class<? extends ITransientValueService> bindITransientValueService() {
     return XMachineTransientValueService.class;
   }
-  
+
   /**
    * Bind the scope provider, use for references for context seeing, machine
    * refinement, event refinement, etc.
@@ -72,7 +72,7 @@ public class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
   public Class<? extends IScopeProvider> bindIScopeProvider() {
     return XMachineScopeProvider.class;
   }
-  
+
   /**
    * Configure the serializer scope provider, use for serialisaton of
    * references, e.g., context seeing, machine refinement, event refinement,
@@ -85,7 +85,7 @@ public class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
     binder.<IScopeProvider>bind(IScopeProvider.class).annotatedWith(SerializerScopeProviderBinding.class).to(
       XMachineScopeProvider.class);
   }
-  
+
   /**
    * Bind the qualified Name provider service for machine qualified name.
    * The qualified name of a machine is projName.machineName
@@ -96,7 +96,7 @@ public class XMachineRuntimeModule extends AbstractXMachineRuntimeModule {
   public Class<? extends IQualifiedNameProvider> bindIQualifiedNameProvider() {
     return EventBQualifiedNameProvider.class;
   }
-  
+
   /**
    * Bind the container Manager to include other projects in the workspace.
    * 

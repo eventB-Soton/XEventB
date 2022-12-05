@@ -31,7 +31,7 @@ import org.eventb.emf.core.EventBPredicate;
 @SuppressWarnings("all")
 public class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<EventBPredicate> implements IQuickFix {
   private static String FORMULA_TYPE = "predicate";
-  
+
   /**
    * Implementation of the abstract method to set the predicate of an Event-B
    * predicate element to the translated formulae.
@@ -51,7 +51,7 @@ public class UntranslatedPredicateQuickFix extends UntranslatedFormulaeQuickFix<
       this.exception(element, UntranslatedPredicateQuickFix.FORMULA_TYPE);
     }
   }
-  
+
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate
    * with the translated formulae.

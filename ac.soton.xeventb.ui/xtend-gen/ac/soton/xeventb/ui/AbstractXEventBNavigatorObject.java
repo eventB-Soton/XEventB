@@ -25,7 +25,7 @@ import org.eclipse.core.resources.IFile;
 @SuppressWarnings("all")
 public abstract class AbstractXEventBNavigatorObject implements IXEventBNavigatorObject {
   private IFile resource;
-  
+
   /**
    * Create an XEvent-B navigator object for the input resource.
    * 
@@ -35,7 +35,7 @@ public abstract class AbstractXEventBNavigatorObject implements IXEventBNavigato
   public AbstractXEventBNavigatorObject(final IFile resource) {
     this.resource = resource;
   }
-  
+
   /**
    * Returns the resource of the XEvent-B navigator object.
    * 

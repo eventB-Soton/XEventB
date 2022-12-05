@@ -36,7 +36,7 @@ public final class XMachineContentProvider extends AbstractXEventBContentProvide
   public String getFileExtension() {
     return "bumx";
   }
-  
+
   /**
    * Returns the specific XMachine navigator object constructed from
    * the corresponding resource.

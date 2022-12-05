@@ -31,7 +31,7 @@ import org.eventb.emf.core.EventBAction;
 @SuppressWarnings("all")
 public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix<EventBAction> implements IQuickFix {
   private static String FORMULAE_TYPE = "assignment";
-  
+
   /**
    * Implementation of the abstract method to set the assignment of an Event-B
    * action to the translated formulae.
@@ -51,7 +51,7 @@ public class UntranslatedAssignmentQuickFix extends UntranslatedFormulaeQuickFix
       this.exception(element, UntranslatedAssignmentQuickFix.FORMULAE_TYPE);
     }
   }
-  
+
   /**
    * Quick fix for untranslated assignments. Offer to replace the assignment
    * with the translated formulae.

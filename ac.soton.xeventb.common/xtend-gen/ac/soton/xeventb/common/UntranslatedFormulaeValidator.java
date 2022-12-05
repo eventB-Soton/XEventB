@@ -50,7 +50,7 @@ public abstract class UntranslatedFormulaeValidator {
    * 			the data associated with the data
    */
   protected abstract void warning(final String message, final EObject source, final EStructuralFeature feature, final String code, final String... issueData);
-  
+
   /**
    * Check for untranslated predicates by comparing the translated string
    * with the predicate. Raise a warning with code
@@ -76,7 +76,7 @@ public abstract class UntranslatedFormulaeValidator {
         IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
     }
   }
-  
+
   /**
    * Check for untranslated expressions by comparing the translated string
    * with the expression. Raise a warning with code
@@ -102,7 +102,7 @@ public abstract class UntranslatedFormulaeValidator {
         IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated);
     }
   }
-  
+
   /**
    * Check for untranslated assignments by comparing the translated string
    * with the assignment. Raise a warning with code
@@ -128,7 +128,7 @@ public abstract class UntranslatedFormulaeValidator {
         IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated);
     }
   }
-  
+
   /**
    * Check for untranslated types by comparing the translated string with the
    * type. Raise a warning with code
@@ -155,7 +155,7 @@ public abstract class UntranslatedFormulaeValidator {
         IValidationIssueCode.UNTRANSLATED_TYPE, type, translated);
     }
   }
-  
+
   /**
    * Check for untranslated values by comparing the translated string with the
    * value. Raise a warning with code

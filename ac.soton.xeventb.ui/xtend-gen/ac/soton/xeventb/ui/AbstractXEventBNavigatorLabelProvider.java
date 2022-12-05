@@ -36,21 +36,21 @@ public abstract class AbstractXEventBNavigatorLabelProvider implements ILabelPro
    * @return the key to retrieve the image from the registry
    */
   public abstract String getImageKey();
-  
+
   /**
    * Do nothing at the moment.
    */
   @Override
   public void addListener(final ILabelProviderListener listener) {
   }
-  
+
   /**
    * Do nothing at the moment.
    */
   @Override
   public void dispose() {
   }
-  
+
   /**
    * Do nothing at the moment.
    */
@@ -58,14 +58,14 @@ public abstract class AbstractXEventBNavigatorLabelProvider implements ILabelPro
   public boolean isLabelProperty(final Object element, final String property) {
     return false;
   }
-  
+
   /**
    * Do nothing at the moment.
    */
   @Override
   public void removeListener(final ILabelProviderListener listener) {
   }
-  
+
   /**
    * Returns the image corresponding to the image key.
    * 
@@ -81,7 +81,7 @@ public abstract class AbstractXEventBNavigatorLabelProvider implements ILabelPro
     }
     return null;
   }
-  
+
   /**
    * Returns the file name of the resource of the XEvent-B navigator
    * object.

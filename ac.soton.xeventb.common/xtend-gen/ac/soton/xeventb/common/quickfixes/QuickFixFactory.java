@@ -29,13 +29,13 @@ import ac.soton.xeventb.internal.common.quickfixes.UntranslatedValueQuickFix;
 @SuppressWarnings("all")
 public class QuickFixFactory {
   private static QuickFixFactory factory;
-  
+
   /**
    * Private constructor for singleton class
    */
   private QuickFixFactory() {
   }
-  
+
   /**
    * Method to return the shared singleton instance of the quick-fix factory.
    */
@@ -46,12 +46,12 @@ public class QuickFixFactory {
     }
     return QuickFixFactory.factory;
   }
-  
+
   /**
    * Instance of for untranslated assignment quick fix
    */
   private UntranslatedAssignmentQuickFix untranslatedAssignmentQuickFix;
-  
+
   /**
    * Method for returning the untranslated assignment quick fix (creating one
    * if necessary).
@@ -65,12 +65,12 @@ public class QuickFixFactory {
     }
     return this.untranslatedAssignmentQuickFix;
   }
-  
+
   /**
    * Instance of for untranslated expression quick fix
    */
   private UntranslatedExpressionQuickFix untranslatedExpressionQuickFix;
-  
+
   /**
    * Method for returning the untranslated expression quick fix (creating one
    * if necessary).
@@ -84,12 +84,12 @@ public class QuickFixFactory {
     }
     return this.untranslatedExpressionQuickFix;
   }
-  
+
   /**
    * Instance of for untranslated predicate quick fix
    */
   private UntranslatedPredicateQuickFix untranslatedPredicateQuickFix;
-  
+
   /**
    * Method for returning the untranslated predicate quick fix (creating one
    * if necessary).
@@ -103,12 +103,12 @@ public class QuickFixFactory {
     }
     return this.untranslatedPredicateQuickFix;
   }
-  
+
   /**
    * Instance of for untranslated type quick fix
    */
   private UntranslatedTypeQuickFix untranslatedTypeQuickFix;
-  
+
   /**
    * Method for returning the untranslated type quick fix (creating one
    * if necessary).
@@ -122,12 +122,12 @@ public class QuickFixFactory {
     }
     return this.untranslatedTypeQuickFix;
   }
-  
+
   /**
    * Instance of for untranslated value quick fix
    */
   private UntranslatedValueQuickFix untranslatedValueQuickFix;
-  
+
   /**
    * Method for returning the untranslated value quick fix (creating one
    * if necessary).

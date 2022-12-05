@@ -44,7 +44,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
    * @since 2.0
    */
   public abstract IInternalElement getRoot(final IEventBProject project, final String name);
-  
+
   /**
    * Returns the Event-B root element corresponding to the XEvent-B
    * navigator object
@@ -69,7 +69,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
     }
     return new Object[0];
   }
-  
+
   /**
    * Returns the children of the input element.
    * 
@@ -81,7 +81,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
   public Object[] getElements(final Object inputElement) {
     return this.getChildren(inputElement);
   }
-  
+
   /**
    * Returns the containing project of the input element.
    * 
@@ -96,7 +96,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
     }
     return null;
   }
-  
+
   /**
    * Returns if the input element has some children.
    * 

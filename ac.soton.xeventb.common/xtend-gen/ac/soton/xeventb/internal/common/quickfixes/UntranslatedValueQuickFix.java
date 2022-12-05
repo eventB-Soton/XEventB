@@ -31,7 +31,7 @@ import org.eclipse.xtext.validation.Issue;
 @SuppressWarnings("all")
 public class UntranslatedValueQuickFix extends UntranslatedFormulaeQuickFix<Value> implements IQuickFix {
   private static String FORMULA_TYPE = "value";
-  
+
   /**
    * Implementation of the abstract method to set the value of an Event-B
    * value element to the translated formulae.
@@ -51,7 +51,7 @@ public class UntranslatedValueQuickFix extends UntranslatedFormulaeQuickFix<Valu
       this.exception(element, UntranslatedValueQuickFix.FORMULA_TYPE);
     }
   }
-  
+
   /**
    * Quick fix for untranslated values. Offer to replace the type with the
    * translated formulae.

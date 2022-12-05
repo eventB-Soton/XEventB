@@ -59,7 +59,7 @@ public class AssertExtensions {
     Assert.assertEquals("Incorrect error line", expectedLine, 
       diagnostic.getLine());
   }
-  
+
   /**
    * This method asserts the input list of diagnostics to be empty. An
    * {@link AssertionError} is thrown if the input list is not empty.
@@ -71,7 +71,7 @@ public class AssertExtensions {
   public void assertEmpty(final EList<Resource.Diagnostic> diagnostics) {
     Assert.assertTrue("The must be no diagnostics", diagnostics.isEmpty());
   }
-  
+
   /**
    * This method asserts the input list of diagnostics to be not empty. An
    * {@link AssertionError} is thrown if the input list is empty.
@@ -83,7 +83,7 @@ public class AssertExtensions {
   public void assertNotEmpty(final EList<Resource.Diagnostic> diagnostics) {
     Assert.assertFalse("The must be some diagnostics", diagnostics.isEmpty());
   }
-  
+
   /**
    * This method asserts the length of the input list of diagnostics against
    * the expected length. An {@link AssertionError} is thrown if the length of

@@ -42,7 +42,7 @@ public abstract class UntranslatedFormulaeQuickFix<T extends EObject> implements
    * 			the translated formulae
    */
   public abstract void setFormulae(final EObject element, final String translatedFormulae);
-  
+
   /**
    * Utility method to throw an exception when setting the value for the
    * formulae.
@@ -56,7 +56,7 @@ public abstract class UntranslatedFormulaeQuickFix<T extends EObject> implements
     throw new UnsupportedOperationException(
       ((("Cannot set " + formulaeType) + " for ") + element));
   }
-  
+
   /**
    * Quick fix for untranslated formulae. Offer to replace the formulae
    * by the translated formulae.

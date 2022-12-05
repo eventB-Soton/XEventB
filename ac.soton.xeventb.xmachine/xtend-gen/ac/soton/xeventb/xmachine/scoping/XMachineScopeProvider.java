@@ -187,7 +187,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * The scope for machine inclusion is the set of all (Rodin) machines
    * within the current project (reference using simple names) and the set
@@ -220,7 +220,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * THESE METHODS WERE COPIED FROM EMFRodinDB
    */
@@ -248,7 +248,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     }
     return resource;
   }
-  
+
   /**
    * this returns the project name by checking the uri of the given element
    * The element must be loaded or an npe will occur
@@ -260,7 +260,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     final URI uri = EcoreUtil.getURI(element);
     return uri.segment(1);
   }
-  
+
   /**
    * loads an Event-B component (URI) into EMF
    * 
@@ -279,7 +279,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       return null;
     }
   }
-  
+
   /**
    * loads an Event-B component (root) into EMF
    * 

@@ -34,7 +34,7 @@ public class EventBQualifiedNameProvider extends DefaultDeclarativeQualifiedName
     String mchName = mch.getName();
     return QualifiedName.create(projName, mchName);
   }
-  
+
   private String getProjectName(final Machine mch) {
     URI eventBelementUri = mch.eResource().getURI();
     URI projectUri = eventBelementUri.trimFragment().trimSegments(1);

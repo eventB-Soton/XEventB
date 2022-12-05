@@ -93,7 +93,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     }
     return null;
   }
-  
+
   /**
    * Get the current only selected object. If more than one objects are
    * selected, return <code>null</code>.
@@ -116,7 +116,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     }
     return null;
   }
-  
+
   /**
    * Converting a machine root to XMachine.
    * 
@@ -136,7 +136,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     final NullProgressSaveCommand cmd = new NullProgressSaveCommand(emfRodinDB, uri, mch);
     cmd.save();
   }
-  
+
   /**
    * Converting a context root to XContext.
    * 

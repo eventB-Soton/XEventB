@@ -40,7 +40,7 @@ public class XMachineQuickfixProvider extends DefaultQuickfixProvider {
    */
   @Extension
   private QuickFixFactory quickFixFactory = QuickFixFactory.getDefault();
-  
+
   /**
    * Quick fix for untranslated assignments. Offer to replace the assignment
    * by the translated formula.
@@ -55,7 +55,7 @@ public class XMachineQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedAssignment(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedAssignmentQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated expressions. Offer to replace the expression
    * by the translated formula.
@@ -70,7 +70,7 @@ public class XMachineQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedExpression(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedExpressionQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
    * the translated formula.
@@ -85,7 +85,7 @@ public class XMachineQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedPredicateQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated types. Offer to replace the type by the
    * translated formula.
@@ -101,7 +101,7 @@ public class XMachineQuickfixProvider extends DefaultQuickfixProvider {
   public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
     this.quickFixFactory.getUntranslatedTypeQuickFix().fix(issue, acceptor);
   }
-  
+
   /**
    * Quick fix for untranslated values. Offer to replace the value by the
    * translated formula.

@@ -80,12 +80,12 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_XGuard(context, (Guard) semanticObject); 
 				return; 
 			case MachinePackage.INVARIANT:
-				if (rule == grammarAccess.getXGroupInvariantRule()) {
-					sequence_XGroupInvariant(context, (Invariant) semanticObject); 
+				if (rule == grammarAccess.getXIndividualInvariantRule()) {
+					sequence_XIndividualInvariant(context, (Invariant) semanticObject); 
 					return; 
 				}
-				else if (rule == grammarAccess.getXIndividualInvariantRule()) {
-					sequence_XIndividualInvariant(context, (Invariant) semanticObject); 
+				else if (rule == grammarAccess.getXMultipleInvariantRule()) {
+					sequence_XMultipleInvariant(context, (Invariant) semanticObject); 
 					return; 
 				}
 				else break;
@@ -96,7 +96,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				sequence_XParameter(context, (org.eventb.emf.core.machine.Parameter) semanticObject); 
 				return; 
 			case MachinePackage.VARIABLE:
-				sequence_XGroupVariable(context, (Variable) semanticObject); 
+				sequence_XMultipleVariable(context, (Variable) semanticObject); 
 				return; 
 			case MachinePackage.VARIANT:
 				sequence_XVariant(context, (Variant) semanticObject); 
@@ -185,17 +185,17 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         name=ID 
 	 *         (orderedChildren+=MIncludes | refines+=[Machine|ID] | sees+=[Context|ID])* 
 	 *         orderedChildren+=MContains* 
-	 *         orderedChildren+=XGroupVariable? 
+	 *         orderedChildren+=XMultipleVariable? 
 	 *         (
 	 *             (
 	 *                 orderedChildren+=XIndividualVariable | 
-	 *                 orderedChildren+=XGroupInvariant | 
+	 *                 orderedChildren+=XMultipleInvariant | 
 	 *                 orderedChildren+=XIndividualInvariant | 
 	 *                 orderedChildren+=XRecord | 
 	 *                 orderedChildren+=XVariant | 
 	 *                 orderedChildren+=XEvent
 	 *             )? 
-	 *             orderedChildren+=XGroupVariable?
+	 *             orderedChildren+=XMultipleVariable?
 	 *         )*
 	 *     )
 	 */
@@ -252,30 +252,6 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
-	 *     XGroupInvariant returns Invariant
-	 *
-	 * Constraint:
-	 *     (comment=STRING? name=XLABEL predicate=XFormula)
-	 */
-	protected void sequence_XGroupInvariant(ISerializationContext context, Invariant semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     XGroupVariable returns Variable
-	 *
-	 * Constraint:
-	 *     (comment=STRING? name=ID)
-	 */
-	protected void sequence_XGroupVariable(ISerializationContext context, Variable semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
 	 *     XGuard returns Guard
 	 *
 	 * Constraint:
@@ -312,6 +288,30 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	
 	/**
 	 * Contexts:
+	 *     XMultipleInvariant returns Invariant
+	 *
+	 * Constraint:
+	 *     (comment=STRING? name=XLABEL predicate=XFormula)
+	 */
+	protected void sequence_XMultipleInvariant(ISerializationContext context, Invariant semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     XMultipleVariable returns Variable
+	 *
+	 * Constraint:
+	 *     (comment=STRING? name=ID)
+	 */
+	protected void sequence_XMultipleVariable(ISerializationContext context, Variable semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     XParameter returns Parameter
 	 *
 	 * Constraint:
@@ -327,7 +327,13 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     XRecord returns Record
 	 *
 	 * Constraint:
-	 *     ((extended?='extended' | refined?='refined')? name=ID inheritsNames+=ID? (fields+=Field | constraints+=XConstraint)*)
+	 *     (
+	 *         comment=STRING? 
+	 *         (extended?='extended' | extended?='ext' | refined?='refined' | refined?='ref')? 
+	 *         name=ID 
+	 *         inheritsNames+=ID? 
+	 *         (fields+=Field | constraints+=XConstraint)*
+	 *     )
 	 */
 	protected void sequence_XRecord(ISerializationContext context, Record semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

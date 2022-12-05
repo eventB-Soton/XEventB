@@ -69,7 +69,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
         }
         return string.trim();
       }
-      
+
       /**
        * Convert string to XComment.
        * @param value the comment
@@ -85,7 +85,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
       }
     };
   }
-  
+
   /**
    * Returns the value converter for multi-line comments.
    * @return the value converter for multi-line comments.
@@ -175,7 +175,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
         }
         return sb.toString();
       }
-      
+
       /**
        * Convert string to XComment.
        * @param value the comment
@@ -207,7 +207,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
       }
     };
   }
-  
+
   /**
    * Returns the value converter for XLabel.
    * @return the value converter for XLabel.
@@ -241,7 +241,7 @@ public class EventBValueConverter extends Ecore2XtextTerminalConverters {
         int _minus = (_length - 1);
         return string.substring(1, _minus);
       }
-      
+
       /**
        * Convert string to XLabel.
        * @param value the label

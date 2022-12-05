@@ -63,7 +63,7 @@ public abstract class AbstractXEventBActionProvider extends CommonActionProvider
     actionBars.setGlobalActionHandler(ICommonActionConstants.OPEN, this.getOpenAction(site));
     actionBars.setGlobalActionHandler(ICommonMenuConstants.GROUP_EDIT, this.getDeleteAction(site));
   }
-  
+
   /**
    * Adds the following to the input context menu.
    * <ul>
@@ -86,7 +86,7 @@ public abstract class AbstractXEventBActionProvider extends CommonActionProvider
     menu.appendToGroup(ICommonMenuConstants.GROUP_OPEN, this.getOpenAction(site));
     menu.appendToGroup(ICommonMenuConstants.GROUP_EDIT, this.getDeleteAction(site));
   }
-  
+
   /**
    * Provides an open action for IXEventBNavigatorObject
    * 
@@ -123,7 +123,7 @@ public abstract class AbstractXEventBActionProvider extends CommonActionProvider
     };
     return doubleClickAction;
   }
-  
+
   /**
    * Provides a delete action for IXEventBNavigatorObject
    * Deletes the xtext as well as the corresponding Event-B files

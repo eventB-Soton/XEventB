@@ -151,7 +151,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to compare two input contexts. The result is a negative
    * integer, zero or a positive integer as the first context is "less than"
@@ -176,7 +176,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
     }
     return 0;
   }
-  
+
   /**
    * Utility method to compare a machine and a context. The result is a
    * negative integer, zero or a positive integer as the machine is "less than"
@@ -189,7 +189,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
   private int compare(final Machine m, final Context c) {
     return 1;
   }
-  
+
   /**
    * Utility method to compare two input machines. The result is a negative
    * integer, zero or a positive integer as the first machine is "less than"
@@ -223,7 +223,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
     }
     return 0;
   }
-  
+
   /**
    * Utility method to check if an input machine m1 refines another input
    * machine m2. Return <code>true</code> if m1 refines m2 and
@@ -236,7 +236,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
     final EList<String> m1Refines = m1.getRefinesNames();
     return m1Refines.contains(m2.getName());
   }
-  
+
   /**
    * Utility method to check if an input machine m1 includes another input
    * machine m2. Return <code>true</code> if m1 includes m2 and
@@ -263,7 +263,7 @@ public class RegenerateHandler extends AbstractHandler implements IHandler {
     }
     return false;
   }
-  
+
   /**
    * Get the current only selected object. If more than one objects are
    * selected, return <code>null</code>.

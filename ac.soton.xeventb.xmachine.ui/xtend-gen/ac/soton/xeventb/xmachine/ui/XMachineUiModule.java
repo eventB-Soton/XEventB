@@ -39,21 +39,21 @@ public class XMachineUiModule extends AbstractXMachineUiModule {
   public XMachineUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public void configure(final Binder binder) {
     super.configure(binder);
     binder.<String>bind(String.class).annotatedWith(
       Names.named(XtextContentAssistProcessor.COMPLETION_AUTO_ACTIVATION_CHARS)).toInstance("!#%&*-:|~/\\NIP");
   }
-  
+
   /**
    * Inject {@link XMachineEObjectDocumentationProvider}.
    */
   public Class<? extends IEObjectDocumentationProvider> bindIEObjectDocumentationProvider() {
     return XMachineEObjectDocumentationProvider.class;
   }
-  
+
   /**
    * Inject {@link XMachineHoverProvider}.
    */

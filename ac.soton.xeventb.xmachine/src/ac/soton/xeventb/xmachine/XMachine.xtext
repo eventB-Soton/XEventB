@@ -44,15 +44,23 @@ Machine returns emachine::Machine:
 	('contains' orderedChildren += MContains+)?
 	// The following can be interleaved
 	(
-    	('variables' orderedChildren += XGroupVariable+) |
+		// Mutiple-variable clause
+    	(('variables' | 'vars') orderedChildren += XMultipleVariable+) |
+    	// Individual-variable clause
     	(orderedChildren += XIndividualVariable) |
-    	('invariants' orderedChildren += XGroupInvariant+) |
+    	// Multiple-invariant clause
+    	(('invariants' | 'invs') orderedChildren += XMultipleInvariant+) |
+    	// Individual-invariant clause
     	(orderedChildren += XIndividualInvariant) |
+    	// Individual-record clause
     	(orderedChildren += XRecord) |
+    	// Individual-variant clause
 		(orderedChildren += XVariant) |
+		// Individual-event clause
 		(orderedChildren += XEvent)
 	)*
-	'end'
+	// Since Rodin 3.0, we do not have the 'end' keyword
+//	'end'
 ;
 
 MContains returns econtainment::Containment:
@@ -71,7 +79,7 @@ QualifiedName:
 	ID('.'ID)?
 ;
 
-XGroupVariable returns emachine::Variable:
+XMultipleVariable returns emachine::Variable:
 	{emachine::Variable}
 	(comment=STRING)?
 	name=ID // No type or value
@@ -80,7 +88,7 @@ XGroupVariable returns emachine::Variable:
 XIndividualVariable returns eventbcoreex::TypedVariable:
 	{eventbcoreex::TypedVariable}
 	(comment=STRING)?
-	'variable' name=ID (':' type = XType)? ('=' value=XFormula)?
+	('variable' | 'var') name=ID (':' type = XType)? ('=' value=XFormula)?
 ;
 
 XType returns ecore::EString:
@@ -113,7 +121,7 @@ XTypePrimitive returns ecore::EString:
 	'ℙ1' '(' XType ')'
 ;
 
-XGroupInvariant returns emachine::Invariant:
+XMultipleInvariant returns emachine::Invariant:
 	{emachine::Invariant}
 	(comment=STRING)?
 	//	No theorem 
@@ -313,10 +321,11 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
  
  XRecord returns erecords::Record:
 	{erecords::Record}
-	(extended ?= 'extended' | refined ?= 'refined')?
-	'record' name = ID
-	('inherits' inheritsNames += ID)?
-	('field' fields += Field | 'constraint' constraints += XConstraint)*
+	(comment = STRING)?
+	(extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
+	('record' | 'rec') name = ID
+	(('inherits' | 'ihr') inheritsNames += ID)?
+	(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
 	'end'
 ;
 
