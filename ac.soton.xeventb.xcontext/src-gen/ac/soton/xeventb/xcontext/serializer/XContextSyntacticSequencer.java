@@ -23,6 +23,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected XContextGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_XContext_AxiomsKeyword_4_7_0_q;
 	protected AbstractElementAlias match_XContext_ConstantsKeyword_4_4_0_q;
+	protected AbstractElementAlias match_XContext_EndKeyword_5_q;
 	protected AbstractElementAlias match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0;
 	protected AbstractElementAlias match_XContext_ExtendsKeyword_4_0_0_q;
 	protected AbstractElementAlias match_XContext_SetsKeyword_4_2_0_q;
@@ -34,6 +35,7 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 		grammarAccess = (XContextGrammarAccess) access;
 		match_XContext_AxiomsKeyword_4_7_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getAxiomsKeyword_4_7_0());
 		match_XContext_ConstantsKeyword_4_4_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getConstantsKeyword_4_4_0());
+		match_XContext_EndKeyword_5_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getEndKeyword_5());
 		match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getXContextAccess().getExtKeyword_4_1_0_1()), new TokenAlias(false, false, grammarAccess.getXContextAccess().getExtendKeyword_4_1_0_0()));
 		match_XContext_ExtendsKeyword_4_0_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getExtendsKeyword_4_0_0());
 		match_XContext_SetsKeyword_4_2_0_q = new TokenAlias(false, true, grammarAccess.getXContextAccess().getSetsKeyword_4_2_0());
@@ -57,6 +59,8 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_XContext_AxiomsKeyword_4_7_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XContext_ConstantsKeyword_4_4_0_q.equals(syntax))
 				emit_XContext_ConstantsKeyword_4_4_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_XContext_EndKeyword_5_q.equals(syntax))
+				emit_XContext_EndKeyword_5_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0.equals(syntax))
 				emit_XContext_ExtKeyword_4_1_0_1_or_ExtendKeyword_4_1_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XContext_ExtendsKeyword_4_0_0_q.equals(syntax))
@@ -90,6 +94,26 @@ public class XContextSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     orderedChildren+=XConstant (ambiguity) orderedChildren+=XConstant
 	 */
 	protected void emit_XContext_ConstantsKeyword_4_4_0_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     'end'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     extends+=[Context|QualifiedName] (ambiguity) (rule end)
+	 *     name=ID (ambiguity) (rule end)
+	 *     orderedChildren+=XAxiom (ambiguity) (rule end)
+	 *     orderedChildren+=XCarrierSet (ambiguity) (rule end)
+	 *     orderedChildren+=XConstant (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualAxiom (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualCarrierSet (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualConstant (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualTheorem (ambiguity) (rule end)
+	 *     orderedChildren+=XRecord (ambiguity) (rule end)
+	 */
+	protected void emit_XContext_EndKeyword_5_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

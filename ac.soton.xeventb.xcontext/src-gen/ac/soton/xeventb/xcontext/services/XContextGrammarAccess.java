@@ -70,6 +70,7 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cOrderedChildrenXIndividualAxiomParserRuleCall_4_8_0 = (RuleCall)cOrderedChildrenAssignment_4_8.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_4_9 = (Assignment)cAlternatives_4.eContents().get(9);
 		private final RuleCall cOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0 = (RuleCall)cOrderedChildrenAssignment_4_9.eContents().get(0);
+		private final Keyword cEndKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//XContext returns econtext::Context:
 		//    {econtext::Context}
@@ -100,8 +101,8 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        // Individual-theorem clause
 		//        (orderedChildren+=XIndividualTheorem)
 		//    )*
-		//    // Since CamilleX 3.0, we do not have the final 'end' keyword
-		////    'end'
+		//    // Since CamilleX 3.0, we do not need to have the final 'end' keyword
+		//    ('end')?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -133,6 +134,8 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    // Individual-theorem clause
 		//    (orderedChildren+=XIndividualTheorem)
 		//)*
+		//// Since CamilleX 3.0, we do not need to have the final 'end' keyword
+		//('end')?
 		public Group getGroup() { return cGroup; }
 		
 		//{econtext::Context}
@@ -294,6 +297,10 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//XIndividualTheorem
 		public RuleCall getOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0() { return cOrderedChildrenXIndividualTheoremParserRuleCall_4_9_0; }
+		
+		//// Since CamilleX 3.0, we do not need to have the final 'end' keyword
+		//('end')?
+		public Keyword getEndKeyword_5() { return cEndKeyword_5; }
 	}
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xcontext.XContext.QualifiedName");
@@ -1958,8 +1965,8 @@ public class XContextGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        // Individual-theorem clause
 	//        (orderedChildren+=XIndividualTheorem)
 	//    )*
-	//    // Since CamilleX 3.0, we do not have the final 'end' keyword
-	////    'end'
+	//    // Since CamilleX 3.0, we do not need to have the final 'end' keyword
+	//    ('end')?
 	//;
 	public XContextElements getXContextAccess() {
 		return pXContext;

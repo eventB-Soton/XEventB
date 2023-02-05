@@ -48,8 +48,8 @@ XContext returns econtext::Context:
 		// Individual-theorem clause
 		(orderedChildren+=XIndividualTheorem)
 	)*
-	// Since CamilleX 3.0, we do not have the final 'end' keyword
-//	'end'
+	// Since CamilleX 3.0, we do not need to have the final 'end' keyword
+	('end')?
 ;
 
 QualifiedName:

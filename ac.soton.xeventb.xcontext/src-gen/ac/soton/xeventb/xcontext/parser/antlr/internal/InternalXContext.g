@@ -356,6 +356,12 @@ ruleXContext returns [EObject current=null]
 				)
 			)
 		)*
+		(
+			otherlv_20='end'
+			{
+				newLeafNode(otherlv_20, grammarAccess.getXContextAccess().getEndKeyword_5());
+			}
+		)?
 	)
 ;
 
