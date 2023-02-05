@@ -21,6 +21,7 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected XMachineGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Machine_EndKeyword_8_q;
 	protected AbstractElementAlias match_Machine_InvariantsKeyword_6_2_0_0_or_InvsKeyword_6_2_0_1;
 	protected AbstractElementAlias match_Machine_SeesKeyword_4_2_0_q;
 	protected AbstractElementAlias match_Machine_VariablesKeyword_6_0_0_0_or_VarsKeyword_6_0_0_1;
@@ -36,6 +37,7 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (XMachineGrammarAccess) access;
+		match_Machine_EndKeyword_8_q = new TokenAlias(false, true, grammarAccess.getMachineAccess().getEndKeyword_8());
 		match_Machine_InvariantsKeyword_6_2_0_0_or_InvsKeyword_6_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMachineAccess().getInvariantsKeyword_6_2_0_0()), new TokenAlias(false, false, grammarAccess.getMachineAccess().getInvsKeyword_6_2_0_1()));
 		match_Machine_SeesKeyword_4_2_0_q = new TokenAlias(false, true, grammarAccess.getMachineAccess().getSeesKeyword_4_2_0());
 		match_Machine_VariablesKeyword_6_0_0_0_or_VarsKeyword_6_0_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMachineAccess().getVariablesKeyword_6_0_0_0()), new TokenAlias(false, false, grammarAccess.getMachineAccess().getVarsKeyword_6_0_0_1()));
@@ -61,7 +63,9 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Machine_InvariantsKeyword_6_2_0_0_or_InvsKeyword_6_2_0_1.equals(syntax))
+			if (match_Machine_EndKeyword_8_q.equals(syntax))
+				emit_Machine_EndKeyword_8_q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Machine_InvariantsKeyword_6_2_0_0_or_InvsKeyword_6_2_0_1.equals(syntax))
 				emit_Machine_InvariantsKeyword_6_2_0_0_or_InvsKeyword_6_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Machine_SeesKeyword_4_2_0_q.equals(syntax))
 				emit_Machine_SeesKeyword_4_2_0_q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -87,6 +91,28 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     'end'?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name=ID (ambiguity) (rule end)
+	 *     orderedChildren+=MContains (ambiguity) (rule end)
+	 *     orderedChildren+=MIncludes (ambiguity) (rule end)
+	 *     orderedChildren+=XEvent (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualInvariant (ambiguity) (rule end)
+	 *     orderedChildren+=XIndividualVariable (ambiguity) (rule end)
+	 *     orderedChildren+=XMultipleInvariant (ambiguity) (rule end)
+	 *     orderedChildren+=XMultipleVariable (ambiguity) (rule end)
+	 *     orderedChildren+=XRecord (ambiguity) (rule end)
+	 *     orderedChildren+=XVariant (ambiguity) (rule end)
+	 *     refines+=[Machine|ID] (ambiguity) (rule end)
+	 *     sees+=[Context|ID] (ambiguity) (rule end)
+	 */
+	protected void emit_Machine_EndKeyword_8_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     'invariants' | 'invs'

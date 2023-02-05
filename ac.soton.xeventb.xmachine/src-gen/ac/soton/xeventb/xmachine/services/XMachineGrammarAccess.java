@@ -76,6 +76,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cOrderedChildrenXVariantParserRuleCall_6_5_0 = (RuleCall)cOrderedChildrenAssignment_6_5.eContents().get(0);
 		private final Assignment cOrderedChildrenAssignment_6_6 = (Assignment)cAlternatives_6.eContents().get(6);
 		private final RuleCall cOrderedChildrenXEventParserRuleCall_6_6_0 = (RuleCall)cOrderedChildrenAssignment_6_6.eContents().get(0);
+		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
+		private final Keyword cEventsKeyword_7_0 = (Keyword)cGroup_7.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
+		private final RuleCall cOrderedChildrenXEventParserRuleCall_7_1_0 = (RuleCall)cOrderedChildrenAssignment_7_1.eContents().get(0);
+		private final Keyword cEndKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		////import "platform:/resource/ac.soton.eventb.records/model/records.ecore" as erecords
 		///*
@@ -109,8 +114,10 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        // Individual-event clause
 		//        (orderedChildren += XEvent)
 		//    )*
-		//    // Since Rodin 3.0, we do not have the 'end' keyword
-		////    'end'
+		//    // Optional group events at the end
+		//    ('events' (orderedChildren += XEvent))?
+		//    // Since Rodin 3.0, we do not need to have the 'end' keyword
+		//    ('end')?
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -140,6 +147,10 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    // Individual-event clause
 		//    (orderedChildren += XEvent)
 		//)*
+		//// Optional group events at the end
+		//('events' (orderedChildren += XEvent))?
+		//// Since Rodin 3.0, we do not need to have the 'end' keyword
+		//('end')?
 		public Group getGroup() { return cGroup; }
 		
 		//{emachine::Machine}
@@ -306,6 +317,23 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//XEvent
 		public RuleCall getOrderedChildrenXEventParserRuleCall_6_6_0() { return cOrderedChildrenXEventParserRuleCall_6_6_0; }
+		
+		//// Optional group events at the end
+		//('events' (orderedChildren += XEvent))?
+		public Group getGroup_7() { return cGroup_7; }
+		
+		//'events'
+		public Keyword getEventsKeyword_7_0() { return cEventsKeyword_7_0; }
+		
+		//(orderedChildren += XEvent)
+		public Assignment getOrderedChildrenAssignment_7_1() { return cOrderedChildrenAssignment_7_1; }
+		
+		//XEvent
+		public RuleCall getOrderedChildrenXEventParserRuleCall_7_1_0() { return cOrderedChildrenXEventParserRuleCall_7_1_0; }
+		
+		//// Since Rodin 3.0, we do not need to have the 'end' keyword
+		//('end')?
+		public Keyword getEndKeyword_8() { return cEndKeyword_8; }
 	}
 	public class MContainsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.MContains");
@@ -2222,32 +2250,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'end'
 		public Keyword getEndKeyword_7() { return cEndKeyword_7; }
 	}
-	public class FieldTypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.FieldType");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
-		private final RuleCall cEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
-		
-		//FieldType returns ecore::EString:
-		//    (
-		//        ID |
-		//        EVENTB_IDENTIFIER_KEYWORD
-		//    )
-		//;
-		@Override public ParserRule getRule() { return rule; }
-		
-		//(
-		//    ID |
-		//    EVENTB_IDENTIFIER_KEYWORD
-		//)
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//ID
-		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
-		
-		//EVENTB_IDENTIFIER_KEYWORD
-		public RuleCall getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1() { return cEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1; }
-	}
 	public class FieldElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.Field");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -2260,14 +2262,14 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Assignment cMultiplicityAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cMultiplicityMultiplicityEnumRuleCall_4_0 = (RuleCall)cMultiplicityAssignment_4.eContents().get(0);
 		private final Assignment cTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cTypeFieldTypeParserRuleCall_5_0 = (RuleCall)cTypeAssignment_5.eContents().get(0);
+		private final RuleCall cTypeXTypeParserRuleCall_5_0 = (RuleCall)cTypeAssignment_5.eContents().get(0);
 		
 		//Field returns erecords::Field:
 		//    {erecords::Field}
 		//    (comment = STRING)?
 		//    name = ID (':')
 		//    (multiplicity=Multiplicity)?
-		//    (type= FieldType)
+		//    (type= XType)
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -2275,7 +2277,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//(comment = STRING)?
 		//name = ID (':')
 		//(multiplicity=Multiplicity)?
-		//(type= FieldType)
+		//(type= XType)
 		public Group getGroup() { return cGroup; }
 		
 		//{erecords::Field}
@@ -2302,11 +2304,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Multiplicity
 		public RuleCall getMultiplicityMultiplicityEnumRuleCall_4_0() { return cMultiplicityMultiplicityEnumRuleCall_4_0; }
 		
-		//(type= FieldType)
+		//(type= XType)
 		public Assignment getTypeAssignment_5() { return cTypeAssignment_5; }
 		
-		//FieldType
-		public RuleCall getTypeFieldTypeParserRuleCall_5_0() { return cTypeFieldTypeParserRuleCall_5_0; }
+		//XType
+		public RuleCall getTypeXTypeParserRuleCall_5_0() { return cTypeXTypeParserRuleCall_5_0; }
 	}
 	public class XConstraintElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XConstraint");
@@ -2453,7 +2455,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final TerminalRule tUNTRANSLATED_TOKEN;
 	private final TerminalRule tSTRING;
 	private final XRecordElements pXRecord;
-	private final FieldTypeElements pFieldType;
 	private final FieldElements pField;
 	private final MultiplicityElements eMultiplicity;
 	private final XConstraintElements pXConstraint;
@@ -2495,7 +2496,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.tUNTRANSLATED_TOKEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.UNTRANSLATED_TOKEN");
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.STRING");
 		this.pXRecord = new XRecordElements();
-		this.pFieldType = new FieldTypeElements();
 		this.pField = new FieldElements();
 		this.eMultiplicity = new MultiplicityElements();
 		this.pXConstraint = new XConstraintElements();
@@ -2560,8 +2560,10 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        // Individual-event clause
 	//        (orderedChildren += XEvent)
 	//    )*
-	//    // Since Rodin 3.0, we do not have the 'end' keyword
-	////    'end'
+	//    // Optional group events at the end
+	//    ('events' (orderedChildren += XEvent))?
+	//    // Since Rodin 3.0, we do not need to have the 'end' keyword
+	//    ('end')?
 	//;
 	public MachineElements getMachineAccess() {
 		return pMachine;
@@ -3009,26 +3011,12 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getXRecordAccess().getRule();
 	}
 	
-	//FieldType returns ecore::EString:
-	//    (
-	//        ID |
-	//        EVENTB_IDENTIFIER_KEYWORD
-	//    )
-	//;
-	public FieldTypeElements getFieldTypeAccess() {
-		return pFieldType;
-	}
-	
-	public ParserRule getFieldTypeRule() {
-		return getFieldTypeAccess().getRule();
-	}
-	
 	//Field returns erecords::Field:
 	//    {erecords::Field}
 	//    (comment = STRING)?
 	//    name = ID (':')
 	//    (multiplicity=Multiplicity)?
-	//    (type= FieldType)
+	//    (type= XType)
 	//;
 	public FieldElements getFieldAccess() {
 		return pField;

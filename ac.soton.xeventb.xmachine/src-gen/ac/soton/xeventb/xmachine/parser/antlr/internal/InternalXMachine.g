@@ -414,6 +414,37 @@ ruleMachine returns [EObject current=null]
 				)
 			)
 		)*
+		(
+			otherlv_23='events'
+			{
+				newLeafNode(otherlv_23, grammarAccess.getMachineAccess().getEventsKeyword_7_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getMachineAccess().getOrderedChildrenXEventParserRuleCall_7_1_0());
+					}
+					lv_orderedChildren_24_0=ruleXEvent
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getMachineRule());
+						}
+						add(
+							$current,
+							"orderedChildren",
+							lv_orderedChildren_24_0,
+							"ac.soton.xeventb.xmachine.XMachine.XEvent");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)?
+		(
+			otherlv_25='end'
+			{
+				newLeafNode(otherlv_25, grammarAccess.getMachineAccess().getEndKeyword_8());
+			}
+		)?
 	)
 ;
 
@@ -2947,43 +2978,6 @@ ruleXRecord returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleFieldType
-entryRuleFieldType returns [String current=null]:
-	{ newCompositeNode(grammarAccess.getFieldTypeRule()); }
-	iv_ruleFieldType=ruleFieldType
-	{ $current=$iv_ruleFieldType.current.getText(); }
-	EOF;
-
-// Rule FieldType
-ruleFieldType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()]
-@init {
-	enterRule();
-}
-@after {
-	leaveRule();
-}:
-	(
-		this_ID_0=RULE_ID
-		{
-			$current.merge(this_ID_0);
-		}
-		{
-			newLeafNode(this_ID_0, grammarAccess.getFieldTypeAccess().getIDTerminalRuleCall_0());
-		}
-		    |
-		{
-			newCompositeNode(grammarAccess.getFieldTypeAccess().getEVENTB_IDENTIFIER_KEYWORDParserRuleCall_1());
-		}
-		this_EVENTB_IDENTIFIER_KEYWORD_1=ruleEVENTB_IDENTIFIER_KEYWORD
-		{
-			$current.merge(this_EVENTB_IDENTIFIER_KEYWORD_1);
-		}
-		{
-			afterParserOrEnumRuleCall();
-		}
-	)
-;
-
 // Entry rule entryRuleField
 entryRuleField returns [EObject current=null]:
 	{ newCompositeNode(grammarAccess.getFieldRule()); }
@@ -3069,9 +3063,9 @@ ruleField returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getFieldAccess().getTypeFieldTypeParserRuleCall_5_0());
+					newCompositeNode(grammarAccess.getFieldAccess().getTypeXTypeParserRuleCall_5_0());
 				}
-				lv_type_5_0=ruleFieldType
+				lv_type_5_0=ruleXType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFieldRule());
@@ -3080,7 +3074,7 @@ ruleField returns [EObject current=null]
 						$current,
 						"type",
 						lv_type_5_0,
-						"ac.soton.xeventb.xmachine.XMachine.FieldType");
+						"ac.soton.xeventb.xmachine.XMachine.XType");
 					afterParserOrEnumRuleCall();
 				}
 			)

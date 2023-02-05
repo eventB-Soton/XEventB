@@ -59,8 +59,10 @@ Machine returns emachine::Machine:
 		// Individual-event clause
 		(orderedChildren += XEvent)
 	)*
-	// Since Rodin 3.0, we do not have the 'end' keyword
-//	'end'
+	// Optional group events at the end
+	('events' (orderedChildren += XEvent))?
+	// Since Rodin 3.0, we do not need to have the 'end' keyword
+	('end')?
 ;
 
 MContains returns econtainment::Containment:
@@ -329,19 +331,12 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
 	'end'
 ;
 
-FieldType returns ecore::EString:
-	(
-		ID |
-		EVENTB_IDENTIFIER_KEYWORD 
-	)
-;
-
 Field returns erecords::Field:
 	{erecords::Field}
 	(comment = STRING)?	
 	name = ID (':')
 	(multiplicity=Multiplicity)?
-	(type= FieldType)	
+	(type= XType)	
 ;
 
 enum Multiplicity returns erecords::Multiplicity:

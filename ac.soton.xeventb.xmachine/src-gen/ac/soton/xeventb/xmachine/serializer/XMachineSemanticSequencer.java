@@ -138,7 +138,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Field returns Field
 	 *
 	 * Constraint:
-	 *     (comment=STRING? name=ID multiplicity=Multiplicity? type=FieldType)
+	 *     (comment=STRING? name=ID multiplicity=Multiplicity? type=XType)
 	 */
 	protected void sequence_Field(ISerializationContext context, Field semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -196,7 +196,8 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *                 orderedChildren+=XEvent
 	 *             )? 
 	 *             orderedChildren+=XMultipleVariable?
-	 *         )*
+	 *         )* 
+	 *         orderedChildren+=XEvent?
 	 *     )
 	 */
 	protected void sequence_Machine(ISerializationContext context, Machine semanticObject) {
