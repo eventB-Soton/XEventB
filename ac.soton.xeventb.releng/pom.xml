@@ -18,20 +18,20 @@
   <!-- ID of this artifact -->
   <artifactId>releng</artifactId>
   <!-- REQUIRED: Version number (using semantic versioning) -->
-  <version>2.0.1.release</version>
+  <version>3.0.0.release</version>
   <packaging>pom</packaging>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!-- Plug-in versions -->
-    <tycho-version>2.0.0</tycho-version>
-    <maven-resources-plugin-version>3.0.2</maven-resources-plugin-version>
-    <!-- URL for Eclipse Updates repository (4.16) -->
-    <eclipse_updates-repo.url>http://download.eclipse.org/eclipse/updates/4.16/</eclipse_updates-repo.url>
-    <!-- URL for Eclipse Releases repository (2020-06) -->
-    <eclipse_releases-repo.url>http://download.eclipse.org/releases/2020-06</eclipse_releases-repo.url>
-    <!-- URL for Rodin Platform (3.5) -->
-    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.5</rodin-repo.url>
+    <tycho-version>2.7.5</tycho-version>
+    <maven-resources-plugin-version>3.3.0</maven-resources-plugin-version>
+    <!-- URL for Eclipse Updates repository (4.22) -->
+    <eclipse_updates-repo.url>http://download.eclipse.org/eclipse/updates/4.22/</eclipse_updates-repo.url>
+    <!-- URL for Eclipse Releases repository (2022-06) -->
+    <eclipse_releases-repo.url>http://download.eclipse.org/releases/2022-06</eclipse_releases-repo.url>
+    <!-- URL for Rodin Platform (3.7) -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
     <!-- URL for the Soton Update site -->
     <soton-repo.url>http://eventb-soton.github.io/updateSite</soton-repo.url>
