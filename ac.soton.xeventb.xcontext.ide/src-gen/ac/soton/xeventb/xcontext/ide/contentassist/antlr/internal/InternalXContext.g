@@ -1712,6 +1712,7 @@ rule__XContext__Group__4
 	}
 :
 	rule__XContext__Group__4__Impl
+	rule__XContext__Group__5
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1726,6 +1727,32 @@ rule__XContext__Group__4__Impl
 	{ before(grammarAccess.getXContextAccess().getAlternatives_4()); }
 	(rule__XContext__Alternatives_4)*
 	{ after(grammarAccess.getXContextAccess().getAlternatives_4()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__XContext__Group__5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__XContext__Group__5__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__XContext__Group__5__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getXContextAccess().getEndKeyword_5()); }
+	('end')?
+	{ after(grammarAccess.getXContextAccess().getEndKeyword_5()); }
 )
 ;
 finally {
