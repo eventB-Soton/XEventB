@@ -5,13 +5,13 @@ Bundle-Vendor: %Bundle-Vendor
 Bundle-Version: 0.2.0.release
 Bundle-SymbolicName: ac.soton.xeventb.xmachine.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: ac.soton.xeventb.xmachine.ui;bundle-version="1.0.0",
+Require-Bundle: ac.soton.xeventb.xmachine.ui;bundle-version="[2.1.0,3.0.0)",
  org.eclipse.xtext.testing;bundle-version="[2.13.0,3.0.0)",
  org.eclipse.xtext.xbase.junit;bundle-version="[2.13.0,3.0.0)",
- org.eclipse.core.runtime,
- org.eclipse.xtext.xbase.testing,
+ org.eclipse.core.runtime;bundle-version="[3.24.0,4.0.0)",
+ org.eclipse.xtext.xbase.testing;bundle-version="[2.25.0,3.0.0)",
  org.eclipse.ui.workbench;bundle-version="[3.122.0,4.0.0)",
- org.eclipse.xtext.ui.testing
+ org.eclipse.xtext.ui.testing;bundle-version="[2.25.0,3.0.0)"
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xmachine.ui.tests;x-internal=true
 Automatic-Module-Name: ac.soton.xeventb.xmachine.ui.tests
