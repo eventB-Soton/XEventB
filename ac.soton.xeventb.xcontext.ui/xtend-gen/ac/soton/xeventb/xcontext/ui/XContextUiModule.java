@@ -3,7 +3,6 @@
  */
 package ac.soton.xeventb.xcontext.ui;
 
-import ac.soton.xeventb.xcontext.ui.AbstractXContextUiModule;
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -17,7 +16,7 @@ public class XContextUiModule extends AbstractXContextUiModule {
   public XContextUiModule(final AbstractUIPlugin plugin) {
     super(plugin);
   }
-  
+
   @Override
   public void configure(final Binder binder) {
     super.configure(binder);

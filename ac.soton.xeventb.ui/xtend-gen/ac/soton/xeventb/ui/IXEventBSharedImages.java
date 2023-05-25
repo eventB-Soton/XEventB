@@ -35,6 +35,6 @@ public interface IXEventBSharedImages {
    * Image IDs, paths for XEvent-B Elements
    */
   static final String IMG_XMACHINE = "XMachine";
-  
+
   static final String IMG_XMACHINE_PATH = "icons/full/obj16/xmch_obj.gif";
 }

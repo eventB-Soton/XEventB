@@ -2,13 +2,16 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 1.0.1.release
+Bundle-Version: 1.1.0.release
 Bundle-SymbolicName: ac.soton.xeventb.xcontext.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: ac.soton.xeventb.xcontext.ui;bundle-version="[2.0.0,3.0.0)",
+Require-Bundle: ac.soton.xeventb.xcontext.ui;bundle-version="[3.0.0,4.0.0)",
  org.eclipse.xtext.xbase.junit;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.testing;bundle-version="[2.12.0,3.0.0)",
- org.eclipse.xtext.ui.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+ org.eclipse.core.runtime;bundle-version="[3.20.0,4.0.0)",
+ org.eclipse.xtext.xbase.testing;bundle-version="[2.24.0,3.0.0)",
+ org.eclipse.ui.workbench;bundle-version="[3.122.0,4.0.0)",
+ org.eclipse.xtext.ui.testing;bundle-version="[2.24.0,3.0.0)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xcontext.ui.tests;x-internal=true
 Automatic-Module-Name: ac.soton.xeventb.xcontext.ui.tests

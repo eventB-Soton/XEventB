@@ -15,10 +15,10 @@ package ac.soton.xeventb.xmachine.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
 import ac.soton.eventb.emf.containment.Containment;
+import ac.soton.eventb.emf.core.extension.coreextension.TypedVariable;
 import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.xeventb.common.Utils;
 import ac.soton.xeventb.xmachine.IContainmentGenerator;
-import ac.soton.xeventb.xmachine.generator.ContainmentRegistry;
 import com.google.common.base.Objects;
 import java.util.Collection;
 import org.eclipse.core.commands.ExecutionException;
@@ -49,7 +49,13 @@ import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.Annotation;
 import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.machine.Action;
+import org.eventb.emf.core.machine.Event;
+import org.eventb.emf.core.machine.Invariant;
 import org.eventb.emf.core.machine.Machine;
+import org.eventb.emf.core.machine.MachineFactory;
+import org.eventb.emf.core.machine.Variable;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
@@ -61,17 +67,18 @@ import org.rodinp.core.RodinCore;
  * </p>
  * 
  * @author htson - Initial implementation
- * @author Dana - Implementation for machine inclusion (0.0.6)
- * @author asiehsalehi - Implementation for record extension (2.0)
- * @author htson - Introduce generator for containment via extension points (2.0)
- * @author htson - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
+ * @author Dana (0.0.6) - Implementation for machine inclusion (0.0.6)
+ * @author asiehsalehi (2.0) - Implementation for record extension (2.0)
+ * @author htson (2.0) - Introduce generator for containment via extension points (2.0)
+ * @author htson (2.0) - Serialised the configuration ac.soton.xeventb.xmachine.base (2.0)
+ * @author htson (2.1) - Serialisation for typed variables
  * @version 2.0
- * @since 0.1
+ * @since 2.1
  */
 @SuppressWarnings("all")
 public class XMachineGenerator extends AbstractGenerator {
   private final String CONFIGURATION = "configuration";
-  
+
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
     try {
@@ -96,6 +103,7 @@ public class XMachineGenerator extends AbstractGenerator {
           rodinInternalDetails.put(XMachineGenerator.this.CONFIGURATION, 
             "org.eventb.core.fwd;ac.soton.xeventb.xmachine.base");
           mch.getAnnotations().add(rodinInternals);
+          XMachineGenerator.this.translateTypedVariables(mch);
           XMachineGenerator.this.translateFormulae(mch);
           rodinResource.setModified(true);
         }
@@ -115,7 +123,7 @@ public class XMachineGenerator extends AbstractGenerator {
           final NullProgressMonitor monitor = new NullProgressMonitor();
           factory.translate(editingDomain, mch, commandId, monitor);
         }
-        String recordCommandId = "ac.soton.eventb.records.commands.record";
+        String recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords";
         boolean _canTranslate_1 = factory.canTranslate(recordCommandId, mch.eClass());
         if (_canTranslate_1) {
           final NullProgressMonitor monitor_1 = new NullProgressMonitor();
@@ -167,7 +175,64 @@ public class XMachineGenerator extends AbstractGenerator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
+  /**
+   * Utility method to translate typed variables of a machine to variables,
+   * typing invariants and initialisation action.
+   * 
+   * @param ctx The input machine
+   */
+  private void translateTypedVariables(final Machine mch) {
+    Object _eGet = mch.eGet(
+      CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
+    EList<EventBElement> orderedChildren = ((EList<EventBElement>) _eGet);
+    int i = 0;
+    while ((i < orderedChildren.size())) {
+      {
+        final EventBElement child = orderedChildren.get(i);
+        if ((child instanceof TypedVariable)) {
+          final String name = ((TypedVariable)child).getName();
+          final String type = ((TypedVariable)child).getType();
+          final String value = ((TypedVariable)child).getValue();
+          Variable vrb = MachineFactory.eINSTANCE.createVariable();
+          vrb.setName(name);
+          orderedChildren.add(i, vrb);
+          i++;
+          if ((type != null)) {
+            Invariant inv = MachineFactory.eINSTANCE.createInvariant();
+            inv.setName((name + "-typeof"));
+            inv.setPredicate(((name + " ∈ ") + type));
+            inv.setTheorem(false);
+            orderedChildren.add(i, inv);
+            i++;
+          }
+          if ((value != null)) {
+            Event initialisation = null;
+            EList<Event> _events = mch.getEvents();
+            for (final Event event : _events) {
+              String _name = event.getName();
+              boolean _equals = Objects.equal(_name, "INITIALISATION");
+              if (_equals) {
+                initialisation = event;
+              }
+            }
+            if ((initialisation == null)) {
+              initialisation = MachineFactory.eINSTANCE.createEvent();
+              initialisation.setName("INITIALISATION");
+              orderedChildren.add(i, initialisation);
+              i++;
+            }
+            Action act = MachineFactory.eINSTANCE.createAction();
+            act.setName((name + "-init"));
+            act.setAction(((name + " := ") + value));
+            initialisation.getOrderedChildren().add(act);
+          }
+        }
+        i++;
+      }
+    }
+  }
+
   private ISchedulingRule getSchedulingRule(final Resource[] resources) {
     int _length = resources.length;
     boolean _equals = (_length == 0);
@@ -191,7 +256,7 @@ public class XMachineGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private IProject getProject(final Resource resource) {
     final IFile file = WorkspaceSynchronizer.getFile(resource);
     IProject _elvis = null;
@@ -206,7 +271,7 @@ public class XMachineGenerator extends AbstractGenerator {
     }
     return _elvis;
   }
-  
+
   /**
    * Utility method to translate formulae in the input machine to Event-B
    * mathematics.

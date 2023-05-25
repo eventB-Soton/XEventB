@@ -19,8 +19,6 @@ import ac.soton.eventb.emf.diagrams.DiagramOwner;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.InclusionPackage;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
-import ac.soton.eventb.emf.record.Record;
-import ac.soton.eventb.emf.record.RecordPackage;
 import ac.soton.xeventb.common.EventBContainerManager;
 import ac.soton.xeventb.common.EventBQualifiedNameProvider;
 import ch.ethz.eventb.utils.EventBUtils;
@@ -28,7 +26,6 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import org.eclipse.core.resources.IFile;
@@ -56,9 +53,6 @@ import org.eventb.core.IMachineRoot;
 import org.eventb.core.basis.ContextRoot;
 import org.eventb.core.basis.MachineRoot;
 import org.eventb.emf.core.EventBElement;
-import org.eventb.emf.core.EventBNamedCommentedComponentElement;
-import org.eventb.emf.core.EventBObject;
-import org.eventb.emf.core.context.Context;
 import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
@@ -162,17 +156,6 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
         Objects.equal(reference, InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE))) {
         return this.scopeForMachineInclusion(context, reference);
       }
-      if (((context instanceof Record) && Objects.equal(reference, RecordPackage.Literals.RECORD__SUBSETS))) {
-        EObject _rootContainer_2 = EcoreUtil2.getRootContainer(context, true);
-        final Machine mch_2 = ((Machine) _rootContainer_2);
-        final Collection<EventBNamedCommentedComponentElement> components = this.getComponentsInScope(mch_2);
-        final List<Record> records = EcoreUtil2.<Record>getAllContentsOfType(mch_2, Record.class);
-        records.remove(context);
-        for (final EventBNamedCommentedComponentElement c : components) {
-          records.addAll(EcoreUtil2.<Record>getAllContentsOfType(((EObject) c), Record.class));
-        }
-        return Scopes.scopeFor(records);
-      }
       if (((context instanceof Containment) && 
         Objects.equal(reference, ContainmentPackage.Literals.CONTAINMENT__EXTENSION))) {
         EObject _eContainer = context.eContainer();
@@ -204,7 +187,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * The scope for machine inclusion is the set of all (Rodin) machines
    * within the current project (reference using simple names) and the set
@@ -237,29 +220,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
-  private Collection<EventBNamedCommentedComponentElement> getComponentsInScope(final EventBObject eventBObject) {
-    ArrayList<EventBNamedCommentedComponentElement> list = new ArrayList<EventBNamedCommentedComponentElement>();
-    if ((eventBObject instanceof Machine)) {
-      Machine m = ((Machine) eventBObject);
-      list.add(m);
-      EList<Context> _sees = m.getSees();
-      for (final Context c : _sees) {
-        list.addAll(this.getComponentsInScope(c));
-      }
-    } else {
-      if ((eventBObject instanceof Context)) {
-        Context c_1 = ((Context) eventBObject);
-        list.add(c_1);
-        EList<Context> _extends = c_1.getExtends();
-        for (final Context x : _extends) {
-          list.addAll(this.getComponentsInScope(x));
-        }
-      }
-    }
-    return list;
-  }
-  
+
   /**
    * THESE METHODS WERE COPIED FROM EMFRodinDB
    */
@@ -287,7 +248,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     }
     return resource;
   }
-  
+
   /**
    * this returns the project name by checking the uri of the given element
    * The element must be loaded or an npe will occur
@@ -299,7 +260,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
     final URI uri = EcoreUtil.getURI(element);
     return uri.segment(1);
   }
-  
+
   /**
    * loads an Event-B component (URI) into EMF
    * 
@@ -318,7 +279,7 @@ public class XMachineScopeProvider extends AbstractDeclarativeScopeProvider {
       return null;
     }
   }
-  
+
   /**
    * loads an Event-B component (root) into EMF
    * 

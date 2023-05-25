@@ -3,3 +3,8 @@
 /.XContextContentProvider.xtendbin
 /.XContextNavigatorLabelProvider.xtendbin
 /.XContextNavigatorObject.xtendbin
+/ContextRootContentProvider.java
+/XContextActionProvider.java
+/XContextContentProvider.java
+/XContextNavigatorLabelProvider.java
+/XContextNavigatorObject.java

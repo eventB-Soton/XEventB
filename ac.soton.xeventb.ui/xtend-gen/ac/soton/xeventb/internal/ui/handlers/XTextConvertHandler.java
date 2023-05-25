@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2016,2021 University of Southampton.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -38,9 +38,9 @@ import org.rodinp.core.RodinDBException;
 /**
  * An implementation of a handler for XText Convert (from Event-B model).
  * 
- * @author htson
- * @version 0.1
  * @since 0.0.2
+ * @version 0.1
+ * @author htson - Initial API and implementation
  */
 @SuppressWarnings("all")
 public class XTextConvertHandler extends AbstractHandler implements IHandler {
@@ -93,7 +93,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     }
     return null;
   }
-  
+
   /**
    * Get the current only selected object. If more than one objects are
    * selected, return <code>null</code>.
@@ -116,7 +116,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     }
     return null;
   }
-  
+
   /**
    * Converting a machine root to XMachine.
    * 
@@ -133,9 +133,10 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     _builder.append("bumx");
     uriString = _builder.toString();
     URI uri = URI.createURI(uriString);
-    emfRodinDB.saveResource(uri, mch);
+    final NullProgressSaveCommand cmd = new NullProgressSaveCommand(emfRodinDB, uri, mch);
+    cmd.save();
   }
-  
+
   /**
    * Converting a context root to XContext.
    * 
@@ -152,6 +153,7 @@ public class XTextConvertHandler extends AbstractHandler implements IHandler {
     _builder.append("bucx");
     uriString = _builder.toString();
     URI uri = URI.createURI(uriString);
-    emfRodinDB.saveResource(uri, ctx);
+    final NullProgressSaveCommand cmd = new NullProgressSaveCommand(emfRodinDB, uri, ctx);
+    cmd.save();
   }
 }

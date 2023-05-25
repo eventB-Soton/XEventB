@@ -5,7 +5,6 @@ package ac.soton.xeventb.xmachine.ide;
 
 import ac.soton.xeventb.xmachine.XMachineRuntimeModule;
 import ac.soton.xeventb.xmachine.XMachineStandaloneSetup;
-import ac.soton.xeventb.xmachine.ide.XMachineIdeModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.eclipse.xtext.util.Modules2;

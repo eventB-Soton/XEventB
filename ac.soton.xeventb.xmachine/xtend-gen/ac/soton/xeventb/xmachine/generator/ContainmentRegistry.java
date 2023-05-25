@@ -35,26 +35,26 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
  * @version 0.1
  * @see IContainmentGenerator
  * @see XMachineGenerator
- * @since 2.0
+ * @since 2.1
  */
 @SuppressWarnings("all")
 public class ContainmentRegistry {
   private static ContainmentRegistry registry;
-  
+
   /**
    * Map of generators associating a class with collection of generators.
    * This is to allow multiple generators for the same class.
    * Note that multiple generators might be also available by inheritance.
    */
   private Map<Class<?>, Collection<IContainmentGenerator>> generators;
-  
+
   /**
    * Singleton class should have private constructor.
    */
   private ContainmentRegistry() {
     this.generators = null;
   }
-  
+
   /**
    * Return the default instance of this containment registry (create one if necessary).
    */
@@ -65,7 +65,7 @@ public class ContainmentRegistry {
     }
     return ContainmentRegistry.registry;
   }
-  
+
   /**
    * Utility method to load the extension registry. The generators is loaded into the map.
    */
@@ -89,7 +89,7 @@ public class ContainmentRegistry {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to add a generator for a class to the map of generators.
    * 
@@ -114,7 +114,7 @@ public class ContainmentRegistry {
     }
     return _xifexpression;
   }
-  
+
   /**
    * Method to get a collection of generators related to an input diagram owner.
    * This is done by looking at the map of generators (load the registry if

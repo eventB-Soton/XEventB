@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2018 University of Southampton.
+ * Copyright (c) 2018, 2022 University of Southampton.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import ch.ethz.eventb.utils.EventBUtils;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.jface.viewers.ITreeContentProvider;
@@ -26,9 +25,9 @@ import org.rodinp.core.IInternalElement;
  * implementation provide the corresponding root element as a single
  * child of a XEvent-B navigator object.
  * 
- * @author htson
- * @version 1.0
  * @since 0.1
+ * @version 1.1
+ * @author htson - Initial API and implementation
  */
 @SuppressWarnings("all")
 public abstract class AbstractRootContentProvider implements ITreeContentProvider {
@@ -42,9 +41,10 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
    *          The name of the root element.
    * @return the root element corresponding to the input project and
    *          name.
+   * @since 2.0
    */
   public abstract IInternalElement getRoot(final IEventBProject project, final String name);
-  
+
   /**
    * Returns the Event-B root element corresponding to the XEvent-B
    * navigator object
@@ -69,7 +69,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
     }
     return new Object[0];
   }
-  
+
   /**
    * Returns the children of the input element.
    * 
@@ -81,7 +81,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
   public Object[] getElements(final Object inputElement) {
     return this.getChildren(inputElement);
   }
-  
+
   /**
    * Returns the containing project of the input element.
    * 
@@ -96,7 +96,7 @@ public abstract class AbstractRootContentProvider implements ITreeContentProvide
     }
     return null;
   }
-  
+
   /**
    * Returns if the input element has some children.
    * 

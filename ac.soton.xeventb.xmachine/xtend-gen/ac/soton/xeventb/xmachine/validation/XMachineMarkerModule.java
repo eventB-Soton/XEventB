@@ -53,7 +53,7 @@ import org.rodinp.core.IRodinFile;
 @SuppressWarnings("all")
 public class XMachineMarkerModule extends SCProcessorModule {
   private final IModuleType<XMachineMarkerModule> MODULE_TYPE = SCCore.<XMachineMarkerModule>getModuleType("ac.soton.xeventb.xmachine.XMachineMarkerModule");
-  
+
   /**
    * The main process method, which get the issues by running expensive
    * validation rules, and created the markers based on the result.
@@ -128,7 +128,7 @@ public class XMachineMarkerModule extends SCProcessorModule {
     }
     return;
   }
-  
+
   /**
    * Return the module type.
    */

@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2016 University of Southampton.
+ * Copyright (c) 2016,2021 University of Southampton.
  *
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -13,6 +13,7 @@
  *******************************************************************************/
 package ac.soton.xeventb.internal.ui.handlers
 
+import ch.ethz.eventb.utils.EventBUtils
 import org.eclipse.core.commands.AbstractHandler
 import org.eclipse.core.commands.ExecutionEvent
 import org.eclipse.core.commands.ExecutionException
@@ -31,16 +32,16 @@ import org.eventb.emf.persistence.EMFRodinDB
 import org.rodinp.core.IInternalElement
 import org.rodinp.core.IRodinFile
 import org.rodinp.core.RodinDBException
-import ch.ethz.eventb.utils.EventBUtils
 
 /** 
  * An implementation of a handler for XText Convert (from Event-B model).
  * 
- * @author htson
- * @version 0.1
  * @since 0.0.2
+ * @version 0.1
+ * @author htson - Initial API and implementation
  */
 class XTextConvertHandler extends AbstractHandler implements IHandler {
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -111,7 +112,8 @@ class XTextConvertHandler extends AbstractHandler implements IHandler {
 		uriString = uriString.substring(0, uriString.lastIndexOf("bum"))
 		uriString = '''«uriString»bumx'''.toString
 		var URI uri = URI::createURI(uriString)
-		emfRodinDB.saveResource(uri, mch)
+		val cmd = new NullProgressSaveCommand(emfRodinDB, uri, mch)
+		cmd.save()
 	}
 
 	/** 
@@ -127,6 +129,7 @@ class XTextConvertHandler extends AbstractHandler implements IHandler {
 		uriString = uriString.substring(0, uriString.lastIndexOf("buc"))
 		uriString = '''«uriString»bucx'''.toString
 		var URI uri = URI::createURI(uriString)
-		emfRodinDB.saveResource(uri, ctx)
+		val cmd = new NullProgressSaveCommand(emfRodinDB, uri, ctx)
+		cmd.save()
 	}
 }

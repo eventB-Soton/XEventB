@@ -13,9 +13,9 @@
  *******************************************************************************/
 grammar ac.soton.xeventb.xmachine.XMachine with org.eclipse.xtext.common.Terminals hidden (WS,ML_COMMENT,SL_COMMENT)
 
-//import "http://emf.eventb.org/models/core/2014" as eventbcore
-//import "http://emf.eventb.org/models/core/machine/2014" as emachine
-//import "http://emf.eventb.org/models/core/context/2014" as econtext
+//import "http://emf.eventb.org/models/core/2022" as eventbcore
+//import "http://emf.eventb.org/models/core/machine/2022" as emachine
+//import "http://emf.eventb.org/models/core/context/2022" as econtext
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 import "http://soton.ac.uk/models/eventb/inclusion/2017" as einclusion 
 import "http://soton.ac.uk/models/eventb/containment/2017" as econtainment
@@ -24,7 +24,7 @@ import "http://soton.ac.uk/models/eventb/diagrams/2020" as ediagrams
 import "http://soton.ac.uk/models/eventb/coreextension/2014" as eventbcoreex
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//machine"as emachine
 import "platform:/resource/org.eventb.emf.core/model/eventbcore.ecore#//context"as econtext
-import "http://soton.ac.uk/models/eventb/record/2019" as erecords
+import "http://soton.ac.uk/models/eventb/record/2022" as erecords
 //import "platform:/resource/ac.soton.eventb.records/model/records.ecore" as erecords
 
 /*
@@ -34,20 +34,35 @@ import "http://soton.ac.uk/models/eventb/record/2019" as erecords
 
 Machine returns emachine::Machine:
 	{emachine::Machine}
-   (comment=(ML_COMMENT|SL_COMMENT))?
+   	(comment = STRING)?
 	'machine' name=ID
 	(
-		(extensions+= MIncludes*) &
+		(orderedChildren+= MIncludes*) &
     	('refines' refines+=[emachine::Machine])? &
 		('sees' sees+=[econtext::Context]+)?
 	)
-	('contains' extensions += MContains+)?
-    ('variables' variables+=XVariable+)?
-    ('records' extensions += Record+)?
-	('invariants' invariants+=XInvariant+)?
-	('variants' variants+=XVariant+)?
-	('events' events+=XEvent+)?
-	('end')
+	('contains' orderedChildren += MContains+)?
+	// The following can be interleaved
+	(
+		// Mutiple-variable clause
+    	(('variables' | 'vars') orderedChildren += XMultipleVariable+) |
+    	// Individual-variable clause
+    	(orderedChildren += XIndividualVariable) |
+    	// Multiple-invariant clause
+    	(('invariants' | 'invs') orderedChildren += XMultipleInvariant+) |
+    	// Individual-invariant clause
+    	(orderedChildren += XIndividualInvariant) |
+    	// Individual-record clause
+    	(orderedChildren += XRecord) |
+    	// Individual-variant clause
+		(orderedChildren += XVariant) |
+		// Individual-event clause
+		(orderedChildren += XEvent)
+	)*
+	// Optional group events at the end
+	('events' (orderedChildren += XEvent))?
+	// Since Rodin 3.0, we do not need to have the 'end' keyword
+	('end')?
 ;
 
 MContains returns econtainment::Containment:
@@ -66,15 +81,60 @@ QualifiedName:
 	ID('.'ID)?
 ;
 
-XVariable returns emachine::Variable:
+XMultipleVariable returns emachine::Variable:
 	{emachine::Variable}
-	name=ID
 	(comment=STRING)?
+	name=ID // No type or value
 ;
 
-XInvariant returns emachine::Invariant:
+XIndividualVariable returns eventbcoreex::TypedVariable:
+	{eventbcoreex::TypedVariable}
+	(comment=STRING)?
+	('variable' | 'var') name=ID (':' type = XType)? ('=' value=XFormula)?
+;
+
+XType returns ecore::EString:
+	XTypePrimitive (XTYPEOPERATOR XTypePrimitive)*
+;
+
+XTYPEOPERATOR returns ecore::EString:
+	'↔' | // Symbols for building set of relations
+	'' | 
+	'' | 
+	'' | 
+	'⇸' | 
+	'→' | 
+	'⤔' | 
+	'↣' | 
+	'⤀' | 
+	'↠' | 
+	'⤖' | 
+	'×'
+;
+
+XTypePrimitive returns ecore::EString:
+	ID |
+	'BOOL' |
+	'ℕ1' | 
+	'ℕ' | 
+	'ℤ' | 
+	'(' XType ')'| 
+	'ℙ' '(' XType ')' |
+	'ℙ1' '(' XType ')'
+;
+
+XMultipleInvariant returns emachine::Invariant:
 	{emachine::Invariant}
-	(theorem?='theorem')? name=XLABEL predicate=XFormula	
+	(comment=STRING)?
+	//	No theorem 
+	name=XLABEL predicate=XFormula	
+;
+
+XIndividualInvariant returns emachine::Invariant:
+	{emachine::Invariant}
+	(comment=STRING)?
+	(theorem?='theorem' | 'invariant')
+	name=XLABEL predicate=XFormula	
 ;
 
 terminal XLABEL returns ecore::EString:
@@ -83,22 +143,24 @@ terminal XLABEL returns ecore::EString:
 
 XVariant returns emachine::Variant:
 	{emachine::Variant}
-	name=XLABEL expression= XFormula
+	(comment=STRING)?
+	'variant' name=XLABEL expression= XFormula
 ;
 
 XEvent returns emachine::Event:
 	{emachine::Event}
+	(comment=STRING)?
 	(convergence=XConvergence)?
-	'event' name=ID (comment = STRING)?
+	'event' name=ID
 	(
 		('refines' refines+=[emachine::Event]+) |
 		(extended?='extends' refines+=[emachine::Event])
 	)?
-	('any' parameters+=XParameter+)?
-	(extensions+= EventSync*)
-	(('where' | 'when') guards+=XGuard+)?
-	(('then' | 'begin') actions+=XAction+)?
-	('with' witnesses+=XWitness+)?
+	('any' orderedChildren += XParameter+)?
+	(orderedChildren += EventSync*)
+	(('where' | 'when') orderedChildren += XGuard+)?
+	(('then' | 'begin') orderedChildren += XAction+)?
+	('with' orderedChildren += XWitness+)?
 	'end'
 ;
 
@@ -113,21 +175,25 @@ enum XConvergence returns emachine::Convergence:
 
 XParameter returns emachine::Parameter:
 	{emachine::Parameter}
+	(comment=STRING)?
 	name=ID
 ;
 
 XGuard returns emachine::Guard:
 	{emachine::Guard}
-	 (theorem?='theorem')? name=XLABEL predicate= XFormula
+	(comment=STRING)?
+	(theorem?='theorem')? name=XLABEL predicate= XFormula
 ;
 
 XWitness returns emachine::Witness:
 	{emachine::Witness}
+	(comment=STRING)?
 	name=XLABEL predicate= XFormula
 ;
 
 XAction returns emachine::Action:
 	{emachine::Action}
+	(comment=STRING)?
 	name=XLABEL action= XFormula
 ;
 
@@ -255,25 +321,29 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
  * support for records
  */
  
- Record returns erecords::Record:
+ XRecord returns erecords::Record:
 	{erecords::Record}
-	'record' name = ID
-		('extends' subsets=[erecords::Record|ID])
-		(fields+=Field (fields+=Field)*)?
-;
-
-FieldType returns ecore::EString:
-	(
-		ID |
-		EVENTB_IDENTIFIER_KEYWORD 
-	)
+	(comment = STRING)?
+	(extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
+	('record' | 'rec') name = ID
+	(('inherits' | 'ihr') inheritsNames += ID)?
+	(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+	'end'
 ;
 
 Field returns erecords::Field:
-	    name = ID (':')
-	    (multiplicity=Multiplicity)?
-		(type=FieldType)	
+	{erecords::Field}
+	(comment = STRING)?	
+	name = ID (':')
+	(multiplicity=Multiplicity)?
+	(type= XType)	
 ;
 
 enum Multiplicity returns erecords::Multiplicity:
 				ONE = 'one' | MANY = 'many' | OPTIONAL = 'opt';
+
+XConstraint returns erecords::Constraint:
+	{erecords::Constraint}
+	(comment = STRING)?	
+	name=XLABEL predicate=XFormula
+;

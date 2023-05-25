@@ -54,7 +54,7 @@ public class XMachineFormatter extends AbstractFormatter2 {
   @Inject
   @Extension
   private XMachineGrammarAccess _xMachineGrammarAccess;
-  
+
   protected void _format(final Machine machine, @Extension final IFormattableDocument document) {
     IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(machine);
     boolean _tripleEquals = (_regionForEObject == null);
@@ -235,7 +235,7 @@ public class XMachineFormatter extends AbstractFormatter2 {
       }
     }
   }
-  
+
   protected void _format(final Event event, @Extension final IFormattableDocument document) {
     IEObjectRegion _regionForEObject = this.textRegionExtensions.regionForEObject(event);
     boolean _tripleEquals = (_regionForEObject == null);
@@ -399,7 +399,7 @@ public class XMachineFormatter extends AbstractFormatter2 {
     };
     document.append(this.textRegionExtensions.allRegionsFor(event).ruleCallTo(this._xMachineGrammarAccess.getML_COMMENTRule()), _function_14);
   }
-  
+
   public void format(final Object machine, final IFormattableDocument document) {
     if (machine instanceof Machine) {
       _format((Machine)machine, document);

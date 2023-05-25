@@ -30,15 +30,15 @@ import org.eclipse.xtext.xbase.lib.Functions.Function0;
 @SuppressWarnings("all")
 public class Identifiers extends NLS {
   private static final String BUNDLE_NAME = "ac.soton.xeventb.xmachine.utils.identifiers";
-  
+
   public static String EXTPT_CONTAINMENT_EXTPTID;
-  
+
   public static String EXTPT_CONTAINMENT_COMPONENT_ID;
-  
+
   public static String EXTPT_CONTAINMENT_COMPONENT_CLASS;
-  
+
   public static String EXTPT_CONTAINMENT_COMPONENT_GENERATOR;
-  
+
   private static final int STATIC_INITIALISATION = new Function0<Integer>() {
     @Override
     public Integer apply() {
@@ -46,7 +46,7 @@ public class Identifiers extends NLS {
       return 0;
     }
   }.apply().intValue();
-  
+
   private Identifiers() {
     System.out.println(Identifiers.STATIC_INITIALISATION);
   }

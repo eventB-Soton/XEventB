@@ -5,7 +5,6 @@ package ac.soton.xeventb.xmachine.tests;
 
 import ac.soton.xeventb.tests.common.AssertExtensions;
 import ac.soton.xeventb.tests.common.AssertMachineExtensions;
-import ac.soton.xeventb.xmachine.tests.XMachineInjectorProvider;
 import com.google.inject.Inject;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -31,13 +30,13 @@ public class XMachineParsingTest {
   @Inject
   @Extension
   private ParseHelper<Machine> parseHelper;
-  
+
   @Extension
   private AssertExtensions _assertExtensions = new AssertExtensions();
-  
+
   @Extension
   private AssertMachineExtensions _assertMachineExtensions = new AssertMachineExtensions();
-  
+
   /**
    * Manually register any EPackage required for running the tests.
    * @since 2.0
@@ -46,7 +45,7 @@ public class XMachineParsingTest {
   public void registerEPackages() {
     this._assertMachineExtensions.registerMachineEPackage();
   }
-  
+
   /**
    * Successful test for context clause.
    * 
@@ -71,7 +70,7 @@ public class XMachineParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for multi-line comments with context clause.
    * 
@@ -107,7 +106,7 @@ public class XMachineParsingTest {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Successful test for single-line comments with context clause.
    * 

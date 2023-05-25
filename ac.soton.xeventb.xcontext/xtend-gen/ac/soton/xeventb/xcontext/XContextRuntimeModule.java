@@ -15,7 +15,6 @@ package ac.soton.xeventb.xcontext;
 
 import ac.soton.xeventb.common.EventBValueConverter;
 import ac.soton.xeventb.common.XContextTransientValueService;
-import ac.soton.xeventb.xcontext.AbstractXContextRuntimeModule;
 import ac.soton.xeventb.xcontext.scoping.XContextScopeProvider;
 import ac.soton.xeventb.xcontext.services.XContextGrammarAccess;
 import com.google.inject.Binder;
@@ -47,7 +46,7 @@ public class XContextRuntimeModule extends AbstractXContextRuntimeModule {
   public Class<? extends IValueConverterService> bindIValueConverterService() {
     return EventBValueConverter.class;
   }
-  
+
   /**
    * Bind the transient value service for XContext, use for serialisation of
    * EMF Event-B to XText.
@@ -58,7 +57,7 @@ public class XContextRuntimeModule extends AbstractXContextRuntimeModule {
   public Class<? extends ITransientValueService> bindITransientValueService() {
     return XContextTransientValueService.class;
   }
-  
+
   /**
    * Bind the scope provider, use for references for context extensions, etc.
    * 
@@ -68,7 +67,7 @@ public class XContextRuntimeModule extends AbstractXContextRuntimeModule {
   public Class<? extends IScopeProvider> bindIScopeProvider() {
     return XContextScopeProvider.class;
   }
-  
+
   /**
    * Configure the serializer scope provider, use for serialisaton of
    * references, e.g., context extensions, etc. of EMF Event-B to XText.

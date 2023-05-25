@@ -15,92 +15,106 @@
 package ac.soton.xeventb.xmachine.ui.quickfix
 
 import ac.soton.xeventb.common.IValidationIssueCode
-import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.ui.editor.model.edit.IModificationContext
-import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification
+import ac.soton.xeventb.common.quickfixes.QuickFixFactory
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider
 import org.eclipse.xtext.ui.editor.quickfix.Fix
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor
 import org.eclipse.xtext.validation.Issue
-import org.eventb.emf.core.EventBAction
-import org.eventb.emf.core.EventBExpression
-import org.eventb.emf.core.EventBPredicate
 
 /**
  * <p>
  * Custom quick fixes for XMachine.  
  * </p>
  * 
- * @author htson - Added quick fix for untranslated formulae.
- * @version 0.1
  * @since 2.0
+ * @version 1.0
+ * @author htson (v1.1) - Initial API and implementation.
+ * @author htson (v0.2) - Refactor common quick fixes with XContext
+ * @author htson (v1.0) - Updated to use the new QuickFixFactory
  */
 class XMachineQuickfixProvider extends DefaultQuickfixProvider {
 
 	/**
-	 * Quick fix for untranslated predicates. Offer to replace the predicate by
-	 * the translated formula.
+	 * Extension instance of {@link QuickFixFactory} to use for getting various
+	 * quick fixes. 
 	 */
-	@Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
-	def translatePredicate(Issue issue, IssueResolutionAcceptor acceptor) {
-		val String[] data = issue.data
-		val predicate = data.get(0)
-		val translated = data.get(1)
-		acceptor.accept(issue, "Translated Predicate to " + translated,
-			 "Change from " + predicate + " to " + translated, null,
-			 new ISemanticModification() {
-				override apply(EObject element, IModificationContext context)
-						throws Exception {
-					if (element instanceof EventBPredicate) {
-						element.predicate = translated
-					}
-				}
-
-			});
-	}
+	extension QuickFixFactory quickFixFactory = QuickFixFactory.^default
 
 	/**
-	 * Quick fix for untranslated expressions. Offer to replace the expression by
-	 * the translated formula.
-	 */
-	@Fix(IValidationIssueCode.UNTRANSLATED_EXPRESSION)
-	def translateExpression(Issue issue, IssueResolutionAcceptor acceptor) {
-		val String[] data = issue.data
-		val expression = data.get(0)
-		val translated = data.get(1)
-		acceptor.accept(issue, "Translated Expression to " + translated,
-			 "Change from " + expression + " to " + translated, null,
-			 new ISemanticModification() {
-				override apply(EObject element, IModificationContext context)
-						throws Exception {
-					if (element instanceof EventBExpression) {
-						element.expression = translated
-					}
-				}
-
-			});
-	}
-
-	/**
-	 * Quick fix for untranslated assignments. Offer to replace the assignment by
-	 * the translated formula.
+	 * Quick fix for untranslated assignments. Offer to replace the assignment
+	 * by the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the assignment element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see QuickFixFactory#getUntranslatedAssignmentQuickFix()
 	 */
 	@Fix(IValidationIssueCode.UNTRANSLATED_ASSIGNMENT)
-	def translateAssignment(Issue issue, IssueResolutionAcceptor acceptor) {
-		val String[] data = issue.data
-		val assignment = data.get(0)
-		val translated = data.get(1)
-		acceptor.accept(issue, "Translated Assignment to " + translated,
-			 "Change from " + assignment + " to " + translated, null,
-			 new ISemanticModification() {
-				override apply(EObject element, IModificationContext context)
-						throws Exception {
-					if (element instanceof EventBAction) {
-						element.action = translated
-					}
-				}
+	def fixUntranslatedAssignment(Issue issue, IssueResolutionAcceptor acceptor) {
+		untranslatedAssignmentQuickFix.fix(issue, acceptor)
+	}
 
-			});
+	/**
+	 * Quick fix for untranslated expressions. Offer to replace the expression
+	 * by the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the expression element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see QuickFixFactory#getUntranslatedExpressionQuickFix()
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_EXPRESSION)
+	def fixUntranslatedExpression(Issue issue, IssueResolutionAcceptor acceptor) {
+		untranslatedExpressionQuickFix.fix(issue, acceptor)
+	}
+
+	/**
+	 * Quick fix for untranslated predicates. Offer to replace the predicate by
+	 * the translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the predicate element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see QuickFixFactory#getUntranslatedPredicateQuickFix()
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
+	def fixUntranslatedPredicate(Issue issue, IssueResolutionAcceptor acceptor) {
+		untranslatedPredicateQuickFix.fix(issue, acceptor)
+	}
+
+	/**
+	 * Quick fix for untranslated types. Offer to replace the type by the
+	 * translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the type element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see QuickFixFactory#getUntranslateTypeQuickFix()
+	 * @since 3.0
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
+	def fixUntranslatedType(Issue issue, IssueResolutionAcceptor acceptor) {
+		untranslatedTypeQuickFix.fix(issue, acceptor)
+	}
+
+	/**
+	 * Quick fix for untranslated values. Offer to replace the value by the
+	 * translated formula.
+	 * 
+	 * @param issue
+	 * 			the validation issue for the value element.
+	 * @param acceptor
+	 * 			the issue resolution acceptor
+	 * @see QuickFixFactory#getUntranslatedValueQuickFix()
+	 * @since 3.0
+	 */
+	@Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
+	def fixedUntranslatedValue(Issue issue, IssueResolutionAcceptor acceptor) {
+		untranslatedValueQuickFix.fix(issue, acceptor)
 	}
 
 }

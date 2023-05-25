@@ -53,7 +53,7 @@ public class Utils {
       }
     }
   }
-  
+
   /**
    * Utility method to translate the list of expressions to Event-B mathematics.
    * 
@@ -74,7 +74,7 @@ public class Utils {
       }
     }
   }
-  
+
   /**
    * Utility method to translate the list of assignments to Event-B mathematics.
    * 

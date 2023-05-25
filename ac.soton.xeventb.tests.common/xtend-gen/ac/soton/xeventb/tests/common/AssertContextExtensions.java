@@ -45,7 +45,7 @@ public class AssertContextExtensions {
   public EClass registerContextEPackage() {
     return ContextPackage.eINSTANCE.eClass();
   }
-  
+
   /**
    * This method asserts the name and the comments of the input context against
    * the expected name and comments. An {@link AssertionError} is thrown if
@@ -67,7 +67,7 @@ public class AssertContextExtensions {
     Assert.assertEquals("Incorrect context\'s name", expectedName, ctx.getName());
     Assert.assertEquals("Incorrect context\'s comments", expectedComments, ctx.getComment());
   }
-  
+
   /**
    * This method asserts the EXTENDS names of the input context against the
    * array of expected names. An {@link AssertionError} is thrown if the
@@ -95,7 +95,7 @@ public class AssertContextExtensions {
         actualExtendsNames.get(i));
     }
   }
-  
+
   /**
    * This method asserts the SETS of the input context against the
    * array of expected (pretty-printed) sets. The pretty print of a carrier
@@ -125,7 +125,7 @@ public class AssertContextExtensions {
         this.prettyPrint(actualSets.get(i)));
     }
   }
-  
+
   /**
    * Utility method for pretty print a carrier set. It has the following
    * format <code>name:comments</code>, where <code>name</code> is the name of
@@ -149,7 +149,7 @@ public class AssertContextExtensions {
     }
     return (_plus + _elvis);
   }
-  
+
   /**
    * This method asserts the CONSTANTS of the input context against the
    * array of expected (pretty-printed) constants. The pretty print of a
@@ -180,7 +180,7 @@ public class AssertContextExtensions {
         this.prettyPrint(actualConstants.get(i)));
     }
   }
-  
+
   /**
    * Utility method for pretty print a constant. It has the following
    * format <code>name:comments</code>, where <code>name</code> is the name of
@@ -204,7 +204,7 @@ public class AssertContextExtensions {
     }
     return (_plus + _elvis);
   }
-  
+
   /**
    * This method asserts the AXIOMS of the input context against the
    * array of expected (pretty-printed) axioms. The pretty print of an
@@ -235,7 +235,7 @@ public class AssertContextExtensions {
         this.prettyPrint(actualAxioms.get(i)));
     }
   }
-  
+
   /**
    * Utility method for pretty print an axiom. It has the following
    * format <code>name:predicate:theorem:comments</code>, where <code>name</code>

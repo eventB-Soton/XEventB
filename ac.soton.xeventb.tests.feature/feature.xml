@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.tests.feature"
       label="%featureName"
-      version="2.0.2.release"
+      version="3.0.0.release"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -34,20 +34,16 @@
    </url>
 
    <requires>
-      <import plugin="ac.soton.xeventb.xcontext" version="2.0.0" match="compatible"/>
-      <import plugin="org.eventb.emf.core" version="5.0.0" match="compatible"/>
-      <import plugin="org.junit" version="4.7.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xcontext" version="3.0.0" match="compatible"/>
+      <import plugin="org.eventb.emf.core" version="6.0.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.junit" version="2.12.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.testing" version="2.12.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.xbase.testing" version="2.12.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.tests.common" version="0.0.1" match="compatible"/>
-      <import plugin="ac.soton.xeventb.xmachine" version="2.0.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.tests.common" version="0.1.0" match="compatible"/>
+      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="compatible"/>
+      <import plugin="ac.soton.xeventb.xmachine" version="2.1.0" match="compatible"/>
       <import plugin="org.junit" version="4.12.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.testing" version="2.13.0" match="compatible"/>
       <import plugin="org.eclipse.xtext.xbase.testing" version="2.13.0" match="compatible"/>
-      <import plugin="ac.soton.xeventb.tests.common" version="0.1.0" match="compatible"/>
-      <import plugin="com.google.guava" version="27.1.0" match="compatible"/>
-      <import plugin="org.eclipse.xtext.xbase.lib" version="2.14.0" match="compatible"/>
+      <import plugin="com.google.guava" version="30.1.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.xtend.lib.macro" version="2.14.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.13.0" match="compatible"/>

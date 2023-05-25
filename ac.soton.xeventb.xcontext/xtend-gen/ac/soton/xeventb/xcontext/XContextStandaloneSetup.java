@@ -3,8 +3,6 @@
  */
 package ac.soton.xeventb.xcontext;
 
-import ac.soton.xeventb.xcontext.XContextStandaloneSetupGenerated;
-
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */

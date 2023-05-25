@@ -14,6 +14,9 @@
 
 package ac.soton.xeventb.common
 
+import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
+import ac.soton.eventb.emf.core.^extension.coreextension.TypedVariable
+import ac.soton.eventb.emf.inclusion.InclusionPackage
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
@@ -28,7 +31,6 @@ import org.eventb.emf.core.machine.Parameter
 import org.eventb.emf.core.machine.Variable
 import org.eventb.emf.core.machine.Variant
 import org.eventb.emf.core.machine.Witness
-import ac.soton.eventb.emf.inclusion.InclusionPackage
 
 /** 
  * <p>
@@ -54,25 +56,27 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 		//     return true
 		// }
 		// For machine, serialise only "name", "machine refinement",
-		// "context seeing", "variables", "invariants", "variant" and "events"
+		// "context seeing", "orderedChildren", "comments".
 		// Dana: updated to include Machine Inclusion
 		if (owner instanceof Machine) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(MachinePackage.Literals.MACHINE__REFINES))
 				return false
 			if (feature.equals(MachinePackage.Literals.MACHINE__SEES))
 				return false
+			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
+				return false
 			if (feature.equals(MachinePackage.Literals.MACHINE__VARIABLES))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.MACHINE__INVARIANTS))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.MACHINE__VARIANTS))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.MACHINE__EVENTS))
-				return false
+				return true
 			if (feature.equals(InclusionPackage.Literals.MACHINE_INCLUSION__ABSTRACT_MACHINE))
 				return false
 			if (feature.equals(InclusionPackage.Literals.MACHINE_INCLUSION__CONCRETE_MACHINE))
@@ -81,43 +85,58 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 				return false
 			return true
 		}
-		// For variable, serialise only "name"
+		// For typed variable, serialise only "name", "type", "value", "comment"
+		// This must go before Variable
+		if (owner instanceof TypedVariable) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.TYPE__TYPE))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.VALUE__VALUE))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return false
+			return true
+		}
+		// For variable, serialise only "name", "comment"
 		if (owner instanceof Variable) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For invariant, serialise only "name", "predicate", and "theorem".
+		// For invariant, serialise only "name", "predicate", and "theorem",
+		// "comment"
 		if (owner instanceof Invariant) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
 				return false
 			return true
 		}
-		// For variant, serialise only "expression"
+		// For variant, serialise only "name", "expression", "comment"
 		if (owner instanceof Variant) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
 		// For event, serialise only "name", "event refinement",
-		// "extended", "convergence", "parameters", "guards", "witnesses" and
-		// "actions"
+		// "extended", "convergence", "orderedChildren", "comment"
 		// Dana: Updated to include Event Synchronisation
 		if (owner instanceof Event) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(MachinePackage.Literals.EVENT__REFINES))
 				return false
 			if (feature.equals(MachinePackage.Literals.EVENT__EXTENDED))
@@ -125,14 +144,16 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 				return false
 			if (feature.equals(MachinePackage.Literals.EVENT__CONVERGENCE))
 				return false
+			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
+				return false
 			if (feature.equals(MachinePackage.Literals.EVENT__PARAMETERS))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.EVENT__GUARDS))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.EVENT__WITNESSES))
-				return false
+				return true
 			if (feature.equals(MachinePackage.Literals.EVENT__ACTIONS))
-				return false
+				return true
 			if (feature.equals(InclusionPackage.Literals.EVENT_SYNCHRONISATION__SYNCHRONISED_EVENT))
 				return false
 			if (feature.equals(InclusionPackage.Literals.EVENT_SYNCHRONISATION__PREFIX))
@@ -144,7 +165,7 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
 		// For guard, serialise only "name", "predicate" and "theorem".
@@ -152,7 +173,7 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
@@ -166,7 +187,7 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
 		// For action, serialise only "name", "action".
@@ -176,7 +197,7 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 			if (feature.equals(CorePackage.Literals.EVENT_BACTION__ACTION))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
 		// Ignore other objects and features.

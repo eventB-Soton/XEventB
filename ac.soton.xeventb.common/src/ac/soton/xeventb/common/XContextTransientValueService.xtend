@@ -14,6 +14,8 @@
 
 package ac.soton.xeventb.common
 
+import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
+import ac.soton.eventb.emf.core.^extension.coreextension.TypedConstant
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
@@ -51,44 +53,58 @@ class XContextTransientValueService extends DefaultTransientValueService {
 		// For context, serialise only "name", "context extension",
 		// "sets", "constants" and "axioms".
 		if (owner instanceof Context) {
+			if(feature.equals(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN))
+				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if(feature.equals(ContextPackage.Literals.CONTEXT__EXTENDS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__SETS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__CONSTANTS))
-				return false
+				return true
 			if(feature.equals(ContextPackage.Literals.CONTEXT__AXIOMS))
-				return false
+				return true
 			return true
 		}
-		// For carrier set, serialise only "name"
+		// For carrier set, serialise only "name", "comment"
 		if (owner instanceof CarrierSet) {
 			if(feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if(feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For constant, serialise only "name"
+		// For typed constant, serialise only "name", "type", "value" and "comment"
+		if (owner instanceof TypedConstant) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.TYPE__TYPE))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.VALUE__VALUE))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return false
+			return true
+		}
+		// For constant, serialise only "name". "comment"
 		if (owner instanceof Constant) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			return true
 		}
-		// For axiom, serialise only "name", "predicate", and "theorem"
+		// For axiom, serialise only "name", "predicate", "theorem", "comment"
 		if (owner instanceof Axiom) {
 			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
 				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
-				return true
+				return false
 			if (feature.equals(CorePackage.Literals.EVENT_BDERIVED__THEOREM))
 				return false
 			return true

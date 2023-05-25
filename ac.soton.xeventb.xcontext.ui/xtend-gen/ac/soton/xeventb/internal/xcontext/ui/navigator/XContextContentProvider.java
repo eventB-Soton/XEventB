@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.internal.xcontext.ui.navigator;
 
-import ac.soton.xeventb.internal.xcontext.ui.navigator.XContextNavigatorObject;
 import ac.soton.xeventb.ui.AbstractXEventBContentProvider;
 import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import org.eclipse.core.resources.IFile;
@@ -37,7 +36,7 @@ public final class XContextContentProvider extends AbstractXEventBContentProvide
   public String getFileExtension() {
     return "bucx";
   }
-  
+
   /**
    * Returns the specific XContext navigator object constructed from
    * the corresponding resource.

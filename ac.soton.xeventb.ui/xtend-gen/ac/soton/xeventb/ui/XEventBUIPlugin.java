@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBSharedImages;
 import org.eclipse.jface.resource.ImageDescriptor;
 import org.eclipse.jface.resource.ImageRegistry;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
@@ -30,15 +29,15 @@ import org.osgi.framework.BundleContext;
 @SuppressWarnings("all")
 public final class XEventBUIPlugin extends AbstractUIPlugin {
   public static final String PLUGIN_ID = "ac.soton.xeventb.ui";
-  
+
   private static XEventBUIPlugin plugin;
-  
+
   /**
    * The constructor
    */
   public XEventBUIPlugin() {
   }
-  
+
   /**
    * (non-Javadoc)
    * @see AbstractUIPlugin#start(org.osgi.framework.BundleContext)
@@ -48,7 +47,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
     super.start(context);
     XEventBUIPlugin.plugin = this;
   }
-  
+
   /**
    * (non-Javadoc)
    * @see AbstractUIPlugin#stop(org.osgi.framework.BundleContext)
@@ -58,7 +57,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
     XEventBUIPlugin.plugin = null;
     super.stop(context);
   }
-  
+
   /**
    * Returns the shared instance
    * @return the shared instance
@@ -66,7 +65,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
   public static XEventBUIPlugin getDefault() {
     return XEventBUIPlugin.plugin;
   }
-  
+
   /**
    * Register common images used by XEvent-B. The keys and paths for
    * the images are from {@link IXEventBSharedImages}. To use the image,
@@ -95,7 +94,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
     this.registerImages(registry);
     super.initializeImageRegistry(registry);
   }
-  
+
   /**
    * Register images with the image registry. Additional images should
    * be added here
@@ -109,7 +108,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
     XEventBUIPlugin.registerImage(registry, IXEventBSharedImages.IMG_XMACHINE, 
       IXEventBSharedImages.IMG_XMACHINE_PATH);
   }
-  
+
   /**
    * Register an image with the image registry
    * 
@@ -125,7 +124,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
     final ImageDescriptor desc = XEventBUIPlugin.getImageDescriptor(path);
     registry.put(key, desc);
   }
-  
+
   /**
    * Returns an image descriptor for the image file within the
    * XEvent-B UI plugin at the given plug-in relative path.
@@ -140,7 +139,7 @@ public final class XEventBUIPlugin extends AbstractUIPlugin {
   public static ImageDescriptor getImageDescriptor(final String path) {
     return XEventBUIPlugin.getImageDescriptor(XEventBUIPlugin.PLUGIN_ID, path);
   }
-  
+
   /**
    * Returns an image descriptor for the image file at the given
    *  plug-in ID and the relative path within the plugin

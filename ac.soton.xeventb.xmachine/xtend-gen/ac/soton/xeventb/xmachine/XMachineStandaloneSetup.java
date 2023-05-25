@@ -3,8 +3,6 @@
  */
 package ac.soton.xeventb.xmachine;
 
-import ac.soton.xeventb.xmachine.XMachineStandaloneSetupGenerated;
-
 /**
  * Initialization support for running Xtext languages without Equinox extension registry.
  */

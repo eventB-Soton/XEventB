@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2016,2018 University of Southampton.
+ * Copyright (c) 2016,2021 University of Southampton.
  * 
  * This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License 2.0
@@ -14,6 +14,7 @@
 package ac.soton.xeventb.xcontext.generator;
 
 import ac.soton.emf.translator.TranslatorFactory;
+import ac.soton.eventb.emf.core.extension.coreextension.TypedConstant;
 import ac.soton.xeventb.common.Utils;
 import com.google.common.base.Objects;
 import org.eclipse.core.commands.ExecutionException;
@@ -43,7 +44,11 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eventb.emf.core.Annotation;
 import org.eventb.emf.core.CoreFactory;
 import org.eventb.emf.core.CorePackage;
+import org.eventb.emf.core.EventBElement;
+import org.eventb.emf.core.context.Axiom;
+import org.eventb.emf.core.context.Constant;
 import org.eventb.emf.core.context.Context;
+import org.eventb.emf.core.context.ContextFactory;
 import org.eventb.emf.persistence.EMFRodinDB;
 import org.eventb.emf.persistence.PersistencePlugin;
 import org.eventb.emf.persistence.SaveResourcesCommand;
@@ -61,7 +66,7 @@ import org.rodinp.core.RodinCore;
 @SuppressWarnings("all")
 public class XContextGenerator extends AbstractGenerator {
   private static final String CONFIGURATION = "configuration";
-  
+
   /**
    * @htson Automatically compile to Rodin files
    */
@@ -86,9 +91,11 @@ public class XContextGenerator extends AbstractGenerator {
           final Annotation rodinInternals = CoreFactory.eINSTANCE.createAnnotation();
           rodinInternals.setSource(PersistencePlugin.SOURCE_RODIN_INTERNAL_ANNOTATION);
           final EMap<String, String> rodinInternalDetails = rodinInternals.getDetails();
-          rodinInternalDetails.put(XContextGenerator.CONFIGURATION, 
+          rodinInternalDetails.put(
+            XContextGenerator.CONFIGURATION, 
             "org.eventb.core.fwd;ac.soton.xeventb.xcontext.base");
           ctx.getAnnotations().add(rodinInternals);
+          XContextGenerator.this.translateTypedConstants(ctx);
           XContextGenerator.this.translateFormulae(ctx);
           rodinResource.setModified(true);
         }
@@ -99,7 +106,7 @@ public class XContextGenerator extends AbstractGenerator {
       }
       TranslatorFactory _factory = TranslatorFactory.getFactory();
       final TranslatorFactory factory = ((TranslatorFactory) _factory);
-      String recordCommandId = "ac.soton.eventb.records.commands.record";
+      String recordCommandId = "ac.soton.eventb.emf.record.generator.translateAllRecords";
       boolean _canTranslate = factory.canTranslate(recordCommandId, ctx.eClass());
       if (_canTranslate) {
         final NullProgressMonitor monitor = new NullProgressMonitor();
@@ -138,7 +145,49 @@ public class XContextGenerator extends AbstractGenerator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
+  /**
+   * Utility method to translate typed constants of a context to constants, typing axioms and definition axioms.
+   * 
+   * @param ctx The input context
+   */
+  private void translateTypedConstants(final Context ctx) {
+    Object _eGet = ctx.eGet(CorePackage.Literals.EVENT_BELEMENT__ORDERED_CHILDREN);
+    EList<EventBElement> orderedChildren = ((EList<EventBElement>) _eGet);
+    int i = 0;
+    while ((i < orderedChildren.size())) {
+      {
+        final EventBElement child = orderedChildren.get(i);
+        if ((child instanceof TypedConstant)) {
+          final String name = ((TypedConstant)child).getName();
+          final String type = ((TypedConstant)child).getType();
+          final String value = ((TypedConstant)child).getValue();
+          Constant cst = ContextFactory.eINSTANCE.createConstant();
+          cst.setName(name);
+          orderedChildren.add(i, cst);
+          i++;
+          if ((type != null)) {
+            Axiom axm = ContextFactory.eINSTANCE.createAxiom();
+            axm.setName((name + "-typeof"));
+            axm.setPredicate(((name + ":") + type));
+            axm.setTheorem(false);
+            orderedChildren.add(i, axm);
+            i++;
+          }
+          if ((value != null)) {
+            Axiom axm_1 = ContextFactory.eINSTANCE.createAxiom();
+            axm_1.setName((name + "-def"));
+            axm_1.setPredicate(((name + "=") + value));
+            axm_1.setTheorem(false);
+            orderedChildren.add(i, axm_1);
+            i++;
+          }
+        }
+        i++;
+      }
+    }
+  }
+
   private ISchedulingRule getSchedulingRule(final Resource[] resources) {
     int _length = resources.length;
     boolean _equals = (_length == 0);
@@ -162,7 +211,7 @@ public class XContextGenerator extends AbstractGenerator {
       }
     }
   }
-  
+
   private IProject getProject(final Resource resource) {
     final IFile file = WorkspaceSynchronizer.getFile(resource);
     IProject _elvis = null;
@@ -177,7 +226,7 @@ public class XContextGenerator extends AbstractGenerator {
     }
     return _elvis;
   }
-  
+
   /**
    * Utility method to translate formulae in the input context to Event-B
    * mathematics.
@@ -189,7 +238,8 @@ public class XContextGenerator extends AbstractGenerator {
    */
   private void translateFormulae(final Context ctx) {
     final EList<EObject> predElements = ctx.getAllContained(
-      CorePackage.Literals.EVENT_BPREDICATE, false);
+      CorePackage.Literals.EVENT_BPREDICATE, 
+      false);
     Utils.translatePredicates(predElements);
   }
 }

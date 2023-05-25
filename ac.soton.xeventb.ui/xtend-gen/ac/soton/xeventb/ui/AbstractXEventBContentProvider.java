@@ -13,7 +13,6 @@
  */
 package ac.soton.xeventb.ui;
 
-import ac.soton.xeventb.ui.IXEventBNavigatorObject;
 import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,7 +42,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
    * @since 1.0
    */
   public abstract String getFileExtension();
-  
+
   /**
    * Return the navigator object which is a wrapper for the input
    * resource.  This object will be used in the navigator.
@@ -57,7 +56,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
    * @since 1.0
    */
   public abstract IXEventBNavigatorObject getNavigatorObject(final IFile resource);
-  
+
   /**
    * Returns the array of navigator objects corresponding to the
    * resource with the extension given by
@@ -98,7 +97,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Returns the children of the input element.
    * 
@@ -111,7 +110,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
   public Object[] getElements(final Object inputElement) {
     return this.getChildren(inputElement);
   }
-  
+
   /**
    * Returns the project containing the navigator object's resource
    * 
@@ -124,7 +123,7 @@ public abstract class AbstractXEventBContentProvider implements ITreeContentProv
     }
     return null;
   }
-  
+
   /**
    * Returns whether or not the input element has some children.
    * 

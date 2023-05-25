@@ -41,7 +41,7 @@ public class AssertMachineExtensions {
   public EClass registerMachineEPackage() {
     return MachinePackage.eINSTANCE.eClass();
   }
-  
+
   /**
    * This method asserts the name and the comments of the input machine against
    * the expected name and comments. An {@link AssertionError} is thrown if

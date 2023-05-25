@@ -43,16 +43,16 @@ import org.eventb.emf.core.machine.Witness;
 @SuppressWarnings("all")
 public class XMachineEObjectDocumentationProvider implements IEObjectDocumentationProvider {
   private final String TAB = "&nbsp&nbsp&nbsp&nbsp";
-  
+
   private final String SPACE = "&nbsp";
-  
+
   private final CancelIndicator cancelIndicator = new CancelIndicator() {
     @Override
     public boolean isCanceled() {
       return new NullProgressMonitor().isCanceled();
     }
   };
-  
+
   /**
    * Method to get the documentation for an input {@link EObject}.
    */
@@ -67,35 +67,35 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     }
     return "";
   }
-  
+
   private String keyword(final String keyword) {
     return (("<span style=\"color:blue\"><b>" + keyword) + "</b></span>");
   }
-  
+
   private String inheritedFormula(final String formula) {
     return (("<span style=\"color:grey\"><i>" + formula) + "</i></span>");
   }
-  
+
   private String formula(final String formula) {
     return (("<span style=\"color:black\">" + formula) + "</span>");
   }
-  
+
   private String inheritedLabel(final String label) {
     return (("<span style=\"color:grey\"><i>@" + label) + ":</i></span>");
   }
-  
+
   private String label(final String label) {
     return (("<span style=\"color:black\">@" + label) + ":</span>");
   }
-  
+
   private String inheritedComment(final String comment) {
     return ((((("<span style=\"color:grey\"><i>" + this.SPACE) + "//") + this.SPACE) + comment) + "</i></span>");
   }
-  
+
   private String comment(final String comment) {
     return ((((("<span style=\"color:black\">" + this.SPACE) + "//") + this.SPACE) + comment) + "</span>");
   }
-  
+
   /**
    * Pretty print event as HTML with inherited elements.
    */
@@ -207,7 +207,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     result.append(this.keyword("end"));
     return result.toString();
   }
-  
+
   /**
    * Utility method to get the inherited parameters.
    */
@@ -218,7 +218,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     }
     return new ArrayList<Parameter>();
   }
-  
+
   /**
    * Utility method to get the inherited guards.
    */
@@ -229,7 +229,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     }
     return new ArrayList<Guard>();
   }
-  
+
   /**
    * Utility method to get the inherited actions.
    */
@@ -240,7 +240,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     }
     return new ArrayList<Action>();
   }
-  
+
   /**
    * Utility method to get the all parameters including inherited parameters.
    */
@@ -256,7 +256,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     result.addAll(evt.getParameters());
     return result;
   }
-  
+
   /**
    * Utility method to get the all guards including inherited guards.
    */
@@ -272,7 +272,7 @@ public class XMachineEObjectDocumentationProvider implements IEObjectDocumentati
     result.addAll(evt.getGuards());
     return result;
   }
-  
+
   /**
    * Utility method to get the all actions including inherited actions.
    */

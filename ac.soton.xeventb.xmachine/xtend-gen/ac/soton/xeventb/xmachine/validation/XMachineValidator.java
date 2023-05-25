@@ -13,10 +13,11 @@
  */
 package ac.soton.xeventb.xmachine.validation;
 
+import ac.soton.eventb.emf.core.extension.coreextension.Type;
+import ac.soton.eventb.emf.core.extension.coreextension.Value;
 import ac.soton.eventb.emf.inclusion.EventSynchronisation;
 import ac.soton.eventb.emf.inclusion.MachineInclusion;
-import ac.soton.xeventb.common.IValidationIssueCode;
-import ac.soton.xeventb.xmachine.validation.AbstractXMachineValidator;
+import ac.soton.xeventb.common.UntranslatedFormulaeValidator;
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import java.util.Map;
@@ -35,6 +36,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Check;
 import org.eclipse.xtext.validation.CheckType;
 import org.eclipse.xtext.xbase.lib.Exceptions;
+import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eventb.core.IAction;
 import org.eventb.core.IEvent;
@@ -46,6 +48,7 @@ import org.eventb.core.IVariable;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
+import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -63,7 +66,6 @@ import org.eventb.emf.persistence.EventBEMFUtils;
 import org.rodinp.core.IAttributeType;
 import org.rodinp.core.IRodinElement;
 import org.rodinp.core.RodinMarkerUtil;
-import org.rodinp.keyboard.core.RodinKeyboardCore;
 
 /**
  * <p>
@@ -78,6 +80,22 @@ import org.rodinp.keyboard.core.RodinKeyboardCore;
  */
 @SuppressWarnings("all")
 public class XMachineValidator extends AbstractXMachineValidator {
+  /**
+   * Object for validating untranslated formulae. This is an implementation of
+   * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
+   * the method provided by {@link XContextValidator#warning(String, EObject,
+   * EStructuralFeature, String, String[])}.
+   * 
+   * @since 3.0
+   */
+  @Extension
+  private UntranslatedFormulaeValidator validator = new UntranslatedFormulaeValidator() {
+    @Override
+    protected void warning(final String message, final EObject source, final EStructuralFeature feature, final String code, final String... issueData) {
+      XMachineValidator.this.warning(message, source, feature, code, issueData);
+    }
+  };
+
   @Check
   public void checkMachineName(final Machine mch) {
     final Resource res = mch.eResource();
@@ -89,7 +107,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       this.error("Machine name should be the same as the file name", null);
     }
   }
-  
+
   /**
    * check the prefix of the event must be one of the prefixes of the included machine
    * that contains the synchronised event
@@ -120,7 +138,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       this.error("Event prefix must be one of the included machine prefixes", null);
     }
   }
-  
+
   /**
    * Add Prefixing warning if more than one machine is inlcuded
    * the  reason is to avoid event synchronisation problems if machines have the same event name e.g. INITIALISATION
@@ -145,7 +163,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       }
     }
   }
-  
+
   /**
    * Check the prefix of the event must be one of the prefixes of the included machine
    * that contains the synchronised event
@@ -173,14 +191,14 @@ public class XMachineValidator extends AbstractXMachineValidator {
       }
     }
   }
-  
+
   /**
    * Empty array of markers.
    * 
    * @since 2.0
    */
   private final IMarker[] NO_MARKER = {};
-  
+
   /**
    * Utility method to find all Rodin markers associated with a machine root.
    * @param mchRoot
@@ -201,7 +219,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return resource.findMarkers(RodinMarkerUtil.RODIN_PROBLEM_MARKER, true, IResource.DEPTH_INFINITE);
   }
-  
+
   /**
    * Utility method to get the EStructuralFeature corresponding to an
    * attribute of an input EObject (of some Event-B elements), given the
@@ -297,7 +315,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   /**
    * Utility method to create an issue associated with an EObject from a Rodin
    * marker associated with the Rodin element corresponding to the EObject.
@@ -351,7 +369,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Utility method to get the machine of an EObject. Return the Machine
    * parent of the input element. Return <code>null</code> if there is no
@@ -368,7 +386,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   /**
    * An "expensive" check to convert the Rodin Markers of an input Rodin
    * machine into issues for the corresponding XMachine.
@@ -398,7 +416,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * A "Normal" check to clear the markers associated with the Rodin machine.
    * This is important as the markers generated as the consequence of
@@ -424,7 +442,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   /**
    * Method to find the EObject in a machine corresponding to the input Rodin
    * object. This is the "identified" attribute such as "identifier", "label".
@@ -470,7 +488,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
       throw Exceptions.sneakyThrow(_e);
     }
   }
-  
+
   private Variable findVariable(final Machine mch, final String name) {
     final EList<Variable> variables = mch.getVariables();
     for (final Variable variable : variables) {
@@ -482,7 +500,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   private Invariant findInvariant(final Machine mch, final String label) {
     final EList<Invariant> invariants = mch.getInvariants();
     for (final Invariant invariant : invariants) {
@@ -494,7 +512,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   private Event findEvent(final Machine mch, final String label) {
     final EList<Event> events = mch.getEvents();
     for (final Event event : events) {
@@ -506,7 +524,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   private Parameter findParameter(final Machine mch, final String eventLabel, final String parameterName) {
     final Event event = this.findEvent(mch, eventLabel);
     if ((event == null)) {
@@ -522,7 +540,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   private Guard findGuard(final Machine mch, final String eventLabel, final String guardLabel) {
     final Event event = this.findEvent(mch, eventLabel);
     if ((event == null)) {
@@ -538,7 +556,7 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
+
   private Action findAction(final Machine mch, final String eventLabel, final String actionLabel) {
     final Event event = this.findEvent(mch, eventLabel);
     if ((event == null)) {
@@ -554,79 +572,51 @@ public class XMachineValidator extends AbstractXMachineValidator {
     }
     return null;
   }
-  
-  /**
-   * Check for untranslated predicates by comparing the translated string
-   * with the predicate. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B predicate EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
+
   @Check
-  public void untranslatedPredicate(final EventBPredicate obj) {
-    final String predicate = obj.getPredicate();
-    final String translated = RodinKeyboardCore.translate(predicate);
-    boolean _notEquals = (!Objects.equal(predicate, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Predicate: " + predicate), obj, 
-        CorePackage.Literals.EVENT_BPREDICATE__PREDICATE, 
-        IValidationIssueCode.UNTRANSLATED_PREDICATE, predicate, translated);
+  public void checkUntranslatedFormulae(final Machine mch) {
+    final EList<EventBElement> orderedChildren = mch.getOrderedChildren();
+    for (final EventBElement child : orderedChildren) {
+      {
+        if ((child instanceof EventBPredicate)) {
+          this.validator.validatePredicate(((EventBPredicate)child));
+        }
+        if ((child instanceof EventBExpression)) {
+          this.validator.validateExpression(((EventBExpression)child));
+        }
+        if ((child instanceof Type)) {
+          this.validator.validateType(((Type)child));
+        }
+        if ((child instanceof Value)) {
+          this.validator.validateValue(((Value)child));
+        }
+        if ((child instanceof Event)) {
+          this.checkUntranslatedFormulae(((Event)child));
+        }
+      }
     }
   }
-  
-  /**
-   * Check for untranslated expressions by comparing the translated string
-   * with the expression. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_EXPRESSION}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B expression EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
-  @Check
-  public void untranslatedExpression(final EventBExpression obj) {
-    final String expression = obj.getExpression();
-    final String translated = RodinKeyboardCore.translate(expression);
-    boolean _notEquals = (!Objects.equal(expression, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Expression: " + expression), obj, 
-        CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION, 
-        IValidationIssueCode.UNTRANSLATED_EXPRESSION, expression, translated);
-    }
-  }
-  
-  /**
-   * Check for untranslated assignments by comparing the translated string
-   * with the assignment. Raise a warning with code
-   * {@link IValidationIssueCode#UNTRANSLATE_ASSIGNMENT}. The code is used for
-   * providing quick fixes.
-   * 
-   * @param obj
-   * 		an Event-B action EObject.
-   * @author htson
-   * @see IValidationIssueCode
-   * @since 2.0
-   */
-  @Check
-  public void untranslatedAssignment(final EventBAction obj) {
-    final String action = obj.getAction();
-    final String translated = RodinKeyboardCore.translate(action);
-    boolean _notEquals = (!Objects.equal(action, translated));
-    if (_notEquals) {
-      this.warning(
-        ("Untranslated Assignment: " + action), obj, 
-        CorePackage.Literals.EVENT_BACTION__ACTION, 
-        IValidationIssueCode.UNTRANSLATED_ASSIGNMENT, action, translated);
+
+  public void checkUntranslatedFormulae(final Event evt) {
+    final EList<EventBElement> orderedChildren = evt.getOrderedChildren();
+    for (final EventBElement child : orderedChildren) {
+      {
+        if ((child instanceof EventBPredicate)) {
+          this.validator.validatePredicate(((EventBPredicate)child));
+        }
+        if ((child instanceof EventBExpression)) {
+          this.validator.validateExpression(((EventBExpression)child));
+        }
+        if ((child instanceof EventBAction)) {
+          this.validator.validateAssignment(((EventBAction)child));
+        }
+        if ((child instanceof Type)) {
+          this.validator.validateType(((Type)child));
+        }
+        if ((child instanceof Value)) {
+          this.validator.validateValue(((Value)child));
+        }
+      }
     }
   }
 }

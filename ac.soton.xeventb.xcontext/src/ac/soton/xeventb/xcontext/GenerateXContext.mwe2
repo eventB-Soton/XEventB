@@ -24,18 +24,14 @@ var runtimeProject = "../${projectName}"
 Workflow {
 	bean = StandaloneSetup {
 		scanClassPath = true
-		platformUri = "${runtimeProject}/.."
-//		registerGeneratedEPackage = "org.eventb.emf.core.CorePackage"
-		registerGeneratedEPackage = "org.eventb.emf.core.context.ContextPackage"
-//		registerGeneratedEPackage = "org.eventb.emf.core.machine.MachinePackage"
-		registerGenModelFile = "platform:/resource/org.eventb.emf.core/model/eventbcore.genmodel"
-		
-//		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
+		platformUri = "${runtimeProject}/.."//		registerGeneratedEPackage = "org.eventb.emf.core.CorePackage"
+		registerGeneratedEPackage = "org.eventb.emf.core.context.ContextPackage"//		registerGeneratedEPackage = "org.eventb.emf.core.machine.MachinePackage"
+		registerGenModelFile = "platform:/resource/org.eventb.emf.core/model/eventbcore.genmodel"//		registerGeneratedEPackage = "org.eclipse.emf.ecore.EcorePackage"
 //		registerGeneratedEPackage = "org.eclipse.emf.codegen.ecore.genmodel.GenModelPackage"
 //		registerGenModelFile = "platform:/resource/org.eclipse.emf.ecore/model/Ecore.genmodel"
 //		registerGenModelFile = "platform:/resource/org.eclipse.emf.codegen.ecore/model/GenModel.genmodel"
 	}
-	
+
 	component = XtextGenerator {
 		configuration = {
 			project = StandardProjectConfig {
@@ -62,21 +58,32 @@ Workflow {
 			fileExtensions = "bucx"
 			referencedResource = "platform:/resource/org.eventb.emf.core/model/eventbcore.genmodel"
 			referencedResource = "platform:/resource/ac.soton.eventb.emf.record/model/record.genmodel"
-			
 			fragment = ecore2xtext.Ecore2XtextValueConverterServiceFragment2 auto-inject {}
 
-//			fragment = org.eclipse.xtext.generator.adapter.FragmentAdapter {
-//				fragment = org.eclipse.xtext.generator.ecore2xtext.FormatterFragment {}
-//			}
+			//			fragment = org.eclipse.xtext.generator.adapter.FragmentAdapter {
+			//				fragment = org.eclipse.xtext.generator.ecore2xtext.FormatterFragment {}
+			//			}
+
+			// @htson To avoid error
+			// The code of method specialStateTransition(int, IntStream) is exceeding the 65535 bytes limit
+			parserGenerator = {
+				options = {
+//					backtrack = false
+					classSplitting = true
+					fieldsPerClass = "500"
+//					ignoreCase = false
+//					memoize = true
+				}
+			}
 
 			serializer = {
 				generateStub = false
 			}
 			validator = {
-				// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
+			// composedCheck = "org.eclipse.xtext.validation.NamesAreUniqueValidator"
 			}
-			  //dd4g12: Added to generate formatter2
-            formatter = {
+			//dd4g12: Added to generate formatter2
+			formatter = {
 				generateStub = true
 			}
 		}

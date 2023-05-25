@@ -14,44 +14,76 @@
 package ac.soton.xeventb.xcontext.ui.quickfix;
 
 import ac.soton.xeventb.common.IValidationIssueCode;
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.ui.editor.model.edit.IModificationContext;
-import org.eclipse.xtext.ui.editor.model.edit.ISemanticModification;
+import ac.soton.xeventb.common.quickfixes.QuickFixFactory;
 import org.eclipse.xtext.ui.editor.quickfix.DefaultQuickfixProvider;
 import org.eclipse.xtext.ui.editor.quickfix.Fix;
 import org.eclipse.xtext.ui.editor.quickfix.IssueResolutionAcceptor;
 import org.eclipse.xtext.validation.Issue;
-import org.eventb.emf.core.EventBPredicate;
+import org.eclipse.xtext.xbase.lib.Extension;
 
 /**
  * <p>
  * This class provides custom quick fixes for the XContexts.
  * </p>
  * 
- * @author htson - Initial Implementation
- * @version 0.1
+ * @author htson (v0.1) - Initial API and Implementation
+ * @author htson (v0.2) - Refactor common quick fixes with XMachine
+ * @version 0.2
  * @since 2.0
  */
 @SuppressWarnings("all")
 public class XContextQuickfixProvider extends DefaultQuickfixProvider {
   /**
+   * Extension instance of {@link QuickFixFactory} to use for getting various
+   * quick fixes.
+   */
+  @Extension
+  private QuickFixFactory quickFixFactory = QuickFixFactory.getDefault();
+
+  /**
    * Quick fix for untranslated predicates. Offer to replace the predicate by
    * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the predicate element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see QuickFixFactory#getUntranslatedPredicateQuickFix()
    */
   @Fix(IValidationIssueCode.UNTRANSLATED_PREDICATE)
-  public void translatePredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
-    final String[] data = issue.getData();
-    final String predicate = data[0];
-    final String translated = data[1];
-    acceptor.accept(issue, ("Translated Predicate to " + translated), 
-      ((("Change from " + predicate) + " to ") + translated), null, 
-      new ISemanticModification() {
-        @Override
-        public void apply(final EObject element, final IModificationContext context) throws Exception {
-          if ((element instanceof EventBPredicate)) {
-            ((EventBPredicate)element).setPredicate(translated);
-          }
-        }
-      });
+  public void fixUntranslatedPredicate(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickFixFactory.getUntranslatedPredicateQuickFix().fix(issue, acceptor);
+  }
+
+  /**
+   * Quick fix for untranslated types. Offer to replace the type by
+   * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the type element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see QuickFixFactory#getUntranslatedTypeQuickFix()
+   * @since 3.0
+   */
+  @Fix(IValidationIssueCode.UNTRANSLATED_TYPE)
+  public void fixUntranslatedType(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickFixFactory.getUntranslatedTypeQuickFix().fix(issue, acceptor);
+  }
+
+  /**
+   * Quick fix for untranslated types. Offer to replace the type by
+   * the translated formula.
+   * 
+   * @param issue
+   * 			the validation issue for the value element.
+   * @param acceptor
+   * 			the issue resolution acceptor
+   * @see QuickFixFactory#getUntranslatedValueQuickFix()
+   * @since 3.0
+   */
+  @Fix(IValidationIssueCode.UNTRANSLATED_VALUE)
+  public void fixedUntranslatedValue(final Issue issue, final IssueResolutionAcceptor acceptor) {
+    this.quickFixFactory.getUntranslatedValueQuickFix().fix(issue, acceptor);
   }
 }

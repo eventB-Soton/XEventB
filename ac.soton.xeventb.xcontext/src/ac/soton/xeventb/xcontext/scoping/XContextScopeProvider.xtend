@@ -14,8 +14,6 @@
 
 package ac.soton.xeventb.xcontext.scoping
 
-import ac.soton.eventb.emf.record.Record
-import ac.soton.eventb.emf.record.RecordPackage
 import ch.ethz.eventb.utils.EventBUtils
 import java.io.IOException
 import java.util.ArrayList
@@ -27,7 +25,6 @@ import org.eclipse.emf.ecore.EReference
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.xtext.EcoreUtil2
 import org.eclipse.xtext.scoping.Scopes
 import org.eventb.core.basis.ContextRoot
 import org.eventb.emf.core.EventBElement
@@ -78,33 +75,33 @@ class XContextScopeProvider extends AbstractXContextScopeProvider {
 		}
 
 		// The scope for record extension is the set of all records in the context/extends context(s)
-		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
-			val cntx = EcoreUtil2.getRootContainer(context, true) as Context
-			val components = getComponentsInScope(cntx)
-			val records = EcoreUtil2.getAllContentsOfType(cntx, Record);
-			for (c : components)
-				records.addAll(EcoreUtil2.getAllContentsOfType(c as EObject, Record));
-			return Scopes.scopeFor(records);
-		}
+//		if (context instanceof Record && reference == RecordPackage.Literals.RECORD__SUBSETS) {
+//			val cntx = EcoreUtil2.getRootContainer(context, true) as Context
+//			val components = getComponentsInScope(cntx)
+//			val records = EcoreUtil2.getAllContentsOfType(cntx, Record);
+//			for (c : components)
+//				records.addAll(EcoreUtil2.getAllContentsOfType(c as EObject, Record));
+//			return Scopes.scopeFor(records);
+//		}
 	}
 
-	def private List<EventBObject> getComponentsInScope(EventBObject eventBObject) {
-		var list = new ArrayList
-		if (eventBObject instanceof Machine) {
-			var m = eventBObject as Machine;
-			list.add(m);
-			for (Context c : m.getSees()) {
-				list.addAll(getComponentsInScope(c));
-			}
-		} else if (eventBObject instanceof Context) {
-			var c = eventBObject as Context;
-			list.add(c);
-			for (Context x : c.getExtends()) {
-				list.addAll(getComponentsInScope(x));
-			}
-		}
-		return list;
-	}
+//	def private List<EventBObject> getComponentsInScope(EventBObject eventBObject) {
+//		var list = new ArrayList
+//		if (eventBObject instanceof Machine) {
+//			var m = eventBObject as Machine;
+//			list.add(m);
+//			for (Context c : m.getSees()) {
+//				list.addAll(getComponentsInScope(c));
+//			}
+//		} else if (eventBObject instanceof Context) {
+//			var c = eventBObject as Context;
+//			list.add(c);
+//			for (Context x : c.getExtends()) {
+//				list.addAll(getComponentsInScope(x));
+//			}
+//		}
+//		return list;
+//	}
 
 	/**
 	 * THESE METHODS WERE COPIED FROM EMFRodinDB

@@ -54,7 +54,7 @@ import org.rodinp.core.IRodinFile;
 @SuppressWarnings("all")
 public class XContextMarkerModule extends SCProcessorModule {
   private final IModuleType<XContextMarkerModule> MODULE_TYPE = SCCore.<XContextMarkerModule>getModuleType("ac.soton.xeventb.xcontext.XContextMarkerModule");
-  
+
   /**
    * The main process method, which get the issues by running expensive
    * validation rules, and created the markers based on the result.
@@ -129,7 +129,7 @@ public class XContextMarkerModule extends SCProcessorModule {
     }
     return;
   }
-  
+
   /**
    * Return the module type.
    */

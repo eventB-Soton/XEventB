@@ -45,7 +45,7 @@ public class RodinSymbolsProposalProvider {
       acceptor.accept(proposal);
     }
   }
-  
+
   public static ConfigurableCompletionProposal[] getProposals(final ContentAssistContext context, final int priority) {
     Collection<ConfigurableCompletionProposal> result = new ArrayList<ConfigurableCompletionProposal>();
     int replacementOffset = context.getReplaceRegion().getOffset();
@@ -64,7 +64,7 @@ public class RodinSymbolsProposalProvider {
     }
     return result.<ConfigurableCompletionProposal>toArray(new ConfigurableCompletionProposal[result.size()]);
   }
-  
+
   private static ConfigurableCompletionProposal doCreateProposal(final String proposal, final int priority, final int replacementOffset, final int replacementLength) {
     int _length = proposal.length();
     ConfigurableCompletionProposal result = new ConfigurableCompletionProposal(proposal, replacementOffset, replacementLength, _length);

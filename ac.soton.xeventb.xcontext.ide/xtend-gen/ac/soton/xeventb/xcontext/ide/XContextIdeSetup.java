@@ -5,7 +5,6 @@ package ac.soton.xeventb.xcontext.ide;
 
 import ac.soton.xeventb.xcontext.XContextRuntimeModule;
 import ac.soton.xeventb.xcontext.XContextStandaloneSetup;
-import ac.soton.xeventb.xcontext.ide.XContextIdeModule;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import org.eclipse.xtext.util.Modules2;

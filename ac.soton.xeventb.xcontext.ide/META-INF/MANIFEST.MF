@@ -2,15 +2,15 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %Bundle-Name
 Bundle-Vendor: %Bundle-Vendor
-Bundle-Version: 2.0.0.release
+Bundle-Version: 3.0.0.release
 Bundle-SymbolicName: ac.soton.xeventb.xcontext.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: ac.soton.xeventb.xcontext;bundle-version="[2.0.0,3.0.0)",
- org.eventb.emf.core;bundle-version="[5.0.0,6.0.0)",
+Require-Bundle: ac.soton.xeventb.xcontext;bundle-version="[3.0.0,4.0.0)",
+ org.eventb.emf.core;bundle-version="[6.0.0,7.0.0)",
  org.eclipse.xtext.ide;bundle-version="[2.12.0,3.0.0)",
  org.eclipse.xtext.xbase.ide;bundle-version="[2.12.0,3.0.0)",
  org.antlr.runtime;bundle-version="[3.2.0,4.0.0)"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: ac.soton.xeventb.xcontext.ide.contentassist.antlr.internal,
  ac.soton.xeventb.xcontext.ide.contentassist.antlr
 Automatic-Module-Name: ac.soton.xeventb.xcontext.ide

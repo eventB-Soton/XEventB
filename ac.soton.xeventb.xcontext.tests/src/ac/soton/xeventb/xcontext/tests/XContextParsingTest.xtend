@@ -137,10 +137,10 @@ class XContextParsingTest {
 	/**
 	 * Successful test for for sets clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Sets1() {
+	def void testSetsClauseSuccessful_GroupSets_OneSet_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -162,10 +162,34 @@ class XContextParsingTest {
 	/**
 	 * Successful test for for sets clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Sets2() {
+	def void testSetsClauseSuccessful_GroupSets_OneSet_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			sets S
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets("S:")
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	/**
+	 * Successful test for for sets clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupSets_TwoSets_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -185,12 +209,36 @@ class XContextParsingTest {
 	}
 
 	/**
-	 * Successful test for for constants clause.
+	 * Successful test for for sets clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Constants1() {
+	def void testSetsClauseSuccessful_GroupSets_TwoSets_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			sets S T
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets("S:", "T:")
+		result.assertContextConstants()
+		result.assertContextAxioms()
+	}
+
+	/**
+	 * Successful test for for constants clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupConstants_OneConstant_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -212,10 +260,34 @@ class XContextParsingTest {
 	/**
 	 * Successful test for for constants clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Constants2() {
+	def void testSetsClauseSuccessful_GroupConstants_OneConstant_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			constants a
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants("a:")
+		result.assertContextAxioms()
+	}
+
+	/**
+	 * Successful test for for constants clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupConstants_TwoConstants_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -235,12 +307,136 @@ class XContextParsingTest {
 	}
 
 	/**
-	 * Successful test for for axioms clause.
+	 * Successful test for for constants clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Axioms1() {
+	def void testSetsClauseSuccessful_GroupConstants_TwoConstants_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			constants a b
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants("a:", "b:")
+		result.assertContextAxioms()
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_SingleAxiom_OneAxiom_WithEnd() {
+		val testInput = 
+		'''
+			context c0
+			axiom @axm1: a ∈ S
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_SingleAxiom_OneAxiom_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			axiom @axm1: a ∈ S
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_SingeAxiom_TwoAxioms_WithEnd() {
+		val testInput = 
+		'''
+			context c0
+			axiom @axm1: a ∈ S
+			axiom @axm2: b ∈ T
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:", "axm2:b ∈ T:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_SingeAxiom_TwoAxioms_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			axiom @axm1: a ∈ S
+			axiom @axm2: b ∈ T
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:", "axm2:b ∈ T:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupAxiom_OneAxiom_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -263,10 +459,35 @@ class XContextParsingTest {
 	/**
 	 * Successful test for for axioms clause.
 	 * 
-	 * @since 1.0
+	 * @since 3.0
 	 */
 	@Test
-	def void testSetsClauseSuccessful_Axioms2() {
+	def void testSetsClauseSuccessful_GroupAxioms_OneAxiom_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			axioms 
+				@axm1: a ∈ S
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupAxioms_TwoAxioms_WithEnd() {
 		val testInput = 
 		'''
 			context c0
@@ -274,6 +495,32 @@ class XContextParsingTest {
 				@axm1: a ∈ S
 				@axm2: b ∈ T
 			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Context)
+		Assert.assertEquals("c0", result.name)
+		result.assertContextExtendsNames()
+		result.assertContextSets()
+		result.assertContextConstants()
+		result.assertContextAxioms("axm1:a ∈ S:false:", "axm2:b ∈ T:false:")
+	}
+
+	/**
+	 * Successful test for for axioms clause.
+	 * 
+	 * @since 3.0
+	 */
+	@Test
+	def void testSetsClauseSuccessful_GroupAxioms_TwoAxioms_NoEnd() {
+		val testInput = 
+		'''
+			context c0
+			axioms 
+				@axm1: a ∈ S
+				@axm2: b ∈ T
 		'''
 		val result = testInput.parse
 		Assert.assertNotNull(result)

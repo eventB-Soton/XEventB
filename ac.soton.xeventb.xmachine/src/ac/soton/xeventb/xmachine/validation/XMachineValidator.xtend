@@ -14,9 +14,11 @@
 
 package ac.soton.xeventb.xmachine.validation
 
+import ac.soton.eventb.emf.core.^extension.coreextension.Type
+import ac.soton.eventb.emf.core.^extension.coreextension.Value
 import ac.soton.eventb.emf.inclusion.EventSynchronisation
 import ac.soton.eventb.emf.inclusion.MachineInclusion
-import ac.soton.xeventb.common.IValidationIssueCode
+import ac.soton.xeventb.common.UntranslatedFormulaeValidator
 import org.eclipse.core.resources.IMarker
 import org.eclipse.core.resources.IResource
 import org.eclipse.core.resources.ResourcesPlugin
@@ -51,7 +53,6 @@ import org.eventb.emf.persistence.EventBEMFUtils
 import org.rodinp.core.IAttributeType
 import org.rodinp.core.IRodinElement
 import org.rodinp.core.RodinMarkerUtil
-import org.rodinp.keyboard.core.RodinKeyboardCore
 
 /**
  * <p>
@@ -65,6 +66,25 @@ import org.rodinp.keyboard.core.RodinKeyboardCore
  * @see XMachineMarkerModule
  */
 class XMachineValidator extends AbstractXMachineValidator {
+
+	/**
+	 * Object for validating untranslated formulae. This is an implementation of
+	 * {@link ValidateUntranslatedFormulae} which redirect raising warnings to
+	 * the method provided by {@link XContextValidator#warning(String, EObject,
+	 * EStructuralFeature, String, String[])}.
+	 * 
+	 * @since 3.0
+	 */
+   	extension UntranslatedFormulaeValidator validator =
+   			new UntranslatedFormulaeValidator() {
+				override protected warning(String message, EObject source,
+						EStructuralFeature feature, String code,
+						String... issueData) {
+					XMachineValidator.this.warning(message, source, feature,
+							code, issueData
+					)
+				}
+			}
 
     // Check the name of the .bumx file is the same as the machine name
     @Check
@@ -480,85 +500,46 @@ class XMachineValidator extends AbstractXMachineValidator {
         return null
     }
 
-    /**
-     * Check for untranslated predicates by comparing the translated string
-     * with the predicate. Raise a warning with code
-     * {@link IValidationIssueCode#UNTRANSLATE_PREDICATE}. The code is used for
-     * providing quick fixes.
-     * 
-     * @param obj 
-     * 		an Event-B predicate EObject.
-     * @author htson
-     * @see IValidationIssueCode
-     * @since 2.0
-     */
     @Check
-    def untranslatedPredicate(EventBPredicate obj) {
-        val predicate = obj.predicate
-        val translated = RodinKeyboardCore.translate(predicate)
-        if (predicate != translated)
-            warning(
-                "Untranslated Predicate: " + predicate,
-                obj,
-                CorePackage.Literals.EVENT_BPREDICATE__PREDICATE,
-                IValidationIssueCode.UNTRANSLATED_PREDICATE,
-                predicate,
-                translated
-            )
+    def checkUntranslatedFormulae(Machine mch) {
+    	val orderedChildren = mch.orderedChildren
+		for (child : orderedChildren) {
+			if (child instanceof EventBPredicate) {
+				validatePredicate(child)
+			}
+			if (child instanceof EventBExpression) {
+				validateExpression(child)
+			}
+			if (child instanceof Type) {
+				validateType(child)
+			}
+			if (child instanceof Value) {
+				validateValue(child)
+			}
+			if (child instanceof Event) {
+				checkUntranslatedFormulae(child)
+			}
+		}			
     }
 
-    /**
-     * Check for untranslated expressions by comparing the translated string
-     * with the expression. Raise a warning with code
-     * {@link IValidationIssueCode#UNTRANSLATE_EXPRESSION}. The code is used for
-     * providing quick fixes.
-     * 
-     * @param obj 
-     * 		an Event-B expression EObject.
-     * @author htson
-     * @see IValidationIssueCode
-     * @since 2.0
-     */
-    @Check
-    def untranslatedExpression(EventBExpression obj) {
-        val expression = obj.expression
-        val translated = RodinKeyboardCore.translate(expression)
-        if (expression != translated)
-            warning(
-                "Untranslated Expression: " + expression,
-                obj,
-                CorePackage.Literals.EVENT_BEXPRESSION__EXPRESSION,
-                IValidationIssueCode.UNTRANSLATED_EXPRESSION,
-                expression,
-                translated
-            )
-    }
-
-    /**
-     * Check for untranslated assignments by comparing the translated string
-     * with the assignment. Raise a warning with code
-     * {@link IValidationIssueCode#UNTRANSLATE_ASSIGNMENT}. The code is used for
-     * providing quick fixes.
-     * 
-     * @param obj 
-     * 		an Event-B action EObject.
-     * @author htson
-     * @see IValidationIssueCode
-     * @since 2.0
-     */
-    @Check
-    def untranslatedAssignment(EventBAction obj) {
-        val action = obj.action
-        val translated = RodinKeyboardCore.translate(action)
-        if (action != translated)
-            warning(
-                "Untranslated Assignment: " + action,
-                obj,
-                CorePackage.Literals.EVENT_BACTION__ACTION,
-                IValidationIssueCode.UNTRANSLATED_ASSIGNMENT,
-                action,
-                translated
-            )
-    }
-
+	def checkUntranslatedFormulae(Event evt) {
+    	val orderedChildren = evt.orderedChildren
+		for (child : orderedChildren) {
+			if (child instanceof EventBPredicate) {
+				validatePredicate(child)
+			}
+			if (child instanceof EventBExpression) {
+				validateExpression(child)
+			}
+			if (child instanceof EventBAction) {
+				validateAssignment(child)
+			}
+			if (child instanceof Type) {
+				validateType(child)
+			}
+			if (child instanceof Value) {
+				validateValue(child)
+			}
+		}		
+	}
 }
