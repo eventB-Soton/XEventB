@@ -30,8 +30,8 @@
     <eclipse_updates-repo.url>http://download.eclipse.org/eclipse/updates/4.22/</eclipse_updates-repo.url>
     <!-- URL for Eclipse Releases repository (2022-06) -->
     <eclipse_releases-repo.url>http://download.eclipse.org/releases/2022-06</eclipse_releases-repo.url>
-    <!-- URL for Rodin Platform (3.7) -->
-    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
+    <!-- URL for Rodin Platform -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
     <!-- URL for the Soton Update site -->
     <soton-repo.url>http://eventb-soton.github.io/updateSite</soton-repo.url>
