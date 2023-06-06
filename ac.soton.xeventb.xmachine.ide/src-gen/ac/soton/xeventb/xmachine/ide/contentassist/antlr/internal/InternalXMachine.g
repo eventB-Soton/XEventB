@@ -2501,9 +2501,16 @@ rule__Machine__Group_7__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
-	(rule__Machine__OrderedChildrenAssignment_7_1)
-	{ after(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
+	(
+		{ before(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
+		(rule__Machine__OrderedChildrenAssignment_7_1)
+		{ after(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
+	)
+	(
+		{ before(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
+		(rule__Machine__OrderedChildrenAssignment_7_1)*
+		{ after(grammarAccess.getMachineAccess().getOrderedChildrenAssignment_7_1()); }
+	)
 )
 ;
 finally {

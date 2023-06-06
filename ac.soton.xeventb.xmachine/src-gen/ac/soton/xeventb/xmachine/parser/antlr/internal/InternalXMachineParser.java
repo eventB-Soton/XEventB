@@ -255,7 +255,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMachine"
-    // InternalXMachine.g:72:1: ruleMachine returns [EObject current=null] : ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )? (otherlv_25= 'end' )? ) ;
+    // InternalXMachine.g:72:1: ruleMachine returns [EObject current=null] : ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )? (otherlv_25= 'end' )? ) ;
     public final EObject ruleMachine() throws RecognitionException {
         EObject current = null;
 
@@ -298,11 +298,11 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalXMachine.g:78:2: ( ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )? (otherlv_25= 'end' )? ) )
-            // InternalXMachine.g:79:2: ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )? (otherlv_25= 'end' )? )
+            // InternalXMachine.g:78:2: ( ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )? (otherlv_25= 'end' )? ) )
+            // InternalXMachine.g:79:2: ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )? (otherlv_25= 'end' )? )
             {
-            // InternalXMachine.g:79:2: ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )? (otherlv_25= 'end' )? )
-            // InternalXMachine.g:80:3: () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )? (otherlv_25= 'end' )?
+            // InternalXMachine.g:79:2: ( () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )? (otherlv_25= 'end' )? )
+            // InternalXMachine.g:80:3: () ( (lv_comment_1_0= RULE_STRING ) )? otherlv_2= 'machine' ( (lv_name_3_0= RULE_ID ) ) ( ( ( ( ({...}? => ( ({...}? => ( (lv_orderedChildren_5_0= ruleMIncludes ) ) )+ ) ) | ({...}? => ( ({...}? => (otherlv_6= 'refines' ( (otherlv_7= RULE_ID ) ) ) ) ) ) | ({...}? => ( ({...}? => (otherlv_8= 'sees' ( (otherlv_9= RULE_ID ) )+ ) ) ) ) )* ) ) ) (otherlv_10= 'contains' ( (lv_orderedChildren_11_0= ruleMContains ) )+ )? ( ( (otherlv_12= 'variables' | otherlv_13= 'vars' ) ( (lv_orderedChildren_14_0= ruleXMultipleVariable ) )+ ) | ( (lv_orderedChildren_15_0= ruleXIndividualVariable ) ) | ( (otherlv_16= 'invariants' | otherlv_17= 'invs' ) ( (lv_orderedChildren_18_0= ruleXMultipleInvariant ) )+ ) | ( (lv_orderedChildren_19_0= ruleXIndividualInvariant ) ) | ( (lv_orderedChildren_20_0= ruleXRecord ) ) | ( (lv_orderedChildren_21_0= ruleXVariant ) ) | ( (lv_orderedChildren_22_0= ruleXEvent ) ) )* (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )? (otherlv_25= 'end' )?
             {
             // InternalXMachine.g:80:3: ()
             // InternalXMachine.g:81:4: 
@@ -1185,51 +1185,74 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                 }
             } while (true);
 
-            // InternalXMachine.g:417:3: (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) ) )?
-            int alt12=2;
-            int LA12_0 = input.LA(1);
+            // InternalXMachine.g:417:3: (otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+ )?
+            int alt13=2;
+            int LA13_0 = input.LA(1);
 
-            if ( (LA12_0==21) ) {
-                alt12=1;
+            if ( (LA13_0==21) ) {
+                alt13=1;
             }
-            switch (alt12) {
+            switch (alt13) {
                 case 1 :
-                    // InternalXMachine.g:418:4: otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )
+                    // InternalXMachine.g:418:4: otherlv_23= 'events' ( (lv_orderedChildren_24_0= ruleXEvent ) )+
                     {
                     otherlv_23=(Token)match(input,21,FOLLOW_12); 
 
                     				newLeafNode(otherlv_23, grammarAccess.getMachineAccess().getEventsKeyword_7_0());
                     			
-                    // InternalXMachine.g:422:4: ( (lv_orderedChildren_24_0= ruleXEvent ) )
-                    // InternalXMachine.g:423:5: (lv_orderedChildren_24_0= ruleXEvent )
-                    {
-                    // InternalXMachine.g:423:5: (lv_orderedChildren_24_0= ruleXEvent )
-                    // InternalXMachine.g:424:6: lv_orderedChildren_24_0= ruleXEvent
-                    {
+                    // InternalXMachine.g:422:4: ( (lv_orderedChildren_24_0= ruleXEvent ) )+
+                    int cnt12=0;
+                    loop12:
+                    do {
+                        int alt12=2;
+                        int LA12_0 = input.LA(1);
 
-                    						newCompositeNode(grammarAccess.getMachineAccess().getOrderedChildrenXEventParserRuleCall_7_1_0());
-                    					
-                    pushFollow(FOLLOW_13);
-                    lv_orderedChildren_24_0=ruleXEvent();
-
-                    state._fsp--;
+                        if ( (LA12_0==RULE_STRING||LA12_0==54||(LA12_0>=151 && LA12_0<=153)) ) {
+                            alt12=1;
+                        }
 
 
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getMachineRule());
-                    						}
-                    						add(
-                    							current,
-                    							"orderedChildren",
-                    							lv_orderedChildren_24_0,
-                    							"ac.soton.xeventb.xmachine.XMachine.XEvent");
-                    						afterParserOrEnumRuleCall();
-                    					
+                        switch (alt12) {
+                    	case 1 :
+                    	    // InternalXMachine.g:423:5: (lv_orderedChildren_24_0= ruleXEvent )
+                    	    {
+                    	    // InternalXMachine.g:423:5: (lv_orderedChildren_24_0= ruleXEvent )
+                    	    // InternalXMachine.g:424:6: lv_orderedChildren_24_0= ruleXEvent
+                    	    {
 
-                    }
+                    	    						newCompositeNode(grammarAccess.getMachineAccess().getOrderedChildrenXEventParserRuleCall_7_1_0());
+                    	    					
+                    	    pushFollow(FOLLOW_13);
+                    	    lv_orderedChildren_24_0=ruleXEvent();
+
+                    	    state._fsp--;
 
 
-                    }
+                    	    						if (current==null) {
+                    	    							current = createModelElementForParent(grammarAccess.getMachineRule());
+                    	    						}
+                    	    						add(
+                    	    							current,
+                    	    							"orderedChildren",
+                    	    							lv_orderedChildren_24_0,
+                    	    							"ac.soton.xeventb.xmachine.XMachine.XEvent");
+                    	    						afterParserOrEnumRuleCall();
+                    	    					
+
+                    	    }
+
+
+                    	    }
+                    	    break;
+
+                    	default :
+                    	    if ( cnt12 >= 1 ) break loop12;
+                                EarlyExitException eee =
+                                    new EarlyExitException(12, input);
+                                throw eee;
+                        }
+                        cnt12++;
+                    } while (true);
 
 
                     }
@@ -1238,13 +1261,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:442:3: (otherlv_25= 'end' )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            int alt14=2;
+            int LA14_0 = input.LA(1);
 
-            if ( (LA13_0==22) ) {
-                alt13=1;
+            if ( (LA14_0==22) ) {
+                alt14=1;
             }
-            switch (alt13) {
+            switch (alt14) {
                 case 1 :
                     // InternalXMachine.g:443:4: otherlv_25= 'end'
                     {
@@ -1500,13 +1523,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:538:3: (otherlv_3= 'to' ( (otherlv_4= RULE_ID ) ) )?
-            int alt14=2;
-            int LA14_0 = input.LA(1);
+            int alt15=2;
+            int LA15_0 = input.LA(1);
 
-            if ( (LA14_0==24) ) {
-                alt14=1;
+            if ( (LA15_0==24) ) {
+                alt15=1;
             }
-            switch (alt14) {
+            switch (alt15) {
                 case 1 :
                     // InternalXMachine.g:539:4: otherlv_3= 'to' ( (otherlv_4= RULE_ID ) )
                     {
@@ -1542,13 +1565,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:557:3: (otherlv_5= 'as' ( (lv_prefixes_6_0= RULE_ID ) ) ( (lv_prefixes_7_0= RULE_ID ) )* )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            if ( (LA16_0==25) ) {
-                alt16=1;
+            if ( (LA17_0==25) ) {
+                alt17=1;
             }
-            switch (alt16) {
+            switch (alt17) {
                 case 1 :
                     // InternalXMachine.g:558:4: otherlv_5= 'as' ( (lv_prefixes_6_0= RULE_ID ) ) ( (lv_prefixes_7_0= RULE_ID ) )*
                     {
@@ -1583,17 +1606,17 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXMachine.g:580:4: ( (lv_prefixes_7_0= RULE_ID ) )*
-                    loop15:
+                    loop16:
                     do {
-                        int alt15=2;
-                        int LA15_0 = input.LA(1);
+                        int alt16=2;
+                        int LA16_0 = input.LA(1);
 
-                        if ( (LA15_0==RULE_ID) ) {
-                            alt15=1;
+                        if ( (LA16_0==RULE_ID) ) {
+                            alt16=1;
                         }
 
 
-                        switch (alt15) {
+                        switch (alt16) {
                     	case 1 :
                     	    // InternalXMachine.g:581:5: (lv_prefixes_7_0= RULE_ID )
                     	    {
@@ -1622,7 +1645,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop15;
+                    	    break loop16;
                         }
                     } while (true);
 
@@ -1717,13 +1740,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             			newLeafNode(this_ID_0, grammarAccess.getQualifiedNameAccess().getIDTerminalRuleCall_0());
             		
             // InternalXMachine.g:625:3: (kw= '.' this_ID_2= RULE_ID )?
-            int alt17=2;
-            int LA17_0 = input.LA(1);
+            int alt18=2;
+            int LA18_0 = input.LA(1);
 
-            if ( (LA17_0==26) ) {
-                alt17=1;
+            if ( (LA18_0==26) ) {
+                alt18=1;
             }
-            switch (alt17) {
+            switch (alt18) {
                 case 1 :
                     // InternalXMachine.g:626:4: kw= '.' this_ID_2= RULE_ID
                     {
@@ -1833,13 +1856,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:665:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt18=2;
-            int LA18_0 = input.LA(1);
+            int alt19=2;
+            int LA19_0 = input.LA(1);
 
-            if ( (LA18_0==RULE_STRING) ) {
-                alt18=1;
+            if ( (LA19_0==RULE_STRING) ) {
+                alt19=1;
             }
-            switch (alt18) {
+            switch (alt19) {
                 case 1 :
                     // InternalXMachine.g:666:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -1991,13 +2014,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:727:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt19=2;
-            int LA19_0 = input.LA(1);
+            int alt20=2;
+            int LA20_0 = input.LA(1);
 
-            if ( (LA19_0==RULE_STRING) ) {
-                alt19=1;
+            if ( (LA20_0==RULE_STRING) ) {
+                alt20=1;
             }
-            switch (alt19) {
+            switch (alt20) {
                 case 1 :
                     // InternalXMachine.g:728:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -2028,22 +2051,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:745:3: (otherlv_2= 'variable' | otherlv_3= 'var' )
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            int alt21=2;
+            int LA21_0 = input.LA(1);
 
-            if ( (LA20_0==27) ) {
-                alt20=1;
+            if ( (LA21_0==27) ) {
+                alt21=1;
             }
-            else if ( (LA20_0==28) ) {
-                alt20=2;
+            else if ( (LA21_0==28) ) {
+                alt21=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 20, 0, input);
+                    new NoViableAltException("", 21, 0, input);
 
                 throw nvae;
             }
-            switch (alt20) {
+            switch (alt21) {
                 case 1 :
                     // InternalXMachine.g:746:4: otherlv_2= 'variable'
                     {
@@ -2094,13 +2117,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:774:3: (otherlv_5= ':' ( (lv_type_6_0= ruleXType ) ) )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA21_0==29) ) {
-                alt21=1;
+            if ( (LA22_0==29) ) {
+                alt22=1;
             }
-            switch (alt21) {
+            switch (alt22) {
                 case 1 :
                     // InternalXMachine.g:775:4: otherlv_5= ':' ( (lv_type_6_0= ruleXType ) )
                     {
@@ -2146,13 +2169,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:799:3: (otherlv_7= '=' ( (lv_value_8_0= ruleXFormula ) ) )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            if ( (LA22_0==30) ) {
-                alt22=1;
+            if ( (LA23_0==30) ) {
+                alt23=1;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
                     // InternalXMachine.g:800:4: otherlv_7= '=' ( (lv_value_8_0= ruleXFormula ) )
                     {
@@ -2292,17 +2315,17 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             			afterParserOrEnumRuleCall();
             		
             // InternalXMachine.g:853:3: (this_XTYPEOPERATOR_1= ruleXTYPEOPERATOR this_XTypePrimitive_2= ruleXTypePrimitive )*
-            loop23:
+            loop24:
             do {
-                int alt23=2;
-                int LA23_0 = input.LA(1);
+                int alt24=2;
+                int LA24_0 = input.LA(1);
 
-                if ( ((LA23_0>=31 && LA23_0<=42)) ) {
-                    alt23=1;
+                if ( ((LA24_0>=31 && LA24_0<=42)) ) {
+                    alt24=1;
                 }
 
 
-                switch (alt23) {
+                switch (alt24) {
             	case 1 :
             	    // InternalXMachine.g:854:4: this_XTYPEOPERATOR_1= ruleXTYPEOPERATOR this_XTypePrimitive_2= ruleXTypePrimitive
             	    {
@@ -2339,7 +2362,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop23;
+            	    break loop24;
                 }
             } while (true);
 
@@ -2416,76 +2439,76 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:893:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '\\u00D7' )
             {
             // InternalXMachine.g:893:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '\\u00D7' )
-            int alt24=12;
+            int alt25=12;
             switch ( input.LA(1) ) {
             case 31:
                 {
-                alt24=1;
+                alt25=1;
                 }
                 break;
             case 32:
                 {
-                alt24=2;
+                alt25=2;
                 }
                 break;
             case 33:
                 {
-                alt24=3;
+                alt25=3;
                 }
                 break;
             case 34:
                 {
-                alt24=4;
+                alt25=4;
                 }
                 break;
             case 35:
                 {
-                alt24=5;
+                alt25=5;
                 }
                 break;
             case 36:
                 {
-                alt24=6;
+                alt25=6;
                 }
                 break;
             case 37:
                 {
-                alt24=7;
+                alt25=7;
                 }
                 break;
             case 38:
                 {
-                alt24=8;
+                alt25=8;
                 }
                 break;
             case 39:
                 {
-                alt24=9;
+                alt25=9;
                 }
                 break;
             case 40:
                 {
-                alt24=10;
+                alt25=10;
                 }
                 break;
             case 41:
                 {
-                alt24=11;
+                alt25=11;
                 }
                 break;
             case 42:
                 {
-                alt24=12;
+                alt25=12;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
                     // InternalXMachine.g:894:3: kw= '\\u2194'
                     {
@@ -2698,56 +2721,56 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:983:2: (this_ID_0= RULE_ID | kw= 'BOOL' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u2124' | (kw= '(' this_XType_6= ruleXType kw= ')' ) | (kw= '\\u2119' kw= '(' this_XType_10= ruleXType kw= ')' ) | (kw= '\\u21191' kw= '(' this_XType_14= ruleXType kw= ')' ) )
             {
             // InternalXMachine.g:983:2: (this_ID_0= RULE_ID | kw= 'BOOL' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u2124' | (kw= '(' this_XType_6= ruleXType kw= ')' ) | (kw= '\\u2119' kw= '(' this_XType_10= ruleXType kw= ')' ) | (kw= '\\u21191' kw= '(' this_XType_14= ruleXType kw= ')' ) )
-            int alt25=8;
+            int alt26=8;
             switch ( input.LA(1) ) {
             case RULE_ID:
                 {
-                alt25=1;
+                alt26=1;
                 }
                 break;
             case 43:
                 {
-                alt25=2;
+                alt26=2;
                 }
                 break;
             case 44:
                 {
-                alt25=3;
+                alt26=3;
                 }
                 break;
             case 45:
                 {
-                alt25=4;
+                alt26=4;
                 }
                 break;
             case 46:
                 {
-                alt25=5;
+                alt26=5;
                 }
                 break;
             case 47:
                 {
-                alt25=6;
+                alt26=6;
                 }
                 break;
             case 49:
                 {
-                alt25=7;
+                alt26=7;
                 }
                 break;
             case 50:
                 {
-                alt25=8;
+                alt26=8;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
                     // InternalXMachine.g:984:3: this_ID_0= RULE_ID
                     {
@@ -3013,13 +3036,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1120:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==RULE_STRING) ) {
-                alt26=1;
+            if ( (LA27_0==RULE_STRING) ) {
+                alt27=1;
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
                     // InternalXMachine.g:1121:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -3198,13 +3221,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1201:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( (LA27_0==RULE_STRING) ) {
-                alt27=1;
+            if ( (LA28_0==RULE_STRING) ) {
+                alt28=1;
             }
-            switch (alt27) {
+            switch (alt28) {
                 case 1 :
                     // InternalXMachine.g:1202:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -3235,22 +3258,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1219:3: ( ( (lv_theorem_2_0= 'theorem' ) ) | otherlv_3= 'invariant' )
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==51) ) {
-                alt28=1;
+            if ( (LA29_0==51) ) {
+                alt29=1;
             }
-            else if ( (LA28_0==52) ) {
-                alt28=2;
+            else if ( (LA29_0==52) ) {
+                alt29=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 28, 0, input);
+                    new NoViableAltException("", 29, 0, input);
 
                 throw nvae;
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
                     // InternalXMachine.g:1220:4: ( (lv_theorem_2_0= 'theorem' ) )
                     {
@@ -3440,13 +3463,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1303:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt29=2;
-            int LA29_0 = input.LA(1);
+            int alt30=2;
+            int LA30_0 = input.LA(1);
 
-            if ( (LA29_0==RULE_STRING) ) {
-                alt29=1;
+            if ( (LA30_0==RULE_STRING) ) {
+                alt30=1;
             }
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
                     // InternalXMachine.g:1304:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -3649,13 +3672,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1388:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt30=2;
-            int LA30_0 = input.LA(1);
+            int alt31=2;
+            int LA31_0 = input.LA(1);
 
-            if ( (LA30_0==RULE_STRING) ) {
-                alt30=1;
+            if ( (LA31_0==RULE_STRING) ) {
+                alt31=1;
             }
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
                     // InternalXMachine.g:1389:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -3686,13 +3709,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1406:3: ( (lv_convergence_2_0= ruleXConvergence ) )?
-            int alt31=2;
-            int LA31_0 = input.LA(1);
+            int alt32=2;
+            int LA32_0 = input.LA(1);
 
-            if ( ((LA31_0>=151 && LA31_0<=153)) ) {
-                alt31=1;
+            if ( ((LA32_0>=151 && LA32_0<=153)) ) {
+                alt32=1;
             }
-            switch (alt31) {
+            switch (alt32) {
                 case 1 :
                     // InternalXMachine.g:1407:4: (lv_convergence_2_0= ruleXConvergence )
                     {
@@ -3758,16 +3781,16 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1447:3: ( (otherlv_5= 'refines' ( (otherlv_6= RULE_ID ) )+ ) | ( ( (lv_extended_7_0= 'extends' ) ) ( (otherlv_8= RULE_ID ) ) ) )?
-            int alt33=3;
-            int LA33_0 = input.LA(1);
+            int alt34=3;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA33_0==14) ) {
-                alt33=1;
+            if ( (LA34_0==14) ) {
+                alt34=1;
             }
-            else if ( (LA33_0==55) ) {
-                alt33=2;
+            else if ( (LA34_0==55) ) {
+                alt34=2;
             }
-            switch (alt33) {
+            switch (alt34) {
                 case 1 :
                     // InternalXMachine.g:1448:4: (otherlv_5= 'refines' ( (otherlv_6= RULE_ID ) )+ )
                     {
@@ -3779,18 +3802,18 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     					newLeafNode(otherlv_5, grammarAccess.getXEventAccess().getRefinesKeyword_5_0_0());
                     				
                     // InternalXMachine.g:1453:5: ( (otherlv_6= RULE_ID ) )+
-                    int cnt32=0;
-                    loop32:
+                    int cnt33=0;
+                    loop33:
                     do {
-                        int alt32=2;
-                        int LA32_0 = input.LA(1);
+                        int alt33=2;
+                        int LA33_0 = input.LA(1);
 
-                        if ( (LA32_0==RULE_ID) ) {
-                            alt32=1;
+                        if ( (LA33_0==RULE_ID) ) {
+                            alt33=1;
                         }
 
 
-                        switch (alt32) {
+                        switch (alt33) {
                     	case 1 :
                     	    // InternalXMachine.g:1454:6: (otherlv_6= RULE_ID )
                     	    {
@@ -3814,12 +3837,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt32 >= 1 ) break loop32;
+                    	    if ( cnt33 >= 1 ) break loop33;
                                 EarlyExitException eee =
-                                    new EarlyExitException(32, input);
+                                    new EarlyExitException(33, input);
                                 throw eee;
                         }
-                        cnt32++;
+                        cnt33++;
                     } while (true);
 
 
@@ -3887,13 +3910,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1498:3: (otherlv_9= 'any' ( (lv_orderedChildren_10_0= ruleXParameter ) )+ )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            if ( (LA35_0==56) ) {
-                alt35=1;
+            if ( (LA36_0==56) ) {
+                alt36=1;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
                     // InternalXMachine.g:1499:4: otherlv_9= 'any' ( (lv_orderedChildren_10_0= ruleXParameter ) )+
                     {
@@ -3902,18 +3925,18 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     				newLeafNode(otherlv_9, grammarAccess.getXEventAccess().getAnyKeyword_6_0());
                     			
                     // InternalXMachine.g:1503:4: ( (lv_orderedChildren_10_0= ruleXParameter ) )+
-                    int cnt34=0;
-                    loop34:
+                    int cnt35=0;
+                    loop35:
                     do {
-                        int alt34=2;
-                        int LA34_0 = input.LA(1);
+                        int alt35=2;
+                        int LA35_0 = input.LA(1);
 
-                        if ( ((LA34_0>=RULE_STRING && LA34_0<=RULE_ID)) ) {
-                            alt34=1;
+                        if ( ((LA35_0>=RULE_STRING && LA35_0<=RULE_ID)) ) {
+                            alt35=1;
                         }
 
 
-                        switch (alt34) {
+                        switch (alt35) {
                     	case 1 :
                     	    // InternalXMachine.g:1504:5: (lv_orderedChildren_10_0= ruleXParameter )
                     	    {
@@ -3947,12 +3970,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt34 >= 1 ) break loop34;
+                    	    if ( cnt35 >= 1 ) break loop35;
                                 EarlyExitException eee =
-                                    new EarlyExitException(34, input);
+                                    new EarlyExitException(35, input);
                                 throw eee;
                         }
-                        cnt34++;
+                        cnt35++;
                     } while (true);
 
 
@@ -3962,17 +3985,17 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1523:3: ( (lv_orderedChildren_11_0= ruleEventSync ) )*
-            loop36:
+            loop37:
             do {
-                int alt36=2;
-                int LA36_0 = input.LA(1);
+                int alt37=2;
+                int LA37_0 = input.LA(1);
 
-                if ( (LA36_0==62) ) {
-                    alt36=1;
+                if ( (LA37_0==62) ) {
+                    alt37=1;
                 }
 
 
-                switch (alt36) {
+                switch (alt37) {
             	case 1 :
             	    // InternalXMachine.g:1524:4: (lv_orderedChildren_11_0= ruleEventSync )
             	    {
@@ -4006,38 +4029,38 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop36;
+            	    break loop37;
                 }
             } while (true);
 
             // InternalXMachine.g:1542:3: ( (otherlv_12= 'where' | otherlv_13= 'when' ) ( (lv_orderedChildren_14_0= ruleXGuard ) )+ )?
-            int alt39=2;
-            int LA39_0 = input.LA(1);
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            if ( ((LA39_0>=57 && LA39_0<=58)) ) {
-                alt39=1;
+            if ( ((LA40_0>=57 && LA40_0<=58)) ) {
+                alt40=1;
             }
-            switch (alt39) {
+            switch (alt40) {
                 case 1 :
                     // InternalXMachine.g:1543:4: (otherlv_12= 'where' | otherlv_13= 'when' ) ( (lv_orderedChildren_14_0= ruleXGuard ) )+
                     {
                     // InternalXMachine.g:1543:4: (otherlv_12= 'where' | otherlv_13= 'when' )
-                    int alt37=2;
-                    int LA37_0 = input.LA(1);
+                    int alt38=2;
+                    int LA38_0 = input.LA(1);
 
-                    if ( (LA37_0==57) ) {
-                        alt37=1;
+                    if ( (LA38_0==57) ) {
+                        alt38=1;
                     }
-                    else if ( (LA37_0==58) ) {
-                        alt37=2;
+                    else if ( (LA38_0==58) ) {
+                        alt38=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 37, 0, input);
+                            new NoViableAltException("", 38, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt37) {
+                    switch (alt38) {
                         case 1 :
                             // InternalXMachine.g:1544:5: otherlv_12= 'where'
                             {
@@ -4062,18 +4085,18 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXMachine.g:1554:4: ( (lv_orderedChildren_14_0= ruleXGuard ) )+
-                    int cnt38=0;
-                    loop38:
+                    int cnt39=0;
+                    loop39:
                     do {
-                        int alt38=2;
-                        int LA38_0 = input.LA(1);
+                        int alt39=2;
+                        int LA39_0 = input.LA(1);
 
-                        if ( (LA38_0==RULE_STRING||LA38_0==RULE_XLABEL||LA38_0==51) ) {
-                            alt38=1;
+                        if ( (LA39_0==RULE_STRING||LA39_0==RULE_XLABEL||LA39_0==51) ) {
+                            alt39=1;
                         }
 
 
-                        switch (alt38) {
+                        switch (alt39) {
                     	case 1 :
                     	    // InternalXMachine.g:1555:5: (lv_orderedChildren_14_0= ruleXGuard )
                     	    {
@@ -4107,12 +4130,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt38 >= 1 ) break loop38;
+                    	    if ( cnt39 >= 1 ) break loop39;
                                 EarlyExitException eee =
-                                    new EarlyExitException(38, input);
+                                    new EarlyExitException(39, input);
                                 throw eee;
                         }
-                        cnt38++;
+                        cnt39++;
                     } while (true);
 
 
@@ -4122,33 +4145,33 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1574:3: ( (otherlv_15= 'then' | otherlv_16= 'begin' ) ( (lv_orderedChildren_17_0= ruleXAction ) )+ )?
-            int alt42=2;
-            int LA42_0 = input.LA(1);
+            int alt43=2;
+            int LA43_0 = input.LA(1);
 
-            if ( ((LA42_0>=59 && LA42_0<=60)) ) {
-                alt42=1;
+            if ( ((LA43_0>=59 && LA43_0<=60)) ) {
+                alt43=1;
             }
-            switch (alt42) {
+            switch (alt43) {
                 case 1 :
                     // InternalXMachine.g:1575:4: (otherlv_15= 'then' | otherlv_16= 'begin' ) ( (lv_orderedChildren_17_0= ruleXAction ) )+
                     {
                     // InternalXMachine.g:1575:4: (otherlv_15= 'then' | otherlv_16= 'begin' )
-                    int alt40=2;
-                    int LA40_0 = input.LA(1);
+                    int alt41=2;
+                    int LA41_0 = input.LA(1);
 
-                    if ( (LA40_0==59) ) {
-                        alt40=1;
+                    if ( (LA41_0==59) ) {
+                        alt41=1;
                     }
-                    else if ( (LA40_0==60) ) {
-                        alt40=2;
+                    else if ( (LA41_0==60) ) {
+                        alt41=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 40, 0, input);
+                            new NoViableAltException("", 41, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt40) {
+                    switch (alt41) {
                         case 1 :
                             // InternalXMachine.g:1576:5: otherlv_15= 'then'
                             {
@@ -4173,18 +4196,18 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     }
 
                     // InternalXMachine.g:1586:4: ( (lv_orderedChildren_17_0= ruleXAction ) )+
-                    int cnt41=0;
-                    loop41:
+                    int cnt42=0;
+                    loop42:
                     do {
-                        int alt41=2;
-                        int LA41_0 = input.LA(1);
+                        int alt42=2;
+                        int LA42_0 = input.LA(1);
 
-                        if ( (LA41_0==RULE_STRING||LA41_0==RULE_XLABEL) ) {
-                            alt41=1;
+                        if ( (LA42_0==RULE_STRING||LA42_0==RULE_XLABEL) ) {
+                            alt42=1;
                         }
 
 
-                        switch (alt41) {
+                        switch (alt42) {
                     	case 1 :
                     	    // InternalXMachine.g:1587:5: (lv_orderedChildren_17_0= ruleXAction )
                     	    {
@@ -4218,12 +4241,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt41 >= 1 ) break loop41;
+                    	    if ( cnt42 >= 1 ) break loop42;
                                 EarlyExitException eee =
-                                    new EarlyExitException(41, input);
+                                    new EarlyExitException(42, input);
                                 throw eee;
                         }
-                        cnt41++;
+                        cnt42++;
                     } while (true);
 
 
@@ -4233,13 +4256,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1606:3: (otherlv_18= 'with' ( (lv_orderedChildren_19_0= ruleXWitness ) )+ )?
-            int alt44=2;
-            int LA44_0 = input.LA(1);
+            int alt45=2;
+            int LA45_0 = input.LA(1);
 
-            if ( (LA44_0==61) ) {
-                alt44=1;
+            if ( (LA45_0==61) ) {
+                alt45=1;
             }
-            switch (alt44) {
+            switch (alt45) {
                 case 1 :
                     // InternalXMachine.g:1607:4: otherlv_18= 'with' ( (lv_orderedChildren_19_0= ruleXWitness ) )+
                     {
@@ -4248,18 +4271,18 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     				newLeafNode(otherlv_18, grammarAccess.getXEventAccess().getWithKeyword_10_0());
                     			
                     // InternalXMachine.g:1611:4: ( (lv_orderedChildren_19_0= ruleXWitness ) )+
-                    int cnt43=0;
-                    loop43:
+                    int cnt44=0;
+                    loop44:
                     do {
-                        int alt43=2;
-                        int LA43_0 = input.LA(1);
+                        int alt44=2;
+                        int LA44_0 = input.LA(1);
 
-                        if ( (LA43_0==RULE_STRING||LA43_0==RULE_XLABEL) ) {
-                            alt43=1;
+                        if ( (LA44_0==RULE_STRING||LA44_0==RULE_XLABEL) ) {
+                            alt44=1;
                         }
 
 
-                        switch (alt43) {
+                        switch (alt44) {
                     	case 1 :
                     	    // InternalXMachine.g:1612:5: (lv_orderedChildren_19_0= ruleXWitness )
                     	    {
@@ -4293,12 +4316,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt43 >= 1 ) break loop43;
+                    	    if ( cnt44 >= 1 ) break loop44;
                                 EarlyExitException eee =
-                                    new EarlyExitException(43, input);
+                                    new EarlyExitException(44, input);
                                 throw eee;
                         }
-                        cnt43++;
+                        cnt44++;
                     } while (true);
 
 
@@ -4408,17 +4431,17 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             				newLeafNode(otherlv_1, grammarAccess.getEventSyncAccess().getSynchronisesKeyword_1_0());
             			
             // InternalXMachine.g:1666:4: ( ( (lv_prefix_2_0= RULE_ID ) ) otherlv_3= '.' )?
-            int alt45=2;
-            int LA45_0 = input.LA(1);
+            int alt46=2;
+            int LA46_0 = input.LA(1);
 
-            if ( (LA45_0==RULE_ID) ) {
-                int LA45_1 = input.LA(2);
+            if ( (LA46_0==RULE_ID) ) {
+                int LA46_1 = input.LA(2);
 
-                if ( (LA45_1==26) ) {
-                    alt45=1;
+                if ( (LA46_1==26) ) {
+                    alt46=1;
                 }
             }
-            switch (alt45) {
+            switch (alt46) {
                 case 1 :
                     // InternalXMachine.g:1667:5: ( (lv_prefix_2_0= RULE_ID ) ) otherlv_3= '.'
                     {
@@ -4570,13 +4593,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1730:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt46=2;
-            int LA46_0 = input.LA(1);
+            int alt47=2;
+            int LA47_0 = input.LA(1);
 
-            if ( (LA46_0==RULE_STRING) ) {
-                alt46=1;
+            if ( (LA47_0==RULE_STRING) ) {
+                alt47=1;
             }
-            switch (alt46) {
+            switch (alt47) {
                 case 1 :
                     // InternalXMachine.g:1731:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -4723,13 +4746,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1792:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt47=2;
-            int LA47_0 = input.LA(1);
+            int alt48=2;
+            int LA48_0 = input.LA(1);
 
-            if ( (LA47_0==RULE_STRING) ) {
-                alt47=1;
+            if ( (LA48_0==RULE_STRING) ) {
+                alt48=1;
             }
-            switch (alt47) {
+            switch (alt48) {
                 case 1 :
                     // InternalXMachine.g:1793:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -4760,13 +4783,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1810:3: ( (lv_theorem_2_0= 'theorem' ) )?
-            int alt48=2;
-            int LA48_0 = input.LA(1);
+            int alt49=2;
+            int LA49_0 = input.LA(1);
 
-            if ( (LA48_0==51) ) {
-                alt48=1;
+            if ( (LA49_0==51) ) {
+                alt49=1;
             }
-            switch (alt48) {
+            switch (alt49) {
                 case 1 :
                     // InternalXMachine.g:1811:4: (lv_theorem_2_0= 'theorem' )
                     {
@@ -4939,13 +4962,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1887:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt49=2;
-            int LA49_0 = input.LA(1);
+            int alt50=2;
+            int LA50_0 = input.LA(1);
 
-            if ( (LA49_0==RULE_STRING) ) {
-                alt49=1;
+            if ( (LA50_0==RULE_STRING) ) {
+                alt50=1;
             }
-            switch (alt49) {
+            switch (alt50) {
                 case 1 :
                     // InternalXMachine.g:1888:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -5122,13 +5145,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:1968:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt50=2;
-            int LA50_0 = input.LA(1);
+            int alt51=2;
+            int LA51_0 = input.LA(1);
 
-            if ( (LA50_0==RULE_STRING) ) {
-                alt50=1;
+            if ( (LA51_0==RULE_STRING) ) {
+                alt51=1;
             }
-            switch (alt50) {
+            switch (alt51) {
                 case 1 :
                     // InternalXMachine.g:1969:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -5296,10 +5319,10 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:2041:2: (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_INT_3= RULE_INT | this_ID_4= RULE_ID | this_UNTRANSLATED_TOKEN_5= RULE_UNTRANSLATED_TOKEN )+
             {
             // InternalXMachine.g:2041:2: (this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD | this_EVENTB_PREDICATE_SYMBOLS_1= ruleEVENTB_PREDICATE_SYMBOLS | this_EVENTB_EXPRESSION_SYMBOLS_2= ruleEVENTB_EXPRESSION_SYMBOLS | this_INT_3= RULE_INT | this_ID_4= RULE_ID | this_UNTRANSLATED_TOKEN_5= RULE_UNTRANSLATED_TOKEN )+
-            int cnt51=0;
-            loop51:
+            int cnt52=0;
+            loop52:
             do {
-                int alt51=7;
+                int alt52=7;
                 switch ( input.LA(1) ) {
                 case 43:
                 case 44:
@@ -5325,7 +5348,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                 case 78:
                 case 79:
                     {
-                    alt51=1;
+                    alt52=1;
                     }
                     break;
                 case 26:
@@ -5360,7 +5383,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                 case 104:
                 case 105:
                     {
-                    alt51=2;
+                    alt52=2;
                     }
                     break;
                 case 31:
@@ -5409,28 +5432,28 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                 case 138:
                 case 139:
                     {
-                    alt51=3;
+                    alt52=3;
                     }
                     break;
                 case RULE_INT:
                     {
-                    alt51=4;
+                    alt52=4;
                     }
                     break;
                 case RULE_ID:
                     {
-                    alt51=5;
+                    alt52=5;
                     }
                     break;
                 case RULE_UNTRANSLATED_TOKEN:
                     {
-                    alt51=6;
+                    alt52=6;
                     }
                     break;
 
                 }
 
-                switch (alt51) {
+                switch (alt52) {
             	case 1 :
             	    // InternalXMachine.g:2042:3: this_EVENTB_IDENTIFIER_KEYWORD_0= ruleEVENTB_IDENTIFIER_KEYWORD
             	    {
@@ -5532,12 +5555,12 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt51 >= 1 ) break loop51;
+            	    if ( cnt52 >= 1 ) break loop52;
                         EarlyExitException eee =
-                            new EarlyExitException(51, input);
+                            new EarlyExitException(52, input);
                         throw eee;
                 }
-                cnt51++;
+                cnt52++;
             } while (true);
 
 
@@ -5610,131 +5633,131 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:2116:2: (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' )
             {
             // InternalXMachine.g:2116:2: (kw= 'BOOL' | kw= 'FALSE' | kw= 'TRUE' | kw= 'bool' | kw= 'card' | kw= 'dom' | kw= 'finite' | kw= 'id' | kw= 'inter' | kw= 'max' | kw= 'min' | kw= 'mod' | kw= 'pred' | kw= 'prj1' | kw= 'prj2' | kw= 'ran' | kw= 'succ' | kw= 'union' | kw= '\\u21151' | kw= '\\u2115' | kw= '\\u21191' | kw= '\\u2119' | kw= '\\u2124' )
-            int alt52=23;
+            int alt53=23;
             switch ( input.LA(1) ) {
             case 43:
                 {
-                alt52=1;
+                alt53=1;
                 }
                 break;
             case 63:
                 {
-                alt52=2;
+                alt53=2;
                 }
                 break;
             case 64:
                 {
-                alt52=3;
+                alt53=3;
                 }
                 break;
             case 65:
                 {
-                alt52=4;
+                alt53=4;
                 }
                 break;
             case 66:
                 {
-                alt52=5;
+                alt53=5;
                 }
                 break;
             case 67:
                 {
-                alt52=6;
+                alt53=6;
                 }
                 break;
             case 68:
                 {
-                alt52=7;
+                alt53=7;
                 }
                 break;
             case 69:
                 {
-                alt52=8;
+                alt53=8;
                 }
                 break;
             case 70:
                 {
-                alt52=9;
+                alt53=9;
                 }
                 break;
             case 71:
                 {
-                alt52=10;
+                alt53=10;
                 }
                 break;
             case 72:
                 {
-                alt52=11;
+                alt53=11;
                 }
                 break;
             case 73:
                 {
-                alt52=12;
+                alt53=12;
                 }
                 break;
             case 74:
                 {
-                alt52=13;
+                alt53=13;
                 }
                 break;
             case 75:
                 {
-                alt52=14;
+                alt53=14;
                 }
                 break;
             case 76:
                 {
-                alt52=15;
+                alt53=15;
                 }
                 break;
             case 77:
                 {
-                alt52=16;
+                alt53=16;
                 }
                 break;
             case 78:
                 {
-                alt52=17;
+                alt53=17;
                 }
                 break;
             case 79:
                 {
-                alt52=18;
+                alt53=18;
                 }
                 break;
             case 44:
                 {
-                alt52=19;
+                alt53=19;
                 }
                 break;
             case 45:
                 {
-                alt52=20;
+                alt53=20;
                 }
                 break;
             case 50:
                 {
-                alt52=21;
+                alt53=21;
                 }
                 break;
             case 49:
                 {
-                alt52=22;
+                alt53=22;
                 }
                 break;
             case 46:
                 {
-                alt52=23;
+                alt53=23;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 52, 0, input);
+                    new NoViableAltException("", 53, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt52) {
+            switch (alt53) {
                 case 1 :
                     // InternalXMachine.g:2117:3: kw= 'BOOL'
                     {
@@ -6061,171 +6084,171 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:2272:2: (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' )
             {
             // InternalXMachine.g:2272:2: (kw= '(' | kw= ')' | kw= '\\u21D4' | kw= '\\u21D2' | kw= '\\u2227' | kw= '&' | kw= '\\u2228' | kw= '\\u00AC' | kw= '\\u22A4' | kw= '\\u22A5' | kw= '\\u2200' | kw= '!' | kw= '\\u2203' | kw= '#' | kw= ',' | kw= '\\u00B7' | kw= '.' | kw= '=' | kw= '\\u2260' | kw= '\\u2264' | kw= '<' | kw= '\\u2265' | kw= '>' | kw= '\\u2208' | kw= ':' | kw= '\\u2209' | kw= '\\u2282' | kw= '\\u2284' | kw= '\\u2286' | kw= '\\u2288' | kw= 'partition' )
-            int alt53=31;
+            int alt54=31;
             switch ( input.LA(1) ) {
             case 47:
                 {
-                alt53=1;
+                alt54=1;
                 }
                 break;
             case 48:
                 {
-                alt53=2;
+                alt54=2;
                 }
                 break;
             case 80:
                 {
-                alt53=3;
+                alt54=3;
                 }
                 break;
             case 81:
                 {
-                alt53=4;
+                alt54=4;
                 }
                 break;
             case 82:
                 {
-                alt53=5;
+                alt54=5;
                 }
                 break;
             case 83:
                 {
-                alt53=6;
+                alt54=6;
                 }
                 break;
             case 84:
                 {
-                alt53=7;
+                alt54=7;
                 }
                 break;
             case 85:
                 {
-                alt53=8;
+                alt54=8;
                 }
                 break;
             case 86:
                 {
-                alt53=9;
+                alt54=9;
                 }
                 break;
             case 87:
                 {
-                alt53=10;
+                alt54=10;
                 }
                 break;
             case 88:
                 {
-                alt53=11;
+                alt54=11;
                 }
                 break;
             case 89:
                 {
-                alt53=12;
+                alt54=12;
                 }
                 break;
             case 90:
                 {
-                alt53=13;
+                alt54=13;
                 }
                 break;
             case 91:
                 {
-                alt53=14;
+                alt54=14;
                 }
                 break;
             case 92:
                 {
-                alt53=15;
+                alt54=15;
                 }
                 break;
             case 93:
                 {
-                alt53=16;
+                alt54=16;
                 }
                 break;
             case 26:
                 {
-                alt53=17;
+                alt54=17;
                 }
                 break;
             case 30:
                 {
-                alt53=18;
+                alt54=18;
                 }
                 break;
             case 94:
                 {
-                alt53=19;
+                alt54=19;
                 }
                 break;
             case 95:
                 {
-                alt53=20;
+                alt54=20;
                 }
                 break;
             case 96:
                 {
-                alt53=21;
+                alt54=21;
                 }
                 break;
             case 97:
                 {
-                alt53=22;
+                alt54=22;
                 }
                 break;
             case 98:
                 {
-                alt53=23;
+                alt54=23;
                 }
                 break;
             case 99:
                 {
-                alt53=24;
+                alt54=24;
                 }
                 break;
             case 29:
                 {
-                alt53=25;
+                alt54=25;
                 }
                 break;
             case 100:
                 {
-                alt53=26;
+                alt54=26;
                 }
                 break;
             case 101:
                 {
-                alt53=27;
+                alt54=27;
                 }
                 break;
             case 102:
                 {
-                alt53=28;
+                alt54=28;
                 }
                 break;
             case 103:
                 {
-                alt53=29;
+                alt54=29;
                 }
                 break;
             case 104:
                 {
-                alt53=30;
+                alt54=30;
                 }
                 break;
             case 105:
                 {
-                alt53=31;
+                alt54=31;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 53, 0, input);
+                    new NoViableAltException("", 54, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt53) {
+            switch (alt54) {
                 case 1 :
                     // InternalXMachine.g:2273:3: kw= '('
                     {
@@ -6640,241 +6663,241 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:2476:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' )
             {
             // InternalXMachine.g:2476:2: (kw= '\\u2194' | kw= '\\uE100' | kw= '\\uE101' | kw= '\\uE102' | kw= '\\u21F8' | kw= '\\u2192' | kw= '\\u2914' | kw= '\\u21A3' | kw= '\\u2900' | kw= '\\u21A0' | kw= '\\u2916' | kw= '{' | kw= '}' | kw= '\\u21A6' | kw= '\\u2205' | kw= '\\u2229' | kw= '\\u222A' | kw= '\\u2216' | kw= '\\u00D7' | kw= '[' | kw= ']' | kw= '\\uE103' | kw= '\\u2218' | kw= ';' | kw= '\\u2297' | kw= '\\u2225' | kw= '\\u223C' | kw= '\\u25C1' | kw= '\\u2A64' | kw= '\\u25B7' | kw= '\\u2A65' | kw= '\\u03BB' | (kw= '%' kw= '\\u22C2' ) | kw= '\\u22C3' | kw= '\\u2223' | kw= '\\u2025' | kw= '+' | kw= '\\u2212' | kw= '-' | kw= '\\u2217' | kw= '*' | kw= '\\u00F7' | kw= '/' | kw= '^' | kw= '\\\\' )
-            int alt54=45;
+            int alt55=45;
             switch ( input.LA(1) ) {
             case 31:
                 {
-                alt54=1;
+                alt55=1;
                 }
                 break;
             case 32:
                 {
-                alt54=2;
+                alt55=2;
                 }
                 break;
             case 33:
                 {
-                alt54=3;
+                alt55=3;
                 }
                 break;
             case 34:
                 {
-                alt54=4;
+                alt55=4;
                 }
                 break;
             case 35:
                 {
-                alt54=5;
+                alt55=5;
                 }
                 break;
             case 36:
                 {
-                alt54=6;
+                alt55=6;
                 }
                 break;
             case 37:
                 {
-                alt54=7;
+                alt55=7;
                 }
                 break;
             case 38:
                 {
-                alt54=8;
+                alt55=8;
                 }
                 break;
             case 39:
                 {
-                alt54=9;
+                alt55=9;
                 }
                 break;
             case 40:
                 {
-                alt54=10;
+                alt55=10;
                 }
                 break;
             case 41:
                 {
-                alt54=11;
+                alt55=11;
                 }
                 break;
             case 106:
                 {
-                alt54=12;
+                alt55=12;
                 }
                 break;
             case 107:
                 {
-                alt54=13;
+                alt55=13;
                 }
                 break;
             case 108:
                 {
-                alt54=14;
+                alt55=14;
                 }
                 break;
             case 109:
                 {
-                alt54=15;
+                alt55=15;
                 }
                 break;
             case 110:
                 {
-                alt54=16;
+                alt55=16;
                 }
                 break;
             case 111:
                 {
-                alt54=17;
+                alt55=17;
                 }
                 break;
             case 112:
                 {
-                alt54=18;
+                alt55=18;
                 }
                 break;
             case 42:
                 {
-                alt54=19;
+                alt55=19;
                 }
                 break;
             case 113:
                 {
-                alt54=20;
+                alt55=20;
                 }
                 break;
             case 114:
                 {
-                alt54=21;
+                alt55=21;
                 }
                 break;
             case 115:
                 {
-                alt54=22;
+                alt55=22;
                 }
                 break;
             case 116:
                 {
-                alt54=23;
+                alt55=23;
                 }
                 break;
             case 117:
                 {
-                alt54=24;
+                alt55=24;
                 }
                 break;
             case 118:
                 {
-                alt54=25;
+                alt55=25;
                 }
                 break;
             case 119:
                 {
-                alt54=26;
+                alt55=26;
                 }
                 break;
             case 120:
                 {
-                alt54=27;
+                alt55=27;
                 }
                 break;
             case 121:
                 {
-                alt54=28;
+                alt55=28;
                 }
                 break;
             case 122:
                 {
-                alt54=29;
+                alt55=29;
                 }
                 break;
             case 123:
                 {
-                alt54=30;
+                alt55=30;
                 }
                 break;
             case 124:
                 {
-                alt54=31;
+                alt55=31;
                 }
                 break;
             case 125:
                 {
-                alt54=32;
+                alt55=32;
                 }
                 break;
             case 126:
                 {
-                alt54=33;
+                alt55=33;
                 }
                 break;
             case 128:
                 {
-                alt54=34;
+                alt55=34;
                 }
                 break;
             case 129:
                 {
-                alt54=35;
+                alt55=35;
                 }
                 break;
             case 130:
                 {
-                alt54=36;
+                alt55=36;
                 }
                 break;
             case 131:
                 {
-                alt54=37;
+                alt55=37;
                 }
                 break;
             case 132:
                 {
-                alt54=38;
+                alt55=38;
                 }
                 break;
             case 133:
                 {
-                alt54=39;
+                alt55=39;
                 }
                 break;
             case 134:
                 {
-                alt54=40;
+                alt55=40;
                 }
                 break;
             case 135:
                 {
-                alt54=41;
+                alt55=41;
                 }
                 break;
             case 136:
                 {
-                alt54=42;
+                alt55=42;
                 }
                 break;
             case 137:
                 {
-                alt54=43;
+                alt55=43;
                 }
                 break;
             case 138:
                 {
-                alt54=44;
+                alt55=44;
                 }
                 break;
             case 139:
                 {
-                alt54=45;
+                alt55=45;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 54, 0, input);
+                    new NoViableAltException("", 55, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt54) {
+            switch (alt55) {
                 case 1 :
                     // InternalXMachine.g:2477:3: kw= '\\u2194'
                     {
@@ -7486,13 +7509,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:2779:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt55=2;
-            int LA55_0 = input.LA(1);
+            int alt56=2;
+            int LA56_0 = input.LA(1);
 
-            if ( (LA55_0==RULE_STRING) ) {
-                alt55=1;
+            if ( (LA56_0==RULE_STRING) ) {
+                alt56=1;
             }
-            switch (alt55) {
+            switch (alt56) {
                 case 1 :
                     // InternalXMachine.g:2780:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -7523,16 +7546,16 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:2797:3: ( ( ( (lv_extended_2_1= 'extended' | lv_extended_2_2= 'ext' ) ) ) | ( ( (lv_refined_3_1= 'refined' | lv_refined_3_2= 'ref' ) ) ) )?
-            int alt58=3;
-            int LA58_0 = input.LA(1);
+            int alt59=3;
+            int LA59_0 = input.LA(1);
 
-            if ( ((LA58_0>=140 && LA58_0<=141)) ) {
-                alt58=1;
+            if ( ((LA59_0>=140 && LA59_0<=141)) ) {
+                alt59=1;
             }
-            else if ( ((LA58_0>=142 && LA58_0<=143)) ) {
-                alt58=2;
+            else if ( ((LA59_0>=142 && LA59_0<=143)) ) {
+                alt59=2;
             }
-            switch (alt58) {
+            switch (alt59) {
                 case 1 :
                     // InternalXMachine.g:2798:4: ( ( (lv_extended_2_1= 'extended' | lv_extended_2_2= 'ext' ) ) )
                     {
@@ -7543,22 +7566,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     // InternalXMachine.g:2800:6: (lv_extended_2_1= 'extended' | lv_extended_2_2= 'ext' )
                     {
                     // InternalXMachine.g:2800:6: (lv_extended_2_1= 'extended' | lv_extended_2_2= 'ext' )
-                    int alt56=2;
-                    int LA56_0 = input.LA(1);
+                    int alt57=2;
+                    int LA57_0 = input.LA(1);
 
-                    if ( (LA56_0==140) ) {
-                        alt56=1;
+                    if ( (LA57_0==140) ) {
+                        alt57=1;
                     }
-                    else if ( (LA56_0==141) ) {
-                        alt56=2;
+                    else if ( (LA57_0==141) ) {
+                        alt57=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 56, 0, input);
+                            new NoViableAltException("", 57, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt56) {
+                    switch (alt57) {
                         case 1 :
                             // InternalXMachine.g:2801:7: lv_extended_2_1= 'extended'
                             {
@@ -7613,22 +7636,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
                     // InternalXMachine.g:2828:6: (lv_refined_3_1= 'refined' | lv_refined_3_2= 'ref' )
                     {
                     // InternalXMachine.g:2828:6: (lv_refined_3_1= 'refined' | lv_refined_3_2= 'ref' )
-                    int alt57=2;
-                    int LA57_0 = input.LA(1);
+                    int alt58=2;
+                    int LA58_0 = input.LA(1);
 
-                    if ( (LA57_0==142) ) {
-                        alt57=1;
+                    if ( (LA58_0==142) ) {
+                        alt58=1;
                     }
-                    else if ( (LA57_0==143) ) {
-                        alt57=2;
+                    else if ( (LA58_0==143) ) {
+                        alt58=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 57, 0, input);
+                            new NoViableAltException("", 58, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt57) {
+                    switch (alt58) {
                         case 1 :
                             // InternalXMachine.g:2829:7: lv_refined_3_1= 'refined'
                             {
@@ -7677,22 +7700,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:2854:3: (otherlv_4= 'record' | otherlv_5= 'rec' )
-            int alt59=2;
-            int LA59_0 = input.LA(1);
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA59_0==144) ) {
-                alt59=1;
+            if ( (LA60_0==144) ) {
+                alt60=1;
             }
-            else if ( (LA59_0==145) ) {
-                alt59=2;
+            else if ( (LA60_0==145) ) {
+                alt60=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 59, 0, input);
+                    new NoViableAltException("", 60, 0, input);
 
                 throw nvae;
             }
-            switch (alt59) {
+            switch (alt60) {
                 case 1 :
                     // InternalXMachine.g:2855:4: otherlv_4= 'record'
                     {
@@ -7743,33 +7766,33 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:2883:3: ( (otherlv_7= 'inherits' | otherlv_8= 'ihr' ) ( (lv_inheritsNames_9_0= RULE_ID ) ) )?
-            int alt61=2;
-            int LA61_0 = input.LA(1);
+            int alt62=2;
+            int LA62_0 = input.LA(1);
 
-            if ( ((LA61_0>=146 && LA61_0<=147)) ) {
-                alt61=1;
+            if ( ((LA62_0>=146 && LA62_0<=147)) ) {
+                alt62=1;
             }
-            switch (alt61) {
+            switch (alt62) {
                 case 1 :
                     // InternalXMachine.g:2884:4: (otherlv_7= 'inherits' | otherlv_8= 'ihr' ) ( (lv_inheritsNames_9_0= RULE_ID ) )
                     {
                     // InternalXMachine.g:2884:4: (otherlv_7= 'inherits' | otherlv_8= 'ihr' )
-                    int alt60=2;
-                    int LA60_0 = input.LA(1);
+                    int alt61=2;
+                    int LA61_0 = input.LA(1);
 
-                    if ( (LA60_0==146) ) {
-                        alt60=1;
+                    if ( (LA61_0==146) ) {
+                        alt61=1;
                     }
-                    else if ( (LA60_0==147) ) {
-                        alt60=2;
+                    else if ( (LA61_0==147) ) {
+                        alt61=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 60, 0, input);
+                            new NoViableAltException("", 61, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt60) {
+                    switch (alt61) {
                         case 1 :
                             // InternalXMachine.g:2885:5: otherlv_7= 'inherits'
                             {
@@ -7826,20 +7849,20 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:2914:3: ( ( (otherlv_10= 'field' | otherlv_11= 'fld' ) ( (lv_fields_12_0= ruleField ) ) ) | (otherlv_13= 'constraint' ( (lv_constraints_14_0= ruleXConstraint ) ) ) )*
-            loop63:
+            loop64:
             do {
-                int alt63=3;
-                int LA63_0 = input.LA(1);
+                int alt64=3;
+                int LA64_0 = input.LA(1);
 
-                if ( ((LA63_0>=148 && LA63_0<=149)) ) {
-                    alt63=1;
+                if ( ((LA64_0>=148 && LA64_0<=149)) ) {
+                    alt64=1;
                 }
-                else if ( (LA63_0==150) ) {
-                    alt63=2;
+                else if ( (LA64_0==150) ) {
+                    alt64=2;
                 }
 
 
-                switch (alt63) {
+                switch (alt64) {
             	case 1 :
             	    // InternalXMachine.g:2915:4: ( (otherlv_10= 'field' | otherlv_11= 'fld' ) ( (lv_fields_12_0= ruleField ) ) )
             	    {
@@ -7847,22 +7870,22 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             	    // InternalXMachine.g:2916:5: (otherlv_10= 'field' | otherlv_11= 'fld' ) ( (lv_fields_12_0= ruleField ) )
             	    {
             	    // InternalXMachine.g:2916:5: (otherlv_10= 'field' | otherlv_11= 'fld' )
-            	    int alt62=2;
-            	    int LA62_0 = input.LA(1);
+            	    int alt63=2;
+            	    int LA63_0 = input.LA(1);
 
-            	    if ( (LA62_0==148) ) {
-            	        alt62=1;
+            	    if ( (LA63_0==148) ) {
+            	        alt63=1;
             	    }
-            	    else if ( (LA62_0==149) ) {
-            	        alt62=2;
+            	    else if ( (LA63_0==149) ) {
+            	        alt63=2;
             	    }
             	    else {
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 62, 0, input);
+            	            new NoViableAltException("", 63, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt62) {
+            	    switch (alt63) {
             	        case 1 :
             	            // InternalXMachine.g:2917:6: otherlv_10= 'field'
             	            {
@@ -7972,7 +7995,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop63;
+            	    break loop64;
                 }
             } while (true);
 
@@ -8073,13 +8096,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:3004:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt64=2;
-            int LA64_0 = input.LA(1);
+            int alt65=2;
+            int LA65_0 = input.LA(1);
 
-            if ( (LA64_0==RULE_STRING) ) {
-                alt64=1;
+            if ( (LA65_0==RULE_STRING) ) {
+                alt65=1;
             }
-            switch (alt64) {
+            switch (alt65) {
                 case 1 :
                     // InternalXMachine.g:3005:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -8140,13 +8163,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             			newLeafNode(otherlv_3, grammarAccess.getFieldAccess().getColonKeyword_3());
             		
             // InternalXMachine.g:3044:3: ( (lv_multiplicity_4_0= ruleMultiplicity ) )?
-            int alt65=2;
-            int LA65_0 = input.LA(1);
+            int alt66=2;
+            int LA66_0 = input.LA(1);
 
-            if ( ((LA65_0>=154 && LA65_0<=156)) ) {
-                alt65=1;
+            if ( ((LA66_0>=154 && LA66_0<=156)) ) {
+                alt66=1;
             }
-            switch (alt65) {
+            switch (alt66) {
                 case 1 :
                     // InternalXMachine.g:3045:4: (lv_multiplicity_4_0= ruleMultiplicity )
                     {
@@ -8302,13 +8325,13 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             }
 
             // InternalXMachine.g:3108:3: ( (lv_comment_1_0= RULE_STRING ) )?
-            int alt66=2;
-            int LA66_0 = input.LA(1);
+            int alt67=2;
+            int LA67_0 = input.LA(1);
 
-            if ( (LA66_0==RULE_STRING) ) {
-                alt66=1;
+            if ( (LA67_0==RULE_STRING) ) {
+                alt67=1;
             }
-            switch (alt66) {
+            switch (alt67) {
                 case 1 :
                     // InternalXMachine.g:3109:4: (lv_comment_1_0= RULE_STRING )
                     {
@@ -8434,31 +8457,31 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:3174:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
             {
             // InternalXMachine.g:3174:2: ( (enumLiteral_0= 'ordinary' ) | (enumLiteral_1= 'convergent' ) | (enumLiteral_2= 'anticipated' ) )
-            int alt67=3;
+            int alt68=3;
             switch ( input.LA(1) ) {
             case 151:
                 {
-                alt67=1;
+                alt68=1;
                 }
                 break;
             case 152:
                 {
-                alt67=2;
+                alt68=2;
                 }
                 break;
             case 153:
                 {
-                alt67=3;
+                alt68=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 67, 0, input);
+                    new NoViableAltException("", 68, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt67) {
+            switch (alt68) {
                 case 1 :
                     // InternalXMachine.g:3175:3: (enumLiteral_0= 'ordinary' )
                     {
@@ -8549,31 +8572,31 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
             // InternalXMachine.g:3209:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
             {
             // InternalXMachine.g:3209:2: ( (enumLiteral_0= 'one' ) | (enumLiteral_1= 'many' ) | (enumLiteral_2= 'opt' ) )
-            int alt68=3;
+            int alt69=3;
             switch ( input.LA(1) ) {
             case 154:
                 {
-                alt68=1;
+                alt69=1;
                 }
                 break;
             case 155:
                 {
-                alt68=2;
+                alt69=2;
                 }
                 break;
             case 156:
                 {
-                alt68=3;
+                alt69=3;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 68, 0, input);
+                    new NoViableAltException("", 69, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt68) {
+            switch (alt69) {
                 case 1 :
                     // InternalXMachine.g:3210:3: (enumLiteral_0= 'one' )
                     {
@@ -8708,7 +8731,7 @@ public class InternalXMachineParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000000050L});
     public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x00780000187E0052L,0x0000000000000000L,0x000000000383F000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x00780000181E0010L,0x0000000000000000L,0x000000000383F000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000400002L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x00780000185E0012L,0x0000000000000000L,0x000000000383F000L});
     public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000003000002L});
     public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x0000000002000002L});
     public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x0000000000000022L});

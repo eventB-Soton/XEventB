@@ -60,7 +60,7 @@ Machine returns emachine::Machine:
 		(orderedChildren += XEvent)
 	)*
 	// Optional group events at the end
-	('events' (orderedChildren += XEvent))?
+	('events' (orderedChildren += XEvent+))?
 	// Since Rodin 3.0, we do not need to have the 'end' keyword
 	('end')?
 ;

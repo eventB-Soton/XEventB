@@ -115,7 +115,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//        (orderedChildren += XEvent)
 		//    )*
 		//    // Optional group events at the end
-		//    ('events' (orderedChildren += XEvent))?
+		//    ('events' (orderedChildren += XEvent+))?
 		//    // Since Rodin 3.0, we do not need to have the 'end' keyword
 		//    ('end')?
 		//;
@@ -148,7 +148,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    (orderedChildren += XEvent)
 		//)*
 		//// Optional group events at the end
-		//('events' (orderedChildren += XEvent))?
+		//('events' (orderedChildren += XEvent+))?
 		//// Since Rodin 3.0, we do not need to have the 'end' keyword
 		//('end')?
 		public Group getGroup() { return cGroup; }
@@ -319,13 +319,13 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		public RuleCall getOrderedChildrenXEventParserRuleCall_6_6_0() { return cOrderedChildrenXEventParserRuleCall_6_6_0; }
 		
 		//// Optional group events at the end
-		//('events' (orderedChildren += XEvent))?
+		//('events' (orderedChildren += XEvent+))?
 		public Group getGroup_7() { return cGroup_7; }
 		
 		//'events'
 		public Keyword getEventsKeyword_7_0() { return cEventsKeyword_7_0; }
 		
-		//(orderedChildren += XEvent)
+		//(orderedChildren += XEvent+)
 		public Assignment getOrderedChildrenAssignment_7_1() { return cOrderedChildrenAssignment_7_1; }
 		
 		//XEvent
@@ -2561,7 +2561,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//        (orderedChildren += XEvent)
 	//    )*
 	//    // Optional group events at the end
-	//    ('events' (orderedChildren += XEvent))?
+	//    ('events' (orderedChildren += XEvent+))?
 	//    // Since Rodin 3.0, we do not need to have the 'end' keyword
 	//    ('end')?
 	//;

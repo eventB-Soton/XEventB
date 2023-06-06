@@ -437,7 +437,7 @@ ruleMachine returns [EObject current=null]
 						afterParserOrEnumRuleCall();
 					}
 				)
-			)
+			)+
 		)?
 		(
 			otherlv_25='end'
