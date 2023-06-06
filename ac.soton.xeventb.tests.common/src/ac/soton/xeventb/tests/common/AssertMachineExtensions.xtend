@@ -14,6 +14,7 @@
 
 package ac.soton.xeventb.tests.common
 
+import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.eventb.emf.core.machine.MachinePackage
 import org.junit.Assert
@@ -65,4 +66,27 @@ class AssertMachineExtensions {
 		Assert.assertEquals("Incorrect context's comments", expectedComments, mch.comment)
 	}
 	
+	/**
+	 * This method asserts the actual event against
+	 * the expected content of event. An {@link AssertionError} is thrown if
+	 * the the actual content is different from the expected content. 
+	 * 
+	 * @param evt
+	 * 	The input event to be analysed.
+	 * @param expected 
+	 *            the expected pretty-print event (only the signature). The
+	 *            event is "pretty-printed" as follows:
+	 *            "label:convergent:isExtended".
+	 * @precondition The input event must not be <code>null</code>
+	 * @since 0.3
+	 */
+	def assertEvent(Event evt, String expected) {
+		// Assert precondition
+		Assert.assertNotNull("Input context must not be null", evt)
+
+		Assert.assertEquals("Incorrect event ", expected,
+					evt.name + ":" + evt.convergence + ":"
+							+ evt.isExtended())
+	}
+
 }

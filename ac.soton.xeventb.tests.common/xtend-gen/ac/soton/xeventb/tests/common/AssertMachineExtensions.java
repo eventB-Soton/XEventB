@@ -14,6 +14,8 @@
 package ac.soton.xeventb.tests.common;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eventb.emf.core.machine.Convergence;
+import org.eventb.emf.core.machine.Event;
 import org.eventb.emf.core.machine.Machine;
 import org.eventb.emf.core.machine.MachinePackage;
 import org.junit.Assert;
@@ -62,5 +64,31 @@ public class AssertMachineExtensions {
     Assert.assertNotNull("Input context must not be null", mch);
     Assert.assertEquals("Incorrect context\'s name", expectedName, mch.getName());
     Assert.assertEquals("Incorrect context\'s comments", expectedComments, mch.getComment());
+  }
+
+  /**
+   * This method asserts the actual event against
+   * the expected content of event. An {@link AssertionError} is thrown if
+   * the the actual content is different from the expected content.
+   * 
+   * @param evt
+   * 	The input event to be analysed.
+   * @param expected
+   *            the expected pretty-print event (only the signature). The
+   *            event is "pretty-printed" as follows:
+   *            "label:convergent:isExtended".
+   * @precondition The input event must not be <code>null</code>
+   * @since 0.3
+   */
+  public void assertEvent(final Event evt, final String expected) {
+    Assert.assertNotNull("Input context must not be null", evt);
+    String _name = evt.getName();
+    String _plus = (_name + ":");
+    Convergence _convergence = evt.getConvergence();
+    String _plus_1 = (_plus + _convergence);
+    String _plus_2 = (_plus_1 + ":");
+    boolean _isExtended = evt.isExtended();
+    String _plus_3 = (_plus_2 + Boolean.valueOf(_isExtended));
+    Assert.assertEquals("Incorrect event ", expected, _plus_3);
   }
 }
