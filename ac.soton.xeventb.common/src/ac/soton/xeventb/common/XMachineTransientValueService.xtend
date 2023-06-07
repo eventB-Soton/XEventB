@@ -17,6 +17,7 @@ package ac.soton.xeventb.common
 import ac.soton.eventb.emf.core.^extension.coreextension.CoreextensionPackage
 import ac.soton.eventb.emf.core.^extension.coreextension.TypedVariable
 import ac.soton.eventb.emf.inclusion.InclusionPackage
+import ac.soton.eventb.emf.record.Record
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService
@@ -31,6 +32,9 @@ import org.eventb.emf.core.machine.Parameter
 import org.eventb.emf.core.machine.Variable
 import org.eventb.emf.core.machine.Variant
 import org.eventb.emf.core.machine.Witness
+import ac.soton.eventb.emf.record.RecordPackage
+import ac.soton.eventb.emf.record.Field
+import ac.soton.eventb.emf.record.Constraint
 
 /** 
  * <p>
@@ -200,6 +204,52 @@ class XMachineTransientValueService extends DefaultTransientValueService {
 				return false
 			return true
 		}
+
+		// htson: This fixes issues with Quickfix for Records.
+		// This fixes issue such as "EventBNamed.name is required to have a value, but it does not."
+		// For records, serialise only "name", "comment",
+		// "fields", "constraints", "inheritNames", "selfName"
+		// "extended", "refined"
+		if (owner instanceof Record) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__FIELDS))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__CONSTRAINTS))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__INHERITS_NAMES))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__SELF_NAME))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__EXTENDED))
+				return false
+			if (feature.equals(RecordPackage.Literals.RECORD__REFINED))
+				return false
+		}
+		// For fields, serialise only "name", "comment",
+		// "type", "multiplicity"
+		if (owner instanceof Field) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return false
+			if (feature.equals(CoreextensionPackage.Literals.TYPE__TYPE))
+				return false
+			if (feature.equals(RecordPackage.Literals.FIELD__MULTIPLICITY))
+				return false
+		}
+		// For constraints, serialise only "name", "comment",
+		// "predicate"
+		if (owner instanceof Constraint) {
+			if (feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT))
+				return false
+			if (feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE))
+				return false
+		}		
 		// Ignore other objects and features.
 		return true
 	}

@@ -16,6 +16,10 @@ package ac.soton.xeventb.common;
 import ac.soton.eventb.emf.core.extension.coreextension.CoreextensionPackage;
 import ac.soton.eventb.emf.core.extension.coreextension.TypedVariable;
 import ac.soton.eventb.emf.inclusion.InclusionPackage;
+import ac.soton.eventb.emf.record.Constraint;
+import ac.soton.eventb.emf.record.Field;
+import ac.soton.eventb.emf.record.Record;
+import ac.soton.eventb.emf.record.RecordPackage;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.xtext.parsetree.reconstr.impl.DefaultTransientValueService;
@@ -276,6 +280,72 @@ public class XMachineTransientValueService extends DefaultTransientValueService 
         return false;
       }
       return true;
+    }
+    if ((owner instanceof Record)) {
+      boolean _equals_49 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      if (_equals_49) {
+        return false;
+      }
+      boolean _equals_50 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_50) {
+        return false;
+      }
+      boolean _equals_51 = feature.equals(RecordPackage.Literals.RECORD__FIELDS);
+      if (_equals_51) {
+        return false;
+      }
+      boolean _equals_52 = feature.equals(RecordPackage.Literals.RECORD__CONSTRAINTS);
+      if (_equals_52) {
+        return false;
+      }
+      boolean _equals_53 = feature.equals(RecordPackage.Literals.RECORD__INHERITS_NAMES);
+      if (_equals_53) {
+        return false;
+      }
+      boolean _equals_54 = feature.equals(RecordPackage.Literals.RECORD__SELF_NAME);
+      if (_equals_54) {
+        return false;
+      }
+      boolean _equals_55 = feature.equals(RecordPackage.Literals.RECORD__EXTENDED);
+      if (_equals_55) {
+        return false;
+      }
+      boolean _equals_56 = feature.equals(RecordPackage.Literals.RECORD__REFINED);
+      if (_equals_56) {
+        return false;
+      }
+    }
+    if ((owner instanceof Field)) {
+      boolean _equals_57 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      if (_equals_57) {
+        return false;
+      }
+      boolean _equals_58 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_58) {
+        return false;
+      }
+      boolean _equals_59 = feature.equals(CoreextensionPackage.Literals.TYPE__TYPE);
+      if (_equals_59) {
+        return false;
+      }
+      boolean _equals_60 = feature.equals(RecordPackage.Literals.FIELD__MULTIPLICITY);
+      if (_equals_60) {
+        return false;
+      }
+    }
+    if ((owner instanceof Constraint)) {
+      boolean _equals_61 = feature.equals(CorePackage.Literals.EVENT_BNAMED__NAME);
+      if (_equals_61) {
+        return false;
+      }
+      boolean _equals_62 = feature.equals(CorePackage.Literals.EVENT_BCOMMENTED__COMMENT);
+      if (_equals_62) {
+        return false;
+      }
+      boolean _equals_63 = feature.equals(CorePackage.Literals.EVENT_BPREDICATE__PREDICATE);
+      if (_equals_63) {
+        return false;
+      }
     }
     return true;
   }
