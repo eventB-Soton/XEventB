@@ -627,84 +627,132 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XTYPEOPERATOR");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cLeftRightArrowKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cPrivateUseAreaE100Keyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cPrivateUseAreaE101Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cPrivateUseAreaE102Keyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cRightwardsArrowWithVerticalStrokeKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cRightwardsArrowKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cRightwardsArrowWithTailWithVerticalStrokeKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cRightwardsArrowWithTailKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cRightwardsTwoHeadedArrowKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cRightwardsTwoHeadedArrowWithTailKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final Keyword cMultiplicationSignKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cLessThanSignHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cPrivateUseAreaE100Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cPrivateUseAreaE101Keyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cPrivateUseAreaE102Keyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cRightwardsArrowWithVerticalStrokeKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cPlusSignHyphenMinusGreaterThanSignKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cRightwardsArrowKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cHyphenMinusHyphenMinusGreaterThanSignKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cRightwardsArrowWithTailWithVerticalStrokeKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cGreaterThanSignPlusSignGreaterThanSignKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cRightwardsArrowWithTailKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
+		private final Keyword cGreaterThanSignHyphenMinusGreaterThanSignKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
+		private final Keyword cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
+		private final Keyword cPlusSignGreaterThanSignGreaterThanSignKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
+		private final Keyword cRightwardsTwoHeadedArrowKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
+		private final Keyword cRightwardsTwoHeadedArrowWithTailKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
+		private final Keyword cGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
+		private final Keyword cMultiplicationSignKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
+		private final Keyword cAsteriskAsteriskKeyword_23 = (Keyword)cAlternatives.eContents().get(23);
 		
 		//XTYPEOPERATOR returns ecore::EString:
-		//    '↔' | // Symbols for building set of relations
-		//    '' |
-		//    '' |
-		//    '' |
-		//    '⇸' |
-		//    '→' |
-		//    '⤔' |
-		//    '↣' |
-		//    '⤀' |
-		//    '↠' |
-		//    '⤖' |
-		//    '×'
+		//    '↔' | '<->' | // Symbols for building set of relations
+		//    '' | '<<->' |
+		//    '' | '<->>' |
+		//    '' | '<<->>' |
+		//    '⇸' | '+->' |
+		//    '→' | '-->' |
+		//    '⤔' | '>+>' |
+		//    '↣' | '>->' |
+		//    '⤀' | '+>>' |
+		//    '↠' | '->>' |
+		//    '⤖' | '>->>' |
+		//    '×' | '**'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'↔' | // Symbols for building set of relations
-		//'' |
-		//'' |
-		//'' |
-		//'⇸' |
-		//'→' |
-		//'⤔' |
-		//'↣' |
-		//'⤀' |
-		//'↠' |
-		//'⤖' |
-		//'×'
+		//'↔' | '<->' | // Symbols for building set of relations
+		//'' | '<<->' |
+		//'' | '<->>' |
+		//'' | '<<->>' |
+		//'⇸' | '+->' |
+		//'→' | '-->' |
+		//'⤔' | '>+>' |
+		//'↣' | '>->' |
+		//'⤀' | '+>>' |
+		//'↠' | '->>' |
+		//'⤖' | '>->>' |
+		//'×' | '**'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'↔'
 		public Keyword getLeftRightArrowKeyword_0() { return cLeftRightArrowKeyword_0; }
 		
+		//'<->'
+		public Keyword getLessThanSignHyphenMinusGreaterThanSignKeyword_1() { return cLessThanSignHyphenMinusGreaterThanSignKeyword_1; }
+		
 		//// Symbols for building set of relations
 		//   ''
-		public Keyword getPrivateUseAreaE100Keyword_1() { return cPrivateUseAreaE100Keyword_1; }
+		public Keyword getPrivateUseAreaE100Keyword_2() { return cPrivateUseAreaE100Keyword_2; }
+		
+		//'<<->'
+		public Keyword getLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3() { return cLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3; }
 		
 		//''
-		public Keyword getPrivateUseAreaE101Keyword_2() { return cPrivateUseAreaE101Keyword_2; }
+		public Keyword getPrivateUseAreaE101Keyword_4() { return cPrivateUseAreaE101Keyword_4; }
+		
+		//'<->>'
+		public Keyword getLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5() { return cLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5; }
 		
 		//''
-		public Keyword getPrivateUseAreaE102Keyword_3() { return cPrivateUseAreaE102Keyword_3; }
+		public Keyword getPrivateUseAreaE102Keyword_6() { return cPrivateUseAreaE102Keyword_6; }
+		
+		//'<<->>'
+		public Keyword getLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7() { return cLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7; }
 		
 		//'⇸'
-		public Keyword getRightwardsArrowWithVerticalStrokeKeyword_4() { return cRightwardsArrowWithVerticalStrokeKeyword_4; }
+		public Keyword getRightwardsArrowWithVerticalStrokeKeyword_8() { return cRightwardsArrowWithVerticalStrokeKeyword_8; }
+		
+		//'+->'
+		public Keyword getPlusSignHyphenMinusGreaterThanSignKeyword_9() { return cPlusSignHyphenMinusGreaterThanSignKeyword_9; }
 		
 		//'→'
-		public Keyword getRightwardsArrowKeyword_5() { return cRightwardsArrowKeyword_5; }
+		public Keyword getRightwardsArrowKeyword_10() { return cRightwardsArrowKeyword_10; }
+		
+		//'-->'
+		public Keyword getHyphenMinusHyphenMinusGreaterThanSignKeyword_11() { return cHyphenMinusHyphenMinusGreaterThanSignKeyword_11; }
 		
 		//'⤔'
-		public Keyword getRightwardsArrowWithTailWithVerticalStrokeKeyword_6() { return cRightwardsArrowWithTailWithVerticalStrokeKeyword_6; }
+		public Keyword getRightwardsArrowWithTailWithVerticalStrokeKeyword_12() { return cRightwardsArrowWithTailWithVerticalStrokeKeyword_12; }
+		
+		//'>+>'
+		public Keyword getGreaterThanSignPlusSignGreaterThanSignKeyword_13() { return cGreaterThanSignPlusSignGreaterThanSignKeyword_13; }
 		
 		//'↣'
-		public Keyword getRightwardsArrowWithTailKeyword_7() { return cRightwardsArrowWithTailKeyword_7; }
+		public Keyword getRightwardsArrowWithTailKeyword_14() { return cRightwardsArrowWithTailKeyword_14; }
+		
+		//'>->'
+		public Keyword getGreaterThanSignHyphenMinusGreaterThanSignKeyword_15() { return cGreaterThanSignHyphenMinusGreaterThanSignKeyword_15; }
 		
 		//'⤀'
-		public Keyword getRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8() { return cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8; }
+		public Keyword getRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16() { return cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16; }
+		
+		//'+>>'
+		public Keyword getPlusSignGreaterThanSignGreaterThanSignKeyword_17() { return cPlusSignGreaterThanSignGreaterThanSignKeyword_17; }
 		
 		//'↠'
-		public Keyword getRightwardsTwoHeadedArrowKeyword_9() { return cRightwardsTwoHeadedArrowKeyword_9; }
+		public Keyword getRightwardsTwoHeadedArrowKeyword_18() { return cRightwardsTwoHeadedArrowKeyword_18; }
+		
+		//'->>'
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_19() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_19; }
 		
 		//'⤖'
-		public Keyword getRightwardsTwoHeadedArrowWithTailKeyword_10() { return cRightwardsTwoHeadedArrowWithTailKeyword_10; }
+		public Keyword getRightwardsTwoHeadedArrowWithTailKeyword_20() { return cRightwardsTwoHeadedArrowWithTailKeyword_20; }
+		
+		//'>->>'
+		public Keyword getGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21() { return cGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21; }
 		
 		//'×'
-		public Keyword getMultiplicationSignKeyword_11() { return cMultiplicationSignKeyword_11; }
+		public Keyword getMultiplicationSignKeyword_22() { return cMultiplicationSignKeyword_22; }
+		
+		//'**'
+		public Keyword getAsteriskAsteriskKeyword_23() { return cAsteriskAsteriskKeyword_23; }
 	}
 	public class XTypePrimitiveElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XTypePrimitive");
@@ -1416,27 +1464,26 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cEVENTB_EXPRESSION_SYMBOLSParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cINTTerminalRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		private final RuleCall cIDTerminalRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
-		private final RuleCall cUNTRANSLATED_TOKENTerminalRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//XFormula returns ecore::EString:
 		//    (
-		//        EVENTB_IDENTIFIER_KEYWORD |
-		//        EVENTB_PREDICATE_SYMBOLS |
-		//        EVENTB_EXPRESSION_SYMBOLS |
-		//        INT |
-		//        ID |
-		//        UNTRANSLATED_TOKEN
+		//        EVENTB_IDENTIFIER_KEYWORD
+		//        | EVENTB_PREDICATE_SYMBOLS
+		//        | EVENTB_EXPRESSION_SYMBOLS
+		//        | INT
+		//        | ID
+		//        //| UNTRANSLATED_TOKEN
 		//    )+
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//(
-		//    EVENTB_IDENTIFIER_KEYWORD |
-		//    EVENTB_PREDICATE_SYMBOLS |
-		//    EVENTB_EXPRESSION_SYMBOLS |
-		//    INT |
-		//    ID |
-		//    UNTRANSLATED_TOKEN
+		//    EVENTB_IDENTIFIER_KEYWORD
+		//    | EVENTB_PREDICATE_SYMBOLS
+		//    | EVENTB_EXPRESSION_SYMBOLS
+		//    | INT
+		//    | ID
+		//    //| UNTRANSLATED_TOKEN
 		//)+
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -1454,9 +1501,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//ID
 		public RuleCall getIDTerminalRuleCall_4() { return cIDTerminalRuleCall_4; }
-		
-		//UNTRANSLATED_TOKEN
-		public RuleCall getUNTRANSLATED_TOKENTerminalRuleCall_5() { return cUNTRANSLATED_TOKENTerminalRuleCall_5; }
 	}
 	public class EVENTB_IDENTIFIER_KEYWORDElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.EVENTB_IDENTIFIER_KEYWORD");
@@ -1480,10 +1524,15 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cSuccKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
 		private final Keyword cUnionKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
 		private final Keyword cDoubleStruckCapitalNDigitOneKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
-		private final Keyword cDoubleStruckCapitalNKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
-		private final Keyword cDoubleStruckCapitalPDigitOneKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
-		private final Keyword cDoubleStruckCapitalPKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
-		private final Keyword cDoubleStruckCapitalZKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
+		private final Keyword cNAT1Keyword_19 = (Keyword)cAlternatives.eContents().get(19);
+		private final Keyword cDoubleStruckCapitalNKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
+		private final Keyword cNATKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
+		private final Keyword cDoubleStruckCapitalPDigitOneKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
+		private final Keyword cPOW1Keyword_23 = (Keyword)cAlternatives.eContents().get(23);
+		private final Keyword cDoubleStruckCapitalPKeyword_24 = (Keyword)cAlternatives.eContents().get(24);
+		private final Keyword cPOWKeyword_25 = (Keyword)cAlternatives.eContents().get(25);
+		private final Keyword cDoubleStruckCapitalZKeyword_26 = (Keyword)cAlternatives.eContents().get(26);
+		private final Keyword cINTKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
 		
 		//EVENTB_IDENTIFIER_KEYWORD returns ecore::EString:
 		//    'BOOL' |
@@ -1504,11 +1553,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    'ran' |
 		//    'succ' |
 		//    'union' |
-		//    'ℕ1' |
-		//    'ℕ' |
-		//    'ℙ1' |
-		//    'ℙ' |
-		//    'ℤ'
+		//    'ℕ1' | 'NAT1' |
+		//    'ℕ' | 'NAT' |
+		//    'ℙ1' | 'POW1' |
+		//    'ℙ' | 'POW' |
+		//    'ℤ' | 'INT'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
@@ -1530,11 +1579,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'ran' |
 		//'succ' |
 		//'union' |
-		//'ℕ1' |
-		//'ℕ' |
-		//'ℙ1' |
-		//'ℙ' |
-		//'ℤ'
+		//'ℕ1' | 'NAT1' |
+		//'ℕ' | 'NAT' |
+		//'ℙ1' | 'POW1' |
+		//'ℙ' | 'POW' |
+		//'ℤ' | 'INT'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'BOOL'
@@ -1594,17 +1643,32 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'ℕ1'
 		public Keyword getDoubleStruckCapitalNDigitOneKeyword_18() { return cDoubleStruckCapitalNDigitOneKeyword_18; }
 		
+		//'NAT1'
+		public Keyword getNAT1Keyword_19() { return cNAT1Keyword_19; }
+		
 		//'ℕ'
-		public Keyword getDoubleStruckCapitalNKeyword_19() { return cDoubleStruckCapitalNKeyword_19; }
+		public Keyword getDoubleStruckCapitalNKeyword_20() { return cDoubleStruckCapitalNKeyword_20; }
+		
+		//'NAT'
+		public Keyword getNATKeyword_21() { return cNATKeyword_21; }
 		
 		//'ℙ1'
-		public Keyword getDoubleStruckCapitalPDigitOneKeyword_20() { return cDoubleStruckCapitalPDigitOneKeyword_20; }
+		public Keyword getDoubleStruckCapitalPDigitOneKeyword_22() { return cDoubleStruckCapitalPDigitOneKeyword_22; }
+		
+		//'POW1'
+		public Keyword getPOW1Keyword_23() { return cPOW1Keyword_23; }
 		
 		//'ℙ'
-		public Keyword getDoubleStruckCapitalPKeyword_21() { return cDoubleStruckCapitalPKeyword_21; }
+		public Keyword getDoubleStruckCapitalPKeyword_24() { return cDoubleStruckCapitalPKeyword_24; }
+		
+		//'POW'
+		public Keyword getPOWKeyword_25() { return cPOWKeyword_25; }
 		
 		//'ℤ'
-		public Keyword getDoubleStruckCapitalZKeyword_22() { return cDoubleStruckCapitalZKeyword_22; }
+		public Keyword getDoubleStruckCapitalZKeyword_26() { return cDoubleStruckCapitalZKeyword_26; }
+		
+		//'INT'
+		public Keyword getINTKeyword_27() { return cINTKeyword_27; }
 	}
 	public class EVENTB_PREDICATE_SYMBOLSElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.EVENTB_PREDICATE_SYMBOLS");
@@ -1612,90 +1676,104 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cLeftRightDoubleArrowKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cRightwardsDoubleArrowKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cLogicalAndKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cAmpersandKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cLogicalOrKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cNotSignKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cDownTackKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cUpTackKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cForAllKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final Keyword cExclamationMarkKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
-		private final Keyword cThereExistsKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
-		private final Keyword cNumberSignKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
-		private final Keyword cCommaKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
-		private final Keyword cMiddleDotKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
-		private final Keyword cFullStopKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
-		private final Keyword cEqualsSignKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
-		private final Keyword cNotEqualToKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
-		private final Keyword cLessThanOrEqualToKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
-		private final Keyword cLessThanSignKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
-		private final Keyword cGreaterThanOrEqualToKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
-		private final Keyword cGreaterThanSignKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
-		private final Keyword cElementOfKeyword_23 = (Keyword)cAlternatives.eContents().get(23);
-		private final Keyword cColonKeyword_24 = (Keyword)cAlternatives.eContents().get(24);
-		private final Keyword cNotAnElementOfKeyword_25 = (Keyword)cAlternatives.eContents().get(25);
-		private final Keyword cSubsetOfKeyword_26 = (Keyword)cAlternatives.eContents().get(26);
-		private final Keyword cNotASubsetOfKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
-		private final Keyword cSubsetOfOrEqualToKeyword_28 = (Keyword)cAlternatives.eContents().get(28);
-		private final Keyword cNeitherASubsetOfNorEqualToKeyword_29 = (Keyword)cAlternatives.eContents().get(29);
-		private final Keyword cPartitionKeyword_30 = (Keyword)cAlternatives.eContents().get(30);
+		private final Keyword cLessThanSignEqualsSignGreaterThanSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cRightwardsDoubleArrowKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cEqualsSignGreaterThanSignKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cLogicalAndKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cAmpersandKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cLogicalOrKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cOrKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cNotSignKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cNotKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cDownTackKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cTrueKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cUpTackKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
+		private final Keyword cFalseKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
+		private final Keyword cForAllKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
+		private final Keyword cExclamationMarkKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
+		private final Keyword cThereExistsKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
+		private final Keyword cNumberSignKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
+		private final Keyword cCommaKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
+		private final Keyword cMiddleDotKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
+		private final Keyword cFullStopKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
+		private final Keyword cEqualsSignKeyword_23 = (Keyword)cAlternatives.eContents().get(23);
+		private final Keyword cNotEqualToKeyword_24 = (Keyword)cAlternatives.eContents().get(24);
+		private final Keyword cSolidusEqualsSignKeyword_25 = (Keyword)cAlternatives.eContents().get(25);
+		private final Keyword cLessThanOrEqualToKeyword_26 = (Keyword)cAlternatives.eContents().get(26);
+		private final Keyword cEqualsSignLessThanSignKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
+		private final Keyword cLessThanSignKeyword_28 = (Keyword)cAlternatives.eContents().get(28);
+		private final Keyword cGreaterThanOrEqualToKeyword_29 = (Keyword)cAlternatives.eContents().get(29);
+		private final Keyword cGreaterThanSignEqualsSignKeyword_30 = (Keyword)cAlternatives.eContents().get(30);
+		private final Keyword cGreaterThanSignKeyword_31 = (Keyword)cAlternatives.eContents().get(31);
+		private final Keyword cElementOfKeyword_32 = (Keyword)cAlternatives.eContents().get(32);
+		private final Keyword cColonKeyword_33 = (Keyword)cAlternatives.eContents().get(33);
+		private final Keyword cNotAnElementOfKeyword_34 = (Keyword)cAlternatives.eContents().get(34);
+		private final Keyword cSolidusColonKeyword_35 = (Keyword)cAlternatives.eContents().get(35);
+		private final Keyword cSubsetOfKeyword_36 = (Keyword)cAlternatives.eContents().get(36);
+		private final Keyword cLessThanSignLessThanSignColonKeyword_37 = (Keyword)cAlternatives.eContents().get(37);
+		private final Keyword cNotASubsetOfKeyword_38 = (Keyword)cAlternatives.eContents().get(38);
+		private final Keyword cSolidusLessThanSignLessThanSignColonKeyword_39 = (Keyword)cAlternatives.eContents().get(39);
+		private final Keyword cSubsetOfOrEqualToKeyword_40 = (Keyword)cAlternatives.eContents().get(40);
+		private final Keyword cLessThanSignColonKeyword_41 = (Keyword)cAlternatives.eContents().get(41);
+		private final Keyword cNeitherASubsetOfNorEqualToKeyword_42 = (Keyword)cAlternatives.eContents().get(42);
+		private final Keyword cSolidusLessThanSignColonKeyword_43 = (Keyword)cAlternatives.eContents().get(43);
+		private final Keyword cPartitionKeyword_44 = (Keyword)cAlternatives.eContents().get(44);
 		
 		//EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
 		//    '(' | // Predicate calculus symbols
 		//    ')' |
-		//    '⇔' |
-		//    '⇒' |
+		//    '⇔' | '<=>' |
+		//    '⇒' | '=>' |
 		//    '∧' | '&' |
-		//    '∨' |
-		//    '¬' |
-		//    '⊤' |
-		//    '⊥' |
+		//    '∨' | 'or' |
+		//    '¬' | 'not' |
+		//    '⊤' | 'true' |
+		//    '⊥' | 'false' |
 		//    '∀' | '!' |
 		//    '∃' | '#' |
 		//    ',' |
 		//    '·' | '.' |
 		//    '=' | // Build predicates from expressions
-		//    '≠' |
-		//    '≤' |
+		//    '≠' | '/=' |
+		//    '≤' | '=<' |
 		//    '<' |
-		//    '≥' |
+		//    '≥' | '>=' |
 		//    '>' |
 		//    '∈' | ':' | // Include this for Rodin keyboard
-		//    '∉' |
-		//    '⊂' |
-		//    '⊄' |
-		//    '⊆' |
-		//    '⊈' |
+		//    '∉' | '/:' |
+		//    '⊂' | '<<:' |
+		//    '⊄' | '/<<:' |
+		//    '⊆' | '<:' |
+		//    '⊈' | '/<:' |
 		//    'partition' // This is missing from the Rodin D7 deliverable
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//'(' | // Predicate calculus symbols
 		//')' |
-		//'⇔' |
-		//'⇒' |
+		//'⇔' | '<=>' |
+		//'⇒' | '=>' |
 		//'∧' | '&' |
-		//'∨' |
-		//'¬' |
-		//'⊤' |
-		//'⊥' |
+		//'∨' | 'or' |
+		//'¬' | 'not' |
+		//'⊤' | 'true' |
+		//'⊥' | 'false' |
 		//'∀' | '!' |
 		//'∃' | '#' |
 		//',' |
 		//'·' | '.' |
 		//'=' | // Build predicates from expressions
-		//'≠' |
-		//'≤' |
+		//'≠' | '/=' |
+		//'≤' | '=<' |
 		//'<' |
-		//'≥' |
+		//'≥' | '>=' |
 		//'>' |
 		//'∈' | ':' | // Include this for Rodin keyboard
-		//'∉' |
-		//'⊂' |
-		//'⊄' |
-		//'⊆' |
-		//'⊈' |
+		//'∉' | '/:' |
+		//'⊂' | '<<:' |
+		//'⊄' | '/<<:' |
+		//'⊆' | '<:' |
+		//'⊈' | '/<:' |
 		//'partition'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
@@ -1709,379 +1787,539 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'⇔'
 		public Keyword getLeftRightDoubleArrowKeyword_2() { return cLeftRightDoubleArrowKeyword_2; }
 		
+		//'<=>'
+		public Keyword getLessThanSignEqualsSignGreaterThanSignKeyword_3() { return cLessThanSignEqualsSignGreaterThanSignKeyword_3; }
+		
 		//'⇒'
-		public Keyword getRightwardsDoubleArrowKeyword_3() { return cRightwardsDoubleArrowKeyword_3; }
+		public Keyword getRightwardsDoubleArrowKeyword_4() { return cRightwardsDoubleArrowKeyword_4; }
+		
+		//'=>'
+		public Keyword getEqualsSignGreaterThanSignKeyword_5() { return cEqualsSignGreaterThanSignKeyword_5; }
 		
 		//'∧'
-		public Keyword getLogicalAndKeyword_4() { return cLogicalAndKeyword_4; }
+		public Keyword getLogicalAndKeyword_6() { return cLogicalAndKeyword_6; }
 		
 		//'&'
-		public Keyword getAmpersandKeyword_5() { return cAmpersandKeyword_5; }
+		public Keyword getAmpersandKeyword_7() { return cAmpersandKeyword_7; }
 		
 		//'∨'
-		public Keyword getLogicalOrKeyword_6() { return cLogicalOrKeyword_6; }
+		public Keyword getLogicalOrKeyword_8() { return cLogicalOrKeyword_8; }
+		
+		//'or'
+		public Keyword getOrKeyword_9() { return cOrKeyword_9; }
 		
 		//'¬'
-		public Keyword getNotSignKeyword_7() { return cNotSignKeyword_7; }
+		public Keyword getNotSignKeyword_10() { return cNotSignKeyword_10; }
+		
+		//'not'
+		public Keyword getNotKeyword_11() { return cNotKeyword_11; }
 		
 		//'⊤'
-		public Keyword getDownTackKeyword_8() { return cDownTackKeyword_8; }
+		public Keyword getDownTackKeyword_12() { return cDownTackKeyword_12; }
+		
+		//'true'
+		public Keyword getTrueKeyword_13() { return cTrueKeyword_13; }
 		
 		//'⊥'
-		public Keyword getUpTackKeyword_9() { return cUpTackKeyword_9; }
+		public Keyword getUpTackKeyword_14() { return cUpTackKeyword_14; }
+		
+		//'false'
+		public Keyword getFalseKeyword_15() { return cFalseKeyword_15; }
 		
 		//'∀'
-		public Keyword getForAllKeyword_10() { return cForAllKeyword_10; }
+		public Keyword getForAllKeyword_16() { return cForAllKeyword_16; }
 		
 		//'!'
-		public Keyword getExclamationMarkKeyword_11() { return cExclamationMarkKeyword_11; }
+		public Keyword getExclamationMarkKeyword_17() { return cExclamationMarkKeyword_17; }
 		
 		//'∃'
-		public Keyword getThereExistsKeyword_12() { return cThereExistsKeyword_12; }
+		public Keyword getThereExistsKeyword_18() { return cThereExistsKeyword_18; }
 		
 		//'#'
-		public Keyword getNumberSignKeyword_13() { return cNumberSignKeyword_13; }
+		public Keyword getNumberSignKeyword_19() { return cNumberSignKeyword_19; }
 		
 		//','
-		public Keyword getCommaKeyword_14() { return cCommaKeyword_14; }
+		public Keyword getCommaKeyword_20() { return cCommaKeyword_20; }
 		
 		//'·'
-		public Keyword getMiddleDotKeyword_15() { return cMiddleDotKeyword_15; }
+		public Keyword getMiddleDotKeyword_21() { return cMiddleDotKeyword_21; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_16() { return cFullStopKeyword_16; }
+		public Keyword getFullStopKeyword_22() { return cFullStopKeyword_22; }
 		
 		//'='
-		public Keyword getEqualsSignKeyword_17() { return cEqualsSignKeyword_17; }
+		public Keyword getEqualsSignKeyword_23() { return cEqualsSignKeyword_23; }
 		
 		//// Build predicates from expressions
 		//   '≠'
-		public Keyword getNotEqualToKeyword_18() { return cNotEqualToKeyword_18; }
+		public Keyword getNotEqualToKeyword_24() { return cNotEqualToKeyword_24; }
+		
+		//'/='
+		public Keyword getSolidusEqualsSignKeyword_25() { return cSolidusEqualsSignKeyword_25; }
 		
 		//'≤'
-		public Keyword getLessThanOrEqualToKeyword_19() { return cLessThanOrEqualToKeyword_19; }
+		public Keyword getLessThanOrEqualToKeyword_26() { return cLessThanOrEqualToKeyword_26; }
+		
+		//'=<'
+		public Keyword getEqualsSignLessThanSignKeyword_27() { return cEqualsSignLessThanSignKeyword_27; }
 		
 		//'<'
-		public Keyword getLessThanSignKeyword_20() { return cLessThanSignKeyword_20; }
+		public Keyword getLessThanSignKeyword_28() { return cLessThanSignKeyword_28; }
 		
 		//'≥'
-		public Keyword getGreaterThanOrEqualToKeyword_21() { return cGreaterThanOrEqualToKeyword_21; }
+		public Keyword getGreaterThanOrEqualToKeyword_29() { return cGreaterThanOrEqualToKeyword_29; }
+		
+		//'>='
+		public Keyword getGreaterThanSignEqualsSignKeyword_30() { return cGreaterThanSignEqualsSignKeyword_30; }
 		
 		//'>'
-		public Keyword getGreaterThanSignKeyword_22() { return cGreaterThanSignKeyword_22; }
+		public Keyword getGreaterThanSignKeyword_31() { return cGreaterThanSignKeyword_31; }
 		
 		//'∈'
-		public Keyword getElementOfKeyword_23() { return cElementOfKeyword_23; }
+		public Keyword getElementOfKeyword_32() { return cElementOfKeyword_32; }
 		
 		//':'
-		public Keyword getColonKeyword_24() { return cColonKeyword_24; }
+		public Keyword getColonKeyword_33() { return cColonKeyword_33; }
 		
 		//// Include this for Rodin keyboard
 		//   '∉'
-		public Keyword getNotAnElementOfKeyword_25() { return cNotAnElementOfKeyword_25; }
+		public Keyword getNotAnElementOfKeyword_34() { return cNotAnElementOfKeyword_34; }
+		
+		//'/:'
+		public Keyword getSolidusColonKeyword_35() { return cSolidusColonKeyword_35; }
 		
 		//'⊂'
-		public Keyword getSubsetOfKeyword_26() { return cSubsetOfKeyword_26; }
+		public Keyword getSubsetOfKeyword_36() { return cSubsetOfKeyword_36; }
+		
+		//'<<:'
+		public Keyword getLessThanSignLessThanSignColonKeyword_37() { return cLessThanSignLessThanSignColonKeyword_37; }
 		
 		//'⊄'
-		public Keyword getNotASubsetOfKeyword_27() { return cNotASubsetOfKeyword_27; }
+		public Keyword getNotASubsetOfKeyword_38() { return cNotASubsetOfKeyword_38; }
+		
+		//'/<<:'
+		public Keyword getSolidusLessThanSignLessThanSignColonKeyword_39() { return cSolidusLessThanSignLessThanSignColonKeyword_39; }
 		
 		//'⊆'
-		public Keyword getSubsetOfOrEqualToKeyword_28() { return cSubsetOfOrEqualToKeyword_28; }
+		public Keyword getSubsetOfOrEqualToKeyword_40() { return cSubsetOfOrEqualToKeyword_40; }
+		
+		//'<:'
+		public Keyword getLessThanSignColonKeyword_41() { return cLessThanSignColonKeyword_41; }
 		
 		//'⊈'
-		public Keyword getNeitherASubsetOfNorEqualToKeyword_29() { return cNeitherASubsetOfNorEqualToKeyword_29; }
+		public Keyword getNeitherASubsetOfNorEqualToKeyword_42() { return cNeitherASubsetOfNorEqualToKeyword_42; }
+		
+		//'/<:'
+		public Keyword getSolidusLessThanSignColonKeyword_43() { return cSolidusLessThanSignColonKeyword_43; }
 		
 		//'partition'
-		public Keyword getPartitionKeyword_30() { return cPartitionKeyword_30; }
+		public Keyword getPartitionKeyword_44() { return cPartitionKeyword_44; }
 	}
 	public class EVENTB_EXPRESSION_SYMBOLSElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.EVENTB_EXPRESSION_SYMBOLS");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cLeftRightArrowKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cPrivateUseAreaE100Keyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cPrivateUseAreaE101Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cPrivateUseAreaE102Keyword_3 = (Keyword)cAlternatives.eContents().get(3);
-		private final Keyword cRightwardsArrowWithVerticalStrokeKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
-		private final Keyword cRightwardsArrowKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
-		private final Keyword cRightwardsArrowWithTailWithVerticalStrokeKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
-		private final Keyword cRightwardsArrowWithTailKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
-		private final Keyword cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
-		private final Keyword cRightwardsTwoHeadedArrowKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
-		private final Keyword cRightwardsTwoHeadedArrowWithTailKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
-		private final Keyword cLeftCurlyBracketKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
-		private final Keyword cRightCurlyBracketKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
-		private final Keyword cRightwardsArrowFromBarKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
-		private final Keyword cEmptySetKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
-		private final Keyword cIntersectionKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
-		private final Keyword cUnionKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
-		private final Keyword cSetMinusKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
-		private final Keyword cMultiplicationSignKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
-		private final Keyword cLeftSquareBracketKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
-		private final Keyword cRightSquareBracketKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
-		private final Keyword cPrivateUseAreaE103Keyword_21 = (Keyword)cAlternatives.eContents().get(21);
-		private final Keyword cRingOperatorKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
-		private final Keyword cSemicolonKeyword_23 = (Keyword)cAlternatives.eContents().get(23);
-		private final Keyword cCircledTimesKeyword_24 = (Keyword)cAlternatives.eContents().get(24);
-		private final Keyword cParallelToKeyword_25 = (Keyword)cAlternatives.eContents().get(25);
-		private final Keyword cTildeOperatorKeyword_26 = (Keyword)cAlternatives.eContents().get(26);
-		private final Keyword cWhiteLeftPointingTriangleKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
-		private final Keyword cZNotationDomainAntirestrictionKeyword_28 = (Keyword)cAlternatives.eContents().get(28);
-		private final Keyword cWhiteRightPointingTriangleKeyword_29 = (Keyword)cAlternatives.eContents().get(29);
-		private final Keyword cZNotationRangeAntirestrictionKeyword_30 = (Keyword)cAlternatives.eContents().get(30);
-		private final Keyword cGreekSmallLetterLamdaKeyword_31 = (Keyword)cAlternatives.eContents().get(31);
-		private final Group cGroup_32 = (Group)cAlternatives.eContents().get(32);
-		private final Keyword cPercentSignKeyword_32_0 = (Keyword)cGroup_32.eContents().get(0);
-		private final Keyword cNAryIntersectionKeyword_32_1 = (Keyword)cGroup_32.eContents().get(1);
-		private final Keyword cNAryUnionKeyword_33 = (Keyword)cAlternatives.eContents().get(33);
-		private final Keyword cDividesKeyword_34 = (Keyword)cAlternatives.eContents().get(34);
-		private final Keyword cTwoDotLeaderKeyword_35 = (Keyword)cAlternatives.eContents().get(35);
-		private final Keyword cPlusSignKeyword_36 = (Keyword)cAlternatives.eContents().get(36);
-		private final Keyword cMinusSignKeyword_37 = (Keyword)cAlternatives.eContents().get(37);
-		private final Keyword cHyphenMinusKeyword_38 = (Keyword)cAlternatives.eContents().get(38);
-		private final Keyword cAsteriskOperatorKeyword_39 = (Keyword)cAlternatives.eContents().get(39);
-		private final Keyword cAsteriskKeyword_40 = (Keyword)cAlternatives.eContents().get(40);
-		private final Keyword cDivisionSignKeyword_41 = (Keyword)cAlternatives.eContents().get(41);
-		private final Keyword cSolidusKeyword_42 = (Keyword)cAlternatives.eContents().get(42);
-		private final Keyword cCircumflexAccentKeyword_43 = (Keyword)cAlternatives.eContents().get(43);
-		private final Keyword cBackslashKeyword_44 = (Keyword)cAlternatives.eContents().get(44);
+		private final Keyword cLessThanSignHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cPrivateUseAreaE100Keyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cPrivateUseAreaE101Keyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cPrivateUseAreaE102Keyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cRightwardsArrowWithVerticalStrokeKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cPlusSignHyphenMinusGreaterThanSignKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
+		private final Keyword cRightwardsArrowKeyword_10 = (Keyword)cAlternatives.eContents().get(10);
+		private final Keyword cHyphenMinusHyphenMinusGreaterThanSignKeyword_11 = (Keyword)cAlternatives.eContents().get(11);
+		private final Keyword cRightwardsArrowWithTailWithVerticalStrokeKeyword_12 = (Keyword)cAlternatives.eContents().get(12);
+		private final Keyword cGreaterThanSignPlusSignGreaterThanSignKeyword_13 = (Keyword)cAlternatives.eContents().get(13);
+		private final Keyword cRightwardsArrowWithTailKeyword_14 = (Keyword)cAlternatives.eContents().get(14);
+		private final Keyword cGreaterThanSignHyphenMinusGreaterThanSignKeyword_15 = (Keyword)cAlternatives.eContents().get(15);
+		private final Keyword cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16 = (Keyword)cAlternatives.eContents().get(16);
+		private final Keyword cPlusSignGreaterThanSignGreaterThanSignKeyword_17 = (Keyword)cAlternatives.eContents().get(17);
+		private final Keyword cRightwardsTwoHeadedArrowKeyword_18 = (Keyword)cAlternatives.eContents().get(18);
+		private final Keyword cHyphenMinusGreaterThanSignGreaterThanSignKeyword_19 = (Keyword)cAlternatives.eContents().get(19);
+		private final Keyword cRightwardsTwoHeadedArrowWithTailKeyword_20 = (Keyword)cAlternatives.eContents().get(20);
+		private final Keyword cGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21 = (Keyword)cAlternatives.eContents().get(21);
+		private final Keyword cLeftCurlyBracketKeyword_22 = (Keyword)cAlternatives.eContents().get(22);
+		private final Keyword cRightCurlyBracketKeyword_23 = (Keyword)cAlternatives.eContents().get(23);
+		private final Keyword cRightwardsArrowFromBarKeyword_24 = (Keyword)cAlternatives.eContents().get(24);
+		private final Keyword cCommaCommaKeyword_25 = (Keyword)cAlternatives.eContents().get(25);
+		private final Keyword cVerticalLineHyphenMinusGreaterThanSignKeyword_26 = (Keyword)cAlternatives.eContents().get(26);
+		private final Keyword cEmptySetKeyword_27 = (Keyword)cAlternatives.eContents().get(27);
+		private final Keyword cLeftCurlyBracketRightCurlyBracketKeyword_28 = (Keyword)cAlternatives.eContents().get(28);
+		private final Keyword cIntersectionKeyword_29 = (Keyword)cAlternatives.eContents().get(29);
+		private final Keyword cSolidusReverseSolidusKeyword_30 = (Keyword)cAlternatives.eContents().get(30);
+		private final Keyword cUnionKeyword_31 = (Keyword)cAlternatives.eContents().get(31);
+		private final Keyword cReverseSolidusSolidusKeyword_32 = (Keyword)cAlternatives.eContents().get(32);
+		private final Keyword cSetMinusKeyword_33 = (Keyword)cAlternatives.eContents().get(33);
+		private final Keyword cBackslashKeyword_34 = (Keyword)cAlternatives.eContents().get(34);
+		private final Keyword cMultiplicationSignKeyword_35 = (Keyword)cAlternatives.eContents().get(35);
+		private final Keyword cAsteriskAsteriskKeyword_36 = (Keyword)cAlternatives.eContents().get(36);
+		private final Keyword cLeftSquareBracketKeyword_37 = (Keyword)cAlternatives.eContents().get(37);
+		private final Keyword cRightSquareBracketKeyword_38 = (Keyword)cAlternatives.eContents().get(38);
+		private final Keyword cPrivateUseAreaE103Keyword_39 = (Keyword)cAlternatives.eContents().get(39);
+		private final Keyword cLessThanSignPlusSignKeyword_40 = (Keyword)cAlternatives.eContents().get(40);
+		private final Keyword cRingOperatorKeyword_41 = (Keyword)cAlternatives.eContents().get(41);
+		private final Keyword cCircKeyword_42 = (Keyword)cAlternatives.eContents().get(42);
+		private final Keyword cSemicolonKeyword_43 = (Keyword)cAlternatives.eContents().get(43);
+		private final Keyword cCircledTimesKeyword_44 = (Keyword)cAlternatives.eContents().get(44);
+		private final Keyword cGreaterThanSignLessThanSignKeyword_45 = (Keyword)cAlternatives.eContents().get(45);
+		private final Keyword cParallelToKeyword_46 = (Keyword)cAlternatives.eContents().get(46);
+		private final Keyword cVerticalLineVerticalLineKeyword_47 = (Keyword)cAlternatives.eContents().get(47);
+		private final Keyword cTildeOperatorKeyword_48 = (Keyword)cAlternatives.eContents().get(48);
+		private final Keyword cTildeKeyword_49 = (Keyword)cAlternatives.eContents().get(49);
+		private final Keyword cWhiteLeftPointingTriangleKeyword_50 = (Keyword)cAlternatives.eContents().get(50);
+		private final Keyword cLessThanSignVerticalLineKeyword_51 = (Keyword)cAlternatives.eContents().get(51);
+		private final Keyword cZNotationDomainAntirestrictionKeyword_52 = (Keyword)cAlternatives.eContents().get(52);
+		private final Keyword cLessThanSignLessThanSignVerticalLineKeyword_53 = (Keyword)cAlternatives.eContents().get(53);
+		private final Keyword cWhiteRightPointingTriangleKeyword_54 = (Keyword)cAlternatives.eContents().get(54);
+		private final Keyword cVerticalLineGreaterThanSignKeyword_55 = (Keyword)cAlternatives.eContents().get(55);
+		private final Keyword cZNotationRangeAntirestrictionKeyword_56 = (Keyword)cAlternatives.eContents().get(56);
+		private final Keyword cVerticalLineGreaterThanSignGreaterThanSignKeyword_57 = (Keyword)cAlternatives.eContents().get(57);
+		private final Keyword cGreekSmallLetterLamdaKeyword_58 = (Keyword)cAlternatives.eContents().get(58);
+		private final Group cGroup_59 = (Group)cAlternatives.eContents().get(59);
+		private final Keyword cPercentSignKeyword_59_0 = (Keyword)cGroup_59.eContents().get(0);
+		private final Keyword cNAryIntersectionKeyword_59_1 = (Keyword)cGroup_59.eContents().get(1);
+		private final Keyword cINTERKeyword_60 = (Keyword)cAlternatives.eContents().get(60);
+		private final Keyword cNAryUnionKeyword_61 = (Keyword)cAlternatives.eContents().get(61);
+		private final Keyword cUNIONKeyword_62 = (Keyword)cAlternatives.eContents().get(62);
+		private final Keyword cDividesKeyword_63 = (Keyword)cAlternatives.eContents().get(63);
+		private final Keyword cVerticalLineKeyword_64 = (Keyword)cAlternatives.eContents().get(64);
+		private final Keyword cTwoDotLeaderKeyword_65 = (Keyword)cAlternatives.eContents().get(65);
+		private final Keyword cFullStopFullStopKeyword_66 = (Keyword)cAlternatives.eContents().get(66);
+		private final Keyword cPlusSignKeyword_67 = (Keyword)cAlternatives.eContents().get(67);
+		private final Keyword cMinusSignKeyword_68 = (Keyword)cAlternatives.eContents().get(68);
+		private final Keyword cHyphenMinusKeyword_69 = (Keyword)cAlternatives.eContents().get(69);
+		private final Keyword cAsteriskOperatorKeyword_70 = (Keyword)cAlternatives.eContents().get(70);
+		private final Keyword cAsteriskKeyword_71 = (Keyword)cAlternatives.eContents().get(71);
+		private final Keyword cDivisionSignKeyword_72 = (Keyword)cAlternatives.eContents().get(72);
+		private final Keyword cSolidusKeyword_73 = (Keyword)cAlternatives.eContents().get(73);
+		private final Keyword cCircumflexAccentKeyword_74 = (Keyword)cAlternatives.eContents().get(74);
 		
 		//EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
-		//    '↔' | // Symbols for building set of relations
-		//    '' |
-		//    '' |
-		//    '' |
-		//    '⇸' |
-		//    '→' |
-		//    '⤔' |
-		//    '↣' |
-		//    '⤀' |
-		//    '↠' |
-		//    '⤖' |
+		//    '↔' | '<->' | // Symbols for building set of relations
+		//    '' | '<<->' |
+		//    '' | '<->>' |
+		//    '' | '<<->>' |
+		//    '⇸' | '+->' |
+		//    '→' | '-->' |
+		//    '⤔' | '>+>' |
+		//    '↣' | '>->' |
+		//    '⤀' | '+>>' |
+		//    '↠' | '->>' |
+		//    '⤖' | '>->>' |
 		//    '{' | // Symbols for manipulating sets
 		//    '}' |
-		//    '↦' |
-		//    '∅' |
-		//    '∩' |
-		//    '∪' |
-		//    '∖' |
-		//    '×' |
+		//    '↦' | ',,' | '|->' |
+		//    '∅' | '{}' |
+		//    '∩' | '/\\' |
+		//    '∪' | '\\/' |
+		//    '∖' | '\\' |
+		//    '×' | '**' |
 		//    '[' | // Symbols for manipulating functions and relations
 		//    ']' |
-		//    '' |
-		//    '∘' |
+		//    '' | '<+' |
+		//    '∘' | 'circ' |
 		//    ';' |
-		//    '⊗' |
-		//    '∥' |
-		//    '∼' |
-		//    '◁' |
-		//    '⩤' |
-		//    '▷' |
-		//    '⩥' |
+		//    '⊗' | '><' |
+		//    '∥' | '||' |
+		//    '∼' | '~' |
+		//    '◁' | '<|' |
+		//    '⩤' | '<<|' |
+		//    '▷' | '|>' |
+		//    '⩥' | '|>>' |
 		//    'λ' | '%' // Symbols for quantified expressions
-		//    '⋂' |
-		//    '⋃' |
-		//    '∣' |
-		//    '‥' | // Symbols for arithmetic expressions
+		//    '⋂' | 'INTER' |
+		//    '⋃' | 'UNION' |
+		//    '∣' | '|' |
+		//    '‥' | '..' | // Symbols for arithmetic expressions
 		//    '+' |
 		//    '−' | '-' |
 		//    '∗' | '*' |
 		//    '÷' | '/' |
-		//    '^' |
-		//    '\\' // Allowed for LaTeX combos
+		//    '^'
 		//;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'↔' | // Symbols for building set of relations
-		//'' |
-		//'' |
-		//'' |
-		//'⇸' |
-		//'→' |
-		//'⤔' |
-		//'↣' |
-		//'⤀' |
-		//'↠' |
-		//'⤖' |
+		//'↔' | '<->' | // Symbols for building set of relations
+		//'' | '<<->' |
+		//'' | '<->>' |
+		//'' | '<<->>' |
+		//'⇸' | '+->' |
+		//'→' | '-->' |
+		//'⤔' | '>+>' |
+		//'↣' | '>->' |
+		//'⤀' | '+>>' |
+		//'↠' | '->>' |
+		//'⤖' | '>->>' |
 		//'{' | // Symbols for manipulating sets
 		//'}' |
-		//'↦' |
-		//'∅' |
-		//'∩' |
-		//'∪' |
-		//'∖' |
-		//'×' |
+		//'↦' | ',,' | '|->' |
+		//'∅' | '{}' |
+		//'∩' | '/\\' |
+		//'∪' | '\\/' |
+		//'∖' | '\\' |
+		//'×' | '**' |
 		//'[' | // Symbols for manipulating functions and relations
 		//']' |
-		//'' |
-		//'∘' |
+		//'' | '<+' |
+		//'∘' | 'circ' |
 		//';' |
-		//'⊗' |
-		//'∥' |
-		//'∼' |
-		//'◁' |
-		//'⩤' |
-		//'▷' |
-		//'⩥' |
+		//'⊗' | '><' |
+		//'∥' | '||' |
+		//'∼' | '~' |
+		//'◁' | '<|' |
+		//'⩤' | '<<|' |
+		//'▷' | '|>' |
+		//'⩥' | '|>>' |
 		//'λ' | '%' // Symbols for quantified expressions
-		//'⋂' |
-		//'⋃' |
-		//'∣' |
-		//'‥' | // Symbols for arithmetic expressions
+		//'⋂' | 'INTER' |
+		//'⋃' | 'UNION' |
+		//'∣' | '|' |
+		//'‥' | '..' | // Symbols for arithmetic expressions
 		//'+' |
 		//'−' | '-' |
 		//'∗' | '*' |
 		//'÷' | '/' |
-		//'^' |
-		//'\\'
+		//'^'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'↔'
 		public Keyword getLeftRightArrowKeyword_0() { return cLeftRightArrowKeyword_0; }
 		
+		//'<->'
+		public Keyword getLessThanSignHyphenMinusGreaterThanSignKeyword_1() { return cLessThanSignHyphenMinusGreaterThanSignKeyword_1; }
+		
 		//// Symbols for building set of relations
 		//   ''
-		public Keyword getPrivateUseAreaE100Keyword_1() { return cPrivateUseAreaE100Keyword_1; }
+		public Keyword getPrivateUseAreaE100Keyword_2() { return cPrivateUseAreaE100Keyword_2; }
+		
+		//'<<->'
+		public Keyword getLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3() { return cLessThanSignLessThanSignHyphenMinusGreaterThanSignKeyword_3; }
 		
 		//''
-		public Keyword getPrivateUseAreaE101Keyword_2() { return cPrivateUseAreaE101Keyword_2; }
+		public Keyword getPrivateUseAreaE101Keyword_4() { return cPrivateUseAreaE101Keyword_4; }
+		
+		//'<->>'
+		public Keyword getLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5() { return cLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_5; }
 		
 		//''
-		public Keyword getPrivateUseAreaE102Keyword_3() { return cPrivateUseAreaE102Keyword_3; }
+		public Keyword getPrivateUseAreaE102Keyword_6() { return cPrivateUseAreaE102Keyword_6; }
+		
+		//'<<->>'
+		public Keyword getLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7() { return cLessThanSignLessThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_7; }
 		
 		//'⇸'
-		public Keyword getRightwardsArrowWithVerticalStrokeKeyword_4() { return cRightwardsArrowWithVerticalStrokeKeyword_4; }
+		public Keyword getRightwardsArrowWithVerticalStrokeKeyword_8() { return cRightwardsArrowWithVerticalStrokeKeyword_8; }
+		
+		//'+->'
+		public Keyword getPlusSignHyphenMinusGreaterThanSignKeyword_9() { return cPlusSignHyphenMinusGreaterThanSignKeyword_9; }
 		
 		//'→'
-		public Keyword getRightwardsArrowKeyword_5() { return cRightwardsArrowKeyword_5; }
+		public Keyword getRightwardsArrowKeyword_10() { return cRightwardsArrowKeyword_10; }
+		
+		//'-->'
+		public Keyword getHyphenMinusHyphenMinusGreaterThanSignKeyword_11() { return cHyphenMinusHyphenMinusGreaterThanSignKeyword_11; }
 		
 		//'⤔'
-		public Keyword getRightwardsArrowWithTailWithVerticalStrokeKeyword_6() { return cRightwardsArrowWithTailWithVerticalStrokeKeyword_6; }
+		public Keyword getRightwardsArrowWithTailWithVerticalStrokeKeyword_12() { return cRightwardsArrowWithTailWithVerticalStrokeKeyword_12; }
+		
+		//'>+>'
+		public Keyword getGreaterThanSignPlusSignGreaterThanSignKeyword_13() { return cGreaterThanSignPlusSignGreaterThanSignKeyword_13; }
 		
 		//'↣'
-		public Keyword getRightwardsArrowWithTailKeyword_7() { return cRightwardsArrowWithTailKeyword_7; }
+		public Keyword getRightwardsArrowWithTailKeyword_14() { return cRightwardsArrowWithTailKeyword_14; }
+		
+		//'>->'
+		public Keyword getGreaterThanSignHyphenMinusGreaterThanSignKeyword_15() { return cGreaterThanSignHyphenMinusGreaterThanSignKeyword_15; }
 		
 		//'⤀'
-		public Keyword getRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8() { return cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_8; }
+		public Keyword getRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16() { return cRightwardsTwoHeadedArrowWithVerticalStrokeKeyword_16; }
+		
+		//'+>>'
+		public Keyword getPlusSignGreaterThanSignGreaterThanSignKeyword_17() { return cPlusSignGreaterThanSignGreaterThanSignKeyword_17; }
 		
 		//'↠'
-		public Keyword getRightwardsTwoHeadedArrowKeyword_9() { return cRightwardsTwoHeadedArrowKeyword_9; }
+		public Keyword getRightwardsTwoHeadedArrowKeyword_18() { return cRightwardsTwoHeadedArrowKeyword_18; }
+		
+		//'->>'
+		public Keyword getHyphenMinusGreaterThanSignGreaterThanSignKeyword_19() { return cHyphenMinusGreaterThanSignGreaterThanSignKeyword_19; }
 		
 		//'⤖'
-		public Keyword getRightwardsTwoHeadedArrowWithTailKeyword_10() { return cRightwardsTwoHeadedArrowWithTailKeyword_10; }
+		public Keyword getRightwardsTwoHeadedArrowWithTailKeyword_20() { return cRightwardsTwoHeadedArrowWithTailKeyword_20; }
+		
+		//'>->>'
+		public Keyword getGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21() { return cGreaterThanSignHyphenMinusGreaterThanSignGreaterThanSignKeyword_21; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_11() { return cLeftCurlyBracketKeyword_11; }
+		public Keyword getLeftCurlyBracketKeyword_22() { return cLeftCurlyBracketKeyword_22; }
 		
 		//// Symbols for manipulating sets
 		//   '}'
-		public Keyword getRightCurlyBracketKeyword_12() { return cRightCurlyBracketKeyword_12; }
+		public Keyword getRightCurlyBracketKeyword_23() { return cRightCurlyBracketKeyword_23; }
 		
 		//'↦'
-		public Keyword getRightwardsArrowFromBarKeyword_13() { return cRightwardsArrowFromBarKeyword_13; }
+		public Keyword getRightwardsArrowFromBarKeyword_24() { return cRightwardsArrowFromBarKeyword_24; }
+		
+		//',,'
+		public Keyword getCommaCommaKeyword_25() { return cCommaCommaKeyword_25; }
+		
+		//'|->'
+		public Keyword getVerticalLineHyphenMinusGreaterThanSignKeyword_26() { return cVerticalLineHyphenMinusGreaterThanSignKeyword_26; }
 		
 		//'∅'
-		public Keyword getEmptySetKeyword_14() { return cEmptySetKeyword_14; }
+		public Keyword getEmptySetKeyword_27() { return cEmptySetKeyword_27; }
+		
+		//'{}'
+		public Keyword getLeftCurlyBracketRightCurlyBracketKeyword_28() { return cLeftCurlyBracketRightCurlyBracketKeyword_28; }
 		
 		//'∩'
-		public Keyword getIntersectionKeyword_15() { return cIntersectionKeyword_15; }
+		public Keyword getIntersectionKeyword_29() { return cIntersectionKeyword_29; }
+		
+		//'/\\'
+		public Keyword getSolidusReverseSolidusKeyword_30() { return cSolidusReverseSolidusKeyword_30; }
 		
 		//'∪'
-		public Keyword getUnionKeyword_16() { return cUnionKeyword_16; }
+		public Keyword getUnionKeyword_31() { return cUnionKeyword_31; }
+		
+		//'\\/'
+		public Keyword getReverseSolidusSolidusKeyword_32() { return cReverseSolidusSolidusKeyword_32; }
 		
 		//'∖'
-		public Keyword getSetMinusKeyword_17() { return cSetMinusKeyword_17; }
+		public Keyword getSetMinusKeyword_33() { return cSetMinusKeyword_33; }
+		
+		//'\\'
+		public Keyword getBackslashKeyword_34() { return cBackslashKeyword_34; }
 		
 		//'×'
-		public Keyword getMultiplicationSignKeyword_18() { return cMultiplicationSignKeyword_18; }
+		public Keyword getMultiplicationSignKeyword_35() { return cMultiplicationSignKeyword_35; }
+		
+		//'**'
+		public Keyword getAsteriskAsteriskKeyword_36() { return cAsteriskAsteriskKeyword_36; }
 		
 		//'['
-		public Keyword getLeftSquareBracketKeyword_19() { return cLeftSquareBracketKeyword_19; }
+		public Keyword getLeftSquareBracketKeyword_37() { return cLeftSquareBracketKeyword_37; }
 		
 		//// Symbols for manipulating functions and relations
 		//   ']'
-		public Keyword getRightSquareBracketKeyword_20() { return cRightSquareBracketKeyword_20; }
+		public Keyword getRightSquareBracketKeyword_38() { return cRightSquareBracketKeyword_38; }
 		
 		//''
-		public Keyword getPrivateUseAreaE103Keyword_21() { return cPrivateUseAreaE103Keyword_21; }
+		public Keyword getPrivateUseAreaE103Keyword_39() { return cPrivateUseAreaE103Keyword_39; }
+		
+		//'<+'
+		public Keyword getLessThanSignPlusSignKeyword_40() { return cLessThanSignPlusSignKeyword_40; }
 		
 		//'∘'
-		public Keyword getRingOperatorKeyword_22() { return cRingOperatorKeyword_22; }
+		public Keyword getRingOperatorKeyword_41() { return cRingOperatorKeyword_41; }
+		
+		//'circ'
+		public Keyword getCircKeyword_42() { return cCircKeyword_42; }
 		
 		//';'
-		public Keyword getSemicolonKeyword_23() { return cSemicolonKeyword_23; }
+		public Keyword getSemicolonKeyword_43() { return cSemicolonKeyword_43; }
 		
 		//'⊗'
-		public Keyword getCircledTimesKeyword_24() { return cCircledTimesKeyword_24; }
+		public Keyword getCircledTimesKeyword_44() { return cCircledTimesKeyword_44; }
+		
+		//'><'
+		public Keyword getGreaterThanSignLessThanSignKeyword_45() { return cGreaterThanSignLessThanSignKeyword_45; }
 		
 		//'∥'
-		public Keyword getParallelToKeyword_25() { return cParallelToKeyword_25; }
+		public Keyword getParallelToKeyword_46() { return cParallelToKeyword_46; }
+		
+		//'||'
+		public Keyword getVerticalLineVerticalLineKeyword_47() { return cVerticalLineVerticalLineKeyword_47; }
 		
 		//'∼'
-		public Keyword getTildeOperatorKeyword_26() { return cTildeOperatorKeyword_26; }
+		public Keyword getTildeOperatorKeyword_48() { return cTildeOperatorKeyword_48; }
+		
+		//'~'
+		public Keyword getTildeKeyword_49() { return cTildeKeyword_49; }
 		
 		//'◁'
-		public Keyword getWhiteLeftPointingTriangleKeyword_27() { return cWhiteLeftPointingTriangleKeyword_27; }
+		public Keyword getWhiteLeftPointingTriangleKeyword_50() { return cWhiteLeftPointingTriangleKeyword_50; }
+		
+		//'<|'
+		public Keyword getLessThanSignVerticalLineKeyword_51() { return cLessThanSignVerticalLineKeyword_51; }
 		
 		//'⩤'
-		public Keyword getZNotationDomainAntirestrictionKeyword_28() { return cZNotationDomainAntirestrictionKeyword_28; }
+		public Keyword getZNotationDomainAntirestrictionKeyword_52() { return cZNotationDomainAntirestrictionKeyword_52; }
+		
+		//'<<|'
+		public Keyword getLessThanSignLessThanSignVerticalLineKeyword_53() { return cLessThanSignLessThanSignVerticalLineKeyword_53; }
 		
 		//'▷'
-		public Keyword getWhiteRightPointingTriangleKeyword_29() { return cWhiteRightPointingTriangleKeyword_29; }
+		public Keyword getWhiteRightPointingTriangleKeyword_54() { return cWhiteRightPointingTriangleKeyword_54; }
+		
+		//'|>'
+		public Keyword getVerticalLineGreaterThanSignKeyword_55() { return cVerticalLineGreaterThanSignKeyword_55; }
 		
 		//'⩥'
-		public Keyword getZNotationRangeAntirestrictionKeyword_30() { return cZNotationRangeAntirestrictionKeyword_30; }
+		public Keyword getZNotationRangeAntirestrictionKeyword_56() { return cZNotationRangeAntirestrictionKeyword_56; }
+		
+		//'|>>'
+		public Keyword getVerticalLineGreaterThanSignGreaterThanSignKeyword_57() { return cVerticalLineGreaterThanSignGreaterThanSignKeyword_57; }
 		
 		//'λ'
-		public Keyword getGreekSmallLetterLamdaKeyword_31() { return cGreekSmallLetterLamdaKeyword_31; }
+		public Keyword getGreekSmallLetterLamdaKeyword_58() { return cGreekSmallLetterLamdaKeyword_58; }
 		
 		//'%' // Symbols for quantified expressions
 		//   '⋂'
-		public Group getGroup_32() { return cGroup_32; }
+		public Group getGroup_59() { return cGroup_59; }
 		
 		//'%'
-		public Keyword getPercentSignKeyword_32_0() { return cPercentSignKeyword_32_0; }
+		public Keyword getPercentSignKeyword_59_0() { return cPercentSignKeyword_59_0; }
 		
 		//// Symbols for quantified expressions
 		//   '⋂'
-		public Keyword getNAryIntersectionKeyword_32_1() { return cNAryIntersectionKeyword_32_1; }
+		public Keyword getNAryIntersectionKeyword_59_1() { return cNAryIntersectionKeyword_59_1; }
+		
+		//'INTER'
+		public Keyword getINTERKeyword_60() { return cINTERKeyword_60; }
 		
 		//'⋃'
-		public Keyword getNAryUnionKeyword_33() { return cNAryUnionKeyword_33; }
+		public Keyword getNAryUnionKeyword_61() { return cNAryUnionKeyword_61; }
+		
+		//'UNION'
+		public Keyword getUNIONKeyword_62() { return cUNIONKeyword_62; }
 		
 		//'∣'
-		public Keyword getDividesKeyword_34() { return cDividesKeyword_34; }
+		public Keyword getDividesKeyword_63() { return cDividesKeyword_63; }
+		
+		//'|'
+		public Keyword getVerticalLineKeyword_64() { return cVerticalLineKeyword_64; }
 		
 		//'‥'
-		public Keyword getTwoDotLeaderKeyword_35() { return cTwoDotLeaderKeyword_35; }
+		public Keyword getTwoDotLeaderKeyword_65() { return cTwoDotLeaderKeyword_65; }
+		
+		//'..'
+		public Keyword getFullStopFullStopKeyword_66() { return cFullStopFullStopKeyword_66; }
 		
 		//// Symbols for arithmetic expressions
 		//   '+'
-		public Keyword getPlusSignKeyword_36() { return cPlusSignKeyword_36; }
+		public Keyword getPlusSignKeyword_67() { return cPlusSignKeyword_67; }
 		
 		//'−'
-		public Keyword getMinusSignKeyword_37() { return cMinusSignKeyword_37; }
+		public Keyword getMinusSignKeyword_68() { return cMinusSignKeyword_68; }
 		
 		//'-'
-		public Keyword getHyphenMinusKeyword_38() { return cHyphenMinusKeyword_38; }
+		public Keyword getHyphenMinusKeyword_69() { return cHyphenMinusKeyword_69; }
 		
 		//'∗'
-		public Keyword getAsteriskOperatorKeyword_39() { return cAsteriskOperatorKeyword_39; }
+		public Keyword getAsteriskOperatorKeyword_70() { return cAsteriskOperatorKeyword_70; }
 		
 		//'*'
-		public Keyword getAsteriskKeyword_40() { return cAsteriskKeyword_40; }
+		public Keyword getAsteriskKeyword_71() { return cAsteriskKeyword_71; }
 		
 		//'÷'
-		public Keyword getDivisionSignKeyword_41() { return cDivisionSignKeyword_41; }
+		public Keyword getDivisionSignKeyword_72() { return cDivisionSignKeyword_72; }
 		
 		//'/'
-		public Keyword getSolidusKeyword_42() { return cSolidusKeyword_42; }
+		public Keyword getSolidusKeyword_73() { return cSolidusKeyword_73; }
 		
 		//'^'
-		public Keyword getCircumflexAccentKeyword_43() { return cCircumflexAccentKeyword_43; }
-		
-		//'\\'
-		public Keyword getBackslashKeyword_44() { return cBackslashKeyword_44; }
+		public Keyword getCircumflexAccentKeyword_74() { return cCircumflexAccentKeyword_74; }
 	}
 	public class XRecordElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.XRecord");
@@ -2114,12 +2352,12 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Alternatives cAlternatives_6_0_0 = (Alternatives)cGroup_6_0.eContents().get(0);
 		private final Keyword cFieldKeyword_6_0_0_0 = (Keyword)cAlternatives_6_0_0.eContents().get(0);
 		private final Keyword cFldKeyword_6_0_0_1 = (Keyword)cAlternatives_6_0_0.eContents().get(1);
-		private final Assignment cFieldsAssignment_6_0_1 = (Assignment)cGroup_6_0.eContents().get(1);
-		private final RuleCall cFieldsFieldParserRuleCall_6_0_1_0 = (RuleCall)cFieldsAssignment_6_0_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_6_0_1 = (Assignment)cGroup_6_0.eContents().get(1);
+		private final RuleCall cOrderedChildrenFieldParserRuleCall_6_0_1_0 = (RuleCall)cOrderedChildrenAssignment_6_0_1.eContents().get(0);
 		private final Group cGroup_6_1 = (Group)cAlternatives_6.eContents().get(1);
 		private final Keyword cConstraintKeyword_6_1_0 = (Keyword)cGroup_6_1.eContents().get(0);
-		private final Assignment cConstraintsAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
-		private final RuleCall cConstraintsXConstraintParserRuleCall_6_1_1_0 = (RuleCall)cConstraintsAssignment_6_1_1.eContents().get(0);
+		private final Assignment cOrderedChildrenAssignment_6_1_1 = (Assignment)cGroup_6_1.eContents().get(1);
+		private final RuleCall cOrderedChildrenXConstraintParserRuleCall_6_1_1_0 = (RuleCall)cOrderedChildrenAssignment_6_1_1.eContents().get(0);
 		private final Keyword cEndKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		///*
@@ -2131,7 +2369,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//    (extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
 		//    ('record' | 'rec') name = ID
 		//    (('inherits' | 'ihr') inheritsNames += ID)?
-		//    (('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+		//    (('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 		//    'end'
 		//;
 		@Override public ParserRule getRule() { return rule; }
@@ -2141,7 +2379,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//(extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
 		//('record' | 'rec') name = ID
 		//(('inherits' | 'ihr') inheritsNames += ID)?
-		//(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+		//(('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 		//'end'
 		public Group getGroup() { return cGroup; }
 		
@@ -2214,10 +2452,10 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getInheritsNamesIDTerminalRuleCall_5_1_0() { return cInheritsNamesIDTerminalRuleCall_5_1_0; }
 		
-		//(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+		//(('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 		public Alternatives getAlternatives_6() { return cAlternatives_6; }
 		
-		//('field' | 'fld') fields += Field
+		//('field' | 'fld') orderedChildren += Field
 		public Group getGroup_6_0() { return cGroup_6_0; }
 		
 		//('field' | 'fld')
@@ -2229,23 +2467,23 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'fld'
 		public Keyword getFldKeyword_6_0_0_1() { return cFldKeyword_6_0_0_1; }
 		
-		//fields += Field
-		public Assignment getFieldsAssignment_6_0_1() { return cFieldsAssignment_6_0_1; }
+		//orderedChildren += Field
+		public Assignment getOrderedChildrenAssignment_6_0_1() { return cOrderedChildrenAssignment_6_0_1; }
 		
 		//Field
-		public RuleCall getFieldsFieldParserRuleCall_6_0_1_0() { return cFieldsFieldParserRuleCall_6_0_1_0; }
+		public RuleCall getOrderedChildrenFieldParserRuleCall_6_0_1_0() { return cOrderedChildrenFieldParserRuleCall_6_0_1_0; }
 		
-		//'constraint' constraints += XConstraint
+		//'constraint' orderedChildren += XConstraint
 		public Group getGroup_6_1() { return cGroup_6_1; }
 		
 		//'constraint'
 		public Keyword getConstraintKeyword_6_1_0() { return cConstraintKeyword_6_1_0; }
 		
-		//constraints += XConstraint
-		public Assignment getConstraintsAssignment_6_1_1() { return cConstraintsAssignment_6_1_1; }
+		//orderedChildren += XConstraint
+		public Assignment getOrderedChildrenAssignment_6_1_1() { return cOrderedChildrenAssignment_6_1_1; }
 		
 		//XConstraint
-		public RuleCall getConstraintsXConstraintParserRuleCall_6_1_1_0() { return cConstraintsXConstraintParserRuleCall_6_1_1_0; }
+		public RuleCall getOrderedChildrenXConstraintParserRuleCall_6_1_1_0() { return cOrderedChildrenXConstraintParserRuleCall_6_1_1_0; }
 		
 		//'end'
 		public Keyword getEndKeyword_7() { return cEndKeyword_7; }
@@ -2452,7 +2690,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final EVENTB_PREDICATE_SYMBOLSElements pEVENTB_PREDICATE_SYMBOLS;
 	private final EVENTB_EXPRESSION_SYMBOLSElements pEVENTB_EXPRESSION_SYMBOLS;
 	private final TerminalRule tID;
-	private final TerminalRule tUNTRANSLATED_TOKEN;
 	private final TerminalRule tSTRING;
 	private final XRecordElements pXRecord;
 	private final FieldElements pField;
@@ -2493,7 +2730,6 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pEVENTB_PREDICATE_SYMBOLS = new EVENTB_PREDICATE_SYMBOLSElements();
 		this.pEVENTB_EXPRESSION_SYMBOLS = new EVENTB_EXPRESSION_SYMBOLSElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.ID");
-		this.tUNTRANSLATED_TOKEN = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.UNTRANSLATED_TOKEN");
 		this.tSTRING = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "ac.soton.xeventb.xmachine.XMachine.STRING");
 		this.pXRecord = new XRecordElements();
 		this.pField = new FieldElements();
@@ -2648,18 +2884,18 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//XTYPEOPERATOR returns ecore::EString:
-	//    '↔' | // Symbols for building set of relations
-	//    '' |
-	//    '' |
-	//    '' |
-	//    '⇸' |
-	//    '→' |
-	//    '⤔' |
-	//    '↣' |
-	//    '⤀' |
-	//    '↠' |
-	//    '⤖' |
-	//    '×'
+	//    '↔' | '<->' | // Symbols for building set of relations
+	//    '' | '<<->' |
+	//    '' | '<->>' |
+	//    '' | '<<->>' |
+	//    '⇸' | '+->' |
+	//    '→' | '-->' |
+	//    '⤔' | '>+>' |
+	//    '↣' | '>->' |
+	//    '⤀' | '+>>' |
+	//    '↠' | '->>' |
+	//    '⤖' | '>->>' |
+	//    '×' | '**'
 	//;
 	public XTYPEOPERATORElements getXTYPEOPERATORAccess() {
 		return pXTYPEOPERATOR;
@@ -2836,12 +3072,12 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//XFormula returns ecore::EString:
 	//    (
-	//        EVENTB_IDENTIFIER_KEYWORD |
-	//        EVENTB_PREDICATE_SYMBOLS |
-	//        EVENTB_EXPRESSION_SYMBOLS |
-	//        INT |
-	//        ID |
-	//        UNTRANSLATED_TOKEN
+	//        EVENTB_IDENTIFIER_KEYWORD
+	//        | EVENTB_PREDICATE_SYMBOLS
+	//        | EVENTB_EXPRESSION_SYMBOLS
+	//        | INT
+	//        | ID
+	//        //| UNTRANSLATED_TOKEN
 	//    )+
 	//;
 	public XFormulaElements getXFormulaAccess() {
@@ -2871,11 +3107,11 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    'ran' |
 	//    'succ' |
 	//    'union' |
-	//    'ℕ1' |
-	//    'ℕ' |
-	//    'ℙ1' |
-	//    'ℙ' |
-	//    'ℤ'
+	//    'ℕ1' | 'NAT1' |
+	//    'ℕ' | 'NAT' |
+	//    'ℙ1' | 'POW1' |
+	//    'ℙ' | 'POW' |
+	//    'ℤ' | 'INT'
 	//;
 	public EVENTB_IDENTIFIER_KEYWORDElements getEVENTB_IDENTIFIER_KEYWORDAccess() {
 		return pEVENTB_IDENTIFIER_KEYWORD;
@@ -2888,29 +3124,29 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
 	//    '(' | // Predicate calculus symbols
 	//    ')' |
-	//    '⇔' |
-	//    '⇒' |
+	//    '⇔' | '<=>' |
+	//    '⇒' | '=>' |
 	//    '∧' | '&' |
-	//    '∨' |
-	//    '¬' |
-	//    '⊤' |
-	//    '⊥' |
+	//    '∨' | 'or' |
+	//    '¬' | 'not' |
+	//    '⊤' | 'true' |
+	//    '⊥' | 'false' |
 	//    '∀' | '!' |
 	//    '∃' | '#' |
 	//    ',' |
 	//    '·' | '.' |
 	//    '=' | // Build predicates from expressions
-	//    '≠' |
-	//    '≤' |
+	//    '≠' | '/=' |
+	//    '≤' | '=<' |
 	//    '<' |
-	//    '≥' |
+	//    '≥' | '>=' |
 	//    '>' |
 	//    '∈' | ':' | // Include this for Rodin keyboard
-	//    '∉' |
-	//    '⊂' |
-	//    '⊄' |
-	//    '⊆' |
-	//    '⊈' |
+	//    '∉' | '/:' |
+	//    '⊂' | '<<:' |
+	//    '⊄' | '/<<:' |
+	//    '⊆' | '<:' |
+	//    '⊈' | '/<:' |
 	//    'partition' // This is missing from the Rodin D7 deliverable
 	//;
 	public EVENTB_PREDICATE_SYMBOLSElements getEVENTB_PREDICATE_SYMBOLSAccess() {
@@ -2922,48 +3158,47 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
-	//    '↔' | // Symbols for building set of relations
-	//    '' |
-	//    '' |
-	//    '' |
-	//    '⇸' |
-	//    '→' |
-	//    '⤔' |
-	//    '↣' |
-	//    '⤀' |
-	//    '↠' |
-	//    '⤖' |
+	//    '↔' | '<->' | // Symbols for building set of relations
+	//    '' | '<<->' |
+	//    '' | '<->>' |
+	//    '' | '<<->>' |
+	//    '⇸' | '+->' |
+	//    '→' | '-->' |
+	//    '⤔' | '>+>' |
+	//    '↣' | '>->' |
+	//    '⤀' | '+>>' |
+	//    '↠' | '->>' |
+	//    '⤖' | '>->>' |
 	//    '{' | // Symbols for manipulating sets
 	//    '}' |
-	//    '↦' |
-	//    '∅' |
-	//    '∩' |
-	//    '∪' |
-	//    '∖' |
-	//    '×' |
+	//    '↦' | ',,' | '|->' |
+	//    '∅' | '{}' |
+	//    '∩' | '/\\' |
+	//    '∪' | '\\/' |
+	//    '∖' | '\\' |
+	//    '×' | '**' |
 	//    '[' | // Symbols for manipulating functions and relations
 	//    ']' |
-	//    '' |
-	//    '∘' |
+	//    '' | '<+' |
+	//    '∘' | 'circ' |
 	//    ';' |
-	//    '⊗' |
-	//    '∥' |
-	//    '∼' |
-	//    '◁' |
-	//    '⩤' |
-	//    '▷' |
-	//    '⩥' |
+	//    '⊗' | '><' |
+	//    '∥' | '||' |
+	//    '∼' | '~' |
+	//    '◁' | '<|' |
+	//    '⩤' | '<<|' |
+	//    '▷' | '|>' |
+	//    '⩥' | '|>>' |
 	//    'λ' | '%' // Symbols for quantified expressions
-	//    '⋂' |
-	//    '⋃' |
-	//    '∣' |
-	//    '‥' | // Symbols for arithmetic expressions
+	//    '⋂' | 'INTER' |
+	//    '⋃' | 'UNION' |
+	//    '∣' | '|' |
+	//    '‥' | '..' | // Symbols for arithmetic expressions
 	//    '+' |
 	//    '−' | '-' |
 	//    '∗' | '*' |
 	//    '÷' | '/' |
-	//    '^' |
-	//    '\\' // Allowed for LaTeX combos
+	//    '^'
 	//;
 	public EVENTB_EXPRESSION_SYMBOLSElements getEVENTB_EXPRESSION_SYMBOLSAccess() {
 		return pEVENTB_EXPRESSION_SYMBOLS;
@@ -2980,11 +3215,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//// This to allow untranslated mathematical symbols in XFormula
-	//terminal UNTRANSLATED_TOKEN: ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
-	public TerminalRule getUNTRANSLATED_TOKENRule() {
-		return tUNTRANSLATED_TOKEN;
-	}
-	
+	////terminal UNTRANSLATED_TOKEN: ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 	//@Override
 	//terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';
 	public TerminalRule getSTRINGRule() {
@@ -3000,7 +3231,7 @@ public class XMachineGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//    (extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
 	//    ('record' | 'rec') name = ID
 	//    (('inherits' | 'ihr') inheritsNames += ID)?
-	//    (('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+	//    (('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 	//    'end'
 	//;
 	public XRecordElements getXRecordAccess() {

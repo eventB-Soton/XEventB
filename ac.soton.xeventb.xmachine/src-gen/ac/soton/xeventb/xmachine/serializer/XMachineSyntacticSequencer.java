@@ -234,10 +234,10 @@ public class XMachineSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'field' | 'fld'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     constraints+=XConstraint (ambiguity) fields+=Field
-	 *     fields+=Field (ambiguity) fields+=Field
-	 *     inheritsNames+=ID (ambiguity) fields+=Field
-	 *     name=ID (ambiguity) fields+=Field
+	 *     inheritsNames+=ID (ambiguity) orderedChildren+=Field
+	 *     name=ID (ambiguity) orderedChildren+=Field
+	 *     orderedChildren+=Field (ambiguity) orderedChildren+=Field
+	 *     orderedChildren+=XConstraint (ambiguity) orderedChildren+=Field
 	 */
 	protected void emit_XRecord_FieldKeyword_6_0_0_0_or_FldKeyword_6_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
