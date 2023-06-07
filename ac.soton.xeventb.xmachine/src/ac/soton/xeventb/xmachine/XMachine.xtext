@@ -322,7 +322,9 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
 	(extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
 	('record' | 'rec') name = ID
 	(('inherits' | 'ihr') inheritsNames += ID)?
-	(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+	// Do not use derived fields, i.e., must use orderedChildren
+	// Otherwise, quickfix will cause "No context found"
+	(('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 	'end'
 ;
 
