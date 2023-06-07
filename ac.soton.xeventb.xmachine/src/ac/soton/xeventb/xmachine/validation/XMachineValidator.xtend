@@ -149,8 +149,6 @@ class XMachineValidator extends AbstractXMachineValidator {
      */
     @Check
     def checkEventPrefixEmpty(EventSynchronisation evt) {
-        System.out.println("Check event prefix empty")
-
         if (evt.prefix.empty) {
             val mchContainer = evt.eContainer.eContainer as Machine
             val mchIncExtensions = mchContainer.extensions.filter(MachineInclusion)
@@ -500,46 +498,29 @@ class XMachineValidator extends AbstractXMachineValidator {
         return null
     }
 
-    @Check
-    def checkUntranslatedFormulae(Machine mch) {
-    	val orderedChildren = mch.orderedChildren
-		for (child : orderedChildren) {
-			if (child instanceof EventBPredicate) {
-				validatePredicate(child)
-			}
-			if (child instanceof EventBExpression) {
-				validateExpression(child)
-			}
-			if (child instanceof Type) {
-				validateType(child)
-			}
-			if (child instanceof Value) {
-				validateValue(child)
-			}
-			if (child instanceof Event) {
-				checkUntranslatedFormulae(child)
-			}
-		}			
-    }
+	@Check
+	def checkUntranslatedFormulae(EventBPredicate predicate) {
+		validatePredicate(predicate)
+	}
+	
+	@Check
+	def checkUntranslatedFormulae(EventBExpression expression) {
+		validateExpression(expression)
+	}
+	
+	@Check
+	def checkUntranslatedFormulae(EventBAction action) {
+		validateAssignment(action)
+	}
+	
+	@Check
+	def checkUntranslatedFormulae(Value value) {
+		validateValue(value)
+	}
+	
 
-	def checkUntranslatedFormulae(Event evt) {
-    	val orderedChildren = evt.orderedChildren
-		for (child : orderedChildren) {
-			if (child instanceof EventBPredicate) {
-				validatePredicate(child)
-			}
-			if (child instanceof EventBExpression) {
-				validateExpression(child)
-			}
-			if (child instanceof EventBAction) {
-				validateAssignment(child)
-			}
-			if (child instanceof Type) {
-				validateType(child)
-			}
-			if (child instanceof Value) {
-				validateValue(child)
-			}
-		}		
+	@Check
+	def checkUntranslatedFormulae(Type type) {
+		validateType(type)
 	}
 }
