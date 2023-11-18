@@ -371,6 +371,19 @@
     Step 2. Set the Content of courseCtx.bucx
   </a>
   
+    <nav class="md-nav" aria-label="Step 2. Set the Content of courseCtx.bucx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typesetting-mathematical-symbols" class="md-nav__link">
+    Typesetting Mathematical Symbols
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -440,6 +453,19 @@
     Step 2. Set the Content of courseCtx.bucx
   </a>
   
+    <nav class="md-nav" aria-label="Step 2. Set the Content of courseCtx.bucx">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#typesetting-mathematical-symbols" class="md-nav__link">
+    Typesetting Mathematical Symbols
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -506,6 +532,33 @@ theorem @thm0_1: 0 &lt; m      // The maximum number of courses is positive
 end
 </code></pre>
 <p><img alt="coursesCtx.bucx content" src="../figures/coursesCtx.jpg" /></p>
+<ul>
+<li>Save the file <code>coursesCtx.bucx</code>, the <em>XText</em> builder will generate
+  Rodin context <code>coursesCtx</code> automatically.</li>
+</ul>
+<h3 id="typesetting-mathematical-symbols">Typesetting Mathematical Symbols</h3>
+<p>In order to typeset Event-B mathematical symbols, e.g., <code>ℕ1</code>, there
+are three different approaches.
+1. Using <em>Content Assist</em>. <em>Content Assist</em> can translate <em>ASCII</em>
+  characters into Unicode symbols.  For example, when typing <code>NAT</code> and invoking
+  content assist (e.g., on <code>Ctrl + Space</code> on Mac OS), a dropdown list will appear with options for typesetting <code>ℕ</code> and <code>ℕ1</code>.
+<img alt="Content Assist" src="../figures/ContentAssist.jpg" /></p>
+<ol>
+<li>
+<p>Using <em>Quick Fix</em>. The <em>CamilleX</em> editor offer quick fixes for
+  ASCII untranslated formula. Untranslated formula are indicated by warnings
+  with yellow squiggly lines under the formula. Hover the mouse over
+  the untranslated formulae, a pop-up dialog will appear to offer to
+  translate the formulae.
+<img alt="Quick Fixes for Untranslated Formulae" src="../figures/QuickFix.jpg" /></p>
+</li>
+<li>
+<p>Using <em>Symbols</em> Table. Symbols can be inserted into the <em>CamilleX</em>
+   editor. (If the <em>Symbols</em> table is not visible in your Rodin, you
+   can open it from the menu <code>Window -&gt; Show View -&gt; Symbols</code>.
+<img alt="Symbols Table" src="../figures/SymbolsTable.jpg" />   </p>
+</li>
+</ol>
 
 
 
