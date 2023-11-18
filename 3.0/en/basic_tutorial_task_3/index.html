@@ -534,21 +534,12 @@
 <p>The purpose of this task is to create a simple XMachine within the newly created project.</p>
 <h2 id="step-1-create-a-new-xmachine-named-m0bumx">Step 1. Create a New XMachine Named <code>m0.bumx</code></h2>
 <ul>
-<li>
-<p>Use the menu <code>File -&gt; New -&gt; Other</code> to open the <code>Select a wizard</code> dialog.</p>
-</li>
-<li>
-<p>On the pop-up <code>Select a wizard</code> dialog, navigate to <code>General -&gt; File</code>,
-  click <code>Next</code>.
-<img alt="Select the New File Wizard" src="../figures/SelectNewFileWizard.jpg" /></p>
-</li>
-<li>
-<p>On the <code>Create New File</code> dialog, choose <code>Club</code> project as the parent
-  folder, and put <code>m0.bumx</code> as the <code>File name</code>. The file
-  extension <code>.bumx</code> is important to indicate that the file is an
-  <em>XMachine</em>. Click <code>Finish</code> to confirm the file creation.
-<img alt="Create a New Courses XMachine" src="../figures/CreateNewCoursesMch.jpg" /></p>
-</li>
+<li>Right click on the <code>Club</code> project and then <code>New -&gt; File</code> to open the
+  <code>Create New File</code> dialog. On the <code>Create New File</code> dialog, choose
+  <code>Club</code> project as the parent folder, and put <code>m0.bumx</code> as the <code>File
+  name</code>. The file extension <code>.bumx</code> is important to indicate that the
+  file is an <em>XMachine</em>. Click <code>Finish</code> to confirm the file creation.
+  <img alt="Create a New m0 XMachine" src="../figures/CreateNewM0.jpg" /></li>
 </ul>
 <h2 id="step-2-set-the-content-of-m0bumx">Step 2. Set the Content of <code>m0.bumx</code></h2>
 <ul>
@@ -581,7 +572,7 @@ end
 event OpenCourses
 when
     @grd0_1 : card(crs) ≠ m
-    theorem @thm0_3 : crs = CRS
+    theorem @thm0_3 : crs ≠ CRS
 then
     @act0_1 : crs :∣ crs ⊂ crs' ∧ card(crs') ≤ m
 end
