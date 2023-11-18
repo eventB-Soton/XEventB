@@ -16,6 +16,8 @@
         <link rel="prev" href="../basic_tutorial_task_3/">
       
       
+        <link rel="next" href="../basic_tutorial_task_5/">
+      
       <link rel="icon" href="../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.2">
     
@@ -395,8 +397,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-an-extended-context-xcontext-named-participantsctxbucx" class="md-nav__link">
-    Step 1. Create an extended context XContext Named participantsCtx.bucx
+  <a href="#step-2-create-an-extended-context-xcontext-named-participantsctxbucx" class="md-nav__link">
+    Step 2. Create an extended context XContext Named participantsCtx.bucx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-extended-context-xcontext-named-instructorsctxbucx" class="md-nav__link">
+    Step 3. Create an extended context XContext Named instructorsCtx.bucx
   </a>
   
 </li>
@@ -412,6 +421,20 @@
   
 </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic_tutorial_task_5/" class="md-nav__link">
+        Task 5. Create a refined XMachine
+      </a>
     </li>
   
 
@@ -471,8 +494,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-create-an-extended-context-xcontext-named-participantsctxbucx" class="md-nav__link">
-    Step 1. Create an extended context XContext Named participantsCtx.bucx
+  <a href="#step-2-create-an-extended-context-xcontext-named-participantsctxbucx" class="md-nav__link">
+    Step 2. Create an extended context XContext Named participantsCtx.bucx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-create-an-extended-context-xcontext-named-instructorsctxbucx" class="md-nav__link">
+    Step 3. Create an extended context XContext Named instructorsCtx.bucx
   </a>
   
 </li>
@@ -501,8 +531,8 @@
 
 <h1 id="task-4-create-an-extended-xcontext">Task 4. Create an extended XContext</h1>
 <h2 id="introduction">Introduction</h2>
-<p>The purpose of this task is to create a simple extended XContext
-within the newly created project.</p>
+<p>The purpose of this task is to create an extended XContext within the
+newly created project.</p>
 <h2 id="step-1-create-a-simple-context-xcontext-named-membersctxbucx">Step 1. Create a simple context XContext Named <code>membersCtx.bucx</code></h2>
 <ul>
 <li>Follow the steps in <a href="basic_tutorial_task_2">Task 2</a> to create a
@@ -517,7 +547,7 @@ axioms
 
 end
 </code></pre>
-<h2 id="step-1-create-an-extended-context-xcontext-named-participantsctxbucx">Step 1. Create an extended context XContext Named <code>participantsCtx.bucx</code></h2>
+<h2 id="step-2-create-an-extended-context-xcontext-named-participantsctxbucx">Step 2. Create an extended context XContext Named <code>participantsCtx.bucx</code></h2>
 <ul>
 <li>Follow the steps in <a href="basic_tutorial_task_2">Task 2</a> to create a
 context named <code>participantsCtx.bucx</code> with the following content.</li>
@@ -536,11 +566,31 @@ theorem
     @thm1_1: finite(PRTCPT)
 end
 </code></pre>
-<p>Keyword <code>extends</code> signifies that this context extends the <code>membersCtx</code></p>
+<p>The <code>extends</code> clause signifies that this context extends <code>membersCtx</code>.</p>
+<h2 id="step-3-create-an-extended-context-xcontext-named-instructorsctxbucx">Step 3. Create an extended context XContext Named <code>instructorsCtx.bucx</code></h2>
+<ul>
+<li>Follow the steps in <a href="basic_tutorial_task_2">Task 2</a> to create a
+context named <code>instructorsCtx.bucx</code> with the following content.</li>
+</ul>
+<pre><code>context instructorsCtx
+
+extends coursesCtx membersCtx
+
+constants
+    INSTR
+    instrs
+axioms
+    @axm1_3: INSTR ⊆ MEM
+    @axm1_4: instrs ∈ CRS → INSTR
+end
+</code></pre>
+<p>The <code>extends</code> clause signifies that this context extends both
+<code>coursesCtx</code> and <code>membersCtx</code>.</p>
 <h2 id="conclusion">Conclusion</h2>
-<p>By now, the XContexts <code>membersCtx.bucx</code>,  <code>participantsCtx.bucx</code> and
-their corresponding Rodin Contexts should be visible in the Event-B Explorer.
-<img alt="membersCtx and participantCtx in the File Explorer" src="../figures/participantsCtxFileExplorer.jpg" /></p>
+<p>By now, the XContexts <code>membersCtx.bucx</code>, <code>participantsCtx.bucx</code>,
+<code>instructorsCtx</code> and their corresponding Rodin Contexts should be
+visible in the Event-B Explorer.
+<img alt="membersCtx, participantCtx, and instructorsCtx in the File Explorer" src="../figures/instructorsCtxFileExplorer.jpg" /></p>
 
 
 
