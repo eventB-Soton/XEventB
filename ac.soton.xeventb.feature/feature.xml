@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.feature"
       label="%featureName"
-      version="3.0.0.release"
+      version="3.1.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
@@ -50,7 +50,6 @@
       <import plugin="ac.soton.eventb.emf.containment" version="1.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.diagrams" version="6.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.core.extension" version="6.0.0" match="compatible"/>
-      <import plugin="ac.soton.eventb.emf.record" version="1.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.record.generator" version="0.1.0" match="compatible"/>
       <import plugin="org.rodinp.keyboard.core" version="2.0.0" match="compatible"/>
       <import plugin="ac.soton.eventb.emf.inclusion.edit" version="1.0.2" match="compatible"/>
@@ -95,6 +94,7 @@
       <import plugin="org.eclipse.xtext.ui" version="2.22.0" match="compatible"/>
       <import plugin="org.eclipse.emf.transaction" version="1.9.1" match="compatible"/>
       <import plugin="org.eclipse.emf.common"/>
+      <import plugin="ac.soton.eventb.emf.record" version="1.1.0" match="compatible"/>
    </requires>
 
    <plugin
