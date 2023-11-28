@@ -15,7 +15,7 @@
 <feature
       id="ac.soton.xeventb.tests.feature"
       label="%featureName"
-      version="3.0.0.release"
+      version="3.1.0.qualifier"
       provider-name="%featureVendor"
       plugin="ac.soton.xeventb.branding"
       license-feature="org.rodinp.licence"
