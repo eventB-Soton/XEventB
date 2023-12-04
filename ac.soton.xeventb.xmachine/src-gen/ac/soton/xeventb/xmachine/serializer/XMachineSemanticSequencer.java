@@ -197,7 +197,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *             )? 
 	 *             orderedChildren+=XMultipleVariable?
 	 *         )* 
-	 *         orderedChildren+=XEvent?
+	 *         orderedChildren+=XEvent*
 	 *     )
 	 */
 	protected void sequence_Machine(ISerializationContext context, Machine semanticObject) {
@@ -333,7 +333,7 @@ public class XMachineSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *         (extended?='extended' | extended?='ext' | refined?='refined' | refined?='ref')? 
 	 *         name=ID 
 	 *         inheritsNames+=ID? 
-	 *         (fields+=Field | constraints+=XConstraint)*
+	 *         (orderedChildren+=Field | orderedChildren+=XConstraint)*
 	 *     )
 	 */
 	protected void sequence_XRecord(ISerializationContext context, Record semanticObject) {

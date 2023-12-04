@@ -48,7 +48,6 @@ import org.eventb.core.IVariable;
 import org.eventb.emf.core.AbstractExtension;
 import org.eventb.emf.core.CorePackage;
 import org.eventb.emf.core.EventBAction;
-import org.eventb.emf.core.EventBElement;
 import org.eventb.emf.core.EventBExpression;
 import org.eventb.emf.core.EventBObject;
 import org.eventb.emf.core.EventBPredicate;
@@ -172,7 +171,6 @@ public class XMachineValidator extends AbstractXMachineValidator {
    */
   @Check
   public void checkEventPrefixEmpty(final EventSynchronisation evt) {
-    System.out.println("Check event prefix empty");
     boolean _isEmpty = evt.getPrefix().isEmpty();
     if (_isEmpty) {
       EObject _eContainer = evt.eContainer().eContainer();
@@ -574,49 +572,27 @@ public class XMachineValidator extends AbstractXMachineValidator {
   }
 
   @Check
-  public void checkUntranslatedFormulae(final Machine mch) {
-    final EList<EventBElement> orderedChildren = mch.getOrderedChildren();
-    for (final EventBElement child : orderedChildren) {
-      {
-        if ((child instanceof EventBPredicate)) {
-          this.validator.validatePredicate(((EventBPredicate)child));
-        }
-        if ((child instanceof EventBExpression)) {
-          this.validator.validateExpression(((EventBExpression)child));
-        }
-        if ((child instanceof Type)) {
-          this.validator.validateType(((Type)child));
-        }
-        if ((child instanceof Value)) {
-          this.validator.validateValue(((Value)child));
-        }
-        if ((child instanceof Event)) {
-          this.checkUntranslatedFormulae(((Event)child));
-        }
-      }
-    }
+  public void checkUntranslatedFormulae(final EventBPredicate predicate) {
+    this.validator.validatePredicate(predicate);
   }
 
-  public void checkUntranslatedFormulae(final Event evt) {
-    final EList<EventBElement> orderedChildren = evt.getOrderedChildren();
-    for (final EventBElement child : orderedChildren) {
-      {
-        if ((child instanceof EventBPredicate)) {
-          this.validator.validatePredicate(((EventBPredicate)child));
-        }
-        if ((child instanceof EventBExpression)) {
-          this.validator.validateExpression(((EventBExpression)child));
-        }
-        if ((child instanceof EventBAction)) {
-          this.validator.validateAssignment(((EventBAction)child));
-        }
-        if ((child instanceof Type)) {
-          this.validator.validateType(((Type)child));
-        }
-        if ((child instanceof Value)) {
-          this.validator.validateValue(((Value)child));
-        }
-      }
-    }
+  @Check
+  public void checkUntranslatedFormulae(final EventBExpression expression) {
+    this.validator.validateExpression(expression);
+  }
+
+  @Check
+  public void checkUntranslatedFormulae(final EventBAction action) {
+    this.validator.validateAssignment(action);
+  }
+
+  @Check
+  public void checkUntranslatedFormulae(final Value value) {
+    this.validator.validateValue(value);
+  }
+
+  @Check
+  public void checkUntranslatedFormulae(final Type type) {
+    this.validator.validateType(type);
   }
 }

@@ -18,7 +18,7 @@
   <!-- ID of this artifact -->
   <artifactId>releng</artifactId>
   <!-- REQUIRED: Version number (using semantic versioning) -->
-  <version>3.0.0.release</version>
+  <version>3.1.0.release</version>
   <packaging>pom</packaging>
 
   <properties>
@@ -30,13 +30,13 @@
     <eclipse_updates-repo.url>http://download.eclipse.org/eclipse/updates/4.22/</eclipse_updates-repo.url>
     <!-- URL for Eclipse Releases repository (2022-06) -->
     <eclipse_releases-repo.url>http://download.eclipse.org/releases/2022-06</eclipse_releases-repo.url>
-    <!-- URL for Rodin Platform (3.7) -->
-    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/3.7</rodin-repo.url>
+    <!-- URL for Rodin Platform -->
+    <rodin-repo.url>http://rodin-b-sharp.sourceforge.net/core-updates/</rodin-repo.url>
     <!-- OPTIONAL Additional URLs -->
-    <!-- URL for the Soton Update site -->
-    <soton-repo.url>http://eventb-soton.github.io/updateSite</soton-repo.url>
+    <!-- URL for the Rodin Plug-ins Update site -->
+    <rodin_updates-repo.url>https://rodin-b-sharp.sourceforge.net/updates</rodin_updates-repo.url>
     <!-- URL for the Rodin Licence Update site -->
-    <rodin_licence-repo.url>http://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
+    <rodin_licence-repo.url>https://eventb-soton.github.io/media_bin/org.rodinp.licence.updateSite</rodin_licence-repo.url>
   </properties>
 
   <repositories>
@@ -59,10 +59,10 @@
       <layout>p2</layout>
     </repository>
     <!-- OPTIONAL Additional repository -->
-    <!-- Soton  repository -->
+    <!-- Rodin plug-ins updates repository -->
     <repository>
-      <id>soton</id>
-      <url>${soton-repo.url}</url>
+      <id>rodin-updates</id>
+      <url>${rodin_updates-repo.url}</url>
       <layout>p2</layout>
     </repository>
     <!-- Rodin Licence repository -->

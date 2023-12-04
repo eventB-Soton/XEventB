@@ -20,7 +20,7 @@
     <!-- Name of the release engineering artifact -->
     <artifactId>releng</artifactId>
     <!-- REQUIRED: Version number of the release engineering artifact -->
-    <version>3.0.0.release</version>
+    <version>3.1.0.release</version>
     <!-- REQUIRED: Relative path to the release engineering artifact -->
     <relativePath>../ac.soton.xeventb.releng</relativePath>
   </parent>

@@ -94,7 +94,7 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXGuardAccess().getGroup(), "rule__XGuard__Group__0");
 			builder.put(grammarAccess.getXWitnessAccess().getGroup(), "rule__XWitness__Group__0");
 			builder.put(grammarAccess.getXActionAccess().getGroup(), "rule__XAction__Group__0");
-			builder.put(grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getGroup_32(), "rule__EVENTB_EXPRESSION_SYMBOLS__Group_32__0");
+			builder.put(grammarAccess.getEVENTB_EXPRESSION_SYMBOLSAccess().getGroup_59(), "rule__EVENTB_EXPRESSION_SYMBOLS__Group_59__0");
 			builder.put(grammarAccess.getXRecordAccess().getGroup(), "rule__XRecord__Group__0");
 			builder.put(grammarAccess.getXRecordAccess().getGroup_5(), "rule__XRecord__Group_5__0");
 			builder.put(grammarAccess.getXRecordAccess().getGroup_6_0(), "rule__XRecord__Group_6_0__0");
@@ -166,8 +166,8 @@ public class XMachineParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getXRecordAccess().getRefinedAssignment_2_1(), "rule__XRecord__RefinedAssignment_2_1");
 			builder.put(grammarAccess.getXRecordAccess().getNameAssignment_4(), "rule__XRecord__NameAssignment_4");
 			builder.put(grammarAccess.getXRecordAccess().getInheritsNamesAssignment_5_1(), "rule__XRecord__InheritsNamesAssignment_5_1");
-			builder.put(grammarAccess.getXRecordAccess().getFieldsAssignment_6_0_1(), "rule__XRecord__FieldsAssignment_6_0_1");
-			builder.put(grammarAccess.getXRecordAccess().getConstraintsAssignment_6_1_1(), "rule__XRecord__ConstraintsAssignment_6_1_1");
+			builder.put(grammarAccess.getXRecordAccess().getOrderedChildrenAssignment_6_0_1(), "rule__XRecord__OrderedChildrenAssignment_6_0_1");
+			builder.put(grammarAccess.getXRecordAccess().getOrderedChildrenAssignment_6_1_1(), "rule__XRecord__OrderedChildrenAssignment_6_1_1");
 			builder.put(grammarAccess.getFieldAccess().getCommentAssignment_1(), "rule__Field__CommentAssignment_1");
 			builder.put(grammarAccess.getFieldAccess().getNameAssignment_2(), "rule__Field__NameAssignment_2");
 			builder.put(grammarAccess.getFieldAccess().getMultiplicityAssignment_4(), "rule__Field__MultiplicityAssignment_4");

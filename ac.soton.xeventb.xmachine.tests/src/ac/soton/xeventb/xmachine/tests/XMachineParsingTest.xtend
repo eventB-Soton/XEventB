@@ -9,6 +9,7 @@ import com.google.inject.Inject
 import org.eclipse.xtext.testing.InjectWith
 import org.eclipse.xtext.testing.XtextRunner
 import org.eclipse.xtext.testing.util.ParseHelper
+import org.eventb.emf.core.machine.Event
 import org.eventb.emf.core.machine.Machine
 import org.junit.Assert
 import org.junit.Before
@@ -98,5 +99,36 @@ class XMachineParsingTest {
 		errors.assertEmpty
 		Assert.assertTrue(result instanceof Machine)
 		result.assertMachine("m0", null)
+	}
+
+	/**
+	 * Successful test for events clause with multiple event
+	 * (Issue #76)
+	 * 
+	 * @since 2.2
+	 */
+	@Test
+	def void testEventsClauseMultipleEventSuccessful() {
+		val testInput = 
+		'''
+			// Single-line comment
+			machine m0
+			events
+				event e end
+				event f end
+			end
+		'''
+		val result = testInput.parse
+		Assert.assertNotNull(result)
+		val errors = result.eResource.errors
+		errors.assertEmpty
+		Assert.assertTrue(result instanceof Machine)
+		result.assertMachine("m0", null)
+		val Event[] events = result.getEvents()
+		Assert.assertEquals("There should be 2 events", 2, events.length)
+		val event0 = events.get(0)
+		event0.assertEvent("e:ordinary:false") 
+		val event1 = events.get(1)
+		event1.assertEvent("f:ordinary:false") 		
 	}
 }

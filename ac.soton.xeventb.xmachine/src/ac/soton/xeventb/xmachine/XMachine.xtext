@@ -60,7 +60,7 @@ Machine returns emachine::Machine:
 		(orderedChildren += XEvent)
 	)*
 	// Optional group events at the end
-	('events' (orderedChildren += XEvent))?
+	('events' (orderedChildren += XEvent+))?
 	// Since Rodin 3.0, we do not need to have the 'end' keyword
 	('end')?
 ;
@@ -98,18 +98,18 @@ XType returns ecore::EString:
 ;
 
 XTYPEOPERATOR returns ecore::EString:
-	'↔' | // Symbols for building set of relations
-	'' | 
-	'' | 
-	'' | 
-	'⇸' | 
-	'→' | 
-	'⤔' | 
-	'↣' | 
-	'⤀' | 
-	'↠' | 
-	'⤖' | 
-	'×'
+	'↔' | '<->' | // Symbols for building set of relations
+	'' | '<<->' |
+	'' | '<->>' |
+	'' | '<<->>' |
+	'⇸' | '+->' |
+	'→' | '-->' |
+	'⤔' | '>+>' |
+	'↣' | '>->' |
+	'⤀' | '+>>' |
+	'↠' | '->>' |
+	'⤖' | '>->>' |
+	'×' | '**'
 ;
 
 XTypePrimitive returns ecore::EString:
@@ -199,12 +199,11 @@ XAction returns emachine::Action:
 
 XFormula returns ecore::EString:
 	(
-		EVENTB_IDENTIFIER_KEYWORD |
-		EVENTB_PREDICATE_SYMBOLS |
-		EVENTB_EXPRESSION_SYMBOLS |
-		INT |
-		ID |
-		UNTRANSLATED_TOKEN
+		EVENTB_IDENTIFIER_KEYWORD
+		| EVENTB_PREDICATE_SYMBOLS
+		| EVENTB_EXPRESSION_SYMBOLS
+		| INT
+		| ID
 	)+ 
 ;
 
@@ -227,92 +226,88 @@ EVENTB_IDENTIFIER_KEYWORD returns ecore::EString:
 	'ran' |
 	'succ' |
 	'union' |
-	'ℕ1' |
-	'ℕ' |
-	'ℙ1' |
-	'ℙ' |
-	'ℤ'
+	'ℕ1' | 'NAT1' |
+	'ℕ' | 'NAT' |
+	'ℙ1' | 'POW1' |
+	'ℙ' | 'POW' |
+	'ℤ' | 'INT'
 ;
 
 EVENTB_PREDICATE_SYMBOLS returns ecore::EString:
 	'(' | // Predicate calculus symbols
 	')' |
-	'⇔' | 
-	'⇒' |
+	'⇔' | '<=>' |
+	'⇒' | '=>' |
 	'∧' | '&' |
-	'∨' |
-	'¬' |
-	'⊤' |
-	'⊥' |
+	'∨' | 'or' |
+	'¬' | 'not' |
+	'⊤' | 'true' |
+	'⊥' | 'false' |
 	'∀' | '!' |
 	'∃' | '#' |
 	',' |
 	'·' | '.' |
 	'=' | // Build predicates from expressions
-	'≠' |
-	'≤' |
+	'≠' | '/=' |
+	'≤' | '=<' |
 	'<' |
-	'≥' |
+	'≥' | '>=' |
 	'>' |
 	'∈' | ':' | // Include this for Rodin keyboard
-	'∉' | 
-	'⊂' |
-	'⊄' |
-	'⊆' |
-	'⊈' |
+	'∉' | '/:' |
+	'⊂' | '<<:' |
+	'⊄' | '/<<:' |
+	'⊆' | '<:' |
+	'⊈' | '/<:' |
 	'partition' // This is missing from the Rodin D7 deliverable
 ;
 
 EVENTB_EXPRESSION_SYMBOLS returns ecore::EString:
-	'↔' | // Symbols for building set of relations
-	'' |
-	'' |
-	'' |
-	'⇸' |
-	'→' |
-	'⤔' |
-	'↣' |
-	'⤀' |
-	'↠' |
-	'⤖' |
+	'↔' | '<->' | // Symbols for building set of relations
+	'' | '<<->' |
+	'' | '<->>' |
+	'' | '<<->>' |
+	'⇸' | '+->' |
+	'→' | '-->' |
+	'⤔' | '>+>' |
+	'↣' | '>->' |
+	'⤀' | '+>>' |
+	'↠' | '->>' |
+	'⤖' | '>->>' |
 	'{' | // Symbols for manipulating sets
 	'}' |
-	'↦' |
-	'∅' |
-	'∩' |
-	'∪' |
-	'∖' |
-	'×' |
+	'↦' | ',,' | '|->' |
+	'∅' | '{}' |
+	'∩' | '/\\' |
+	'∪' | '\\/' |
+	'∖' | '\\' |
+	'×' | '**' |
 	'[' | // Symbols for manipulating functions and relations
 	']' |
-	'' |
-	'∘' |
+	'' | '<+' |
+	'∘' | 'circ' |
 	';' |
-	'⊗' |
-	'∥' |
-	'∼' |
-	'◁' |
-	'⩤' |
-	'▷' |
-	'⩥' |
+	'⊗' | '><' |
+	'∥' | '||' |
+	'∼' | '~' |
+	'◁' | '<|' |
+	'⩤' | '<<|' |
+	'▷' | '|>' |
+	'⩥' | '|>>' |
 	'λ' | '%' // Symbols for quantified expressions
-	'⋂' |
-	'⋃' |
-	'∣' |
-	'‥' | // Symbols for arithmetic expressions
+	'⋂' | 'INTER' |
+	'⋃' | 'UNION' |
+	'∣' | '|' |
+	'‥' | '..' | // Symbols for arithmetic expressions
 	'+' |
 	'−' | '-' |
 	'∗' | '*' |
 	'÷' | '/' | 
-	'^' |
-	'\\' // Allowed for LaTeX combos
+	'^'
 ;
 
 @Override 
 terminal ID: '^'?('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ') ('a'..'z'|'A'..'Z'|'_'| 'i'..'ￜ'|'0'..'9' | "'")*;
-
-// This to allow untranslated mathematical symbols in XFormula
-terminal UNTRANSLATED_TOKEN: ('!'|'#'|'%'|'&'|'*'|'-'|':'|'|'|'\\'|','|'~'|'/'|'.')+;
 
 @Override 
 terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\'|'"') )* '"';
@@ -327,7 +322,9 @@ terminal STRING: '"' ( '\\' . /* 'b'|'t'|'n'|'f'|'r'|'u'|'"'|"'"|'\\' */ | !('\\
 	(extended ?= ('extended' | 'ext') | refined ?= ('refined' | 'ref'))?
 	('record' | 'rec') name = ID
 	(('inherits' | 'ihr') inheritsNames += ID)?
-	(('field' | 'fld') fields += Field | 'constraint' constraints += XConstraint)*
+	// Do not use derived fields, i.e., must use orderedChildren
+	// Otherwise, quickfix will cause "No context found"
+	(('field' | 'fld') orderedChildren += Field | 'constraint' orderedChildren += XConstraint)*
 	'end'
 ;
 
